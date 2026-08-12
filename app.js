@@ -2636,7 +2636,10 @@
             ]
         )
       ),
-      (showInstallBanner && !showWelcome) ? e('div', {className:'dl-install-banner', key:'installbanner'}, [
+      (showInstallBanner && !showWelcome) ? e('div', {className:'dl-install-banner', key:'installbanner'},
+                                              showInstallBanner === 'ios'
+        ? e('div', {className:'dl-install-sub', key:'s'}, 'Tap the Share icon below, then "Add to Home Screen"')
+        : e('div', {className:'dl-install-sub', key:'s'}, 'Add to your home screen for quick access'),[
   e('button', {className:'dl-install-close', onClick:dismissInstallBanner, key:'x'}, String.fromCodePoint(0x2715)),
   e('div', {className:'dl-install-title', key:'t'}, 'Install Steps to Faith'),
   showInstallBanner === 'android' ? e('button', {className:'dl-install-btn', onClick: triggerAndroidInstall, key:'btn'}, 'Install') : null
