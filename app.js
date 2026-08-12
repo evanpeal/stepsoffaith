@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -1440,8 +1440,45 @@
   ];
 
   const AVATAR_OPTIONS = ['\ud83d\udcd6', '\u271d\ufe0f', '\ud83d\udd4a\ufe0f', '\ud83d\udc11', '\ud83d\udc1f', '\u26f0\ufe0f', '\ud83d\ude4f', '\ud83c\udf3f'];
+  const BADGES = [
+    { id:'seeker', icon:'\ud83d\udd0d', title:'Seeker', cost:30 },
+    { id:'sharp_mind', icon:'\ud83e\udde0', title:'Sharp Mind', cost:60 },
+    { id:'wordsmith', icon:'\ud83d\udcd6', title:'Wordsmith', cost:90 },
+    { id:'faithful_scholar', icon:'\ud83c\udf93', title:'Faithful Scholar', cost:130 },
+    { id:'deep_roots', icon:'\ud83c\udf33', title:'Deep Roots', cost:180 },
+    { id:'iron_sharpens', icon:'\u2694\ufe0f', title:'Iron Sharpens Iron', cost:240 },
+    { id:'overcomer', icon:'\ud83c\udfc5', title:'Overcomer', cost:320 },
+    { id:'pillar_wisdom', icon:'\ud83c\udfdb\ufe0f', title:'Pillar of Wisdom', cost:420 }
+  ];
   const SHEPHERD_LOGO_SVG = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="lbg" cx="50%" cy="32%" r="75%"><stop offset="0%" stop-color="#a56cf0"/><stop offset="100%" stop-color="#4a2f7a"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#lbg)"/><g fill="#fdfaf3"><circle cx="47" cy="30" r="7.5"/><path d="M32 76 Q30 48 47 41 Q64 48 62 76 Z"/></g><path d="M68 24 Q60 22 61 32 L61 78" fill="none" stroke="#fdfaf3" stroke-width="3" stroke-linecap="round"/></svg>';
   const DEFAULT_VERSE = 'Be strong and courageous \u2014 Joshua 1:9';
+
+  const DAILY_DEVOTIONALS = [
+    { ref: 'Philippians 4:6\u20137', verse: 'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.', title: 'Bring it, don\u2019t carry it', text: 'Whatever\u2019s weighing on you today, this verse doesn\u2019t say to feel calm first \u2014 it says to bring it to God first. Try naming one specific worry in a short prayer right now, thanking Him for one thing in the middle of it.' },
+    { ref: 'Psalm 23:1\u20133', verse: 'The LORD is my shepherd; I shall not want. He makes me lie down in green pastures; he leads me beside still waters; he restores my soul.', title: 'Let Him lead today', text: 'A shepherd doesn\u2019t just protect \u2014 he leads somewhere good. If today feels rushed or uncertain, ask God to lead your next hour, not just your big decisions.' },
+    { ref: 'Joshua 1:9', verse: 'Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.', title: 'Courage isn\u2019t the absence of fear', text: 'God commanded courage to a man about to face real giants \u2014 courage here means moving forward anyway, because of who\u2019s with you. What\u2019s one thing you\u2019ve been avoiding that this verse gives you courage for?' },
+    { ref: 'Lamentations 3:22\u201323', verse: 'The steadfast love of the LORD never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.', title: 'A fresh start, literally', text: 'Yesterday\u2019s failures don\u2019t carry over into today\u2019s mercy \u2014 it\u2019s new, this morning, specifically for you. Let today actually be a clean page instead of a continuation of yesterday.' },
+    { ref: 'Proverbs 3:5\u20136', verse: 'Trust in the LORD with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.', title: 'You don\u2019t have to have it figured out', text: 'This isn\u2019t a call to stop thinking \u2014 it\u2019s a call to stop needing total certainty before you trust God with the next step. Where are you leaning too hard on your own read of a situation right now?' },
+    { ref: 'Matthew 6:33\u201334', verse: 'Seek first the kingdom of God and his righteousness, and all these things will be added to you. Sufficient for the day is its own trouble.', title: 'One day at a time, really', text: 'Jesus isn\u2019t telling you not to plan \u2014 He\u2019s telling you not to borrow tomorrow\u2019s trouble today. What\u2019s one future worry you can set down until it\u2019s actually due?' },
+    { ref: 'Isaiah 41:10', verse: 'Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.', title: 'Held, not just watched', text: 'Notice the verbs \u2014 strengthen, help, uphold. God isn\u2019t distantly aware of your day; He\u2019s actively holding it. Ask Him specifically for strength in the one part of today you\u2019re dreading most.' },
+    { ref: 'Romans 8:28', verse: 'And we know that for those who love God all things work together for good, for those who are called according to his purpose.', title: 'Even this', text: 'This verse doesn\u2019t say everything that happens is good \u2014 it says God is able to work good through it. Is there a current hardship you\u2019ve stopped believing God can use?' },
+    { ref: '1 Peter 5:6\u20137', verse: 'Humble yourselves, therefore, under the mighty hand of God so that at the proper time he may exalt you, casting all your anxieties on him, because he cares for you.', title: 'He actually cares', text: 'Casting anxiety isn\u2019t pretending it\u2019s not there \u2014 it\u2019s handing it to someone who cares more than you do. What\u2019s one anxious thought you can consciously hand over today instead of just carrying?' },
+    { ref: 'Galatians 6:9', verse: 'And let us not grow weary of doing good, for in due season we will reap, if we do not give up.', title: 'The unseen middle', text: 'Most growth happens in the unglamorous middle, long before any harvest shows. If you\u2019re tired of something good that hasn\u2019t paid off yet, this verse is for you today \u2014 keep going.' },
+    { ref: 'Psalm 46:10', verse: 'Be still, and know that I am God. I will be exalted among the nations, I will be exalted in the earth!', title: 'Stillness as trust', text: 'Being still isn\u2019t passive here \u2014 it\u2019s a deliberate act of trust that God is God and you don\u2019t have to control everything. Where could you build one minute of real stillness into today?' },
+    { ref: 'John 14:27', verse: 'Peace I leave with you; my peace I give to you. Not as the world gives do I give to you. Let not your hearts be troubled, neither let them be afraid.', title: 'A different kind of peace', text: 'The world\u2019s peace usually depends on circumstances being fine. Jesus offers a peace that holds even when circumstances aren\u2019t. What would it look like to ask for that kind of peace today, specifically?' },
+    { ref: 'James 1:2\u20134', verse: 'Count it all joy, my brothers, when you meet trials of various kinds, for you know that the testing of your faith produces steadfastness.', title: 'Trials with a purpose', text: 'This doesn\u2019t ask you to fake happiness about hardship \u2014 it points to what the hardship is producing in you. What steadiness might God be building in you through your current trial?' },
+    { ref: 'Colossians 3:23', verse: 'Whatever you do, work heartily, as for the Lord and not for men.', title: 'Ordinary work, real purpose', text: 'Most of today will be ordinary tasks \u2014 this verse says none of it is beneath God\u2019s notice. Try doing one routine task today as if it were directly for Him.' }
+  ];
+
+  function dayOfYear(){
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    return Math.floor(diff / 86400000);
+  }
+  function todaysDevotional(){
+    return DAILY_DEVOTIONALS[dayOfYear() % DAILY_DEVOTIONALS.length];
+  }
 
   function App(){
     const [state, setState] = React.useState(null);
@@ -1457,6 +1494,7 @@
     const [editAvatar, setEditAvatar] = React.useState('\ud83d\udcd6');
     const [editVerse, setEditVerse] = React.useState('');
     const [openStudyBook, setOpenStudyBook] = React.useState(null);
+    const [studyStep, setStudyStep] = React.useState('prayer');
     const [editingTestimony, setEditingTestimony] = React.useState(false);
     const [testimonyDraft, setTestimonyDraft] = React.useState('');
     const [reflectionDraft, setReflectionDraft] = React.useState('');
@@ -1595,11 +1633,17 @@
     function finishTest(finalScore){
       const prevBest = state.testBest[activeTest.id] || 0;
       const nextBest = finalScore > prevBest ? { ...state.testBest, [activeTest.id]: finalScore } : state.testBest;
-      const rewardPerCorrect = Math.ceil(activeTest.cost / activeTest.questions.length);
-      const earned = finalScore * rewardPerCorrect;
-      persist({ ...state, testBest: nextBest, gems: state.gems + earned });
+      const earned = finalScore;
+      persist({ ...state, testBest: nextBest, pearls: (state.pearls||0) + earned });
       setTEarned(earned);
       setTFinished(true);
+    }
+
+    function buyBadge(badge){
+      const owned = state.ownedBadges || [];
+      if (owned.includes(badge.id)) return;
+      if ((state.pearls||0) < badge.cost) return;
+      persist({ ...state, pearls: state.pearls - badge.cost, ownedBadges: [...owned, badge.id] });
     }
 
     function pickTAnswer(i){
@@ -1773,22 +1817,26 @@
       'Loading\u2026'
     ]);
 
-    if (showWelcome && authChecked && !user) {
+    if (showWelcome && authChecked) {
       return e('div', {className:'dl-welcome'}, [
         e('div', {className:'dl-welcome-stars', key:'stars'}),
         e('div', {className:'dl-welcome-inner', key:'inner'}, [
           e('div', {className:'dl-welcome-logo', dangerouslySetInnerHTML:{__html: SHEPHERD_LOGO_SVG}, key:'logo'}),
-          e('div', {className:'dl-welcome-title', key:'title'}, 'Steps of Faith'),
+          e('div', {className:'dl-welcome-title', key:'title'}, 'Steps to Faith'),
           e('div', {className:'dl-welcome-tag', key:'tag'}, 'A guided walk through the Bible'),
           e('div', {className:'dl-welcome-body', key:'body'}, [
-            e('p', {key:'p1'}, 'Steps of Faith walks you through the Bible one story at a time \u2014 starting in Genesis, but you\u2019re free to jump to any book whenever you want.'),
+            e('p', {key:'p1'}, 'Steps to Faith walks you through the Bible one story at a time \u2014 starting in Genesis, but you\u2019re free to jump to any book whenever you want.'),
             e('p', {key:'p2'}, 'Each lesson has a short passage, a few questions, and a deeper look at what it means. Complete lessons to earn gems, then spend those gems on tests and quizzes to sharpen what you\u2019ve learned.'),
             e('p', {key:'p3'}, 'Build a daily streak, save personal reflections, and track your progress \u2014 sign in to keep it all saved across your devices.')
           ]),
-          e('div', {className:'dl-welcome-actions', key:'actions'}, [
-            e('button', {className:'dl-welcome-btn primary', onClick:()=>{ setAuthMode('signup'); setAuthError(''); setAuthOpen(true); }, key:'signup'}, 'Sign in / Create account'),
-            e('button', {className:'dl-welcome-btn', onClick:()=>setShowWelcome(false), key:'guest'}, 'Continue as guest')
-          ])
+          e('div', {className:'dl-welcome-actions', key:'actions'},
+            user
+              ? [ e('button', {className:'dl-welcome-btn primary', onClick:()=>setShowWelcome(false), key:'back'}, 'Continue') ]
+              : [
+                  e('button', {className:'dl-welcome-btn primary', onClick:()=>{ setAuthMode('signup'); setAuthError(''); setAuthOpen(true); }, key:'signup'}, 'Sign in / Create account'),
+                  e('button', {className:'dl-welcome-btn', onClick:()=>setShowWelcome(false), key:'guest'}, 'Continue as guest')
+                ]
+          )
         ]),
         authOpen ? renderAuthModal() : null
       ]);
@@ -1842,7 +1890,7 @@
       const deepStudyRow = DEEP_STUDIES[book] ? e('div', {className:'dl-scene', style: atmosphere ? {} : {background:'transparent'}, key:'studyrow'}, [
         e('div', {className:'dl-scene-inner', style:{justifyContent:'center'}}, [
           e('div', {className:'dl-node-wrap'}, [
-            e('button', {className:'dl-node deepstudy' + (studyDone ? ' studied' : ''), onClick:()=>setOpenStudyBook(book), key:'node'},
+            e('button', {className:'dl-node deepstudy' + (studyDone ? ' studied' : ''), onClick:()=>{ setOpenStudyBook(book); setStudyStep('prayer'); }, key:'node'},
               e('span', {className:'dl-node-icon', key:'icon'}, studyDone ? String.fromCodePoint(0x2713) : String.fromCodePoint(0x1F4DC))
             ),
             e('div', {className:'dl-node-label', key:'label'}, 'Deep study \u00b7 ' + DEEP_STUDIES[book].focus)
@@ -1872,7 +1920,8 @@
     return e('div', null, [
       e('div', {className:'dl-top', key:'top'}, [
         e('div', {className:'dl-pill fire', key:'f'}, [String.fromCodePoint(0x1F525), ' ' + state.streak]),
-        e('div', {className:'dl-pill gem', key:'g'}, [String.fromCodePoint(0x1F48E), ' ' + state.gems])
+        e('div', {className:'dl-pill gem', key:'g'}, [String.fromCodePoint(0x1F48E), ' ' + state.gems]),
+        e('div', {className:'dl-pill pearl', key:'pl'}, [String.fromCodePoint(0x1F539), ' ' + (state.pearls||0)])
       ]),
 
       tab === 'path' ? e('div', {key:'path'}, [
@@ -1891,8 +1940,13 @@
 
       tab === 'daily' ? e('div', {className:'dl-daily-wrap', key:'daily'}, [
         e('div', {className:'dl-passage-card', key:'verse'}, [
-          e('div', {className:'dl-passage-ref'}, 'Today\u2019s reading \u00b7 Philippians 4:6-7'),
-          e('div', {className:'dl-passage-text'}, '\u201cDo not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.\u201d')
+          e('div', {className:'dl-passage-ref'}, 'Today\u2019s reading \u00b7 ' + todaysDevotional().ref),
+          e('div', {className:'dl-passage-text'}, '\u201c' + todaysDevotional().verse + '\u201d')
+        ]),
+        e('div', {className:'dl-devotional-card', key:'devotional'}, [
+          e('div', {className:'dl-devotional-label', key:'lbl'}, [String.fromCodePoint(0x2600), ' Today\u2019s devotional']),
+          e('div', {className:'dl-devotional-title', key:'t'}, todaysDevotional().title),
+          e('div', {className:'dl-devotional-text', key:'txt'}, todaysDevotional().text)
         ]),
         e('div', {className:'dl-streak-card', key:'streak'}, [
           e('div', {className:'dl-streak-num', key:'n'}, state.dailyStreak),
@@ -1904,10 +1958,9 @@
         ]),
 
         e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Tests']),
-        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Spend gems to play \u2014 earn gems back for every question you get right.'),
+        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Spend gems to play \u2014 earn pearls for every question you get right, and spend pearls on badges in your Profile.'),
         ...TESTS.map(test => {
           const best = state.testBest[test.id];
-          const rewardPerCorrect = Math.ceil(test.cost / test.questions.length);
           const canAfford = state.gems >= test.cost;
           return e('div', {className:'dl-test-card', key:test.id}, [
             e('div', {className:'dl-test-top', key:'top'}, [
@@ -1918,7 +1971,7 @@
               ]),
               e('div', {className:'dl-test-cost', key:'cost'}, [String.fromCodePoint(0x1F48E), ' ' + test.cost])
             ]),
-            e('div', {className:'dl-test-reward', key:'reward'}, '+' + rewardPerCorrect + ' gems per correct answer'),
+            e('div', {className:'dl-test-reward', key:'reward'}, '+1 \ud83d\udd39 pearl per correct answer'),
             best !== undefined && e('div', {className:'dl-test-best', key:'best'}, 'Best: ' + best + ' / ' + test.questions.length),
             e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)'}, disabled: !canAfford, onClick:()=>startTest(test), key:'start'}, canAfford ? 'Play' : 'Not enough gems')
           ]);
@@ -1981,6 +2034,7 @@
                 e('button', {className:'dl-account-btn', onClick: ()=>{ setAuthMode('signup'); setAuthError(''); setAuthOpen(true); }, key:'in'}, 'Sign in / Create account')
               ]
         ),
+        e('button', {className:'dl-about-link', onClick:()=>setShowWelcome(true), key:'about'}, 'What is Steps to Faith?'),
 
         e('div', {className:'dl-hero-streak', key:'hero'}, [
           e('div', {className:'dl-hero-flame', key:'flame'}, String.fromCodePoint(0x1F525)),
@@ -1998,10 +2052,24 @@
           e('div', {className:'dl-stat', key:'daily'}, [e('div',{className:'dl-stat-badge b3', key:'ic'}, String.fromCodePoint(0x1F3C6)), e('div',{className:'dl-stat-num', key:'n'}, state.completedCheckpoints.length), e('div',{className:'dl-stat-label', key:'l'}, 'Checkpoints')]),
           e('div', {className:'dl-stat', key:'reflections'}, [e('div',{className:'dl-stat-badge b4', key:'ic'}, String.fromCodePoint(0x1F4DD)), e('div',{className:'dl-stat-num', key:'n'}, state.reflections.length), e('div',{className:'dl-stat-label', key:'l'}, 'Reflections')])
         ]),
-        e('div', {className:'dl-book-header', style:{padding:'8px 0'}, key:'badgeslbl'}, e('span', {className:'dl-band-label', style:{background:'#e2c8f7', color:'#4a2380', borderBottomColor:'#c9a0ea'}}, 'Badges')),
+        e('div', {className:'dl-book-header', style:{padding:'8px 0'}, key:'badgeslbl'}, e('span', {className:'dl-band-label', style:{background:'#e2c8f7', color:'#4a2380', borderBottomColor:'#c9a0ea'}}, 'Book badges')),
         state.completedCheckpoints.length === 0
           ? e('div', {className:'dl-empty-note', key:'empty'}, 'Finish a book to earn your first badge.')
           : e('div', {className:'dl-badge-row', key:'badges'}, state.completedCheckpoints.map(b => e('div', {className:'dl-badge', key:b}, [String.fromCodePoint(0x1F3C6), ' ' + b]))),
+
+        e('div', {className:'dl-section-title', style:{marginTop:'28px'}, key:'shoplabel'}, [String.fromCodePoint(0x1F539), ' Badge shop']),
+        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'shopnote'}, 'Spend pearls earned from tests to unlock badges for your profile.'),
+        e('div', {className:'dl-shop-grid', key:'shopgrid'}, BADGES.map(badge => {
+          const owned = (state.ownedBadges||[]).includes(badge.id);
+          const canAfford = (state.pearls||0) >= badge.cost;
+          return e('div', {className:'dl-shop-item' + (owned?' owned':''), key:badge.id}, [
+            e('div', {className:'dl-shop-icon', key:'icon'}, badge.icon),
+            e('div', {className:'dl-shop-title', key:'t'}, badge.title),
+            owned
+              ? e('div', {className:'dl-shop-owned', key:'owned'}, [String.fromCodePoint(0x2705), ' Owned'])
+              : e('button', {className:'dl-shop-buy', disabled: !canAfford, onClick:()=>buyBadge(badge), key:'buy'}, canAfford ? ('Unlock \u00b7 ' + badge.cost) : (badge.cost + ' \ud83d\udd39'))
+          ]);
+        })),
 
         e('div', {className:'dl-section-title', style:{marginTop:'28px'}, key:'rlabel'}, [String.fromCodePoint(0x1F4DD), ' Your reflections']),
         state.reflections.length === 0
@@ -2039,7 +2107,20 @@
       ]),
 
       e('div', {className:'dl-dc-modal-bg' + (openStudyBook ? ' open' : ''), key:'studymodal'},
-        openStudyBook && DEEP_STUDIES[openStudyBook] && [
+        openStudyBook && DEEP_STUDIES[openStudyBook] && (
+          studyStep === 'prayer'
+          ? [
+              e('div', {className:'dl-lesson-top', key:'ltop'}, [
+                e('button', {className:'dl-x', onClick:()=>setOpenStudyBook(null), key:'x'}, String.fromCodePoint(0x2715))
+              ]),
+              e('div', {className:'dl-prayer-wrap', key:'prayer'}, [
+                e('div', {className:'dl-prayer-icon', key:'icon'}, String.fromCodePoint(0x1F64F)),
+                e('div', {className:'dl-prayer-title', key:'t'}, 'Before you begin'),
+                e('div', {className:'dl-prayer-text', key:'p'}, '\u201cLord, open my eyes to see what You want me to see in this passage. Show me what stands out, and speak to my heart through Your word. Amen.\u201d'),
+                e('button', {className:'dl-continue', style:{background:'var(--gold)', borderBottomColor:'var(--gold-dark)', color:'#5c4400'}, onClick:()=>setStudyStep('content'), key:'go'}, 'Continue')
+              ])
+            ]
+          : [
           e('div', {className:'dl-lesson-top', key:'ltop'}, [
             e('button', {className:'dl-x', onClick:()=>setOpenStudyBook(null), key:'x'}, String.fromCodePoint(0x2715))
           ]),
@@ -2059,7 +2140,7 @@
             e('button', {className:'dl-continue', style:{background:'var(--gold)', borderBottomColor:'var(--gold-dark)', color:'#5c4400'}, onClick:()=>completeDeepStudy(openStudyBook), key:'done'},
               'Done reading')
           )
-        ]
+        ])
       ),
 
       e('div', {className:'dl-dc-modal-bg' + (activeTest ? ' open' : ''), key:'testmodal'},
@@ -2069,7 +2150,7 @@
               e('div', {className:'dl-dc-done-badge', style:{background:'var(--teal)', boxShadow:'0 6px 0 var(--teal-dark)'}, key:'badge'}, activeTest.icon),
               e('div', {className:'dl-dc-done-title', key:'t'}, 'Test complete!'),
               e('div', {className:'dl-dc-done-sub', key:'s'}, activeTest.title + ' \u2014 ' + tScore + ' / ' + activeTest.questions.length),
-              e('div', {className:'dl-test-reward', style:{fontSize:'14px', marginBottom:'20px'}, key:'earned'}, '+' + tEarned + ' ' + String.fromCodePoint(0x1F48E) + ' earned'),
+              e('div', {className:'dl-test-reward', style:{fontSize:'14px', marginBottom:'20px'}, key:'earned'}, '+' + tEarned + ' ' + String.fromCodePoint(0x1F539) + ' pearls earned'),
               e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', maxWidth:'240px'}, onClick:()=>setActiveTest(null), key:'close'}, 'Done')
             ])
           : [
