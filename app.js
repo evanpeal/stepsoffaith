@@ -1570,9 +1570,14 @@
     async function signUp(){
       if (!sb) return;
       setAuthError(''); setAuthLoading(true);
-      const { error } = await sb.auth.signUp({ email: authEmail, password: authPassword });
+      const { data, error } = await sb.auth.signUp({ email: authEmail, password: authPassword });
       setAuthLoading(false);
       if (error) { setAuthError(error.message); return; }
+      if (data && data.session) {
+        // Email confirmation is off, or already confirmed - we're logged in immediately
+        setAuthOpen(false); setAuthEmail(''); setAuthPassword(''); setAuthError('');
+        return;
+      }
       setAuthError('Check your email to confirm your account, then log in.');
     }
 
