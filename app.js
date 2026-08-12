@@ -1804,6 +1804,40 @@
     const [authError, setAuthError] = React.useState('');
     const [authLoading, setAuthLoading] = React.useState(false);
     const [showWelcome, setShowWelcome] = React.useState(true);
+    const [showInstallBanner, setShowInstallBanner] = React.useState(null);
+    const [deferredInstallPrompt, setDeferredInstallPrompt] = React.useState(null);
+
+    React.useEffect(() => {
+      try {
+        if (localStorage.getItem('stf-install-dismissed') === '1') return;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        if (isStandalone) return;
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) setShowInstallBanner('ios');
+      } catch (ex) {}
+      function handleBeforeInstall(ev){
+        ev.preventDefault();
+        setDeferredInstallPrompt(ev);
+        try {
+          if (localStorage.getItem('stf-install-dismissed') !== '1') setShowInstallBanner('android');
+        } catch (ex) { setShowInstallBanner('android'); }
+      }
+      window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+      return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
+    }, []);
+
+    function dismissInstallBanner(){
+      setShowInstallBanner(null);
+      try { localStorage.setItem('stf-install-dismissed', '1'); } catch (ex) {}
+    }
+
+    async function triggerAndroidInstall(){
+      if (!deferredInstallPrompt) { dismissInstallBanner(); return; }
+      deferredInstallPrompt.prompt();
+      try { await deferredInstallPrompt.userChoice; } catch (ex) {}
+      setDeferredInstallPrompt(null);
+      dismissInstallBanner();
+    }
 
     React.useEffect(() => {
       if (!sb) { load(null); setAuthChecked(true); return; }
