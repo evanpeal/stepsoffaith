@@ -1545,8 +1545,8 @@
           // No row yet for this account - start from local guest progress if any, else defaults
           let starting = { ...DEFAULT_STATE };
           try {
-            const local = await window.storage.get(KEY, false);
-            if (local && local.value) starting = JSON.parse(local.value);
+            const local = localStorage.getItem(KEY);
+            if (local) starting = JSON.parse(local);
           } catch (ex) {}
           await sb.from('progress').upsert({ id: currentUser.id, data: starting });
           setState(starting);
@@ -1554,8 +1554,8 @@
         } catch (ex) { /* fall through to local */ }
       }
       try {
-        const res = await window.storage.get(KEY, false);
-        setState(res && res.value ? JSON.parse(res.value) : { ...DEFAULT_STATE });
+        const local = localStorage.getItem(KEY);
+        setState(local ? JSON.parse(local) : { ...DEFAULT_STATE });
       } catch (ex) { setState({ ...DEFAULT_STATE }); }
     }
 
@@ -1564,7 +1564,7 @@
       if (sb && user) {
         try { await sb.from('progress').upsert({ id: user.id, data: next, updated_at: new Date().toISOString() }); return; } catch (ex) {}
       }
-      try { await window.storage.set(KEY, JSON.stringify(next), false); } catch (ex) {}
+      try { localStorage.setItem(KEY, JSON.stringify(next)); } catch (ex) {}
     }
 
     async function signUp(){
