@@ -1,0 +1,37 @@
+{
+  "name": "Steps to Faith",
+  "short_name": "Steps to Faith",
+  "description": "A guided, story-by-story walk through the Bible.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#150f28",
+  "theme_color": "#a56cf0",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
