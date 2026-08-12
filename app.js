@@ -2635,9 +2635,15 @@
               )
             ]
         )
-      )
+      ),
+      (showInstallBanner && !showWelcome) ? e('div', {className:'dl-install-banner', key:'installbanner'}, [
+  e('button', {className:'dl-install-close', onClick:dismissInstallBanner, key:'x'}, String.fromCodePoint(0x2715)),
+  e('div', {className:'dl-install-title', key:'t'}, 'Install Steps to Faith'),
+  showInstallBanner === 'android' ? e('button', {className:'dl-install-btn', onClick: triggerAndroidInstall, key:'btn'}, 'Install') : null
+]) : null
     ]);
   }
+  
 
   ReactDOM.createRoot(document.getElementById('dl-root')).render(e(App));
 })();
