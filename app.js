@@ -182,6 +182,61 @@
         { type:'ridge', style:{ bottom:'8%', height:'18%', background:'#8a7036', opacity:0.55, clipPath:DUNE_BACK } },
         { type:'ridge', style:{ bottom:'0%', height:'15%', background:'#6e582c', opacity:0.75, clipPath:DUNE_FRONT } }
       ]
+    },
+    "Ecclesiastes": {
+      gradient: 'linear-gradient(180deg, #d9c9a8 0%, #b8a480 14%, #94806a 30%, #6e6258 46%, #4a4a52 62%, #32333f 78%, #1e1f2c 92%, #14141e 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'12%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(255,244,214,0.7) 0%, rgba(220,200,160,0.28) 48%, rgba(220,200,160,0) 74%)' } },
+        { type:'ridge', style:{ top:'44%', height:'16%', background:'#7a7264', opacity:0.5, clipPath:DUNE_BACK } },
+        { type:'ridge', style:{ top:'52%', height:'14%', background:'#5c574e', opacity:0.65, clipPath:DUNE_FRONT } },
+        { type:'stars', style:{ bottom:0, height:'30%' } }
+      ]
+    },
+    "Song of Solomon": {
+      gradient: 'linear-gradient(180deg, #2e1230 0%, #52204a 14%, #7a2f5c 28%, #a8496a 44%, #cf7078 58%, #e8a08c 72%, #f0c8a8 86%, #d9a078 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'26%' } },
+        { type:'glow', style:{ left:'50%', top:'26%', width:260, height:260, marginLeft:-130, marginTop:-130, background:'radial-gradient(circle, rgba(255,200,210,0.65) 0%, rgba(230,140,170,0.26) 48%, rgba(230,140,170,0) 74%)' } },
+        { type:'sparkle', style:{ top:'10%', height:'32%' } },
+        { type:'glow', style:{ left:'50%', bottom:'2%', width:220, height:170, marginLeft:-110, marginBottom:-85, background:'radial-gradient(circle, rgba(255,220,180,0.7) 0%, rgba(240,180,130,0.28) 50%, rgba(240,180,130,0) 76%)' } }
+      ]
+    },
+    "Isaiah": {
+      gradient: 'linear-gradient(180deg, #0e1430 0%, #1c2a5c 14%, #2f4a8a 28%, #4a6fae 42%, #7a9ccc 56%, #b8cfe4 70%, #e8dcc0 84%, #c9a86e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'20%', width:280, height:280, marginLeft:-140, marginTop:-140, background:'radial-gradient(circle, rgba(220,236,255,0.75) 0%, rgba(150,190,240,0.3) 48%, rgba(150,190,240,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'30%' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#8a7a52', opacity:0.5, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#6e6040', opacity:0.7, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Jeremiah": {
+      gradient: 'linear-gradient(180deg, #1a1018 0%, #33202a 14%, #56303a 30%, #7a4438 46%, #9a5c38 60%, #b87c44 74%, #8a5c30 88%, #52381e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'24%' } },
+        { type:'glow', style:{ left:'50%', top:'40%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(255,190,120,0.7) 0%, rgba(230,140,70,0.28) 48%, rgba(230,140,70,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'8%', height:'20%', background:'#6e4428', opacity:0.6, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'16%', background:'#4a2e1c', opacity:0.8, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Lamentations": {
+      gradient: 'linear-gradient(180deg, #14121c 0%, #241f2e 16%, #383044 32%, #504658 48%, #6e6070 62%, #52485c 76%, #322c3e 90%, #1a1724 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', top:'46%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(255,230,180,0.5) 0%, rgba(220,180,120,0.2) 50%, rgba(220,180,120,0) 76%)' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#3e3648', opacity:0.7, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#2a2434', opacity:0.85, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Daniel": {
+      gradient: 'linear-gradient(180deg, #101026 0%, #1e1e48 14%, #34306e 28%, #52428a 42%, #7a5a9e 56%, #a87a8a 70%, #d9a45c 84%, #b8792e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'36%' } },
+        { type:'glow', style:{ left:'50%', top:'24%', width:270, height:270, marginLeft:-135, marginTop:-135, background:'radial-gradient(circle, rgba(210,200,255,0.7) 0%, rgba(150,130,220,0.28) 48%, rgba(150,130,220,0) 74%)' } },
+        { type:'sparkle', style:{ top:'12%', height:'26%' } },
+        { type:'glow', style:{ left:'50%', bottom:'2%', width:230, height:180, marginLeft:-115, marginBottom:-90, background:'radial-gradient(circle, rgba(255,200,110,0.75) 0%, rgba(230,150,50,0.3) 50%, rgba(230,150,50,0) 76%)' } }
+      ]
     }
   };
 
@@ -2039,6 +2094,425 @@
         { q:"How does the book end \u2014 and why does it matter?", opts:["With wealth", "\u2018A woman who fears the LORD is to be praised\u2019 \u2014 back to 1:7", "With a warning"], correct:1, explain:"The book closes on the same foundation it opened with: the fear of the LORD, now embodied in a life." }
       ],
       deepDive: "Proverbs ends by embodying everything it taught. The wisdom that shouted in the streets in chapter 1 now looks like a specific life: someone who works hard, plans ahead, trades shrewdly, opens her arms to the poor, speaks with kindness, and can 'laugh at the days to come' because she's prepared for them. It's not a checklist to measure anyone against \u2014 it's what the fear of the LORD looks like when it's fully lived out in ordinary work, money, and speech. And Lemuel's mother's charge sits right before it: use whatever voice you have for people who don't have one. Thirty-one chapters, and the last word is the same as the first \u2014 the fear of the LORD. That's where wisdom starts, and apparently where it ends up too." }
+,
+    { id:169, book:"Ecclesiastes", title:"Everything is vapor", side:"l",
+      passage: "\u201cMeaningless! Meaningless!\u201d says the Teacher. \u201cUtterly meaningless! Everything is meaningless.\u201d The Hebrew word is hevel \u2014 vapor, breath, mist: not worthless, but impossible to grasp. \u201cWhat do people gain from all their labors at which they toil under the sun? Generations come and generations go, but the earth remains forever.\u201d The sun rises and sets and hurries back; rivers run to the sea and the sea is never full. \u201cThere is nothing new under the sun.\u201d",
+      keyVerses: [
+        { ref: "Ecclesiastes 1:2", text: "\u201cMeaningless! Meaningless!\u201d says the Teacher. \u201cUtterly meaningless! Everything is meaningless.\u201d" }
+      ],
+      questions: [
+        { q:"What does the Hebrew word hevel actually picture?", opts:["Garbage", "Vapor or breath \u2014 real but impossible to hold onto", "A lie"], correct:1, explain:"Not \u2018worthless\u2019 so much as \u2018ungraspable\u2019 \u2014 you can see your breath on a cold morning and never catch it." },
+        { q:"What phrase frames the book's whole search?", opts:["\u2018In heaven above\u2019", "\u2018Under the sun\u2019 \u2014 life examined without looking up", "\u2018In the beginning\u2019"], correct:1, explain:"The Teacher deliberately limits his view to this world alone \u2014 and reports honestly what he finds there." },
+        { q:"Why is a book this bleak in the Bible?", opts:["By accident", "Because Scripture refuses to pretend life feels tidy \u2014 it names the ache before answering it", "To discourage faith"], correct:1, explain:"Ecclesiastes gives permission to say the honest thing out loud, inside the pages of Scripture itself." }
+      ],
+      deepDive: "Ecclesiastes is the strangest book in the Bible and one of the most needed \u2014 an unflinching look at life 'under the sun,' the phrase repeated nearly thirty times to mark the experiment's boundaries. The Teacher isn't a cynic for sport; he's a man with unlimited resources testing whether anything on earth can bear the weight of ultimate meaning. His verdict, hevel, is often mistranslated 'meaningless,' but 'vapor' catches it better: everything real, everything fleeting, nothing you can grip. That honesty is a gift. Most religion rushes to reassure; Ecclesiastes sits in the ache long enough to make its final answer worth something." },
+    { id:170, book:"Ecclesiastes", title:"The great experiment", side:"r",
+      passage: "The Teacher tries everything a person could want: laughter, wine, great projects, houses, vineyards, gardens, reservoirs, servants, herds, silver and gold, singers, \u201cthe delights of a man's heart.\u201d \u201cI denied myself nothing my eyes desired; I refused my heart no pleasure.\u201d And then the verdict: \u201cYet when I surveyed all that my hands had done and what I had toiled to achieve, everything was meaningless, a chasing after the wind; nothing was gained under the sun.\u201d Even wisdom, he notes, ends the same as folly \u2014 both die.",
+      keyVerses: [
+        { ref: "Ecclesiastes 2:11", text: "Yet when I surveyed all that my hands had done... everything was meaningless, a chasing after the wind." }
+      ],
+      questions: [
+        { q:"What made the Teacher's experiment unusual?", opts:["He had no resources", "He could actually afford everything \u2014 nothing was denied him", "He only imagined it"], correct:1, explain:"Most people theorize about whether money and pleasure satisfy; he ran the full test with unlimited budget." },
+        { q:"What's his conclusion about achievement?", opts:["It fully satisfies", "A chasing after the wind \u2014 nothing gained that lasts", "It should be avoided"], correct:1, explain:"Not that work is bad, but that it can't carry the weight of ultimate meaning." },
+        { q:"What troubles him about wisdom itself?", opts:["It's useless", "The wise and the fool meet the same end \u2014 death levels both", "It can't be learned"], correct:1, explain:"He grants wisdom is better than folly, then notes it doesn't exempt anyone from the grave." }
+      ],
+      deepDive: "Chapter 2 is the experiment nobody else can afford to run. Solomon-like resources, total permission, and a careful record kept \u2014 pleasure, alcohol, architecture, art, wealth, music, sex, and the sheer satisfaction of building things. The honest report is that it worked, briefly, and then didn't. What makes this more than a rich man's complaint is the reason he gives: everything he built would pass to someone who hadn't earned it and might waste it. Achievement can't outlast you. If you've ever hit a goal and felt the strange flatness afterward, this chapter is Scripture already knowing about it." },
+    { id:171, book:"Ecclesiastes", title:"A time for everything", side:"c",
+      passage: "\u201cThere is a time for everything, and a season for every activity under the heavens: a time to be born and a time to die, a time to plant and a time to uproot... a time to weep and a time to laugh, a time to mourn and a time to dance... a time to be silent and a time to speak, a time to love and a time to hate, a time for war and a time for peace.\u201d And then the key: \u201cHe has made everything beautiful in its time. He has also set eternity in the human heart.\u201d",
+      keyVerses: [
+        { ref: "Ecclesiastes 3:11", text: "He has made everything beautiful in its time. He has also set eternity in the human heart." }
+      ],
+      questions: [
+        { q:"What does the poem of seasons acknowledge?", opts:["Only good seasons exist", "Both halves are real \u2014 weeping and laughing, war and peace, all have their time", "Nothing changes"], correct:1, explain:"Scripture refuses to pretend life is only harvest; there's a season for uprooting too." },
+        { q:"What has God set in the human heart?", opts:["Ambition", "Eternity \u2014 a sense of something beyond time", "Fear"], correct:1, explain:"The ache the whole book documents is explained here: we're built for more than \u2018under the sun\u2019 can supply." },
+        { q:"How does that explain the book's restlessness?", opts:["We're broken", "We're made for eternity but living inside time \u2014 so temporary things never quite fit", "The Teacher was ungrateful"], correct:1, explain:"The mismatch is by design \u2014 it's what keeps a person looking up." }
+      ],
+      deepDive: "The seasons poem is the most quoted passage in Ecclesiastes, and it's usually read as gentle comfort. It's actually sharper than that: it names the things we'd rather not schedule \u2014 dying, uprooting, tearing down, mourning, hating, war \u2014 as having their proper time under God's ordering. But verse 11 is the key to the whole book: eternity set in the human heart. That single line explains why the Teacher's experiment failed. Nothing temporary satisfies a creature built for permanence. The restlessness isn't a defect; it's a compass." },
+    { id:172, book:"Ecclesiastes", title:"Two are better than one", side:"l",
+      passage: "The Teacher looks at oppression, envy, and driven work \u2014 \u201cAll toil and all achievement spring from one person's envy of another\u201d \u2014 and then turns to a man with no family, working endlessly, never asking, \u201cFor whom am I toiling?\u201d Against that isolation he sets community: \u201cTwo are better than one, because they have a good return for their labor: If either of them falls down, one can help the other up. But pity anyone who falls and has no one to help them up... A cord of three strands is not quickly broken.\u201d",
+      keyVerses: [
+        { ref: "Ecclesiastes 4:9\u201310", text: "Two are better than one... If either of them falls down, one can help the other up." }
+      ],
+      questions: [
+        { q:"What does he say drives much achievement?", opts:["Love of the work", "Envy of others \u2014 comparison as the engine", "Divine calling"], correct:1, explain:"An uncomfortably modern diagnosis: much ambition is competitive, not creative." },
+        { q:"What question does the isolated worker never ask?", opts:["\u2018How much more?\u2019", "\u2018For whom am I toiling?\u2019", "\u2018Is this legal?\u2019"], correct:1, explain:"Work without relationship loses its point \u2014 and the driven often never pause to notice." },
+        { q:"What's the cord-of-three-strands image about?", opts:["Wealth", "Strength through companionship \u2014 shared life resists breaking", "Physical rope-making"], correct:1, explain:"Often read at weddings, but written about friendship and community in general." }
+      ],
+      deepDive: "Chapter 4 is Ecclesiastes at its most tender. Having proven that achievement can't satisfy, the Teacher notices the person most likely to keep trying anyway: alone, driven, no one to enjoy it with, never once asking who any of it is for. The answer he offers isn't more meaning from the work \u2014 it's people. Two are better than one, for warmth, for defense, and for the simple mechanic of being picked up when you fall. If the last few weeks have been all output and no company, this chapter has your name on it: the question to sit with is his, exactly as written \u2014 for whom am I toiling?" },
+    { id:173, book:"Ecclesiastes", title:"Eat your bread with joy", side:"r",
+      passage: "Between the hard verdicts, the Teacher keeps returning to a simple, stubborn counsel: \u201cA person can do nothing better than to eat and drink and find satisfaction in their own toil. This too, I see, is from the hand of God.\u201d Later he sharpens it: \u201cGo, eat your food with gladness, and drink your wine with a joyful heart... Enjoy life with your wife, whom you love... Whatever your hand finds to do, do it with all your might.\u201d Money doesn't satisfy \u2014 \u201cwhoever loves money never has enough\u201d \u2014 but bread, work, and companionship, received as gifts, do.",
+      keyVerses: [
+        { ref: "Ecclesiastes 9:7", text: "Go, eat your food with gladness, and drink your wine with a joyful heart, for God has already approved what you do." }
+      ],
+      questions: [
+        { q:"What does the Teacher recommend, given that nothing lasts?", opts:["Despair", "Receive ordinary gifts with joy \u2014 food, work, companionship \u2014 as from God's hand", "Withdraw from life"], correct:1, explain:"His conclusion is not nihilism but gratitude: enjoy the day you were given." },
+        { q:"What does he say about loving money?", opts:["It satisfies eventually", "Whoever loves money never has enough", "It's harmless"], correct:1, explain:"An appetite that grows with feeding \u2014 a diagnosis three thousand years old and still accurate." },
+        { q:"How should work be done?", opts:["Minimally", "\u2018With all your might\u2019 \u2014 wholeheartedly, while you have it", "Only for pay"], correct:1, explain:"Fleeting doesn't mean unimportant \u2014 the brevity is a reason for presence, not withdrawal." }
+      ],
+      deepDive: "This is the turn that saves Ecclesiastes from despair, and it's easy to miss because it arrives quietly and repeatedly. If nothing under the sun can bear ultimate weight, then stop asking it to \u2014 and enjoy it for what it actually is: a gift for today. Bread tastes better when it isn't being asked to justify your existence. That's the paradox at the book's center: the person who stops demanding that life supply meaning is finally free to enjoy life. Today's practice is embarrassingly simple \u2014 eat one meal slowly, notice it, and thank God for it without asking it to be more than a meal." },
+    { id:174, book:"Ecclesiastes", title:"Remember your Creator", side:"c",
+      passage: "The book closes with an image of aging \u2014 the days of trouble when \u201cthe keepers of the house tremble\u201d and \u201cthe grinders cease because they are few\u201d \u2014 and one urgent charge: \u201cRemember your Creator in the days of your youth, before the days of trouble come.\u201d Then the final verdict, spoken after every experiment has failed: \u201cNow all has been heard; here is the conclusion of the matter: Fear God and keep his commandments, for this is the duty of all mankind. For God will bring every deed into judgment, including every hidden thing.\u201d",
+      keyVerses: [
+        { ref: "Ecclesiastes 12:13", text: "Now all has been heard; here is the conclusion of the matter: Fear God and keep his commandments." }
+      ],
+      questions: [
+        { q:"When does the Teacher say to remember your Creator?", opts:["After retirement", "In the days of your youth \u2014 before trouble and age arrive", "Only in crisis"], correct:1, explain:"He is telling the young what the old learn too late: build the foundation before the weather comes." },
+        { q:"Where does the whole book finally land?", opts:["Despair", "Fear God and keep his commandments \u2014 the same foundation as Proverbs", "Enjoy money"], correct:1, explain:"Everything \u2018under the sun\u2019 failed; the answer required looking above it." },
+        { q:"What does he say about hidden deeds?", opts:["They don't count", "God will bring every deed into judgment, including every hidden thing", "Only public acts matter"], correct:1, explain:"Meaning is restored precisely because nothing is finally forgotten \u2014 not even the unseen." }
+      ],
+      deepDive: "Ecclesiastes ends by earning its conclusion. After chapters of demolition \u2014 pleasure, wealth, wisdom, work, legacy, all vapor \u2014 the last word is not 'therefore nothing matters' but the opposite: fear God, keep his commandments, because everything, including what nobody saw, is finally accounted for. That's the inversion the whole book was built for. If nothing is remembered, nothing matters; because God remembers everything, even the small hidden faithfulness has weight. And the aging poem gives the charge its urgency: remember Him now, while your strength is yours to spend." },
+    { id:175, book:"Song of Solomon", title:"Let him kiss me", side:"l",
+      passage: "The Bible's love poem opens in the woman's voice, unembarrassed: \u201cLet him kiss me with the kisses of his mouth \u2014 for your love is more delightful than wine.\u201d She is candid about herself \u2014 \u201cDark am I, yet lovely\u201d \u2014 and about wanting to be near him: \u201cTell me, you whom I love, where you graze your flock.\u201d He answers in kind, calling her \u201cmy darling\u201d and comparing her to a mare among Pharaoh's chariots. Two people delighting openly in each other, in a book Scripture chose to keep.",
+      keyVerses: [
+        { ref: "Song of Solomon 1:2", text: "Let him kiss me with the kisses of his mouth \u2014 for your love is more delightful than wine." }
+      ],
+      questions: [
+        { q:"Whose voice opens the book?", opts:["The man's", "The woman's \u2014 she speaks first and speaks most in the Song", "A narrator's"], correct:1, explain:"Unusual for ancient literature: the woman's desire and voice lead the poem throughout." },
+        { q:"What's notable about the Song being in Scripture?", opts:["It's a mistake", "The Bible includes frank, joyful romantic love as good and God-given", "It's purely allegory"], correct:1, explain:"Long read allegorically too, but its plain sense celebrates married love without embarrassment." },
+        { q:"How does she describe herself?", opts:["Ashamed", "\u2018Dark am I, yet lovely\u2019 \u2014 honest and self-possessed", "Perfect in every way"], correct:1, explain:"Sun-darkened from working the vineyards \u2014 real, working, and beautiful." }
+      ],
+      deepDive: "It surprises people that this book is in the Bible at all \u2014 which says more about our assumptions than about Scripture. The Song presents romantic and physical love between a husband and wife as something to be celebrated out loud, not tolerated quietly. Notice who drives it: the woman speaks the majority of the lines and initiates most of the desire, extraordinary in ancient poetry. Christians have also read it for centuries as a picture of God's love for His people \u2014 a legitimate second layer \u2014 but the first layer matters too: God is not embarrassed by the love He designed." },
+    { id:176, book:"Song of Solomon", title:"Arise, my darling", side:"r",
+      passage: "Winter breaks and the beloved calls: \u201cSee! The winter is past; the rains are over and gone. Flowers appear on the earth; the season of singing has come... Arise, come, my darling; my beautiful one, come with me.\u201d She answers with the Song's refrain of belonging: \u201cMy beloved is mine and I am his.\u201d And she gives the Song's repeated warning, spoken three times across the book: \u201cDo not arouse or awaken love until it so desires.\u201d",
+      keyVerses: [
+        { ref: "Song of Solomon 2:16", text: "My beloved is mine and I am his." }
+      ],
+      questions: [
+        { q:"What season imagery frames the invitation?", opts:["Harvest", "Spring \u2014 winter past, flowers appearing, singing returning", "Deep winter"], correct:1, explain:"Love pictured as a thaw \u2014 the world coming back to life around it." },
+        { q:"What does the refrain \u2018my beloved is mine and I am his\u2019 emphasize?", opts:["Ownership as control", "Mutual belonging \u2014 both directions, equally", "One-sided devotion"], correct:1, explain:"The Song's vision is reciprocal: each fully given, neither consumed." },
+        { q:"What warning repeats three times in the book?", opts:["Guard your money", "Do not awaken love before its time", "Avoid marriage"], correct:1, explain:"A striking note of restraint inside a celebration \u2014 love is good, and timing matters." }
+      ],
+      deepDive: "The spring passage is the Song's most quoted, and it works because it locates love inside the turning of seasons: the winter really was long, and it really did end. Then, right beside all that warmth, comes the Song's repeated caution \u2014 don't awaken love before it's ready. That the same book celebrating desire also counsels patience is exactly the balance Scripture keeps: this is powerful and good, and powerful good things have a proper time. Modern culture tends to keep the first half and drop the second. The Song insists on both." },
+    { id:177, book:"Song of Solomon", title:"You are altogether beautiful", side:"c",
+      passage: "The husband's praise runs long and specific: \u201cHow beautiful you are, my darling! Oh, how beautiful!\u201d Line after line naming what he sees, ending: \u201cYou are altogether beautiful, my darling; there is no flaw in you.\u201d He calls her \u201cmy sister, my bride\u201d \u2014 language of covenant kinship as well as romance \u2014 and says, \u201cYou have stolen my heart with one glance of your eyes.\u201d She responds by welcoming him: \u201cLet my beloved come into his garden.\u201d",
+      keyVerses: [
+        { ref: "Song of Solomon 4:7", text: "You are altogether beautiful, my darling; there is no flaw in you." }
+      ],
+      questions: [
+        { q:"What characterizes his praise?", opts:["Vague compliments", "Long, specific, particular \u2014 he names what he actually sees", "Comparison to others"], correct:1, explain:"Real love in the Song is detailed; generic admiration isn't the same as being known." },
+        { q:"What does \u2018my sister, my bride\u2019 add?", opts:["Confusion", "Covenant kinship alongside romance \u2014 family-level belonging", "A literal relation"], correct:1, explain:"Ancient love language combining permanence and passion \u2014 she is both beloved and kin." },
+        { q:"What does \u2018no flaw in you\u2019 express?", opts:["Literal perfection", "Love's way of seeing \u2014 delight that isn't auditing for defects", "Naive blindness"], correct:1, explain:"Not that she has no faults, but that his gaze isn't hunting for them." }
+      ],
+      deepDive: "What stands out in chapter 4 is the specificity. He doesn't say 'you're great' \u2014 he catalogues, at length, particular things about a particular person. That's the difference between flattery and being known, and it's a usable lesson: generic praise costs nothing and lands as nothing. 'There is no flaw in you' isn't a claim about her record; it's a description of how love looks at someone \u2014 not scanning for defects. And 'my sister, my bride' quietly refuses to separate passion from permanence, which the surrounding culture then and now keeps trying to do." },
+    { id:178, book:"Song of Solomon", title:"Love as strong as death", side:"l",
+      passage: "The Song's climax is its most famous passage: \u201cPlace me like a seal over your heart, like a seal on your arm; for love is as strong as death, its jealousy unyielding as the grave. It burns like blazing fire, like a mighty flame. Many waters cannot quench love; rivers cannot sweep it away. If one were to give all the wealth of one's house for love, it would be utterly scorned.\u201d",
+      keyVerses: [
+        { ref: "Song of Solomon 8:6\u20137", text: "For love is as strong as death... Many waters cannot quench love; rivers cannot sweep it away." }
+      ],
+      questions: [
+        { q:"What does the seal image request?", opts:["Ownership", "Permanent belonging \u2014 a seal marked identity and unbreakable claim", "A gift"], correct:1, explain:"A seal was pressed into wax as a signature; she asks to be that permanent mark on him." },
+        { q:"What comparison measures love's strength?", opts:["Wealth", "Death and the grave \u2014 the most unrelenting forces known", "Time"], correct:1, explain:"Love is placed in the same weight class as death: it does not let go." },
+        { q:"What can't buy love?", opts:["Nothing \u2014 it's purchasable", "All the wealth of one's house \u2014 the offer would be scorned", "Only small amounts"], correct:1, explain:"The Song ends by declaring love priceless in the strict sense: not for sale at any figure." }
+      ],
+      deepDive: "This is where the Song lifts from romance to something enormous. Love as strong as death \u2014 in a world where death always wins, that's the highest claim available. Many waters cannot quench it; wealth cannot buy it. Christians have long heard the gospel in these lines, because a love that outmatched death is exactly what the New Testament claims happened. But the human-level reading is powerful on its own: covenant love is not a feeling that fades with weather, it's a fire that floodwater can't put out. Ask what kind of love you're building \u2014 and whether it could survive what this passage says love survives." },
+    { id:179, book:"Isaiah", title:"Come, let us reason together", side:"r",
+      passage: "Isaiah opens with God's lawsuit against His people: they've kept the religion and lost the point. \u201cStop bringing meaningless offerings! Your incense is detestable to me... Your hands are full of blood!\u201d And then the remedy, which is not more religion but justice and mercy: \u201cLearn to do right; seek justice. Defend the oppressed. Take up the cause of the fatherless; plead the case of the widow.\u201d Then the astonishing offer: \u201cCome now, let us settle the matter. Though your sins are like scarlet, they shall be as white as snow.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 1:18", text: "Come now, let us settle the matter. Though your sins are like scarlet, they shall be as white as snow." }
+      ],
+      questions: [
+        { q:"What was wrong with their worship?", opts:["The wrong songs", "It continued while injustice did \u2014 religion detached from righteousness", "Too few sacrifices"], correct:1, explain:"God rejects offerings from hands full of blood \u2014 worship can't launder how you treat people." },
+        { q:"What does God ask for instead?", opts:["Bigger offerings", "Justice, defense of the oppressed, care for the fatherless and widow", "Silence"], correct:1, explain:"The prophets' constant demand: worship proven by how the vulnerable are treated." },
+        { q:"What is offered despite the indictment?", opts:["Nothing", "Complete cleansing \u2014 scarlet sins made white as snow", "A lighter sentence"], correct:1, explain:"The chapter's turn is stunning: the prosecutor offers full pardon mid-lawsuit." }
+      ],
+      deepDive: "Isaiah 1 sets the pattern for the whole book: unflinching diagnosis followed by unreasonable grace. The charge is not irreligion \u2014 they were busy with offerings and festivals \u2014 but religion running alongside injustice, as though the two occupied separate accounts. God says they don't. Then comes verse 18, one of Scripture's boldest sentences: scarlet to snow, offered to the very people just indicted. Isaiah's whole message lives in that tension \u2014 judgment named honestly, mercy offered anyway \u2014 and the invitation is to bring the mess into the open rather than manage it." },
+    { id:180, book:"Isaiah", title:"Holy, holy, holy", side:"c",
+      passage: "\u201cIn the year that King Uzziah died, I saw the Lord, high and exalted, seated on a throne; and the train of his robe filled the temple.\u201d Seraphim called to one another: \u201cHoly, holy, holy is the LORD Almighty; the whole earth is full of his glory.\u201d The doorposts shook. Isaiah's response was collapse: \u201cWoe to me! I am ruined! For I am a man of unclean lips.\u201d A seraph touched his mouth with a coal from the altar \u2014 \u201cyour guilt is taken away\u201d \u2014 and then the Lord asked, \u201cWhom shall I send?\u201d Isaiah answered: \u201cHere am I. Send me!\u201d",
+      keyVerses: [
+        { ref: "Isaiah 6:8", text: "Then I heard the voice of the Lord saying, \u201cWhom shall I send? And who will go for us?\u201d And I said, \u201cHere am I. Send me!\u201d" }
+      ],
+      questions: [
+        { q:"What was Isaiah's first reaction to seeing God?", opts:["Joy", "Ruin \u2014 \u2018Woe to me! I am a man of unclean lips\u2019", "Confidence"], correct:1, explain:"Nearness to holiness produced immediate self-knowledge, not comfort." },
+        { q:"What happened before Isaiah was sent?", opts:["He was trained", "His guilt was taken away by a coal from the altar", "He volunteered first"], correct:1, explain:"Cleansing preceded commissioning \u2014 God dealt with his mouth before using it." },
+        { q:"What is the order of the encounter?", opts:["Call, then cleansing", "Vision \u2014 conviction \u2014 cleansing \u2014 call", "Call, then vision"], correct:1, explain:"A pattern many have recognized in their own story: seeing God rightly starts everything else." }
+      ],
+      deepDive: "Isaiah 6 is the Bible's most complete picture of encountering God's holiness, and its sequence matters. The vision produces conviction \u2014 not vague guilt, but specific: unclean lips, in a man whose life's work was words. Then cleansing, applied precisely where the problem was. Only then the question, and it's an open one: 'whom shall I send?' The invitation was not aimed at him personally; he volunteered from a cleansed place. Notice too that 'holy' is the only attribute Scripture triples. If your sense of God has grown casual, this chapter is the corrective \u2014 and its comfort is that the coal comes before the commission." },
+    { id:181, book:"Isaiah", title:"A child is born", side:"l",
+      passage: "Into a nation walking in darkness under threat of invasion, Isaiah speaks a promise: \u201cThe virgin will conceive and give birth to a son, and will call him Immanuel\u201d \u2014 God with us. Later he expands it: \u201cThe people walking in darkness have seen a great light... For to us a child is born, to us a son is given, and the government will be on his shoulders. And he will be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 9:6", text: "For to us a child is born, to us a son is given... And he will be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace." }
+      ],
+      questions: [
+        { q:"What does \u2018Immanuel\u2019 mean?", opts:["God is great", "God with us", "God saves"], correct:1, explain:"The name is the promise \u2014 not merely help from a distance but presence." },
+        { q:"What's remarkable about the titles in 9:6?", opts:["They're modest", "They ascribe divine names to a coming child \u2014 including \u2018Mighty God\u2019", "They describe a general"], correct:1, explain:"No ordinary king in Israel was called Mighty God \u2014 the promise reaches beyond any local ruler." },
+        { q:"When were these words first spoken?", opts:["In peacetime", "Under threat of invasion \u2014 to people walking in darkness", "After the exile ended"], correct:1, explain:"The light was promised while the darkness was still thickening, not after it lifted." }
+      ],
+      deepDive: "These are the words read in churches every Christmas, and their original setting makes them stronger, not weaker: a small nation facing annihilation, told that the answer would arrive as a baby. Not an army \u2014 a child. The titles stack up impossibly for any ordinary king: Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace. Seven centuries later the New Testament claims the arrival, and Matthew quotes Immanuel directly. Whatever Isaiah's first hearers understood, the shape of the promise is unmistakable: God's answer to darkness comes near, and comes small." },
+    { id:182, book:"Isaiah", title:"Soar on wings like eagles", side:"r",
+      passage: "\u201cComfort, comfort my people, says your God\u201d \u2014 the great turn in Isaiah. He measures the waters in the hollow of his hand, weighs the mountains on scales, and the nations are \u201ca drop in a bucket.\u201d To exiles convinced God had lost track of them, the answer is a question: \u201cDo you not know? Have you not heard? The LORD is the everlasting God... He gives strength to the weary and increases the power of the weak... but those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 40:31", text: "But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary." }
+      ],
+      questions: [
+        { q:"Who is the promise of renewed strength aimed at?", opts:["The naturally strong", "The weary and the weak \u2014 even young men stumble and fall", "Warriors only"], correct:1, explain:"The chapter explicitly says youth and strength give out; the renewal is for those who've run dry." },
+        { q:"What does \u2018hope in the LORD\u2019 translate more literally as?", opts:["Wish", "Wait for \u2014 an active, expectant waiting", "Ignore"], correct:1, explain:"The Hebrew carries waiting and hoping together \u2014 strength comes to those who keep looking to Him." },
+        { q:"What's the descending order at the end \u2014 soar, run, walk?", opts:["A mistake", "Deliberate \u2014 ending with walking, the hardest ordinary faithfulness", "Random"], correct:1, explain:"Soaring is dramatic; walking without fainting is daily life, and it's given last for a reason." }
+      ],
+      deepDive: "Isaiah 40 opens the second half of the book with comfort, addressed to people who assumed they'd been forgotten. Its logic is to make God big again: oceans in a hand's hollow, nations as dust on a scale, stars called out by name. Then it turns personal \u2014 the same God who runs galaxies notices your exhaustion. Don't miss the descending order at the end: soar, run, walk. It descends on purpose, because most of life isn't soaring, and walking without fainting through an ordinary hard season is the harder miracle. That's the promise, and it's given to the weary specifically." },
+    { id:183, book:"Isaiah", title:"When you pass through the waters", side:"c",
+      passage: "\u201cBut now, this is what the LORD says \u2014 he who created you, Jacob, he who formed you, Israel: Do not fear, for I have redeemed you; I have summoned you by name; you are mine. When you pass through the waters, I will be with you; and when you pass through the rivers, they will not sweep over you. When you walk through the fire, you will not be burned; the flames will not set you ablaze.\u201d And the reason: \u201cyou are precious and honored in my sight, and... I love you.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 43:2", text: "When you pass through the waters, I will be with you; and when you pass through the rivers, they will not sweep over you." }
+      ],
+      questions: [
+        { q:"What word choice matters most \u2014 \u2018if\u2019 or \u2018when\u2019?", opts:["\u2018If\u2019 \u2014 trouble is optional", "\u2018When\u2019 \u2014 the waters and fire are assumed", "Neither"], correct:1, explain:"God never promises the absence of deep water; He promises company inside it." },
+        { q:"What is the basis of \u2018do not fear\u2019?", opts:["Positive thinking", "Redemption, being summoned by name, and belonging \u2014 \u2018you are mine\u2019", "Good odds"], correct:1, explain:"The command rests on relationship, not on circumstances improving." },
+        { q:"What reason does God give in verse 4?", opts:["Their usefulness", "\u2018You are precious and honored in my sight, and I love you\u2019", "Their obedience"], correct:1, explain:"Value assigned by the One doing the valuing \u2014 not earned by performance." }
+      ],
+      deepDive: "Isaiah 43:2 has walked with people through hospital corridors, funerals, and bankruptcies for centuries, and its honesty is why. It doesn't promise dry ground; it says 'when you pass through' \u2014 the waters are coming, and the fire is real. What's promised is presence and preservation: not swept away, not consumed. Notice also the grammar of belonging stacked in verse 1 \u2014 created you, formed you, redeemed you, summoned you by name, you are mine. Fear is answered not by information about the future but by clarity about whose you are." },
+    { id:184, book:"Isaiah", title:"The suffering servant", side:"l",
+      passage: "The most quoted chapter in the New Testament: \u201cHe was despised and rejected by mankind, a man of suffering, and familiar with pain... Surely he took up our pain and bore our suffering, yet we considered him punished by God, stricken by him, and afflicted. But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed. We all, like sheep, have gone astray... and the LORD has laid on him the iniquity of us all.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 53:5", text: "But he was pierced for our transgressions, he was crushed for our iniquities; the punishment that brought us peace was on him, and by his wounds we are healed." }
+      ],
+      questions: [
+        { q:"What is the servant's suffering FOR?", opts:["His own sins", "Ours \u2014 pierced for our transgressions, bearing our iniquity", "No reason given"], correct:1, explain:"Substitution is the chapter's engine: he takes what belonged to others." },
+        { q:"How did onlookers first interpret his suffering?", opts:["As sacrifice", "As punishment from God for his own wrongdoing", "As heroic"], correct:1, explain:"\u2018We considered him stricken by God\u2019 \u2014 the meaning was hidden until later." },
+        { q:"How does the chapter describe us?", opts:["Innocent bystanders", "Sheep who have gone astray, each turning to our own way", "Faithful followers"], correct:1, explain:"The confession is universal \u2014 which is why the substitution had to be." }
+      ],
+      deepDive: "Isaiah 53 was written centuries before crucifixion existed as a Roman practice, and the New Testament quotes it more than almost any other passage \u2014 Philip explains it to the Ethiopian in Acts 8, and Peter echoes it directly. The theology is dense and simple at once: substitution. He takes what was ours; we receive what was his. Read it slowly and notice the pronouns \u2014 our pain, our transgressions, our iniquity, our peace, our healing \u2014 stacked against his silence, his wounds, his grave. Whatever else this chapter is, it is Scripture's clearest statement that the cost of restoration was paid by someone else." },
+    { id:185, book:"Isaiah", title:"Come, all you who are thirsty", side:"r",
+      passage: "\u201cCome, all you who are thirsty, come to the waters; and you who have no money, come, buy and eat! Come, buy wine and milk without money and without cost. Why spend money on what is not bread, and your labor on what does not satisfy?\u201d Then the invitation to return: \u201cSeek the LORD while he may be found... Let the wicked forsake their ways... Let them turn to the LORD, and he will have mercy on them, for he will freely pardon.\u201d And God's own perspective: \u201cMy thoughts are not your thoughts, neither are your ways my ways.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 55:1", text: "Come, all you who are thirsty, come to the waters; and you who have no money, come, buy and eat!" }
+      ],
+      questions: [
+        { q:"Who is the invitation for?", opts:["The wealthy", "The thirsty and those with no money \u2014 need is the only qualification", "The religious elite"], correct:1, explain:"The single entry requirement is thirst; the price has already been handled." },
+        { q:"What question does verse 2 ask?", opts:["Why work at all?", "Why spend money on what isn't bread and labor on what doesn't satisfy?", "Why give to the poor?"], correct:1, explain:"A diagnosis of misdirected appetite \u2014 paying for what can't feed you." },
+        { q:"What is promised to those who return?", opts:["A probation period", "Free and abundant pardon \u2014 \u2018he will freely pardon\u2019", "Nothing certain"], correct:1, explain:"The Hebrew suggests pardon in abundance, not grudging minimum." }
+      ],
+      deepDive: "Isaiah 55 is the Old Testament's great open invitation, and its economics are deliberately absurd: come buy, without money, without cost. That paradox is the point \u2014 the transaction happened somewhere else (chapter 53 just told you where), so what remains is simply coming. Verse 2's question is worth carrying: what am I currently paying for that doesn't feed me? Time, attention, money, energy \u2014 spent on things that leave you hungrier. And the chapter's closing image is one of Scripture's most hopeful: God's word going out like rain and snow, never returning empty, always accomplishing what it was sent to do." },
+    { id:186, book:"Isaiah", title:"The Spirit of the Lord is on me", side:"c",
+      passage: "\u201cThe Spirit of the Sovereign LORD is on me, because the LORD has anointed me to proclaim good news to the poor. He has sent me to bind up the brokenhearted, to proclaim freedom for the captives and release from darkness for the prisoners... to comfort all who mourn, and provide for those who grieve \u2014 to bestow on them a crown of beauty instead of ashes, the oil of joy instead of mourning, and a garment of praise instead of a spirit of despair.\u201d Centuries later, Jesus stood in a synagogue in Nazareth, read exactly this, and said: \u201cToday this scripture is fulfilled in your hearing.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 61:3", text: "To bestow on them a crown of beauty instead of ashes, the oil of joy instead of mourning, and a garment of praise instead of a spirit of despair." }
+      ],
+      questions: [
+        { q:"Who is the anointing aimed at serving?", opts:["Kings and nobles", "The poor, brokenhearted, captive, imprisoned, and grieving", "Priests"], correct:1, explain:"The mission is aimed downward \u2014 at exactly the people power usually overlooks." },
+        { q:"What's the pattern of the exchanges in verse 3?", opts:["Loss for loss", "Beauty for ashes, joy for mourning, praise for despair \u2014 trades in the sufferer's favor", "Delay"], correct:1, explain:"Not erasure of grief but exchange \u2014 something better given in place of what was lost." },
+        { q:"What did Jesus do with this passage?", opts:["Avoided it", "Read it aloud in Nazareth and declared it fulfilled that day", "Rewrote it"], correct:1, explain:"He chose this text to announce His own mission \u2014 and stopped reading mid-sentence, before the day of vengeance." }
+      ],
+      deepDive: "This is the passage Jesus chose as His mission statement, which makes it worth reading twice. Notice who it's for: poor, brokenhearted, captive, grieving \u2014 the mission runs toward the people most systems route around. And notice the exchange language: ashes for beauty, mourning for joy, despair for praise. Nothing here pretends the ashes weren't real; the promise is a trade, not a denial. When Jesus read it in Nazareth, He stopped mid-verse, right before 'the day of vengeance' \u2014 as if to say that part isn't today. Today is the favor." },
+    { id:187, book:"Isaiah", title:"Arise, shine", side:"l",
+      passage: "\u201cArise, shine, for your light has come, and the glory of the LORD rises upon you. See, darkness covers the earth and thick darkness is over the peoples, but the LORD rises upon you and his glory appears over you. Nations will come to your light, and kings to the brightness of your dawn.\u201d The vision widens: the wealth of nations flowing in, gates that never shut, and a city that needs no sun \u2014 \u201cthe LORD will be your everlasting light, and your God will be your glory.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 60:1", text: "Arise, shine, for your light has come, and the glory of the LORD rises upon you." }
+      ],
+      questions: [
+        { q:"What is the light's source?", opts:["The people themselves", "The glory of the LORD rising upon them", "The nations"], correct:1, explain:"They shine by reflection \u2014 the command is to arise into a light that has already come." },
+        { q:"What is happening around them meanwhile?", opts:["Universal peace", "Darkness covering the earth \u2014 the light rises within the dark, not after it", "Nothing"], correct:1, explain:"The contrast is the point: light is most visible against the deepest dark." },
+        { q:"What happens to the nations in this vision?", opts:["They're destroyed", "They come toward the light \u2014 drawn in, not driven out", "They ignore it"], correct:1, explain:"Isaiah's vision keeps widening beyond Israel \u2014 the light is for everyone who comes." }
+      ],
+      deepDive: "Isaiah 60 is written to a people who felt anything but radiant \u2014 which is why the command is 'arise' rather than 'become.' The light already came; the response is to get up into it. The chapter's most striking feature is its scope: nations streaming in, gates standing permanently open, and finally no need for sun or moon because God Himself is the light. Revelation picks up that exact image for the New Jerusalem at the Bible's very end. For anyone in a dark season, the sequencing is the comfort: darkness covers the earth, and the light rises anyway, right in the middle of it." },
+    { id:188, book:"Isaiah", title:"New heavens and a new earth", side:"r",
+      passage: "Isaiah's final vision: \u201cSee, I will create new heavens and a new earth. The former things will not be remembered... I will create Jerusalem to be a delight and its people a joy. I will rejoice over Jerusalem and take delight in my people; the sound of weeping and of crying will be heard in it no more.\u201d People will build houses and live in them, plant vineyards and eat their fruit \u2014 no more labor stolen by others. \u201cThe wolf and the lamb will feed together... They will neither harm nor destroy on all my holy mountain.\u201d",
+      keyVerses: [
+        { ref: "Isaiah 65:17", text: "See, I will create new heavens and a new earth. The former things will not be remembered." }
+      ],
+      questions: [
+        { q:"What ends in the new creation?", opts:["Work and joy", "Weeping, crying, and stolen labor \u2014 the ache of a broken world", "Community"], correct:1, explain:"Not an escape from life but life without its griefs and injustices." },
+        { q:"What continues in the new creation?", opts:["Nothing", "Building, planting, working \u2014 meaningful labor that isn't taken from you", "Only rest"], correct:1, explain:"Isaiah's picture isn't idleness on clouds; it's ordinary good work finally secure." },
+        { q:"What does the wolf-and-lamb image convey?", opts:["Zoology", "Reconciliation so deep even natural hostility ends", "A parable about kings"], correct:1, explain:"Peace pictured at every level \u2014 not merely absence of war but the healing of hostility itself." }
+      ],
+      deepDive: "Isaiah ends where the Bible ends: a new creation. What's striking is how earthy it is \u2014 houses, vineyards, work, neighborhoods \u2014 not a disembodied elsewhere but this world healed. What's removed is precise: weeping, premature death, and the theft of your labor by someone else. And the wolf lying down with the lamb pictures peace so complete that even instinctive hostility is undone. Revelation 21 quotes this chapter nearly word for word. For a book that opened with a lawsuit over injustice, ending here is the whole argument: God's intention was never merely to forgive the world but to remake it." },
+    { id:189, book:"Jeremiah", title:"Before I formed you", side:"c",
+      passage: "\u201cThe word of the LORD came to me, saying, \u2018Before I formed you in the womb I knew you, before you were born I set you apart; I appointed you as a prophet to the nations.\u2019\u201d Jeremiah objected: \u201cI do not know how to speak; I am too young.\u201d God's answer removed the excuse and the fear together: \u201cDo not say, \u2018I am too young.\u2019 You must go to everyone I send you to and say whatever I command you. Do not be afraid of them, for I am with you and will rescue you.\u201d Then He touched Jeremiah's mouth and put His words there.",
+      keyVerses: [
+        { ref: "Jeremiah 1:5", text: "Before I formed you in the womb I knew you, before you were born I set you apart." }
+      ],
+      questions: [
+        { q:"When did God's knowledge of Jeremiah begin?", opts:["At his calling", "Before he was formed in the womb", "When he became a prophet"], correct:1, explain:"The calling predates the man \u2014 identity assigned before any performance existed to earn it." },
+        { q:"What was Jeremiah's objection?", opts:["He was too busy", "\u2018I do not know how to speak; I am too young\u2019", "He didn't believe"], correct:1, explain:"Inadequacy, the same objection Moses made \u2014 and God answers it the same way: I am with you." },
+        { q:"What did God NOT promise him?", opts:["His presence", "An easy or successful ministry \u2014 Jeremiah preached forty years to a nation that wouldn't listen", "Rescue"], correct:1, explain:"He promised presence and rescue, not results \u2014 a distinction Jeremiah's whole life would test." }
+      ],
+      deepDive: "Jeremiah's call has comforted people for millennia \u2014 known before formed, set apart before born \u2014 but it's worth reading with his biography in view. This man would preach for forty years, be beaten, imprisoned, thrown in a cistern, and watch his warnings ignored until the city burned exactly as he said. God's promise was never that it would go well; it was 'I am with you.' That reframes the verse's comfort: being known and appointed before birth doesn't guarantee an easy road, it guarantees you're not on it alone. If you've measured your calling by its reception, Jeremiah is the correction." },
+    { id:190, book:"Jeremiah", title:"Broken cisterns", side:"l",
+      passage: "God brings a charge with a memorable image: \u201cMy people have committed two sins: They have forsaken me, the spring of living water, and have dug their own cisterns, broken cisterns that cannot hold water.\u201d In a desert land, a spring is endless and free; a cistern is a hand-dug pit that only holds what rain you catch \u2014 and a cracked one holds nothing at all. God isn't only grieved that they left; He's grieved by what they left Him for.",
+      keyVerses: [
+        { ref: "Jeremiah 2:13", text: "They have forsaken me, the spring of living water, and have dug their own cisterns, broken cisterns that cannot hold water." }
+      ],
+      questions: [
+        { q:"What are the two sins named?", opts:["Lying and stealing", "Forsaking the spring, and digging broken cisterns to replace it", "Idolatry alone"], correct:1, explain:"Leaving is the first; the substitute is the second \u2014 and the substitute is the tragedy." },
+        { q:"Why is the spring-versus-cistern contrast so sharp?", opts:["Cisterns are expensive", "A spring is living and endless; a cistern is hand-dug, limited, and this one leaks", "They're equivalent"], correct:1, explain:"Enormous labor spent to produce something vastly worse than what was free." },
+        { q:"What does the image say about idolatry generally?", opts:["It's satisfying", "It's exhausting work that can't hold what you put in it", "It's harmless"], correct:1, explain:"Whatever you substitute for God requires constant digging and still runs dry." }
+      ],
+      deepDive: "This is one of Scripture's most useful images for anything that has quietly taken God's place. Notice what God grieves: not just the leaving, but the trade. A spring requires nothing of you and never stops; a cistern is a pit you carve out of rock by hand, that holds only what falls into it, and if it cracks it holds nothing. That's a precise description of how substitutes work \u2014 enormous effort, diminishing returns, chronic thirst. The honest question today: what am I currently digging that keeps not holding water?" },
+    { id:191, book:"Jeremiah", title:"The potter's house", side:"r",
+      passage: "God sends Jeremiah to a potter's house to watch him work. \u201cBut the pot he was shaping from the clay was marred in his hands; so the potter formed it into another pot, shaping it as seemed best to him.\u201d Then the word: \u201cCan I not do with you, Israel, as this potter does? Like clay in the hand of the potter, so are you in my hand.\u201d The message carries both warning and hope \u2014 God announces that if a nation He warned turns from its evil, He will relent from the disaster He planned.",
+      keyVerses: [
+        { ref: "Jeremiah 18:6", text: "Like clay in the hand of the potter, so are you in my hand." }
+      ],
+      questions: [
+        { q:"What did the potter do with the marred pot?", opts:["Threw it away", "Reformed it into another pot", "Sold it damaged"], correct:1, explain:"The clay stayed on the wheel \u2014 marring led to remaking, not discarding." },
+        { q:"What does the image say about God's sovereignty?", opts:["It's arbitrary", "He has the right and skill to shape \u2014 and He responds to how the clay responds", "It doesn't apply to nations"], correct:1, explain:"The chapter explicitly ties His action to repentance: turn, and the announced disaster is relented." },
+        { q:"What is the hopeful edge of this image?", opts:["Ruined is final", "A marred vessel isn't a wasted one \u2014 it goes back on the wheel", "The potter gives up"], correct:1, explain:"For anyone who feels beyond repair, the potter's response is remaking, not the trash heap." }
+      ],
+      deepDive: "The potter image gets used to teach God's absolute rights over us, and it does teach that \u2014 but the scene Jeremiah actually watched is gentler than the sermon usually is. The pot was marred while being made, and the potter didn't discard it; he pressed it down and started again with the same clay. Then God ties the whole thing to response: warn a nation, and if it turns, He relents. Sovereignty and responsiveness held together. If something in your life feels ruined past use, the workshop's lesson is that the clay is still on the wheel and still in skilled hands." },
+    { id:192, book:"Jeremiah", title:"Plans to give you hope", side:"c",
+      passage: "Jeremiah writes a letter to the exiles already in Babylon \u2014 and the counsel is startling: don't wait to live. \u201cBuild houses and settle down; plant gardens and eat what they produce... Seek the peace and prosperity of the city to which I have carried you into exile. Pray to the LORD for it.\u201d Then the famous promise: \u201cFor I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future.\u201d The context: seventy years of exile first.",
+      keyVerses: [
+        { ref: "Jeremiah 29:11", text: "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future." }
+      ],
+      questions: [
+        { q:"Who received this promise, and where?", opts:["Free people in Jerusalem", "Exiles in Babylon \u2014 facing seventy years before return", "Kings"], correct:1, explain:"The most quoted comfort verse in the Bible was addressed to people whose situation would not improve for a lifetime." },
+        { q:"What did God tell the exiles to do meanwhile?", opts:["Wait passively", "Build, plant, marry, and seek the good of the city that held them", "Plan an escape"], correct:1, explain:"Live fully where you are \u2014 even a temporary place deserves your full presence." },
+        { q:"What does the context add to verse 11?", opts:["It weakens it", "It strengthens it \u2014 God's good plans operate on timelines longer than our preferences", "Nothing"], correct:1, explain:"Not a promise of quick relief, but of a good ending that outlasts a long hard middle." }
+      ],
+      deepDive: "Jeremiah 29:11 shows up on coffee mugs and graduation cards, usually stripped of everything that makes it powerful. It was written to people in a foreign capital, told plainly that they'd be there seventy years \u2014 most would die in exile \u2014 and instructed to build houses, plant gardens, and pray for the city that conquered them. That's the setting of 'plans to prosper you.' Read there, it stops being a promise of quick rescue and becomes something sturdier: God's good purposes run on timelines that outlast our patience, and the right response to a long middle is to live fully inside it." },
+    { id:193, book:"Jeremiah", title:"Fire in my bones", side:"l",
+      passage: "Jeremiah's most raw prayer, after being beaten and put in stocks: \u201cYou deceived me, LORD, and I was deceived... I am ridiculed all day long; everyone mocks me.\u201d He tries to quit: \u201cBut if I say, \u2018I will not mention his word or speak anymore in his name,\u2019 his word is in my heart like a fire, a fire shut up in my bones. I am weary of holding it in; indeed, I cannot.\u201d In the same passage he swings to praise \u2014 \u201cSing to the LORD! Give praise to the LORD!\u201d \u2014 and then to cursing the day he was born.",
+      keyVerses: [
+        { ref: "Jeremiah 20:9", text: "His word is in my heart like a fire, a fire shut up in my bones. I am weary of holding it in; indeed, I cannot." }
+      ],
+      questions: [
+        { q:"What is remarkable about Jeremiah's complaint?", opts:["Its politeness", "Its rawness \u2014 he accuses God directly, and Scripture preserves it", "Its brevity"], correct:1, explain:"Like Job and the psalms of lament, the Bible keeps the unedited version of faithful anguish." },
+        { q:"Why couldn't he quit?", opts:["Contract obligations", "God's word burned in him like fire shut up in his bones", "Fear of punishment"], correct:1, explain:"Silence cost him more than speaking did \u2014 the calling wouldn't stay buried." },
+        { q:"What do the mood swings in this chapter show?", opts:["Instability disqualifying him", "That praise and despair can coexist in a faithful life", "That he lost his faith"], correct:1, explain:"Within a few verses: accusation, praise, and cursing his birthday \u2014 all preserved as honest faith." }
+      ],
+      deepDive: "Jeremiah 20 is one of the most emotionally honest passages in Scripture. He accuses God of deceiving him, describes being mocked all day, tries to resign \u2014 and finds he can't, because the word burns. Then, astonishingly, he breaks into praise, and a few lines later curses the day he was born. No editor smoothed this out, which is itself the lesson: faith is not the absence of that turbulence. If you've ever felt both 'I can't do this anymore' and 'I can't walk away from this' in the same hour, Jeremiah wrote it down first." },
+    { id:194, book:"Jeremiah", title:"A new covenant", side:"r",
+      passage: "In the middle of a book about collapse, God promises something entirely new: \u201cThe days are coming, declares the LORD, when I will make a new covenant with the people of Israel... It will not be like the covenant I made with their ancestors... I will put my law in their minds and write it on their hearts. I will be their God, and they will be my people... For I will forgive their wickedness and will remember their sins no more.\u201d",
+      keyVerses: [
+        { ref: "Jeremiah 31:33", text: "I will put my law in their minds and write it on their hearts. I will be their God, and they will be my people." }
+      ],
+      questions: [
+        { q:"How is the new covenant different?", opts:["Stricter rules", "The law written on hearts, not tablets \u2014 internal, not merely external", "Fewer commands"], correct:1, explain:"The problem was never the law's content but the human heart's capacity \u2014 so God addresses the heart." },
+        { q:"What happens to sins under it?", opts:["They're tracked carefully", "Forgiven, and remembered no more", "Punished later"], correct:1, explain:"Deliberate forgetting by the One who forgets nothing accidentally \u2014 the strongest possible pardon." },
+        { q:"Where does the New Testament use this passage?", opts:["Nowhere", "Hebrews quotes it in full, and Jesus invokes it at the Last Supper", "Only in Revelation"], correct:1, explain:"\u2018This cup is the new covenant in my blood\u2019 \u2014 Jesus names this promise as arriving." }
+      ],
+      deepDive: "This is the mountaintop of Jeremiah, and it comes from a prophet whose entire career was announcing collapse. The diagnosis behind it runs through the whole Old Testament: a law outside a person can direct but can't change them. So God promises to move it inside \u2014 written on hearts \u2014 along with universal knowledge of Him and forgiveness so complete He describes it as forgetting. Hebrews quotes this chapter at length, and Jesus reached for its language over a cup on the night before He died. Everything the Bible calls 'new covenant' starts as a promise spoken over a burning city." },
+    { id:195, book:"Jeremiah", title:"The city falls", side:"c",
+      passage: "After forty years of warnings, it happened exactly as Jeremiah said: Babylon breached the walls, the temple was burned, the king's sons were killed before his eyes, and the people were carried into exile. Jeremiah, offered safety in Babylon, chose to stay with the poorest who remained in the land. His warnings had been ignored, his career looked like failure, and every word he spoke came true \u2014 which brought him no satisfaction at all, only grief for the city he loved.",
+      keyVerses: [
+        { ref: "Jeremiah 39:18", text: "I will save you; you will not fall by the sword but will escape with your life, because you trust in me, declares the LORD." }
+      ],
+      questions: [
+        { q:"How did Jeremiah's forty years of preaching end?", opts:["National revival", "The exact judgment he warned about \u2014 the city fell", "Him being honored"], correct:1, explain:"He was right, and it brought him no vindication he wanted \u2014 only the grief of being right." },
+        { q:"What did Jeremiah choose when offered comfort in Babylon?", opts:["He took it", "He stayed in the ruined land with the poorest who remained", "He fled to Egypt alone"], correct:1, explain:"Given an exit, the weeping prophet stayed with the people who had nothing." },
+        { q:"What does his life say about faithfulness?", opts:["It guarantees results", "It's measured by obedience, not by whether people listen", "It's easy"], correct:1, explain:"By any modern metric his ministry failed; by Scripture's, he is one of its great successes." }
+      ],
+      deepDive: "Jeremiah is the Bible's hardest case study in faithfulness without visible results. Forty years of preaching, no national repentance, a burned city, and a prophet who wept over the very people who mocked him. The temptation is to read the fall as vindication \u2014 but the book won't let you; he grieved rather than gloated. What his life quietly asks is whether you can define faithfulness without reference to outcomes. If your only measure is response, Jeremiah's career is a failure. If the measure is obedience under sustained discouragement, he stands near the top of Scripture." },
+    { id:196, book:"Lamentations", title:"How lonely sits the city", side:"l",
+      passage: "Five poems written in the ashes of Jerusalem \u2014 grief with no rush to feel better. \u201cHow deserted lies the city, once so full of people! How like a widow is she, who once was great among the nations!... She weeps bitterly in the night, tears are on her cheeks. Among all her lovers there is no one to comfort her.\u201d Nothing is minimized \u2014 the hunger, the ruined temple, the children, the shame \u2014 and nothing is explained away. Grief is given a full book and permitted to speak.",
+      keyVerses: [
+        { ref: "Lamentations 1:12", text: "Is it nothing to you, all you who pass by? Look around and see. Is any suffering like my suffering?" }
+      ],
+      questions: [
+        { q:"What is Lamentations?", opts:["A history", "Five poems of grief over Jerusalem's destruction", "A collection of laws"], correct:1, explain:"Scripture devotes a whole book to sustained mourning \u2014 no plot, no resolution, just honest lament." },
+        { q:"How does the book handle the pain?", opts:["Minimizes it", "Names it fully, in detail, without hurrying to comfort", "Blames the victims only"], correct:1, explain:"It refuses to shorten grief \u2014 which is why grieving people have found it trustworthy for millennia." },
+        { q:"Why does a book like this belong in the Bible?", opts:["To depress readers", "Because faith includes lament \u2014 God gives grief its own language", "By accident"], correct:1, explain:"Scripture doesn't require you to feel fine before you speak to God." }
+      ],
+      deepDive: "Lamentations exists because Scripture takes grief seriously enough to give it structure. The poems are acrostics \u2014 each stanza starting with successive Hebrew letters \u2014 which sounds academic until you consider what it means: grief so overwhelming it needed a form to hold it, A to Z, all of it. Nothing here is rushed. There's no 'everything happens for a reason,' no early comfort, no minimizing. For anyone who has been handed a tidy explanation while their world was still burning, this book is the Bible's answer: sit down, say all of it, take as long as you need." },
+    { id:197, book:"Lamentations", title:"Great is your faithfulness", side:"r",
+      passage: "At the exact center of the five poems, in the middle of the darkest one, the turn comes: \u201cYet this I call to mind and therefore I have hope: Because of the LORD's great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness. I say to myself, \u2018The LORD is my portion; therefore I will wait for him.\u2019\u201d The verses just before it describe a man who has forgotten what happiness is. Hope here is not a mood \u2014 it is something deliberately called to mind.",
+      keyVerses: [
+        { ref: "Lamentations 3:22\u201323", text: "Because of the LORD\u2019s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness." }
+      ],
+      questions: [
+        { q:"Where does this famous passage sit?", opts:["At the happy ending", "At the center of the book \u2014 surrounded by unresolved grief", "In an appendix"], correct:1, explain:"Hope appears inside the lament, not after it \u2014 the ruins are still smoking on both sides of it." },
+        { q:"How does hope arrive here?", opts:["As a feeling", "By deliberate recall \u2014 \u2018this I call to mind\u2019", "Through circumstances improving"], correct:1, explain:"He chooses what to remember when he can't choose what to feel." },
+        { q:"How often are God's mercies renewed?", opts:["Yearly", "Every morning", "Once for all"], correct:1, explain:"A fresh supply daily \u2014 yesterday's failures don't carry over into today's mercy." }
+      ],
+      deepDive: "The most famous hymn line in this passage \u2014 great is your faithfulness \u2014 was written by a man who two verses earlier said his splendor was gone and his hope had perished. That's what makes it trustworthy. The mechanism is worth copying exactly: 'yet this I call to mind and therefore I have hope.' He doesn't wait to feel hopeful; he deliberately recalls something true and lets hope follow. And the promise is sized for exactly this kind of season \u2014 not a one-time rescue but mercies renewed each morning, enough for one day, arriving again tomorrow." },
+    { id:198, book:"Lamentations", title:"Restore us to yourself", side:"c",
+      passage: "The final poem is a prayer with no guarantees attached: \u201cRemember, LORD, what has happened to us; look, and see our disgrace... Our hearts are faint, our eyes grow dim... You, LORD, reign forever; your throne endures from generation to generation. Why do you always forget us? Why do you forsake us so long? Restore us to yourself, LORD, that we may return; renew our days as of old \u2014 unless you have utterly rejected us and are angry with us beyond measure.\u201d The book ends on that unresolved note.",
+      keyVerses: [
+        { ref: "Lamentations 5:21", text: "Restore us to yourself, LORD, that we may return; renew our days as of old." }
+      ],
+      questions: [
+        { q:"How does the book end?", opts:["With full resolution", "With an unresolved plea \u2014 restore us, unless you have rejected us", "With a celebration"], correct:1, explain:"Scripture allows a book to end in the middle of waiting \u2014 because sometimes life does." },
+        { q:"What's the direction of the request in 5:21?", opts:["Restore our fortunes", "Restore us to YOURSELF \u2014 relationship before circumstances", "Restore the buildings"], correct:1, explain:"The deepest loss named isn't the city but the closeness \u2014 and that's what's asked for first." },
+        { q:"What do they affirm even while complaining?", opts:["Nothing", "\u2018You, LORD, reign forever\u2019 \u2014 God's throne endures regardless", "That they deserved better"], correct:1, explain:"Lament here holds two things: God still reigns, and this still hurts." }
+      ],
+      deepDive: "It takes courage for a book of the Bible to end like this \u2014 no restoration scene, no epilogue, just a request and a shadow of doubt. But that honesty is a gift to anyone still waiting. Notice what they actually ask for: not the city back, not comfort, but restoration to God Himself \u2014 and even that request admits it requires His initiative first ('restore us... that we may return'). Lamentations leaves the door open rather than shutting it, which is exactly where a lot of real faith lives: still asking, not yet answered, and still addressing the God who reigns." },
+    { id:199, book:"Daniel", title:"Resolved not to defile himself", side:"l",
+      passage: "Taken as a teenager from Jerusalem to Babylon, Daniel was enrolled in a three-year program designed to remake him \u2014 new language, new literature, even a new name. \u201cBut Daniel resolved not to defile himself with the royal food and wine.\u201d He asked respectfully for a ten-day test on vegetables and water. At the end they looked healthier than all the others. God gave the four young men knowledge and understanding, and when the king examined them, \u201che found none equal to Daniel, Hananiah, Mishael and Azariah.\u201d",
+      keyVerses: [
+        { ref: "Daniel 1:8", text: "But Daniel resolved not to defile himself with the royal food and wine." }
+      ],
+      questions: [
+        { q:"What did Babylon's program aim to do?", opts:["Educate fairly", "Remake their identity \u2014 language, literature, and even their names", "Punish them"], correct:1, explain:"Assimilation by immersion; Daniel accepted the education and drew a line at the table." },
+        { q:"How did Daniel handle his objection?", opts:["Public protest", "A respectful request and a proposed ten-day test", "Secret disobedience"], correct:1, explain:"Conviction delivered with courtesy \u2014 he neither compromised nor grandstanded." },
+        { q:"What's notable about where he drew the line?", opts:["He refused everything Babylonian", "He accepted much and drew a firm line at one specific point", "He drew no lines"], correct:1, explain:"Wisdom in exile: engage the culture deeply, and know precisely where you won't bend." }
+      ],
+      deepDive: "Daniel 1 is a masterclass in living faithfully inside a culture that isn't yours. He learns the language, studies the literature, serves the government, and answers to a Babylonian name \u2014 and then draws one clear line and holds it without a speech. Notice the manner: he 'asked permission,' proposed a test, and made it easy for the official to say yes. Conviction without obnoxiousness is rarer than either compromise or grandstanding. And the line came early \u2014 decided before the pressure, which is why it held. Where's your line, and did you settle it in advance?" },
+    { id:200, book:"Daniel", title:"The dream and the stone", side:"r",
+      passage: "Nebuchadnezzar demanded that his wise men tell him both his dream and its meaning \u2014 on pain of death. Daniel asked for time, gathered his friends to pray, and God revealed it. The dream: a great statue of gold, silver, bronze, iron, and clay \u2014 successive kingdoms. Then \u201ca rock was cut out, but not by human hands,\u201d struck the statue, shattered it, and \u201cbecame a huge mountain and filled the whole earth.\u201d Daniel's interpretation: \u201cThe God of heaven will set up a kingdom that will never be destroyed.\u201d",
+      keyVerses: [
+        { ref: "Daniel 2:44", text: "The God of heaven will set up a kingdom that will never be destroyed... it will itself endure forever." }
+      ],
+      questions: [
+        { q:"What did Daniel do before interpreting?", opts:["Consulted astrologers", "Asked for time and gathered his friends to pray for mercy", "Guessed"], correct:1, explain:"The first move in a life-or-death crisis was a prayer meeting \u2014 and he credited God publicly after." },
+        { q:"What did the rock \u2018not cut by human hands\u2019 represent?", opts:["Another empire", "God's kingdom \u2014 not of human origin, and permanent", "An earthquake"], correct:1, explain:"Every human kingdom in the statue eventually shatters; the one from outside human hands fills the earth." },
+        { q:"What comfort did this give exiles?", opts:["Babylon would last forever", "Empires rise and fall on a schedule God knows \u2014 and His kingdom outlasts them all", "They'd rule Babylon"], correct:1, explain:"To captives of a superpower, the message was that even this empire was temporary." }
+      ],
+      deepDive: "Daniel 2 is the political theology of the whole book: empires are real, powerful, and temporary. To exiles living under the world's dominant superpower, that was the most subversive message imaginable. The statue's descending materials \u2014 gold down to iron mixed with clay \u2014 picture kingdoms increasingly impressive and increasingly brittle, and the stone that ends them isn't quarried by anyone. Notice too how Daniel handled the crisis: prayer first, credit given publicly to God second, career advancement a distant third. He was elevated because he refused to take the credit." },
+    { id:201, book:"Daniel", title:"But if not", side:"c",
+      passage: "The king built a golden image and commanded everyone to bow. Three men would not. Given one final chance and threatened with a blazing furnace, they answered: \u201cIf we are thrown into the blazing furnace, the God we serve is able to deliver us from it, and he will deliver us from Your Majesty's hand. But even if he does not, we want you to know, Your Majesty, that we will not serve your gods.\u201d The furnace was heated seven times hotter \u2014 and the king saw four men walking in the fire, \u201cand the fourth looks like a son of the gods.\u201d",
+      keyVerses: [
+        { ref: "Daniel 3:17\u201318", text: "The God we serve is able to deliver us... But even if he does not, we will not serve your gods." }
+      ],
+      questions: [
+        { q:"What makes \u2018but even if he does not\u2019 so important?", opts:["It shows doubt", "Their obedience didn't depend on being rescued", "It's a bargaining position"], correct:1, explain:"Faith that requires a guaranteed outcome isn't faith \u2014 they settled that before the furnace." },
+        { q:"What did the king see in the fire?", opts:["Three men burning", "Four men walking unbound \u2014 the fourth like a son of the gods", "Nothing"], correct:1, explain:"They weren't spared the fire; they were accompanied inside it." },
+        { q:"What burned in the story?", opts:["The three men", "Only the ropes that bound them \u2014 and the soldiers who threw them in", "The furnace itself"], correct:1, explain:"The fire consumed their restraints and nothing else \u2014 a detail the text points out." }
+      ],
+      deepDive: "Three words carry this chapter: 'but if not.' The men state their confidence that God can rescue them, and then refuse to make their obedience conditional on it. That's the difference between faith and a transaction. And the deliverance, when it comes, isn't what they asked for \u2014 they aren't kept out of the furnace, they're met inside it, and the only thing the fire destroys is what was binding them. If you're praying for rescue from something right now, this chapter offers both possibilities honestly, and insists the answer doesn't change what you owe God." },
+    { id:202, book:"Daniel", title:"The king who became an animal", side:"l",
+      passage: "Nebuchadnezzar dreams of a great tree cut down. Daniel, distressed, tells him the truth: the tree is the king, and unless he repents he will lose his mind and live like an animal until he acknowledges \u201cthat the Most High is sovereign over all kingdoms on earth.\u201d Daniel urges him to renounce his sins by doing right and showing mercy to the oppressed. Twelve months later, surveying his city, the king said, \u201cIs not this the great Babylon I have built by my mighty power?\u201d The words were still on his lips when it happened.",
+      keyVerses: [
+        { ref: "Daniel 4:37", text: "Those who walk in pride he is able to humble." }
+      ],
+      questions: [
+        { q:"What did Daniel urge the king to do?", opts:["Nothing", "Renounce his sins by doing right and showing mercy to the oppressed", "Abdicate"], correct:1, explain:"The prescribed repentance was practical justice, not merely private regret." },
+        { q:"What triggered the judgment?", opts:["A military defeat", "A boast \u2014 \u2018the great Babylon I have built by my mighty power\u2019", "A dream"], correct:1, explain:"Twelve months of grace passed first; the sentence fell mid-sentence of self-congratulation." },
+        { q:"How does the chapter end?", opts:["With the king's death", "With Nebuchadnezzar restored, praising God \u2014 a pagan king's testimony", "With Babylon destroyed"], correct:1, explain:"The most powerful man alive writes the chapter himself, ending with praise for the God who humbled him." }
+      ],
+      deepDive: "The strangest feature of Daniel 4 is its narrator: much of it is written in Nebuchadnezzar's own voice, a public royal testimony about losing his mind and finding God. Two details deserve attention. First, the twelve months of grace between the warning and the fall \u2014 judgment in Scripture is almost always slower than we expect. Second, Daniel's prescribed remedy: mercy to the oppressed. In the Bible, the cure for pride is rarely introspection; it's turning outward toward people you'd been overlooking. And the ending is genuinely startling \u2014 Babylon's emperor, restored, praising the God of his captives." },
+    { id:203, book:"Daniel", title:"The writing on the wall", side:"r",
+      passage: "At a feast, King Belshazzar drank from the goblets looted from God's temple and praised gods of gold and stone. \u201cSuddenly the fingers of a human hand appeared and wrote on the plaster of the wall.\u201d The king's face went pale, his knees knocked. Daniel was summoned and refused the rewards before interpreting: MENE, MENE, TEKEL, PARSIN \u2014 numbered, weighed, divided. \u201cYou have been weighed on the scales and found wanting.\u201d Daniel added the charge: you knew what happened to Nebuchadnezzar, \u201cbut you did not humble yourself.\u201d That very night the king was slain.",
+      keyVerses: [
+        { ref: "Daniel 5:27", text: "TEKEL: You have been weighed on the scales and found wanting." }
+      ],
+      questions: [
+        { q:"What made Belshazzar's feast an offense?", opts:["Its expense", "Drinking from the looted temple goblets while praising idols", "The guest list"], correct:1, explain:"Deliberate desecration \u2014 using holy things as props for mocking their God." },
+        { q:"What was the added charge against him?", opts:["Poor governance", "He knew Nebuchadnezzar's story and didn't humble himself", "Military failure"], correct:1, explain:"He had the lesson available in living memory and ignored it \u2014 knowledge without response." },
+        { q:"What did Daniel do about the offered rewards?", opts:["Demanded more", "Refused them before interpreting \u2014 then told the truth anyway", "Accepted quietly"], correct:1, explain:"An old man now, Daniel makes clear his message isn't for sale." }
+      ],
+      deepDive: "'The writing on the wall' entered the English language from this chapter, and the phrase's meaning is right: a verdict that has already been rendered. What's sharpest here is the added charge in verse 22 \u2014 'you knew all this, but you did not humble yourself.' Belshazzar's problem wasn't ignorance; his grandfather's humiliation was family history. Available truth, unapplied, is its own indictment. And notice the aged Daniel refusing the purple robe and gold chain before speaking. Sixty years into exile, he still couldn't be bought." },
+    { id:204, book:"Daniel", title:"The lions' den", side:"c",
+      passage: "Now in his eighties and about to be promoted over the whole kingdom, Daniel drew jealous enemies who could find no corruption in him \u2014 \u201cwe will never find any basis for charges against this man Daniel unless it has something to do with the law of his God.\u201d They tricked the king into outlawing prayer for thirty days. \u201cNow when Daniel learned that the decree had been published, he went home to his upstairs room where the windows opened toward Jerusalem. Three times a day he got down on his knees and prayed, just as he had done before.\u201d",
+      keyVerses: [
+        { ref: "Daniel 6:10", text: "Three times a day he got down on his knees and prayed, giving thanks to his God, just as he had done before." }
+      ],
+      questions: [
+        { q:"What could Daniel's enemies find against him?", opts:["Corruption and fraud", "Nothing \u2014 except his faithfulness to God", "Poor performance"], correct:1, explain:"Decades in politics under four rulers, and his opponents' research turned up a clean record." },
+        { q:"What phrase describes his response to the decree?", opts:["He prayed louder", "\u2018Just as he had done before\u2019 \u2014 no change at all", "He prayed secretly"], correct:1, explain:"He neither hid nor escalated \u2014 the habit built over decades simply continued." },
+        { q:"How did the king react?", opts:["He celebrated", "He was distressed all night, fasting, and rushed to the den at dawn", "He was indifferent"], correct:1, explain:"Trapped by his own law, the king spent the night sleepless over the man he'd condemned." }
+      ],
+      deepDive: "Notice what the story doesn't say: Daniel didn't pray harder, or make a statement, or hide. He prayed 'just as he had done before' \u2014 the crisis revealed a habit rather than creating a decision. That's the chapter's quiet argument: what you'll do under pressure is mostly determined by what you were already doing without it. He was in his eighties, and the windows still opened toward Jerusalem, three times a day, decades after that city fell. And his enemies' investigation is its own testimony \u2014 a lifetime in a corrupt government with nothing to find." },
+    { id:205, book:"Daniel", title:"One like a son of man", side:"l",
+      passage: "Daniel's own visions begin \u2014 four beasts rising from the sea, empires in monstrous form. Then the scene shifts to a throne room: \u201cthe Ancient of Days took his seat. His clothing was as white as snow... thousands upon thousands attended him.\u201d And then: \u201cThere before me was one like a son of man, coming with the clouds of heaven. He approached the Ancient of Days and was led into his presence. He was given authority, glory and sovereign power... his dominion is an everlasting dominion that will not pass away.\u201d",
+      keyVerses: [
+        { ref: "Daniel 7:14", text: "His dominion is an everlasting dominion that will not pass away, and his kingdom is one that will never be destroyed." }
+      ],
+      questions: [
+        { q:"How are the empires pictured?", opts:["As noble kings", "As beasts rising from the sea \u2014 predatory and chaotic", "As gardens"], correct:1, explain:"Daniel 2 showed empires as an impressive statue; Daniel 7 shows what they look like from heaven's side." },
+        { q:"Who approaches the Ancient of Days?", opts:["An angel", "\u2018One like a son of man\u2019 \u2014 human in appearance, given everlasting dominion", "A prophet"], correct:1, explain:"A human figure receiving universal, eternal authority \u2014 unique in the Old Testament." },
+        { q:"Why does this title matter in the Gospels?", opts:["It doesn't", "\u2018Son of Man\u2019 was Jesus' most frequent self-designation \u2014 drawn from this vision", "It refers to Daniel"], correct:1, explain:"A title that sounds humble and quietly claims this throne room scene." }
+      ],
+      deepDive: "Daniel 7 pairs with Daniel 2 and reveals the difference in perspective: from the ground, empires look like a gleaming statue; from heaven, they look like beasts crawling out of the chaotic sea. Then the throne room, and a figure 'like a son of man' \u2014 human, in contrast to the beasts \u2014 receiving authority over every nation, forever. This is the passage behind Jesus' favorite name for Himself, and it's why the high priest tore his robes when Jesus quoted it at His trial: everyone in the room knew exactly which throne scene He was claiming." },
+    { id:206, book:"Daniel", title:"Daniel's prayer", side:"r",
+      passage: "Reading Jeremiah's scrolls, Daniel realizes the seventy years of exile are nearly up \u2014 and his response to a promise about to be fulfilled is to pray harder, not to relax. \u201cSo I turned to the Lord God and pleaded with him in prayer and petition, in fasting, and in sackcloth and ashes.\u201d His prayer says \u2018we\u2019 throughout: \u201cwe have sinned and done wrong... we have not listened.\u201d He asks nothing on the basis of merit: \u201cWe do not make requests of you because we are righteous, but because of your great mercy.\u201d",
+      keyVerses: [
+        { ref: "Daniel 9:18", text: "We do not make requests of you because we are righteous, but because of your great mercy." }
+      ],
+      questions: [
+        { q:"What prompted Daniel's prayer?", opts:["A vision", "Reading Jeremiah and realizing the seventy years were nearly complete", "A royal decree"], correct:1, explain:"Scripture reading led directly to prayer \u2014 and a promise near fulfillment made him pray more, not less." },
+        { q:"Whose sins does he confess?", opts:["Only the nation's, as an outsider", "\u2018We\u2019 \u2014 he includes himself throughout", "Only his own"], correct:1, explain:"One of Scripture's most upright men prays in the first person plural \u2014 identification, not accusation." },
+        { q:"On what basis does he ask?", opts:["Israel's obedience", "God's great mercy alone \u2014 explicitly not their righteousness", "A bargain"], correct:1, explain:"He removes merit from the equation entirely, which is why the prayer has been a model ever since." }
+      ],
+      deepDive: "Daniel 9 answers a question people still ask: if God has promised something, why pray about it? Daniel's example is the reply \u2014 discovering the promise was nearly due drove him into fasting and sackcloth. Promises invite participation rather than replacing it. And notice the pronouns: a man whose enemies couldn't find a flaw prays 'we have sinned, we have not listened,' standing with his people rather than above them. Finally, verse 18 strips away every basis but one \u2014 not because we are righteous, but because of your great mercy. That sentence is where prayer actually stands." }
   ];
 
   const MIDPOINT_REFLECTIONS = {
@@ -2059,7 +2533,13 @@
     "Esther": "You're partway through Esther. God is never named in this book, yet He's moving in every coincidence. Where in your own story might the \u2018coincidences\u2019 deserve a second look?",
     "Job": "You're partway through Job. His friends' silence was their best comfort; their explanations were their worst. When someone you love is suffering, which do you reach for first \u2014 presence or answers?",
     "Psalms": "You're partway through the Psalms. Psalm 42 talks TO its own soul instead of just listening to it. What is your soul saying on repeat lately \u2014 and what would you preach back to it?",
-    "Proverbs": "You're partway through Proverbs \u2014 one chapter a day, remember. Of the chapters so far, which single line has been quietly working on you \u2014 and did you actually give it a full day to sit?"
+    "Proverbs": "You're partway through Proverbs \u2014 one chapter a day, remember. Of the chapters so far, which single line has been quietly working on you \u2014 and did you actually give it a full day to sit?",
+    "Ecclesiastes": "You're partway through Ecclesiastes. The Teacher had everything and still found it vapor \u2014 ungraspable. What are you currently asking to satisfy you that was never built to carry that weight?",
+    "Song of Solomon": "You're partway through the Song. It celebrates love openly and still counsels patience \u2014 \u2018do not awaken love before its time.\u2019 Which of those two do you find harder to hold?",
+    "Isaiah": "You're partway through Isaiah. He saw God high and lifted up, and his first response was \u2018woe to me.\u2019 When did you last feel genuinely small before God \u2014 and did it crush you or clean you?",
+    "Jeremiah": "You're partway through Jeremiah. He preached forty years to a nation that never listened, and God's promise was presence, not results. Where are you measuring faithfulness by response instead of obedience?",
+    "Lamentations": "You're partway through Lamentations. This book gives grief a whole language and refuses to rush it. Is there a loss you've been hurrying past instead of naming?",
+    "Daniel": "You're partway through Daniel. He accepted much of Babylon and drew one clear line \u2014 decided in advance. What's your line, and have you settled it before the pressure arrives?"
   };
   const CHECKPOINT_REFLECTIONS = {
     Genesis: "Looking back at the whole book of Genesis, what stands out to you most about who God is \u2014 and what's one thing you're taking with you?",
@@ -2079,7 +2559,13 @@
     "Esther": "Looking back at Esther \u2014 the hidden identity, the sleepless night, the reversal \u2014 the whole book asks Mordecai's question: what position, access, or comfort do you hold right now that might exist \u2018for such a time as this\u2019?",
     "Job": "Looking back at Job \u2014 the losses, the bad comfort, the Redeemer hope, the whirlwind \u2014 God preferred Job's honest wrestling to the friends' tidy defenses. Is there a pain you've been managing with tidy answers that God is inviting you to bring to Him raw instead?",
     "Psalms": "Looking back at these Psalms \u2014 the rooted tree, the shepherd's valley, the clean heart, the searched soul \u2014 which one is the prayer you most need right now? Consider praying it out loud, in its own words, before you move on.",
-    "Proverbs": "Looking back at all thirty-one chapters \u2014 the fear of the LORD, the guarded heart, the gentle answer, iron sharpening iron, Agur's daily bread, and the life of chapter 31 \u2014 wisdom here was never information but formation. Which single verse, actually lived for a month, would change your life the most \u2014 and what's stopping you from starting today?"
+    "Proverbs": "Looking back at all thirty-one chapters \u2014 the fear of the LORD, the guarded heart, the gentle answer, iron sharpening iron, Agur's daily bread, and the life of chapter 31 \u2014 wisdom here was never information but formation. Which single verse, actually lived for a month, would change your life the most \u2014 and what's stopping you from starting today?",
+    "Ecclesiastes": "Looking back at Ecclesiastes \u2014 the vapor, the failed experiment, the seasons, the bread eaten with joy, and the final charge to fear God \u2014 the book demolished every substitute before offering the real thing. What would change if you stopped asking your work, money, or achievements to mean more than they can?",
+    "Song of Solomon": "Looking back at the Song \u2014 the spring invitation, mutual belonging, specific praise, and love as strong as death \u2014 Scripture treats faithful love as something worth celebrating out loud. Who in your life deserves the kind of specific, spoken delight this book models, and when will you say it?",
+    "Isaiah": "Looking back at Isaiah \u2014 scarlet made white, the throne room, the child born, wings like eagles, the suffering servant, and the new creation \u2014 the book pairs honest judgment with unreasonable grace. Which do you find harder to accept about yourself: the diagnosis or the pardon?",
+    "Jeremiah": "Looking back at Jeremiah \u2014 the call before birth, the broken cisterns, the potter's wheel, the letter to exiles, the fire in his bones, the new covenant \u2014 he was faithful for forty years with almost nothing to show for it. What are you doing right now that God may be measuring differently than you are?",
+    "Lamentations": "Looking back at Lamentations \u2014 the ruined city, the mercies new every morning, the unresolved final plea \u2014 Scripture gave grief a whole book and let it end still waiting. What grief of yours needs to be spoken to God in full, without hurrying to the comfort?",
+    "Daniel": "Looking back at Daniel \u2014 the line drawn at the table, the furnace, the humbled king, the writing on the wall, the open windows, the son of man \u2014 he lived seventy years in a foreign empire without losing himself. What habit, practiced quietly for decades, would you want found in you if pressure came tomorrow?"
   };
 
   const CHECKPOINTS = {
@@ -2473,6 +2959,133 @@
         { q:"What was the recommended pace for this book \u2014 and why?", opts:["As fast as possible", "One chapter a day \u2014 lived through the day, not just read", "One per week"], correct:1, explain:"A chapter of Proverbs is dense enough to work on you for a whole day \u2014 speed is the one way to waste it." }
       ],
       deepDive: "Proverbs is wisdom in seed form \u2014 thirty-one chapters, one for each day of most months, which is exactly how generations have read it. Its definition of wisdom is quietly radical: not information but formation, not IQ but skill at living \u2014 rooted in the fear of the LORD and expressed in the most ordinary places: your tone in an argument, your grip on your plans, your gate-keeping of attention, your roster of honest friends, the accuracy of your scales. The shape of the book matters too: chapters 1\u20139 are a father pleading, chapters 10\u201329 are the compressed one-liners, and chapters 30\u201331 close with humility, daily bread, advocacy for the voiceless, and a life that embodies it all. Its realism is essential: proverbs describe how life generally works, not iron guarantees \u2014 Job stands next to it in the canon as the exception's advocate. And its honesty runs deeper than self-improvement: 20:9 asks who can claim a pure heart, and the answer is nobody. Keep the pace you learned here: one chapter, one day, actually planted. A year of that would out-teach a library."
+    },
+    "Ecclesiastes": {
+      title: "Ecclesiastes overview",
+      overview: [
+        "\u201cMeaningless\u201d is really hevel \u2014 vapor: everything real, everything fleeting, nothing you can grip.",
+        "The Teacher ran the full experiment \u2014 pleasure, wine, building, wealth, music, wisdom \u2014 and reported honestly that none of it held.",
+        "\u2018Under the sun\u2019 marks the boundary: life examined without looking up.",
+        "A time for everything \u2014 including the seasons we'd never schedule: uprooting, mourning, war.",
+        "\u201cHe has set eternity in the human heart\u201d \u2014 the line that explains the whole restlessness.",
+        "Two are better than one; the driven worker never asks \u2018for whom am I toiling?\u2019",
+        "The turn that saves the book: eat your bread with joy, do your work with all your might, receive the day as a gift.",
+        "The conclusion, earned after everything failed: fear God and keep his commandments \u2014 every hidden deed is remembered."
+      ],
+      questions: [
+        { q:"What does hevel picture?", opts:["Garbage", "Vapor \u2014 real but impossible to hold", "A lie"], correct:1, explain:"Not worthless; ungraspable. That distinction changes the whole book." },
+        { q:"What phrase marks the experiment's boundary?", opts:["\u2018In the beginning\u2019", "\u2018Under the sun\u2019", "\u2018Forever and ever\u2019"], correct:1, explain:"Life examined on its own terms, without reference to God \u2014 and found unable to satisfy." },
+        { q:"What has God set in the human heart?", opts:["Ambition", "Eternity", "Fear"], correct:1, explain:"Built for permanence, living inside time \u2014 which is why temporary things never quite fit." },
+        { q:"What's the book's practical counsel amid all the vapor?", opts:["Despair", "Receive ordinary gifts \u2014 food, work, company \u2014 with joy, from God's hand", "Withdraw"], correct:1, explain:"Stop asking life to justify you, and you're finally free to enjoy it." },
+        { q:"Where does the book land?", opts:["Nihilism", "Fear God and keep his commandments \u2014 every deed, even hidden, is remembered", "Wealth"], correct:1, explain:"Meaning is restored precisely because nothing is finally forgotten." }
+      ],
+      deepDive: "Ecclesiastes is Scripture's permission to say the honest thing. It refuses to rush past the ache \u2014 nearly the whole book is spent proving that pleasure, wealth, achievement, and even wisdom cannot bear ultimate weight. That demolition is what makes its conclusion trustworthy rather than sentimental: fear God, keep his commandments, and in the meantime eat your bread with joy. Two threads hold it together \u2014 eternity set in the human heart (3:11), which explains the restlessness, and the repeated counsel to receive ordinary days as gifts rather than as payment. It's the Bible's answer to anyone who has achieved something and felt the strange flatness afterward: that flatness is telling the truth, and there's somewhere else to look."
+    },
+    "Song of Solomon": {
+      title: "Song of Solomon overview",
+      overview: [
+        "The Bible's love poem, opening in the woman's voice \u2014 she speaks first and speaks most.",
+        "Frank, joyful, unembarrassed celebration of love between husband and wife.",
+        "Spring imagery: winter past, flowers appearing, \u2018Arise, come, my darling.\u2019",
+        "The refrain of mutual belonging: \u2018My beloved is mine and I am his.\u2019",
+        "A repeated caution, three times over: do not awaken love before its time.",
+        "Praise that is long and specific \u2014 not generic admiration but being genuinely known.",
+        "\u2018My sister, my bride\u2019 \u2014 covenant permanence held together with passion.",
+        "The climax: love as strong as death, unquenchable by many waters, unpurchasable at any price."
+      ],
+      questions: [
+        { q:"Whose voice leads the Song?", opts:["The man's", "The woman's", "A narrator's"], correct:1, explain:"Unusual for ancient poetry \u2014 her desire and perspective drive the book." },
+        { q:"What repeated caution sits inside the celebration?", opts:["Guard your wealth", "Do not awaken love before its time", "Avoid marriage"], correct:1, explain:"The same book that celebrates desire also counsels patience \u2014 Scripture keeps both." },
+        { q:"What characterizes the praise in chapter 4?", opts:["Vague compliments", "Long and specific \u2014 particular things about a particular person", "Comparison to others"], correct:1, explain:"The difference between flattery and being truly known." },
+        { q:"How strong is love, per chapter 8?", opts:["Stronger than wealth only", "As strong as death \u2014 unquenchable by many waters", "It fades"], correct:1, explain:"In a world where death always wins, that's the highest claim available." },
+        { q:"What can buy love?", opts:["Great wealth", "Nothing \u2014 the offer would be utterly scorned", "Time"], correct:1, explain:"The Song ends declaring love priceless in the strict sense." }
+      ],
+      deepDive: "That this book is in the Bible surprises people, which says more about our assumptions than about Scripture. The Song presents faithful love \u2014 emotional, physical, covenantal \u2014 as good, God-given, and worth celebrating out loud. Its structure is worth noticing: the woman's voice leads, the praise is specific rather than generic, belonging runs both directions equally, and a caution about timing repeats three times inside all the warmth. Christians have long read it as a picture of God's love for His people, a legitimate second layer. But the first layer holds on its own, and it climbs at the end to something enormous: a love as strong as death, that floodwater cannot quench and money cannot buy."
+    },
+    "Isaiah": {
+      title: "Isaiah overview",
+      overview: [
+        "A lawsuit opens the book: religion continuing alongside injustice \u2014 and then the offer, scarlet sins made white as snow.",
+        "The throne room: holy, holy, holy \u2014 conviction, a coal from the altar, and \u2018Here am I. Send me!\u2019",
+        "Into invasion and darkness: a virgin will conceive, Immanuel \u2014 and a child born called Mighty God, Prince of Peace.",
+        "Comfort for exiles: nations as a drop in a bucket, and strength renewed for the weary \u2014 soar, run, and walk without fainting.",
+        "\u2018When you pass through the waters\u2019 \u2014 not if; presence promised inside the fire, not instead of it.",
+        "The suffering servant: pierced for our transgressions, and by his wounds we are healed.",
+        "The open invitation: come, all who are thirsty, without money and without cost.",
+        "The mission Jesus claimed in Nazareth: good news to the poor, beauty for ashes.",
+        "And the ending: new heavens and a new earth, no more weeping, work that isn't stolen, the wolf beside the lamb."
+      ],
+      questions: [
+        { q:"What was wrong with the worship in chapter 1?", opts:["Wrong music", "It ran alongside injustice \u2014 offerings from hands full of blood", "Too infrequent"], correct:1, explain:"The prophets insist worship is proven by how the vulnerable are treated." },
+        { q:"What order does Isaiah 6 follow?", opts:["Call, then cleansing", "Vision, conviction, cleansing, call", "Cleansing, then vision"], correct:1, explain:"The coal came before the commission \u2014 God dealt with his lips before using them." },
+        { q:"Who is promised renewed strength in 40:31?", opts:["The naturally strong", "The weary and weak \u2014 even youths stumble", "Soldiers"], correct:1, explain:"And note the descending order: soar, run, and finally walk without fainting \u2014 daily life, given last." },
+        { q:"What is the servant's suffering for, in chapter 53?", opts:["His own sins", "Ours \u2014 pierced for our transgressions, bearing our iniquity", "No stated reason"], correct:1, explain:"Substitution is the chapter's engine, and the New Testament quotes it constantly." },
+        { q:"What's the entry requirement in chapter 55?", opts:["Wealth", "Thirst \u2014 come, though you have no money", "Religious standing"], correct:1, explain:"The transaction happened elsewhere (chapter 53); what remains is coming." }
+      ],
+      deepDive: "Isaiah is the Old Testament in miniature: unflinching diagnosis followed by unreasonable grace, over and over, for sixty-six chapters. The first half confronts a nation that kept its religion and lost its justice; the second half comforts exiles convinced they'd been forgotten. Its most famous passages have shaped the church's imagination permanently \u2014 the thrice-holy throne room, the child born with divine titles, eagles' wings for the exhausted, the suffering servant, the free invitation, and a new creation where weeping stops and labor is never stolen. The New Testament quotes Isaiah more than almost any other book, and Jesus chose Isaiah 61 to announce His own mission. Read straight through, its argument is simple: God tells the truth about what's wrong and then does something about it Himself."
+    },
+    "Jeremiah": {
+      title: "Jeremiah overview",
+      overview: [
+        "Known before formed, set apart before born \u2014 and told plainly that presence, not success, was the promise.",
+        "Two sins: forsaking the spring of living water, and digging broken cisterns that hold nothing.",
+        "At the potter's house: the marred pot went back on the wheel, not in the trash.",
+        "The letter to exiles: build houses, plant gardens, seek the city's good \u2014 and \u2018plans to give you hope and a future,\u2019 seventy years out.",
+        "The rawest prayer: \u2018You deceived me, LORD\u2019 \u2014 followed by praise, followed by cursing the day he was born.",
+        "A fire shut up in his bones \u2014 he tried to quit and couldn't.",
+        "The new covenant: the law written on hearts, sins remembered no more.",
+        "And the ending he never wanted: the city fell exactly as he'd warned, and he stayed with the poorest who remained."
+      ],
+      questions: [
+        { q:"What did God promise Jeremiah at his call?", opts:["Success and honor", "Presence and rescue \u2014 not results", "An easy road"], correct:1, explain:"Forty years of ignored preaching tested that distinction to its limit." },
+        { q:"What are the two sins of Jeremiah 2:13?", opts:["Lying and stealing", "Forsaking the spring, and digging broken cisterns", "Idolatry and theft"], correct:1, explain:"Leaving is the first; the exhausting, leaking substitute is the tragedy." },
+        { q:"Who received the promise of Jeremiah 29:11?", opts:["Free citizens of Jerusalem", "Exiles in Babylon facing seventy years", "The king"], correct:1, explain:"Its context makes it sturdier: good plans that outlast a long hard middle." },
+        { q:"What's new about the new covenant?", opts:["Fewer rules", "The law written on hearts, and sins remembered no more", "A new priesthood only"], correct:1, explain:"Jesus reached for this language over a cup the night before He died." },
+        { q:"How should we measure Jeremiah's ministry?", opts:["By its results \u2014 a failure", "By obedience under sustained discouragement", "By his popularity"], correct:1, explain:"By modern metrics he failed; by Scripture's, he stands near the top." }
+      ],
+      deepDive: "Jeremiah is the Bible's hardest study in faithfulness without visible results \u2014 forty years of preaching, no repentance, a burned city, and a prophet who wept rather than gloated when he was proven right. Its images are among Scripture's most useful: broken cisterns for every substitute that requires enormous labor and still runs dry, and the potter's wheel for anyone who feels past repair. Its most quoted verse (29:11) was addressed to people whose situation would not improve for a lifetime, which makes it stronger, not weaker. And at the center, spoken over a city about to fall, is the promise everything afterward depends on: a covenant written on hearts, with sins remembered no more."
+    },
+    "Lamentations": {
+      title: "Lamentations overview",
+      overview: [
+        "Five poems written in the ashes of Jerusalem \u2014 grief given a whole book and permitted to speak.",
+        "Nothing minimized: hunger, ruin, shame, and children, all named without explanation.",
+        "The poems are acrostics \u2014 grief so overwhelming it needed a form to hold it, A to Z.",
+        "At the exact center, the turn: \u2018Yet this I call to mind and therefore I have hope.\u2019",
+        "Because of the LORD's great love we are not consumed \u2014 his compassions are new every morning.",
+        "Hope here is not a mood but a deliberate act of recall.",
+        "The final plea: restore us to yourself \u2014 relationship asked for before circumstances.",
+        "And the book ends unresolved, still waiting, still addressing the God who reigns."
+      ],
+      questions: [
+        { q:"What kind of book is Lamentations?", opts:["A history", "Five poems of sustained grief over Jerusalem's fall", "A law code"], correct:1, explain:"Scripture gives mourning its own book, with no plot and no rush to resolution." },
+        { q:"Where does \u2018great is your faithfulness\u2019 sit?", opts:["At a happy ending", "At the center, surrounded by unresolved grief", "In an appendix"], correct:1, explain:"Written by a man who two verses earlier said his hope had perished." },
+        { q:"How does hope arrive in chapter 3?", opts:["As a feeling", "By deliberate recall \u2014 \u2018this I call to mind\u2019", "Through circumstances improving"], correct:1, explain:"He chooses what to remember when he cannot choose what to feel." },
+        { q:"How often are God's mercies renewed?", opts:["Once", "Every morning", "Yearly"], correct:1, explain:"Enough for one day, arriving again tomorrow \u2014 sized exactly for hard seasons." },
+        { q:"How does the book end?", opts:["With restoration", "With an unresolved plea \u2014 restore us, unless you have rejected us", "With celebration"], correct:1, explain:"Scripture lets a book end mid-wait, because sometimes life does." }
+      ],
+      deepDive: "Lamentations exists because Scripture takes grief seriously enough to give it a structure. The acrostic form is the tell: sorrow so total it required the whole alphabet to contain it. Nothing here is rushed \u2014 no tidy explanations, no early comfort, no minimizing \u2014 which is exactly why grieving people have trusted it for twenty-five centuries. And its most famous lines are trustworthy for the same reason: 'great is your faithfulness' is spoken by a man surrounded by rubble, arriving not by feeling better but by deliberately calling something true to mind. The book ends still waiting, and even that is a gift: it makes room for the faith that is honest, unfinished, and still talking to God."
+    },
+    "Daniel": {
+      title: "Daniel overview",
+      overview: [
+        "Taken as a teenager and enrolled in a program built to remake him \u2014 he accepted much and drew one clear line.",
+        "The statue and the stone: empires rise and shatter; a kingdom not cut by human hands fills the earth.",
+        "\u2018But even if he does not\u2019 \u2014 three men refuse to bow, and are met inside the furnace rather than spared it.",
+        "The proudest king alive lost his mind, and wrote his own testimony of being humbled.",
+        "The writing on the wall: weighed and found wanting \u2014 and the charge, \u2018you knew, and did not humble yourself.\u2019",
+        "In his eighties, windows still open toward Jerusalem, three times a day, just as he had done before.",
+        "One like a son of man, given everlasting dominion \u2014 the title Jesus chose for Himself.",
+        "And a prayer that says \u2018we\u2019 throughout, asking on the basis of God's mercy alone."
+      ],
+      questions: [
+        { q:"How did Daniel handle Babylon's culture?", opts:["Rejected all of it", "Engaged deeply and drew a firm line at one specific point", "Fully assimilated"], correct:1, explain:"He learned the language and served the government, and settled his line in advance." },
+        { q:"What do the three words \u2018but if not\u2019 establish?", opts:["Doubt", "Obedience that doesn't depend on being rescued", "A bargain"], correct:1, explain:"They state God can deliver, and refuse to make faithfulness conditional on it." },
+        { q:"What was the added charge against Belshazzar?", opts:["Poor governance", "He knew Nebuchadnezzar's story and still didn't humble himself", "Military defeat"], correct:1, explain:"Available truth, unapplied, is its own indictment." },
+        { q:"What phrase describes Daniel's response to the prayer ban?", opts:["He prayed louder", "\u2018Just as he had done before\u2019", "He prayed in secret"], correct:1, explain:"The crisis revealed a decades-old habit rather than producing a decision." },
+        { q:"Why does \u2018son of man\u2019 matter?", opts:["It's a minor detail", "It's the throne-room title Jesus most often used for Himself", "It refers to Daniel"], correct:1, explain:"A name that sounds humble and quietly claims Daniel 7's scene." }
+      ],
+      deepDive: "Daniel is the Bible's manual for faithfulness in a culture that isn't yours \u2014 seventy years inside a hostile empire without either withdrawing from it or dissolving into it. The pattern repeats: engage fully, draw the line early, refuse to make obedience conditional on rescue, and give God the credit publicly. Its visions supply the theology underneath that courage \u2014 empires look like a gleaming statue from the ground and like beasts from heaven, and every one of them is temporary. Against them stands a kingdom not cut by human hands and one like a son of man given everlasting dominion. The book's most quietly convicting detail may be Daniel's open windows: what he did under a death sentence was simply what he had always done."
     }
   };
 
@@ -2638,7 +3251,61 @@
         { h: "\u201cThe fear of the LORD is the beginning of knowledge\u201d", b: "Verse 7 lays the cornerstone the whole book builds on \u2014 and note the contrast that completes it: \u2018but fools despise wisdom and instruction.\u2019 The fool in Proverbs isn't unintelligent; he's unteachable \u2014 the person who despises correction. Two postures, two trajectories, from the very first page: reverence that keeps learning, or self-sufficiency that has heard enough. Every proverb after this one lands differently depending on which posture reads it." }
       ],
       takeaway: "Proverbs announces itself as a skill book \u2014 wisdom as craftsmanship for living \u2014 built from compressed sayings designed to be unfolded one lived day at a time, by readers who never stop being students. Its foundation and filter is the fear of the LORD; its only disqualification is being done listening.",
-      reflection: "The fool in Proverbs isn't stupid \u2014 he's unteachable. On a scale of honest, how teachable are you right now: when were you last corrected, and what did you do with it?" }
+      reflection: "The fool in Proverbs isn't stupid \u2014 he's unteachable. On a scale of honest, how teachable are you right now: when were you last corrected, and what did you do with it?" },
+    "Ecclesiastes": { focus: "Ecclesiastes 3:1\u201314", title: "A time for everything",
+      sections: [
+        { h: "Fourteen pairs, and none of them optional", b: "Read the list slowly and notice what's in it: not just planting and healing and dancing, but uprooting, killing, tearing down, weeping, mourning, hating, war. Scripture refuses a version of life containing only the seasons we'd choose. Naming the hard ones as having their time is not endorsement \u2014 it's honesty. Half of what the poem lists, nobody puts on a calendar; all of it arrives anyway." },
+        { h: "\u201cA season for every activity under the heavens\u201d", b: "The book's usual phrase is \u2018under the sun\u2019 \u2014 life examined from ground level. Here it shifts to \u2018under the heavens,\u2019 a small change with a large view: these seasons aren't random weather but ordered time. That doesn't explain any particular season you're in. It does say the calendar has an Author, which is different from saying it has an explanation you'll receive." },
+        { h: "\u201cHe has made everything beautiful in its time\u201d", b: "Note the qualifier: in its time. Beauty isn't claimed for every moment as you're living it \u2014 it's claimed for the whole, seen from a vantage point you don't currently occupy. Much of what looks shapeless up close is legible later, and some of it won't be legible in this life at all. The verse asks for patience with a picture still being assembled." },
+        { h: "\u201cHe has also set eternity in the human heart\u201d", b: "Here is the sentence that explains the entire book. The Teacher has spent chapters proving nothing under the sun satisfies \u2014 and now says why: we've been given a sense of forever, installed in creatures who live inside time. That's the mismatch behind every flat feeling after a goal is reached. He adds honestly that we \u2018cannot fathom what God has done from beginning to end\u2019 \u2014 the ache comes with a limit on our sight, and both are by design." }
+      ],
+      takeaway: "The seasons poem doesn't promise only good seasons \u2014 it names the ones nobody schedules and places all of them under God's ordering. And 3:11 explains the restlessness the whole book documents: eternity set in hearts that live inside time, which is why nothing temporary ever fits.",
+      reflection: "Which season are you actually in right now \u2014 planting, uprooting, weeping, mending? And what would change if you stopped fighting the season and started living inside it?" },
+    "Song of Solomon": { focus: "Song of Solomon 8:6\u20137", title: "A seal upon your heart",
+      sections: [
+        { h: "\u201cPlace me like a seal over your heart\u201d", b: "A seal in the ancient world was pressed into wax or clay to mark ownership, authorship, and unbreakable claim \u2014 the equivalent of a signature and a lock together. She's not asking to be admired; she's asking to be the permanent mark on him, over his heart (affection) and on his arm (strength and action). Covenant love in one image: named, claimed, and unremovable." },
+        { h: "\u201cLove is as strong as death\u201d", b: "In the ancient world nothing was stronger than death; it took everyone and released no one. To say love matches it is to place love in the only weight class that matters. The parallel line \u2014 \u2018its jealousy unyielding as the grave\u2019 \u2014 uses jealousy in its old, good sense: the refusal to share what belongs exclusively to you. This is not possessiveness; it's fidelity with a spine." },
+        { h: "\u201cMany waters cannot quench love\u201d", b: "Fire and flood in one verse: love burns like a blazing flame, and rivers cannot sweep it away. Anyone who has watched a marriage survive a bad year knows what's being claimed \u2014 real love isn't a candle that weather blows out. Notice, too, that the Song has spent seven chapters showing this love being tended, spoken, and delighted in. The fire that survives floods is one someone kept feeding." },
+        { h: "\u201cIt would be utterly scorned\u201d", b: "The Song ends its great passage on economics: if a man offered all the wealth of his house for love, the offer would be scorned \u2014 not declined politely, scorned, because it misunderstands the category. Love cannot be purchased, only given and received. In a culture that markets nearly every relationship, this verse is a hard stop: the best thing available to a human being is not for sale at any figure." }
+      ],
+      takeaway: "The Song's climax asks for permanence (a seal), claims love matches death in strength, insists floodwater cannot quench it, and declares it unpurchasable at any price. It's the highest description of covenant love in Scripture \u2014 and it comes at the end of a book that spent seven chapters showing that love being tended out loud.",
+      reflection: "Is the love in your closest relationships being tended \u2014 spoken, specific, delighted in \u2014 or merely assumed? What's one thing you could say this week that you've been leaving unsaid?" },
+    "Isaiah": { focus: "Isaiah 53", title: "The suffering servant",
+      sections: [
+        { h: "\u201cHe had no beauty or majesty to attract us\u201d", b: "The chapter opens by removing every expectation of grandeur: nothing in his appearance would draw a crowd, and he was \u2018despised and rejected,\u2019 familiar with pain, someone people looked away from. Whatever deliverance was coming, it would not arrive impressive. That alone reversed what Israel expected, and it's still the hardest part of the picture to accept: God's rescue looked, at ground level, like a failure." },
+        { h: "\u201cWe considered him punished by God\u201d", b: "Verse 4 records the crowd's original reading of the scene \u2014 that his suffering was deserved, evidence of divine displeasure. They were exactly wrong, and their error is the same one Job's friends made: assuming suffering always testifies to guilt. The chapter's whole force depends on this misreading being corrected: he was suffering, and it wasn't for him." },
+        { h: "\u201cPierced for our transgressions\u201d", b: "Now the pronouns do the work. Read verses 4\u20136 counting them: our pain, our suffering, our transgressions, our iniquities, our peace, our healing \u2014 against his piercing, his crushing, his punishment, his wounds. That exchange is the center of the chapter and, Christians would say, of the entire Bible. And the confession underneath it is universal: \u2018we all, like sheep, have gone astray, each of us has turned to our own way.\u2019 Not most of us. All." },
+        { h: "\u201cHe was assigned a grave with the wicked\u201d", b: "The chapter tracks the servant past death \u2014 silent before his accusers, buried with the wicked though he had done no violence \u2014 and then, impossibly, forward again: he will \u2018see the light of life and be satisfied,\u2019 and \u2018justify many.\u2019 Written centuries before Rome invented crucifixion, it's the passage Philip used to explain Jesus to an Ethiopian official in Acts 8, and the one Peter quotes when writing about the cross." }
+      ],
+      takeaway: "Isaiah 53 is the Old Testament's clearest statement that restoration would be costly and that someone else would pay it. The pronouns carry the theology: our transgressions, his wounds. And its picture of rescue is deliberately unimpressive \u2014 no majesty, no crowd, a man people looked away from.",
+      reflection: "Read verses 4\u20136 again slowly, replacing \u2018our\u2019 and \u2018we\u2019 with \u2018my\u2019 and \u2018I.\u2019 What happens in you when the chapter stops being general and becomes personal?" },
+    "Jeremiah": { focus: "Jeremiah 29:1\u201314", title: "The letter to the exiles",
+      sections: [
+        { h: "A letter to people whose worst fear already happened", b: "This isn't advice to people bracing for trouble; it's a letter to people already inside it, deported, watching their old life recede. Jeremiah writes to captives in a foreign capital \u2014 and the first instruction isn't about deliverance at all. It's about groceries, houses, and gardens. God's word to people in a hard season starts with how to live in it, not how to escape it." },
+        { h: "\u201cBuild houses... plant gardens... seek the peace of the city\u201d", b: "Every instruction assumes duration. You don't plant a garden for a short stay. And the hardest line is the last one: seek the peace and prosperity of Babylon \u2014 the city that conquered them \u2014 and pray for it, \u2018because if it prospers, you too will prosper.\u2019 That's more than resignation; it's an assignment to bless the place holding you. Waiting rooms, in Scripture, are still places you're responsible for." },
+        { h: "\u201cSeventy years\u201d", b: "The number is the context everyone skips. Most who read this letter would die in Babylon; the promise was for their children. Notice what that does to verse 11: it stops being a promise of quick relief and becomes a claim about God's timeline running longer than a lifetime and still being good. Any honest reading has to hold both \u2014 the promise is real, and it was not fast." },
+        { h: "\u201cPlans to give you hope and a future\u201d", b: "Read in place, the famous verse is sturdier than the coffee-mug version. God knows the plans; they're for welfare and not harm; they end in hope. And what follows is the part usually cut: \u2018you will call on me and come and pray to me, and I will listen. You will seek me and find me when you seek me with all your heart.\u2019 The promised future isn't primarily improved circumstances \u2014 it's being found by God, from the middle of exile." }
+      ],
+      takeaway: "Jeremiah 29:11 was written to people facing seventy years of exile and told to build houses in the meantime. Read in context it promises something better than fast relief: good purposes that outlast a long middle, and a God who is found by those who seek Him from inside it.",
+      reflection: "What's the \u2018Babylon\u2019 you're currently in \u2014 a season you didn't choose and can't leave yet? What would it look like to plant a garden there instead of holding your breath?" },
+    "Lamentations": { focus: "Lamentations 3:19\u201333", title: "New every morning",
+      sections: [
+        { h: "\u201cI remember my affliction and my wandering\u201d", b: "The passage doesn't begin with hope; it begins with an inventory of misery, and verse 20 says plainly, \u2018my soul is downcast within me.\u2019 The verses just before describe a man who says his splendor is gone and his hope has perished. That's the ground the famous lines grow from \u2014 not a good day, not a resolved situation, but the bottom." },
+        { h: "\u201cYet this I call to mind and therefore I have hope\u201d", b: "Here is the mechanism, stated in the open. He doesn't wait to feel hopeful; he deliberately calls something to mind, and hope follows the recall. That order is worth copying exactly, because feelings rarely lead in a season like this. What we rehearse determines what we can hope; he chooses his material on purpose." },
+        { h: "\u201cHis compassions never fail. They are new every morning\u201d", b: "The promise is sized for exactly this kind of season: not a single dramatic rescue but a fresh supply daily. Yesterday's failures don't carry over into today's allotment, and tomorrow's mercy hasn't been spent in advance. \u2018Great is your faithfulness\u2019 \u2014 the line that became a hymn \u2014 is said here about God's reliability, not the speaker's, which is the only reason it's sayable at all." },
+        { h: "\u201cThe LORD is my portion; therefore I will wait\u201d", b: "\u2018Portion\u2019 is inheritance language \u2014 what you're allotted, what remains yours when other things are gone. The city is rubble; the temple is ash; and he claims God Himself as the remaining inheritance. Then the section closes with an astonishing statement in the circumstances: God \u2018does not willingly bring affliction or grief.\u2019 Even here, he refuses to conclude that God enjoys this." }
+      ],
+      takeaway: "The most quoted lines in Lamentations were written by a man surrounded by rubble who said two verses earlier that his hope had perished. Hope arrives by deliberate recall, not by feeling \u2014 and the mercy promised is a daily supply, renewed each morning, sized for long seasons.",
+      reflection: "What true thing about God could you deliberately \u2018call to mind\u2019 tomorrow morning, before the day's feelings arrive? Consider writing it somewhere you'll see it when you wake." },
+    "Daniel": { focus: "Daniel 6:1\u201323", title: "Windows toward Jerusalem",
+      sections: [
+        { h: "A record with nothing in it", b: "Daniel is in his eighties, about to be set over the whole kingdom, and his rivals launch an investigation. The result is one of Scripture's quiet honors: \u2018they could find no corruption in him, because he was trustworthy and neither corrupt nor negligent.\u2019 They conclude the only line of attack is his God. Decades in a pagan government, with real power and money moving through his hands, and the file is clean." },
+        { h: "The trap, dressed as an honor", b: "The scheme flatters the king into signing a thirty-day ban on praying to anyone but him \u2014 irrevocable under Persian law. Notice how it works: nobody argues theology, they simply make faithfulness illegal for a month. Thirty days is short enough to seem survivable, which is the temptation's real edge. Surely one month of discretion wouldn't matter." },
+        { h: "\u201cJust as he had done before\u201d", b: "Daniel goes home, opens the windows toward Jerusalem, and kneels three times a day \u2014 and the text's most important phrase is that he did it exactly as he always had. He doesn't escalate into protest or shrink into secrecy. The crisis didn't produce a decision; it revealed a habit built over decades. What you'll do under pressure is mostly settled by what you were already doing without it." },
+        { h: "The king who couldn't sleep", b: "The story's most human detail is Darius \u2014 trapped by his own decree, fasting all night, refusing entertainment, and running to the den at first light calling out hopefully. The man with absolute power is helpless, and the man in the pit is safe. Daniel's answer in the morning credits God and adds a striking line: \u2018I was found innocent in his sight,\u2019 and also, before the king, \u2018I have never done any wrong.\u2019 The lions' mouths were shut; the record was already clean." }
+      ],
+      takeaway: "Daniel's rivals could find nothing against him except his faithfulness, and when prayer was outlawed he prayed exactly as he always had. The chapter's argument is that character under pressure is mostly a habit already formed \u2014 the windows were open long before the decree.",
+      reflection: "If someone investigated your last ten years looking for something to use, what would they find \u2014 and what daily habit of yours would still be running if it suddenly became costly?" }
   };
 
   function todayStr(){ return new Date().toISOString().slice(0,10); }
