@@ -7806,7 +7806,7 @@
 
     function todaysWordleState(){
       const today = todayStr();
-      const stored = state.dailyWord;
+      const stored = state && state.dailyWord;
       if (stored && stored.date === today) return stored;
       return { date: today, guesses: [], done: false, won: false };
     }
@@ -7820,7 +7820,7 @@
     }
 
     React.useEffect(() => {
-      if (tab !== 'daily') return;
+      if (tab !== 'daily' || !state) return;
       function handler(ev){
         const w = todaysWordleState();
         if (w.done) return;
@@ -7830,7 +7830,7 @@
       }
       window.addEventListener('keydown', handler);
       return () => window.removeEventListener('keydown', handler);
-    }, [tab, state.dailyWord, wordleInput]);
+    }, [tab, state && state.dailyWord, wordleInput]);
 
     function submitWordleGuess(){
       const guess = wordleInput.trim().toUpperCase();
