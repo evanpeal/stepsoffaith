@@ -378,6 +378,174 @@
         { type:'sparkle', style:{ top:'6%', height:'34%' } },
         { type:'water', style:{ background:'linear-gradient(180deg, rgba(40,120,150,0) 0%, rgba(40,120,150,0.4) 100%)' } }
       ]
+    },
+    "Acts": {
+      gradient: 'linear-gradient(180deg, #1c0e14 0%, #3a1a1c 14%, #5e2c20 30%, #8a4826 46%, #b2702e 60%, #d99a3e 74%, #e8c25e 88%, #b8903a 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'18%', width:260, height:260, marginLeft:-130, marginTop:-130, background:'radial-gradient(circle, rgba(255,214,120,0.85) 0%, rgba(236,150,50,0.34) 46%, rgba(236,150,50,0) 74%)' } },
+        { type:'sparkle', style:{ top:'6%', height:'30%' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#8a5a2c', opacity:0.5, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#5e3c1e', opacity:0.7, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Romans": {
+      gradient: 'linear-gradient(180deg, #10121e 0%, #1e2236 14%, #333a56 30%, #4e5478 46%, #6e6e94 60%, #9a8ea6 74%, #d0b898 88%, #a8843e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'36%' } },
+        { type:'glow', style:{ left:'50%', top:'24%', width:270, height:270, marginLeft:-135, marginTop:-135, background:'radial-gradient(circle, rgba(226,232,255,0.7) 0%, rgba(150,160,220,0.28) 46%, rgba(150,160,220,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'0%', height:'16%', background:'#4e4636', opacity:0.7, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "1 Corinthians": {
+      gradient: 'linear-gradient(180deg, #0e1a24 0%, #163040 14%, #1f4c5e 30%, #2e7080 46%, #4a96a0 60%, #7cb8ba 74%, #b8d4c2 88%, #d9cc9a 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'20%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(214,244,250,0.75) 0%, rgba(120,190,210,0.3) 46%, rgba(120,190,210,0) 74%)' } },
+        { type:'water', style:{ background:'linear-gradient(180deg, rgba(40,110,130,0) 0%, rgba(40,110,130,0.45) 100%)' } }
+      ]
+    },
+    "2 Corinthians": {
+      gradient: 'linear-gradient(180deg, #141020 0%, #262038 14%, #3e3450 30%, #5a4a66 46%, #7e6a7c 60%, #a89296 74%, #d9bfa0 88%, #b8904e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', top:'40%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(255,228,190,0.6) 0%, rgba(220,170,120,0.26) 48%, rgba(220,170,120,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'0%', height:'15%', background:'#5a4636', opacity:0.7, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Galatians": {
+      gradient: 'linear-gradient(180deg, #1e1410 0%, #3c2418 14%, #603a1e 30%, #8a5626 46%, #b07a34 60%, #d2a04e 76%, #a87c34 90%, #6e5020 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'22%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(255,226,160,0.8) 0%, rgba(230,170,80,0.32) 46%, rgba(230,170,80,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'0%', height:'16%', background:'#6e4c22', opacity:0.7, clipPath:DUNE_FRONT } }
+      ]
+    },
+    "Ephesians": {
+      gradient: 'linear-gradient(180deg, #0e1024 0%, #1a1c46 14%, #2c2c6e 30%, #46448e 46%, #6a62aa 60%, #9a8cc4 74%, #d4c0d8 88%, #e0c890 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'38%' } },
+        { type:'glow', style:{ left:'50%', top:'20%', width:280, height:280, marginLeft:-140, marginTop:-140, background:'radial-gradient(circle, rgba(228,220,255,0.8) 0%, rgba(160,140,230,0.3) 46%, rgba(160,140,230,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'30%' } }
+      ]
+    },
+    "Philippians": {
+      gradient: 'linear-gradient(180deg, #14161c 0%, #262c34 14%, #3e4a4c 30%, #5c6e60 46%, #82947a 60%, #b0be9c 74%, #e0d8a8 88%, #c9a860 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'22%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(244,250,214,0.75) 0%, rgba(180,200,130,0.3) 46%, rgba(180,200,130,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'26%' } },
+        { type:'ridge', style:{ bottom:'0%', height:'15%', background:'#5c6448', opacity:0.65, clipPath:DUNE_FRONT } }
+      ]
+    },
+    "Colossians": {
+      gradient: 'linear-gradient(180deg, #0c1220 0%, #16223c 14%, #24385e 30%, #385480 46%, #567aa0 60%, #86a8c0 74%, #c4d4d0 88%, #dcc898 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'18%', width:270, height:270, marginLeft:-135, marginTop:-135, background:'radial-gradient(circle, rgba(220,238,255,0.8) 0%, rgba(140,180,230,0.3) 46%, rgba(140,180,230,0) 74%)' } },
+        { type:'sparkle', style:{ top:'6%', height:'28%' } }
+      ]
+    },
+    "1 Thessalonians": {
+      gradient: 'linear-gradient(180deg, #101828 0%, #1c2c48 16%, #2e4668 32%, #46648a 48%, #6c88a6 62%, #9cb0c0 78%, #d8ceac 92%, #b8964e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', top:'20%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(220,236,255,0.72) 0%, rgba(140,180,225,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "2 Thessalonians": {
+      gradient: 'linear-gradient(180deg, #0e1220 0%, #1a2138 16%, #2c3654 32%, #444e70 48%, #666c8a 62%, #8e8a9e 78%, #c4ac8e 92%, #a8783e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'36%' } },
+        { type:'glow', style:{ left:'50%', top:'30%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(226,220,255,0.65) 0%, rgba(150,150,215,0.26) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "1 Timothy": {
+      gradient: 'linear-gradient(180deg, #16121c 0%, #2a2230 16%, #443648 32%, #624e60 48%, #86707a 62%, #ac9490 78%, #dcc09a 92%, #b8924e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'28%' } },
+        { type:'glow', style:{ left:'50%', top:'26%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(248,232,220,0.68) 0%, rgba(200,160,150,0.26) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "2 Timothy": {
+      gradient: 'linear-gradient(180deg, #14101a 0%, #261e2c 16%, #3e3242 32%, #5a4a56 48%, #7c6a68 62%, #a68e7c 78%, #d9b686 92%, #b88a3e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', top:'32%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(255,226,180,0.7) 0%, rgba(215,165,100,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "Titus": {
+      gradient: 'linear-gradient(180deg, #101a1c 0%, #1c3030 16%, #2e4a44 32%, #46685a 48%, #688a72 62%, #94ac8e 78%, #cbc79a 92%, #c09a52 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'22%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(228,246,228,0.72) 0%, rgba(140,190,150,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "Philemon": {
+      gradient: 'linear-gradient(180deg, #1a141c 0%, #302430 16%, #4c3a44 32%, #6c545a 48%, #907472 62%, #b89a88 78%, #e0c49c 92%, #bc9450 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'24%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(255,232,214,0.7) 0%, rgba(210,165,140,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "Hebrews": {
+      gradient: 'linear-gradient(180deg, #0c0e1c 0%, #181c36 14%, #2a3058 30%, #40497e 46%, #6a6e9e 60%, #a099b8 74%, #dcc79e 88%, #b8903e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'20%', width:270, height:270, marginLeft:-135, marginTop:-135, background:'radial-gradient(circle, rgba(230,232,255,0.8) 0%, rgba(155,160,225,0.3) 48%, rgba(0,0,0,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'28%' } }
+      ]
+    },
+    "James": {
+      gradient: 'linear-gradient(180deg, #141a12 0%, #253020 16%, #3c4c30 32%, #586c42 48%, #7c8e58 62%, #a4b077 78%, #d0cc94 92%, #c09a4e 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'22%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(236,248,208,0.72) 0%, rgba(160,190,110,0.28) 48%, rgba(0,0,0,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#4e5630', opacity:0.7, clipPath:DUNE_FRONT } }
+      ]
+    },
+    "1 Peter": {
+      gradient: 'linear-gradient(180deg, #0e1626 0%, #182842 16%, #26405e 32%, #3a5e7c 48%, #5c869a 62%, #8eb0b4 78%, #ccd6ac 92%, #c09a52 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'26%' } },
+        { type:'glow', style:{ left:'50%', top:'24%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(214,238,250,0.75) 0%, rgba(120,180,210,0.3) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "2 Peter": {
+      gradient: 'linear-gradient(180deg, #0c1020 0%, #161e36 16%, #263054 32%, #3c486e 48%, #5e6684 62%, #8a8896 78%, #c4ae94 92%, #b8863e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'38%' } },
+        { type:'glow', style:{ left:'50%', top:'30%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(255,236,190,0.7) 0%, rgba(220,175,95,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "1 John": {
+      gradient: 'linear-gradient(180deg, #0a1220 0%, #142238 16%, #223a54 32%, #365a72 48%, #58868e 62%, #8cb4a6 78%, #cadcae 92%, #c9a457 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'28%' } },
+        { type:'glow', style:{ left:'50%', top:'20%', width:260, height:260, marginLeft:-130, marginTop:-130, background:'radial-gradient(circle, rgba(232,250,250,0.82) 0%, rgba(130,195,200,0.32) 48%, rgba(0,0,0,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'26%' } }
+      ]
+    },
+    "2 John": {
+      gradient: 'linear-gradient(180deg, #101a24 0%, #1c2e3c 16%, #2c4654 32%, #44626c 48%, #648a88 62%, #94b2a4 80%, #c8cfa4 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'26%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(226,244,240,0.7) 0%, rgba(130,180,180,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "3 John": {
+      gradient: 'linear-gradient(180deg, #12181e 0%, #1e2c34 16%, #30464c 32%, #4a6664 48%, #6c8a80 62%, #9ab29c 80%, #ccc9a0 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'26%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(230,246,238,0.7) 0%, rgba(135,180,168,0.28) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "Jude": {
+      gradient: 'linear-gradient(180deg, #100c18 0%, #1e1828 16%, #342a40 32%, #4e3c56 48%, #6e566a 62%, #967a7a 78%, #c4a082 92%, #a8763a 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'40%' } },
+        { type:'glow', style:{ left:'50%', top:'30%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(240,224,255,0.65) 0%, rgba(170,145,205,0.26) 48%, rgba(0,0,0,0) 74%)' } }
+      ]
+    },
+    "Revelation": {
+      gradient: 'linear-gradient(180deg, #0a0c1e 0%, #161a3e 12%, #2a2666 26%, #46368e 40%, #6e4a9e 52%, #a05e8e 64%, #d08a6e 76%, #f0c274 88%, #ffe8a8 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', top:'16%', width:300, height:300, marginLeft:-150, marginTop:-150, background:'radial-gradient(circle, rgba(255,248,220,0.95) 0%, rgba(255,214,130,0.4) 48%, rgba(0,0,0,0) 74%)' } },
+        { type:'sparkle', style:{ top:'6%', height:'34%' } },
+        { type:'glow', style:{ left:'50%', bottom:'0%', width:260, height:200, marginLeft:-130, marginBottom:-100, background:'radial-gradient(circle, rgba(255,236,170,0.85) 0%, rgba(240,190,90,0.34) 50%, rgba(240,190,90,0) 76%)' } }
+      ]
     }
   };
 
@@ -3592,6 +3760,856 @@
         { q:"What did Jesus give Peter after the restoration?", opts:["A rebuke", "Work \u2014 \u2018feed my sheep\u2019", "A demotion"], correct:1, explain:"Forgiveness came with a commission; the failure didn't end the calling." }
       ],
       deepDive: "John ends with two people being personally repaired. Thomas gets his evidence \u2014 Jesus came back a week later specifically for one doubter \u2014 and his response becomes the highest confession in the Gospel: my Lord and my God. Then Peter. Three denials by a charcoal fire; three questions by a charcoal fire, with breakfast already cooking. Jesus doesn't rehearse the failure or extract an apology; He asks about love, and hands back the job. That's how restoration works in this Gospel. And John's stated purpose closes it: these are written that you may believe, and that by believing you may have life in his name." }
+,
+    { id:292, book:"Acts", title:"You will be my witnesses", side:"c",
+      passage: "Luke's second volume opens with Jesus appearing over forty days, speaking about the kingdom. The disciples asked the question still on their minds: \u201cLord, are you at this time going to restore the kingdom to Israel?\u201d He redirected them entirely: \u201cIt is not for you to know the times or dates the Father has set by his own authority. But you will receive power when the Holy Spirit comes on you; and you will be my witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.\u201d Then He was taken up, and a cloud hid Him from their sight.",
+      keyVerses: [
+        { ref: "Acts 1:8", text: "But you will receive power when the Holy Spirit comes on you; and you will be my witnesses\u2026 to the ends of the earth." }
+      ],
+      questions: [
+        { q:"What was the disciples' final question?", opts:["How to pray", "Whether the kingdom would be restored to Israel now", "Who would lead them"], correct:1, explain:"Still hoping for a national political restoration \u2014 and Jesus doesn't answer it directly." },
+        { q:"What did Jesus give instead of a timetable?", opts:["A warning", "Power, and a mission \u2014 witnesses from Jerusalem to the ends of the earth", "A new law"], correct:1, explain:"Curiosity about dates redirected into commission." },
+        { q:"How does Acts 1:8 map the book?", opts:["It doesn't", "Jerusalem, Judea and Samaria, ends of the earth \u2014 the exact outline Acts follows", "It's only about Jerusalem"], correct:1, explain:"The verse is a table of contents for the twenty-eight chapters that follow." }
+      ],
+      deepDive: "Acts is the story of what happened next, and its opening sets the terms. The disciples want to know when God will fix their nation; Jesus tells them the schedule isn't their business and hands them a job instead. That exchange has aged well \u2014 speculation about timelines is still more popular than witness. Note the order in verse 8: power first, then witnesses. They aren't sent out to try harder, but to receive something before going anywhere. And the geography is deliberate: Samaria, the place they despised, sits in the middle of the map, which means the mission was always going to cost them their prejudices." },
+    { id:293, book:"Acts", title:"Pentecost", side:"l",
+      passage: "On the day of Pentecost they were all together when a sound like a violent wind filled the house, and what seemed like tongues of fire separated and came to rest on each of them. They began speaking in other languages, and God-fearing Jews from every nation heard their own tongue. Some sneered that they were drunk. Peter stood up and preached from Joel \u2014 \u201cI will pour out my Spirit on all people\u201d \u2014 and from the Psalms, ending: \u201cGod has made this Jesus, whom you crucified, both Lord and Messiah.\u201d Cut to the heart, they asked what to do. \u201cRepent and be baptized.\u201d About three thousand were added that day.",
+      keyVerses: [
+        { ref: "Acts 2:38", text: "Repent and be baptized, every one of you, in the name of Jesus Christ for the forgiveness of your sins." }
+      ],
+      questions: [
+        { q:"What did the miracle of tongues accomplish?", opts:["Confusion", "Everyone heard the wonders of God in their own language", "Silence"], correct:1, explain:"Babel's scattering of languages reversed \u2014 the gospel arriving in every native tongue." },
+        { q:"What did Peter preach from?", opts:["His own experience only", "Joel and the Psalms \u2014 the Old Testament, applied to Jesus", "Greek philosophy"], correct:1, explain:"The church's first sermon is an exposition of Scripture the crowd already had." },
+        { q:"How did the crowd respond?", opts:["They dispersed", "Cut to the heart, asking \u2018what shall we do?\u2019 \u2014 three thousand baptized", "They arrested Peter"], correct:1, explain:"The same crowd that had been in the city weeks earlier at the crucifixion." }
+      ],
+      deepDive: "Pentecost is the reversal of Babel. At Babel, human pride produced scattered languages and division; here, the Spirit produces one message heard in every language at once. Notice who preaches: Peter, who seven weeks earlier had denied Jesus to a servant girl, now standing before thousands and naming their guilt plainly \u2014 \u2018this Jesus, whom you crucified.\u2019 Restoration by a charcoal fire produced this. And notice the response to conviction: not despair but a question, \u2018what shall we do?\u2019 The answer Peter gives is still the answer: repent, be baptized, receive the gift of the Holy Spirit \u2014 \u2018for you and your children and for all who are far off.\u2019" },
+    { id:294, book:"Acts", title:"Everything in common", side:"r",
+      passage: "Luke describes the first church: \u201cThey devoted themselves to the apostles' teaching and to fellowship, to the breaking of bread and to prayer.\u201d Everyone was filled with awe at the wonders being done. \u201cAll the believers were together and had everything in common. They sold property and possessions to give to anyone who had need.\u201d They met daily in the temple courts and in homes, eating together \u201cwith glad and sincere hearts, praising God and enjoying the favor of all the people. And the Lord added to their number daily those who were being saved.\u201d",
+      keyVerses: [
+        { ref: "Acts 2:42", text: "They devoted themselves to the apostles\u2019 teaching and to fellowship, to the breaking of bread and to prayer." }
+      ],
+      questions: [
+        { q:"What four things were they devoted to?", opts:["Preaching, fasting, travel, giving", "The apostles' teaching, fellowship, breaking of bread, and prayer", "Building, singing, study, service"], correct:1, explain:"The four marks that have defined healthy church life ever since." },
+        { q:"How did they handle possessions?", opts:["A required communal system", "Voluntary selling to meet needs as they arose", "They kept everything"], correct:1, explain:"Later chapters make clear it was voluntary \u2014 Peter tells Ananias the property was his to keep." },
+        { q:"Where did they meet?", opts:["Only in a temple", "Both the temple courts and house to house", "Only in secret"], correct:1, explain:"Large gathering and small home life together \u2014 both, daily." }
+      ],
+      deepDive: "This short passage has been the church's mirror for two thousand years. Four devotions \u2014 teaching, fellowship, breaking bread, prayer \u2014 and then the effects: awe, generosity that redistributed real property, daily shared meals, gladness, and growth. Notice that the sharing wasn't a program imposed from above but a response flowing out of the four devotions; when Peter confronts Ananias later, he says plainly the land was his to do with as he wished. The order matters. Communities that try to manufacture the generosity without the devotion usually get neither. And the last line credits the growth where Luke always credits it: the Lord added to their number." },
+    { id:295, book:"Acts", title:"Stephen", side:"c",
+      passage: "Stephen, \u201ca man full of God's grace and power,\u201d was seized on false charges. Given a chance to defend himself, he told Israel's whole story and ended by naming his accusers' resistance to the Spirit. Furious, they gnashed their teeth. But Stephen, \u201cfull of the Holy Spirit, looked up to heaven and saw the glory of God, and Jesus standing at the right hand of God.\u201d They dragged him out and stoned him. He prayed, \u201cLord Jesus, receive my spirit,\u201d and then, on his knees: \u201cLord, do not hold this sin against them.\u201d And \u201cSaul approved of their killing him.\u201d",
+      keyVerses: [
+        { ref: "Acts 7:60", text: "Lord, do not hold this sin against them." }
+      ],
+      questions: [
+        { q:"What did Stephen see?", opts:["An angel", "Jesus STANDING at the right hand of God", "Nothing"], correct:1, explain:"Elsewhere Jesus is described as seated; here He stands \u2014 as if rising for His witness." },
+        { q:"What were his last words?", opts:["A curse", "Forgiveness for his killers \u2014 echoing Jesus on the cross", "A defense"], correct:1, explain:"The first Christian martyr died praying almost exactly what Jesus prayed." },
+        { q:"Who is introduced at the stoning?", opts:["Peter", "Saul \u2014 who approved of it and would become Paul", "Barnabas"], correct:1, explain:"Luke plants him here on purpose; the man guarding the coats becomes the apostle to the Gentiles." }
+      ],
+      deepDive: "Stephen's death is a hinge. His sermon is the longest in Acts, and his final vision \u2014 Jesus standing rather than seated \u2014 has struck readers for centuries as the Lord rising to receive him. His last prayer forgives the men killing him, and one of those approving is a young Pharisee named Saul, standing over the coats. It's impossible not to wonder how much of that scene was still in Paul's mind on the Damascus road. Luke's larger point comes next: the persecution that followed scattered the believers, and everywhere they scattered they preached. The church didn't grow despite the violence; it spread because of it." },
+    { id:296, book:"Acts", title:"The Damascus road", side:"l",
+      passage: "Saul, \u201cbreathing out murderous threats,\u201d got letters authorizing arrests in Damascus. On the road a light from heaven flashed. He fell and heard: \u201cSaul, Saul, why do you persecute me?\u201d \u201cWho are you, Lord?\u201d \u201cI am Jesus, whom you are persecuting.\u201d Blinded, he was led into the city. Meanwhile the Lord told a disciple named Ananias to go and lay hands on him. Ananias objected \u2014 he knew Saul's reputation \u2014 and was told: \u201cGo! This man is my chosen instrument to proclaim my name to the Gentiles.\u201d Ananias went, called him \u201cBrother Saul,\u201d and something like scales fell from his eyes.",
+      keyVerses: [
+        { ref: "Acts 9:4\u20135", text: "\u201cSaul, Saul, why do you persecute me?\u201d\u2026 \u201cI am Jesus, whom you are persecuting.\u201d" }
+      ],
+      questions: [
+        { q:"What does \u2018why do you persecute ME\u2019 reveal?", opts:["A misunderstanding", "Jesus identifies personally with His people \u2014 harming them is harming Him", "Saul had met Jesus before"], correct:1, explain:"The same identification as \u2018whatever you did for one of the least of these.\u2019" },
+        { q:"Why did Ananias hesitate?", opts:["Distance", "He knew Saul's record of arresting and killing believers", "He doubted the vision"], correct:1, explain:"An entirely reasonable fear \u2014 and he obeyed anyway." },
+        { q:"What did Ananias call him?", opts:["Persecutor", "\u2018Brother Saul\u2019", "Sir"], correct:1, explain:"The first word the church's chief enemy heard from a Christian was \u2018brother.\u2019" }
+      ],
+      deepDive: "The Damascus road is the most famous conversion in history, and two details deserve attention. First, Jesus' question: not \u2018why do you persecute my followers\u2019 but \u2018why do you persecute me.\u2019 He counts what happens to His people as happening to Him. Second, Ananias. The story could have worked without him \u2014 God had already knocked Saul flat \u2014 but the Lord sent an ordinary, frightened disciple to lay hands on the man who had come to arrest him and call him brother. If you've ever thought someone is past reach, this chapter has your name in it twice: once as Saul, and once as Ananias." },
+    { id:297, book:"Acts", title:"Do not call anything impure", side:"r",
+      passage: "Cornelius, a Roman centurion \u2014 devout, generous, praying \u2014 was told in a vision to send for Peter. Meanwhile Peter, hungry on a rooftop, saw a sheet lowered full of animals the law called unclean, and heard: \u201cGet up, Peter. Kill and eat.\u201d He refused three times. \u201cDo not call anything impure that God has made clean.\u201d The men arrived; Peter went with them into a Gentile home \u2014 something a devout Jew did not do \u2014 and said, \u201cI now realize how true it is that God does not show favoritism.\u201d As he spoke, the Holy Spirit came on all who heard, and they were baptized.",
+      keyVerses: [
+        { ref: "Acts 10:34\u201335", text: "I now realize how true it is that God does not show favoritism but accepts from every nation the one who fears him." }
+      ],
+      questions: [
+        { q:"What was the vision really about?", opts:["Diet only", "People \u2014 Peter understood it when the Gentile visitors arrived", "Farming"], correct:1, explain:"Peter says so himself: God showed him not to call any PERSON impure." },
+        { q:"Why was entering the house significant?", opts:["It was far away", "A devout Jew didn't enter a Gentile home \u2014 Peter crossed a hard boundary", "It was dangerous"], correct:1, explain:"The barrier being dismantled was social and religious, not culinary." },
+        { q:"Who received the Holy Spirit?", opts:["Only Peter", "The Gentiles listening \u2014 before baptism, settling the question", "Nobody"], correct:1, explain:"God acted first, which ended the argument about whether they could be included." }
+      ],
+      deepDive: "This chapter is the church's first great crisis of inclusion, and God had to work on both ends of it \u2014 a vision for the Gentile and a vision for the apostle, because Peter's prejudice was the harder problem. Notice the repetition: the sheet came down three times, matching the three denials and the three restorations, as if God knew this lesson needed to land that hard. And notice who moves first: the Holy Spirit falls on the Gentiles mid-sermon, before any ritual, which is God settling an argument the church was about to have. Peter's summary is one of the most important sentences in Acts: God does not show favoritism." },
+    { id:298, book:"Acts", title:"The council at Jerusalem", side:"c",
+      passage: "As Gentiles poured in, some insisted they must be circumcised and keep the law of Moses to be saved. The apostles and elders met to settle it. After much debate, Peter stood: God gave them the Holy Spirit just as He did to us, \u201che did not discriminate between us and them, for he purified their hearts by faith. Now then, why do you try to test God by putting on the necks of Gentiles a yoke that neither we nor our ancestors have been able to bear? No! We believe it is through the grace of our Lord Jesus that we are saved, just as they are.\u201d James agreed, and the council wrote to the Gentile churches accordingly.",
+      keyVerses: [
+        { ref: "Acts 15:11", text: "We believe it is through the grace of our Lord Jesus that we are saved, just as they are." }
+      ],
+      questions: [
+        { q:"What was the dispute?", opts:["Church leadership", "Whether Gentiles had to keep the law of Moses to be saved", "Meeting times"], correct:1, explain:"The most important theological question the early church faced." },
+        { q:"What was Peter's argument?", opts:["Tradition", "God gave Gentiles the same Spirit and purified their hearts by faith", "Practicality"], correct:1, explain:"He argued from what God had already visibly done, not from preference." },
+        { q:"How was the decision reached?", opts:["By decree", "Through debate, testimony, and Scripture \u2014 then a written decision", "By vote of the crowd"], correct:1, explain:"Acts records a genuine deliberation, which became the pattern for church councils." }
+      ],
+      deepDive: "Acts 15 decided what Christianity would be. Had the council ruled the other way, the faith would have remained a sect within Judaism requiring full observance of the law. Instead Peter names the yoke honestly \u2014 neither we nor our ancestors could carry it \u2014 and lands on grace: we are saved the same way they are. Notice the direction of that sentence. He doesn't say Gentiles get in the way Jews do; he says Jews are saved the way Gentiles are, by grace. The council also modeled something durable: real disagreement, aired publicly, tested against Scripture and God's evident work, resolved in writing, with care for consciences on both sides." },
+    { id:299, book:"Acts", title:"Singing at midnight", side:"l",
+      passage: "In Philippi, Paul cast a spirit out of a slave girl whose owners profited from her fortune-telling. Losing their income, they dragged Paul and Silas before the magistrates, who had them stripped, severely flogged, and locked in the inner cell with their feet in stocks. \u201cAbout midnight Paul and Silas were praying and singing hymns to God, and the other prisoners were listening to them.\u201d An earthquake opened every door. The jailer drew his sword to kill himself; Paul shouted, \u201cDon't harm yourself! We are all here!\u201d Trembling, he asked, \u201cWhat must I do to be saved?\u201d That night he washed their wounds, and his whole household was baptized.",
+      keyVerses: [
+        { ref: "Acts 16:25", text: "About midnight Paul and Silas were praying and singing hymns to God, and the other prisoners were listening to them." }
+      ],
+      questions: [
+        { q:"Why were they arrested?", opts:["Preaching", "They cost businessmen their income by freeing the slave girl", "Theft"], correct:1, explain:"The charge was religious; the motive was money \u2014 a pattern Acts notices more than once." },
+        { q:"What were they doing at midnight?", opts:["Plotting escape", "Praying and singing \u2014 with the other prisoners listening", "Sleeping"], correct:1, explain:"Backs flayed, feet in stocks, and singing. Luke notes the audience deliberately." },
+        { q:"Why didn't they escape?", opts:["The doors stayed shut", "They stayed \u2014 which saved the jailer's life and opened his question", "They were chained"], correct:1, explain:"The chains fell off and they remained; that restraint is what led to the conversion." }
+      ],
+      deepDive: "The detail Luke can't resist is the audience: the other prisoners were listening. Two men beaten bloody and immobilized in stocks, singing at midnight, in a dark room full of people who had no reason to hope. That's the sermon before any sermon is preached. And the earthquake is not the climax \u2014 the choice not to run is. Every door was open and every chain loose, and they stayed, because a Roman jailer who lost his prisoners was a dead man. Their staying is why he asked the question. Freedom used for someone else's rescue is the shape of the whole book." },
+    { id:300, book:"Acts", title:"An unknown god in Athens", side:"r",
+      passage: "In Athens, Paul was \u201cgreatly distressed to see that the city was full of idols.\u201d Invited to the Areopagus, he began not with condemnation but with a compliment and an observation: he had found an altar inscribed TO AN UNKNOWN GOD. \u201cWhat you worship as something unknown I am going to proclaim to you.\u201d He described the God who made the world and doesn't live in temples or need anything, who determined the times and places people would live \u201cso that they would seek him and perhaps reach out for him and find him, though he is not far from any one of us.\u201d He quoted their own poets. Some sneered at the resurrection; some believed.",
+      keyVerses: [
+        { ref: "Acts 17:27", text: "God did this so that they would seek him and perhaps reach out for him and find him, though he is not far from any one of us." }
+      ],
+      questions: [
+        { q:"How did Paul open?", opts:["By condemning their idolatry", "By engaging their own altar and quoting their poets", "By quoting Moses"], correct:1, explain:"He started inside their frame of reference \u2014 while heading somewhere they hadn't been." },
+        { q:"What did he say about God and temples?", opts:["God needs them", "God doesn't live in temples built by hands or need anything from us", "Temples are essential"], correct:1, explain:"He dismantled the transactional religion the city ran on." },
+        { q:"What split the audience?", opts:["The quotation of poets", "The resurrection of the dead", "The length of the speech"], correct:1, explain:"Greeks could accept immortal souls; a raised body was the sticking point." }
+      ],
+      deepDive: "Athens is the model for talking about faith with people who don't share your assumptions. Paul is genuinely disturbed by the idolatry, yet he doesn't open with attack. He walks the city, notices something, and starts there \u2014 quoting their poets rather than Scripture they'd never read. But he doesn't stay there: he lands on repentance, judgment, and a man raised from the dead, and the crowd splits over it. Note both halves. Contextualizing without compromise means beginning where people are and still saying the thing that will cost you the room. And notice verse 27's astonishing claim: history's geography exists so people would reach out and find Him." },
+    { id:301, book:"Acts", title:"To Rome in chains", side:"c",
+      passage: "Arrested in Jerusalem, Paul spent two years in custody in Caesarea, testified before governors and a king, and appealed to Caesar. The voyage was a disaster \u2014 a fourteen-day storm, and shipwreck on Malta, though all 276 aboard survived exactly as an angel had told Paul. Bitten by a viper and unharmed, he healed the island's sick. Finally Rome: \u201cFor two whole years Paul stayed there in his own rented house and welcomed all who came to see him. He proclaimed the kingdom of God and taught about the Lord Jesus Christ \u2014 with all boldness and without hindrance.\u201d Luke ends the book there, mid-story.",
+      keyVerses: [
+        { ref: "Acts 28:31", text: "He proclaimed the kingdom of God and taught about the Lord Jesus Christ \u2014 with all boldness and without hindrance." }
+      ],
+      questions: [
+        { q:"How did Paul finally reach Rome?", opts:["As a free missionary", "As a prisoner, after appealing to Caesar", "He never arrived"], correct:1, explain:"The gospel reached the empire's capital carried by a man in chains." },
+        { q:"What's notable about the book's ending?", opts:["It resolves everything", "It stops mid-story \u2014 no verdict, no death, just preaching continuing", "It ends with Paul's execution"], correct:1, explain:"Luke deliberately leaves the account open-ended." },
+        { q:"What is the last word of Acts in Greek?", opts:["\u2018Amen\u2019", "\u2018Unhindered\u2019 \u2014 the gospel advancing without obstruction", "\u2018Finished\u2019"], correct:1, explain:"A remarkable final note from a man under house arrest awaiting trial." }
+      ],
+      deepDive: "Acts ends without an ending, and that's the point. There's no verdict, no martyrdom scene, no neat conclusion \u2014 just Paul under guard in a rented house, welcoming everyone who came, preaching without hindrance. The Greek word that closes the book means unstopped, unobstructed. A man in chains, and the message is the thing that's free. Luke has traced it from a Jerusalem upper room to the capital of the world, exactly as Acts 1:8 mapped, and then he lays down his pen mid-sentence, because the story isn't finished. The next chapters were going to be written by the people reading it \u2014 which now includes you." },
+    { id:302, book:"Romans", title:"I am not ashamed of the gospel", side:"l",
+      passage: "Paul writes to a church he has never visited, and states his theme: \u201cI am not ashamed of the gospel, because it is the power of God that brings salvation to everyone who believes: first to the Jew, then to the Gentile. For in the gospel the righteousness of God is revealed \u2014 a righteousness that is by faith from first to last.\u201d Then the case begins: God's qualities are clearly seen in creation, so people are without excuse; they exchanged the truth for a lie and worshiped created things rather than the Creator, and God gave them over to it.",
+      keyVerses: [
+        { ref: "Romans 1:16", text: "I am not ashamed of the gospel, because it is the power of God that brings salvation to everyone who believes." }
+      ],
+      questions: [
+        { q:"What is the gospel called?", opts:["Good advice", "The POWER of God for salvation \u2014 not merely information", "A philosophy"], correct:1, explain:"Paul's word is dynamis; the gospel doesn't describe rescue, it accomplishes it." },
+        { q:"Who is it for?", opts:["Jews only", "Everyone who believes \u2014 Jew first, then Gentile", "The educated"], correct:1, explain:"The universality of the offer is stated in the letter's thesis sentence." },
+        { q:"What does creation establish, per chapter 1?", opts:["Nothing", "God's eternal power and divine nature \u2014 leaving people without excuse", "That God is distant"], correct:1, explain:"Paul argues the problem isn't lack of evidence but suppression of it." }
+      ],
+      deepDive: "Romans is the most systematic thing Paul wrote, and 1:16\u201317 is the sentence the rest unpacks: the gospel is power, for everyone who believes, revealing a righteousness that is by faith from start to finish. That last phrase is what Luther seized on. And note the strange verb in chapter 1's indictment: God \u2018gave them over\u2019 \u2014 judgment described not as a lightning bolt but as God removing His restraint and letting people have exactly what they insisted on. That's a more sobering picture than fire from heaven, and it sets up everything the letter will say about needing rescue rather than improvement." },
+    { id:303, book:"Romans", title:"All have sinned", side:"r",
+      passage: "Having indicted the pagan world, Paul turns on the religious: \u201cYou, therefore, have no excuse, you who pass judgment on someone else, for at whatever point you judge another, you are condemning yourself.\u201d He quotes the Psalms \u2014 \u201cThere is no one righteous, not even one\u201d \u2014 and concludes that the law's job is to silence every mouth. Then the turn: \u201cBut now a righteousness from God, apart from the law, has been made known\u2026 This righteousness is given through faith in Jesus Christ to all who believe. For all have sinned and fall short of the glory of God, and all are justified freely by his grace through the redemption that came by Christ Jesus.\u201d",
+      keyVerses: [
+        { ref: "Romans 3:23\u201324", text: "For all have sinned and fall short of the glory of God, and all are justified freely by his grace through the redemption that came by Christ Jesus." }
+      ],
+      questions: [
+        { q:"Who is chapter 2 aimed at?", opts:["Pagans", "Religious people who judge others while doing the same things", "Roman officials"], correct:1, explain:"Paul closes the escape hatch for anyone reading chapter 1 and nodding along." },
+        { q:"What is the law's function here?", opts:["To save", "To silence every mouth and make the whole world accountable", "To reward"], correct:1, explain:"It functions like a mirror or an X-ray \u2014 it diagnoses, it doesn't cure." },
+        { q:"What does \u2018justified freely\u2019 mean?", opts:["Declared righteous as a gift, at no cost to us", "Made slightly better", "Given a second chance to earn it"], correct:0, explain:"A legal verdict of righteous, given as a gift \u2014 though it cost Christ everything." }
+      ],
+      deepDive: "Paul builds a courtroom case across three chapters, and its purpose is to leave nobody standing. Chapter 1 convicts the obviously pagan; chapter 2 turns and convicts the person who enjoyed chapter 1; chapter 3 sums up: there is no one righteous, not even one. Only then does the \u2018but now\u2019 arrive. That structure is deliberate, because grace only lands as good news on someone who knows they're guilty. \u2018Justified\u2019 is legal language \u2014 declared righteous, not made gradually better \u2014 and \u2018freely\u2019 means at no cost to the recipient. It cost God everything, which is why the next verse mentions redemption, a word about paying to set someone free." },
+    { id:304, book:"Romans", title:"Peace with God", side:"c",
+      passage: "\u201cTherefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ.\u201d Paul traces the chain: suffering produces perseverance, perseverance character, character hope \u2014 \u201cand hope does not put us to shame, because God's love has been poured out into our hearts through the Holy Spirit.\u201d Then the heart of it: \u201cVery rarely will anyone die for a righteous person\u2026 But God demonstrates his own love for us in this: While we were still sinners, Christ died for us.\u201d Not after we improved. While.",
+      keyVerses: [
+        { ref: "Romans 5:8", text: "But God demonstrates his own love for us in this: While we were still sinners, Christ died for us." }
+      ],
+      questions: [
+        { q:"What is the first result of justification?", opts:["Better behavior", "Peace with God \u2014 the war is over", "Church membership"], correct:1, explain:"Not merely a feeling of peace but a changed status: no longer at enmity." },
+        { q:"What word in 5:8 carries the weight?", opts:["\u2018Demonstrates\u2019", "\u2018While\u2019 \u2014 Christ died while we were still sinners, not after we improved", "\u2018Love\u2019"], correct:1, explain:"The timing rules out the idea that God waited for us to become worth saving." },
+        { q:"What does suffering produce in the chain?", opts:["Nothing", "Perseverance, then character, then hope", "Immediate relief"], correct:1, explain:"Paul says we can glory in suffering because of where it leads, not because it's pleasant." }
+      ],
+      deepDive: "Romans 5 answers the question anyone asks after chapter 3: is this secure? Paul's answer runs on the word \u2018therefore.\u2019 Since you are justified \u2014 past tense, done \u2014 you have peace with God, access into grace, and hope that doesn't disappoint. Then 5:8, which is the most important word-order in the letter: while we were still sinners. Not once we cleaned up, not because God foresaw our improvement. While. Any version of Christianity in which God's love is a response to your performance dies on that word. And the suffering chain is worth carrying too: Paul isn't romanticizing pain, he's tracing where it goes when it's carried inside that love." },
+    { id:305, book:"Romans", title:"Dead to sin, alive to God", side:"l",
+      passage: "Anticipating the objection \u2014 shall we go on sinning so grace increases? \u2014 Paul answers, \u201cBy no means! We are those who have died to sin; how can we live in it any longer?\u201d Baptism pictures it: buried with Christ into death, raised to live a new life. \u201cCount yourselves dead to sin but alive to God in Christ Jesus. Therefore do not let sin reign in your mortal body\u2026 offer every part of yourself to him as an instrument of righteousness.\u201d And the summary: \u201cFor sin shall no longer be your master, because you are not under the law, but under grace.\u201d",
+      keyVerses: [
+        { ref: "Romans 6:14", text: "For sin shall no longer be your master, because you are not under the law, but under grace." }
+      ],
+      questions: [
+        { q:"What objection is Paul answering?", opts:["That grace is too costly", "That free grace licenses more sinning", "That the law is bad"], correct:1, explain:"If grace increases where sin increases, why stop? Paul says the question misunderstands what happened to you." },
+        { q:"What does baptism picture?", opts:["A public promise only", "Dying and being buried with Christ, then raised to new life", "Cleansing alone"], correct:1, explain:"Union with Christ in death and resurrection is Paul's argument against ongoing slavery to sin." },
+        { q:"What does \u2018count yourselves\u2019 mean?", opts:["Pretend", "Reckon as true what God has already made true \u2014 act on the fact", "Try harder"], correct:1, explain:"An accounting term: treat the reality on your books as real." }
+      ],
+      deepDive: "Chapter 6 answers the charge every generous doctrine of grace attracts: doesn't this let people off? Paul's reply isn't a new rulebook but a fact about identity \u2014 you died. Someone united to Christ's death and resurrection isn't in the same relationship to sin they used to be. That's why his repeated verb is \u2018count\u2019 or \u2018reckon\u2019: not pretend, but treat as real what God says is real. The practical instruction follows from it \u2014 offer the parts of yourself to God rather than to sin, daily and deliberately. And the promise underneath is 6:14: sin will not be your master, and the reason given is grace, not law." },
+    { id:306, book:"Romans", title:"The war within", side:"r",
+      passage: "Paul describes an experience every honest person recognizes: \u201cI do not understand what I do. For what I want to do I do not do, but what I hate I do\u2026 For I have the desire to do what is good, but I cannot carry it out. For I do not do the good I want to do, but the evil I do not want to do \u2014 this I keep on doing.\u201d He calls it a war \u2014 the law of God delighted in by his inner being, another law waging war against it. Then the cry: \u201cWhat a wretched man I am! Who will rescue me from this body that is subject to death? Thanks be to God, who delivers me through Jesus Christ our Lord!\u201d",
+      keyVerses: [
+        { ref: "Romans 7:24\u201325", text: "What a wretched man I am! Who will rescue me from this body that is subject to death? Thanks be to God, who delivers me through Jesus Christ our Lord!" }
+      ],
+      questions: [
+        { q:"What frustration does Paul describe?", opts:["Not knowing what's right", "Knowing what's right, wanting it, and still failing to do it", "Not caring"], correct:1, explain:"The problem isn't ignorance or indifference \u2014 it's a gap between desire and ability." },
+        { q:"Is the law the problem?", opts:["Yes", "No \u2014 Paul insists the law is holy, righteous, and good", "The law is irrelevant"], correct:1, explain:"The law exposes the disease; it doesn't cause it and can't cure it." },
+        { q:"How does the chapter resolve?", opts:["In despair", "In gratitude \u2014 rescue comes through Jesus Christ, not self-effort", "With a technique"], correct:1, explain:"The cry \u2018who will rescue me\u2019 gets a person as the answer, not a program." }
+      ],
+      deepDive: "Christians have debated for centuries whether Paul is describing his pre-conversion life or his present one, and the debate itself is a testimony to how accurately he described the experience. Either way, its usefulness is the same: the New Testament contains a passage where an apostle says he wants to do good and can't reliably manage it. That's permission to be honest about your own record. Notice what the chapter refuses to do: it never blames the law, and it never resolves with better strategy. The question is \u2018who will rescue me\u2019 \u2014 a who, not a how \u2014 and the answer arrives just before the letter's greatest chapter." },
+    { id:307, book:"Romans", title:"No condemnation", side:"c",
+      passage: "\u201cTherefore, there is now no condemnation for those who are in Christ Jesus.\u201d The Spirit of life has set us free. We are not slaves to fear but have received the Spirit of adoption, by whom we cry \u201cAbba, Father\u201d \u2014 heirs of God and co-heirs with Christ. Present sufferings aren't worth comparing with the glory to come; creation itself groans, waiting. The Spirit helps us in our weakness and intercedes with wordless groans. \u201cAnd we know that in all things God works for the good of those who love him, who have been called according to his purpose.\u201d",
+      keyVerses: [
+        { ref: "Romans 8:1", text: "Therefore, there is now no condemnation for those who are in Christ Jesus." }
+      ],
+      questions: [
+        { q:"When does the \u2018no condemnation\u2019 apply?", opts:["After enough growth", "Now \u2014 present tense, for those in Christ", "At the final judgment only"], correct:1, explain:"It follows directly from chapter 7's failure, which is the point." },
+        { q:"What does \u2018Abba\u2019 signal?", opts:["Formal address", "Intimate family language \u2014 the Spirit of adoption, not fear", "A title of rank"], correct:1, explain:"The same word Jesus used in Gethsemane, now on the lips of adopted children." },
+        { q:"What does 8:28 actually claim?", opts:["Everything that happens is good", "God works IN all things for good \u2014 not that all things are good", "Suffering is unreal"], correct:1, explain:"A promise about God's work within circumstances, not a denial of their badness." }
+      ],
+      deepDive: "Romans 8 is the summit of the letter and arguably of the New Testament, and its first word is \u2018therefore\u2019 \u2014 attached directly to chapter 7's exhausting failure. That placement is the mercy: no condemnation is announced not to people who have finally got it together but to people who just admitted they can't. The chapter then widens outward \u2014 adoption, the Spirit's intercession when you can't find words, creation groaning toward renewal, and God working through everything toward good. Notice 8:28's careful wording, so often misquoted: not that all things are good, but that God works in all things for good. That distinction matters enormously to anyone in the middle of something terrible." },
+    { id:308, book:"Romans", title:"Nothing can separate us", side:"l",
+      passage: "Paul builds to the letter's crescendo with a series of unanswerable questions. \u201cIf God is for us, who can be against us? He who did not spare his own Son, but gave him up for us all \u2014 how will he not also, along with him, graciously give us all things? Who will bring any charge against those whom God has chosen? It is God who justifies. Who then is the one who condemns?\u201d Then: \u201cFor I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future, nor any powers, neither height nor depth, nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord.\u201d",
+      keyVerses: [
+        { ref: "Romans 8:38\u201339", text: "For I am convinced that neither death nor life\u2026 nor anything else in all creation, will be able to separate us from the love of God that is in Christ Jesus our Lord." }
+      ],
+      questions: [
+        { q:"What's the argument from the cross?", opts:["God owes us nothing", "If God gave His Son, He won't withhold lesser things", "The cross was a last resort"], correct:1, explain:"An argument from greater to lesser: the hardest gift is already given." },
+        { q:"Who can bring a charge against God's chosen?", opts:["Anyone", "No one that matters \u2014 God is the one who justifies", "The accuser, successfully"], correct:1, explain:"The judge has already ruled; no other court has standing." },
+        { q:"What can separate us from God's love?", opts:["Serious sin", "Nothing in all creation \u2014 Paul lists every category he can think of", "Death"], correct:1, explain:"He deliberately exhausts the categories: life, death, present, future, height, depth." }
+      ],
+      deepDive: "Paul ends this section by trying to name something that could separate a believer from Christ's love, and running out of options. He goes vertical (height, depth), temporal (present, future), spiritual (angels, demons), and existential (death, life), then sweeps up the remainder: nor anything else in all creation. It's a list built to be exhaustive. Note also the phrase \u2018I am convinced\u2019 \u2014 this comes from a man who had been flogged, stoned, shipwrecked, and imprisoned, so it isn't optimism from a comfortable chair. And the logic in verse 32 is worth keeping for anxious days: the God who already gave His Son is not the kind who withholds smaller things." },
+    { id:309, book:"Romans", title:"Living sacrifices", side:"r",
+      passage: "After eleven chapters of doctrine, Paul turns to daily life with a \u2018therefore.\u2019 \u201cOffer your bodies as a living sacrifice, holy and pleasing to God \u2014 this is your true and proper worship. Do not conform to the pattern of this world, but be transformed by the renewing of your mind.\u201d Then the practical instructions pour out: use your gifts; love sincerely; honor one another above yourselves; be joyful in hope, patient in affliction, faithful in prayer; share with the Lord's people in need; practice hospitality; bless those who persecute you; live in harmony; \u201cif it is possible, as far as it depends on you, live at peace with everyone.\u201d",
+      keyVerses: [
+        { ref: "Romans 12:2", text: "Do not conform to the pattern of this world, but be transformed by the renewing of your mind." }
+      ],
+      questions: [
+        { q:"What is called \u2018true and proper worship\u2019?", opts:["Singing", "Offering your body \u2014 your ordinary daily life \u2014 as a living sacrifice", "Sacrificial giving"], correct:1, explain:"Worship relocated from a ceremony to a life handed over." },
+        { q:"How does transformation happen?", opts:["By trying harder", "By the renewing of your mind \u2014 changed thinking producing changed living", "Automatically"], correct:1, explain:"Paul puts the mind at the center, which is why eleven chapters of doctrine come first." },
+        { q:"What's the qualifier on living at peace?", opts:["There is none", "\u2018If it is possible, as far as it depends on you\u2019", "Only with believers"], correct:1, explain:"Realistic: you're responsible for your side, not for the other person's response." }
+      ],
+      deepDive: "The \u2018therefore\u2019 in Romans 12:1 is one of the most important words in the letter, because it means everything practical rests on everything doctrinal. Paul doesn't lead with behavior; he leads with mercy and then asks for a response in view of it. And the image is deliberately strange \u2014 a living sacrifice, which is the one kind that can climb off the altar, and does, daily. Note the mechanism of change: renewed thinking, not gritted teeth. What you believe about God's mercy is what reshapes how you live. And the list that follows is refreshingly ordinary: hospitality, sincere love, patience, blessing people who make life hard." }
+,
+    { id:310, book:"1 Corinthians", title:"The foolishness of the cross", side:"c",
+      passage: "Corinth's church was talented, wealthy, and fractured \u2014 quarreling over which teacher they followed. Paul refuses the game: \u201cIs Christ divided? Was Paul crucified for you?\u201d Then he names why: \u201cFor the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God\u2026 God chose the foolish things of the world to shame the wise; God chose the weak things to shame the strong.\u201d And of himself: \u201cI resolved to know nothing while I was with you except Jesus Christ and him crucified.\u201d",
+      keyVerses: [
+        { ref: "1 Corinthians 1:18", text: "For the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God." }
+      ],
+      questions: [
+        { q:"What were the Corinthians fighting about?", opts:["Doctrine", "Which teacher they followed \u2014 celebrity factions", "Money"], correct:1, explain:"Paul, Apollos, Cephas \u2014 a personality-driven church, which he treats as spiritual immaturity." },
+        { q:"Why does God choose the weak and foolish?", opts:["He has no choice", "So that no one may boast before Him", "To make things harder"], correct:1, explain:"The selection method is designed to eliminate bragging rights." },
+        { q:"What did Paul resolve to know among them?", opts:["Everything", "Nothing except Jesus Christ and him crucified", "Only ethics"], correct:1, explain:"In a city that prized rhetoric, he deliberately narrowed his subject." }
+      ],
+      deepDive: "Corinth was a wealthy port city that admired eloquence and status, and the church absorbed those values wholesale \u2014 hence the celebrity factions. Paul's answer isn't a better argument but a different center: a crucified Messiah, which was an embarrassment to Greeks and a scandal to Jews. He leans into that. God's chosen method \u2014 weakness, foolishness, a cross \u2014 is calculated so that no one can take credit. That's still the letter's most useful diagnostic for any church or believer measuring itself by talent and platform: if the strategy makes room for boasting, it probably isn't the cross." },
+    { id:311, book:"1 Corinthians", title:"Your body is a temple", side:"l",
+      passage: "Paul confronts scandals the church had tolerated \u2014 a man in an incestuous relationship, lawsuits between believers, and casual sexual immorality in a city famous for it. He quotes their slogan back at them: \u201cI have the right to do anything,\u201d and answers, \u201cbut not everything is beneficial\u2026 I will not be mastered by anything.\u201d Then: \u201cDo you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God? You are not your own; you were bought at a price. Therefore honor God with your bodies.\u201d",
+      keyVerses: [
+        { ref: "1 Corinthians 6:19\u201320", text: "You are not your own; you were bought at a price. Therefore honor God with your bodies." }
+      ],
+      questions: [
+        { q:"What slogan does Paul quote and qualify?", opts:["\u2018God is love\u2019", "\u2018I have the right to do anything\u2019", "\u2018All are welcome\u2019"], correct:1, explain:"He grants the freedom and immediately asks what it's doing to you: not everything is beneficial." },
+        { q:"What does he say bodies are?", opts:["Unimportant", "Temples of the Holy Spirit", "Obstacles to holiness"], correct:1, explain:"Against Greek thought that dismissed the body, Paul calls it God's dwelling." },
+        { q:"What's the basis for the command?", opts:["Social respectability", "Ownership \u2014 you were bought at a price", "Health"], correct:1, explain:"Not rule-keeping but belonging: the argument is who you belong to." }
+      ],
+      deepDive: "Paul's sexual ethic here doesn't run on shame or on rules for their own sake. It runs on two claims: your body is where God's Spirit lives, and you were purchased. Both are dignifying rather than demeaning \u2014 in a culture that treated bodies as either disposable or merely appetite-serving, he says yours houses God. And his qualification of their freedom slogan is worth keeping for far more than sexuality: \u2018I have the right to do anything, but I will not be mastered by anything.\u2019 Plenty of things you're permitted to do are quietly in charge of you. That's the question the chapter asks." },
+    { id:312, book:"1 Corinthians", title:"One body, many parts", side:"r",
+      passage: "On spiritual gifts: \u201cThere are different kinds of gifts, but the same Spirit distributes them\u2026 to each one the manifestation of the Spirit is given for the common good.\u201d Then the image: the body is one and has many parts. If the foot says, \u201cBecause I am not a hand, I do not belong to the body,\u201d it would not for that reason stop being part of the body. \u201cThe eye cannot say to the hand, \u2018I don't need you!\u2019\u201d In fact the parts that seem weaker are indispensable. \u201cIf one part suffers, every part suffers with it; if one part is honored, every part rejoices with it.\u201d",
+      keyVerses: [
+        { ref: "1 Corinthians 12:7", text: "Now to each one the manifestation of the Spirit is given for the common good." }
+      ],
+      questions: [
+        { q:"What are gifts for?", opts:["Personal fulfillment", "The common good \u2014 they're given to be spent on others", "Proving spirituality"], correct:1, explain:"Paul's whole correction: gifts are distributed for the body, not for status." },
+        { q:"What two attitudes does the body image address?", opts:["Only pride", "Inferiority (\u2018I don't belong\u2019) and superiority (\u2018I don't need you\u2019)", "Only laziness"], correct:1, explain:"Both are denials of the body \u2014 one by withdrawal, one by dismissal." },
+        { q:"What happens when one part suffers?", opts:["Nothing", "Every part suffers with it", "Only nearby parts"], correct:1, explain:"Interdependence means someone else's pain is not a separate matter." }
+      ],
+      deepDive: "The Corinthians were ranking gifts and ranking themselves accordingly, so Paul reaches for the body \u2014 an image where a hierarchy makes no sense. Two temptations get named. The foot who says \u2018I'm not a hand, so I don't belong\u2019 is the person who quietly drops out because their contribution looks unimpressive. The eye who says \u2018I don't need you\u2019 is the visible person who forgets what's holding them up. Paul's counterintuitive claim is that the seemingly weaker parts are indispensable. And the final line changes how you read a church: if one part suffers, all suffer. There is no such thing as someone else's problem in a body." },
+    { id:313, book:"1 Corinthians", title:"Love is patient", side:"c",
+      passage: "Between two chapters on spiritual gifts, Paul stops everything: \u201cIf I speak in the tongues of men or of angels, but do not have love, I am only a resounding gong\u2026 If I have a faith that can move mountains, but do not have love, I am nothing. If I give all I possess to the poor and give over my body to hardship\u2026 but do not have love, I gain nothing.\u201d Then the definition: \u201cLove is patient, love is kind. It does not envy, it does not boast, it is not proud\u2026 It always protects, always trusts, always hopes, always perseveres. Love never fails.\u201d",
+      keyVerses: [
+        { ref: "1 Corinthians 13:4\u20137", text: "Love is patient, love is kind\u2026 It always protects, always trusts, always hopes, always perseveres." }
+      ],
+      questions: [
+        { q:"What is Paul without love?", opts:["Less effective", "Nothing \u2014 a noisy gong, gaining nothing", "Still useful"], correct:1, explain:"Even faith that moves mountains and giving everything away count for zero without it." },
+        { q:"How is love described?", opts:["As a feeling", "In verbs \u2014 what it does and doesn't do", "As a preference"], correct:1, explain:"Almost every phrase is an action or restraint, which makes it testable." },
+        { q:"Why is this chapter placed here?", opts:["Randomly", "Between two chapters on spiritual gifts \u2014 correcting a gifted, unloving church", "As a wedding reading"], correct:1, explain:"Read in context it's a rebuke, not a romantic poem." }
+      ],
+      deepDive: "This chapter is read at weddings, and it was written to a church tearing itself apart. That context is the key to using it well. Paul lists the most impressive spiritual achievements available \u2014 tongues of angels, prophecy, mountain-moving faith, giving away everything, even martyrdom \u2014 and prices them all at zero without love. Then he defines love almost entirely in verbs, which makes it something you can actually audit. A useful and painful exercise: read verses 4\u20137 substituting your own name for \u2018love,\u2019 and notice which lines you can't say honestly. That's the chapter working as intended." },
+    { id:314, book:"1 Corinthians", title:"If Christ has not been raised", side:"l",
+      passage: "Paul states the gospel he received and passed on: \u201cthat Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day\u2026 and that he appeared to Cephas, then to the Twelve. After that, he appeared to more than five hundred at the same time, most of whom are still living.\u201d Then he takes the hardest possible line: \u201cIf Christ has not been raised, our preaching is useless and so is your faith\u2026 we are of all people most to be pitied.\u201d But: \u201cChrist has indeed been raised from the dead, the firstfruits of those who have fallen asleep\u2026 Where, O death, is your victory?\u201d",
+      keyVerses: [
+        { ref: "1 Corinthians 15:3\u20134", text: "Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day." }
+      ],
+      questions: [
+        { q:"What does Paul say if the resurrection didn't happen?", opts:["Faith still helps", "Preaching is useless, faith is futile, and Christians are most to be pitied", "It doesn't matter much"], correct:1, explain:"He refuses to let Christianity survive as inspiring symbolism." },
+        { q:"What evidence does he cite?", opts:["Feelings", "Eyewitnesses \u2014 including 500 at once, most still alive to be asked", "Ancient texts only"], correct:1, explain:"An open invitation to verify: go talk to them." },
+        { q:"What does \u2018firstfruits\u2019 imply?", opts:["A one-off event", "The first of a harvest \u2014 more resurrections to follow", "A symbol only"], correct:1, explain:"His rising guarantees the rest; it's the opening of something, not an isolated miracle." }
+      ],
+      deepDive: "Paul does something unusual here: he stakes the entire faith on a historical claim and openly names the consequence if it's false. Not \u2018we'd still have good ethics\u2019 \u2014 our preaching is useless, your faith is futile, you are still in your sins, and we are the most pitiable people alive. That's an honest bet, and it's why the eyewitness list matters, with the pointed note that most of the five hundred were still living. Then the turn: firstfruits. His resurrection isn't an exception to death but the beginning of its undoing, which is why the chapter ends taunting the grave." },
+    { id:315, book:"1 Corinthians", title:"Stand firm", side:"r",
+      passage: "The resurrection chapter ends practically. The perishable will be clothed with the imperishable; the mortal with immortality. \u201cThen the saying that is written will come true: \u2018Death has been swallowed up in victory.\u2019 \u2018Where, O death, is your victory? Where, O death, is your sting?\u2019\u2026 But thanks be to God! He gives us the victory through our Lord Jesus Christ.\u201d And then, immediately: \u201cTherefore, my dear brothers and sisters, stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain.\u201d",
+      keyVerses: [
+        { ref: "1 Corinthians 15:58", text: "Stand firm. Let nothing move you. Always give yourselves fully to the work of the Lord, because you know that your labor in the Lord is not in vain." }
+      ],
+      questions: [
+        { q:"What follows the resurrection victory?", opts:["Rest", "A \u2018therefore\u2019 \u2014 stand firm and give yourselves fully to the work", "Speculation"], correct:1, explain:"Paul's response to resurrection hope is always more effort, not less." },
+        { q:"What is promised about labor?", opts:["It will be easy", "It is not in vain \u2014 nothing done in the Lord is wasted", "It will be rewarded on earth"], correct:1, explain:"Because death doesn't get the last word, the work isn't erased." },
+        { q:"Where does the sting of death go?", opts:["It remains", "Swallowed up in victory through Jesus Christ", "It's ignored"], correct:1, explain:"Paul quotes Hosea and Isaiah to taunt a defeated enemy." }
+      ],
+      deepDive: "It's easy to miss the logic of verse 58, and it's the most practical thing in the chapter. Paul has just spent fifty-seven verses on resurrection \u2014 and his conclusion isn't \u2018so relax\u2019 or \u2018so speculate about the end times.\u2019 It's: stand firm, don't be moved, work fully, because your labor is not in vain. If death ends everything, most of what we do genuinely does evaporate. If it doesn't, the small faithful things \u2014 the unnoticed service, the years of quiet obedience \u2014 are permanent. Resurrection makes ordinary work matter, which is a stranger and more useful conclusion than most people draw from it." },
+    { id:316, book:"2 Corinthians", title:"Comfort in affliction", side:"c",
+      passage: "Paul's most personal letter opens with a title for God: \u201cthe Father of compassion and the God of all comfort, who comforts us in all our troubles, so that we can comfort those in any trouble with the comfort we ourselves receive from God.\u201d He describes pressure in Asia \u201cfar beyond our ability to endure, so that we despaired of life itself. Indeed, we felt we had received the sentence of death. But this happened that we might not rely on ourselves but on God, who raises the dead.\u201d",
+      keyVerses: [
+        { ref: "2 Corinthians 1:3\u20134", text: "The God of all comfort, who comforts us in all our troubles, so that we can comfort those in any trouble." }
+      ],
+      questions: [
+        { q:"What is comfort given for?", opts:["Private relief only", "To be passed on \u2014 comforting others with what you received", "To end all suffering"], correct:1, explain:"Comfort in Paul is a supply line, not a terminus." },
+        { q:"How does Paul describe his own experience?", opts:["Manageable", "Beyond his ability to endure \u2014 he despaired of life itself", "Mildly difficult"], correct:1, explain:"The great apostle names despair without apology or spin." },
+        { q:"What was the stated purpose of that pressure?", opts:["Punishment", "So he would rely not on himself but on God who raises the dead", "No purpose"], correct:1, explain:"Self-reliance was the thing being dismantled." }
+      ],
+      deepDive: "2 Corinthians is Paul at his most exposed \u2014 defending his ministry to a church that had started doubting him \u2014 and it opens with a theology of suffering that has carried people ever since. Two things stand out. First, his honesty: beyond our ability to endure, despairing of life itself. That sentence is in Scripture, written by an apostle, which should end the idea that faith means never reaching your limit. Second, the economy of comfort: what God gives you in trouble is meant to be handed on to someone else in theirs. Your worst season is often somebody else's future lifeline." },
+    { id:317, book:"2 Corinthians", title:"Treasure in jars of clay", side:"l",
+      passage: "\u201cBut we have this treasure in jars of clay to show that this all-surpassing power is from God and not from us. We are hard pressed on every side, but not crushed; perplexed, but not in despair; persecuted, but not abandoned; struck down, but not destroyed.\u201d And: \u201cTherefore we do not lose heart. Though outwardly we are wasting away, yet inwardly we are being renewed day by day. For our light and momentary troubles are achieving for us an eternal glory that far outweighs them all. So we fix our eyes not on what is seen, but on what is unseen.\u201d",
+      keyVerses: [
+        { ref: "2 Corinthians 4:7", text: "But we have this treasure in jars of clay to show that this all-surpassing power is from God and not from us." }
+      ],
+      questions: [
+        { q:"Why does God use \u2018jars of clay\u2019?", opts:["He has no better option", "So the power is obviously His and not ours", "To keep us humble by shaming us"], correct:1, explain:"Cheap, breakable containers make the contents unmistakable." },
+        { q:"What pattern runs through 4:8\u20139?", opts:["No trouble at all", "Real pressure with a limit \u2014 pressed but not crushed, struck down but not destroyed", "Total defeat"], correct:1, explain:"Paul never denies the affliction; he denies its final power." },
+        { q:"What is happening while we \u2018waste away\u2019?", opts:["Nothing", "Inward renewal, day by day", "Only decline"], correct:1, explain:"Two processes at once, running in opposite directions." }
+      ],
+      deepDive: "Jars of clay were the disposable containers of the ancient world \u2014 cheap, common, easily broken. Paul says that's what we are, and that God chose it deliberately so nobody confuses the container with the contents. That reframes weakness: your limitations aren't disqualifying, they're the design. The four contrasts that follow are worth memorizing because each one has a hard truth and a hard limit \u2014 pressed, perplexed, persecuted, struck down, and then not crushed, not despairing, not abandoned, not destroyed. And 'light and momentary troubles' is written by a man who was flogged five times. He's not minimizing. He's comparing." },
+    { id:318, book:"2 Corinthians", title:"A new creation", side:"r",
+      passage: "\u201cChrist's love compels us\u2026 that those who live should no longer live for themselves but for him who died for them and was raised again. So from now on we regard no one from a worldly point of view\u2026 Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here! All this is from God, who reconciled us to himself through Christ and gave us the ministry of reconciliation\u2026 We are therefore Christ's ambassadors, as though God were making his appeal through us. God made him who had no sin to be sin for us, so that in him we might become the righteousness of God.\u201d",
+      keyVerses: [
+        { ref: "2 Corinthians 5:17", text: "Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!" }
+      ],
+      questions: [
+        { q:"What does \u2018new creation\u2019 describe?", opts:["Self-improvement", "Something made new by God \u2014 the old genuinely gone", "A fresh resolution"], correct:1, explain:"Creation language: not a renovation project but a new thing brought into being." },
+        { q:"What role are believers given?", opts:["Spectators", "Ambassadors \u2014 God making His appeal through them", "Judges"], correct:1, explain:"An ambassador carries someone else's message with that person's authority." },
+        { q:"What is the great exchange in 5:21?", opts:["Nothing changes", "He became sin for us; we become God's righteousness in Him", "We earn righteousness"], correct:1, explain:"The clearest single verse on substitution in the New Testament." }
+      ],
+      deepDive: "This passage moves from motive to identity to mission in a few sentences. The motive is Christ's love, which \u2018compels\u2019 \u2014 the word means to press in from all sides. The identity is new creation, and the phrase is stronger than most translations suggest: not \u2018he is a new creature\u2019 but \u2018new creation \u2014 here.\u2019 Something has begun. Then the mission: ambassadors, carrying an appeal that isn't ours. And verse 21 is the engine under all of it, one of the most compressed statements of the gospel anywhere: the sinless one treated as sin, so that sinners could be counted righteous. Everything else in the paragraph rests on that trade." },
+    { id:319, book:"2 Corinthians", title:"My grace is sufficient", side:"c",
+      passage: "Forced to defend himself against \u2018super-apostles,\u2019 Paul boasts \u2014 of beatings, shipwrecks, hunger, sleeplessness, and daily anxiety for the churches. Then he mentions a vision he refuses to trade on, and adds: \u201cTherefore, in order to keep me from becoming conceited, I was given a thorn in my flesh\u2026 Three times I pleaded with the Lord to take it away from me. But he said to me, \u2018My grace is sufficient for you, for my power is made perfect in weakness.\u2019 Therefore I will boast all the more gladly about my weaknesses\u2026 For when I am weak, then I am strong.\u201d",
+      keyVerses: [
+        { ref: "2 Corinthians 12:9", text: "My grace is sufficient for you, for my power is made perfect in weakness." }
+      ],
+      questions: [
+        { q:"How did God answer Paul's three prayers?", opts:["He removed the thorn", "He refused, and gave sufficient grace instead", "He was silent"], correct:1, explain:"A clear no, with something better attached \u2014 which Paul then treats as the answer." },
+        { q:"What does Paul boast about?", opts:["His visions", "His weaknesses, hardships, and failures", "His converts"], correct:1, explain:"He deliberately inverts the credentials his rivals were parading." },
+        { q:"Why is weakness useful?", opts:["It isn't", "God's power is made perfect \u2014 brought to full expression \u2014 in it", "It earns sympathy"], correct:1, explain:"Not that weakness is good in itself, but that it's where His strength shows." }
+      ],
+      deepDive: "Whatever the thorn was \u2014 Paul never says, and the guesses run from eye trouble to opposition \u2014 the important thing is that it stayed. He prayed three times, which is the same number as Gethsemane, and got a no. But the no came with a sentence that has held up millions of people since: my grace is sufficient for you. Not \u2018my grace will remove this\u2019 but \u2018my grace is enough for the version of your life that includes this.\u2019 And Paul's response is the strangest turn in his letters: he stops asking and starts boasting, because the unanswered prayer became the place God's power was most visible." },
+    { id:320, book:"Galatians", title:"No other gospel", side:"l",
+      passage: "Paul skips his usual thanksgiving and goes straight at them: \u201cI am astonished that you are so quickly deserting the one who called you\u2026 and are turning to a different gospel \u2014 which is really no gospel at all.\u201d Some were insisting Gentile believers be circumcised and keep the law. Paul's response is blistering: even if an angel from heaven preached another gospel, let him be condemned. \u201cAm I now trying to win the approval of human beings, or of God?\u201d He recounts confronting Peter publicly for withdrawing from Gentile meals \u2014 \u201cbecause he stood condemned.\u201d",
+      keyVerses: [
+        { ref: "Galatians 1:10", text: "Am I now trying to win the approval of human beings, or of God? Or am I trying to please people?" }
+      ],
+      questions: [
+        { q:"What was the \u2018different gospel\u2019?", opts:["Atheism", "Faith in Christ PLUS law-keeping as necessary for acceptance", "Paganism"], correct:1, explain:"Adding a requirement to grace, which Paul says destroys it entirely." },
+        { q:"How strongly does Paul react?", opts:["Mildly", "He skips his thanksgiving and pronounces a curse on any other gospel \u2014 even from an angel", "He suggests a compromise"], correct:1, explain:"The only letter where he omits thanksgiving; the stakes were that high." },
+        { q:"What did Paul do about Peter?", opts:["Wrote privately", "Opposed him to his face, publicly", "Ignored it"], correct:1, explain:"Peter's withdrawal from Gentile tables contradicted the gospel in practice." }
+      ],
+      deepDive: "Galatians is the angriest letter in the New Testament, and the anger is worth understanding. The false teachers weren't denying Christ \u2014 they were adding to Him. Believe in Jesus, and also do this. Paul treats that addition as fatal, because a gospel of Christ-plus-anything makes the plus the real hinge. That's why even Peter got confronted publicly: his table habits were preaching a different message than his theology. The question in 1:10 is the one to carry out of this chapter \u2014 whose approval is actually driving your decisions? Paul says you cannot serve both audiences." },
+    { id:321, book:"Galatians", title:"Crucified with Christ", side:"r",
+      passage: "\u201cWe know that a person is not justified by the works of the law, but by faith in Jesus Christ\u2026 For I through the law died to the law so that I might live for God. I have been crucified with Christ and I no longer live, but Christ lives in me. The life I now live in the body, I live by faith in the Son of God, who loved me and gave himself for me. I do not set aside the grace of God, for if righteousness could be gained through the law, Christ died for nothing!\u201d",
+      keyVerses: [
+        { ref: "Galatians 2:20", text: "I have been crucified with Christ and I no longer live, but Christ lives in me." }
+      ],
+      questions: [
+        { q:"What's the logic of \u2018Christ died for nothing\u2019?", opts:["A minor point", "If law-keeping could make us righteous, the cross was unnecessary", "It's hypothetical only"], correct:1, explain:"Paul's sharpest argument: adding requirements makes the crucifixion pointless." },
+        { q:"How does Paul describe his own life?", opts:["Self-improved", "Crucified with Christ \u2014 no longer he who lives, but Christ in him", "Unchanged"], correct:1, explain:"Not a better version of the old self but a death and a new occupant." },
+        { q:"How personal is 2:20?", opts:["Abstract", "Deeply personal \u2014 \u2018who loved ME and gave himself for ME\u2019", "Corporate only"], correct:1, explain:"Paul narrows the cosmic gospel to first-person singular." }
+      ],
+      deepDive: "Galatians 2:20 is one of the most quoted verses in the New Testament, and its two halves need each other. \u2018I have been crucified with Christ\u2019 is past tense and settled \u2014 the old self's claim to run things has been executed. \u2018Christ lives in me\u2019 is present and ongoing. And then the personal pronouns land: who loved me and gave himself for me. Paul, who persecuted the church, writes that in the singular. The chapter's closing argument is unanswerable and worth applying to any subtle legalism you carry: if you could get there by trying, the cross was a waste." },
+    { id:322, book:"Galatians", title:"The fruit of the Spirit", side:"c",
+      passage: "\u201cIt is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.\u201d But freedom isn't license: \u201cserve one another humbly in love.\u201d Then the contrast \u2014 the acts of the flesh are obvious, and Paul lists them plainly. \u201cBut the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law.\u201d And: \u201cSince we live by the Spirit, let us keep in step with the Spirit.\u201d",
+      keyVerses: [
+        { ref: "Galatians 5:22\u201323", text: "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control." }
+      ],
+      questions: [
+        { q:"Why \u2018fruit\u2019 and not \u2018works\u2019?", opts:["Stylistic choice", "Fruit grows from life within \u2014 it's produced, not manufactured", "It's easier"], correct:1, explain:"The contrast with \u2018acts of the flesh\u2019 is deliberate: one is done, one grows." },
+        { q:"Singular or plural?", opts:["Nine separate fruits", "Singular \u2018fruit\u2019 \u2014 one cluster, grown together", "Unclear"], correct:1, explain:"Not a menu to pick from; they develop as a set in a Spirit-led life." },
+        { q:"What is freedom for?", opts:["Doing whatever you want", "Serving one another humbly in love", "Avoiding all rules"], correct:1, explain:"Paul immediately guards freedom from becoming self-indulgence." }
+      ],
+      deepDive: "The word choice does the teaching. Paul lists the acts of the flesh \u2014 things people do \u2014 and then the fruit of the Spirit, which is something that grows. You can't strain your way into joy or manufacture patience by effort; fruit appears where there's life, roots, and time. That's the whole letter's argument applied to character: the law can tell you what a good tree looks like, but only the Spirit grows one. Notice too that it's singular. Not nine options to specialize in \u2014 one cluster. And it ends with self-control, which quietly answers everyone who worries that grace makes people careless." },
+    { id:323, book:"Ephesians", title:"Chosen before the world began", side:"l",
+      passage: "Ephesians opens with one enormous sentence of praise: \u201cPraise be to the God and Father of our Lord Jesus Christ, who has blessed us in the heavenly realms with every spiritual blessing in Christ. For he chose us in him before the creation of the world to be holy and blameless in his sight. In love he predestined us for adoption to sonship\u2026 In him we have redemption through his blood, the forgiveness of sins, in accordance with the riches of God's grace.\u201d And He made known to us the mystery of his will \u2014 to bring unity to all things in heaven and on earth under Christ.",
+      keyVerses: [
+        { ref: "Ephesians 1:4", text: "For he chose us in him before the creation of the world to be holy and blameless in his sight." }
+      ],
+      questions: [
+        { q:"When were believers chosen?", opts:["When they believed", "Before the creation of the world", "At baptism"], correct:1, explain:"The decision predates the universe, which removes it from the realm of merit." },
+        { q:"What image describes our new status?", opts:["Employment", "Adoption to sonship \u2014 family, with full inheritance rights", "Citizenship only"], correct:1, explain:"Roman adoption conferred permanent legal status, including inheritance." },
+        { q:"What is God's stated purpose?", opts:["Individual comfort", "To bring unity to all things in heaven and on earth under Christ", "Judgment"], correct:1, explain:"A cosmic aim \u2014 the whole fractured creation gathered under one head." }
+      ],
+      deepDive: "Ephesians 1 is one sentence in Greek, and it reads like someone who started praising and couldn't find a place to stop. Its subject is what God did before you existed: chose, predestined, adopted, redeemed, forgave, made known. Every verb belongs to Him. That can feel abstract until you notice why Paul says it \u2014 he's writing to make people secure. If your standing began before creation and rests on His will rather than your performance, then your worst week doesn't destabilize it. And the horizon is enormous: not just individuals saved but all things in heaven and earth brought together under Christ." },
+    { id:324, book:"Ephesians", title:"By grace, through faith", side:"r",
+      passage: "\u201cAs for you, you were dead in your transgressions and sins\u2026 But because of his great love for us, God, who is rich in mercy, made us alive with Christ even when we were dead in transgressions \u2014 it is by grace you have been saved. For it is by grace you have been saved, through faith \u2014 and this is not from yourselves, it is the gift of God \u2014 not by works, so that no one can boast. For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.\u201d",
+      keyVerses: [
+        { ref: "Ephesians 2:8\u20139", text: "For it is by grace you have been saved, through faith \u2014 and this is not from yourselves, it is the gift of God \u2014 not by works, so that no one can boast." }
+      ],
+      questions: [
+        { q:"What was our condition?", opts:["Sick", "Dead in transgressions \u2014 not weakened but dead", "Confused"], correct:1, explain:"Dead people don't improve; they need to be made alive, which is the point." },
+        { q:"Where do good works fit?", opts:["They save us", "They're the result \u2014 prepared in advance for us to walk in", "They're irrelevant"], correct:1, explain:"Verse 10 keeps grace from becoming an excuse: saved for good works, not by them." },
+        { q:"Why is boasting excluded?", opts:["It's rude", "Nothing in salvation originated with us \u2014 it's a gift", "Boasting is allowed"], correct:1, explain:"The design of grace makes credit impossible." }
+      ],
+      deepDive: "These are among the best-known verses in the New Testament, and verse 10 belongs with them. Paul draws the line hard: dead people, made alive by grace, through faith, as a gift, with no room for boasting. Then immediately: created in Christ Jesus to do good works, prepared in advance. Works aren't the root of salvation; they're the fruit of it, and they were waiting for you before you arrived. The chapter goes on to make it corporate too \u2014 Jew and Gentile made one, the dividing wall of hostility destroyed \u2014 because in Ephesians, grace doesn't just save individuals, it builds one new humanity." },
+    { id:325, book:"Ephesians", title:"Rooted and established in love", side:"c",
+      passage: "Paul kneels to pray for them: \u201cthat out of his glorious riches he may strengthen you with power through his Spirit in your inner being, so that Christ may dwell in your hearts through faith. And I pray that you, being rooted and established in love, may have power\u2026 to grasp how wide and long and high and deep is the love of Christ, and to know this love that surpasses knowledge \u2014 that you may be filled to the measure of all the fullness of God.\u201d Then: \u201cNow to him who is able to do immeasurably more than all we ask or imagine\u2026 to him be glory in the church.\u201d",
+      keyVerses: [
+        { ref: "Ephesians 3:17\u201319", text: "That you\u2026 may have power to grasp how wide and long and high and deep is the love of Christ, and to know this love that surpasses knowledge." }
+      ],
+      questions: [
+        { q:"What does Paul pray they'd receive power to do?", opts:["Perform miracles", "Grasp the dimensions of Christ's love", "Win arguments"], correct:1, explain:"He treats comprehending love as requiring supernatural strength \u2014 which it does." },
+        { q:"What's the paradox in \u2018know this love that surpasses knowledge\u2019?", opts:["A contradiction", "It can be truly known and never exhausted", "A translation error"], correct:1, explain:"Real knowledge of something infinitely larger than your capacity." },
+        { q:"What is God able to do?", opts:["What we ask", "Immeasurably more than all we ask or imagine", "Only what's reasonable"], correct:1, explain:"The doxology stretches past the limits of the request and the imagination." }
+      ],
+      deepDive: "Notice what Paul asks for. Not easier circumstances, not resolved problems \u2014 inner strength to comprehend love. He seems to believe the deepest human need is to actually grasp how loved you are, and that this requires the Spirit's power because the information alone never lands. The four dimensions are a way of saying it has no measurable edge, and \u2018know this love that surpasses knowledge\u2019 is deliberately impossible: you can genuinely know it and never get to the end. If your faith has become mostly duty, this prayer is the one to pray for yourself." },
+    { id:326, book:"Ephesians", title:"The armor of God", side:"l",
+      passage: "\u201cFinally, be strong in the Lord and in his mighty power. Put on the full armor of God, so that you can take your stand against the devil's schemes. For our struggle is not against flesh and blood.\u201d Then the pieces: the belt of truth, the breastplate of righteousness, feet fitted with readiness from the gospel of peace, the shield of faith to extinguish flaming arrows, the helmet of salvation, and the sword of the Spirit, which is the word of God. \u201cAnd pray in the Spirit on all occasions with all kinds of prayers and requests.\u201d",
+      keyVerses: [
+        { ref: "Ephesians 6:12", text: "For our struggle is not against flesh and blood, but against\u2026 the spiritual forces of evil in the heavenly realms." }
+      ],
+      questions: [
+        { q:"Who is the real opponent?", opts:["Difficult people", "Spiritual forces \u2014 not flesh and blood", "Ourselves only"], correct:1, explain:"Which reframes the person across the table as not actually the enemy." },
+        { q:"Whose armor is it?", opts:["Ours, self-made", "God's \u2014 the full armor OF God, given to be put on", "The church's"], correct:1, explain:"Every piece is something He supplies; the action required is putting it on." },
+        { q:"What's the one offensive weapon?", opts:["The shield", "The sword of the Spirit \u2014 the word of God", "The helmet"], correct:1, explain:"Everything else protects; Scripture is what you advance with." }
+      ],
+      deepDive: "Paul was likely chained to a Roman soldier while dictating this, which makes the image immediate. Two things are easy to miss. First, the armor is God's, not ours \u2014 truth, righteousness, peace, faith, salvation, and His word are all things He supplies; our part is putting them on daily rather than manufacturing them. Second, the enemy identification is pastorally enormous: your struggle is not against flesh and blood. The coworker, the family member, the person online \u2014 not the enemy. And the passage ends where it should: prayer, on all occasions, which is how any of the armor actually gets used." },
+    { id:327, book:"Philippians", title:"Joy from a prison cell", side:"r",
+      passage: "Writing from prison, Paul is remarkably cheerful. He thanks God for their partnership and is confident \u201cthat he who began a good work in you will carry it on to completion until the day of Christ Jesus.\u201d His imprisonment, he says, has actually advanced the gospel \u2014 the whole palace guard knows why he's chained, and believers have grown bolder. Some preach Christ out of envy, some out of goodwill; either way, \u201cChrist is preached. And because of this I rejoice.\u201d Then: \u201cFor to me, to live is Christ and to die is gain.\u201d",
+      keyVerses: [
+        { ref: "Philippians 1:6", text: "Being confident of this, that he who began a good work in you will carry it on to completion until the day of Christ Jesus." }
+      ],
+      questions: [
+        { q:"Where was Paul writing from?", opts:["A comfortable home", "Prison \u2014 and the letter is dominated by joy", "A ship"], correct:1, explain:"\u2018Rejoice\u2019 and its variants appear over a dozen times in four chapters written in custody." },
+        { q:"Who completes the good work?", opts:["We do", "He who began it \u2014 God finishes what He starts", "Nobody"], correct:1, explain:"The confidence is in the worker, not the material." },
+        { q:"How did Paul view rivals preaching from envy?", opts:["He shut them down", "He rejoiced that Christ was preached regardless", "He ignored them"], correct:1, explain:"His own reputation mattered less to him than the message getting out." }
+      ],
+      deepDive: "Philippians is the joy letter, and it was written in chains \u2014 which is what gives it authority. Paul isn't describing joy from a comfortable study; he's demonstrating that it doesn't depend on circumstances. The confidence in 1:6 has steadied countless people who feel like unfinished projects: the one who started the work is committed to finishing it, and the completion date is His, not yours. And his attitude toward rivals is a quiet rebuke to anyone protective of their platform \u2014 people preaching Christ to spite him, and he says fine, Christ is preached, I rejoice." },
+    { id:328, book:"Philippians", title:"He humbled himself", side:"c",
+      passage: "\u201cIn your relationships with one another, have the same mindset as Christ Jesus: Who, being in very nature God, did not consider equality with God something to be used to his own advantage; rather, he made himself nothing by taking the very nature of a servant, being made in human likeness. And being found in appearance as a man, he humbled himself by becoming obedient to death \u2014 even death on a cross! Therefore God exalted him to the highest place and gave him the name that is above every name.\u201d",
+      keyVerses: [
+        { ref: "Philippians 2:5\u20138", text: "He made himself nothing by taking the very nature of a servant\u2026 he humbled himself by becoming obedient to death \u2014 even death on a cross!" }
+      ],
+      questions: [
+        { q:"Why does Paul quote this hymn?", opts:["To settle a doctrinal dispute", "To fix a relational one \u2014 \u2018in your relationships\u2026 have the same mindset\u2019", "As a creed only"], correct:1, explain:"The highest Christology in the New Testament is deployed to stop petty conflict." },
+        { q:"What direction does the passage move?", opts:["Upward only", "Down \u2014 God to servant to death to a cross \u2014 then up to the highest place", "Sideways"], correct:1, explain:"A descent to the lowest point, then exaltation; the order is the argument." },
+        { q:"What did He not consider something to exploit?", opts:["His power", "Equality with God \u2014 He didn't use it to His own advantage", "His reputation"], correct:1, explain:"He had every right and declined to leverage it." }
+      ],
+      deepDive: "This is probably an early Christian hymn, and it contains the loftiest statement about Christ's nature in the New Testament \u2014 which Paul quotes to solve an argument between two women in a small church. That's worth sitting with. The theology isn't decoration; it's the fix. The movement is relentlessly downward: equality with God, then nothing, then servant, then human, then obedient, then death, then \u2014 the lowest rung \u2014 a cross. Only then does God exalt Him. The pattern being described is also being prescribed: this is the mindset you're to have with each other." },
+    { id:329, book:"Philippians", title:"I have learned to be content", side:"l",
+      passage: "Paul counts his impressive religious r\u00e9sum\u00e9 as loss \u201cfor the surpassing worth of knowing Christ Jesus my Lord.\u201d He presses on toward the goal, \u201cforgetting what is behind.\u201d Then practical peace: \u201cDo not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.\u201d And from prison: \u201cI have learned to be content whatever the circumstances\u2026 I can do all this through him who gives me strength.\u201d",
+      keyVerses: [
+        { ref: "Philippians 4:6\u20137", text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God." }
+      ],
+      questions: [
+        { q:"What's the alternative to anxiety?", opts:["Positive thinking", "Prayer with thanksgiving \u2014 handing the specific requests over", "Distraction"], correct:1, explain:"Not suppression but transfer: the worry goes somewhere." },
+        { q:"How did Paul come by contentment?", opts:["Naturally", "He LEARNED it \u2014 in both plenty and want", "He was never in need"], correct:1, explain:"A skill acquired over time and hard circumstances, not a temperament." },
+        { q:"What does \u2018I can do all this\u2019 refer to?", opts:["Any ambition", "Being content in every circumstance \u2014 that's the \u2018all this\u2019", "Athletic success"], correct:1, explain:"The famous verse is about enduring plenty and hunger, not achieving whatever you want." }
+      ],
+      deepDive: "Two of the most quoted verses in the Bible sit here, and both are usually detached from their setting. \u2018Do not be anxious\u2019 isn't a scolding \u2014 it comes with a mechanism: specific requests, with thanksgiving, handed over, followed by a peace that guards you like a garrison. And 4:13 is not a promise that you can accomplish anything you set your mind to; read the sentence before it. The \u2018all this\u2019 is contentment in hunger and in plenty, in need and in abundance. That's a far better promise than the motivational version, because it applies on the days when nothing is going your way." },
+    { id:330, book:"Philippians", title:"Whatever is true", side:"r",
+      passage: "Paul addresses a real conflict by name \u2014 \u201cI plead with Euodia and I plead with Syntyche to be of the same mind in the Lord\u201d \u2014 and asks the church to help them. Then: \u201cRejoice in the Lord always. I will say it again: Rejoice! Let your gentleness be evident to all. The Lord is near.\u201d And the discipline of attention: \u201cWhatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable \u2014 if anything is excellent or praiseworthy \u2014 think about such things.\u201d",
+      keyVerses: [
+        { ref: "Philippians 4:8", text: "Whatever is true, whatever is noble, whatever is right, whatever is pure, whatever is lovely, whatever is admirable\u2026 think about such things." }
+      ],
+      questions: [
+        { q:"What does Paul do about the two women's conflict?", opts:["Ignores it", "Names them publicly and asks the church to help them reconcile", "Removes them"], correct:1, explain:"A local disagreement preserved in Scripture forever \u2014 and treated as worth the church's effort." },
+        { q:"What is 4:8 asking for?", opts:["Positive thinking", "Deliberate direction of attention \u2014 choosing what your mind dwells on", "Ignoring problems"], correct:1, explain:"A discipline of focus, not denial of reality; \u2018whatever is true\u2019 heads the list." },
+        { q:"What accompanies the call to gentleness?", opts:["A warning", "\u2018The Lord is near\u2019", "A rule"], correct:1, explain:"Nearness is the reason gentleness is possible \u2014 you're not managing alone." }
+      ],
+      deepDive: "The most striking thing in Philippians 4 is that a letter about joy and peace stops to name two arguing women. Paul doesn't treat interpersonal conflict as beneath theology; he treats it as the place theology gets tested. Then comes the attention discipline, and the first word in the list is \u2018true\u2019 \u2014 this is not wishful thinking or denial, but a decision about where the mind camps. Most people's mental default settles on the anxious, the resented, and the replayed. Paul says that's a choice, and a different one is available, especially for a mind that has just handed its anxieties over in prayer." },
+    { id:331, book:"Colossians", title:"The supremacy of Christ", side:"c",
+      passage: "\u201cThe Son is the image of the invisible God, the firstborn over all creation. For in him all things were created: things in heaven and on earth, visible and invisible\u2026 all things have been created through him and for him. He is before all things, and in him all things hold together. And he is the head of the body, the church\u2026 For God was pleased to have all his fullness dwell in him, and through him to reconcile to himself all things\u2026 by making peace through his blood, shed on the cross.\u201d",
+      keyVerses: [
+        { ref: "Colossians 1:16\u201317", text: "For in him all things were created\u2026 He is before all things, and in him all things hold together." }
+      ],
+      questions: [
+        { q:"What does \u2018image of the invisible God\u2019 claim?", opts:["A resemblance", "That looking at Christ is how the unseen God is seen", "A metaphor only"], correct:1, explain:"Not a copy but the visible expression of God's own nature." },
+        { q:"What holds creation together?", opts:["Physical laws alone", "Christ \u2014 \u2018in him all things hold together\u2019", "Nothing"], correct:1, explain:"Sustaining, not just starting: the universe is actively held." },
+        { q:"How was reconciliation made?", opts:["By teaching", "By making peace through his blood, shed on the cross", "By example"], correct:1, explain:"The cosmic claims land on a very physical event." }
+      ],
+      deepDive: "Colossians was written against teaching that made Christ one spiritual authority among many \u2014 angels, mystical experiences, dietary rules. Paul's answer is to make Him so large that nothing else can share the frame: creator of everything visible and invisible, before all things, the one in whom everything currently holds together, head of the church, the fullness of God in bodily form. If that's true, no supplement is available; you can't add to what everything already depends on. And notice where the hymn lands after all the cosmic vocabulary: blood, shed on a cross. The biggest claims in the letter are anchored to the most physical event." },
+    { id:332, book:"Colossians", title:"Set your hearts on things above", side:"l",
+      passage: "\u201cSince, then, you have been raised with Christ, set your hearts on things above\u2026 For you died, and your life is now hidden with Christ in God.\u201d So put to death what belongs to the old life \u2014 and clothe yourselves instead: \u201ccompassion, kindness, humility, gentleness and patience. Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you. And over all these virtues put on love, which binds them all together in perfect unity. Let the peace of Christ rule in your hearts.\u201d",
+      keyVerses: [
+        { ref: "Colossians 3:13", text: "Bear with each other and forgive one another\u2026 Forgive as the Lord forgave you." }
+      ],
+      questions: [
+        { q:"What's the clothing image doing?", opts:["Discussing modesty", "Character as something deliberately put on each day", "Describing baptism only"], correct:1, explain:"Take off the old set, put on the new \u2014 an act repeated daily, like dressing." },
+        { q:"What's the standard for forgiveness?", opts:["What the offense deserves", "\u2018As the Lord forgave you\u2019", "How you feel"], correct:1, explain:"The measure isn't the wrong done to you but the pardon given to you." },
+        { q:"What goes over all the virtues?", opts:["Discipline", "Love, which binds them together in perfect unity", "Knowledge"], correct:1, explain:"The outer garment holding the rest in place." }
+      ],
+      deepDive: "Colossians 3 is one of the most practical chapters in Paul, and the clothing metaphor is why it's usable. Character isn't a mood you wait for; it's a set of clothes you put on, deliberately, again today. Take off anger, malice, slander, filthy language. Put on compassion, kindness, humility, gentleness, patience. Then the hardest line: forgive as the Lord forgave you \u2014 which sets the bar at total, undeserved, and first. Most of us forgive proportionally to the offense. Paul says the measuring stick is what you received, not what they did." },
+    { id:333, book:"Colossians", title:"Whatever you do", side:"r",
+      passage: "\u201cLet the message of Christ dwell among you richly as you teach and admonish one another with all wisdom through psalms, hymns, and songs from the Spirit, singing to God with gratitude in your hearts. And whatever you do, whether in word or deed, do it all in the name of the Lord Jesus, giving thanks to God the Father through him.\u201d Then, to slaves and workers: \u201cWhatever you do, work at it with all your heart, as working for the Lord, not for human masters\u2026 It is the Lord Christ you are serving.\u201d",
+      keyVerses: [
+        { ref: "Colossians 3:23", text: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters." }
+      ],
+      questions: [
+        { q:"What scope does \u2018whatever you do\u2019 cover?", opts:["Religious activity", "Everything \u2014 word or deed, sacred or ordinary", "Only work"], correct:1, explain:"Paul erases the line between spiritual and everyday activity." },
+        { q:"Who was the work instruction originally addressed to?", opts:["Business owners", "Slaves \u2014 people with the least reason to feel their work mattered", "Priests"], correct:1, explain:"Which makes it apply to anyone whose job feels unseen or unrewarded." },
+        { q:"Who is the real employer?", opts:["The visible boss", "The Lord Christ \u2014 \u2018it is the Lord Christ you are serving\u2019", "Yourself"], correct:1, explain:"A reframing that changes the meaning of unnoticed effort." }
+      ],
+      deepDive: "This is the passage that dignifies ordinary work, and its original audience makes it stronger: Paul addresses slaves, people whose labor was compelled and uncredited, and tells them the real audience for it is Christ. If that was true of their work, it's true of a spreadsheet, a shift, or a load of laundry. \u2018Whatever you do, in word or deed\u2019 removes the category of activity too small to matter. Combined with the earlier instruction to let Christ's message dwell in you richly, the picture is of a life where worship isn't a scheduled event but the character of everything in the day." }
+,
+    { id:334, book:"1 Thessalonians", title:"Faith, love, and endurance", side:"c",
+      passage: "Paul thanks God for a young church, remembering \u201cyour work produced by faith, your labor prompted by love, and your endurance inspired by hope in our Lord Jesus Christ.\u201d They had turned from idols \u201cto serve the living and true God,\u201d and their faith had become known everywhere. Paul describes his own conduct among them: \u201cwe were like young children among you. Just as a nursing mother cares for her children, so we cared for you. Because we loved you so much, we were delighted to share with you not only the gospel of God but our lives as well.\u201d",
+      keyVerses: [
+        { ref: "1 Thessalonians 2:8", text: "We were delighted to share with you not only the gospel of God but our lives as well, because you had become so dear to us." }
+      ],
+      questions: [
+        { q:"What three things does Paul commend?", opts:["Money, size, buildings", "Work from faith, labor from love, endurance from hope", "Knowledge, zeal, order"], correct:1, explain:"Each virtue paired with what it produces \u2014 faith works, love labors, hope endures." },
+        { q:"How does Paul describe his ministry among them?", opts:["Professional distance", "Like a nursing mother \u2014 sharing his life, not just his message", "Authoritative command"], correct:1, explain:"Gentleness and personal investment, from the same man who wrote Galatians." },
+        { q:"What had they turned from and to?", opts:["Poverty to wealth", "Idols, to serve the living and true God", "One temple to another"], correct:1, explain:"A clean break, in a city full of civic religion, with real social cost." }
+      ],
+      deepDive: "This is possibly Paul's earliest letter, written to a church only months old, and its warmth is striking. The triad in chapter 1 has shaped Christian teaching ever since: faith, love, and hope, each identified by what it produces \u2014 faith that works, love that labors, hope that endures. And chapter 2 shows what discipleship actually costs: not just delivering content but sharing your life. Paul uses a nursing mother as the image, which is about as far from professional detachment as you can get. People rarely receive a message from someone unwilling to be known." },
+    { id:335, book:"1 Thessalonians", title:"The Lord will come down", side:"l",
+      passage: "The church was grieving members who had died before Christ returned. Paul writes so they \u201cdo not grieve like the rest of mankind, who have no hope.\u201d The dead in Christ will not miss anything: \u201cthe Lord himself will come down from heaven, with a loud command\u2026 and the dead in Christ will rise first. After that, we who are still alive will be caught up together with them in the clouds to meet the Lord in the air. And so we will be with the Lord forever. Therefore encourage one another with these words.\u201d Then: \u201cRejoice always, pray continually, give thanks in all circumstances.\u201d",
+      keyVerses: [
+        { ref: "1 Thessalonians 4:13", text: "We do not want you to be uninformed about those who sleep in death, so that you do not grieve like the rest of mankind, who have no hope." }
+      ],
+      questions: [
+        { q:"Does Paul tell them not to grieve?", opts:["Yes, grief is forbidden", "No \u2014 not to grieve LIKE those without hope", "He doesn't mention grief"], correct:1, explain:"Christian grief is real; what changes is the horizon it's felt against." },
+        { q:"What's the stated purpose of the teaching?", opts:["Predicting dates", "\u2018Therefore encourage one another with these words\u2019", "Winning debates"], correct:1, explain:"Paul's end-times teaching here is pastoral comfort, not a timeline." },
+        { q:"What's the final promise?", opts:["A reward", "\u2018And so we will be with the Lord forever\u2019", "A new city"], correct:1, explain:"The point of the whole passage is presence \u2014 together, with Him, permanently." }
+      ],
+      deepDive: "This passage gets mined for end-times charts, which misses what Paul is doing. A young church was frightened that their dead had somehow missed out, and he writes to comfort them \u2014 which is why the paragraph ends \u2018encourage one another with these words\u2019 rather than \u2018calculate the date.\u2019 Notice the careful phrasing about grief. He doesn't say don't grieve; he says don't grieve like those with no hope. Christians cry at funerals, and should. What differs is that the sorrow has an end in view: and so we will be with the Lord forever." },
+    { id:336, book:"2 Thessalonians", title:"Keep working", side:"r",
+      passage: "Some in Thessalonica had concluded the day of the Lord had already come and had stopped working, becoming \u201cbusybodies\u201d living off others. Paul corrects the theology and then the behavior with unusual bluntness: \u201cThe one who is unwilling to work shall not eat.\u201d He points to his own example \u2014 he worked night and day so as not to be a burden. \u201cAnd as for you, brothers and sisters, never tire of doing what is good.\u201d The letter also prays that God would \u201cencourage your hearts and strengthen you in every good deed and word.\u201d",
+      keyVerses: [
+        { ref: "2 Thessalonians 3:13", text: "And as for you, brothers and sisters, never tire of doing what is good." }
+      ],
+      questions: [
+        { q:"What error was circulating?", opts:["Christ would never return", "That the day of the Lord had already come \u2014 so some quit working", "That work saves"], correct:1, explain:"Bad eschatology producing bad economics, which Paul addresses in both directions." },
+        { q:"How does Paul address idleness?", opts:["Gently ignores it", "Bluntly \u2014 the unwilling to work shall not eat \u2014 and points to his own labor", "By providing charity"], correct:1, explain:"Note the wording: unwilling, not unable. It's about refusal, not hardship." },
+        { q:"What's the closing encouragement?", opts:["Wait passively", "Never tire of doing what is good", "Withdraw from society"], correct:1, explain:"Expectation of Christ's return should produce diligence, not paralysis." }
+      ],
+      deepDive: "This short letter answers a live question: how should believing that Jesus will return change today? Some Thessalonians answered by quitting their jobs, and Paul's reply is brisk. Anticipating the end doesn't excuse you from ordinary responsibility; it dignifies it. Note his careful wording \u2014 the unwilling to work, not the unable \u2014 which distinguishes freeloading from genuine need, something the early church took seriously in both directions. And the closing line is for anyone worn down by doing right with no visible result: never tire of doing what is good." },
+    { id:337, book:"1 Timothy", title:"The worst of sinners", side:"c",
+      passage: "Paul writes to his younger colleague Timothy, left in Ephesus to correct false teaching. He recalls his own past: \u201cEven though I was once a blasphemer and a persecutor and a violent man, I was shown mercy\u2026 Here is a trustworthy saying that deserves full acceptance: Christ Jesus came into the world to save sinners \u2014 of whom I am the worst. But for that very reason I was shown mercy so that in me, the worst of sinners, Christ Jesus might display his immense patience as an example.\u201d He urges prayers for all people, including kings, \u201cfor there is one God and one mediator between God and mankind, the man Christ Jesus.\u201d",
+      keyVerses: [
+        { ref: "1 Timothy 1:15", text: "Christ Jesus came into the world to save sinners \u2014 of whom I am the worst." }
+      ],
+      questions: [
+        { q:"What tense does Paul use \u2014 \u2018was\u2019 or \u2018am\u2019 the worst?", opts:["\u2018Was\u2019", "\u2018Am\u2019 \u2014 present tense, decades after his conversion", "Neither"], correct:1, explain:"Growing in grace made him more aware of his need, not less." },
+        { q:"Why was he shown mercy, per his own account?", opts:["He deserved a second chance", "As an example \u2014 to display Christ's immense patience", "Because he was useful"], correct:1, explain:"His story is placed in Scripture as a limit case: if him, then anyone." },
+        { q:"How many mediators are there?", opts:["Many", "One \u2014 the man Christ Jesus", "None needed"], correct:1, explain:"A single point of access, available to everyone, which is why prayer for all people follows." }
+      ],
+      deepDive: "Paul had approved a murder and hunted believers house to house, and he never got over being forgiven \u2014 note the present tense, \u2018of whom I am the worst,\u2019 written near the end of his life. That's the opposite of the usual religious trajectory, where people grow more confident of their own decency over time. The purpose he gives is the encouraging part: he was made an example precisely so nobody after him could claim to be beyond reach. If Christ's patience covered the man holding the coats at Stephen's stoning, the argument that you're too far gone doesn't hold." },
+    { id:338, book:"1 Timothy", title:"Contentment and godliness", side:"l",
+      passage: "Paul warns against teachers who imagine godliness is a means to financial gain. \u201cBut godliness with contentment is great gain. For we brought nothing into the world, and we can take nothing out of it. But if we have food and clothing, we will be content with that.\u201d Then the famous diagnosis: \u201cFor the love of money is a root of all kinds of evil. Some people, eager for money, have wandered from the faith and pierced themselves with many griefs.\u201d To the rich he says: don't be arrogant or put hope in wealth, but \u201cbe rich in good deeds, and be generous and willing to share.\u201d",
+      keyVerses: [
+        { ref: "1 Timothy 6:6\u20137", text: "But godliness with contentment is great gain. For we brought nothing into the world, and we can take nothing out of it." }
+      ],
+      questions: [
+        { q:"What exactly is \u2018a root of all kinds of evil\u2019?", opts:["Money", "The LOVE of money", "Poverty"], correct:1, explain:"The common misquote drops the crucial word; the problem is the affection, not the currency." },
+        { q:"What does Paul tell the rich?", opts:["To give everything away", "Not to be arrogant or hope in wealth, but to be generous and rich in good deeds", "To feel guilty"], correct:1, explain:"He addresses them directly rather than dismissing them \u2014 with a redirected hope." },
+        { q:"What is \u2018great gain\u2019?", opts:["Wealth", "Godliness with contentment", "Reputation"], correct:1, explain:"He borrows the profit language of the false teachers and redefines the asset." }
+      ],
+      deepDive: "Paul is confronting teachers who treated faith as a wealth strategy, and his response is to redefine profit: godliness with contentment is the real gain. The reasoning is starkly simple \u2014 you arrived with nothing and leave with nothing, so the accumulation between those two points can't be the point. The famous line about money deserves precision: it's the love of it, and Paul says people eager for it have \u2018pierced themselves\u2019 with griefs, an image of self-inflicted wounds. And his word to the wealthy is notably not condemnation but reassignment: put your hope elsewhere, and become rich in a different currency." },
+    { id:339, book:"2 Timothy", title:"All Scripture is God-breathed", side:"r",
+      passage: "Paul, near the end, urges Timothy not to be ashamed of the testimony, to guard the deposit entrusted to him, and to endure hardship \u201clike a good soldier of Christ Jesus.\u201d He reminds him of the faith that first lived in his grandmother Lois and mother Eunice. Then: \u201cAll Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness, so that the servant of God may be thoroughly equipped for every good work.\u201d And the charge: \u201cPreach the word; be prepared in season and out of season.\u201d",
+      keyVerses: [
+        { ref: "2 Timothy 3:16\u201317", text: "All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness." }
+      ],
+      questions: [
+        { q:"What does \u2018God-breathed\u2019 claim?", opts:["Human inspiration", "That Scripture originates in God's own breath", "Historical accuracy only"], correct:1, explain:"The same breath language as Genesis 2 and the Spirit \u2014 origin, not merely quality." },
+        { q:"What four uses are named?", opts:["Comfort, ritual, art, law", "Teaching, rebuking, correcting, training in righteousness", "Prophecy, history, poetry, law"], correct:1, explain:"Two constructive, two corrective \u2014 Scripture is meant to unsettle as well as instruct." },
+        { q:"Where did Timothy's faith come from?", opts:["A school", "His grandmother Lois and mother Eunice", "A vision"], correct:1, explain:"Paul names two women whose ordinary faithfulness produced a New Testament leader." }
+      ],
+      deepDive: "2 Timothy is Paul's last letter, written from a cold cell with execution near, and it reads like a handoff. The Scripture passage is its most quoted, and the four uses are worth noticing in pairs: teaching and training build up; rebuking and correcting tear down what shouldn't be there. A Bible that only ever comforts you isn't being used as designed. And the small detail about Lois and Eunice is a quiet encouragement to anyone doing unglamorous work: a grandmother and a mother in a provincial town raised a boy who became Paul's most trusted colleague." },
+    { id:340, book:"2 Timothy", title:"I have finished the race", side:"c",
+      passage: "Paul knows what's coming: \u201cFor I am already being poured out like a drink offering, and the time for my departure is near. I have fought the good fight, I have finished the race, I have kept the faith. Now there is in store for me the crown of righteousness, which the Lord, the righteous Judge, will award to me on that day \u2014 and not only to me, but also to all who have longed for his appearing.\u201d He asks Timothy to come quickly, to bring his cloak and the scrolls, and notes that at his first defense \u201ceveryone deserted me\u2026 But the Lord stood at my side.\u201d",
+      keyVerses: [
+        { ref: "2 Timothy 4:7", text: "I have fought the good fight, I have finished the race, I have kept the faith." }
+      ],
+      questions: [
+        { q:"How does Paul assess his life?", opts:["With regret", "Fought, finished, kept \u2014 three completed tasks", "With uncertainty"], correct:1, explain:"Not \u2018I won everything\u2019 but \u2018I finished\u2019 \u2014 completion is his measure." },
+        { q:"Who gets the crown?", opts:["Only Paul", "All who have longed for his appearing", "The most successful"], correct:1, explain:"He immediately widens it past himself to ordinary believers who love Christ's return." },
+        { q:"What happened at his first defense?", opts:["He was acquitted", "Everyone deserted him \u2014 but the Lord stood at his side", "He was silent"], correct:1, explain:"Abandonment named honestly, and God's presence named alongside it." }
+      ],
+      deepDive: "These are among the last recorded words of the man who wrote a third of the New Testament, and they're remarkable for their ordinariness alongside their grandeur. He assesses a life \u2014 fought, finished, kept \u2014 and then asks for his coat, because Roman prisons were cold, and for his scrolls, because he still wanted to read. Note the crown isn't reserved for apostles: it goes to all who have longed for His appearing. And the loneliest sentence in his letters, \u2018everyone deserted me,\u2019 sits right beside the steadiest: but the Lord stood at my side." },
+    { id:341, book:"Titus", title:"Grace that teaches", side:"l",
+      passage: "Paul left Titus in Crete to appoint elders and set things in order, insisting that leaders be blameless, hospitable, self-controlled, and able to teach sound doctrine. Then the heart of the letter: \u201cFor the grace of God has appeared that offers salvation to all people. It teaches us to say \u2018No\u2019 to ungodliness and worldly passions, and to live self-controlled, upright and godly lives in this present age, while we wait for the blessed hope.\u201d He saved us \u201cnot because of righteous things we had done, but because of his mercy\u2026 through the washing of rebirth and renewal by the Holy Spirit.\u201d",
+      keyVerses: [
+        { ref: "Titus 2:11\u201312", text: "For the grace of God has appeared that offers salvation to all people. It teaches us to say \u201cNo\u201d to ungodliness." }
+      ],
+      questions: [
+        { q:"What does grace do besides save?", opts:["Nothing else", "It teaches \u2014 training us to say no and to live differently", "It removes all standards"], correct:1, explain:"Grace is a tutor in this passage, not a permission slip." },
+        { q:"Why were we saved?", opts:["Because of righteous things we'd done", "Because of His mercy", "Because of potential"], correct:1, explain:"Paul rules out our contribution explicitly." },
+        { q:"What are believers waiting for?", opts:["Nothing specific", "The blessed hope \u2014 the appearing of Christ", "Better circumstances"], correct:1, explain:"Present self-control is framed between grace that appeared and glory that will." }
+      ],
+      deepDive: "Titus answers the accusation that grace makes people lax, and it does so in one sentence: grace teaches us to say no. It isn't merely the pardon at the start of the Christian life; it's the instructor for the rest of it. That reframes obedience entirely \u2014 the same grace that saved you is the thing training you, which means holiness isn't a return to earning but the ongoing work of the gift. And the framing is elegant: grace has appeared, glory will appear, and the present age is lived in between, self-controlled and upright, because of both." },
+    { id:342, book:"Philemon", title:"No longer a slave", side:"r",
+      passage: "Paul's shortest letter is a personal appeal. Onesimus, a slave, had run away from Philemon \u2014 a believer in whose home the church met \u2014 and had met Paul in prison and become a Christian. Paul sends him back with a letter: \u201cI appeal to you on the basis of love\u2026 I appeal to you for my son Onesimus, who became my son while I was in chains\u2026 I am sending him \u2014 who is my very heart \u2014 back to you.\u201d He asks Philemon to receive him \u201cno longer as a slave, but better than a slave, as a dear brother\u2026 welcome him as you would welcome me.\u201d And: \u201cIf he has done you any wrong or owes you anything, charge it to me.\u201d",
+      keyVerses: [
+        { ref: "Philemon 1:16", text: "No longer as a slave, but better than a slave, as a dear brother." }
+      ],
+      questions: [
+        { q:"What does Paul offer to do about the debt?", opts:["Nothing", "Charge it to his own account", "Demand forgiveness"], correct:1, explain:"He puts himself financially between the wronged party and the offender." },
+        { q:"How does Paul make his appeal?", opts:["By command", "On the basis of love \u2014 though he says he could order it", "Anonymously"], correct:1, explain:"He deliberately declines to use authority he acknowledges having." },
+        { q:"What relationship does he ask for?", opts:["Leniency only", "Brotherhood \u2014 no longer as a slave but as a dear brother", "Manumission by law"], correct:1, explain:"He asks for a category change that the surrounding culture had no room for." }
+      ],
+      deepDive: "This one-page letter quietly dismantles an institution from the inside. Paul doesn't issue a decree about slavery; he asks a slave owner to receive his runaway as a brother, and points out that he could command it and won't. The most striking line is the offer to pay: charge it to me \u2014 a small picture of what Christ does with our debts. And notice the pressure Paul applies without applying it: the letter was meant to be read aloud to the church meeting in Philemon's house. Two thousand years later we still don't know what he decided, but the letter survived, which suggests we do." },
+    { id:343, book:"Hebrews", title:"God has spoken by his Son", side:"c",
+      passage: "\u201cIn the past God spoke to our ancestors through the prophets at many times and in various ways, but in these last days he has spoken to us by his Son, whom he appointed heir of all things, and through whom also he made the universe. The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word.\u201d The letter then argues the Son's superiority \u2014 to angels, to Moses, to the old priesthood \u2014 with a recurring warning: \u201cSee to it, brothers and sisters, that none of you has a sinful, unbelieving heart that turns away from the living God.\u201d",
+      keyVerses: [
+        { ref: "Hebrews 1:3", text: "The Son is the radiance of God\u2019s glory and the exact representation of his being, sustaining all things by his powerful word." }
+      ],
+      questions: [
+        { q:"How is the Son's revelation different?", opts:["Clearer wording", "God spoke THROUGH prophets, but has spoken BY his Son \u2014 the message is a person", "It's shorter"], correct:1, explain:"Previous revelation came in fragments; this one comes in a person." },
+        { q:"What does \u2018exact representation\u2019 mean?", opts:["A close copy", "The precise imprint of God's being \u2014 like a seal in wax", "A symbol"], correct:1, explain:"The word describes an engraved stamp reproducing the original exactly." },
+        { q:"Who wrote Hebrews?", opts:["Paul, certainly", "Unknown \u2014 the author is never named", "Peter"], correct:1, explain:"One of Scripture's finest arguments, from an author history didn't record." }
+      ],
+      deepDive: "Hebrews was written to Jewish believers tempted to drift back to a familiar system under pressure, and its whole strategy is comparison: whatever you're considering returning to, this is better. It opens by making the Son the final word \u2014 not another prophet with another message but the exact imprint of God's being, the one through whom the universe was made and by whom it's held together. And the recurring warnings throughout the letter aren't decorative. This is a book written to people at risk of walking away, which is why it keeps saying: hold on, and look at who you'd be leaving." },
+    { id:344, book:"Hebrews", title:"A high priest who understands", side:"l",
+      passage: "\u201cFor the word of God is alive and active. Sharper than any double-edged sword, it penetrates even to dividing soul and spirit\u2026 it judges the thoughts and attitudes of the heart. Nothing in all creation is hidden from God's sight.\u201d And then, immediately after that exposure, the comfort: \u201cFor we do not have a high priest who is unable to empathize with our weaknesses, but we have one who has been tempted in every way, just as we are \u2014 yet he did not sin. Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.\u201d",
+      keyVerses: [
+        { ref: "Hebrews 4:15\u201316", text: "We do not have a high priest who is unable to empathize with our weaknesses\u2026 Let us then approach God\u2019s throne of grace with confidence." }
+      ],
+      questions: [
+        { q:"What does the Word do?", opts:["Comforts only", "Penetrates and judges the thoughts and attitudes of the heart", "Describes history"], correct:1, explain:"Alive and active \u2014 it reads you as much as you read it." },
+        { q:"Why can Jesus empathize?", opts:["He observed humanity", "He was tempted in every way, as we are \u2014 yet without sin", "He is compassionate by nature only"], correct:1, explain:"Experience, not merely disposition; He knows the pull from the inside." },
+        { q:"How should we approach the throne?", opts:["Cautiously", "With confidence \u2014 to receive mercy and find grace in time of need", "Only when doing well"], correct:1, explain:"Boldness is commanded precisely for the moment of need, not after recovery." }
+      ],
+      deepDive: "The sequence here is the pastoral genius of Hebrews. First, total exposure: a word that divides soul and spirit and judges the heart's motives, with nothing hidden. That should send anyone running. And then, immediately, the reason not to: the one you're exposed before is a high priest who has been tempted in every way you have. The invitation that follows isn't to approach cautiously once you've cleaned up, but with confidence, in your time of need. Being fully known and still welcomed is the same combination the woman at the well found, stated here in courtroom terms." },
+    { id:345, book:"Hebrews", title:"Once for all", side:"r",
+      passage: "The old system required repeated sacrifices \u2014 \u201cthe same sacrifices repeated endlessly year after year\u201d \u2014 which \u201ccan never take away sins.\u201d But Christ \u201cdid not enter heaven to offer himself again and again\u2026 he has appeared once for all at the culmination of the ages to do away with sin by the sacrifice of himself.\u201d And the picture of finality: \u201cDay after day every priest stands and performs his religious duties\u2026 But when this priest had offered for all time one sacrifice for sins, he sat down at the right hand of God\u2026 For by one sacrifice he has made perfect forever those who are being made holy.\u201d",
+      keyVerses: [
+        { ref: "Hebrews 10:12", text: "But when this priest had offered for all time one sacrifice for sins, he sat down at the right hand of God." }
+      ],
+      questions: [
+        { q:"Why does \u2018he sat down\u2019 matter?", opts:["He was tired", "Priests always stood \u2014 the work was never done; sitting means it's finished", "It shows authority only"], correct:1, explain:"There were no chairs in the tabernacle, because the sacrificing never ended." },
+        { q:"How many times was the sacrifice offered?", opts:["Yearly", "Once for all \u2014 never to be repeated", "Daily"], correct:1, explain:"The repetition of the old system proved its insufficiency." },
+        { q:"What's the effect on those being made holy?", opts:["Partial cleansing", "Made perfect forever", "Temporary covering"], correct:1, explain:"Positional completeness alongside ongoing growth \u2014 both in one sentence." }
+      ],
+      deepDive: "The detail that carries this passage is furniture. The tabernacle had no chair, because a priest's work was never finished \u2014 there was always another sacrifice tomorrow. So when Hebrews says Christ \u2018sat down,\u2019 it's making a statement about completion, not posture. Nothing remains to be offered. That single image answers the anxiety underneath most religious effort: the sense that the account is never quite settled. And notice the two tenses held together \u2014 made perfect forever, and being made holy. Your standing is finished; your growth is in progress." },
+    { id:346, book:"Hebrews", title:"Faith is confidence", side:"c",
+      passage: "\u201cNow faith is confidence in what we hope for and assurance about what we do not see.\u201d Then a roll call: Abel, Enoch, Noah, Abraham \u2014 who \u201cobeyed and went, even though he did not know where he was going.\u201d Sarah, Isaac, Jacob, Joseph, Moses, Rahab, Gideon, David, the prophets. Some conquered kingdoms and shut the mouths of lions; others were tortured, jeered, flogged, stoned, sawed in two \u2014 \u201cthe world was not worthy of them.\u201d \u201cThese were all commended for their faith, yet none of them received what had been promised.\u201d",
+      keyVerses: [
+        { ref: "Hebrews 11:1", text: "Now faith is confidence in what we hope for and assurance about what we do not see." }
+      ],
+      questions: [
+        { q:"What two outcomes appear in the chapter?", opts:["Only victories", "Deliverance AND torture \u2014 both listed as faith", "Only suffering"], correct:1, explain:"Verses 33\u201338 place those who escaped and those who didn't in the same hall of faith." },
+        { q:"What did most of them receive in their lifetime?", opts:["Everything promised", "None of them received what had been promised", "Wealth"], correct:1, explain:"They died still believing, which the chapter treats as the achievement." },
+        { q:"What characterized Abraham's obedience?", opts:["Full information", "He went without knowing where he was going", "A detailed map"], correct:1, explain:"Faith moving before the route was clear." }
+      ],
+      deepDive: "Hebrews 11 is often read as a highlight reel of spiritual success, and the second half corrects that. The same chapter that credits people who shut lions' mouths credits people who were sawed in two, and calls both faith. That's important for anyone whose faithfulness hasn't produced rescue: the list makes no distinction in honor between those delivered and those not. And the summary line is the hardest and most bracing \u2014 none of them received what had been promised. They died still waiting, still trusting, and Scripture calls that a life well lived." },
+    { id:347, book:"Hebrews", title:"Run with perseverance", side:"l",
+      passage: "\u201cTherefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and the sin that so easily entangles. And let us run with perseverance the race marked out for us, fixing our eyes on Jesus, the pioneer and perfecter of faith. For the joy set before him he endured the cross, scorning its shame, and sat down at the right hand of the throne of God. Consider him who endured such opposition\u2026 so that you will not grow weary and lose heart.\u201d And on discipline: God disciplines those he loves, \u201cthat we may share in his holiness.\u201d",
+      keyVerses: [
+        { ref: "Hebrews 12:1\u20132", text: "Let us run with perseverance the race marked out for us, fixing our eyes on Jesus, the pioneer and perfecter of faith." }
+      ],
+      questions: [
+        { q:"What's thrown off before running?", opts:["Only sin", "Everything that hinders AND the entangling sin", "Nothing"], correct:1, explain:"Two categories: sins, and weights that aren't sins but slow you down." },
+        { q:"What sustained Jesus through the cross?", opts:["Duty", "The joy set before him", "Anger"], correct:1, explain:"Endurance fueled by anticipated joy, not grim willpower." },
+        { q:"Whose race is it?", opts:["A shared identical course", "\u2018The race marked out for us\u2019 \u2014 individually assigned", "Optional"], correct:1, explain:"Comparison is ruled out; your course was marked for you." }
+      ],
+      deepDive: "After the roll call of chapter 11, chapter 12 turns to the reader: they ran theirs, now run yours. Two details are worth carrying. First, the two things to throw off \u2014 sin, obviously, but also \u2018everything that hinders,\u2019 which covers perfectly permissible weights that make the running harder. Runners strip down not because clothing is evil but because it's heavy. Second, the fuel: Jesus endured for the joy set before Him. Endurance in the New Testament runs on anticipation, not gritted teeth \u2014 which means the practical question is what joy you have in view." },
+    { id:348, book:"Hebrews", title:"The same yesterday and today", side:"r",
+      passage: "The letter ends with practical instruction: keep loving each other, show hospitality to strangers \u2014 \u201cfor by so doing some people have shown hospitality to angels without knowing it.\u201d Remember prisoners as if you were with them. Honor marriage. \u201cKeep your lives free from the love of money and be content with what you have, because God has said, \u2018Never will I leave you; never will I forsake you.\u2019\u201d And the anchor: \u201cJesus Christ is the same yesterday and today and forever.\u201d Then a benediction: may the God of peace equip you with everything good for doing his will.",
+      keyVerses: [
+        { ref: "Hebrews 13:8", text: "Jesus Christ is the same yesterday and today and forever." }
+      ],
+      questions: [
+        { q:"What's the stated basis for contentment?", opts:["Having enough", "God's promise: never will I leave you; never will I forsake you", "Low expectations"], correct:1, explain:"Contentment grounded in presence rather than in the size of the account." },
+        { q:"How are believers told to treat prisoners?", opts:["Pray from a distance", "Remember them as if in prison with them", "Avoid association"], correct:1, explain:"Costly identification with people in trouble, which was risky then and now." },
+        { q:"What does 13:8 anchor?", opts:["A doctrine only", "Everything \u2014 in a letter to people whose world was shifting under them", "A prophecy"], correct:1, explain:"The one fixed point for readers considering abandoning the faith under pressure." }
+      ],
+      deepDive: "Hebrews closes by translating high theology into ordinary practice: love each other, welcome strangers, remember people in prison, keep your marriage, don't love money. Notice the reason attached to contentment \u2014 not \u2018because greed is bad\u2019 but because God said He'd never leave. The remedy for grasping is presence. And the letter's most quoted line lands where it's needed most: written to people whose religious world had been upended and who were tempted to go back, \u2018Jesus Christ is the same yesterday and today and forever\u2019 is not a slogan. It's the only stable object in the room." },
+    { id:349, book:"James", title:"Faith that works", side:"c",
+      passage: "James writes bluntly and practically. Trials produce perseverance; ask God for wisdom, \u201cwho gives generously to all without finding fault.\u201d Don't just hear the word \u2014 \u201cDo what it says. Anyone who listens to the word but does not do what it says is like someone who looks at his face in a mirror and, after looking at himself, goes away and immediately forgets what he looks like.\u201d Then the challenge: \u201cWhat good is it if someone claims to have faith but has no deeds? Can such faith save them?\u201d If a brother is without clothes and food and you say \u2018keep warm and well fed\u2019 but do nothing \u2014 \u201cfaith by itself, if it is not accompanied by action, is dead.\u201d",
+      keyVerses: [
+        { ref: "James 2:17", text: "In the same way, faith by itself, if it is not accompanied by action, is dead." }
+      ],
+      questions: [
+        { q:"What's the mirror illustration about?", opts:["Vanity", "Hearing the word and doing nothing \u2014 seeing yourself and forgetting instantly", "Self-esteem"], correct:1, explain:"Information that changes nothing is the same as never having looked." },
+        { q:"Does James contradict Paul on faith and works?", opts:["Yes, flatly", "No \u2014 Paul denies works EARN salvation; James denies faith without works is real", "They discuss different gods"], correct:1, explain:"Both agree living faith produces action; they're answering different errors." },
+        { q:"How does God give wisdom?", opts:["Sparingly", "Generously to all, without finding fault", "Only to leaders"], correct:1, explain:"No lecture attached to the asking \u2014 a striking description of God's generosity." }
+      ],
+      deepDive: "James reads like Proverbs with a Christian accent \u2014 short, concrete, uninterested in theory. His famous claim about faith and works has been misread as a fight with Paul, but they're answering different questions. Paul asks how a person is accepted by God: by faith, not works. James asks how you can tell that faith is real: by what it does. His test is deliberately unspiritual \u2014 someone cold and hungry in front of you, and words instead of a coat. The mirror image is his sharpest: reading Scripture and changing nothing is like forgetting your own face the moment you turn away." },
+    { id:350, book:"James", title:"Taming the tongue", side:"l",
+      passage: "\u201cEveryone should be quick to listen, slow to speak and slow to become angry.\u201d Then a whole chapter on speech: a bit in a horse's mouth, a rudder on a ship, a spark that sets a forest ablaze. \u201cThe tongue is a small part of the body, but it makes great boasts\u2026 no human being can tame the tongue. It is a restless evil, full of deadly poison. With the tongue we praise our Lord and Father, and with it we curse human beings, who have been made in God's likeness. Out of the same mouth come praise and cursing. My brothers and sisters, this should not be.\u201d",
+      keyVerses: [
+        { ref: "James 1:19", text: "Everyone should be quick to listen, slow to speak and slow to become angry." }
+      ],
+      questions: [
+        { q:"What do the bit and rudder illustrate?", opts:["Weakness", "Small things steering something much larger", "Complexity"], correct:1, explain:"The tongue's size is disproportionate to its influence over a life." },
+        { q:"Can the tongue be tamed by effort?", opts:["Easily", "James says no human being can tame it", "Only by the wise"], correct:1, explain:"Which points past technique toward a changed heart and God's help." },
+        { q:"What inconsistency does he name?", opts:["Praying and doubting", "Praising God and cursing people made in His likeness, from the same mouth", "Giving and hoarding"], correct:1, explain:"The people you speak about carelessly bear God's image." }
+      ],
+      deepDive: "James's teaching on speech is the most sustained in the New Testament, and its images escalate deliberately: a bit, a rudder, then a forest fire. Small, controlling, and then catastrophic. His conclusion is bracing \u2014 no human being can tame the tongue \u2014 which rules out white-knuckle self-improvement and points to the heart behind the words. The argument's sharpest turn is theological: cursing people is inconsistent with praising God, because those people bear His likeness. How you talk about someone is a statement about their Maker. \u2018Quick to listen, slow to speak\u2019 remains the most practically useful sentence in the letter." },
+    { id:351, book:"James", title:"Humble yourselves", side:"r",
+      passage: "James traces conflict to its source: \u201cWhat causes fights and quarrels among you? Don't they come from your desires that battle within you?\u201d You want and don't have; you covet and can't get. \u201cYou do not have because you do not ask God.\u201d But: \u201cGod opposes the proud but shows favor to the humble\u2026 Come near to God and he will come near to you\u2026 Humble yourselves before the Lord, and he will lift you up.\u201d He warns against boasting about tomorrow \u2014 \u201cyou are a mist that appears for a little while\u201d \u2014 and closes on prayer: \u201cThe prayer of a righteous person is powerful and effective.\u201d",
+      keyVerses: [
+        { ref: "James 4:10", text: "Humble yourselves before the Lord, and he will lift you up." }
+      ],
+      questions: [
+        { q:"Where do quarrels originate, per James?", opts:["Other people", "Desires battling within you", "Circumstances"], correct:1, explain:"He relocates conflict from the other party to your own wanting." },
+        { q:"What blunt reason does he give for lacking?", opts:["Bad luck", "\u2018You do not have because you do not ask God\u2019", "God's refusal"], correct:1, explain:"Followed immediately by the caution that motive matters when asking." },
+        { q:"What does he say about planning?", opts:["Never plan", "Plan while acknowledging life's brevity \u2014 \u2018if it is the Lord's will\u2019", "Plans always fail"], correct:1, explain:"Not against planning, against the arrogance of assuming tomorrow." }
+      ],
+      deepDive: "James does something uncomfortable with conflict: he takes it out of the realm of who was right and puts it in the realm of what you wanted. Fights come from desires battling within \u2014 which means the honest question in most disputes is what you were craving that you didn't get. Then the promise that reorders everything: God opposes the proud and gives grace to the humble. Note who is doing the lifting. Humbling yourself isn't self-erasure; it's declining to promote yourself because Someone better positioned is handling that. And the mist image keeps the whole thing in scale." },
+    { id:352, book:"James", title:"Patient until the harvest", side:"c",
+      passage: "James rebukes rich oppressors whose withheld wages \u201care crying out against you.\u201d Then to the suffering: \u201cBe patient, then, brothers and sisters, until the Lord's coming. See how the farmer waits for the land to yield its valuable crop, patiently waiting for the autumn and spring rains.\u201d Job is held up as an example of perseverance \u2014 \u201cthe Lord is full of compassion and mercy.\u201d And practically: \u201cIs anyone among you in trouble? Let them pray\u2026 Confess your sins to each other and pray for each other so that you may be healed.\u201d",
+      keyVerses: [
+        { ref: "James 5:7", text: "Be patient, then, brothers and sisters, until the Lord\u2019s coming. See how the farmer waits for the land to yield its valuable crop." }
+      ],
+      questions: [
+        { q:"What image teaches patience?", opts:["A soldier", "A farmer waiting through the seasons for a crop", "A judge"], correct:1, explain:"Patience with a reason: the waiting is productive, not empty." },
+        { q:"Who does James rebuke sharply?", opts:["The poor", "Rich oppressors who withheld workers' wages", "Church leaders"], correct:1, explain:"Unpaid wages are described as crying out to God \u2014 an echo of the prophets." },
+        { q:"What practice does he prescribe for healing?", opts:["Solitude", "Confession to one another and prayer for each other", "Silence"], correct:1, explain:"Mutual, spoken, communal \u2014 not private management of your failures." }
+      ],
+      deepDive: "James ends where the prophets did: with wages, patience, and prayer. His rebuke of employers who withheld pay is startlingly direct, and it treats economic injustice as an audible cry reaching God. Then his counsel to the wronged isn't passivity but the farmer's patience \u2014 waiting that knows a harvest is coming and works accordingly. And the closing instruction is one the church has often quietly dropped: confess your sins to each other. Not just to God, privately, where nothing is risked. To each other, so that you may be healed." },
+    { id:353, book:"1 Peter", title:"A living hope", side:"l",
+      passage: "Peter writes to scattered, persecuted believers: \u201cPraise be to the God and Father of our Lord Jesus Christ! In his great mercy he has given us new birth into a living hope through the resurrection of Jesus Christ from the dead, and into an inheritance that can never perish, spoil or fade.\u201d Trials come \u201cso that the proven genuineness of your faith \u2014 of greater worth than gold, which perishes even though refined by fire \u2014 may result in praise, glory and honor.\u201d And of Christ: \u201cThough you have not seen him, you love him\u2026 and are filled with an inexpressible and glorious joy.\u201d",
+      keyVerses: [
+        { ref: "1 Peter 1:3", text: "In his great mercy he has given us new birth into a living hope through the resurrection of Jesus Christ from the dead." }
+      ],
+      questions: [
+        { q:"What makes the hope \u2018living\u2019?", opts:["Optimism", "It rests on the resurrection \u2014 an accomplished event, not a wish", "Positive circumstances"], correct:1, explain:"Hope with a foundation outside itself, which is why Peter calls it alive." },
+        { q:"What is the inheritance like?", opts:["Fragile", "Imperishable, unspoiled, unfading \u2014 kept in heaven", "Conditional"], correct:1, explain:"Three negatives ruling out every way earthly inheritances are lost." },
+        { q:"What is trial compared to?", opts:["Punishment", "Fire refining gold \u2014 proving genuineness", "Random misfortune"], correct:1, explain:"The purpose is demonstration and purification, not destruction." }
+      ],
+      deepDive: "Peter writes to Christians already suffering for their faith, and he opens with an inheritance no one can take: imperishable, unspoiled, unfading, and \u2014 crucially \u2014 kept somewhere they can't reach it. That's a deliberate contrast with everything they were losing. The refining image is honest about trials without romanticizing them: fire is not pleasant, and it does prove what's real. And the line about loving someone you've never seen is remarkable coming from Peter, who had seen Him \u2014 he's telling readers that their secondhand faith is no lesser thing, and that it comes with inexpressible joy." },
+    { id:354, book:"1 Peter", title:"Always be prepared", side:"r",
+      passage: "\u201cBut you are a chosen people, a royal priesthood, a holy nation, God's special possession, that you may declare the praises of him who called you out of darkness into his wonderful light.\u201d Live such good lives among unbelievers that accusations fall flat. \u201cAlways be prepared to give an answer to everyone who asks you to give the reason for the hope that you have. But do this with gentleness and respect.\u201d And: \u201cIt is better, if it is God's will, to suffer for doing good than for doing evil.\u201d Christ suffered unjustly, and \u201cwhen they hurled their insults at him, he did not retaliate.\u201d",
+      keyVerses: [
+        { ref: "1 Peter 3:15", text: "Always be prepared to give an answer to everyone who asks you to give the reason for the hope that you have." }
+      ],
+      questions: [
+        { q:"What prompts the question we're to answer?", opts:["Our arguments", "A visible hope people notice and ask about", "Advertising"], correct:1, explain:"The assumption is a life odd enough that someone inquires." },
+        { q:"How is the answer to be given?", opts:["Forcefully", "With gentleness and respect", "Only when safe"], correct:1, explain:"Peter attaches a manner to the mandate; tone is part of the witness." },
+        { q:"What identity does Peter give ordinary believers?", opts:["Servants only", "A chosen people, royal priesthood, holy nation, God's special possession", "Outsiders"], correct:1, explain:"Titles once reserved for Israel applied to scattered, suffering churches." }
+      ],
+      deepDive: "This verse is often used as a call to master arguments, and the context adjusts that. The question comes because someone noticed your hope \u2014 which assumes a life visibly anchored in something. The answer is required, and so is the manner: gentleness and respect, addressed to people who were being slandered and mistreated. Peter had once cut off a man's ear defending Jesus; he now writes that Christ, insulted, did not retaliate. That's a man who learned something. Being ready with an answer and being gentle with it are the same instruction here, not competing ones." },
+    { id:355, book:"1 Peter", title:"Cast your anxiety on him", side:"c",
+      passage: "To elders: shepherd God's flock \u201cnot because you must, but because you are willing\u2026 not lording it over those entrusted to you, but being examples.\u201d To everyone: \u201cAll of you, clothe yourselves with humility toward one another, because \u2018God opposes the proud but shows favor to the humble.\u2019 Humble yourselves, therefore, under God's mighty hand, that he may lift you up in due time. Cast all your anxiety on him because he cares for you.\u201d And a warning: \u201cBe alert and of sober mind. Your enemy the devil prowls around like a roaring lion.\u201d",
+      keyVerses: [
+        { ref: "1 Peter 5:7", text: "Cast all your anxiety on him because he cares for you." }
+      ],
+      questions: [
+        { q:"What does \u2018cast\u2019 suggest?", opts:["Gradual release", "Throwing it \u2014 a decisive transfer of weight", "Ignoring it"], correct:1, explain:"The word describes flinging something off yourself onto something else." },
+        { q:"What's the reason given?", opts:["Anxiety is unproductive", "\u2018Because he cares for you\u2019", "It's commanded"], correct:1, explain:"The motive is His concern, not merely the uselessness of worry." },
+        { q:"How are leaders told to lead?", opts:["By command and control", "Willingly, not lording it over people, but as examples", "From a distance"], correct:1, explain:"Peter, an apostle, calls himself a fellow elder while writing it." }
+      ],
+      deepDive: "Verse 7 is grammatically attached to verse 6 \u2014 humbling yourself and casting your anxiety are the same movement. That connection is easy to miss and worth keeping: much anxiety is the weight of trying to control outcomes that were never yours, so handing it over is an act of humility, not just relief. The verb is forceful \u2014 throw it, not set it down gently and pick it back up. And the reason given isn't that worry accomplishes nothing, true as that is. It's that He cares for you, which is a claim about His attention rather than your competence." },
+    { id:356, book:"2 Peter", title:"He is patient with you", side:"l",
+      passage: "Peter's final letter warns against false teachers and scoffers who ask, \u201cWhere is this \u2018coming\u2019 he promised?\u201d His answer reframes the delay: \u201cDo not forget this one thing, dear friends: With the Lord a day is like a thousand years, and a thousand years are like a day. The Lord is not slow in keeping his promise, as some understand slowness. Instead he is patient with you, not wanting anyone to perish, but everyone to come to repentance.\u201d And so: \u201cmake every effort to be found spotless, blameless and at peace with him\u2026 grow in the grace and knowledge of our Lord and Savior Jesus Christ.\u201d",
+      keyVerses: [
+        { ref: "2 Peter 3:9", text: "The Lord is not slow in keeping his promise\u2026 Instead he is patient with you, not wanting anyone to perish." }
+      ],
+      questions: [
+        { q:"How does Peter explain the delay?", opts:["The promise failed", "Patience \u2014 God is giving people time to repent", "God forgot"], correct:1, explain:"What looks like slowness is mercy operating on a different clock." },
+        { q:"What does the thousand-years line address?", opts:["Prophecy math", "God's relationship to time \u2014 He isn't running on our schedule", "The age of the earth"], correct:1, explain:"A caution against measuring divine faithfulness by human impatience." },
+        { q:"What response does Peter urge?", opts:["Speculation about dates", "Growth in grace and knowledge, and blameless living", "Withdrawal"], correct:1, explain:"His eschatology always terminates in how you live now." }
+      ],
+      deepDive: "The scoffers' question \u2014 where is this coming he promised? \u2014 is asked in every generation, including by believers who wouldn't say it aloud. Peter's answer is one of the most pastorally useful in Scripture: the delay isn't indifference or failure, it's patience, and its purpose is that more people get time. That reframes waiting entirely. Every day the return is delayed is a day someone else can still come. And notice where he lands \u2014 not on charts and dates, but on the kind of person you should be while waiting: growing, blameless, at peace." },
+    { id:357, book:"1 John", title:"Walking in the light", side:"r",
+      passage: "John writes about \u201cthat which we have heard, which we have seen with our eyes\u2026 and our hands have touched.\u201d Then: \u201cGod is light; in him there is no darkness at all. If we claim to have fellowship with him and yet walk in the darkness, we lie\u2026 But if we walk in the light, as he is in the light, we have fellowship with one another, and the blood of Jesus, his Son, purifies us from all sin. If we claim to be without sin, we deceive ourselves\u2026 If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.\u201d",
+      keyVerses: [
+        { ref: "1 John 1:9", text: "If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness." }
+      ],
+      questions: [
+        { q:"What does \u2018walking in the light\u2019 mean?", opts:["Sinlessness", "Living honestly before God \u2014 not hiding, since the light exposes", "Constant happiness"], correct:1, explain:"The next verses assume ongoing sin; light is about openness, not perfection." },
+        { q:"Why is God called \u2018faithful and just\u2019 to forgive?", opts:["He's lenient", "The debt has been paid \u2014 forgiveness is now consistent with justice", "He overlooks it"], correct:1, explain:"Not mercy against justice, but mercy satisfying it through the cross." },
+        { q:"What does claiming sinlessness do?", opts:["Pleases God", "Deceives ourselves and makes God out to be a liar", "Shows maturity"], correct:1, explain:"John treats denial as the real danger, not the sin itself." }
+      ],
+      deepDive: "1 John is written with enormous warmth and no tolerance for pretending. Its opening claim is physical \u2014 we heard, saw, touched \u2014 against teachers who made Christ a spiritual idea. Then the light image, which is frequently misread: walking in the light isn't being sinless, it's living out in the open where sin gets exposed rather than managed in the dark. That's why verse 9 follows so naturally. And the word \u2018just\u2019 is doing heavy lifting: God isn't bending the rules to forgive you. The bill was paid, so forgiveness is the just outcome, not an exception to it." },
+    { id:358, book:"1 John", title:"God is love", side:"c",
+      passage: "\u201cSee what great love the Father has lavished on us, that we should be called children of God! And that is what we are!\u201d Then: \u201cDear friends, let us love one another, for love comes from God\u2026 Whoever does not love does not know God, because God is love. This is how God showed his love among us: He sent his one and only Son into the world that we might live through him. This is love: not that we loved God, but that he loved us and sent his Son as an atoning sacrifice for our sins\u2026 There is no fear in love. But perfect love drives out fear.\u201d",
+      keyVerses: [
+        { ref: "1 John 4:10", text: "This is love: not that we loved God, but that he loved us and sent his Son as an atoning sacrifice for our sins." }
+      ],
+      questions: [
+        { q:"How does John define love?", opts:["By feeling", "By an event \u2014 God sending His Son as the atoning sacrifice", "By intention"], correct:1, explain:"He anchors the definition to something that happened, not to sentiment." },
+        { q:"Who loved first?", opts:["We did", "God \u2014 \u2018not that we loved God, but that he loved us\u2019", "It was mutual"], correct:1, explain:"The direction of the love is the whole point; ours is always a response." },
+        { q:"What does perfect love do to fear?", opts:["Increases it", "Drives it out", "Ignores it"], correct:1, explain:"Confidence before God grows as love is understood, not as performance improves." }
+      ],
+      deepDive: "\u2018God is love\u2019 is one of the most quoted and most abused sentences in the Bible, and John guards it in the same paragraph by defining his terms. Love isn't a mood or a general benevolence; \u2018this is love\u2019 \u2014 and he points at the cross. That anchoring keeps the sentence from becoming an excuse for anything anyone wants to call loving. Two other lines deserve attention. \u2018And that is what we are\u2019 \u2014 John seems unable to say \u2018children of God\u2019 without stopping to insist it's actually true. And perfect love driving out fear, which is why growing in this understanding is the antidote to religious anxiety." },
+    { id:359, book:"1 John", title:"That you may know", side:"l",
+      passage: "John states his purpose plainly: \u201cI write these things to you who believe in the name of the Son of God so that you may know that you have eternal life.\u201d He gives tests along the way: do you keep His commands, do you love your brother and sister, do you confess that Jesus came in the flesh. \u201cThis is how we know what love is: Jesus Christ laid down his life for us\u2026 Let us not love with words or speech but with actions and in truth.\u201d And confidence in prayer: \u201cif we ask anything according to his will, he hears us.\u201d",
+      keyVerses: [
+        { ref: "1 John 5:13", text: "I write these things to you who believe in the name of the Son of God so that you may know that you have eternal life." }
+      ],
+      questions: [
+        { q:"What's John's stated purpose?", opts:["To frighten", "That believers may KNOW they have eternal life", "To settle a legal dispute"], correct:1, explain:"Assurance, not anxiety, is the letter's goal." },
+        { q:"How should love be expressed?", opts:["With words and speech", "With actions and in truth", "Privately"], correct:1, explain:"John, the apostle of love, insists it be verifiable." },
+        { q:"What tests does he offer?", opts:["Emotional intensity", "Obedience, love for others, and confessing Christ came in the flesh", "Church attendance"], correct:1, explain:"Behavioral, relational, and doctrinal \u2014 three angles on the same reality." }
+      ],
+      deepDive: "It's worth noticing what John wants for his readers: not that they might hope, or try harder, but that they may know. The tests he provides are not designed to torment sensitive consciences; they're offered as evidence for people under pressure from teachers claiming they'd missed something. And his most practical line cuts through a great deal of religious talk: let us not love with words or speech but with actions and in truth. The apostle most associated with love is also the one least willing to let it stay verbal." },
+    { id:360, book:"2 John", title:"Truth and love together", side:"r",
+      passage: "A short letter, from \u201cthe elder\u201d to \u201cthe lady chosen by God and to her children\u201d \u2014 likely a church and its members. John rejoices to find some \u201cwalking in the truth,\u201d and repeats the old command: \u201cthat we love one another. And this is love: that we walk in obedience to his commands.\u201d Then a warning: many deceivers have gone out who deny that Jesus Christ came in the flesh. \u201cWatch out that you do not lose what we have worked for.\u201d Do not welcome such teaching into your house or endorse it. He closes hoping to visit and talk face to face, \u201cso that our joy may be complete.\u201d",
+      keyVerses: [
+        { ref: "2 John 1:6", text: "And this is love: that we walk in obedience to his commands." }
+      ],
+      questions: [
+        { q:"What two things are held together?", opts:["Truth and power", "Truth and love \u2014 walking in truth and loving one another", "Love and tolerance"], correct:1, explain:"The whole letter refuses to let either one exist without the other." },
+        { q:"What was the false teaching?", opts:["That Jesus was only human", "Denying that Jesus Christ came in the flesh", "That the law still applied"], correct:1, explain:"An early denial of the incarnation, which John treats as disqualifying." },
+        { q:"Why does John prefer to visit?", opts:["It's cheaper", "Face to face, so that their joy may be complete", "To inspect them"], correct:1, explain:"Even an apostle prefers presence to correspondence." }
+      ],
+      deepDive: "This one-page letter is a corrective to two opposite instincts. To people who think love means accepting any teaching, John says some things are disqualifying and shouldn't be given a platform. To people who think guarding truth licenses coldness, he opens and closes with love and joy and a longing to be together in person. Truth without love turns cruel; love without truth turns meaningless. And his definition of love is characteristically concrete: walking in obedience to His commands \u2014 not a feeling to summon but a path to walk." },
+    { id:361, book:"3 John", title:"Working together for the truth", side:"c",
+      passage: "John writes to his friend Gaius, commending his faithfulness and hospitality to traveling teachers: \u201cI have no greater joy than to hear that my children are walking in the truth\u2026 You are faithful in what you are doing for the brothers and sisters, even though they are strangers to you.\u201d He contrasts two men: Diotrephes, \u201cwho loves to be first,\u201d refuses to welcome anyone and puts out those who do; and Demetrius, \u201cwell spoken of by everyone.\u201d \u201cDear friend, do not imitate what is evil but what is good. Anyone who does what is good is from God.\u201d",
+      keyVerses: [
+        { ref: "3 John 1:4", text: "I have no greater joy than to hear that my children are walking in the truth." }
+      ],
+      questions: [
+        { q:"What is Gaius commended for?", opts:["Preaching", "Hospitality \u2014 supporting traveling workers, even strangers", "Wealth"], correct:1, explain:"Practical support of others' ministry treated as \u2018working together for the truth.\u2019" },
+        { q:"What's wrong with Diotrephes?", opts:["False doctrine", "He loves to be first \u2014 ego, control, and refusing others", "Laziness"], correct:1, explain:"No heresy is named; the problem is a man who wants preeminence." },
+        { q:"What's the closing instruction?", opts:["Avoid all conflict", "Do not imitate what is evil but what is good", "Leave the church"], correct:1, explain:"A simple standard, given after two live examples to compare." }
+      ],
+      deepDive: "The shortest book in the New Testament preserves a very ordinary church problem: a man who loves being first. Diotrephes isn't accused of false teaching \u2014 just ego, gossip about John, refusing hospitality, and pushing out those who offer it. That such a small, human failure made it into Scripture is itself instructive about how much damage it does. Against him stand Gaius and Demetrius, remembered for hospitality and a good reputation. And John's line about joy is worth holding if you've invested in anyone's faith: no greater joy than hearing they're walking in the truth." },
+    { id:362, book:"Jude", title:"Contend for the faith", side:"l",
+      passage: "Jude intended to write about salvation but changed course: \u201cI felt compelled to write and urge you to contend for the faith that was once for all entrusted to God's holy people.\u201d Certain individuals had slipped in who \u201cpervert the grace of our God into a license for immorality.\u201d He describes them vividly \u2014 clouds without rain, autumn trees without fruit, wandering stars. Then the pastoral turn: \u201cBuild yourselves up in your most holy faith and pray in the Holy Spirit\u2026 Be merciful to those who doubt; save others by snatching them from the fire.\u201d And a closing doxology to \u201chim who is able to keep you from stumbling.\u201d",
+      keyVerses: [
+        { ref: "Jude 1:24", text: "To him who is able to keep you from stumbling and to present you before his glorious presence without fault and with great joy." }
+      ],
+      questions: [
+        { q:"What error is Jude confronting?", opts:["Legalism", "Turning grace into a license for immorality", "Denial of the resurrection"], correct:1, explain:"The opposite error from Galatians \u2014 grace abused rather than diluted." },
+        { q:"How are doubters to be treated?", opts:["Expelled", "With mercy \u2014 \u2018be merciful to those who doubt\u2019", "Ignored"], correct:1, explain:"Contending for the faith doesn't mean hardness toward the uncertain." },
+        { q:"Who keeps believers from falling?", opts:["Their own vigilance", "God \u2014 \u2018him who is able to keep you from stumbling\u2019", "Church leaders"], correct:1, explain:"After a letter about danger, it ends by naming who does the holding." }
+      ],
+      deepDive: "Jude is a single page of urgency. He planned a different letter and abandoned it because something was going wrong: people were using grace as cover for whatever they wanted. His response is to contend \u2014 an athletic word, meaning strain and effort \u2014 for a faith \u2018once for all entrusted,\u2019 which means it isn't ours to renovate. But the letter's tone is not merely combative. In the middle of it: be merciful to those who doubt. And the closing doxology is one of Scripture's most reassuring, because after all that warning about falling, the one keeping you upright is God." },
+    { id:363, book:"Revelation", title:"The one who was, and is, and is to come", side:"r",
+      passage: "John, exiled on Patmos, hears a loud voice and turns to see \u201csomeone like a son of man\u201d among seven golden lampstands \u2014 hair white as snow, eyes like blazing fire, a voice like rushing waters, face shining like the sun. \u201cWhen I saw him, I fell at his feet as though dead. Then he placed his right hand on me and said: \u2018Do not be afraid. I am the First and the Last. I am the Living One; I was dead, and now look, I am alive for ever and ever! And I hold the keys of death and Hades.\u2019\u201d The lampstands are seven churches, and He is walking among them.",
+      keyVerses: [
+        { ref: "Revelation 1:17\u201318", text: "Do not be afraid. I am the First and the Last. I am the Living One; I was dead, and now look, I am alive for ever and ever!" }
+      ],
+      questions: [
+        { q:"Where is Christ standing in the vision?", opts:["Far off", "Among the lampstands \u2014 walking among His churches", "In a temple"], correct:1, explain:"Before any judgment or prophecy, He is pictured present with them." },
+        { q:"What did John do on seeing Him?", opts:["Took notes", "Fell as though dead \u2014 and was touched and told not to fear", "Ran"], correct:1, explain:"Terror answered by a hand on the shoulder." },
+        { q:"What does holding \u2018the keys of death\u2019 mean?", opts:["A metaphor for wisdom", "Authority over death itself \u2014 He decides what it can hold", "Control of a building"], correct:1, explain:"Spoken to Christians facing execution, this is the most practical claim in the book." }
+      ],
+      deepDive: "Revelation was written to churches under real pressure, and it opens by showing them who is actually in charge. The imagery is overwhelming \u2014 blazing eyes, a voice like a waterfall \u2014 and then the gesture that makes the whole book bearable: a hand on a terrified man's shoulder, and \u2018do not be afraid.\u2019 Two details anchor everything that follows. Christ is walking among the lampstands, which means He is present in struggling churches rather than watching from a distance. And He holds the keys of death, which for readers facing martyrdom was the most relevant sentence imaginable." },
+    { id:364, book:"Revelation", title:"Letters to the churches", side:"c",
+      passage: "Seven letters follow, each tailored. Ephesus works hard and endures \u2014 \u201cyet you have forsaken the love you had at first.\u201d Smyrna is poor \u201cyet you are rich.\u201d Pergamum and Thyatira tolerate compromise. Sardis has \u201ca reputation of being alive, but you are dead.\u201d Philadelphia has little strength but has kept His word. And Laodicea, wealthy and self-sufficient: \u201cyou are lukewarm\u2026 You say, \u2018I am rich; I do not need a thing.\u2019 But you do not realize that you are wretched, pitiful, poor, blind and naked.\u201d Then: \u201cHere I am! I stand at the door and knock.\u201d",
+      keyVerses: [
+        { ref: "Revelation 3:20", text: "Here I am! I stand at the door and knock. If anyone hears my voice and opens the door, I will come in and eat with them." }
+      ],
+      questions: [
+        { q:"What was wrong at Ephesus?", opts:["False doctrine", "They had forsaken their first love while still working hard", "Laziness"], correct:1, explain:"Correct, hardworking, enduring \u2014 and the affection had gone out of it." },
+        { q:"What was Laodicea's problem?", opts:["Poverty", "Self-sufficiency \u2014 \u2018I do not need a thing\u2019 while actually being destitute", "Persecution"], correct:1, explain:"The gap between their self-assessment and reality was total." },
+        { q:"Who is Jesus knocking to get in to?", opts:["Unbelievers only", "A church \u2014 He's outside the door of His own people", "A city"], correct:1, explain:"Often used evangelistically, but originally addressed to Laodicea." }
+      ],
+      deepDive: "These seven letters are the most searching self-examination material in the New Testament, because each church's problem is different and several look fine from outside. Ephesus is doctrinally sound, hardworking, and has lost its love \u2014 an entirely possible condition for a busy Christian. Sardis has a great reputation and is dead. Laodicea is rich and thinks it needs nothing. And the famous knocking verse is aimed at a church, not an outsider: Jesus standing outside His own people's door, asking to be let back in for a meal. That's a gentler picture than the rebuke preceding it deserved." },
+    { id:365, book:"Revelation", title:"Worthy is the Lamb", side:"l",
+      passage: "A door stands open in heaven. John sees a throne, and around it living creatures and elders who never stop saying, \u201cHoly, holy, holy is the Lord God Almighty.\u201d A scroll sealed with seven seals appears, and no one is found worthy to open it. John weeps. Then: \u201cDo not weep! See, the Lion of the tribe of Judah\u2026 has triumphed.\u201d John turns to see the Lion \u2014 and sees \u201ca Lamb, looking as if it had been slain.\u201d The whole of heaven sings: \u201cWorthy is the Lamb, who was slain, to receive power and wealth and wisdom and strength and honor and glory and praise!\u201d",
+      keyVerses: [
+        { ref: "Revelation 5:12", text: "Worthy is the Lamb, who was slain, to receive power and wealth and wisdom and strength and honor and glory and praise!" }
+      ],
+      questions: [
+        { q:"What does John hear announced, and what does he see?", opts:["Both a lion", "He hears \u2018Lion\u2019 and sees a slain Lamb", "Both a lamb"], correct:1, explain:"The central image reversal of the book: the conquering Lion conquers as a slaughtered Lamb." },
+        { q:"Why is the Lamb worthy?", opts:["Because of strength", "Because he was slain and purchased people from every tribe and nation", "By appointment"], correct:1, explain:"The worthiness is grounded in the sacrifice, not in power alone." },
+        { q:"Who is redeemed in the song?", opts:["One nation", "People from every tribe, language, people and nation", "Only the faithful few"], correct:1, explain:"The global scope Abraham was promised, sung as accomplished." }
+      ],
+      deepDive: "This is the theological heart of Revelation. John hears an announcement of a Lion and turns to look \u2014 and sees a Lamb bearing the marks of slaughter. Heaven's definition of victory is a cross. That single moment governs how everything else in the book should be read: whatever conquering means here, it looks like self-giving, not domination. And the song names who was purchased \u2014 every tribe, language, people, and nation \u2014 which is the promise to Abraham finally sung in the past tense. Notice, too, that the Lamb is standing, though slain." },
+    { id:366, book:"Revelation", title:"Every tear wiped away", side:"r",
+      passage: "After visions of judgment, plagues, and the defeat of evil, John sees \u201ca new heaven and a new earth,\u201d and the Holy City coming down out of heaven. \u201cAnd I heard a loud voice from the throne saying, \u2018Look! God's dwelling place is now among the people, and he will dwell with them. They will be his people, and God himself will be with them and be their God. He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away.\u2019 He who was seated on the throne said, \u2018I am making everything new!\u2019\u201d",
+      keyVerses: [
+        { ref: "Revelation 21:3\u20134", text: "God\u2019s dwelling place is now among the people\u2026 He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain." }
+      ],
+      questions: [
+        { q:"Which direction does the city travel?", opts:["Up, as people escape earth", "Down \u2014 heaven comes to earth", "Sideways"], correct:1, explain:"The Bible's hope isn't evacuation but God coming to dwell here." },
+        { q:"What is the central promise?", opts:["Golden streets", "God dwelling with His people \u2014 presence, restored", "Rest from work"], correct:1, explain:"The same promise as Eden, the tabernacle, and Immanuel, finally permanent." },
+        { q:"What does \u2018making everything new\u2019 mean?", opts:["Replacing with different things", "Renewing what exists \u2014 the old order passing, not the world discarded", "Starting over from nothing"], correct:1, explain:"Restoration language: the world healed rather than scrapped." }
+      ],
+      deepDive: "After all the strange imagery, Revelation lands somewhere remarkably concrete and tender: a God who wipes tears off faces with His own hand. Notice the direction \u2014 the city comes down. The Christian hope has never been escaping earth for a disembodied elsewhere but God coming to dwell here permanently. And notice what is finally, specifically abolished: death, mourning, crying, pain. Not vague improvement but the removal of exactly the things that make human life ache. Isaiah 65 promised this, and Revelation quotes it nearly word for word." },
+    { id:367, book:"Revelation", title:"The river and the tree", side:"c",
+      passage: "The angel shows John \u201cthe river of the water of life, as clear as crystal, flowing from the throne of God and of the Lamb down the middle of the great street of the city. On each side of the river stood the tree of life\u2026 And the leaves of the tree are for the healing of the nations. No longer will there be any curse.\u201d There is no temple in the city, \u201cbecause the Lord God Almighty and the Lamb are its temple,\u201d and no need of sun or moon, \u201cfor the glory of God gives it light.\u201d \u201cThey will see his face\u2026 and they will reign for ever and ever.\u201d",
+      keyVerses: [
+        { ref: "Revelation 22:2", text: "On each side of the river stood the tree of life\u2026 And the leaves of the tree are for the healing of the nations." }
+      ],
+      questions: [
+        { q:"What returns from Genesis?", opts:["Nothing", "The tree of life and a river \u2014 and the curse is gone", "The serpent"], correct:1, explain:"The Bible ends by reopening what was closed in Eden's third chapter." },
+        { q:"Why is there no temple?", opts:["It was destroyed", "God and the Lamb are its temple \u2014 no mediating structure needed", "It's elsewhere"], correct:1, explain:"The whole point of a temple was access; access is now unmediated." },
+        { q:"What do the leaves do?", opts:["Provide shade", "Heal the nations", "Nothing"], correct:1, explain:"Ezekiel 47's river reappears, with the same healing leaves." }
+      ],
+      deepDive: "The Bible's last chapter deliberately reopens its first. A river, a tree of life, and no curse \u2014 everything sealed off in Genesis 3 is restored and improved, because now it's a city full of nations rather than a garden with two people. Ezekiel's river from the temple flows here too, healing leaves included. And the greatest promise is the quietest: they will see his face. Moses asked for that and was told no one could survive it. The whole story from Eden to Patmos has been moving toward that sentence." },
+    { id:368, book:"Revelation", title:"Come, Lord Jesus", side:"l",
+      passage: "The book closes with invitation and urgency. \u201cThe Spirit and the bride say, \u2018Come!\u2019 And let the one who hears say, \u2018Come!\u2019 Let the one who is thirsty come; and let the one who wishes take the free gift of the water of life.\u201d Jesus speaks: \u201cLook, I am coming soon! My reward is with me\u2026 I am the Alpha and the Omega, the First and the Last, the Beginning and the End.\u201d And the final exchange, the last words of the Bible: \u201cHe who testifies to these things says, \u2018Yes, I am coming soon.\u2019 Amen. Come, Lord Jesus. The grace of the Lord Jesus be with God's people. Amen.\u201d",
+      keyVerses: [
+        { ref: "Revelation 22:17", text: "Let the one who is thirsty come; and let the one who wishes take the free gift of the water of life." }
+      ],
+      questions: [
+        { q:"How does the Bible end?", opts:["With a warning", "With an invitation and a prayer \u2014 \u2018Come, Lord Jesus\u2019", "With a genealogy"], correct:1, explain:"The last movement is longing and welcome, not judgment." },
+        { q:"What's the cost of the water of life?", opts:["A lifetime of service", "Free \u2014 the free gift, to anyone who is thirsty", "A pledge"], correct:1, explain:"The same open offer as Isaiah 55, repeated on the Bible's last page." },
+        { q:"Who is invited?", opts:["The qualified", "Anyone thirsty, anyone who wishes", "Only the seven churches"], correct:1, explain:"The final invitation in Scripture has the widest possible door." }
+      ],
+      deepDive: "For a book famous for its terrors, Revelation ends astonishingly gently: an invitation, a thirst, a free gift, and a church praying for her Lord to come. The Spirit and the bride say come \u2014 and then anyone who hears is invited to join the inviting. That's the church's whole job in one line. And the last exchange in the Bible is a promise and a response: \u2018Yes, I am coming soon.\u2019 \u2018Amen. Come, Lord Jesus.\u2019 The story that began with God walking in a garden ends with His people asking Him to hurry back \u2014 and with grace, which is the last word Scripture leaves you holding." }
   ];
 
   const MIDPOINT_REFLECTIONS = {
@@ -3635,7 +4653,30 @@
     "Matthew": "You're partway through Matthew. The Father said \u2018with him I am well pleased\u2019 before Jesus had done any public work. Where are you still trying to earn an approval that was given before the performance?",
     "Mark": "You're partway through Mark. In the storm the disciples asked \u2018don't you care?\u2019 rather than \u2018can you?\u2019 What has God's silence lately tempted you to conclude about His care?",
     "Luke": "You're partway through Luke. Mary answered an impossible announcement with \u2018I am the Lord's servant.\u2019 What has God asked of you that you're still negotiating rather than accepting?",
-    "John": "You're partway through John. \u2018The Word became flesh and made his dwelling among us.\u2019 What difference does it make to you today that God came near rather than sending instructions?"
+    "John": "You're partway through John. \u2018The Word became flesh and made his dwelling among us.\u2019 What difference does it make to you today that God came near rather than sending instructions?",
+    "Acts": "You're partway through Acts. Jesus refused to give a timetable and handed out an assignment instead. Where are you waiting for clarity about the future when you've already been given something to do?",
+    "Romans": "You're partway through Romans. \u2018All have sinned\u2019 and \u2018justified freely by his grace\u2019 sit in the same sentence. Which half do you have a harder time actually believing about yourself?",
+    "1 Corinthians": "You're partway through 1 Corinthians. Paul said he'd resolved to know nothing except Christ crucified. What are you tempted to build your spiritual confidence on instead?",
+    "2 Corinthians": "You're partway through 2 Corinthians. Paul said the pressure was beyond his ability to endure. Have you ever admitted that to God plainly, or do you keep reporting that you're fine?",
+    "Galatians": "You're partway through Galatians. The false gospel wasn't denying Christ \u2014 it was adding to Him. What have you quietly added to grace as a requirement for your own acceptance?",
+    "Ephesians": "You're partway through Ephesians. You were chosen before the creation of the world. Does your sense of standing with God rise and fall with your week?",
+    "Philippians": "You're partway through Philippians. Paul wrote about joy from a prison cell. What circumstance are you currently treating as a prerequisite for contentment?",
+    "Colossians": "You're partway through Colossians. In Christ all things hold together. What are you holding together by force right now that was never yours to sustain?",
+    "1 Thessalonians": "You're partway through 1 Thessalonians. Paul shared not just the gospel but his life. Who are you close enough to that they've seen the unedited version of you?",
+    "2 Thessalonians": "You're partway through 2 Thessalonians. Some quit working because they thought the end had come. How does what you believe about the future actually shape your Monday?",
+    "1 Timothy": "You're partway through 1 Timothy. Paul called himself the worst of sinners in the present tense, decades in. Has grace made you more aware of your need, or less?",
+    "2 Timothy": "You're partway through 2 Timothy. Paul asked for his cloak and his scrolls while awaiting execution. What ordinary things would still matter to you if you knew the end was near?",
+    "Titus": "You're partway through Titus. Grace teaches us to say no. Where has grace actually trained you \u2014 and where have you treated it as permission instead?",
+    "Philemon": "You're partway through Philemon. Paul offered to pay someone else's debt himself. Is there a cost you could absorb this week to restore a broken relationship?",
+    "Hebrews": "You're partway through Hebrews. \u2018Let us approach the throne with confidence\u2019 \u2014 in your time of need, not after you've recovered. When you fail, do you run toward God or away?",
+    "James": "You're partway through James. Faith without action is dead. What have you believed for years without it changing anything you actually do?",
+    "1 Peter": "You're partway through 1 Peter. He wrote to people suffering for their faith about an inheritance nobody could take. What can't be taken from you?",
+    "2 Peter": "You're partway through 2 Peter. What looks like God's slowness is patience \u2014 time for more people to come. Who are you glad God waited for?",
+    "1 John": "You're partway through 1 John. Walking in the light means living out in the open, not being sinless. What are you managing in the dark instead of bringing into the light?",
+    "2 John": "You're partway through 2 John. Truth and love are held together here. Which do you find easier \u2014 and which does that make you likely to neglect?",
+    "3 John": "You're partway through 3 John. Diotrephes' only recorded sin was loving to be first. Where does that same instinct show up quietly in you?",
+    "Jude": "You're partway through Jude. \u2018Be merciful to those who doubt.\u2019 Who in your life is doubting right now, and are you being merciful or impatient with them?",
+    "Revelation": "You're partway through Revelation. John heard \u2018Lion\u2019 and turned to see a slain Lamb. Where are you expecting God to work through power when He may be working through sacrifice?"
   };
   const CHECKPOINT_REFLECTIONS = {
     Genesis: "Looking back at the whole book of Genesis, what stands out to you most about who God is \u2014 and what's one thing you're taking with you?",
@@ -3678,7 +4719,30 @@
     "Matthew": "Looking back at Matthew \u2014 the scandalous genealogy, the Beatitudes, the Lord's Prayer, the two houses, \u2018come to me all who are weary,\u2019 the sheep and the goats, and \u2018I am with you always\u2019 \u2014 both builders heard the same words and only one built on rock. What is one thing from this Gospel you have heard many times and never actually done?",
     "Mark": "Looking back at Mark \u2014 the roof torn open, the storm stilled, the loaves multiplied, \u2018who do you say I am,\u2019 Gethsemane, and the torn curtain \u2014 the whole book races toward a Roman soldier saying \u2018surely this man was the Son of God.\u2019 If someone watched your ordinary week, what would they conclude you actually believe about who Jesus is?",
     "Luke": "Looking back at Luke \u2014 Mary's song, the shepherds, the Samaritan, Martha's distraction, the prodigal's father running, Zacchaeus, the criminal beside Him, and the road to Emmaus \u2014 this Gospel keeps putting outsiders at the center. Who would you rather God not welcome, and what does the father running down the road say to that?",
-    "John": "Looking back at John \u2014 the Word made flesh, the well at noon, the bread of life, the good shepherd, Lazarus, the towel and basin, \u2018it is finished,\u2019 and breakfast on the beach \u2014 Jesus said the world would know His disciples by their love for one another. Where would someone watching your life see that mark, and where would they miss it?"
+    "John": "Looking back at John \u2014 the Word made flesh, the well at noon, the bread of life, the good shepherd, Lazarus, the towel and basin, \u2018it is finished,\u2019 and breakfast on the beach \u2014 Jesus said the world would know His disciples by their love for one another. Where would someone watching your life see that mark, and where would they miss it?",
+    "Acts": "Looking back at Acts \u2014 Pentecost, the shared table, Stephen's forgiveness, the Damascus road, Peter's rooftop, midnight singing in a jail, Athens, and Rome \u2014 the book ends with the word \u2018unhindered\u2019 and no conclusion, because the mission continues. What's your part in the chapter still being written?",
+    "Romans": "Looking back at Romans \u2014 all have sinned, justified freely, peace with God, no condemnation, nothing can separate, living sacrifices, welcome one another \u2014 sixteen chapters build to a life offered back. Which truth from this letter would change the most if you actually lived like it were true?",
+    "1 Corinthians": "Looking back at 1 Corinthians \u2014 the foolishness of the cross, your body as a temple, one body with many parts, love that outlasts every gift, and the resurrection \u2014 Paul told a gifted, divided church that without love they were nothing. Read chapter 13 with your own name in place of \u2018love.\u2019 Which line stops you?",
+    "2 Corinthians": "Looking back at 2 Corinthians \u2014 comfort passed on, treasure in jars of clay, the new creation, and \u2018my grace is sufficient\u2019 \u2014 Paul boasted in the weaknesses he'd begged God to remove. What thorn have you been praying away that God may be using to display His power?",
+    "Galatians": "Looking back at Galatians \u2014 no other gospel, crucified with Christ, and the fruit of the Spirit \u2014 Paul fought hardest against people adding requirements to grace. Where are you still trying to earn something Christ already secured?",
+    "Ephesians": "Looking back at Ephesians \u2014 chosen before creation, saved by grace through faith, rooted in love, and the armor of God \u2014 Paul prayed believers would have power to grasp how loved they are. Do you actually believe you are loved like that, or only that you should?",
+    "Philippians": "Looking back at Philippians \u2014 joy from a cell, Christ humbling Himself to a cross, contentment learned, and \u2018whatever is true\u2019 \u2014 Paul had learned contentment in plenty and in want. What would you need to release for contentment to be possible in your current circumstances?",
+    "Colossians": "Looking back at Colossians \u2014 Christ holding all things together, hearts set above, forgiving as you were forgiven, and working as for the Lord \u2014 the letter dignifies your most ordinary Tuesday. What part of your week have you been treating as spiritually irrelevant?",
+    "1 Thessalonians": "Looking back at 1 Thessalonians \u2014 faith that works, love that labors, hope that endures, and grief that isn't hopeless \u2014 Paul comforted a frightened church with the promise of being with the Lord forever. Who could you encourage with those same words this week?",
+    "2 Thessalonians": "Looking back at 2 Thessalonians \u2014 bad theology producing idleness, and \u2018never tire of doing what is good\u2019 \u2014 waiting for Christ should make you more diligent, not less. Where have you grown tired of doing good with nothing to show for it?",
+    "1 Timothy": "Looking back at 1 Timothy \u2014 the worst of sinners shown mercy as an example, one mediator, and godliness with contentment \u2014 Paul never got over being forgiven. When did you last feel genuine astonishment at being forgiven?",
+    "2 Timothy": "Looking back at 2 Timothy \u2014 the faith of Lois and Eunice, all Scripture God-breathed, and \u2018I have finished the race\u2019 \u2014 Paul measured his life by completion, not comfort. If you wrote that sentence today, what would honestly go in the blanks?",
+    "Titus": "Looking back at Titus \u2014 grace that saves and grace that teaches us to say no \u2014 the same gift that pardons is the one that trains. Where do you need grace to teach you a \u2018no\u2019 this month?",
+    "Philemon": "Looking back at Philemon \u2014 a runaway received as a brother, and a debt charged to Paul's own account \u2014 the letter asks someone to absorb a loss for the sake of reconciliation. Is there a relationship where you're waiting for repayment that you could simply forgive?",
+    "Hebrews": "Looking back at Hebrews \u2014 God speaking by His Son, a high priest who understands, one sacrifice offered and then a seat taken, the hall of faith, and \u2018fixing our eyes on Jesus\u2019 \u2014 the whole letter says: don't go back, look at who you'd be leaving. What are you tempted to drift back to, and what would looking at Christ change?",
+    "James": "Looking back at James \u2014 faith that works, the untamable tongue, humility, and patient waiting \u2014 the letter refuses to let belief stay verbal. Name one concrete action this week that would prove a belief you claim to hold.",
+    "1 Peter": "Looking back at 1 Peter \u2014 a living hope, an inheritance that can't fade, being ready to explain your hope with gentleness, and casting your anxiety on Him \u2014 Peter wrote all of it to people suffering unjustly. What anxiety are you still carrying that you were invited to throw onto Him?",
+    "2 Peter": "Looking back at 2 Peter \u2014 God's patience mistaken for slowness, and the call to grow in grace \u2014 every delayed day is someone's opportunity. Who would you most want God to keep waiting for, and are you praying for them?",
+    "1 John": "Looking back at 1 John \u2014 walking in the light, confession met with faithful forgiveness, God defined as love by the cross, and \u2018that you may know\u2019 \u2014 John wrote so you'd have assurance, not anxiety. Do you actually know you have eternal life, or do you hope so on good days?",
+    "2 John": "Looking back at 2 John \u2014 walking in truth and loving one another, held together \u2014 truth without love turns cruel and love without truth turns meaningless. Which correction do you need more right now?",
+    "3 John": "Looking back at 3 John \u2014 Gaius's hospitality, Diotrephes' love of being first, and \u2018do not imitate what is evil but what is good\u2019 \u2014 a whole book preserved about ego in a small church. Whose example are you actually imitating?",
+    "Jude": "Looking back at Jude \u2014 contending for the faith, mercy toward doubters, and the God who is able to keep you from stumbling \u2014 the letter ends by naming who does the holding. Where have you been trying to hold yourself up?",
+    "Revelation": "Looking back at Revelation \u2014 Christ among the lampstands, the letters to the churches, the Lamb who was slain, every tear wiped away, the river and the tree, and \u2018Come, Lord Jesus\u2019 \u2014 the Bible ends with an open invitation and a church longing for her Lord. Having reached the last page of the whole story, what do you most want to say back to God?"
   };
 
   const CHECKPOINTS = {
@@ -4566,6 +5630,478 @@
         { q:"What does \u2018it is finished\u2019 mean?", opts:["\u2018I am defeated\u2019", "Tetelestai \u2014 paid in full, a completed work", "\u2018It is over\u2019"], correct:1, explain:"A commercial term stamped on settled accounts: nothing outstanding." }
       ],
       deepDive: "John is the most theological Gospel and the most intimate \u2014 the one that starts before creation and ends with breakfast on a beach. Its structure runs on seven signs and seven \u2018I am\u2019 statements, each one answering a human need: bread for hunger, light for darkness, shepherd for lostness, resurrection for death, vine for fruitlessness, way for confusion. John states his purpose outright near the end: these are written that you may believe and have life in His name. And the two halves of the book hold together what Christians often separate \u2014 the highest possible claims about Christ's divinity, and the most human portrait of Him: tired at a well, weeping at a tomb, kneeling with a towel, cooking fish for the friend who denied Him."
+    },
+    "Acts": {
+      title: "Acts overview",
+      overview: [
+        "Jesus refused a timetable and gave an assignment: witnesses to the ends of the earth.",
+        "Pentecost reversed Babel \u2014 many languages hearing one message, and 3,000 believed.",
+        "A community of teaching, fellowship, bread, and prayer, where nobody's need was invisible.",
+        "Stephen forgave his killers while a young man named Saul held the coats.",
+        "On the Damascus road: \u2018Saul, why do you persecute ME?\u2019 \u2014 and Ananias said \u2018Brother Saul.\u2019",
+        "A rooftop vision took three tries to convince Peter that God shows no favoritism.",
+        "Paul and Silas sang at midnight, bleeding in stocks, and nobody escaped when the doors opened.",
+        "In Athens Paul quoted their poets; some sneered, some believed.",
+        "And the last word of the book is \u2018unhindered\u2019 \u2014 the preacher chained, the message free."
+      ],
+      questions: [
+        { q:"What did Jesus give instead of a timetable?", opts:["A date", "An assignment \u2014 be my witnesses", "A warning"], correct:1, explain:"Curiosity about schedules redirected into mission." },
+        { q:"What reversed at Pentecost?", opts:["Creation", "Babel \u2014 many languages hearing one message", "The exodus"], correct:1, explain:"Scattering became gathering." },
+        { q:"What did the Damascus road reveal?", opts:["Saul was mistaken about the law", "Jesus identifies personally with His people", "Saul was innocent"], correct:1, explain:"Harming the church is harming Him." },
+        { q:"How many times did Peter need the vision?", opts:["Once", "Three times", "Seven"], correct:1, explain:"Deep prejudice took repetition to dislodge, even in an apostle." },
+        { q:"What is the last word of Acts?", opts:["Amen", "\u2018Unhindered\u2019", "Rome"], correct:1, explain:"Chains on the man, none on the word \u2014 and no conclusion, because the mission continues." }
+      ],
+      deepDive: "Acts is the story of a message that refuses to stay contained. It begins in a locked room in Jerusalem and ends in the empire's capital, and every barrier it crosses \u2014 linguistic at Pentecost, ethnic on Peter's rooftop, geographic through Paul's journeys \u2014 is crossed because God pushed first, usually against the church's own reluctance. Luke is honest about that reluctance, and honest about the cost: Stephen stoned, Paul flogged and shipwrecked, believers scattered. But the pattern holds throughout \u2014 persecution scatters the church and the scattering spreads the gospel. The book ends without an ending, on the word \u2018unhindered,\u2019 because Luke knew the story wasn't finished."
+    },
+    "Romans": {
+      title: "Romans overview",
+      overview: [
+        "The thesis: the gospel is the power of God for salvation to everyone who believes.",
+        "Every mouth silenced \u2014 pagan, moralist, and religious alike; all have sinned.",
+        "Justified freely by grace, through the redemption that came by Christ Jesus.",
+        "Peace with God \u2014 and love proved while we were still sinners.",
+        "Dead to sin, alive to God \u2014 and chapter 7's honest ongoing struggle.",
+        "\u2018There is now no condemnation for those who are in Christ Jesus.\u2019",
+        "The Spirit interceding through wordless groans when we don't know how to pray.",
+        "Nothing in all creation can separate us from the love of God.",
+        "Therefore: living sacrifices, renewed minds, sincere love, and welcoming one another."
+      ],
+      questions: [
+        { q:"What is the gospel called in 1:16?", opts:["Good advice", "The power of God for salvation", "A philosophy"], correct:1, explain:"Not information about power but power itself." },
+        { q:"Who is included in the indictment of chapters 1\u20133?", opts:["Only pagans", "Everyone, including the religious", "Only lawbreakers"], correct:1, explain:"Paul closes every exit before saying \u2018but now.\u2019" },
+        { q:"When did Christ die for us?", opts:["After we improved", "While we were still sinners", "When we asked"], correct:1, explain:"The timing is the proof of the love." },
+        { q:"How much condemnation remains for those in Christ?", opts:["Some", "None", "It varies"], correct:1, explain:"Not reduced \u2014 none, and now, present tense." },
+        { q:"What does the \u2018therefore\u2019 of chapter 12 rest on?", opts:["Our effort", "Eleven chapters of God's mercy", "Church rules"], correct:1, explain:"Obedience always follows grace in Paul, never the reverse." }
+      ],
+      deepDive: "Romans is the most systematic presentation of the gospel in Scripture, and its architecture matters. Chapters 1\u20133 build a case that leaves nobody standing; chapters 3\u20135 announce a righteousness that comes as a gift; chapters 6\u20138 deal with the new life and its real struggle, climbing to the summit where nothing in creation can separate you from God's love; chapters 9\u201311 wrestle with God's faithfulness to Israel; and chapters 12\u201316 turn it all into a life. The hinge word is \u2018therefore.\u2019 Everything Paul asks for at the end rests entirely on what God has done at the beginning, and he never once reverses that order."
+    },
+    "1 Corinthians": {
+      title: "1 Corinthians overview",
+      overview: [
+        "A gifted, wealthy, fractured church quarreling over which teacher they followed.",
+        "The message of the cross \u2014 foolishness to the perishing, the power of God to the saved.",
+        "God chooses the weak and foolish so that no one may boast.",
+        "Your body is a temple of the Holy Spirit; you were bought at a price.",
+        "One body, many parts \u2014 no part may say \u2018I don't belong\u2019 or \u2018I don't need you.\u2019",
+        "Without love, the most impressive spiritual gifts amount to nothing.",
+        "The resurrection is historical and non-negotiable \u2014 or our faith is futile.",
+        "Therefore stand firm: your labor in the Lord is not in vain."
+      ],
+      questions: [
+        { q:"What were they quarreling about?", opts:["Doctrine", "Which teacher they followed", "Money"], correct:1, explain:"Celebrity factions, which Paul treats as immaturity." },
+        { q:"Why does God choose the weak?", opts:["No alternative", "So no one may boast", "To make things difficult"], correct:1, explain:"The method is designed to eliminate bragging rights." },
+        { q:"What two attitudes does the body image correct?", opts:["Only pride", "\u2018I don't belong\u2019 and \u2018I don't need you\u2019", "Only laziness"], correct:1, explain:"Withdrawal and dismissal are both denials of the body." },
+        { q:"What is Paul without love?", opts:["Less effective", "Nothing", "Still useful"], correct:1, explain:"Mountain-moving faith and total giving both price at zero." },
+        { q:"What if Christ was not raised?", opts:["Faith still helps", "Preaching is useless and we're most to be pitied", "Little changes"], correct:1, explain:"Paul stakes everything on a historical event." }
+      ],
+      deepDive: "Corinth was talented, wealthy, and a mess \u2014 which makes this letter unusually practical. Paul confronts factions, lawsuits, sexual immorality, chaotic worship, and pride in spiritual gifts, and behind every correction is the same standard: the cross. A crucified Messiah reorders what counts as strength, wisdom, and greatness, which is precisely what a status-obsessed church needed. That's why chapter 13 sits where it does \u2014 not as a wedding reading but as a rebuke to gifted people who had forgotten love. And the letter closes on the resurrection, because everything Paul asks of them assumes that death has been defeated and no faithful work is wasted."
+    },
+    "2 Corinthians": {
+      title: "2 Corinthians overview",
+      overview: [
+        "Paul's most personal letter \u2014 defending his ministry to a church that had doubted him.",
+        "God comforts us in all our troubles so we can comfort others with what we received.",
+        "He admits pressure beyond his ability to endure, despairing even of life.",
+        "Treasure in jars of clay \u2014 cheap containers so the power is obviously God's.",
+        "Pressed but not crushed; struck down but not destroyed.",
+        "If anyone is in Christ, the new creation has come \u2014 and we are ambassadors.",
+        "He became sin for us so that we might become the righteousness of God.",
+        "\u2018My grace is sufficient for you, for my power is made perfect in weakness.\u2019"
+      ],
+      questions: [
+        { q:"What is comfort for?", opts:["Private relief", "Passing on to others in trouble", "Ending all suffering"], correct:1, explain:"Comfort is a supply line, not a terminus." },
+        { q:"Why jars of clay?", opts:["No better option", "So the power is obviously God's, not ours", "To humiliate us"], correct:1, explain:"Cheap containers make the contents unmistakable." },
+        { q:"What is the great exchange of 5:21?", opts:["Nothing changes", "He became sin; we become God's righteousness", "We earn righteousness"], correct:1, explain:"The most compressed statement of substitution in the New Testament." },
+        { q:"How did God answer Paul's three prayers?", opts:["He removed the thorn", "He refused, and gave sufficient grace", "Silence"], correct:1, explain:"A clear no, with something better attached." },
+        { q:"What does Paul boast about?", opts:["His visions", "His weaknesses", "His converts"], correct:1, explain:"He inverts the credentials his rivals paraded." }
+      ],
+      deepDive: "This is Paul with his guard down. Under attack from rivals who paraded credentials, he responds by listing beatings, shipwrecks, hunger, and anxiety \u2014 and by admitting he once despaired of life itself. That honesty is the letter's gift: it puts an apostle's breaking point in Scripture. And out of it comes the theology that has carried suffering Christians ever since \u2014 comfort received is comfort to be passed on, weakness is the container God chose so the power would be visible, and unanswered prayer can become the very place His strength shows up. My grace is sufficient for you."
+    },
+    "Galatians": {
+      title: "Galatians overview",
+      overview: [
+        "The angriest letter in the New Testament \u2014 Paul skips his usual thanksgiving entirely.",
+        "The false gospel wasn't denying Christ but adding requirements to Him.",
+        "Even an angel preaching another gospel would be condemned.",
+        "Paul confronted Peter publicly for withdrawing from Gentile tables.",
+        "\u2018I have been crucified with Christ and I no longer live, but Christ lives in me.\u2019",
+        "If righteousness could come through the law, Christ died for nothing.",
+        "It is for freedom that Christ set us free \u2014 freedom to serve one another in love.",
+        "The fruit of the Spirit grows; it isn't manufactured."
+      ],
+      questions: [
+        { q:"What was the \u2018different gospel\u2019?", opts:["Atheism", "Faith plus law-keeping", "Paganism"], correct:1, explain:"Adding to grace destroys it." },
+        { q:"Why confront Peter publicly?", opts:["Personal rivalry", "His table habits preached a different gospel", "A doctrinal error about Christ"], correct:1, explain:"Practice can contradict theology." },
+        { q:"What's the logic of \u2018Christ died for nothing\u2019?", opts:["Hypothetical", "If law-keeping worked, the cross was unnecessary", "A minor aside"], correct:1, explain:"Paul's sharpest argument against legalism." },
+        { q:"Why \u2018fruit\u2019 rather than \u2018works\u2019?", opts:["Style", "Fruit grows from life within; it isn't manufactured", "It's easier"], correct:1, explain:"Deliberately contrasted with the \u2018acts\u2019 of the flesh." },
+        { q:"What is freedom for?", opts:["Doing as you please", "Serving one another in love", "Avoiding all rules"], correct:1, explain:"Paul guards freedom from becoming self-indulgence." }
+      ],
+      deepDive: "Galatians is short, hot, and enormously consequential \u2014 the letter that shaped Luther and the Reformation. Its target is subtle: teachers who affirmed Christ and added conditions. Paul treats that addition as fatal, because Christ-plus-anything makes the plus the real hinge, and he'd rather be called harsh than let it stand. But the letter isn't only negative. Its second half describes what freedom actually produces: not license, but a life serving others, with character growing like fruit rather than being manufactured by effort. And 2:20 remains its heart \u2014 crucified with Christ, and loved personally by the Son of God who gave Himself for me."
+    },
+    "Ephesians": {
+      title: "Ephesians overview",
+      overview: [
+        "Chosen before the creation of the world, adopted, redeemed, forgiven \u2014 all God's verbs.",
+        "God's purpose: to bring unity to all things in heaven and on earth under Christ.",
+        "Dead in sin, made alive by grace through faith \u2014 the gift of God, not by works.",
+        "Created in Christ Jesus to do good works, prepared in advance for us.",
+        "The dividing wall of hostility destroyed \u2014 one new humanity.",
+        "Paul prays for power to grasp how wide, long, high, and deep Christ's love is.",
+        "God is able to do immeasurably more than all we ask or imagine.",
+        "The full armor of God \u2014 because the struggle is not against flesh and blood."
+      ],
+      questions: [
+        { q:"When were believers chosen?", opts:["When they believed", "Before the creation of the world", "At baptism"], correct:1, explain:"Which removes the decision from the realm of merit." },
+        { q:"What was our condition before grace?", opts:["Sick", "Dead in transgressions", "Confused"], correct:1, explain:"Dead people don't improve; they must be made alive." },
+        { q:"Where do good works fit?", opts:["They save us", "They're the result, prepared in advance", "They're irrelevant"], correct:1, explain:"Saved for good works, not by them." },
+        { q:"What does Paul pray for?", opts:["Easier circumstances", "Power to grasp Christ's love", "Financial provision"], correct:1, explain:"He treats comprehending love as needing supernatural strength." },
+        { q:"Who is the real enemy?", opts:["Difficult people", "Spiritual forces, not flesh and blood", "Ourselves"], correct:1, explain:"Which reframes the person across the table." }
+      ],
+      deepDive: "Ephesians divides cleanly: three chapters of what God has done, three of how to live in light of it. The first half is almost dizzying \u2014 chosen before creation, adopted, redeemed, seated with Christ, and all of it aimed at a cosmic purpose of bringing everything together under Him. The second half brings it to earth: unity across old hostilities, honest speech, marriage, family, work, and the armor for a struggle that isn't against people. At the pivot sits Paul's prayer, which asks not for changed circumstances but for power to grasp a love that surpasses knowledge \u2014 as if being convinced you're loved is the deepest need he can imagine."
+    },
+    "Philippians": {
+      title: "Philippians overview",
+      overview: [
+        "A letter about joy, written in chains.",
+        "He who began a good work in you will carry it on to completion.",
+        "Rivals preached Christ from envy, and Paul rejoiced that Christ was preached.",
+        "Christ made himself nothing \u2014 servant, human, obedient to death on a cross \u2014 then exalted.",
+        "The highest Christology in the New Testament, quoted to settle a personal conflict.",
+        "Everything counted as loss for the surpassing worth of knowing Christ.",
+        "Do not be anxious \u2014 pray with thanksgiving, and peace will guard your heart.",
+        "Contentment learned in plenty and in want; strength for all of it through Him.",
+        "Whatever is true, noble, right, pure, lovely, admirable \u2014 think about such things."
+      ],
+      questions: [
+        { q:"Where was Paul writing from?", opts:["A comfortable home", "Prison", "A ship"], correct:1, explain:"Which is what gives the joy its authority." },
+        { q:"Who completes the good work?", opts:["We do", "He who began it", "Nobody"], correct:1, explain:"The confidence is in the worker." },
+        { q:"Why quote the Christ hymn?", opts:["To settle doctrine", "To fix a relational conflict", "As a creed"], correct:1, explain:"\u2018In your relationships\u2026 have the same mindset.\u2019" },
+        { q:"How did Paul come by contentment?", opts:["Naturally", "He learned it, in plenty and in want", "He was never in need"], correct:1, explain:"A skill acquired through hard circumstances." },
+        { q:"What does \u2018I can do all this\u2019 refer to?", opts:["Any ambition", "Contentment in every circumstance", "Athletic success"], correct:1, explain:"Read the sentence before it." }
+      ],
+      deepDive: "Philippians is the joy letter and the prison letter at once, which is exactly why it's trusted. Paul isn't theorizing about contentment from comfort; he's demonstrating it in custody, cheerful even about rivals preaching to spite him. At its center is the Christ hymn \u2014 the loftiest description of Christ's descent and exaltation in the New Testament, deployed to resolve an argument between two women in a small church. That's the letter's whole method: enormous theology aimed at ordinary relational and emotional life, ending with anxiety handed over in prayer and a mind deliberately trained on what is true, noble, and lovely."
+    },
+    "Colossians": {
+      title: "Colossians overview",
+      overview: [
+        "Christ is the image of the invisible God, before all things, holding all things together.",
+        "In him all the fullness of God dwells \u2014 so nothing can be added to him.",
+        "Reconciliation made through his blood, shed on the cross.",
+        "Since you were raised with Christ, set your hearts on things above.",
+        "Take off the old clothes; put on compassion, kindness, humility, gentleness, patience.",
+        "Forgive as the Lord forgave you \u2014 and over all these virtues, put on love.",
+        "Let the peace of Christ rule in your hearts, and his message dwell richly among you.",
+        "Whatever you do, work at it with all your heart, as working for the Lord."
+      ],
+      questions: [
+        { q:"What holds creation together?", opts:["Physical laws alone", "Christ", "Nothing"], correct:1, explain:"Sustaining, not merely starting." },
+        { q:"Why make Christ so large in this letter?", opts:["Poetic flourish", "Against teaching that made him one authority among many", "To impress"], correct:1, explain:"If everything depends on him, no supplement is available." },
+        { q:"What is the clothing image about?", opts:["Modesty", "Character deliberately put on daily", "Baptism only"], correct:1, explain:"Take off the old set, put on the new \u2014 repeated like dressing." },
+        { q:"What's the standard for forgiveness?", opts:["What the offense deserves", "As the Lord forgave you", "How you feel"], correct:1, explain:"The measure is the pardon you received." },
+        { q:"Who was the work instruction first addressed to?", opts:["Owners", "Slaves", "Priests"], correct:1, explain:"Which makes it apply to anyone whose work feels unseen." }
+      ],
+      deepDive: "Colossians answers a subtle threat: teaching that kept Christ but added supplements \u2014 angels, visions, rules about food and festivals. Paul's response is to describe Christ so comprehensively that addition becomes impossible. He made everything, he holds everything together, and the fullness of God lives in him bodily. Then the letter turns practical with one of the most usable images in Paul: character as clothing you put on each morning. Compassion, kindness, humility, gentleness, patience, and love over the top. And it ends by dignifying ordinary labor \u2014 whatever you do, you're working for the Lord."
+    },
+    "1 Thessalonians": {
+      title: "1 Thessalonians overview",
+      overview: [
+        "Possibly Paul's earliest letter, to a church only months old.",
+        "Work produced by faith, labor prompted by love, endurance inspired by hope.",
+        "They turned from idols to serve the living and true God, at real social cost.",
+        "Paul shared not only the gospel but his life \u2014 like a nursing mother caring for children.",
+        "Grieve, but not like those who have no hope: the dead in Christ miss nothing.",
+        "And so we will be with the Lord forever \u2014 therefore encourage one another.",
+        "Rejoice always, pray continually, give thanks in all circumstances."
+      ],
+      questions: [
+        { q:"What triad opens the letter?", opts:["Faith, hope, love as abstractions", "Work from faith, labor from love, endurance from hope", "Wisdom, knowledge, power"], correct:1, explain:"Each virtue named by what it produces." },
+        { q:"How did Paul describe his ministry?", opts:["Professional distance", "Like a nursing mother, sharing his life", "By command"], correct:1, explain:"People rarely receive a message from someone unwilling to be known." },
+        { q:"Does Paul forbid grief?", opts:["Yes", "No \u2014 not grief like those without hope", "He doesn't mention it"], correct:1, explain:"Christian grief is real; the horizon changes." },
+        { q:"What is the purpose of the return teaching?", opts:["Setting dates", "Encouraging one another", "Winning arguments"], correct:1, explain:"Pastoral comfort, not a timeline." },
+        { q:"What is the final promise?", opts:["A reward", "We will be with the Lord forever", "A new city"], correct:1, explain:"Presence is the point." }
+      ],
+      deepDive: "This is a warm letter to a young, frightened church. Its opening triad \u2014 faith that works, love that labors, hope that endures \u2014 has shaped Christian teaching ever since, and chapter 2 shows what it cost Paul to build them: sharing not just a message but a life. The heart of the letter answers a specific fear, that believers who died had somehow missed Christ's return. Paul's response is comfort, not chronology, and it ends with the line the whole passage exists for: and so we will be with the Lord forever. Therefore encourage one another with these words."
+    },
+    "2 Thessalonians": {
+      title: "2 Thessalonians overview",
+      overview: [
+        "A follow-up correcting the claim that the day of the Lord had already come.",
+        "Some had quit working and become busybodies living off others.",
+        "Paul points to his own labor, night and day, so as not to burden anyone.",
+        "\u2018The one who is unwilling to work shall not eat\u2019 \u2014 unwilling, not unable.",
+        "Expecting Christ's return should produce diligence, not paralysis.",
+        "\u2018Never tire of doing what is good.\u2019"
+      ],
+      questions: [
+        { q:"What error was circulating?", opts:["Christ would never return", "That the day of the Lord had already come", "That work saves"], correct:1, explain:"Bad eschatology producing bad economics." },
+        { q:"What word is crucial in 3:10?", opts:["Eat", "Unwilling \u2014 not unable", "Work"], correct:1, explain:"Freeloading is distinguished from genuine need." },
+        { q:"What should expectation produce?", opts:["Withdrawal", "Diligence in doing good", "Speculation"], correct:1, explain:"Paul's end-times teaching always terminates in how you live now." },
+        { q:"What is the closing encouragement?", opts:["Wait passively", "Never tire of doing what is good", "Avoid society"], correct:1, explain:"For anyone worn down by doing right with no visible result." }
+      ],
+      deepDive: "This brief letter tackles a practical question with lasting force: how should believing Jesus will return change today? Some Thessalonians answered by stopping work altogether, and Paul's reply is brisk and unsentimental. Anticipating the end doesn't excuse you from ordinary responsibility \u2014 it dignifies it. He backs the instruction with his own example of working night and day rather than being a burden. And the letter's closing line is worth keeping for any long, unrewarded season of faithfulness: never tire of doing what is good."
+    },
+    "1 Timothy": {
+      title: "1 Timothy overview",
+      overview: [
+        "A letter to a younger colleague left in Ephesus to correct false teaching.",
+        "\u2018Christ Jesus came into the world to save sinners \u2014 of whom I am the worst.\u2019",
+        "Paul was shown mercy as an example of Christ's immense patience.",
+        "One God and one mediator \u2014 the man Christ Jesus \u2014 so pray for all people.",
+        "Instructions for leaders: above reproach, self-controlled, hospitable, able to teach.",
+        "Godliness with contentment is great gain \u2014 we brought nothing in and take nothing out.",
+        "The love of money is a root of all kinds of evil.",
+        "To the rich: don't hope in wealth; be rich in good deeds and generous."
+      ],
+      questions: [
+        { q:"What tense does Paul use of being the worst sinner?", opts:["Past", "Present", "Neither"], correct:1, explain:"Grace made him more aware of his need, not less." },
+        { q:"Why was he shown mercy?", opts:["He deserved another chance", "As an example of Christ's patience", "Because he was useful"], correct:1, explain:"A limit case: if him, then anyone." },
+        { q:"What is \u2018a root of all kinds of evil\u2019?", opts:["Money", "The love of money", "Poverty"], correct:1, explain:"The common misquote drops the crucial word." },
+        { q:"What is great gain?", opts:["Wealth", "Godliness with contentment", "Reputation"], correct:1, explain:"He borrows the false teachers' profit language and redefines the asset." },
+        { q:"What does Paul tell the rich?", opts:["Give it all away", "Don't hope in wealth; be generous and rich in good deeds", "Feel guilty"], correct:1, explain:"Reassignment of hope, not condemnation." }
+      ],
+      deepDive: "1 Timothy is a working manual for a young leader in a difficult church, and its most memorable lines are personal rather than procedural. Paul, decades into ministry, calls himself the worst of sinners in the present tense \u2014 the opposite of the usual religious trajectory \u2014 and explains that his own story exists as evidence that no one is beyond Christ's patience. The letter's other great theme is money, aimed at teachers who treated godliness as a wealth strategy. Paul's counter is simple arithmetic: you arrived with nothing and leave with nothing, so contentment with godliness is the only real profit."
+    },
+    "2 Timothy": {
+      title: "2 Timothy overview",
+      overview: [
+        "Paul's last letter, from a cold cell with execution near.",
+        "Guard the deposit entrusted to you; endure hardship like a good soldier.",
+        "The faith that first lived in his grandmother Lois and mother Eunice.",
+        "All Scripture is God-breathed \u2014 teaching, rebuking, correcting, training.",
+        "Preach the word; be prepared in season and out of season.",
+        "\u2018I have fought the good fight, I have finished the race, I have kept the faith.\u2019",
+        "The crown goes to all who have longed for his appearing.",
+        "\u2018Everyone deserted me\u2026 But the Lord stood at my side.\u2019"
+      ],
+      questions: [
+        { q:"What does \u2018God-breathed\u2019 claim?", opts:["Human inspiration", "That Scripture originates in God's own breath", "Historical accuracy only"], correct:1, explain:"Origin, not merely quality." },
+        { q:"What are the four uses of Scripture?", opts:["Comfort, ritual, art, law", "Teaching, rebuking, correcting, training", "Prophecy, history, poetry, law"], correct:1, explain:"Two constructive, two corrective." },
+        { q:"Where did Timothy's faith come from?", opts:["A school", "His grandmother and mother", "A vision"], correct:1, explain:"Two women in a provincial town." },
+        { q:"How does Paul measure his life?", opts:["By success", "Fought, finished, kept", "By years"], correct:1, explain:"Completion, not comfort or acclaim." },
+        { q:"Who receives the crown?", opts:["Only apostles", "All who have longed for his appearing", "The most successful"], correct:1, explain:"He widens it past himself immediately." }
+      ],
+      deepDive: "This is a handoff letter, written by a man who knows he's near the end, and it mixes the monumental with the mundane in a way that feels deeply human. He charges Timothy to guard the gospel and preach it in and out of season, gives the church its clearest statement about Scripture's origin and use, and then asks for his coat, because Roman cells were cold, and for his scrolls, because he still wanted to read. His self-assessment is three verbs \u2014 fought, finished, kept \u2014 and the loneliest line in his letters sits beside the steadiest: everyone deserted me, but the Lord stood at my side."
+    },
+    "Titus": {
+      title: "Titus overview",
+      overview: [
+        "Titus left in Crete to appoint elders and set things in order.",
+        "Leaders must be blameless, hospitable, self-controlled, holding firmly to sound teaching.",
+        "The grace of God has appeared, offering salvation to all people.",
+        "Grace teaches us to say \u2018No\u2019 to ungodliness and worldly passions.",
+        "Live self-controlled, upright lives while we wait for the blessed hope.",
+        "He saved us not because of righteous things we had done, but because of his mercy."
+      ],
+      questions: [
+        { q:"What does grace do besides save?", opts:["Nothing else", "It teaches \u2014 training us to say no", "It removes standards"], correct:1, explain:"Grace is a tutor, not a permission slip." },
+        { q:"Why were we saved?", opts:["Our righteous deeds", "His mercy", "Our potential"], correct:1, explain:"Paul rules out our contribution explicitly." },
+        { q:"What are believers waiting for?", opts:["Nothing specific", "The blessed hope \u2014 Christ's appearing", "Better circumstances"], correct:1, explain:"Present life framed between grace appeared and glory to come." },
+        { q:"What does the letter emphasize about leaders?", opts:["Charisma", "Character \u2014 blameless, self-controlled, sound in teaching", "Education"], correct:1, explain:"The qualifications are almost entirely about character." }
+      ],
+      deepDive: "Titus is short and answers a persistent accusation: that grace makes people careless. Paul's reply is one of the most useful sentences in the New Testament \u2014 grace teaches us to say no. The same gift that pardons is the instructor for everything after, which means holiness isn't a return to earning but the ongoing work of the gift itself. The letter's structure reinforces it: grace has appeared, glory will appear, and life in between is lived self-controlled and upright because of both. And its instructions for leaders are almost entirely about character rather than talent."
+    },
+    "Philemon": {
+      title: "Philemon overview",
+      overview: [
+        "Paul's shortest letter \u2014 a personal appeal about a runaway slave.",
+        "Onesimus fled Philemon, met Paul in prison, and became a believer.",
+        "Paul sends him back with a letter, calling him \u2018my very heart.\u2019",
+        "He appeals on the basis of love, though he says he could command it.",
+        "Receive him no longer as a slave, but better \u2014 as a dear brother.",
+        "\u2018If he has done you any wrong or owes you anything, charge it to me.\u2019"
+      ],
+      questions: [
+        { q:"How does Paul make his appeal?", opts:["By command", "On the basis of love, declining to use his authority", "Anonymously"], correct:1, explain:"He names the authority he has and sets it aside." },
+        { q:"What does Paul offer about the debt?", opts:["Nothing", "To charge it to his own account", "To sue"], correct:1, explain:"A small picture of what Christ does with ours." },
+        { q:"What relationship does he request?", opts:["Leniency", "Brotherhood \u2014 no longer as a slave", "Legal manumission only"], correct:1, explain:"A category change the culture had no room for." },
+        { q:"Where would this letter have been read?", opts:["Privately", "Aloud to the church meeting in Philemon's house", "In court"], correct:1, explain:"Which applies gentle, unmistakable pressure." }
+      ],
+      deepDive: "One page, and it quietly undermines an entire institution. Paul doesn't issue a decree about slavery; he asks a slave owner to receive his runaway as a beloved brother, and notes pointedly that he could command it and won't. The most moving line is financial: charge it to me. A man in prison offers to cover someone else's debt so a relationship can be restored, which is the gospel in miniature. We never learn what Philemon decided \u2014 but the letter was preserved and circulated, which is its own kind of answer."
+    },
+    "Hebrews": {
+      title: "Hebrews overview",
+      overview: [
+        "God spoke through prophets in fragments; now he has spoken by his Son.",
+        "The Son is the radiance of God's glory and the exact representation of his being.",
+        "A high priest who was tempted in every way, yet without sin \u2014 so approach with confidence.",
+        "The word of God is alive and active, judging the thoughts and attitudes of the heart.",
+        "One sacrifice, once for all \u2014 and then he sat down, because the work was finished.",
+        "Faith is confidence in what we hope for and assurance about what we do not see.",
+        "The hall of faith includes those who conquered kingdoms and those who were sawed in two.",
+        "Run with perseverance, fixing our eyes on Jesus, who endured for the joy set before him.",
+        "Jesus Christ is the same yesterday and today and forever."
+      ],
+      questions: [
+        { q:"How is the Son's revelation different?", opts:["Clearer wording", "The message is a person, not a fragment", "It's shorter"], correct:1, explain:"Previous revelation came in pieces; this comes embodied." },
+        { q:"Why can Jesus empathize?", opts:["He observed humanity", "He was tempted in every way, as we are", "By nature only"], correct:1, explain:"Experience, not merely disposition." },
+        { q:"Why does \u2018he sat down\u2019 matter?", opts:["He was tired", "Priests always stood \u2014 sitting means the work is finished", "It shows rank"], correct:1, explain:"There were no chairs in the tabernacle." },
+        { q:"What outcomes appear in Hebrews 11?", opts:["Only victories", "Deliverance and torture, both called faith", "Only suffering"], correct:1, explain:"No distinction in honor between the rescued and the not." },
+        { q:"What fueled Jesus' endurance?", opts:["Duty", "The joy set before him", "Anger"], correct:1, explain:"Endurance running on anticipation." }
+      ],
+      deepDive: "Hebrews was written to believers under pressure who were tempted to drift back to a familiar religious system, and its entire strategy is comparison: better than angels, better than Moses, a better priesthood, a better covenant, a better sacrifice. The argument climaxes in a piece of furniture \u2014 Christ sat down, which no priest ever did, because his work was actually finished. Then chapter 11 gathers a crowd of people who died still waiting, and chapter 12 turns to the reader: now run yours. Its most quoted line is its anchor for anyone whose world is shifting \u2014 Jesus Christ is the same yesterday and today and forever."
+    },
+    "James": {
+      title: "James overview",
+      overview: [
+        "Practical, blunt, and concrete \u2014 Proverbs with a Christian accent.",
+        "Ask God for wisdom; he gives generously to all without finding fault.",
+        "Don't merely hear the word \u2014 do it, or you're forgetting your own face.",
+        "Faith without deeds is dead; \u2018keep warm and well fed\u2019 without a coat is nothing.",
+        "Quick to listen, slow to speak, slow to become angry.",
+        "The tongue \u2014 a bit, a rudder, a spark \u2014 which no human being can tame.",
+        "Quarrels come from desires battling within you.",
+        "God opposes the proud but shows favor to the humble.",
+        "Be patient like a farmer; confess your sins to each other and pray."
+      ],
+      questions: [
+        { q:"What is the mirror illustration about?", opts:["Vanity", "Hearing the word and doing nothing", "Self-esteem"], correct:1, explain:"Information that changes nothing equals never having looked." },
+        { q:"Does James contradict Paul?", opts:["Yes", "No \u2014 they answer different questions about faith", "They discuss different gods"], correct:1, explain:"Paul: how are we accepted? James: how do you know it's real?" },
+        { q:"Can the tongue be tamed by effort?", opts:["Easily", "No human being can tame it", "Only the wise can"], correct:1, explain:"Which points past technique to the heart." },
+        { q:"Where do quarrels originate?", opts:["Other people", "Desires battling within you", "Circumstances"], correct:1, explain:"He relocates conflict to your own wanting." },
+        { q:"What does he prescribe for healing?", opts:["Solitude", "Confession to one another and prayer", "Silence"], correct:1, explain:"Communal and spoken, not privately managed." }
+      ],
+      deepDive: "James has no interest in theory. Every paragraph pushes belief toward evidence: a coat for someone cold, a bridled tongue, humility in conflict, patience in waiting, confession spoken out loud to another person. His famous claim that faith without works is dead has been misread as a quarrel with Paul, but they're answering different questions \u2014 Paul asks how a person is accepted by God, James asks how you can tell the faith is alive. His sharpest image is the mirror: reading Scripture and changing nothing is like forgetting your own face the moment you look away."
+    },
+    "1 Peter": {
+      title: "1 Peter overview",
+      overview: [
+        "Written to scattered believers already suffering for their faith.",
+        "New birth into a living hope through the resurrection of Jesus Christ.",
+        "An inheritance that can never perish, spoil, or fade \u2014 kept in heaven for you.",
+        "Trials refine like fire proves gold.",
+        "You are a chosen people, a royal priesthood, God's special possession.",
+        "Always be prepared to explain your hope \u2014 with gentleness and respect.",
+        "Christ suffered unjustly and did not retaliate.",
+        "Cast all your anxiety on him, because he cares for you."
+      ],
+      questions: [
+        { q:"What makes the hope \u2018living\u2019?", opts:["Optimism", "It rests on the resurrection", "Good circumstances"], correct:1, explain:"Hope with a foundation outside itself." },
+        { q:"What prompts the question we're to answer?", opts:["Our arguments", "A visible hope people notice", "Advertising"], correct:1, explain:"The assumption is a life odd enough to prompt asking." },
+        { q:"How is the answer to be given?", opts:["Forcefully", "With gentleness and respect", "Only when safe"], correct:1, explain:"Tone is part of the witness." },
+        { q:"What does \u2018cast\u2019 suggest?", opts:["Gradual release", "Throwing it \u2014 a decisive transfer", "Ignoring it"], correct:1, explain:"Fling it off yourself onto him." },
+        { q:"What reason is given for casting anxiety?", opts:["Worry is useless", "Because he cares for you", "It's commanded"], correct:1, explain:"A claim about his attention, not your competence." }
+      ],
+      deepDive: "Peter writes to Christians scattered and suffering, and he leads with what can't be taken: an inheritance kept somewhere beyond anyone's reach, imperishable and unfading. That framing runs through the whole letter \u2014 identity secure, so hostility survivable. His famous call to always be ready with an answer assumes a life visibly hopeful enough to prompt the question, and it comes with a required manner: gentleness and respect, written by a man who once drew a sword to defend Jesus and later watched him absorb insults without retaliating. And its most beloved line ties humility and anxiety together: cast it all on him, because he cares for you."
+    },
+    "2 Peter": {
+      title: "2 Peter overview",
+      overview: [
+        "A final letter warning against false teachers and scoffers.",
+        "\u2018Where is this coming he promised?\u2019 \u2014 the question of every generation.",
+        "With the Lord a day is like a thousand years, and a thousand years like a day.",
+        "The Lord is not slow \u2014 he is patient, not wanting anyone to perish.",
+        "Every delayed day is time for someone else to come to repentance.",
+        "So make every effort to be found spotless and at peace with him.",
+        "Grow in the grace and knowledge of our Lord and Savior Jesus Christ."
+      ],
+      questions: [
+        { q:"How does Peter explain the delay?", opts:["The promise failed", "Patience \u2014 giving people time to repent", "God forgot"], correct:1, explain:"What looks like slowness is mercy." },
+        { q:"What does the thousand-years line address?", opts:["Prophecy math", "God's relationship to time", "The earth's age"], correct:1, explain:"A caution against measuring faithfulness by our impatience." },
+        { q:"What response does Peter urge?", opts:["Date-setting", "Growth in grace and blameless living", "Withdrawal"], correct:1, explain:"His eschatology always terminates in present character." },
+        { q:"Who does God not want to perish?", opts:["The elect only", "Anyone", "The faithful"], correct:1, explain:"The scope of the patience is the point." }
+      ],
+      deepDive: "The scoffers' question in this letter \u2014 where is this coming he promised? \u2014 gets asked in every generation, sometimes silently by believers. Peter's answer reframes waiting entirely: the delay isn't failure or indifference but patience, and its purpose is that more people get time. Every day the return hasn't come is a day someone else can still come. That turns impatience into gratitude, especially if you remember that you were once among those being waited for. And Peter's conclusion is characteristically practical \u2014 not charts and calculations, but growing in grace and living blamelessly while you wait."
+    },
+    "1 John": {
+      title: "1 John overview",
+      overview: [
+        "Written by someone who heard, saw, and touched him \u2014 against those who made Christ an idea.",
+        "God is light; walking in the light means living honestly, not sinlessly.",
+        "If we confess our sins, he is faithful and just to forgive and purify us.",
+        "See what great love the Father has lavished on us \u2014 we are called children of God.",
+        "This is love: not that we loved God, but that he loved us and sent his Son.",
+        "There is no fear in love; perfect love drives out fear.",
+        "Let us not love with words or speech but with actions and in truth.",
+        "\u2018I write these things\u2026 so that you may know that you have eternal life.\u2019"
+      ],
+      questions: [
+        { q:"What does walking in the light mean?", opts:["Sinlessness", "Living out in the open before God", "Constant happiness"], correct:1, explain:"The next verses assume ongoing sin." },
+        { q:"Why is God \u2018faithful and just\u2019 to forgive?", opts:["He's lenient", "The debt was paid, so forgiveness satisfies justice", "He overlooks it"], correct:1, explain:"Not mercy against justice but mercy through the cross." },
+        { q:"How does John define love?", opts:["By feeling", "By an event \u2014 God sending his Son", "By intention"], correct:1, explain:"Anchored to something that happened." },
+        { q:"What does perfect love do to fear?", opts:["Increases it", "Drives it out", "Ignores it"], correct:1, explain:"Confidence grows with understanding love, not with performance." },
+        { q:"What is John's stated purpose?", opts:["To frighten", "That believers may know they have eternal life", "To settle a dispute"], correct:1, explain:"Assurance, not anxiety." }
+      ],
+      deepDive: "1 John is warm and completely unwilling to let faith stay theoretical. It opens with physical testimony \u2014 heard, seen, touched \u2014 against teachers who made Christ a spiritual concept, and then applies the same concreteness to love: not words and speech but actions and truth. Its most famous sentence, God is love, is guarded in the same paragraph by a definition anchored at the cross, which keeps it from meaning whatever anyone wants. And its stated purpose is worth remembering when the tests in it feel heavy: John writes so that you may know you have eternal life."
+    },
+    "2 John": {
+      title: "2 John overview",
+      overview: [
+        "A one-page letter from \u2018the elder\u2019 to a church and its members.",
+        "Joy at finding some walking in the truth.",
+        "The old command, repeated: love one another.",
+        "\u2018And this is love: that we walk in obedience to his commands.\u2019",
+        "A warning about deceivers who deny that Jesus Christ came in the flesh.",
+        "Do not welcome or endorse such teaching.",
+        "He hopes to visit face to face, so that their joy may be complete."
+      ],
+      questions: [
+        { q:"What two things are held together?", opts:["Truth and power", "Truth and love", "Love and tolerance"], correct:1, explain:"Neither is allowed to exist without the other." },
+        { q:"What was the false teaching?", opts:["That Jesus was only human", "Denying he came in the flesh", "That the law still applied"], correct:1, explain:"An early denial of the incarnation." },
+        { q:"How does John define love here?", opts:["A feeling", "Walking in obedience to his commands", "Agreement"], correct:1, explain:"Concrete and directional." },
+        { q:"Why does John prefer a visit?", opts:["Cost", "Face to face, so their joy may be complete", "To inspect them"], correct:1, explain:"Even an apostle prefers presence to correspondence." }
+      ],
+      deepDive: "This short letter corrects two opposite instincts at once. To anyone who thinks love means accepting every teaching, John says some things are disqualifying and shouldn't be given a platform. To anyone who thinks defending truth licenses coldness, he wraps the whole warning in love, joy, and a longing to sit down together in person. Truth without love turns cruel; love without truth turns meaningless. And his working definition of love is characteristically concrete \u2014 not a feeling to summon but obedience to walk in."
+    },
+    "3 John": {
+      title: "3 John overview",
+      overview: [
+        "The shortest book in the New Testament \u2014 a personal note to a friend named Gaius.",
+        "\u2018I have no greater joy than to hear that my children are walking in the truth.\u2019",
+        "Gaius commended for hospitality to traveling workers, even strangers.",
+        "Supporting them makes him a co-worker for the truth.",
+        "Diotrephes, who loves to be first, refuses hospitality and pushes others out.",
+        "Demetrius, well spoken of by everyone.",
+        "\u2018Do not imitate what is evil but what is good.\u2019"
+      ],
+      questions: [
+        { q:"What is Gaius commended for?", opts:["Preaching", "Hospitality and practical support", "Wealth"], correct:1, explain:"Supporting others' ministry counted as working together for the truth." },
+        { q:"What is wrong with Diotrephes?", opts:["False doctrine", "He loves to be first \u2014 ego and control", "Laziness"], correct:1, explain:"No heresy is named; the problem is preeminence." },
+        { q:"What is the closing standard?", opts:["Avoid conflict", "Do not imitate what is evil but what is good", "Leave the church"], correct:1, explain:"Given after two live examples to compare." },
+        { q:"What gives John his greatest joy?", opts:["Growth in numbers", "Hearing his children walk in the truth", "Financial support"], correct:1, explain:"Worth holding if you've invested in anyone's faith." }
+      ],
+      deepDive: "The shortest book in the New Testament preserves a very ordinary church problem: a man who loves being first. Diotrephes isn't accused of heresy \u2014 just ego, gossip, refusing hospitality, and pushing out those who offer it. That such a small human failure was worth recording in Scripture says something about how much damage it does. Against him stand Gaius, whose hospitality made him a partner in the work, and Demetrius, well spoken of by everyone. The instruction is simple and permanent: do not imitate what is evil but what is good."
+    },
+    "Jude": {
+      title: "Jude overview",
+      overview: [
+        "Jude intended to write about salvation and changed course out of urgency.",
+        "Contend for the faith once for all entrusted to God's holy people.",
+        "Certain people had turned grace into a license for immorality.",
+        "Vivid images: clouds without rain, autumn trees without fruit, wandering stars.",
+        "Build yourselves up in your faith and pray in the Holy Spirit.",
+        "Be merciful to those who doubt; snatch others from the fire.",
+        "To him who is able to keep you from stumbling \u2014 and present you without fault, with great joy."
+      ],
+      questions: [
+        { q:"What error is Jude confronting?", opts:["Legalism", "Grace turned into a license for immorality", "Denial of the resurrection"], correct:1, explain:"The opposite error from Galatians." },
+        { q:"What does \u2018contend\u2019 imply?", opts:["Passive holding", "Strain and effort \u2014 an athletic word", "Debate only"], correct:1, explain:"For a faith \u2018once for all entrusted,\u2019 not ours to renovate." },
+        { q:"How are doubters to be treated?", opts:["Expelled", "With mercy", "Ignored"], correct:1, explain:"Contending doesn't license hardness toward the uncertain." },
+        { q:"Who keeps believers from falling?", opts:["Their vigilance", "God", "Church leaders"], correct:1, explain:"After a letter about danger, it names who does the holding." }
+      ],
+      deepDive: "Jude is a single page of urgency \u2014 he abandoned the letter he planned because something was going wrong. People were using grace as cover for whatever they wanted, and his response is to contend, an athletic word implying real strain, for a faith that was entrusted rather than invented. But the tone isn't merely combative. In the middle of the warnings sits one of the New Testament's gentlest instructions: be merciful to those who doubt. And after all that talk of falling, the closing doxology names the one keeping you upright, and it isn't you."
+    },
+    "Revelation": {
+      title: "Revelation overview",
+      overview: [
+        "Written to churches under real pressure, showing them who is actually in charge.",
+        "Christ walking among the lampstands \u2014 present in struggling churches, holding the keys of death.",
+        "Seven letters: Ephesus lost its first love, Sardis had a reputation and was dead, Laodicea needed nothing.",
+        "\u2018Here I am! I stand at the door and knock\u2019 \u2014 spoken to a church, not an outsider.",
+        "John hears \u2018Lion\u2019 and turns to see a Lamb, looking as if it had been slain.",
+        "Worthy is the Lamb \u2014 who purchased people from every tribe, language, and nation.",
+        "A new heaven and new earth, and the city coming DOWN \u2014 God dwelling with his people.",
+        "Every tear wiped away; no more death, mourning, crying, or pain.",
+        "The river and the tree of life return, and the curse is gone.",
+        "And the last words: \u2018Come, Lord Jesus.\u2019"
+      ],
+      questions: [
+        { q:"Where is Christ standing in chapter 1?", opts:["Far off", "Among the lampstands, with his churches", "In a distant temple"], correct:1, explain:"Presence before prophecy or judgment." },
+        { q:"What was Laodicea's problem?", opts:["Poverty", "Self-sufficiency \u2014 \u2018I do not need a thing\u2019", "Persecution"], correct:1, explain:"The gap between self-assessment and reality was total." },
+        { q:"What does John see when he turns to look at the Lion?", opts:["A lion", "A Lamb, looking as if slain", "An angel"], correct:1, explain:"Heaven's definition of victory is a cross." },
+        { q:"Which direction does the holy city travel?", opts:["Up", "Down \u2014 heaven comes to earth", "It stays"], correct:1, explain:"The hope isn't evacuation but God dwelling here." },
+        { q:"How does the Bible end?", opts:["With a warning", "With an invitation and \u2018Come, Lord Jesus\u2019", "With a genealogy"], correct:1, explain:"Longing and welcome, and grace as the final word." }
+      ],
+      deepDive: "Revelation is famous for its terrors and ends in extraordinary tenderness. It was written to real churches facing real pressure, and it opens not with prophecy but with presence \u2014 Christ walking among the lampstands, hand on a terrified man's shoulder, holding the keys of death. Its interpretive key is chapter 5: John hears a Lion announced and turns to see a slaughtered Lamb, which means every claim about conquest in this book must be read through a cross. And it closes by reopening Eden \u2014 river, tree of life, no curse, God's face seen \u2014 with an invitation to anyone thirsty and a church praying for her Lord to hurry back."
     }
   };
 
@@ -4940,7 +6476,214 @@
         { h: "\u201cAs I have loved you\u201d", b: "Then the new command, and what makes it new is the standard \u2014 not \u2018love your neighbor as yourself\u2019 but \u2018as I have loved you.\u2019 The measure is no longer your own self-interest but His demonstrated love, which just knelt on a floor for a betrayer. And He attaches the church's public credential to it: by this everyone will know you are my disciples. Not by accuracy, not by size, not by influence. By this." }
       ],
       takeaway: "Knowing He held all authority, Jesus picked up a towel and did the lowest job in the room \u2014 including for the man about to betray Him. Then He made that love the standard and the identifying mark of His people: as I have loved you, so you must love one another.",
-      reflection: "What is the \u2018basin\u2019 sitting untouched in your household, workplace, or church \u2014 the task everyone sees and nobody takes? What would it cost you to just do it this week?" }
+      reflection: "What is the \u2018basin\u2019 sitting untouched in your household, workplace, or church \u2014 the task everyone sees and nobody takes? What would it cost you to just do it this week?" },
+    "Acts": { focus: "Acts 2:1\u201347", title: "Pentecost",
+      sections: [
+        { h: "Wind, fire, and languages", b: "The Spirit's arrival is announced by a sound like a violent wind filling the whole house and what looked like tongues of fire resting on each person. Note \u2018each of them\u2019 \u2014 not on the leaders, not on a designated few, but on everyone present. Then the miracle turns outward immediately: they speak, and a crowd from every nation under heaven hears its own language. The first thing the Spirit does is translate." },
+        { h: "Babel run backwards", b: "At Babel, one language became many and the people scattered. Here, many languages hear one message and the people gather. Luke almost certainly intends the echo. It says something permanent about what the church is for: a gospel that arrives in your own tongue rather than requiring you to adopt someone else's, and a unity that doesn't erase difference but crosses it." },
+        { h: "Peter, of all people", b: "The preacher is the man whose last public statements were three denials by a fire. He stands up in the same city, weeks later, and tells a crowd that includes people who called for the crucifixion exactly what they did \u2014 and then offers them forgiveness. Restoration in John 21 becomes courage in Acts 2. If you think a failure has permanently disqualified you, Peter is standing there as the counterargument." },
+        { h: "What the church became", b: "Three thousand were baptized, and Luke describes what happened next in one of Scripture's most quoted paragraphs: teaching, fellowship, breaking of bread, prayer. No buildings, no programs. Property sold as needs arose, meals shared with glad hearts, and daily growth credited to the Lord. The Spirit's arrival produced a community, not just an experience." }
+      ],
+      takeaway: "Pentecost reverses Babel: many languages hearing one message, delivered by a man who had recently denied Christ, producing a community where nobody's need was invisible. The Spirit's first act was translation, and its first fruit was a shared life.",
+      reflection: "If the Spirit's arrival produced a community rather than just an experience, what does that say about how you're currently practicing your faith \u2014 and who is actually sharing life with you?" },
+    "Romans": { focus: "Romans 8:28\u201339", title: "Nothing can separate us",
+      sections: [
+        { h: "\u201cIn all things God works for the good\u201d", b: "The verse is often quoted as a promise that everything will turn out pleasantly, which it doesn't say. It says God works in all things \u2014 including the ones that are genuinely bad \u2014 toward good, and the next verse defines what \u2018good\u2019 means: being conformed to the image of his Son. That's a harder and better promise. It doesn't guarantee comfortable outcomes; it guarantees that nothing is wasted." },
+        { h: "The courtroom empties", b: "Paul stages a trial and dismisses it. Who will bring a charge? God is the one who justifies \u2014 the judge has already ruled. Who condemns? Christ died, was raised, and is at God's right hand interceding. Every accusation has to get past a verdict already delivered and an advocate already seated. Notice that Paul doesn't argue you're innocent; he argues the case is closed." },
+        { h: "The list of real threats", b: "Then he names what might separate us, and they aren't hypotheticals: trouble, hardship, persecution, famine, nakedness, danger, sword. Paul had personally faced most of that list. He even quotes a psalm about being considered sheep for slaughter \u2014 an admission that following Christ can look like losing. \u2018No, in all these things we are more than conquerors through him who loved us.\u2019" },
+        { h: "Built to be exhaustive", b: "The final sweep is designed so nothing slips through: death, life, angels, demons, present, future, powers, height, depth \u2014 and then a catch-all, \u2018nor anything else in all creation.\u2019 Since you are part of creation, the clause covers you on your worst day, including your own failures and your own doubts. Nothing on that list, and nothing off it, can separate you from the love of God in Christ Jesus." }
+      ],
+      takeaway: "Romans 8 ends by emptying the courtroom \u2014 the judge has ruled, the advocate is seated \u2014 and then listing every conceivable threat, including a catch-all clause, and ruling them all out. The security isn't in your grip on God but in his love in Christ Jesus.",
+      reflection: "Which item on Paul's list feels most like it could separate you from God right now? Read verse 39 again and notice that it's already covered." },
+    "1 Corinthians": { focus: "1 Corinthians 13", title: "The more excellent way",
+      sections: [
+        { h: "Everything, priced at zero", b: "Paul lists the most impressive spiritual achievements available in Corinth \u2014 tongues of angels, prophetic powers, understanding all mysteries, faith that moves mountains, giving everything to the poor, even surrendering his body \u2014 and prices each one at nothing without love. Not \u2018less effective.\u2019 Nothing. That's aimed squarely at a church that had been ranking itself by gifts." },
+        { h: "Defined in verbs", b: "Then the definition, and almost every phrase is an action or a restraint: patient, kind, does not envy, does not boast, is not proud, does not dishonor, is not self-seeking, not easily angered, keeps no record of wrongs. This is love as behavior, which means it can be examined. A feeling can't be audited; \u2018keeps no record of wrongs\u2019 can." },
+        { h: "\u201cKeeps no record of wrongs\u201d", b: "This phrase is an accounting term \u2014 love doesn't maintain a ledger. Most damaged relationships run on exactly such a ledger, itemized and available for instant recall during the next argument. Paul says love closes the book. That single line, taken seriously, would repair more marriages and friendships than most advice ever written." },
+        { h: "What outlasts everything", b: "Prophecies cease, tongues still, knowledge passes \u2014 all the things the Corinthians prized are temporary by design. Now we see only a reflection as in a mirror; then we shall see face to face. Faith and hope will one day be fulfilled and no longer needed. Love is the only thing in the chapter that survives into eternity intact, which is why Paul calls it the greatest." }
+      ],
+      takeaway: "Chapter 13 was written to correct a gifted, unloving church, not to be read at weddings. It prices every spiritual achievement at zero without love, defines love in auditable verbs rather than feelings, and points out that of everything the Corinthians valued, only love survives.",
+      reflection: "Read verses 4\u20137 slowly, substituting your own name for \u2018love.\u2019 Which line can you not honestly say \u2014 and what would change this week if you could?" },
+    "2 Corinthians": { focus: "2 Corinthians 12:1\u201310", title: "My grace is sufficient",
+      sections: [
+        { h: "A vision he won't trade on", b: "Paul mentions being caught up to the third heaven, and then almost immediately refuses to build anything on it \u2014 he tells it in the third person and declines to boast, so no one will think more of him than what they see and hear. In a chapter forced on him by rivals parading credentials, he deliberately declines the one credential that would have won the argument." },
+        { h: "The thorn, unexplained", b: "\u2018There was given me a thorn in my flesh, a messenger of Satan, to torment me.\u2019 Paul never says what it was, which has frustrated readers for two thousand years and is probably a mercy \u2014 it lets anyone with a chronic, humiliating, unfixable difficulty put their own name in the blank. Note the strange double attribution: it was given, and it is a messenger of Satan. Even the tormenting thing sits under God's purpose." },
+        { h: "Three times", b: "He pleaded three times \u2014 the same number as Gethsemane \u2014 and the answer was no. That should be said plainly, because a great deal of teaching implies that persistent prayer always removes the problem. It didn't for Paul. What came instead was a sentence: \u2018My grace is sufficient for you, for my power is made perfect in weakness.\u2019 Not grace that removes it, but grace enough for the version of life that includes it." },
+        { h: "Boasting in the wrong things", b: "Then the reversal that makes this passage unforgettable. Paul stops asking and starts boasting \u2014 gladly \u2014 about the very weaknesses he had begged God to take, because that's where Christ's power rested on him. \u2018When I am weak, then I am strong.\u2019 The unanswered prayer became the place God was most visible." }
+      ],
+      takeaway: "Paul's thorn was never removed, and the answer he received has held up millions of people since: grace sufficient for the life that includes it, and power made perfect in weakness. He stopped asking and began boasting about the very thing he'd wanted gone.",
+      reflection: "What have you asked God repeatedly to remove that is still there? What would it look like to receive \u2018my grace is sufficient\u2019 as an actual answer rather than a consolation prize?" },
+    "Galatians": { focus: "Galatians 2:15\u201321", title: "Crucified with Christ",
+      sections: [
+        { h: "The problem behind the passage", b: "Peter had been eating freely with Gentile believers until certain men arrived, and then he withdrew. Paul confronted him publicly, because table fellowship wasn't a minor social matter \u2014 pulling back said Gentiles were second-class, which meant faith in Christ wasn't sufficient after all. Practice was preaching a different gospel than doctrine." },
+        { h: "Justified by faith, not works of the law", b: "Paul's answer states the principle three times in one verse for emphasis. Nobody is justified by observing the law. That was not a controversial statement about Gentiles; it was a statement about himself and Peter \u2014 \u2018we, who are Jews by birth\u2026 know that a person is not justified by the works of the law.\u2019 If the insiders can't get there that way, the requirement can't be imposed on outsiders." },
+        { h: "\u201cI have been crucified with Christ\u201d", b: "Then the personal turn, and the tense matters: crucified, past and settled. The old self's claim to run things has been executed. \u2018And I no longer live, but Christ lives in me\u2019 \u2014 present and ongoing. This isn't self-improvement or a better version of the same person; it's a death and a new occupant, and it's why adding law-keeping makes no sense. You can't put a corpse back in charge." },
+        { h: "\u201cWho loved me and gave himself for me\u201d", b: "Paul, who had hunted believers house to house, writes the cosmic gospel in the first person singular. Not \u2018who loved the world\u2019 \u2014 who loved me. And then the closing argument, which is unanswerable: if righteousness could be gained through the law, Christ died for nothing. Every subtle attempt to earn standing runs into that sentence." }
+      ],
+      takeaway: "Paul confronts a gospel with conditions attached and answers it with a death: crucified with Christ, no longer I who live. And he narrows it to the first person \u2014 who loved me and gave himself for me \u2014 before closing with the argument that ends all legalism: if trying could get you there, the cross was pointless.",
+      reflection: "What have you quietly added to \u2018faith in Christ\u2019 as a requirement for your own acceptance? Say it out loud, then read verse 21 again." },
+    "Ephesians": { focus: "Ephesians 3:14\u201321", title: "Rooted and established in love",
+      sections: [
+        { h: "What Paul actually asks for", b: "Read the requests and notice what's absent: no easier circumstances, no resolved problems, no material provision. He asks for inner strength through the Spirit, for Christ to dwell in their hearts, and for power to grasp love. Paul seems convinced that the deepest human need is not a change in situation but a comprehension of being loved." },
+        { h: "Power to grasp", b: "It's a strange combination \u2014 why would understanding love require power? Because information about God's love rarely lands. Most people can recite it and still live as though they're on probation. Paul treats the gap between knowing it as a fact and grasping it as reality as something only the Spirit can close, which is why he prays rather than merely explaining." },
+        { h: "Wide, long, high, deep", b: "Four dimensions, which is a way of saying there's no edge to measure. And then the deliberate impossibility: \u2018to know this love that surpasses knowledge.\u2019 You can genuinely know it and never come to the end of it, the way you can genuinely know the ocean without having seen most of it. The goal isn't mastery but immersion \u2014 being rooted and established in it, like a tree and a foundation." },
+        { h: "Immeasurably more", b: "The doxology stretches past the request itself: God is able to do immeasurably more than all we ask or imagine. Not more than we ask \u2014 more than we can even conceive of asking. And note where the power operates: \u2018according to his power that is at work within us.\u2019 The same strength Paul prayed for is already the mechanism." }
+      ],
+      takeaway: "Paul kneels and asks not for changed circumstances but for power to grasp a love with no measurable edge \u2014 a love that can be truly known and never exhausted. He treats being convinced you're loved as the deepest need there is, and as something requiring the Spirit's strength.",
+      reflection: "Do you live as though you're loved by God, or as though you're on probation with him? Pray this prayer for yourself this week and notice what resists." },
+    "Philippians": { focus: "Philippians 2:1\u201311", title: "He humbled himself",
+      sections: [
+        { h: "Why the hymn is here", b: "This is the loftiest description of Christ in the New Testament, and Paul deploys it to fix a relational problem \u2014 rivalry and vanity in a small church, and eventually two named women who couldn't agree. The theology isn't decoration; it's the repair. \u2018In your relationships with one another, have the same mindset as Christ Jesus.\u2019" },
+        { h: "Not something to be used to his advantage", b: "He was in very nature God and did not consider equality with God something to exploit. That phrase is the hinge: he had every right and declined to leverage it. Most conflict runs on the opposite instinct \u2014 pressing whatever advantage you legitimately have. Christ's example isn't giving up what he lacked but declining to use what he had." },
+        { h: "The descent", b: "Then the movement, relentlessly downward: made himself nothing, took the nature of a servant, made in human likeness, humbled himself, became obedient to death \u2014 and then, as if the bottom weren't low enough, \u2018even death on a cross.\u2019 The most shameful execution the Roman world could devise, for the one through whom the world was made." },
+        { h: "Therefore God exalted him", b: "Only after the full descent comes the exaltation \u2014 the name above every name, every knee bowing. The order is the argument: this is how God's kingdom works, and it's the mindset being prescribed. Paul isn't asking the Philippians to admire the pattern. He's asking them to live inside it with each other." }
+      ],
+      takeaway: "The highest Christology in the New Testament is quoted to settle a petty church conflict. Christ had every right and declined to use it, descending to a servant's death before God exalted him \u2014 and Paul presents that descent not as something to admire but as the mindset to have with one another.",
+      reflection: "Where do you currently have a legitimate right, advantage, or upper hand in a relationship? What would \u2018not considering it something to be used to your advantage\u2019 look like this week?" },
+    "Colossians": { focus: "Colossians 3:1\u201317", title: "Clothe yourselves",
+      sections: [
+        { h: "Start with what's already true", b: "The chapter opens with \u2018since, then, you have been raised with Christ\u2019 \u2014 not \u2018if you try hard enough.\u2019 Everything commanded rests on an accomplished fact. Your life is hidden with Christ in God, which is both secure and currently invisible. That's the order Paul never reverses: identity first, behavior second." },
+        { h: "Take off", b: "Then the old clothes, named specifically: anger, rage, malice, slander, filthy language, lying. Notice how many involve the mouth. Paul doesn't describe these as things to feel bad about but as garments to remove \u2014 which implies they're not you anymore, however familiar they feel." },
+        { h: "Put on", b: "And the new set: compassion, kindness, humility, gentleness, patience. The clothing image is the most practical thing here. Character isn't a mood you wait to feel; it's something you put on deliberately, again today, the way you dress whether or not you feel like it. Then bearing with each other, and forgiving \u2014 \u2018as the Lord forgave you,\u2019 which sets the standard at total, undeserved, and first." },
+        { h: "Over all these, love", b: "Love goes over the top like an outer garment, binding everything together. Then peace ruling as an umpire in the heart, the message of Christ dwelling richly, gratitude, and finally the sweeping instruction: whatever you do, in word or deed, do it all in the name of the Lord Jesus. The chapter starts in the heavenly realms and ends with your Tuesday." }
+      ],
+      takeaway: "Colossians 3 grounds behavior in an accomplished fact \u2014 you were raised with Christ \u2014 and then treats character as clothing: take off anger and slander, put on compassion and patience, with love over the top. And it sets forgiveness at the hardest possible standard: as the Lord forgave you.",
+      reflection: "Which garment do you need to deliberately put on tomorrow morning \u2014 and is there a grievance you've been holding that \u2018forgive as the Lord forgave you\u2019 addresses?" },
+    "1 Thessalonians": { focus: "1 Thessalonians 4:13\u201318", title: "We do not grieve as those without hope",
+      sections: [
+        { h: "The fear behind the letter", b: "A young church was frightened. Believers had died before Christ returned, and they worried those people had somehow missed out. Paul writes to correct information, not to scold emotion \u2014 \u2018we do not want you to be uninformed.\u2019 Notice how much of pastoral care in the New Testament is simply telling frightened people the truth." },
+        { h: "Not whether to grieve, but how", b: "\u2018So that you do not grieve like the rest of mankind, who have no hope.\u2019 Read carefully: he never says don't grieve. Christians cry at funerals, and should \u2014 death is an enemy, and loss is real. What changes is the horizon the sorrow is felt against. Grief with hope is still grief." },
+        { h: "\u201cThose who sleep\u201d", b: "Paul's repeated word for Christian death is sleep, which isn't a denial of its seriousness but a statement about its duration. The imagery assumes waking. And his central assurance is that the dead in Christ lose no place in the order \u2014 they rise first, and nobody who died is behind." },
+        { h: "The point of the passage", b: "Then the promise everything has been building toward, and it isn't about clouds or trumpets: \u2018and so we will be with the Lord forever.\u2019 Presence, permanently, together. And the instruction that follows tells you what this teaching is for \u2014 not date-setting or debate, but \u2018therefore encourage one another with these words.\u2019" }
+      ],
+      takeaway: "Paul writes to frightened people who thought their dead had missed out, and he never tells them to stop grieving \u2014 only not to grieve like those without hope. The passage ends where it aims: we will be with the Lord forever, therefore encourage one another with these words.",
+      reflection: "Who in your life is grieving right now? What would it look like to actually use these words to encourage them, rather than keeping the comfort theoretical?" },
+    "2 Thessalonians": { focus: "2 Thessalonians 3:6\u201318", title: "Never tire of doing good",
+      sections: [
+        { h: "The problem", b: "Believing the day of the Lord had already arrived, some had stopped working entirely and were living off the community \u2014 and, Paul notes drily, becoming busybodies. Idleness rarely stays neutral; unoccupied people tend to occupy themselves with other people's business." },
+        { h: "Paul's own example", b: "Rather than pulling rank, he points at his own hands: he worked night and day, paying his own way, so as not to be a burden \u2014 even though as an apostle he had every right to support. He models the same principle as Philippians 2: having a right and declining to use it." },
+        { h: "The blunt rule", b: "\u2018The one who is unwilling to work shall not eat.\u2019 The word choice is careful and often misquoted \u2014 unwilling, not unable. This isn't aimed at the sick, the elderly, or those who can't find work; the early church was famously generous to exactly those people. It's aimed at refusal, and it protects genuine generosity from being drained by it." },
+        { h: "The word for everyone else", b: "Then, having dealt with the idle, Paul turns to the rest: \u2018And as for you, brothers and sisters, never tire of doing what is good.\u2019 That sentence is for anyone quietly exhausted by doing right with nothing visible to show for it \u2014 which, in a letter about waiting for Christ's return, is exactly the point." }
+      ],
+      takeaway: "Believing Christ would return made some Thessalonians quit working. Paul's response \u2014 backed by his own night-and-day labor \u2014 is that expectation should produce diligence, not paralysis, and he closes with a word for the weary: never tire of doing what is good.",
+      reflection: "Where have you grown tired of doing good with nothing to show for it? What would \u2018not tiring\u2019 practically require of you this month?" },
+    "1 Timothy": { focus: "1 Timothy 1:12\u201317", title: "The worst of sinners",
+      sections: [
+        { h: "The r\u00e9sum\u00e9 he doesn't hide", b: "Blasphemer, persecutor, violent man \u2014 Paul names his own record without softening it. He had approved an execution and dragged people from their homes. Decades later, writing as the most influential Christian alive, he leads with that. The past isn't erased in his memory; it's just no longer determinative." },
+        { h: "Present tense", b: "\u2018Christ Jesus came into the world to save sinners \u2014 of whom I am the worst.\u2019 Not \u2018was.\u2019 That present tense is the opposite of the usual religious trajectory, where people grow more confident of their own decency over time. Proximity to grace made Paul more aware of his need, not less, which is a reliable marker of the real thing." },
+        { h: "\u201cAs an example\u201d", b: "Then the reason he gives, which is remarkably generous: he was shown mercy so that in him, the worst of sinners, Christ might display his immense patience \u2018as an example for those who would believe.\u2019 Paul understood his own story as a limit case deliberately placed in Scripture. If the man holding the coats at Stephen's stoning could be forgiven, the argument that you're too far gone doesn't hold." },
+        { h: "Where it lands", b: "The paragraph ends not in self-analysis but in worship: \u2018Now to the King eternal, immortal, invisible, the only God, be honor and glory for ever and ever. Amen.\u2019 Honest reckoning with your own history, in Paul, doesn't produce despair or self-loathing. It produces doxology." }
+      ],
+      takeaway: "Paul names his worst record plainly, calls himself the worst of sinners in the present tense decades after his conversion, and explains that his story sits in Scripture as a deliberate limit case \u2014 evidence that Christ's patience reaches anyone. And it ends in worship, not self-analysis.",
+      reflection: "What in your past do you still treat as disqualifying? If Paul's story was preserved as an example, what does that mean for yours?" },
+    "2 Timothy": { focus: "2 Timothy 4:1\u201322", title: "Finishing the race",
+      sections: [
+        { h: "The charge", b: "\u2018Preach the word; be prepared in season and out of season.\u2019 Paul knows he's handing off, and the instruction is about consistency rather than intensity \u2014 convenient or not, receptive audience or not. He warns that people will gather teachers who tell them what their itching ears want to hear, which is a permanent temptation for both preacher and listener." },
+        { h: "Three verbs for a life", b: "\u2018I have fought the good fight, I have finished the race, I have kept the faith.\u2019 Note what's absent: no numbers, no achievements, no comparison. Fought, finished, kept. It's a completion metric rather than a success metric, which is available to anyone regardless of results." },
+        { h: "Not only to me", b: "The crown of righteousness is \u2018not only to me, but also to all who have longed for his appearing.\u2019 Paul immediately widens it past apostles and heroes to ordinary believers whose qualification is simply loving Christ's return. Whatever reward means here, it isn't reserved for the impressive." },
+        { h: "The cloak and the scrolls", b: "Then the details that make this letter unbearably human. Come before winter. Bring the cloak I left at Troas, and the scrolls, especially the parchments. He is cold, and he still wants to read. And the two sentences side by side: \u2018everyone deserted me\u2026 But the Lord stood at my side and gave me strength.\u2019" }
+      ],
+      takeaway: "Paul's last recorded words measure a life by completion rather than success \u2014 fought, finished, kept \u2014 and then widen the reward to everyone who has longed for Christ's appearing. And in the same breath he asks for his coat and his books, cold and still reading, deserted by everyone and not alone.",
+      reflection: "If you wrote \u2018I have fought, I have finished, I have kept\u2019 about your life so far, what would be honest? What would you want to be able to say, and what changes now to get there?" },
+    "Titus": { focus: "Titus 2:11\u201314", title: "Grace that teaches",
+      sections: [
+        { h: "Grace has appeared", b: "The word is the one used for a sunrise or a royal arrival \u2014 grace showed up, in history, offering salvation to all people. It isn't an abstract divine attitude but an event with a date. That framing matters for everything that follows: the training described comes from something that happened, not from a principle." },
+        { h: "It teaches us to say no", b: "Here is the sentence that answers the oldest objection to grace \u2014 that it makes people careless. Grace is the tutor. It trains us to renounce ungodliness and worldly passions, which means saying no is not a return to earning but the ongoing work of the gift. Anyone who thinks grace and holiness pull in opposite directions has misread this verse." },
+        { h: "And to say yes", b: "The training isn't only negative: self-controlled, upright, and godly lives \u2014 covering yourself, your neighbor, and God. And crucially, \u2018in this present age.\u2019 Not in retreat from the world, not postponed to the next one. The Christian life happens here, in Crete, among difficult people, now." },
+        { h: "Between two appearings", b: "The passage frames the present between grace that has appeared and glory that will \u2014 \u2018the blessed hope, the appearing of the glory of our great God and Savior, Jesus Christ.\u2019 He gave himself to redeem us and to purify \u2018a people that are his very own, eager to do what is good.\u2019 Eagerness, not obligation, is the goal." }
+      ],
+      takeaway: "Titus answers the accusation that grace makes people lax with one sentence: grace teaches us to say no. The same gift that pardons is the instructor for everything after, training us for self-controlled, upright lives in this present age, between the grace that appeared and the glory that will.",
+      reflection: "Where do you need grace to teach you a specific \u2018no\u2019 this month? And do you experience obedience as obligation or as eagerness \u2014 what would move it toward the second?" },
+    "Philemon": { focus: "Philemon 1:8\u201321", title: "Charge it to me",
+      sections: [
+        { h: "Authority set aside", b: "\u2018Although in Christ I could be bold and order you to do what you ought to do, yet I prefer to appeal to you on the basis of love.\u2019 Paul names the authority he has and deliberately declines it. He wants a decision that comes freely \u2014 \u2018so that any favor you do would not seem forced but would be voluntary.\u2019 That's a remarkable way to handle power over someone." },
+        { h: "A new name for a runaway", b: "Onesimus means \u2018useful,\u2019 and Paul plays on it: formerly useless to you, now useful to both of us. But the language goes far past usefulness \u2014 \u2018my son, who became my son while I was in chains,\u2019 and \u2018I am sending him \u2014 who is my very heart \u2014 back to you.\u2019 A fugitive slave has become the apostle's own heart." },
+        { h: "No longer as a slave", b: "The request is a category change: receive him \u2018no longer as a slave, but better than a slave, as a dear brother\u2026 welcome him as you would welcome me.\u2019 Paul doesn't legislate against the institution; he asks one man to treat one other man as family, which is a change the institution cannot survive." },
+        { h: "\u201cCharge it to me\u201d", b: "Then the line that turns a personal note into a picture of the gospel: if he has wronged you or owes you anything, put it on my account \u2014 written, Paul notes, in his own hand. Someone stands between the wronged party and the offender and absorbs the debt so a relationship can be restored. That is precisely what Christ does, and Paul apparently didn't feel the need to point it out." }
+      ],
+      takeaway: "Paul declines the authority he could have used, asks a slave owner to receive his runaway as a beloved brother, and offers to pay the debt himself in his own handwriting. A one-page letter about one relationship, and the gospel is visible in every move.",
+      reflection: "Is there a relationship where you're waiting to be repaid \u2014 in money, apology, or acknowledgment? What would it cost you to write \u2018charge it to me\u2019 and let it go?" },
+    "Hebrews": { focus: "Hebrews 4:14\u201316", title: "Approach with confidence",
+      sections: [
+        { h: "What comes just before", b: "The preceding verses are terrifying: the word of God is alive and active, sharper than a double-edged sword, dividing soul and spirit, judging the thoughts and attitudes of the heart. Nothing in creation is hidden; everything is uncovered and laid bare before the eyes of him to whom we must give account. Read alone, that sends anyone running for cover." },
+        { h: "\u201cTherefore\u201d", b: "And then the pivot. Precisely because you are that exposed, hold firmly to the faith \u2014 because the one you're exposed before is not a distant judge but a high priest who has passed through the heavens. The terror and the comfort are attached to the same person, which is the entire pastoral genius of Hebrews." },
+        { h: "Tempted in every way", b: "\u2018We do not have a high priest who is unable to empathize with our weaknesses, but we have one who has been tempted in every way, just as we are \u2014 yet he did not sin.\u2019 The sinlessness doesn't distance him; it means he felt the full force of temptation rather than giving in early. He knows the pull from the inside, at its strongest." },
+        { h: "Confidence, in time of need", b: "\u2018Let us then approach God's throne of grace with confidence, so that we may receive mercy and find grace to help us in our time of need.\u2019 Note the timing. Not after you've recovered, cleaned up, and can report progress \u2014 in the time of need, which is exactly when most people avoid God. The instinct to hide until you're presentable is the one this verse exists to overrule." }
+      ],
+      takeaway: "Hebrews first exposes you completely \u2014 a word that judges the heart's motives, nothing hidden \u2014 and then names who you're exposed before: a high priest who was tempted in every way you are. The invitation isn't to approach once you've cleaned up, but with confidence, in your time of need.",
+      reflection: "When you fail, is your instinct to run toward God or to hide until you feel presentable? What would change if you took \u2018in time of need\u2019 literally this week?" },
+    "James": { focus: "James 1:19\u201327", title: "Doers of the word",
+      sections: [
+        { h: "Quick, slow, slow", b: "\u2018Everyone should be quick to listen, slow to speak and slow to become angry.\u2019 Three settings, and most conflict violates all three at once. The ratio is worth noticing \u2014 one thing to be quick about, two to be slow about. Almost every relational disaster in your life came from reversing it." },
+        { h: "The mirror", b: "Then the image that defines the letter: someone who hears the word and does nothing is like a person who looks at his face in a mirror and immediately forgets what he looks like. The absurdity is the point. You looked, you saw something, you walked away unchanged \u2014 which is functionally identical to never having looked." },
+        { h: "The perfect law that gives freedom", b: "James calls Scripture a mirror and then, surprisingly, \u2018the perfect law that gives freedom\u2019 \u2014 and blesses not the one who studies it most but the one who \u2018looks intently into it and continues in it\u2026 not forgetting what they have heard, but doing it.\u2019 The blessing is attached to the doing, and it's promised \u2018in what they do.\u2019" },
+        { h: "Religion that God accepts", b: "And his test is deliberately unspiritual: keeping a tight rein on your tongue, looking after orphans and widows in their distress, and staying unpolluted by the world. Speech, the vulnerable, and personal integrity. No mention of ceremony. If your religion doesn't govern your mouth and reach the powerless, James says it's worthless \u2014 his word, not a paraphrase." }
+      ],
+      takeaway: "James defines the difference between hearing and doing with a mirror: you looked, saw something true, and walked away unchanged. His test for real religion is deliberately ordinary \u2014 a controlled tongue, care for the vulnerable, and personal integrity.",
+      reflection: "What have you known from Scripture for years without it changing anything you actually do? Pick one, and do it this week." },
+    "1 Peter": { focus: "1 Peter 5:6\u201311", title: "Cast all your anxiety",
+      sections: [
+        { h: "Humble yourselves", b: "Verse 6 and verse 7 are one sentence in Greek: humble yourselves under God's mighty hand \u2026 casting all your anxiety on him. That grammatical link is easy to miss and enormously useful. Much anxiety is the weight of trying to control outcomes that were never yours, so handing it over is an act of humility, not merely relief." },
+        { h: "\u201cThat he may lift you up\u201d", b: "Note who does the lifting, and when \u2014 \u2018in due time.\u2019 Humbling yourself isn't self-erasure or pretending you don't matter; it's declining to promote yourself because someone better positioned is handling it, on a schedule you don't set." },
+        { h: "Cast, not set down", b: "The verb is forceful \u2014 to throw or fling something off yourself onto something else. It's the same word used for throwing cloaks on the colt at the triumphal entry. Not setting worry gently down where you can retrieve it, but throwing it. And \u2018all\u2019 leaves no category exempt: the large fears and the petty ones." },
+        { h: "Because he cares for you", b: "The reason given isn't that worry is unproductive, true as that is. It's that he cares about you \u2014 a claim about his attention rather than your competence. And the very next verse says to be alert, because the enemy prowls. Peter puts childlike trust and sober vigilance side by side without any sense of contradiction." }
+      ],
+      takeaway: "Casting your anxiety and humbling yourself are one movement in Peter's sentence \u2014 much worry is the weight of controlling what was never yours. The verb means throw, not set down gently, and the reason given is his care for you, not the uselessness of worry.",
+      reflection: "Name the anxiety you keep picking back up. What would it look like to actually throw it \u2014 and what does it say about your view of God that you keep retrieving it?" },
+    "2 Peter": { focus: "2 Peter 3:1\u201318", title: "Patient, not slow",
+      sections: [
+        { h: "The scoffers' question", b: "\u2018Where is this coming he promised? Ever since our ancestors died, everything goes on as it has since the beginning.\u2019 It's a fair-sounding argument from ordinary experience, and it gets asked in every generation \u2014 sometimes silently by believers who wouldn't say it aloud." },
+        { h: "A different clock", b: "Peter's first answer is about time itself: with the Lord a day is like a thousand years, and a thousand years like a day. This isn't a formula for calculating prophecy; it's a caution against measuring God's faithfulness by human impatience. Our sense of \u2018late\u2019 assumes a schedule we were never given." },
+        { h: "Patience, not failure", b: "Then the real answer, and it changes everything: \u2018The Lord is not slow in keeping his promise, as some understand slowness. Instead he is patient with you, not wanting anyone to perish, but everyone to come to repentance.\u2019 The delay isn't indifference or inability \u2014 it's mercy holding a door open. Every day the return hasn't come is a day someone else can still come in." },
+        { h: "So what kind of people", b: "Peter's conclusion is never speculation but character: \u2018Since everything will be destroyed in this way, what kind of people ought you to be?\u2019 Holy and godly lives, making every effort to be found spotless and at peace with him, growing in grace and knowledge. His eschatology always terminates in how you live tomorrow morning." }
+      ],
+      takeaway: "What looks like God's slowness is patience with a purpose \u2014 more time for more people. Peter reframes the delay as mercy holding a door open, and lands not on dates or speculation but on the question of what kind of person you should be while waiting.",
+      reflection: "Who were you when God was being patient with you? Who is he being patient with now that you've grown impatient about \u2014 and are you praying for them?" },
+    "1 John": { focus: "1 John 4:7\u201321", title: "God is love",
+      sections: [
+        { h: "Love comes from somewhere", b: "\u2018Let us love one another, for love comes from God.\u2019 John doesn't treat love as a human capacity we generate but as something with a source. Which is why he can say that whoever loves has been born of God and knows him \u2014 the presence of real love is evidence of a connection to its origin." },
+        { h: "\u201cThis is love\u201d", b: "\u2018God is love\u2019 is one of the most quoted and most abused sentences in the Bible, and John guards it immediately by defining his terms: \u2018This is love: not that we loved God, but that he loved us and sent his Son as an atoning sacrifice for our sins.\u2019 He points at an event, not a sentiment. That anchoring keeps the sentence from meaning whatever anyone wants it to mean." },
+        { h: "The direction of the love", b: "Not that we loved God \u2014 but that he loved us. The initiative is entirely his, which reorders everything. Our loving is always response, never origination, and that's why John can command it: he's asking us to pass on something already received rather than manufacture something we don't have." },
+        { h: "Fear driven out", b: "\u2018There is no fear in love. But perfect love drives out fear, because fear has to do with punishment.\u2019 Religious anxiety \u2014 the sense of being on probation with God \u2014 doesn't get fixed by better performance. It gets displaced by love actually understood. And John immediately makes it testable: anyone who claims to love God while hating a brother or sister is a liar." }
+      ],
+      takeaway: "John defines love not as a feeling but as an event \u2014 God sending his Son \u2014 and insists the direction runs from him to us first. Our loving is always response, fear is displaced rather than defeated by effort, and the claim to love God is tested by how you treat the person in front of you.",
+      reflection: "Where is your religious anxiety coming from \u2014 and is there someone you're finding hard to love whose face is testing what you say you believe about God?" },
+    "2 John": { focus: "2 John 1:1\u201313", title: "Truth and love",
+      sections: [
+        { h: "Both words, over and over", b: "In thirteen verses, John uses \u2018truth\u2019 five times and \u2018love\u2019 four. He loves them \u2018in the truth,\u2019 rejoices that they walk \u2018in the truth,\u2019 and asks them to love one another. The two aren't in tension in this letter; they're braided. Most modern conflict about faith comes from pulling them apart." },
+        { h: "Love defined as obedience", b: "\u2018And this is love: that we walk in obedience to his commands.\u2019 John, of all people, refuses to let love float free of action or direction. It isn't a mood to summon but a path to walk, and the path has content given by someone else." },
+        { h: "The line that gets drawn", b: "Then the warning: deceivers who deny that Jesus Christ came in the flesh. John says not to take such teaching into your house or welcome it \u2014 which in a world of traveling teachers and house churches meant declining to platform it. Note what he's protecting: not preference or tradition, but the incarnation itself." },
+        { h: "Face to face", b: "And the closing is quietly moving. \u2018I have much to write to you, but I do not want to use paper and ink. Instead, I hope to visit you and talk with you face to face, so that our joy may be complete.\u2019 An apostle with the authority to write Scripture says the letter isn't as good as being in the room. Presence is still better than correspondence." }
+      ],
+      takeaway: "In thirteen verses John braids truth and love together \u2014 defining love as walking in obedience, drawing a firm line around the incarnation, and closing with a longing to be in the room rather than on paper. Truth without love turns cruel; love without truth turns meaningless.",
+      reflection: "Which do you naturally lean toward \u2014 guarding truth or keeping peace? What does the one you neglect require of you in a current relationship?" },
+    "3 John": { focus: "3 John 1:1\u201314", title: "Imitate what is good",
+      sections: [
+        { h: "Joy in someone else's faithfulness", b: "\u2018I have no greater joy than to hear that my children are walking in the truth.\u2019 It's a small sentence with enormous weight for anyone who has invested in another person's faith \u2014 a parent, a friend, a mentor. The report that they're still walking is described as the greatest joy available to John." },
+        { h: "Hospitality as ministry", b: "Gaius is commended for supporting traveling teachers, \u2018even though they are strangers to you.\u2019 John's verdict: \u2018We ought therefore to show hospitality to such people so that we may work together for the truth.\u2019 Practical support of someone else's work is counted as partnership in it \u2014 which dignifies everyone who has ever funded, housed, fed, or covered for a worker." },
+        { h: "Diotrephes, who loves to be first", b: "No heresy is named. His offenses are gossiping maliciously, refusing to welcome believers, and putting out those who do \u2014 all traced to one root: \u2018who loves to be first.\u2019 That such an ordinary failure is preserved in Scripture is a warning about how much damage a small ego can do in a small church." },
+        { h: "A simple standard", b: "\u2018Do not imitate what is evil but what is good.\u2019 It arrives right after two live examples \u2014 Diotrephes grasping for preeminence, Demetrius well spoken of by everyone. John doesn't give an abstract principle; he gives two people and tells you which one to copy." }
+      ],
+      takeaway: "The New Testament's shortest book preserves a very ordinary problem \u2014 a man who loves to be first \u2014 alongside a man whose hospitality made him a co-worker for the truth. The standard given isn't abstract: here are two examples, imitate the good one.",
+      reflection: "Whose example are you actually imitating right now \u2014 and where does the instinct to be first show up quietly in you?" },
+    "Jude": { focus: "Jude 1:17\u201325", title: "Able to keep you",
+      sections: [
+        { h: "Build, pray, keep, wait", b: "After a page of warning, Jude turns to what believers should actively do: build yourselves up in your most holy faith, pray in the Holy Spirit, keep yourselves in God's love, and wait for the mercy of Christ. Four verbs, all ongoing. Contending for the faith turns out to include tending your own." },
+        { h: "Three kinds of people", b: "Then the pastoral instruction: be merciful to those who doubt; save others by snatching them from the fire; to others show mercy mixed with fear. Different situations get different approaches. Doubt gets mercy, danger gets urgency, and some situations require caution \u2014 which is a more careful model of how to help people than most of us practice." },
+        { h: "Mercy to doubters", b: "This is the line worth pulling out of a fierce letter. In a book about contending, defending, and warning, Jude explicitly instructs mercy toward the uncertain. Doubt is treated as a condition needing care, not a betrayal needing correction. Anyone who has been made to feel unwelcome for asking questions should read verse 22 slowly." },
+        { h: "Who does the keeping", b: "And then the doxology, one of the finest in Scripture: \u2018To him who is able to keep you from stumbling and to present you before his glorious presence without fault and with great joy.\u2019 After an entire letter about the danger of falling away, the closing word is that the one holding you upright is God \u2014 and that he intends to present you with joy, not with relief." }
+      ],
+      takeaway: "A fierce letter about contending for the faith contains one of the New Testament's gentlest instructions \u2014 be merciful to those who doubt \u2014 and closes by naming who actually keeps you standing. After all the warnings about falling, the last word is God's ability to hold you.",
+      reflection: "Who around you is doubting, and are you being merciful or impatient with them? And where have you been trying to keep yourself from stumbling by willpower?" },
+    "Revelation": { focus: "Revelation 5:1\u201314", title: "Worthy is the Lamb",
+      sections: [
+        { h: "A scroll no one can open", b: "John sees a sealed scroll in the right hand of the one on the throne \u2014 God's purposes for history \u2014 and a search goes out for someone worthy to open it. No one is found, in heaven or on earth or under it. And John weeps, hard: the Greek suggests loud sobbing. If no one can open the scroll, history has no meaning and no resolution." },
+        { h: "\u201cDo not weep\u201d", b: "An elder stops him: the Lion of the tribe of Judah, the Root of David, has triumphed. Everything about the announcement is royal and military \u2014 a lion, a conquering heir. John turns to look at a lion." },
+        { h: "And sees a Lamb", b: "\u2018Then I saw a Lamb, looking as if it had been slain, standing at the center of the throne.\u2019 This is the most important sentence in the book. He hears Lion and sees Lamb; he hears conquest and sees slaughter; and the wounds are still visible on a creature that is standing. Every claim about victory in Revelation has to be read through this reversal \u2014 God's conquest looks like self-giving, not domination." },
+        { h: "The song, and who's in it", b: "Then heaven sings a new song, and the reason for worthiness is stated: \u2018because you were slain, and with your blood you purchased for God persons from every tribe and language and people and nation.\u2019 The promise to Abraham, sung as accomplished fact. And the circle of praise widens until every creature in heaven, on earth, under the earth, and in the sea is singing to the Lamb." }
+      ],
+      takeaway: "John hears that a Lion has conquered and turns to see a slaughtered Lamb, standing. That reversal governs the entire book: heaven's definition of victory is a cross, and the song names people from every tribe and nation as already purchased.",
+      reflection: "Where are you waiting for God to act through obvious power? What changes if the pattern of his victory looks more like the Lamb than the Lion you expected?" }
   };
 
   function todayStr(){ return new Date().toISOString().slice(0,10); }
