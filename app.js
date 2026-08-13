@@ -342,6 +342,42 @@
         { type:'glow', style:{ left:'50%', bottom:'8%', width:260, height:210, marginLeft:-130, marginBottom:-105, background:'radial-gradient(circle, rgba(255,214,130,0.8) 0%, rgba(235,175,70,0.32) 50%, rgba(235,175,70,0) 76%)' } },
         { type:'sparkle', style:{ top:'14%', height:'24%' } }
       ]
+    },
+    "Matthew": {
+      gradient: 'linear-gradient(180deg, #0c1024 0%, #182044 14%, #2a3468 28%, #414e8e 42%, #6470ac 56%, #97a0c6 70%, #d8cba0 86%, #b8934e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'40%' } },
+        { type:'glow', style:{ left:'50%', top:'16%', width:190, height:190, marginLeft:-95, marginTop:-95, background:'radial-gradient(circle, rgba(255,248,214,0.95) 0%, rgba(255,232,160,0.4) 42%, rgba(255,232,160,0) 72%)' } },
+        { type:'sparkle', style:{ top:'6%', height:'32%' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#7e6a44', opacity:0.5, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#5e4e30', opacity:0.7, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Mark": {
+      gradient: 'linear-gradient(180deg, #1a1410 0%, #33261c 14%, #56402c 30%, #7c5c3a 46%, #a07c4c 60%, #c4a068 74%, #96794a 88%, #5e4a2c 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'20%', width:230, height:230, marginLeft:-115, marginTop:-115, background:'radial-gradient(circle, rgba(255,232,180,0.75) 0%, rgba(226,180,104,0.3) 46%, rgba(226,180,104,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'8%', height:'20%', background:'#6e5636', opacity:0.55, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'15%', background:'#4c3a24', opacity:0.75, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Luke": {
+      gradient: 'linear-gradient(180deg, #141024 0%, #262044 14%, #40376a 28%, #5e5290 42%, #8a7aac 56%, #b8a4b4 70%, #e6cca4 86%, #c9a05e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'36%' } },
+        { type:'glow', style:{ left:'50%', top:'22%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(255,236,206,0.8) 0%, rgba(236,196,140,0.32) 46%, rgba(236,196,140,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'30%' } },
+        { type:'glow', style:{ left:'50%', bottom:'2%', width:220, height:170, marginLeft:-110, marginBottom:-85, background:'radial-gradient(circle, rgba(255,220,160,0.7) 0%, rgba(230,180,100,0.28) 50%, rgba(230,180,100,0) 76%)' } }
+      ]
+    },
+    "John": {
+      gradient: 'linear-gradient(180deg, #06101e 0%, #0e2038 14%, #16365a 28%, #21567e 42%, #3a80a0 56%, #6eaec0 70%, #b4dcd8 84%, #e8dcae 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'18%', width:290, height:290, marginLeft:-145, marginTop:-145, background:'radial-gradient(circle, rgba(236,250,255,0.9) 0%, rgba(150,220,240,0.34) 44%, rgba(150,220,240,0) 74%)' } },
+        { type:'sparkle', style:{ top:'6%', height:'34%' } },
+        { type:'water', style:{ background:'linear-gradient(180deg, rgba(40,120,150,0) 0%, rgba(40,120,150,0.4) 100%)' } }
+      ]
     }
   };
 
@@ -3026,6 +3062,536 @@
         { q:"What follows Malachi historically?", opts:["Immediate fulfillment", "About four hundred years of prophetic silence", "Another prophet"], correct:1, explain:"The next voice is John the Baptist \u2014 the promised messenger who prepares the way." }
       ],
       deepDive: "Malachi ends the Old Testament with sunrise and then silence. The scroll of remembrance is worth pausing on: in a discouraged, cynical era, people who still feared God talked with each other about it, and God had it written down. Faithfulness in a bad season is recorded even when it changes nothing visible. Then the final image \u2014 the sun of righteousness rising with healing in its rays \u2014 and four hundred years of nothing. That gap is part of the story: God's people waited across generations for a dawn they'd been promised. Then a priest named Zechariah met an angel in the temple, and the silence broke." }
+,
+    { id:244, book:"Matthew", title:"A genealogy, and a name", side:"c",
+      passage: "The New Testament opens with a list of names \u2014 and the list itself is the first surprise. Matthew traces Jesus back to Abraham through David, and includes people no ancient genealogy would mention: Tamar, who posed as a prostitute; Rahab, who was one; Ruth, a Moabite outsider; \u201cUriah's wife,\u201d named by the man David murdered. Then Joseph, engaged to a pregnant girl, decides to divorce her quietly \u2014 until an angel says the child is from the Holy Spirit. \u201cYou are to give him the name Jesus, because he will save his people from their sins.\u201d And Matthew adds: this fulfills Isaiah's word \u2014 Immanuel, God with us.",
+      keyVerses: [
+        { ref: "Matthew 1:23", text: "The virgin will conceive and give birth to a son, and they will call him Immanuel (which means \u201cGod with us\u201d)." }
+      ],
+      questions: [
+        { q:"What's unusual about the women in the genealogy?", opts:["There are no women", "They include outsiders and people with scandalous histories", "They're all queens"], correct:1, explain:"Tamar, Rahab, Ruth, and Bathsheba \u2014 Matthew puts them in the family line on purpose." },
+        { q:"What does the name \u2018Jesus\u2019 mean?", opts:["King", "\u2018The LORD saves\u2019 \u2014 explained as \u2018he will save his people from their sins\u2019", "Teacher"], correct:1, explain:"The Greek form of Joshua; the angel gives both the name and its job description." },
+        { q:"What was Joseph planning before the angel came?", opts:["A public trial", "A quiet divorce \u2014 to protect her from disgrace", "To marry immediately"], correct:1, explain:"Even before he understood, his instinct was mercy \u2014 which is why he's called righteous." }
+      ],
+      deepDive: "Most readers skip the genealogy, which is a shame, because Matthew loaded it. Ancient family trees existed to prove respectability; this one includes a woman who tricked her father-in-law, a Canaanite prostitute, a Moabite widow, and a reference to adultery and murder that refuses to even say Bathsheba's name \u2014 it says \u2018Uriah's wife,\u2019 keeping the crime in the record. Matthew is establishing something before the story starts: this family line runs through scandal, foreigners, and failure, which tells you what kind of Savior is arriving and who He came for. And the two names bracket everything: Jesus, because He saves; Immanuel, because He came near to do it." },
+    { id:245, book:"Matthew", title:"Wise men and a refugee child", side:"l",
+      passage: "Magi from the east followed a star to Jerusalem asking, \u201cWhere is the one who has been born king of the Jews?\u201d Herod was disturbed \u2014 \u201cand all Jerusalem with him.\u201d His scribes quoted Micah: Bethlehem. The magi found the child, bowed, and offered gold, frankincense, and myrrh, then went home another way, warned in a dream. Warned too, Joseph took Mary and the child by night to Egypt, escaping Herod's slaughter of Bethlehem's boys. The Messiah's first years were spent as a refugee in a foreign country.",
+      keyVerses: [
+        { ref: "Matthew 2:11", text: "They bowed down and worshiped him. Then they opened their treasures and presented him with gifts of gold, frankincense and myrrh." }
+      ],
+      questions: [
+        { q:"Who recognized the king \u2014 and who didn't?", opts:["Israel's leaders did", "Foreign stargazers came to worship; the capital's religious experts stayed home", "Nobody"], correct:1, explain:"The scribes knew the right verse and never made the six-mile trip \u2014 knowledge without response." },
+        { q:"How did Jesus' family survive Herod?", opts:["An army protected them", "They fled to Egypt as refugees", "Herod relented"], correct:1, explain:"The Savior's childhood included flight from political violence into a foreign land." },
+        { q:"What does Herod's reaction reveal?", opts:["Curiosity", "A king who would kill children rather than share a throne", "Faith"], correct:1, explain:"Power threatened by a rival infant \u2014 the first of many who found this King inconvenient." }
+      ],
+      deepDive: "Matthew 2 is full of uncomfortable contrasts. Pagan astrologers travel for months and fall on their faces; the chief priests, who could quote the prophecy from memory, don't walk six miles to check. Proximity to Scripture is not the same as response to it. And the chapter refuses to sentimentalize the nativity: there is a massacre in it, and a family running for the border at night. The gifts hint at what's coming \u2014 gold for a king, incense for worship, myrrh for burial \u2014 and the flight to Egypt means that before Jesus said a word about the suffering, He had already been a child whose family fled a violent ruler." },
+    { id:246, book:"Matthew", title:"Baptized in the Jordan", side:"r",
+      passage: "John the Baptist appeared in the wilderness in camel's hair, preaching, \u201cRepent, for the kingdom of heaven has come near,\u201d and warning the religious elite not to trust their pedigree: \u201cdo not think you can say to yourselves, \u2018We have Abraham as our father.\u2019\u201d Then Jesus came to be baptized. John tried to stop him \u2014 \u201cI need to be baptized by you\u201d \u2014 but Jesus insisted. As He came up from the water, heaven opened, the Spirit descended like a dove, and a voice said: \u201cThis is my Son, whom I love; with him I am well pleased.\u201d",
+      keyVerses: [
+        { ref: "Matthew 3:17", text: "And a voice from heaven said, \u201cThis is my Son, whom I love; with him I am well pleased.\u201d" }
+      ],
+      questions: [
+        { q:"Why did John object to baptizing Jesus?", opts:["Jesus was too young", "John knew the roles were backwards \u2014 he needed baptizing by Jesus", "The crowd objected"], correct:1, explain:"A baptism of repentance made no sense for the sinless one \u2014 which is why John resisted." },
+        { q:"What did John warn about ancestry?", opts:["It guarantees standing", "Being descended from Abraham proves nothing without fruit", "It should be forgotten"], correct:1, explain:"Inherited religion is not the same as personal repentance \u2014 God can raise children from stones." },
+        { q:"When did the Father declare His pleasure?", opts:["After the miracles", "At the baptism \u2014 before a single public work", "At the crucifixion"], correct:1, explain:"The affirmation came before the ministry, not as a reward for it." }
+      ],
+      deepDive: "The baptism is the moment all three persons of the Trinity appear in one scene \u2014 the Son in the water, the Spirit descending, the Father speaking. But the detail worth carrying is the timing of the Father's words. \u2018This is my Son, whom I love; with him I am well pleased\u2019 is spoken before Jesus has preached a sermon, healed anyone, or gathered a disciple. The pleasure precedes the performance. For anyone who has quietly organized their spiritual life around earning approval, that sequence is the whole gospel in miniature \u2014 and it's about to be tested, because the very next scene is the wilderness." },
+    { id:247, book:"Matthew", title:"Tested in the wilderness", side:"c",
+      passage: "The Spirit led Jesus into the wilderness to be tempted. After forty days without food, the tempter came three times. Turn these stones to bread \u2014 \u201cIf you are the Son of God.\u201d Throw yourself down; the angels will catch you. Bow to me, and all the kingdoms of the world are yours. Each time Jesus answered from Deuteronomy: man doesn't live on bread alone; do not put the Lord your God to the test; worship the Lord your God and serve him only. The devil left, and angels came and attended him.",
+      keyVerses: [
+        { ref: "Matthew 4:4", text: "Man shall not live on bread alone, but on every word that comes from the mouth of God." }
+      ],
+      questions: [
+        { q:"What phrase opens two of the temptations?", opts:["\u2018If you are hungry\u2019", "\u2018If you are the Son of God\u2019 \u2014 attacking what the Father just declared", "\u2018If you are willing\u2019"], correct:1, explain:"The attack targets the identity announced at the baptism days earlier." },
+        { q:"How did Jesus respond each time?", opts:["With miracles", "With Scripture \u2014 all three from Deuteronomy", "With silence"], correct:1, explain:"He answered with what He had stored, not with displays of power." },
+        { q:"What was the third offer?", opts:["Wealth", "All the kingdoms of the world \u2014 without the cross", "Long life"], correct:1, explain:"A shortcut to the throne that skipped the suffering \u2014 the real temptation underneath." }
+      ],
+      deepDive: "The order of scenes matters: the Father says \u2018my Son, whom I love,\u2019 and immediately the wilderness voice says \u2018if you are the Son of God.\u2019 Temptation usually begins by questioning something God has already settled. Notice too that none of the three offers are obviously evil \u2014 bread when starving, a spectacular sign, the kingdoms He came to rule anyway. Each is a legitimate end reached by an illegitimate route, which is how temptation actually works for most people. And Jesus' defense wasn't power He obviously had; it was Scripture He had memorized, deployed while exhausted and hungry. That's an argument for filling your memory before the wilderness, not during it." },
+    { id:248, book:"Matthew", title:"The Beatitudes", side:"l",
+      passage: "Jesus sat down on a mountainside and began the most famous sermon ever preached with a list of people He calls blessed \u2014 and it's the wrong list. \u201cBlessed are the poor in spirit, for theirs is the kingdom of heaven. Blessed are those who mourn, for they will be comforted. Blessed are the meek... those who hunger and thirst for righteousness... the merciful... the pure in heart... the peacemakers... those who are persecuted because of righteousness.\u201d Not the strong, wealthy, or admired \u2014 the empty, grieving, and hungry.",
+      keyVerses: [
+        { ref: "Matthew 5:3\u20134", text: "Blessed are the poor in spirit, for theirs is the kingdom of heaven. Blessed are those who mourn, for they will be comforted." }
+      ],
+      questions: [
+        { q:"Who does Jesus call blessed?", opts:["The successful and admired", "The poor in spirit, mourning, meek, hungry, merciful, pure, peacemaking, persecuted", "The religious leaders"], correct:1, explain:"Every category inverts what any culture would rank as fortunate." },
+        { q:"What does \u2018poor in spirit\u2019 mean?", opts:["Depressed", "Spiritually bankrupt \u2014 knowing you bring nothing to the transaction", "Financially poor only"], correct:1, explain:"The entry point to the kingdom is admitting you have no currency for it." },
+        { q:"What kind of statements are these?", opts:["Commands to achieve", "Announcements \u2014 declaring who already has God's favor", "Predictions"], correct:1, explain:"Not eight steps to earn blessing but an announcement about who the kingdom belongs to." }
+      ],
+      deepDive: "The Beatitudes are not entry requirements or a personality test \u2014 they're an announcement, and a shocking one. In a world that assumed prosperity signaled God's favor, Jesus opens by pronouncing favor on the bankrupt, the grieving, and the powerless. Notice the first one especially: \u2018poor in spirit\u2019 describes someone with nothing to offer, and to them belongs the kingdom \u2014 present tense, already theirs. Everything else in the sermon assumes this foundation. You cannot start the Sermon on the Mount by trying harder; you start it by admitting you're empty. And the promises attached aren't vague: comfort, inheritance, satisfaction, mercy, seeing God." },
+    { id:249, book:"Matthew", title:"Salt, light, and a deeper law", side:"r",
+      passage: "\u201cYou are the salt of the earth... You are the light of the world. A town built on a hill cannot be hidden.\u201d Then Jesus goes further into the law than anyone expected: \u201cYou have heard that it was said... but I tell you.\u201d Murder becomes contempt; adultery becomes the lustful look; oaths become plain honesty; \u201ceye for an eye\u201d becomes turning the other cheek. And the hardest: \u201cLove your enemies and pray for those who persecute you, that you may be children of your Father in heaven.\u201d",
+      keyVerses: [
+        { ref: "Matthew 5:44", text: "But I tell you, love your enemies and pray for those who persecute you." }
+      ],
+      questions: [
+        { q:"What does \u2018you are the light of the world\u2019 assume?", opts:["That you might become light someday", "That it's already true \u2014 the only question is whether it's hidden", "That only leaders shine"], correct:1, explain:"Not a goal but a description; the warning is about concealment, not capacity." },
+        { q:"How does Jesus handle the law?", opts:["He abolishes it", "He drives it inward \u2014 from actions to the heart behind them", "He softens it"], correct:1, explain:"The standard gets harder, not easier: contempt is murder's root, lust adultery's." },
+        { q:"Why love enemies?", opts:["It's strategic", "\u2018That you may be children of your Father\u2019 \u2014 it's a family resemblance", "To avoid conflict"], correct:1, explain:"God sends sun and rain on the righteous and unrighteous alike; this is imitation." }
+      ],
+      deepDive: "This section makes the Sermon impossible on purpose. Jesus takes commands people were confident they'd kept and relocates them: you haven't murdered, but have you held someone in contempt? You haven't committed adultery, but what does your looking do? By the end, anyone honest has run out of clean categories \u2014 which is exactly why the sermon opened with \u2018blessed are the poor in spirit.\u2019 The impossibility isn't a design flaw; it's the reason grace is necessary. And the salt-and-light images are worth keeping: neither exists for itself. Salt that stays in the shaker and a lamp under a bowl are not modest \u2014 they're useless." },
+    { id:250, book:"Matthew", title:"Pray like this", side:"c",
+      passage: "Jesus warns against religion performed for an audience \u2014 giving, praying, and fasting done to be seen \u201chave received their reward in full.\u201d Instead: go into your room, close the door, pray to your Father who is unseen. \u201cThis, then, is how you should pray: Our Father in heaven, hallowed be your name, your kingdom come, your will be done, on earth as it is in heaven. Give us today our daily bread. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from the evil one.\u201d Then: store treasure in heaven, and don't worry \u2014 look at the birds.",
+      keyVerses: [
+        { ref: "Matthew 6:9\u201310", text: "Our Father in heaven, hallowed be your name, your kingdom come, your will be done, on earth as it is in heaven." }
+      ],
+      questions: [
+        { q:"What's the problem with public religious display?", opts:["It's ineffective", "The applause IS the reward \u2014 received in full, nothing left", "It's illegal"], correct:1, explain:"Jesus doesn't say it fails; He says it succeeds at the only thing it was aimed at." },
+        { q:"What comes first in the prayer?", opts:["Our needs", "God's name, kingdom, and will \u2014 before bread, forgiveness, or protection", "Confession"], correct:1, explain:"The order teaches perspective: God's concerns framed before ours are named." },
+        { q:"What clause carries a condition?", opts:["Daily bread", "Forgiveness \u2014 \u2018as we also have forgiven our debtors\u2019", "Deliverance"], correct:1, explain:"Jesus adds a comment on exactly this line after the prayer \u2014 it's the one He returns to." }
+      ],
+      deepDive: "The Lord's Prayer is short enough to say in twenty seconds and structured enough to reorganize a life. It begins with relationship (\u2018Our Father\u2019 \u2014 not \u2018my\u2019), moves through God's name, kingdom, and will, and only then reaches bread, forgiveness, and protection. Notice what it asks for materially: today's bread. Not the quarter's supply. And notice the one line Jesus circles back to comment on \u2014 forgiveness, tied to the forgiving we do. He isn't making mercy the price of pardon; He's saying an unforgiving heart is evidence that grace hasn't landed yet. The chapter ends where anxiety ends: look at the birds. Your Father feeds them, and He knows what you need." },
+    { id:251, book:"Matthew", title:"The narrow gate and two houses", side:"l",
+      passage: "The sermon's ending turns practical and sharp. \u201cDo not judge, or you too will be judged\u201d \u2014 take the plank out of your own eye first. \u201cAsk and it will be given to you; seek and you will find; knock and the door will be opened.\u201d \u201cSo in everything, do to others what you would have them do to you.\u201d Then the narrow gate, false prophets known by their fruit, and the closing image: everyone who hears these words and puts them into practice is like a wise man who built his house on rock. The rain came, the streams rose, the winds blew \u2014 \u201cyet it did not fall, because it had its foundation on the rock.\u201d",
+      keyVerses: [
+        { ref: "Matthew 7:24", text: "Everyone who hears these words of mine and puts them into practice is like a wise man who built his house on the rock." }
+      ],
+      questions: [
+        { q:"What distinguishes the two builders?", opts:["One heard the words, one didn't", "Both heard \u2014 only one put them into practice", "Their materials"], correct:1, explain:"The difference isn't information but obedience; hearing alone builds on sand." },
+        { q:"What happens to both houses?", opts:["Only one faces a storm", "The same storm hits both \u2014 the foundation shows in the collapse", "Neither is tested"], correct:1, explain:"Jesus doesn't promise the wise avoid storms, only that they stand in them." },
+        { q:"What does \u2018do not judge\u2019 mean in context?", opts:["Never assess anything", "Deal with your own plank before addressing someone's speck", "Ignore false teachers"], correct:1, explain:"The same chapter tells you to recognize false prophets by their fruit \u2014 the target is hypocrisy, not discernment." }
+      ],
+      deepDive: "Jesus ends the greatest sermon ever preached by warning that hearing it isn't enough. Both builders heard the same words; both houses looked fine on a clear day; the same storm hit both. Nothing distinguished them until the weather did, and by then the foundation was already set. That's an uncomfortable image for anyone who consumes a lot of spiritual content \u2014 sermons, podcasts, apps like this one \u2014 without much changing. The application is embarrassingly simple: pick one thing from this sermon you've heard many times and haven't done, and do it this week. That single act is what separates rock from sand." },
+    { id:252, book:"Matthew", title:"Come to me, all who are weary", side:"r",
+      passage: "After denouncing towns that saw miracles and didn't change, Jesus prays \u2014 thanking the Father for hiding these things from the wise and revealing them to little children. Then He turns to the crowd with one of the most quoted invitations in Scripture: \u201cCome to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls. For my yoke is easy and my burden is light.\u201d",
+      keyVerses: [
+        { ref: "Matthew 11:28\u201329", text: "Come to me, all you who are weary and burdened, and I will give you rest... for I am gentle and humble in heart." }
+      ],
+      questions: [
+        { q:"Who is invited?", opts:["The qualified", "All who are weary and burdened \u2014 exhaustion is the qualification", "Only disciples"], correct:1, explain:"Being worn out is not a disqualification here; it's the entry ticket." },
+        { q:"What is offered \u2014 rest from work, or a yoke?", opts:["Only rest", "A yoke \u2014 rest found in being harnessed to Him, not in doing nothing", "Only work"], correct:1, explain:"A yoke joined two animals; the offer is shared load with an easier partner." },
+        { q:"What reason does Jesus give for coming to Him?", opts:["His power", "\u2018For I am gentle and humble in heart\u2019", "His authority"], correct:1, explain:"The only place in the Gospels where Jesus describes His own heart \u2014 and this is the word He chooses." }
+      ],
+      deepDive: "This is the only time in the Gospels Jesus tells us directly what His heart is like, and of every available word He picks gentle and humble. That matters enormously for anyone who believes in God's power but quietly suspects He's exasperated with them. Notice also the strangeness of the offer: rest arrives through a yoke, not through the absence of one. The burden isn't removed \u2014 the partner changes. Religious weariness usually comes from carrying alone a load meant to be shared, under a master who never says \u2018enough.\u2019 This one is gentle, and the yoke fits." },
+    { id:253, book:"Matthew", title:"Parables of the kingdom", side:"c",
+      passage: "Jesus taught in parables from a boat. A farmer scattered seed: some fell on the path, some on rocky ground where it sprang up and withered, some among thorns that choked it, and some on good soil producing a crop many times over. Then more: the kingdom is like a mustard seed, the smallest of seeds, growing into a tree where birds nest; like yeast worked through dough; like treasure hidden in a field, which a man found and, \u201cin his joy, went and sold all he had and bought that field.\u201d",
+      keyVerses: [
+        { ref: "Matthew 13:44", text: "The kingdom of heaven is like treasure hidden in a field. When a man found it, he hid it again, and then in his joy went and sold all he had and bought that field." }
+      ],
+      questions: [
+        { q:"What varies in the parable of the sower?", opts:["The seed", "The soil \u2014 the same word lands in different conditions", "The farmer"], correct:1, explain:"Identical seed, four outcomes \u2014 the variable is the ground receiving it." },
+        { q:"What choked the seed among thorns?", opts:["Drought", "The worries of life and the deceitfulness of wealth", "Birds"], correct:1, explain:"Not hostility but distraction \u2014 the most common way faith quietly dies." },
+        { q:"What motivated the man who sold everything?", opts:["Duty", "Joy \u2014 he sold all he had gladly, having seen the value", "Fear"], correct:1, explain:"Two words easy to miss: \u2018in his joy.\u2019 It wasn't sacrifice; it was a bargain he couldn't believe." }
+      ],
+      deepDive: "The sower is the parable Jesus said unlocks the others, and its honesty is bracing: most of the seed doesn't produce. Notice the third soil especially \u2014 the plants aren't attacked, they're crowded. Worry and wealth don't announce themselves as enemies of faith; they just take up all the room. That is how most people lose their spiritual life, not through a crisis of belief but through a full calendar. And then the treasure parable answers the obvious objection about cost: yes, the man sold everything, and he did it \u2018in his joy.\u2019 Nobody who has actually seen the field feels robbed by the purchase." },
+    { id:254, book:"Matthew", title:"\u201cWho do you say I am?\u201d", side:"l",
+      passage: "At Caesarea Philippi, Jesus asked, \u201cWho do people say the Son of Man is?\u201d They answered: John the Baptist, Elijah, Jeremiah. Then: \u201cBut what about you? Who do you say I am?\u201d Peter answered, \u201cYou are the Messiah, the Son of the living God.\u201d Jesus blessed him \u2014 this was revealed by the Father, not flesh and blood. Then He began explaining that He must suffer, be killed, and be raised. Peter rebuked Him for it, and heard the sharpest words of his life. And then: \u201cWhoever wants to be my disciple must deny themselves and take up their cross and follow me.\u201d",
+      keyVerses: [
+        { ref: "Matthew 16:24", text: "Whoever wants to be my disciple must deny themselves and take up their cross and follow me." }
+      ],
+      questions: [
+        { q:"What shifts in Jesus' question?", opts:["Nothing", "From what people say to what YOU say \u2014 secondhand to firsthand", "From past to future"], correct:1, explain:"The question that every reader eventually has to answer personally." },
+        { q:"Why was Peter rebuked minutes after being blessed?", opts:["He denied the Messiah", "He accepted the Messiah but rejected the cross", "He asked for power"], correct:1, explain:"Right about who Jesus was, wrong about what He came to do \u2014 a very common combination." },
+        { q:"What does \u2018take up your cross\u2019 mean to first-century ears?", opts:["Endure minor annoyances", "The road to execution \u2014 a life surrendered, not merely inconvenienced", "Wear a symbol"], correct:1, explain:"They had seen people carry crossbeams to their deaths; the image was not decorative." }
+      ],
+      deepDive: "This chapter is the hinge of Matthew. Everything before builds toward Peter's confession; everything after moves toward Jerusalem. And the sequence is instructive: Peter gets the identity exactly right by revelation, then gets the mission exactly wrong within minutes. It's possible to believe the correct things about Jesus and still want a version of Him without a cross \u2014 for Him or for you. That's why the invitation that follows is worded the way it is. Deny yourself, take up your cross: not a call to be miserable, but a call to stop being the center. And attached to it is the strangest promise in the Gospels: whoever loses their life for His sake will find it." },
+    { id:255, book:"Matthew", title:"The sheep and the goats", side:"r",
+      passage: "Jesus describes the final judgment: the Son of Man on His throne, all nations gathered, people separated as a shepherd separates sheep from goats. To those on His right: come, inherit the kingdom \u2014 \u201cfor I was hungry and you gave me something to eat, I was thirsty and you gave me something to drink, I was a stranger and you invited me in, I needed clothes and you clothed me, I was sick and you looked after me, I was in prison and you came to visit me.\u201d Both groups are baffled: when did we see you? \u201cWhatever you did for one of the least of these brothers and sisters of mine, you did for me.\u201d",
+      keyVerses: [
+        { ref: "Matthew 25:40", text: "Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me." }
+      ],
+      questions: [
+        { q:"What surprises both groups?", opts:["The verdict's basis", "That they had encountered Jesus in the hungry, sick, and imprisoned without knowing it", "The location"], correct:1, explain:"Neither group recognized Him at the time \u2014 which rules out doing it for the credit." },
+        { q:"What are the acts named?", opts:["Religious ceremonies", "Food, drink, welcome, clothing, care in sickness, visits in prison", "Preaching and teaching"], correct:1, explain:"Ordinary, physical, unremarkable acts of practical mercy." },
+        { q:"What does Jesus call the recipients?", opts:["Strangers", "\u2018The least of these brothers and sisters of mine\u2019 \u2014 He identifies with them personally", "Servants"], correct:1, explain:"He doesn't say you served Him by proxy; He says you did it to Him." }
+      ],
+      deepDive: "This is Jesus' last teaching before the cross, and it settles what He considers evidence. Not doctrinal precision, not attendance, not visible spiritual achievement \u2014 food, water, welcome, clothes, presence in sickness and prison. And the mutual surprise is the detail that dismantles performance: neither group knew who they were serving. The sheep weren't building a portfolio; they just fed hungry people, and it turned out to be Him. That's the point worth carrying: Christ is encountered in ordinary need, and how you treat someone with nothing to offer you is treated by Him as how you treated Him." },
+    { id:256, book:"Matthew", title:"Go and make disciples", side:"c",
+      passage: "After the crucifixion and the empty tomb, the eleven went to a mountain in Galilee. \u201cWhen they saw him, they worshiped him; but some doubted.\u201d Then Jesus came and said: \u201cAll authority in heaven and on earth has been given to me. Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.\u201d",
+      keyVerses: [
+        { ref: "Matthew 28:19\u201320", text: "Therefore go and make disciples of all nations... And surely I am with you always, to the very end of the age." }
+      ],
+      questions: [
+        { q:"What honest detail does Matthew include?", opts:["Everyone believed instantly", "\u2018But some doubted\u2019 \u2014 and they were commissioned anyway", "They all fled"], correct:1, explain:"The Great Commission is given to a group containing doubters, which is a mercy worth noticing." },
+        { q:"What grounds the command?", opts:["The disciples' readiness", "Jesus' authority \u2014 \u2018all authority... therefore go\u2019", "Political opportunity"], correct:1, explain:"The \u2018therefore\u2019 is load-bearing: the mission rests on His authority, not their competence." },
+        { q:"How does Matthew's Gospel end?", opts:["With a departure", "With a promise of presence \u2014 \u2018I am with you always\u2019", "With a warning"], correct:1, explain:"The book opened with Immanuel, God with us, and closes with the same promise." }
+      ],
+      deepDive: "Matthew bookends his Gospel deliberately: it opens with a name, Immanuel \u2014 God with us \u2014 and ends with the risen Jesus saying \u2018I am with you always.\u2019 Everything between is the story of how that became possible. Two details reward attention. First, \u2018some doubted,\u2019 recorded without embarrassment and without disqualifying anyone; the commission goes to worshipers and waverers standing on the same hillside. Second, the task is making disciples \u2014 not converts, not attendees \u2014 people taught to actually obey what He commanded, which is the same distinction the two houses made back in chapter 7. And the whole thing is bracketed by authority at the front and presence at the back." },
+    { id:257, book:"Mark", title:"The beginning \u2014 immediately", side:"l",
+      passage: "Mark skips the birth entirely: \u201cThe beginning of the good news about Jesus the Messiah, the Son of God.\u201d John appears in the wilderness; Jesus is baptized and driven into the desert; and then the announcement: \u201cThe time has come. The kingdom of God has come near. Repent and believe the good news!\u201d Walking by the Sea of Galilee He calls fishermen \u2014 \u201cCome, follow me, and I will send you out to fish for people\u201d \u2014 and \u201cat once they left their nets.\u201d Mark's favorite word is \u2018immediately'; it appears more than forty times.",
+      keyVerses: [
+        { ref: "Mark 1:15", text: "The time has come. The kingdom of God has come near. Repent and believe the good news!" }
+      ],
+      questions: [
+        { q:"How does Mark begin his Gospel?", opts:["With a genealogy", "With no birth story at all \u2014 straight into the ministry", "With the resurrection"], correct:1, explain:"The shortest, fastest Gospel drops you into the action on the first page." },
+        { q:"What word drives Mark's pace?", opts:["\u2018Therefore\u2019", "\u2018Immediately\u2019 \u2014 used more than forty times", "\u2018Behold\u2019"], correct:1, explain:"The whole book moves at a run, which is part of its argument about urgency." },
+        { q:"How did the fishermen respond to the call?", opts:["They asked for time", "At once they left their nets", "They followed part-time"], correct:1, explain:"Mark reports it without explanation \u2014 the authority in the call is the point." }
+      ],
+      deepDive: "Mark is the shortest and fastest Gospel, probably the first written, and traditionally connected to Peter's preaching \u2014 which explains its breathless quality and its unflattering portrayal of the disciples. There's no infancy narrative, no genealogy, no long sermons: just a man moving through Galilee with startling authority while everyone struggles to keep up. The summary of His message in 1:15 is worth memorizing because it's the compressed gospel: the time has come, the kingdom is near, repent and believe. Two announcements and two responses \u2014 and everything else in the book unpacks them." },
+    { id:258, book:"Mark", title:"Through the roof", side:"r",
+      passage: "So many crowded the house in Capernaum that there was no room left. Four men carrying a paralyzed friend couldn't get near, so they climbed up, dug through the roof, and lowered him down in front of Jesus. \u201cWhen Jesus saw their faith, he said to the paralyzed man, \u2018Son, your sins are forgiven.\u2019\u201d The teachers of the law were scandalized \u2014 only God can forgive sins. So Jesus asked which is easier to say, and then: \u201cthat you may know that the Son of Man has authority on earth to forgive sins\u2026 get up, take your mat and go home.\u201d He did, in front of everyone.",
+      keyVerses: [
+        { ref: "Mark 2:5", text: "When Jesus saw their faith, he said to the paralyzed man, \u201cSon, your sins are forgiven.\u201d" }
+      ],
+      questions: [
+        { q:"Whose faith does Mark mention?", opts:["The paralyzed man's only", "\u2018Their\u2019 faith \u2014 the friends who carried and dug", "The crowd's"], correct:1, explain:"Someone else's faith got him in front of Jesus \u2014 a striking detail about carrying people." },
+        { q:"What did Jesus address first?", opts:["The paralysis", "The man's sins \u2014 the deeper need before the obvious one", "The crowd"], correct:1, explain:"He came for a healing and received something he hadn't asked for first." },
+        { q:"Why did the healing matter to the argument?", opts:["It proved He was a doctor", "It made a visible claim verify an invisible one \u2014 authority to forgive", "It ended the debate about Sabbath"], correct:1, explain:"Anyone can say \u2018forgiven\u2019; the walking man was the receipt." }
+      ],
+      deepDive: "Two things stand out. First, the friends: they destroyed someone's roof rather than accept that they couldn't get their man to Jesus, and Mark says Jesus saw \u2018their\u2019 faith. Some people arrive in God's presence carried by others \u2014 which is both an encouragement to keep interceding for someone and a permission to be carried when you can't manage it yourself. Second, Jesus reordered the man's priorities without asking. He came for legs and got forgiveness first, because the deepest paralysis wasn't the one everyone could see. The healing followed, but as evidence, not as the main event." },
+    { id:259, book:"Mark", title:"Who is this?", side:"c",
+      passage: "That evening Jesus said, \u201cLet us go over to the other side.\u201d A furious squall came up; waves broke over the boat until it was nearly swamped \u2014 and Jesus was asleep on a cushion in the stern. The disciples woke him: \u201cTeacher, don't you care if we drown?\u201d He got up, rebuked the wind and said to the waves, \u201cQuiet! Be still!\u201d The wind died down and it was completely calm. \u201cWhy are you so afraid? Do you still have no faith?\u201d And they were terrified, asking each other, \u201cWho is this? Even the wind and the waves obey him!\u201d",
+      keyVerses: [
+        { ref: "Mark 4:41", text: "Who is this? Even the wind and the waves obey him!" }
+      ],
+      questions: [
+        { q:"What was the disciples' accusation?", opts:["\u2018You steered wrong\u2019", "\u2018Don't you care if we drown?\u2019", "\u2018Wake up and row\u2019"], correct:1, explain:"Under pressure their fear went straight to a question about His care, not His power." },
+        { q:"What were they more afraid of afterward?", opts:["The storm", "Jesus \u2014 they were terrified after the calm, not during the wind", "The dark"], correct:1, explain:"Mark notes the fear increased once they glimpsed who was in the boat." },
+        { q:"What had Jesus said before they set out?", opts:["Nothing", "\u2018Let us go over to the other side\u2019 \u2014 the destination was already promised", "\u2018Stay near shore\u2019"], correct:1, explain:"They panicked inside a trip He had already declared would reach the far shore." }
+      ],
+      deepDive: "The disciples' question in the storm is the one most people actually ask: not \u2018can you?\u2019 but \u2018do you care?\u2019 Their fear translated His sleep into indifference, which is what fear usually does with God's silence. Notice also what they had already been given \u2014 \u2018let us go over to the other side\u2019 \u2014 a stated destination they had forgotten by the time the water came in. And notice the ending: the calm frightened them more than the squall. Meeting someone who commands weather is more unsettling than weather. The question they ask, \u2018who is this?\u2019, is the question Mark's whole Gospel is built to answer." },
+    { id:260, book:"Mark", title:"A dying girl and a desperate woman", side:"l",
+      passage: "Jairus, a synagogue leader, fell at Jesus' feet begging Him to heal his dying daughter. On the way, a woman who had bled for twelve years \u2014 who had spent everything on doctors and grown worse \u2014 touched His cloak from behind, thinking, \u201cIf I just touch his clothes, I will be healed.\u201d She was, instantly. Jesus stopped the whole procession to find her, and called her \u2018daughter.\u2019 During the delay, word came: Jairus's daughter had died. \u201cDon't be afraid; just believe.\u201d He took her hand and said, \u201cTalitha koum\u201d \u2014 little girl, get up.",
+      keyVerses: [
+        { ref: "Mark 5:36", text: "Overhearing what they said, Jesus told him, \u201cDon\u2019t be afraid; just believe.\u201d" }
+      ],
+      questions: [
+        { q:"Why did Jesus stop to find the woman?", opts:["To rebuke her", "To turn a secret healing into a public restoration \u2014 and call her \u2018daughter\u2019", "To reclaim power"], correct:1, explain:"Her illness made her ceremonially unclean and socially isolated; He restored her publicly, not just physically." },
+        { q:"What happened during the delay?", opts:["Nothing", "Jairus's daughter died \u2014 the interruption cost him twelve minutes and a lifetime of fear", "The crowd left"], correct:1, explain:"Mark links the two stories with the number twelve: her years of bleeding, the girl's age." },
+        { q:"What did Jesus say when the news came?", opts:["\u2018It's too late\u2019", "\u2018Don't be afraid; just believe\u2019", "\u2018Bring the body\u2019"], correct:1, explain:"Spoken to a father who had just heard the worst sentence a parent can hear." }
+      ],
+      deepDive: "Mark sandwiches these two stories on purpose, and the seams are the message. A respected synagogue ruler and an unnamed, unclean, bankrupt woman receive the same attention; Jesus is not more available to the important one. And the delay is agonizing \u2014 Jairus stands there while his daughter's life runs out so a stranger can be honored. If you've ever felt that God was attending to someone else while your window closed, this passage sits with you honestly. It also refuses to end there: the delay didn't cost the girl her life, and the woman got more than a cure. She got \u2018daughter.\u2019" },
+    { id:261, book:"Mark", title:"Five loaves and two fish", side:"r",
+      passage: "Jesus saw a huge crowd \u201cand he had compassion on them, because they were like sheep without a shepherd.\u201d He taught them until it grew late. The disciples suggested sending everyone away to buy food; Jesus said, \u201cYou give them something to eat.\u201d They had five loaves and two fish and five thousand men plus women and children. He took the loaves, looked up to heaven, gave thanks, broke them, and kept handing them to the disciples to distribute. Everyone ate and was satisfied, and they picked up twelve basketfuls of leftovers.",
+      keyVerses: [
+        { ref: "Mark 6:34", text: "He had compassion on them, because they were like sheep without a shepherd." }
+      ],
+      questions: [
+        { q:"What moved Jesus about the crowd?", opts:["Their numbers", "Compassion \u2014 they were like sheep without a shepherd", "Their generosity"], correct:1, explain:"The phrase reaches back to Ezekiel 34, where God promised to shepherd them Himself." },
+        { q:"What did Jesus tell the disciples to do?", opts:["Send them away", "\u2018You give them something to eat\u2019 \u2014 handing them an impossible assignment", "Wait for a miracle"], correct:1, explain:"He put the need in their hands first, and then supplied what they lacked." },
+        { q:"How much was left over?", opts:["Nothing", "Twelve basketfuls \u2014 more at the end than at the start", "A few crumbs"], correct:1, explain:"One basket per disciple; the abundance was distributed to the ones who'd said it was impossible." }
+      ],
+      deepDive: "Notice the sequence: Jesus doesn't produce bread out of nothing \u2014 He asks what they have, takes the small and inadequate thing, gives thanks for it, and breaks it. The multiplication happens in the distribution, in the disciples' hands, as they keep giving away what should have run out three rows in. That's a working picture of most Christian service. And the leftovers land pointedly: twelve baskets, one for each man who had just explained why this couldn't be done. God's provision tends to arrive in the middle of obedience rather than before it \u2014 which is precisely what makes it require faith." },
+    { id:262, book:"Mark", title:"\u201cYou are the Messiah\u201d", side:"c",
+      passage: "On the road to Caesarea Philippi Jesus asked, \u201cWho do people say I am?\u201d Then: \u201cBut what about you? Who do you say I am?\u201d Peter answered, \u201cYou are the Messiah.\u201d Jesus warned them not to tell anyone, and \u201cbegan to teach them that the Son of Man must suffer many things\u2026 and that he must be killed and after three days rise again. He spoke plainly about this.\u201d Peter took Him aside and rebuked Him. Jesus turned, looked at the disciples, and said, \u201cGet behind me, Satan! You do not have in mind the concerns of God, but merely human concerns.\u201d",
+      keyVerses: [
+        { ref: "Mark 8:35", text: "For whoever wants to save their life will lose it, but whoever loses their life for me and for the gospel will save it." }
+      ],
+      questions: [
+        { q:"How did Jesus speak about His death?", opts:["In riddles", "\u2018Plainly\u2019 \u2014 Mark says so explicitly", "Only in private"], correct:1, explain:"After chapters of parables and secrecy, this is stated openly \u2014 and it's the thing they can't accept." },
+        { q:"Why the sharp rebuke of Peter?", opts:["He doubted the resurrection", "He was voicing a Messiah without a cross \u2014 the wilderness temptation again", "He spoke publicly"], correct:1, explain:"The same offer Jesus refused in the desert now came from a friend who loved Him." },
+        { q:"What paradox follows?", opts:["Save your life by protecting it", "Saving your life loses it; losing it for Christ saves it", "Neither saves"], correct:1, explain:"The central paradox of the Christian life, stated at the Gospel's midpoint." }
+      ],
+      deepDive: "Mark 8 is the pivot of the book \u2014 the first half asks who Jesus is, the second half walks toward the cross. And the placement of Peter's rebuke is deliberate: the correct answer about Jesus' identity is given, and immediately misapplied. Peter's version of Messiah has all the glory and none of the suffering, which is why Jesus hears the desert voice in a friend's concern. Then comes the invitation, and it's costly by design: deny yourself, take up your cross, follow. The promise attached is the paradox that shapes everything after \u2014 grip your life and it slips away; spend it on Him and it comes back." },
+    { id:263, book:"Mark", title:"The man who walked away", side:"l",
+      passage: "A man ran up, fell on his knees, and asked, \u201cGood teacher, what must I do to inherit eternal life?\u201d He had kept the commandments since boyhood. \u201cJesus looked at him and loved him. \u2018One thing you lack,\u2019 he said. \u2018Go, sell everything you have and give to the poor, and you will have treasure in heaven. Then come, follow me.\u2019\u201d At this the man's face fell, and he went away sad, because he had great wealth. Jesus told the stunned disciples it is easier for a camel to go through the eye of a needle than for the rich to enter the kingdom \u2014 \u201cbut not with God; all things are possible with God.\u201d",
+      keyVerses: [
+        { ref: "Mark 10:21", text: "Jesus looked at him and loved him. \u201cOne thing you lack,\u201d he said." }
+      ],
+      questions: [
+        { q:"What does Mark record about Jesus' feelings?", opts:["He was annoyed", "He looked at him and loved him \u2014 before the hard word", "He was indifferent"], correct:1, explain:"The demand came out of affection, not disapproval, which changes how to read it." },
+        { q:"What was the \u2018one thing\u2019?", opts:["More prayer", "Surrendering the wealth that actually held him", "Better theology"], correct:1, explain:"Jesus targeted the specific rival, not a general rule for everyone." },
+        { q:"How did the disciples react?", opts:["They agreed", "They were amazed \u2014 they assumed wealth signaled God's favor", "They laughed"], correct:1, explain:"\u2018Who then can be saved?\u2019 \u2014 if the visibly blessed can't get in, nobody can. Which is the point." }
+      ],
+      deepDive: "This is the only person in the Gospels who is invited to follow Jesus and declines, and Mark makes sure we know he was loved in the asking. That detail keeps the story from becoming a lecture about money. Jesus named the one rival to the man's heart \u2014 which for someone else would be a different thing entirely. The disciples' shock reveals their assumption that wealth was evidence of God's approval, and Jesus dismantles it: nobody enters on their own resources, rich or poor. The chapter's hope is in the last clause, and it's for everyone: with God, all things are possible." },
+    { id:264, book:"Mark", title:"Not to be served, but to serve", side:"r",
+      passage: "James and John came with a request: \u201cLet one of us sit at your right and the other at your left in your glory.\u201d They asked this immediately after Jesus described His coming torture and death. The other ten were indignant \u2014 not because the request was wrong, but because they'd wanted the seats. Jesus called them together: rulers of the Gentiles lord it over people, \u201cbut whoever wants to become great among you must be your servant\u2026 For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.\u201d",
+      keyVerses: [
+        { ref: "Mark 10:45", text: "For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many." }
+      ],
+      questions: [
+        { q:"When was the request made?", opts:["Years earlier", "Immediately after Jesus predicted His torture and death", "After the resurrection"], correct:1, explain:"Mark's placement is merciless: He describes the cross, and they ask about seating." },
+        { q:"Why were the other ten angry?", opts:["The request was inappropriate", "They wanted the same positions", "They were protecting Jesus"], correct:1, explain:"Indignation as competition, not principle \u2014 which is why Jesus addresses all twelve." },
+        { q:"How does Jesus define greatness?", opts:["By authority held", "By service given \u2014 the greatest is servant of all", "By recognition"], correct:1, explain:"Then He points to Himself as the model: He came to serve and give His life as a ransom." }
+      ],
+      deepDive: "Mark 10:45 is often called the key verse of the whole Gospel, and it arrives in the least flattering possible setting. Jesus has just described His execution in detail; the response is a request for cabinet positions. Rather than disqualifying them, He redefines the thing they want. Greatness isn't abolished \u2014 it's relocated to service, with Himself as the demonstration. And the word \u2018ransom\u2019 makes the cross explicit for the first time in Mark: not merely an example of service but a price paid to free people who couldn't free themselves. Ambition isn't the sin here; the direction of it is." },
+    { id:265, book:"Mark", title:"Gethsemane", side:"c",
+      passage: "In the garden Jesus \u201cbegan to be deeply distressed and troubled\u201d and told Peter, James, and John, \u201cMy soul is overwhelmed with sorrow to the point of death. Stay here and keep watch.\u201d He fell to the ground and prayed that if possible the hour might pass from Him: \u201cAbba, Father, everything is possible for you. Take this cup from me. Yet not what I will, but what you will.\u201d He came back and found them sleeping \u2014 three times. \u201cThe spirit is willing, but the flesh is weak.\u201d Then: \u201cRise! Let us go! Here comes my betrayer!\u201d",
+      keyVerses: [
+        { ref: "Mark 14:36", text: "Abba, Father, everything is possible for you. Take this cup from me. Yet not what I will, but what you will." }
+      ],
+      questions: [
+        { q:"How does Mark describe Jesus' state?", opts:["Calm and resolved", "Deeply distressed, troubled, overwhelmed to the point of death", "Angry"], correct:1, explain:"Mark uses the strongest available language; there is no stoicism in this scene." },
+        { q:"What did Jesus actually ask for?", opts:["Strength only", "That the cup be taken from Him \u2014 an honest request for another way", "Nothing"], correct:1, explain:"He asked, plainly, and then submitted. Both halves are in the prayer." },
+        { q:"What word does He use for God?", opts:["Lord", "\u2018Abba\u2019 \u2014 the intimate family word for father", "Almighty"], correct:1, explain:"At His worst moment, the address is not formal but familial." }
+      ],
+      deepDive: "Gethsemane is the most emotionally exposed scene in the Gospels, and it dismantles the idea that faith means feeling fine. Jesus is horrified, honest, and repetitive \u2014 He asks the same thing three times. The prayer has two halves, and both matter: a real request for the cup to pass, and a real surrender to the Father's will. Most people collapse one into the other, either not daring to ask or asking without yielding. And the sleeping friends are part of the picture too: at the hour He most needed company, He got exhaustion and good intentions. He didn't stop loving them, and He didn't stop praying." },
+    { id:266, book:"Mark", title:"The curtain and the empty tomb", side:"l",
+      passage: "They crucified Him at nine in the morning. At noon darkness came over the land until three, when Jesus cried out, \u201cMy God, my God, why have you forsaken me?\u201d and with a loud cry breathed His last. \u201cThe curtain of the temple was torn in two from top to bottom.\u201d The centurion standing there \u2014 a Roman executioner \u2014 said, \u201cSurely this man was the Son of God!\u201d On Sunday, women came with spices and found the stone rolled away and a young man in white: \u201cYou are looking for Jesus the Nazarene, who was crucified. He has risen! He is not here.\u201d",
+      keyVerses: [
+        { ref: "Mark 15:38", text: "The curtain of the temple was torn in two from top to bottom." }
+      ],
+      questions: [
+        { q:"What did the torn curtain separate?", opts:["Nothing important", "The Most Holy Place \u2014 access to God's presence, entered once a year by one man", "The courtyard from the street"], correct:1, explain:"Torn from top to bottom: not opened from below, but from God's side." },
+        { q:"Who makes the confession at the cross?", opts:["A disciple", "The Roman centurion who executed Him", "The high priest"], correct:1, explain:"Mark's Gospel opened calling Jesus the Son of God; the first human to say it fully is a Gentile soldier." },
+        { q:"Who first came to the tomb?", opts:["The eleven", "Women bringing spices \u2014 the first witnesses of the resurrection", "Roman guards"], correct:1, explain:"In a culture that discounted women's testimony, all four Gospels record them first." }
+      ],
+      deepDive: "Two details in the death scene carry enormous weight. The curtain \u2014 a massive woven barrier that said \u2018this far and no further\u2019 \u2014 tears from top to bottom, the direction that rules out human hands. The way to God isn't opened by climbing; it's opened from above. And the confession that Mark has been building toward for fifteen chapters comes from a Roman soldier who watched Him die, not from the disciples, who had scattered. Then Sunday: women with burial spices meeting an empty tomb and a sentence that changed history \u2014 He has risen; He is not here. Mark's fast, breathless Gospel ends with the fastest news of all." }
+,
+    { id:267, book:"Luke", title:"Silence broken in the temple", side:"r",
+      passage: "Luke opens by explaining his method: he investigated everything carefully to write an orderly account. Then, after four hundred years of prophetic silence, an old priest named Zechariah is chosen by lot to burn incense in the temple. Gabriel appears: your prayer has been heard; your wife Elizabeth will bear a son; call him John. Zechariah asks how he can be sure \u2014 he and his wife are old \u2014 and is struck silent until the birth. Elizabeth conceives and says, \u201cThe Lord has done this for me. In these days he has shown his favor and taken away my disgrace.\u201d",
+      keyVerses: [
+        { ref: "Luke 1:13", text: "Do not be afraid, Zechariah; your prayer has been heard." }
+      ],
+      questions: [
+        { q:"How does Luke describe his own work?", opts:["A vision he received", "A carefully investigated, orderly account from eyewitnesses", "A collection of legends"], correct:1, explain:"A physician writing history \u2014 Luke opens with his research method, unusual among the Gospels." },
+        { q:"What does Gabriel say about Zechariah's prayer?", opts:["It was too late", "\u2018Your prayer has been heard\u2019 \u2014 a prayer he had likely given up praying", "It was misguided"], correct:1, explain:"An old man told that a long-abandoned request was still on file." },
+        { q:"How long had it been since a prophet spoke?", opts:["Twenty years", "About four hundred years", "One generation"], correct:1, explain:"Malachi's promise of a messenger had waited four centuries; it arrives during an ordinary shift." }
+      ],
+      deepDive: "Luke, a physician and careful historian, opens with sources and method \u2014 and then his first scene is an elderly couple's dead hope reopening. Zechariah was chosen by lot for a duty most priests performed once in a lifetime, if ever; on that particular ordinary Tuesday, the four-hundred-year silence broke. Notice the tense: \u2018your prayer has been heard,\u2019 spoken to a man far past the age of asking. God's timeline had not lost the request. And the answer arrives with a difficulty attached \u2014 nine months of silence for a man who doubted \u2014 which is Luke's way of showing that even discipline in this story is temporary and purposeful." },
+    { id:268, book:"Luke", title:"Mary's song", side:"c",
+      passage: "Gabriel comes to a teenage girl in Nazareth: \u201cGreetings, you who are highly favored! The Lord is with you.\u201d She will bear a son, the Son of the Most High, whose kingdom will never end. She asks how, since she is a virgin. The angel answers, and adds: your relative Elizabeth is pregnant too \u2014 \u201cFor no word from God will ever fail.\u201d Mary answers, \u201cI am the Lord's servant. May your word to me be fulfilled.\u201d Then she sings: \u201cMy soul glorifies the Lord\u2026 He has brought down rulers from their thrones but has lifted up the humble. He has filled the hungry with good things but has sent the rich away empty.\u201d",
+      keyVerses: [
+        { ref: "Luke 1:38", text: "I am the Lord\u2019s servant. May your word to me be fulfilled." }
+      ],
+      questions: [
+        { q:"How does Mary's response differ from Zechariah's?", opts:["It doesn't", "She asks how, then submits \u2014 \u2018may your word to me be fulfilled\u2019", "She refuses"], correct:1, explain:"Both asked a question; hers ends in surrender rather than demand for proof." },
+        { q:"What is the theme of her song?", opts:["Personal comfort", "Reversal \u2014 rulers brought down, the humble lifted, the hungry filled", "Political revolt"], correct:1, explain:"The Magnificat is one of Scripture's most revolutionary songs, sung by a peasant girl." },
+        { q:"What did Mary risk by saying yes?", opts:["Nothing", "Her reputation, her engagement, and possibly her life", "Only inconvenience"], correct:1, explain:"An unexplained pregnancy in that culture carried real social and physical danger." },
+      ],
+      deepDive: "Mary is probably in her early teens, from a town of no consequence, and she answers an impossible announcement with the sentence the whole Bible has been waiting for someone to say: I am the Lord's servant, let it be as you said. Then she sings, and the song is not sentimental \u2014 it's a hymn about thrones toppling and the hungry being fed while the rich leave empty. She understood that the child she carried was a rearrangement of the world's order. Luke, who throughout his Gospel gives unusual attention to women, the poor, and outsiders, puts this song near the front as a table of contents." },
+    { id:269, book:"Luke", title:"No room, and shepherds", side:"l",
+      passage: "A Roman census forces Joseph and Mary to Bethlehem, where \u201cshe gave birth to her firstborn, a son. She wrapped him in cloths and placed him in a manger, because there was no guest room available for them.\u201d Nearby, shepherds \u2014 low-status, ceremonially unclean, working the night shift \u2014 are terrified by a sudden angel: \u201cDo not be afraid. I bring you good news that will cause great joy for all the people. Today in the town of David a Savior has been born to you; he is the Messiah, the Lord.\u201d Then the sky fills with a heavenly host, and the shepherds go to see.",
+      keyVerses: [
+        { ref: "Luke 2:10\u201311", text: "I bring you good news that will cause great joy for all the people. Today in the town of David a Savior has been born to you." }
+      ],
+      questions: [
+        { q:"Who received the announcement first?", opts:["Kings and priests", "Shepherds \u2014 working-class, ceremonially unclean, on the night shift", "Roman officials"], correct:1, explain:"Heaven's press release went to the people furthest from religious respectability." },
+        { q:"What sign were they given?", opts:["A palace", "A baby wrapped in cloths, lying in a feeding trough", "A star"], correct:1, explain:"The confirming sign was the very ordinariness and poverty of the setting." },
+        { q:"What did the census accomplish?", opts:["It delayed the birth", "It moved the family to Bethlehem \u2014 Micah's prophecy fulfilled through Roman bureaucracy", "Nothing"], correct:1, explain:"An emperor's tax policy served a promise made seven centuries earlier." }
+      ],
+      deepDive: "Luke tells the nativity with two lenses at once. Wide: Caesar Augustus issues a decree, and the machinery of the world's greatest empire moves a pregnant peasant to the exact town a prophet named seven hundred years earlier. Close: no guest room, a feeding trough, and an audience of shepherds who couldn't have entered the temple's inner courts. That combination is the whole gospel's shape \u2014 cosmic sovereignty and radical lowliness in the same night. And the angel's phrasing is worth keeping: good news of great joy for all the people, born \u2018to you.\u2019 Not about you. To you." },
+    { id:270, book:"Luke", title:"Rejected in his hometown", side:"r",
+      passage: "Jesus returns to Nazareth and stands up to read in the synagogue. He is handed Isaiah and finds the place: \u201cThe Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor. He has sent me to proclaim freedom for the prisoners and recovery of sight for the blind, to set the oppressed free, to proclaim the year of the Lord's favor.\u201d He rolls up the scroll, sits down, and says: \u201cToday this scripture is fulfilled in your hearing.\u201d They marvel \u2014 then rage, when He points out that God's mercy had gone to a Sidonian widow and a Syrian general. They drive Him out to throw Him off a cliff.",
+      keyVerses: [
+        { ref: "Luke 4:18", text: "The Spirit of the Lord is on me, because he has anointed me to proclaim good news to the poor." }
+      ],
+      questions: [
+        { q:"What did Jesus claim in the synagogue?", opts:["That Isaiah was misunderstood", "That Isaiah's passage was fulfilled \u2014 that day, in Him", "That the scroll was damaged"], correct:1, explain:"He chose this text as His mission statement and declared it present tense." },
+        { q:"What turned admiration into fury?", opts:["A miracle", "His examples of God's mercy going to Gentiles \u2014 a widow and a Syrian", "His youth"], correct:1, explain:"They accepted a hometown Messiah; they rejected one whose favor extended past them." },
+        { q:"Who is the mission aimed at?", opts:["The powerful", "The poor, prisoners, blind, and oppressed", "The religious establishment"], correct:1, explain:"The same downward direction Luke traces from the Magnificat onward." }
+      ],
+      deepDive: "Jesus launches His public ministry by picking a text and stopping mid-sentence \u2014 He reads through \u2018the year of the Lord's favor\u2019 and closes the scroll before Isaiah's next line about the day of vengeance. That editorial choice announces what this visit is for. The crowd loves it until He gives two examples of God helping foreigners, and then they try to kill him. It's a sobering pattern: people are often glad for grace until it's extended to someone they'd excluded. And Luke puts this at the start deliberately \u2014 mission statement, and first rejection, on the same afternoon." },
+    { id:271, book:"Luke", title:"The woman with the alabaster jar", side:"c",
+      passage: "A Pharisee named Simon invited Jesus to dinner. A woman \u201cwho had lived a sinful life\u201d came in, stood behind Him weeping, wet His feet with her tears, wiped them with her hair, kissed them, and poured perfume on them. Simon thought: if this man were a prophet, He'd know what kind of woman this is. Jesus told him a parable about two debtors forgiven \u2014 one owed much, one little \u2014 and asked which would love more. Then: \u201cYou did not give me a kiss\u2026 but this woman has not stopped kissing my feet. Therefore, I tell you, her many sins have been forgiven \u2014 as her great love has shown.\u201d",
+      keyVerses: [
+        { ref: "Luke 7:47", text: "Her many sins have been forgiven \u2014 as her great love has shown. But whoever has been forgiven little loves little." }
+      ],
+      questions: [
+        { q:"What was Simon's private objection?", opts:["The cost of the perfume", "That Jesus didn't know what kind of woman was touching Him", "The interruption"], correct:1, explain:"Jesus answered the thought Simon never said aloud \u2014 which itself answered the objection." },
+        { q:"What's the point of the two-debtor parable?", opts:["Debts should be repaid", "The size of the forgiveness felt determines the size of the love shown", "Both debtors were ungrateful"], correct:1, explain:"Simon's cool politeness revealed how little he thought he needed forgiving." },
+        { q:"What had Simon neglected?", opts:["Nothing", "Basic hospitality \u2014 water, a kiss, oil \u2014 which the woman supplied extravagantly", "The food"], correct:1, explain:"The host did the minimum; the outsider did everything, and more." }
+      ],
+      deepDive: "This scene sets two people side by side and asks which one actually knows what's happening. Simon is respectable, correct, and emotionally uninvolved; the woman is disgraced, uninvited, and undone. Jesus' explanation is not that she earned forgiveness with tears \u2014 the parable makes forgiveness the cause and love the evidence. The devastating line is the last one: whoever has been forgiven little loves little. Simon's problem wasn't that he was too sinful to be forgiven but that he didn't think he needed much. Lukewarm love is almost always a symptom of an underestimated debt." },
+    { id:272, book:"Luke", title:"The Good Samaritan", side:"l",
+      passage: "An expert in the law asked what he must do to inherit eternal life, answered his own question with love God and love your neighbor \u2014 then, \u201cwanting to justify himself,\u201d asked, \u201cAnd who is my neighbor?\u201d Jesus told of a man beaten and left half dead on the Jericho road. A priest saw him and passed by on the other side. So did a Levite. Then a Samaritan \u2014 a despised foreigner \u2014 came, took pity, bandaged his wounds, put him on his own donkey, paid for his care, and promised to cover anything further. \u201cWhich of these three do you think was a neighbor?\u201d",
+      keyVerses: [
+        { ref: "Luke 10:36\u201337", text: "\u201cWhich of these three do you think was a neighbor to the man who fell into the hands of robbers?\u201d\u2026 \u201cGo and do likewise.\u201d" }
+      ],
+      questions: [
+        { q:"Why did the man ask \u2018who is my neighbor?\u2019", opts:["Genuine curiosity", "\u2018Wanting to justify himself\u2019 \u2014 looking for a boundary on the obligation", "To test the crowd"], correct:1, explain:"The question was an attempt to define the circle small enough to stay inside it." },
+        { q:"How does Jesus flip the question?", opts:["He doesn't", "From \u2018who qualifies as my neighbor\u2019 to \u2018which one BECAME a neighbor\u2019", "He refuses to answer"], correct:1, explain:"The question changes from categorizing others to examining yourself." },
+        { q:"Why is the Samaritan the hero?", opts:["He was wealthy", "He was the despised outsider \u2014 the last person the audience would cast as good", "He was a priest"], correct:1, explain:"Jesus made the enemy the example, which is what makes the parable sting." }
+      ],
+      deepDive: "The parable is so familiar that we miss how offensive it was. The two who walked past were the religious professionals; the one who stopped belonged to a group this audience despised. Jesus took the listener's category of \u2018them\u2019 and made it the model of obedience. Notice also the cost: bandages, oil, wine, his own animal, two days' wages, and an open-ended promise to pay more. Mercy here isn't a feeling but a bill. And the flip of the question is the permanent lesson \u2014 stop asking who qualifies for your love, and start asking whether you're the kind of person who becomes a neighbor to whoever is in front of you." },
+    { id:273, book:"Luke", title:"Mary and Martha", side:"r",
+      passage: "Martha opened her home to Jesus and was \u201cdistracted by all the preparations.\u201d Her sister Mary sat at the Lord's feet listening \u2014 the posture of a disciple, in a culture where that seat belonged to men. Martha finally said, \u201cLord, don't you care that my sister has left me to do the work by myself? Tell her to help me!\u201d Jesus answered, \u201cMartha, Martha, you are worried and upset about many things, but few things are needed \u2014 or indeed only one. Mary has chosen what is better, and it will not be taken away from her.\u201d",
+      keyVerses: [
+        { ref: "Luke 10:41\u201342", text: "Martha, Martha, you are worried and upset about many things, but few things are needed \u2014 or indeed only one." }
+      ],
+      questions: [
+        { q:"What was Mary doing?", opts:["Resting", "Sitting at Jesus' feet \u2014 the formal posture of a student", "Cooking"], correct:1, explain:"Jesus was welcoming a woman into the role of disciple, which was culturally striking." },
+        { q:"What was Martha's actual problem?", opts:["Working hard", "Being worried and upset \u2014 distraction, not service", "Poor cooking"], correct:1, explain:"Jesus never criticizes hospitality; He names the anxiety pulling her apart." },
+        { q:"How does Jesus address her?", opts:["Coldly", "\u2018Martha, Martha\u2019 \u2014 the doubled name is tender, not harsh", "Formally"], correct:1, explain:"The repetition in Scripture usually signals affection and gentle appeal." }
+      ],
+      deepDive: "This story gets flattened into \u2018being beats doing,\u2019 which isn't quite what happens. Martha's hospitality was genuine and needed; someone had to make dinner. What Jesus names is not her work but her state \u2014 worried, upset, pulled in many directions, and starting to resent the person who wasn't. Notice the placement right after the Good Samaritan: activity without presence, immediately following presence without activity. Luke sets them side by side because the Christian life needs both, and the ordering matters. Only one thing is needed \u2014 and it isn't the thing most of us are busy with at six o'clock." },
+    { id:274, book:"Luke", title:"Lost and found", side:"c",
+      passage: "The Pharisees muttered that Jesus welcomed sinners and ate with them, so He told three stories. A shepherd with a hundred sheep loses one, leaves the ninety-nine, and searches until he finds it \u2014 then calls his friends to celebrate. A woman with ten silver coins loses one, lights a lamp, sweeps the house, and searches carefully until she finds it \u2014 then throws a party. \u201cIn the same way, I tell you, there is rejoicing in the presence of the angels of God over one sinner who repents.\u201d",
+      keyVerses: [
+        { ref: "Luke 15:7", text: "There will be more rejoicing in heaven over one sinner who repents than over ninety-nine righteous persons who do not need to repent." }
+      ],
+      questions: [
+        { q:"What prompted these parables?", opts:["A question about the law", "Complaints that Jesus welcomed and ate with sinners", "A funeral"], correct:1, explain:"All three stories are a defense of the company He kept." },
+        { q:"What's common to the shepherd and the woman?", opts:["They gave up", "They searched until they found \u2014 and then celebrated publicly", "They blamed the lost item"], correct:1, explain:"Persistent seeking followed by disproportionate joy \u2014 the pattern of God's pursuit." },
+        { q:"What is heaven's reaction to one repentant person?", opts:["Mild approval", "Rejoicing \u2014 more than over ninety-nine who need no repentance", "Indifference"], correct:1, explain:"Jesus is describing God's emotional response to a single person coming home." }
+      ],
+      deepDive: "The Pharisees' complaint \u2014 this man welcomes sinners and eats with them \u2014 is accidentally the best summary of the gospel anyone offers in Luke. Jesus answers with two stories about a search and a party. Notice that in both, the lost thing does nothing to be found; the sheep is carried home on shoulders, the coin can't move at all. And notice how the celebration is out of proportion to the item's value \u2014 a party costing more than one coin. That's the point Jesus is making about Himself and the crowd around His table. Heaven's joy is not measured by what the found thing was worth, but by whose it was." },
+    { id:275, book:"Luke", title:"The prodigal son", side:"l",
+      passage: "A younger son demands his inheritance early \u2014 effectively wishing his father dead \u2014 and squanders it in a distant country. Starving among pigs, \u201che came to his senses\u201d and rehearsed a speech: make me one of your hired servants. \u201cBut while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him.\u201d The speech is interrupted by a robe, a ring, sandals, and a feast. Meanwhile the older brother refuses to come in \u2014 \u201call these years I've been slaving for you\u201d \u2014 and the father comes out to plead with him too.",
+      keyVerses: [
+        { ref: "Luke 15:20", text: "But while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son." }
+      ],
+      questions: [
+        { q:"What does \u2018while he was still a long way off\u2019 imply?", opts:["The father happened to be outside", "The father had been watching the road", "The son shouted first"], correct:1, explain:"Seeing him at a distance means he had been looking, likely for a long time." },
+        { q:"What happened to the son's rehearsed speech?", opts:["It was accepted", "It was interrupted \u2014 the father called for a robe, ring, sandals, and a feast", "It was rejected"], correct:1, explain:"He never gets to offer himself as a servant; sonship is restored before he can negotiate." },
+        { q:"What is the older brother's complaint?", opts:["The cost of the feast", "Years of obedience that never earned him a party \u2014 service without sonship", "His brother's safety"], correct:1, explain:"He is lost inside the house, which is the half of the parable aimed at the Pharisees." }
+      ],
+      deepDive: "This is the greatest short story ever told, and it has two lost sons. The younger's rebellion is obvious; the older's is subtler and closer to home for religious people \u2014 he speaks of \u2018slaving,\u2019 never claims his father as father, and refuses the party. Both sons wanted the father's things rather than the father. What holds the parable together is a man who runs \u2014 undignified in that culture for an elder \u2014 and who then leaves the celebration a second time to plead with the son standing in the yard. And Jesus leaves the ending open: we never learn whether the older brother came in. That's the question hanging over the Pharisees listening, and over anyone who has done everything right and feels quietly unrewarded." },
+    { id:276, book:"Luke", title:"Zacchaeus", side:"r",
+      passage: "In Jericho, a chief tax collector named Zacchaeus \u2014 wealthy, collaborating with Rome, and short \u2014 climbed a sycamore-fig tree to see Jesus over the crowd. Jesus stopped, looked up, and said, \u201cZacchaeus, come down immediately. I must stay at your house today.\u201d The crowd muttered that He had gone to be the guest of a sinner. Zacchaeus stood up and said, \u201cHere and now I give half of my possessions to the poor, and if I have cheated anybody out of anything, I will pay back four times the amount.\u201d Jesus answered, \u201cToday salvation has come to this house\u2026 For the Son of Man came to seek and to save the lost.\u201d",
+      keyVerses: [
+        { ref: "Luke 19:10", text: "For the Son of Man came to seek and to save the lost." }
+      ],
+      questions: [
+        { q:"Who initiated the encounter?", opts:["Zacchaeus, by shouting", "Jesus \u2014 He stopped, looked up, and called him by name", "The crowd"], correct:1, explain:"Zacchaeus wanted to see; Jesus wanted to stay. He was known and named first." },
+        { q:"What was the crowd's objection?", opts:["The delay", "That Jesus was the guest of a sinner", "Zacchaeus's wealth"], correct:1, explain:"The same complaint as Luke 15 \u2014 and the same answer: seeking the lost." },
+        { q:"When did Zacchaeus announce his restitution?", opts:["Before Jesus spoke to him", "After being welcomed \u2014 generosity as response, not as a condition", "A year later"], correct:1, explain:"Acceptance came first; the fourfold repayment came out of it." }
+      ],
+      deepDive: "The order in this story is everything. Jesus doesn't say \u2018pay back what you stole and then I'll come over.\u2019 He invites Himself to dinner, in public, in front of a crowd that despised the man \u2014 and Zacchaeus's radical restitution comes afterward, unprompted and beyond legal requirement. That's how transformation works in Luke: welcome first, change as a result. Notice also the fourfold repayment, which was the penalty for theft under Israel's law; he sentenced himself. And Jesus' summary sentence is the thesis of the entire Gospel: the Son of Man came to seek and to save the lost. Not to wait for them to climb high enough." },
+    { id:277, book:"Luke", title:"Two criminals and a promise", side:"c",
+      passage: "They crucified Him between two criminals. \u201cJesus said, \u2018Father, forgive them, for they do not know what they are doing.\u2019\u201d Soldiers cast lots for His clothes. One of the criminals hurled insults; the other rebuked him: \u201cWe are punished justly, for we are getting what our deeds deserve. But this man has done nothing wrong.\u201d Then: \u201cJesus, remember me when you come into your kingdom.\u201d Jesus answered, \u201cTruly I tell you, today you will be with me in paradise.\u201d At noon darkness fell; Jesus called out, \u201cFather, into your hands I commit my spirit,\u201d and breathed His last.",
+      keyVerses: [
+        { ref: "Luke 23:43", text: "Truly I tell you, today you will be with me in paradise." }
+      ],
+      questions: [
+        { q:"What did the criminal ask for?", opts:["Rescue from the cross", "To be remembered when Jesus came into His kingdom", "A quick death"], correct:1, explain:"A dying man's request for nothing but remembrance \u2014 and he received far more." },
+        { q:"What could he offer?", opts:["Years of service", "Nothing \u2014 he was hours from death, with no time to make anything right", "A donation"], correct:1, explain:"The clearest case in Scripture of salvation entirely apart from works." },
+        { q:"What were Jesus' first words from the cross in Luke?", opts:["A cry of abandonment", "\u2018Father, forgive them, for they do not know what they are doing\u2019", "Silence"], correct:1, explain:"Luke records forgiveness spoken over the people driving in the nails." }
+      ],
+      deepDive: "Luke's crucifixion account is dominated by mercy. The first words are forgiveness for the executioners; the last are trust: \u2018Father, into your hands.\u2019 And in between is the most encouraging deathbed in history. The criminal had nothing to offer \u2014 no baptism, no restitution, no reformed life, no time. He simply recognized who Jesus was and asked to be remembered, and received \u2018today\u2026 with me in paradise.\u2019 Every theology of earning something from God dies on that hill. If you have ever wondered whether it's too late, or whether you have too little to bring, this man is in Scripture specifically for you." },
+    { id:278, book:"Luke", title:"The road to Emmaus", side:"l",
+      passage: "That same Sunday, two disciples walked to Emmaus discussing everything that had happened. Jesus came alongside, \u201cbut they were kept from recognizing him.\u201d He asked what they were discussing; they stopped, faces downcast, and explained: \u201cwe had hoped that he was the one who was going to redeem Israel.\u201d Then, \u201cbeginning with Moses and all the Prophets, he explained to them what was said in all the Scriptures concerning himself.\u201d At the table He took bread, gave thanks, broke it \u2014 \u201cThen their eyes were opened and they recognized him, and he disappeared.\u201d \u201cWere not our hearts burning within us while he talked with us on the road?\u201d",
+      keyVerses: [
+        { ref: "Luke 24:32", text: "Were not our hearts burning within us while he talked with us on the road and opened the Scriptures to us?" }
+      ],
+      questions: [
+        { q:"What phrase captures their grief?", opts:["\u2018We never believed\u2019", "\u2018We had hoped\u2019 \u2014 past tense hope, the saddest words available", "\u2018We were warned\u2019"], correct:1, explain:"Disappointment stated in the past tense, while the answer walked beside them unrecognized." },
+        { q:"How did Jesus first address their confusion?", opts:["By revealing Himself", "By walking them through the Scriptures about Himself", "By performing a sign"], correct:1, explain:"The risen Christ's first move was a Bible study on the road." },
+        { q:"When did they recognize Him?", opts:["Immediately", "When He broke the bread at the table", "Never"], correct:1, explain:"A gesture they had seen before \u2014 and then He was gone, and they ran seven miles back to Jerusalem." }
+      ],
+      deepDive: "This is one of the most comforting resurrection scenes precisely because the two disciples are so wrong for so long. They are walking away from Jerusalem, grieving, rehearsing a hope in the past tense \u2014 and Jesus joins them without announcing Himself and asks them to explain their sadness to Him. He lets them talk. Then He gives them the whole Old Testament as a story about Himself, which is how Luke wants his readers to read Scripture. And the recognition comes at a table, over broken bread. Their hearts had already been burning; they just didn't know what to call it yet." },
+    { id:279, book:"John", title:"In the beginning was the Word", side:"r",
+      passage: "John doesn't start at Bethlehem \u2014 he starts before Genesis. \u201cIn the beginning was the Word, and the Word was with God, and the Word was God\u2026 Through him all things were made.\u201d In him was life, and that life was the light of all mankind. \u201cThe light shines in the darkness, and the darkness has not overcome it.\u201d And then the sentence Christianity is built on: \u201cThe Word became flesh and made his dwelling among us. We have seen his glory, the glory of the one and only Son, who came from the Father, full of grace and truth.\u201d",
+      keyVerses: [
+        { ref: "John 1:14", text: "The Word became flesh and made his dwelling among us. We have seen his glory\u2026 full of grace and truth." }
+      ],
+      questions: [
+        { q:"Where does John begin his Gospel?", opts:["At the manger", "Before creation \u2014 \u2018in the beginning was the Word\u2019", "At the baptism"], correct:1, explain:"He deliberately echoes Genesis 1:1 and pushes back further than any other Gospel." },
+        { q:"What does \u2018the Word became flesh\u2019 claim?", opts:["God appeared to be human", "God actually became human \u2014 real flesh, not a disguise", "A prophet was inspired"], correct:1, explain:"The scandal of Christianity in one sentence: the Creator entered creation as a body." },
+        { q:"What does \u2018made his dwelling\u2019 literally mean?", opts:["Visited briefly", "\u2018Pitched his tent\u2019 \u2014 the same word as the tabernacle in Exodus", "Built a house"], correct:1, explain:"God's tent among His people again \u2014 but this time the tent was a person." }
+      ],
+      deepDive: "John's opening is the most theologically loaded paragraph in the Bible, and every phrase is deliberate. \u2018In the beginning\u2019 quotes Genesis; \u2018the Word was God\u2019 refuses to make Jesus a lesser being; \u2018through him all things were made\u2019 puts Him on the creating side of creation. Then verse 14 collapses the distance: the Word became flesh and pitched His tent among us. The word choice recalls the tabernacle in the wilderness \u2014 God camping with His people \u2014 except now the dwelling has a face, calluses, and a hometown. And the pairing at the end is the whole character of Christ: full of grace and truth, neither diluted by the other." },
+    { id:280, book:"John", title:"Water into wine", side:"c",
+      passage: "At a wedding in Cana the wine ran out \u2014 a social humiliation for the family. Jesus' mother simply told Him, \u201cThey have no more wine,\u201d and then told the servants, \u201cDo whatever he tells you.\u201d Six stone water jars stood nearby for ceremonial washing, holding twenty to thirty gallons each. \u201cFill the jars with water\u2026 Now draw some out and take it to the master of the banquet.\u201d He tasted it, astonished, and told the bridegroom everyone serves the good wine first \u2014 \u201cbut you have saved the best till now.\u201d \u201cWhat Jesus did here in Cana of Galilee was the first of the signs through which he revealed his glory.\u201d",
+      keyVerses: [
+        { ref: "John 2:11", text: "What Jesus did here in Cana of Galilee was the first of the signs through which he revealed his glory." }
+      ],
+      questions: [
+        { q:"What was the first miracle for?", opts:["Healing a disease", "Saving a wedding family from public embarrassment", "Feeding the poor"], correct:1, explain:"The first sign addresses joy and honor at a party \u2014 not an emergency." },
+        { q:"How much wine was produced?", opts:["A few bottles", "Roughly 120\u2013180 gallons \u2014 extravagantly more than needed", "Exactly enough"], correct:1, explain:"The abundance is part of the sign; God's provision here is embarrassingly generous." },
+        { q:"What did the jars normally hold?", opts:["Wine", "Water for ceremonial washing \u2014 religious purification", "Grain"], correct:1, explain:"Jesus fills the vessels of old ritual and turns their contents into celebration." }
+      ],
+      deepDive: "John calls the miracles \u2018signs\u2019 because they point past themselves, and it matters enormously what the first one points to. Jesus could have opened with a healing or an exorcism. Instead the inaugural sign of His glory is rescuing a wedding reception \u2014 and doing it with roughly 150 gallons of the best wine anyone had tasted. The setting says something about what He came for: joy, celebration, a family's honor preserved. And the jars say something too. They were there for ritual washing, and He filled them to the brim and turned their contents into gladness. That's a picture of the whole Gospel about to unfold." },
+    { id:281, book:"John", title:"You must be born again", side:"l",
+      passage: "Nicodemus, a Pharisee and member of the ruling council, came to Jesus at night. \u201cRabbi, we know you are a teacher who has come from God.\u201d Jesus answered, \u201cNo one can see the kingdom of God unless they are born again.\u201d Nicodemus asked how anyone can be born when they are old. Jesus spoke of being born of water and the Spirit \u2014 \u201cThe wind blows wherever it pleases\u2026 So it is with everyone born of the Spirit.\u201d And then the most quoted verse in the Bible: \u201cFor God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.\u201d",
+      keyVerses: [
+        { ref: "John 3:16", text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life." }
+      ],
+      questions: [
+        { q:"Why is being \u2018born\u2019 the right image?", opts:["It's gradual", "Birth is something done to you, not achieved by you", "It's painless"], correct:1, explain:"Nobody arranges their own birth \u2014 which is exactly the point for a man used to achieving." },
+        { q:"What does the wind illustrate?", opts:["Unpredictable weather", "The Spirit's work \u2014 real and evident, but not controlled or explained by us", "The end of the age"], correct:1, explain:"You see the effects without commanding the source." },
+        { q:"What does John 3:16 say motivated the giving?", opts:["Duty", "Love \u2014 God so loved the world", "Justice alone"], correct:1, explain:"The cross is presented as an act of love before it's anything else." }
+      ],
+      deepDive: "Nicodemus had the best religious credentials available and came at night, probably to protect them. Jesus' answer bypasses everything he'd built: you must be born again \u2014 an image that strips away achievement entirely, since no one contributes to their own birth. For an expert accustomed to mastering material, the requirement is to receive something he cannot produce. Then comes the verse most people can quote and few slow down over. Note its scope (\u2018the world\u2019), its cost (\u2018his one and only Son\u2019), and its entry point (\u2018whoever believes\u2019). Nicodemus appears twice more in John, the last time bringing spices for Jesus' burial \u2014 in daylight." },
+    { id:282, book:"John", title:"The woman at the well", side:"r",
+      passage: "Tired from travel, Jesus sat at a well in Samaria at noon and asked a woman for a drink \u2014 breaking barriers of ethnicity, gender, and reputation at once. She was startled: Jews didn't associate with Samaritans. He offered her \u201cliving water\u2026 a spring of water welling up to eternal life.\u201d When she asked for it, He named her situation: five husbands, and the man she has now isn't hers. She changed the subject to worship; He told her a time was coming when true worshipers would worship \u201cin the Spirit and in truth.\u201d She said the Messiah is coming. \u201cI, the one speaking to you \u2014 I am he.\u201d She left her jar and told the whole town.",
+      keyVerses: [
+        { ref: "John 4:14", text: "Whoever drinks the water I give them will never thirst. Indeed, the water I give them will become in them a spring of water welling up to eternal life." }
+      ],
+      questions: [
+        { q:"What barriers did the conversation cross?", opts:["None", "Ethnic, gender, and moral \u2014 a Samaritan woman with a difficult history", "Only language"], correct:1, explain:"Rabbis didn't speak publicly with women, and Jews avoided Samaritans entirely." },
+        { q:"Why was she at the well at noon?", opts:["It was cooler", "Likely to avoid the other women \u2014 the usual time was morning", "It was the custom"], correct:1, explain:"The detail hints at isolation, which makes the conversation and its ending more striking." },
+        { q:"Who does Jesus first tell plainly that He is the Messiah?", opts:["Peter", "This Samaritan woman", "The high priest"], correct:1, explain:"His clearest early self-disclosure in John goes to an outsider at a well." }
+      ],
+      deepDive: "This is the longest recorded conversation Jesus has with anyone, and it's with a Samaritan woman with five failed marriages who came to draw water when nobody else would be there. He asks her for help first \u2014 a small dignity \u2014 then offers her something she can't get from a well. When He names her history, He doesn't shame her; He shows her she's fully known and still being offered living water. That combination is what she runs to tell the town about: \u2018come, see a man who told me everything I ever did.\u2019 Being completely known and not rejected is the news worth abandoning your water jar for." },
+    { id:283, book:"John", title:"I am the bread of life", side:"c",
+      passage: "The day after feeding five thousand, the crowd tracked Jesus down. He told them plainly they were looking for Him because they ate the loaves \u2014 and urged them to work for food that endures. They asked for a sign, mentioning the manna Moses gave. Jesus said the true bread from heaven gives life to the world: \u201cI am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty.\u201d The teaching grew harder, and \u201cmany of his disciples turned back and no longer followed him.\u201d Jesus asked the Twelve if they would leave too. Peter answered, \u201cLord, to whom shall we go? You have the words of eternal life.\u201d",
+      keyVerses: [
+        { ref: "John 6:35", text: "I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty." }
+      ],
+      questions: [
+        { q:"Why was the crowd following Him?", opts:["For the teaching", "Because they had eaten the loaves \u2014 He names it directly", "Out of curiosity"], correct:1, explain:"Jesus refuses to let a crowd form around free bread without naming what's happening." },
+        { q:"What happened as the teaching got harder?", opts:["The crowd grew", "Many disciples turned back and stopped following", "Nothing changed"], correct:1, explain:"John records Jesus losing followers by saying difficult things and not softening them." },
+        { q:"What was Peter's reason for staying?", opts:["Loyalty to the group", "\u2018To whom shall we go? You have the words of eternal life\u2019", "Fear"], correct:1, explain:"Not that following was easy, but that there was nowhere better to go." }
+      ],
+      deepDive: "This chapter contains the first of John's seven \u2018I am\u2019 statements, and also the most honest crowd scene in the Gospels: Jesus teaches something hard and most of the audience leaves. He doesn't chase them or restate it more palatably. Then He turns to the Twelve with a question that every believer eventually faces \u2014 \u2018you do not want to leave too, do you?\u2019 Peter's answer isn't triumphant; it's the answer of a man who has looked at the alternatives. To whom shall we go? Sometimes faith isn't enthusiasm. It's the settled conviction that nothing else on offer has the words of eternal life." },
+    { id:284, book:"John", title:"Let him who is without sin", side:"l",
+      passage: "The teachers of the law brought a woman caught in adultery, stood her before the crowd, and quoted the law: stoning. \u201cThey were using this question as a trap.\u201d Jesus bent down and wrote on the ground with His finger. When they kept pressing, He straightened up: \u201cLet any one of you who is without sin be the first to throw a stone at her.\u201d Then He bent down and wrote again. \u201cAt this, those who heard began to go away one at a time, the older ones first.\u201d Left alone with her: \u201cWoman, where are they? Has no one condemned you?\u201d \u201cNo one, sir.\u201d \u201cThen neither do I condemn you. Go now and leave your life of sin.\u201d",
+      keyVerses: [
+        { ref: "John 8:11", text: "Then neither do I condemn you\u2026 Go now and leave your life of sin." }
+      ],
+      questions: [
+        { q:"What was the accusers' real aim?", opts:["Justice", "A trap \u2014 using her as bait to catch Jesus", "Protecting the community"], correct:1, explain:"John says so plainly; the woman was a means to an end, and the man is conspicuously absent." },
+        { q:"Who left first?", opts:["The youngest", "The older ones \u2014 with the most years of failures to remember", "Nobody left"], correct:1, explain:"A quietly devastating detail about what age and honesty do to self-righteousness." },
+        { q:"What two things does Jesus say to her?", opts:["Only forgiveness", "\u2018Neither do I condemn you\u2019 AND \u2018leave your life of sin\u2019", "Only a warning"], correct:1, explain:"Grace and a call to change, held together \u2014 neither cancels the other." }
+      ],
+      deepDive: "The genius of this scene is that Jesus refuses both available answers. Endorse the stoning and He denies mercy; deny the law and He's discredited. So He hands the sentence back to the executioners with one condition attached, and the crowd dissolves from the oldest down. Then comes the part people flatten in both directions. He does not condemn her \u2014 the only person present entitled to throw a stone declines to. And He does not leave her where she is \u2014 \u2018go now and leave your life of sin.\u2019 Acceptance that never calls you forward isn't love, and a demand without acceptance isn't grace. Jesus gives both in two sentences." },
+    { id:285, book:"John", title:"The man born blind", side:"r",
+      passage: "Seeing a man blind from birth, the disciples asked whose sin caused it \u2014 his or his parents'. \u201cNeither,\u201d Jesus said, \u201cbut this happened so that the works of God might be displayed in him\u2026 While I am in the world, I am the light of the world.\u201d He made mud with saliva, put it on the man's eyes, and sent him to wash. He came back seeing. The Pharisees interrogated him repeatedly, and his answers got simpler and braver: \u201cOne thing I do know. I was blind but now I see!\u201d They threw him out. Jesus found him and revealed Himself, and the man worshiped.",
+      keyVerses: [
+        { ref: "John 9:25", text: "Whether he is a sinner or not, I don\u2019t know. One thing I do know. I was blind but now I see!" }
+      ],
+      questions: [
+        { q:"How did Jesus answer the question about blame?", opts:["The parents sinned", "Neither \u2014 He rejects the premise and redirects to what God will do", "The man sinned"], correct:1, explain:"He refuses the assumption that suffering is always someone's punishment." },
+        { q:"What was the man's testimony under pressure?", opts:["A theological argument", "\u2018I was blind but now I see\u2019 \u2014 experience he couldn't be argued out of", "Silence"], correct:1, explain:"He couldn't answer their questions, and didn't need to; he knew what had happened to him." },
+        { q:"What happened after he was thrown out?", opts:["Nothing", "Jesus found him \u2014 seeking out the man rejected for His sake", "He recanted"], correct:1, explain:"Excommunicated by the religious establishment and immediately sought out by Christ." }
+      ],
+      deepDive: "This chapter is a comedy of escalating interrogation: the more the experts investigate, the more obvious the miracle becomes and the more absurd their denials get. Meanwhile the healed man grows from calling Jesus \u2018the man they call Jesus\u2019 to \u2018a prophet\u2019 to worship. His famous line is the model for anyone who feels outmatched in an argument about faith: he doesn't win the debate, he simply reports what happened to him. And notice the ending's irony \u2014 the blind man ends up seeing everything, while the men with perfect eyesight are told they remain guilty precisely because they claim to see." },
+    { id:286, book:"John", title:"I am the good shepherd", side:"c",
+      passage: "\u201cI am the gate; whoever enters through me will be saved\u2026 The thief comes only to steal and kill and destroy; I have come that they may have life, and have it to the full. I am the good shepherd. The good shepherd lays down his life for the sheep.\u201d A hired hand runs when the wolf comes, because the sheep are not his. \u201cI know my sheep and my sheep know me\u2026 and I lay down my life for the sheep.\u201d He adds that no one takes His life from Him \u2014 He lays it down of His own accord \u2014 and that no one can snatch His sheep out of His hand.",
+      keyVerses: [
+        { ref: "John 10:10\u201311", text: "I have come that they may have life, and have it to the full. I am the good shepherd. The good shepherd lays down his life for the sheep." }
+      ],
+      questions: [
+        { q:"What distinguishes the shepherd from the hired hand?", opts:["Experience", "Ownership \u2014 the hired hand runs because the sheep aren't his", "Equipment"], correct:1, explain:"When danger comes, the difference between a job and belonging becomes visible." },
+        { q:"How far does the good shepherd go?", opts:["He fights off the wolf", "He lays down his life for the sheep", "He calls for help"], correct:1, explain:"Ezekiel 34 promised God would shepherd them Himself; this adds what Ezekiel didn't say." },
+        { q:"What does Jesus say about His own death?", opts:["It will be forced on Him", "No one takes it \u2014 He lays it down of His own accord", "It can be avoided"], correct:1, explain:"The cross presented as a choice made in advance, not a defeat suffered." }
+      ],
+      deepDive: "Jesus is claiming Ezekiel 34 here \u2014 the chapter where God, fed up with shepherds who fed themselves, announced \u2018I myself will search for my sheep.\u2019 By calling Himself the good shepherd, He is quietly saying the promise has arrived. Then He adds something Ezekiel never mentioned: this shepherd dies for the flock. Note the two lines people often separate. \u2018Life to the full\u2019 is not a promise of comfortable circumstances \u2014 it's said in the same breath as laying down His life. And the security offered is total: no one can snatch them out of His hand, because the hand belongs to someone who already proved what He'd pay to hold on." },
+    { id:287, book:"John", title:"Lazarus, come out", side:"l",
+      passage: "Told that Lazarus was sick, Jesus stayed where He was two more days. By the time He arrived, Lazarus had been in the tomb four days. Martha met Him: \u201cLord, if you had been here, my brother would not have died.\u201d Jesus said, \u201cI am the resurrection and the life. The one who believes in me will live, even though they die.\u201d Seeing Mary and the others weeping, \u201che was deeply moved in spirit and troubled\u2026 Jesus wept.\u201d At the tomb He called in a loud voice, \u201cLazarus, come out!\u201d and the dead man came out, wrapped in strips of linen. \u201cTake off the grave clothes and let him go.\u201d",
+      keyVerses: [
+        { ref: "John 11:25", text: "I am the resurrection and the life. The one who believes in me will live, even though they die." }
+      ],
+      questions: [
+        { q:"Why did Jesus weep?", opts:["He was afraid", "He entered the grief of people He loved, though He knew the outcome", "He regretted delaying"], correct:1, explain:"Knowing resurrection was minutes away didn't make Him dismissive of their sorrow." },
+        { q:"What claim does Jesus make to Martha?", opts:["He can perform resurrections", "He IS the resurrection and the life \u2014 not a technique but a person", "Lazarus will live again someday"], correct:1, explain:"Martha believed in a future resurrection; Jesus relocates it into Himself, present tense." },
+        { q:"What did Jesus tell the crowd to do afterward?", opts:["Nothing", "Take off the grave clothes and let him go \u2014 the community had a part", "Leave him alone"], correct:1, explain:"He raised the dead; the people around him removed what was still binding." }
+      ],
+      deepDive: "The shortest verse in the Bible sits in this chapter, and it may be the most important detail in it. Jesus is about to raise this man in five minutes, and He still weeps. That destroys the idea that faith in a good outcome makes grief unnecessary or unspiritual. He doesn't tell Mary to stop crying; He cries with her. Then the claim to Martha reframes everything: resurrection isn't an event on a distant calendar, it's a person standing in front of her. And the last instruction is a lovely picture of the church \u2014 Jesus gives life, and the people nearby help take off the grave clothes." },
+    { id:288, book:"John", title:"He washed their feet", side:"r",
+      passage: "\u201cJesus knew that the Father had put all things under his power, and that he had come from God and was returning to God; so he got up from the meal, took off his outer clothing, and wrapped a towel around his waist\u201d \u2014 and washed the disciples' feet, including Judas'. Peter objected; Jesus insisted. Afterward: \u201cI have set you an example that you should do as I have done for you.\u201d Then a new command: \u201cLove one another. As I have loved you, so you must love one another. By this everyone will know that you are my disciples.\u201d",
+      keyVerses: [
+        { ref: "John 13:34\u201335", text: "As I have loved you, so you must love one another. By this everyone will know that you are my disciples, if you love one another." }
+      ],
+      questions: [
+        { q:"What did Jesus know when He picked up the towel?", opts:["That He would be praised", "That all things were under His power \u2014 and He washed feet anyway", "That Peter would object"], correct:1, explain:"John frames the foot-washing as an expression of authority, not a lack of it." },
+        { q:"Whose feet did He wash?", opts:["Only the loyal ones", "All of them \u2014 including Judas, who would betray Him that night", "Only Peter's"], correct:1, explain:"The betrayer's feet were in the basin too." },
+        { q:"What did Jesus say would identify His disciples?", opts:["Correct doctrine", "Love for one another", "Miracles"], correct:1, explain:"The identifying mark He named is not knowledge or power but visible mutual love." }
+      ],
+      deepDive: "John's setup is deliberate: knowing He had all power and was returning to God, Jesus took a towel. Security produced service; He didn't need the room's respect, so He could kneel in it. Foot-washing was the job of the lowest servant, and nobody in that room had volunteered. Then the new command \u2014 and what makes it new is the standard: \u2018as I have loved you.\u2019 Not as you love yourself; as He does. And He attaches the church's public credential to it. Not accuracy, not size, not influence \u2014 by this everyone will know, if you love one another." },
+    { id:289, book:"John", title:"The way, the vine, and the Helper", side:"c",
+      passage: "\u201cDo not let your hearts be troubled\u2026 My Father's house has many rooms\u2026 I am going there to prepare a place for you.\u201d Thomas asks the way. \u201cI am the way and the truth and the life. No one comes to the Father except through me.\u201d He promises the Holy Spirit \u2014 \u201canother advocate to help you and be with you forever.\u201d Then: \u201cI am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit; apart from me you can do nothing.\u201d And: \u201cGreater love has no one than this: to lay down one's life for one's friends.\u201d",
+      keyVerses: [
+        { ref: "John 15:5", text: "I am the vine; you are the branches. If you remain in me and I in you, you will bear much fruit; apart from me you can do nothing." }
+      ],
+      questions: [
+        { q:"What is a branch's job?", opts:["Producing fruit by effort", "Remaining connected \u2014 the fruit follows from the connection", "Growing longer"], correct:1, explain:"Branches don't manufacture grapes; they stay attached and the life flows through." },
+        { q:"What does \u2018apart from me you can do nothing\u2019 rule out?", opts:["All activity", "Fruitfulness on your own resources \u2014 busyness isn't the same as fruit", "Prayer"], correct:1, explain:"You can do plenty apart from Him; none of it is the fruit He means." },
+        { q:"How does Jesus describe the Holy Spirit?", opts:["A force", "Another advocate \u2014 a helper who stays with them forever", "A memory"], correct:1, explain:"\u2018Another\u2019 of the same kind \u2014 His own presence continuing with them." }
+      ],
+      deepDive: "These chapters are Jesus' last words to His friends before the arrest, and the tone is remarkably tender \u2014 the man hours from torture spends the evening comforting the people who will abandon Him. The vine image is the practical center: fruit is not produced by effort but by connection. Most spiritual exhaustion comes from trying to generate grapes while detached from the trunk. Notice too what abiding produces \u2014 not just productivity but joy: \u2018that my joy may be in you and that your joy may be complete.\u2019 And the promise of the Spirit answers the obvious fear: He is leaving, and He is not leaving them alone." },
+    { id:290, book:"John", title:"It is finished", side:"l",
+      passage: "After the betrayal, the trials, the flogging, and the crown of thorns, Pilate presented Him: \u201cHere is the man!\u201d They crucified Him between two others, with a sign reading \u2018Jesus of Nazareth, the King of the Jews\u2019 in three languages. From the cross He entrusted His mother to the disciple He loved. Then, \u201cknowing that everything had now been finished\u2026 Jesus said, \u2018I am thirsty.\u2019\u201d After receiving the wine vinegar, He said, \u201cIt is finished.\u201d With that, He bowed His head and gave up His spirit.",
+      keyVerses: [
+        { ref: "John 19:30", text: "When he had received the drink, Jesus said, \u201cIt is finished.\u201d With that, he bowed his head and gave up his spirit." }
+      ],
+      questions: [
+        { q:"What does \u2018it is finished\u2019 translate?", opts:["\u2018I am defeated\u2019", "A single Greek word meaning \u2018paid in full\u2019 or \u2018completed\u2019", "\u2018It is over\u2019 in despair"], correct:1, explain:"Tetelestai was written across receipts \u2014 a debt discharged, nothing outstanding." },
+        { q:"What did Jesus do from the cross for His mother?", opts:["Nothing", "Entrusted her care to the disciple He loved", "Asked her to leave"], correct:1, explain:"In agony, He arranged His mother's household provision." },
+        { q:"How does John describe the death?", opts:["His life was taken", "He gave up His spirit \u2014 consistent with \u2018no one takes it from me\u2019", "He fainted"], correct:1, explain:"John's wording keeps the cross an act of will to the last breath." }
+      ],
+      deepDive: "Tetelestai \u2014 one word, and the most important sentence in Christian theology. It was a commercial term stamped on a settled account: paid in full, nothing remaining. Jesus does not say \u2018I am finished\u2019 but \u2018it is finished,\u2019 which is a statement about a completed work rather than an exhausted man. Everything the sacrificial system pointed toward, everything Isaiah 53 described, everything He came for \u2014 done. And the small human detail just before it is worth noticing: with the weight of the world on Him, He made sure His mother would have a home. Cosmic and personal, in the same three minutes." },
+    { id:291, book:"John", title:"Thomas, and breakfast on the beach", side:"r",
+      passage: "Thomas missed the first appearance and said he wouldn't believe without touching the wounds. A week later Jesus came and offered him exactly that: \u201cPut your finger here; see my hands\u2026 Stop doubting and believe.\u201d Thomas answered, \u201cMy Lord and my God!\u201d Later, by the Sea of Galilee, the disciples fished all night and caught nothing. A figure on the shore told them to try the other side; the net filled. It was Jesus, with a charcoal fire and breakfast ready. Three times He asked Peter \u2014 who had denied Him three times by another charcoal fire \u2014 \u201cDo you love me?\u201d and three times: \u201cFeed my sheep.\u201d",
+      keyVerses: [
+        { ref: "John 20:29", text: "Because you have seen me, you have believed; blessed are those who have not seen and yet have believed." }
+      ],
+      questions: [
+        { q:"How did Jesus treat Thomas's doubt?", opts:["He rebuked him publicly", "He came back and offered exactly the evidence Thomas asked for", "He ignored him"], correct:1, explain:"The doubt was met with an invitation, not a lecture." },
+        { q:"What detail links Peter's restoration to his denial?", opts:["The lake", "A charcoal fire \u2014 the same setting as his three denials, and three questions", "The boat"], correct:1, explain:"John mentions charcoal only twice; Jesus rebuilt the memory at the same kind of fire." },
+        { q:"What did Jesus give Peter after the restoration?", opts:["A rebuke", "Work \u2014 \u2018feed my sheep\u2019", "A demotion"], correct:1, explain:"Forgiveness came with a commission; the failure didn't end the calling." }
+      ],
+      deepDive: "John ends with two people being personally repaired. Thomas gets his evidence \u2014 Jesus came back a week later specifically for one doubter \u2014 and his response becomes the highest confession in the Gospel: my Lord and my God. Then Peter. Three denials by a charcoal fire; three questions by a charcoal fire, with breakfast already cooking. Jesus doesn't rehearse the failure or extract an apology; He asks about love, and hands back the job. That's how restoration works in this Gospel. And John's stated purpose closes it: these are written that you may believe, and that by believing you may have life in his name." }
   ];
 
   const MIDPOINT_REFLECTIONS = {
@@ -3065,7 +3631,11 @@
     "Zephaniah": "You're partway through Zephaniah. He indicts people who assume \u2018the LORD will do nothing, either good or bad.\u2019 Has that quiet assumption crept into how you pray?",
     "Haggai": "You're partway through Haggai. The temple sat unfinished for sixteen years \u2014 not by decision, just by postponement. What have you postponed so long that the delay has become the decision?",
     "Zechariah": "You're partway through Zechariah. \u2018Not by might nor by power, but by my Spirit.\u2019 What are you currently trying to accomplish mostly on your own strength?",
-    "Malachi": "You're partway through Malachi. They offered God the animals nobody wanted. What version of you does God usually get \u2014 your best, or your leftovers?"
+    "Malachi": "You're partway through Malachi. They offered God the animals nobody wanted. What version of you does God usually get \u2014 your best, or your leftovers?",
+    "Matthew": "You're partway through Matthew. The Father said \u2018with him I am well pleased\u2019 before Jesus had done any public work. Where are you still trying to earn an approval that was given before the performance?",
+    "Mark": "You're partway through Mark. In the storm the disciples asked \u2018don't you care?\u2019 rather than \u2018can you?\u2019 What has God's silence lately tempted you to conclude about His care?",
+    "Luke": "You're partway through Luke. Mary answered an impossible announcement with \u2018I am the Lord's servant.\u2019 What has God asked of you that you're still negotiating rather than accepting?",
+    "John": "You're partway through John. \u2018The Word became flesh and made his dwelling among us.\u2019 What difference does it make to you today that God came near rather than sending instructions?"
   };
   const CHECKPOINT_REFLECTIONS = {
     Genesis: "Looking back at the whole book of Genesis, what stands out to you most about who God is \u2014 and what's one thing you're taking with you?",
@@ -3104,7 +3674,11 @@
     "Zephaniah": "Looking back at Zephaniah \u2014 the day of the LORD, the call to the humble, and God rejoicing over His people with singing \u2014 the book moves from sweeping judgment to a God who sings. Which of those two pictures of God do you carry around more often, and why?",
     "Haggai": "Looking back at Haggai \u2014 paneled houses, the purse with holes, and \u2018be strong and work, for I am with you\u2019 \u2014 the people actually listened and built. What's the one thing you'd start this week if you took \u2018give careful thought to your ways\u2019 seriously?",
     "Zechariah": "Looking back at Zechariah \u2014 not by might, the day of small things, the king on a donkey, the pierced one, and cooking pots marked HOLY \u2014 what small beginning in your life have you been despising, and what would it look like to honor it instead?",
-    "Malachi": "Looking back at Malachi \u2014 the arguments, the blind offerings, \u2018test me in this,\u2019 the scroll of remembrance, and the sun of righteousness \u2014 the Old Testament ends with sunrise and then four hundred years of silence. What are you currently waiting on God for, and what would faithfulness look like during the wait?"
+    "Malachi": "Looking back at Malachi \u2014 the arguments, the blind offerings, \u2018test me in this,\u2019 the scroll of remembrance, and the sun of righteousness \u2014 the Old Testament ends with sunrise and then four hundred years of silence. What are you currently waiting on God for, and what would faithfulness look like during the wait?",
+    "Matthew": "Looking back at Matthew \u2014 the scandalous genealogy, the Beatitudes, the Lord's Prayer, the two houses, \u2018come to me all who are weary,\u2019 the sheep and the goats, and \u2018I am with you always\u2019 \u2014 both builders heard the same words and only one built on rock. What is one thing from this Gospel you have heard many times and never actually done?",
+    "Mark": "Looking back at Mark \u2014 the roof torn open, the storm stilled, the loaves multiplied, \u2018who do you say I am,\u2019 Gethsemane, and the torn curtain \u2014 the whole book races toward a Roman soldier saying \u2018surely this man was the Son of God.\u2019 If someone watched your ordinary week, what would they conclude you actually believe about who Jesus is?",
+    "Luke": "Looking back at Luke \u2014 Mary's song, the shepherds, the Samaritan, Martha's distraction, the prodigal's father running, Zacchaeus, the criminal beside Him, and the road to Emmaus \u2014 this Gospel keeps putting outsiders at the center. Who would you rather God not welcome, and what does the father running down the road say to that?",
+    "John": "Looking back at John \u2014 the Word made flesh, the well at noon, the bread of life, the good shepherd, Lazarus, the towel and basin, \u2018it is finished,\u2019 and breakfast on the beach \u2014 Jesus said the world would know His disciples by their love for one another. Where would someone watching your life see that mark, and where would they miss it?"
   };
 
   const CHECKPOINTS = {
@@ -3891,6 +4465,107 @@
         { q:"How does the Old Testament end?", opts:["In judgment", "With sunrise promised \u2014 then four hundred years of silence", "With a new king"], correct:1, explain:"The next voice is John the Baptist, the promised messenger." }
       ],
       deepDive: "Malachi closes the Old Testament with an argument and a sunrise. Its central charge isn't dramatic rebellion but cheapness \u2014 giving God what costs nothing while showing more care for a human official. The test God proposes cuts through every defense: try that with your governor. And then two gifts before the silence: a scroll of remembrance, recording the people who kept fearing God in a cynical era when it changed nothing visible, and the promise of the sun of righteousness rising with healing in its rays. Four hundred years later, an angel appeared to a priest in the temple, and the silence broke."
+    },
+
+    "Matthew": {
+      title: "Matthew overview",
+      overview: [
+        "A genealogy that includes a prostitute, a Moabite, and \u2018Uriah's wife\u2019 \u2014 this family line runs through scandal on purpose.",
+        "Two names frame everything: Jesus, because he saves; Immanuel, God with us.",
+        "Foreign stargazers worshiped; the scribes who knew the prophecy never walked the six miles.",
+        "At the baptism the Father said \u2018I am well pleased\u2019 \u2014 before a single public work.",
+        "In the wilderness, three offers of legitimate ends by illegitimate routes, answered with Scripture.",
+        "The Beatitudes announce favor on the bankrupt, grieving, and hungry \u2014 the wrong list.",
+        "The law driven inward: contempt is murder's root, and enemies are to be loved.",
+        "\u2018Our Father in heaven\u2019 \u2014 God's name, kingdom, and will before bread, forgiveness, and rescue.",
+        "Both builders heard the same words; only one put them into practice.",
+        "\u2018Come to me, all you who are weary\u2026 for I am gentle and humble in heart.\u2019",
+        "The sheep and the goats: food, water, welcome, clothes, and visits \u2014 done to Him.",
+        "And the ending: all authority, therefore go \u2014 and \u2018I am with you always.\u2019"
+      ],
+      questions: [
+        { q:"Why does Matthew include those women in the genealogy?", opts:["To fill space", "To show the Messiah's line runs through outsiders, scandal, and failure", "They were royalty"], correct:1, explain:"It tells you what kind of Savior is arriving and who He came for." },
+        { q:"When did the Father declare His pleasure in Jesus?", opts:["After the miracles", "At the baptism, before any public ministry", "At the resurrection"], correct:1, explain:"The pleasure preceded the performance \u2014 and was immediately attacked in the wilderness." },
+        { q:"Who does Jesus call blessed?", opts:["The strong and admired", "The poor in spirit, mourning, meek, merciful, persecuted", "The religious experts"], correct:1, explain:"Announcements about who the kingdom belongs to, not steps to earn it." },
+        { q:"What separates the two builders in chapter 7?", opts:["Their materials", "One put the words into practice; both heard them", "One avoided the storm"], correct:1, explain:"The same storm hit both houses; only the foundation differed." },
+        { q:"What does Jesus say His own heart is like?", opts:["Fierce", "Gentle and humble", "Distant"], correct:1, explain:"The one time He describes His heart directly, this is the word He chooses." }
+      ],
+      deepDive: "Matthew writes for readers steeped in the Old Testament, and his Gospel is built to show that Jesus is where all of it was pointing \u2014 quoting prophecy constantly and structuring the book around five great teaching blocks. Its center of gravity is the Sermon on the Mount, which is deliberately impossible: by the time Jesus finishes relocating murder to contempt and adultery to the look, nobody honest is still standing, which is exactly why the sermon opened with \u2018blessed are the poor in spirit.\u2019 Grace isn't a footnote to the demand; it's the foundation under it. And the book brackets itself with presence: it opens with Immanuel, God with us, and closes with the risen Christ saying \u2018I am with you always, to the very end of the age.\u2019"
+    },
+    "Mark": {
+      title: "Mark overview",
+      overview: [
+        "No genealogy, no birth story \u2014 Mark drops you straight into the action and never slows down.",
+        "\u2018Immediately\u2019 appears more than forty times; the whole Gospel moves at a run.",
+        "Four friends tore open a roof, and Jesus forgave before He healed.",
+        "In the storm they asked \u2018don't you care?\u2019 \u2014 and were more afraid after the calm than during the wind.",
+        "A synagogue ruler and an unclean, bankrupt woman received the same full attention.",
+        "\u2018You give them something to eat\u2019 \u2014 and twelve baskets left over for twelve doubters.",
+        "\u2018Who do you say I am?\u2019 \u2014 the right answer, then the cross rejected minutes later.",
+        "One man was invited to follow and walked away; Mark notes Jesus loved him first.",
+        "\u2018Not to be served, but to serve, and to give his life as a ransom for many.\u2019",
+        "Gethsemane: overwhelmed to the point of death, and still \u2018not what I will, but what you will.\u2019",
+        "The curtain torn from top to bottom, and a Roman executioner's confession.",
+        "And Sunday: \u2018He has risen! He is not here.\u2019"
+      ],
+      questions: [
+        { q:"What's distinctive about Mark's style?", opts:["Long sermons", "Speed \u2014 short, urgent, driven by the word \u2018immediately\u2019", "Genealogies"], correct:1, explain:"The shortest Gospel, traditionally linked to Peter's preaching." },
+        { q:"Whose faith does Mark credit in the paralytic story?", opts:["The man's alone", "\u2018Their\u2019 faith \u2014 the friends who carried and dug", "The crowd's"], correct:1, explain:"Some people arrive in Jesus' presence carried by someone else's persistence." },
+        { q:"What did the disciples ask in the storm?", opts:["\u2018Can you help?\u2019", "\u2018Don't you care if we drown?\u2019", "\u2018Where are we?\u2019"], correct:1, explain:"Fear translated His sleep into indifference \u2014 which is what fear usually does with silence." },
+        { q:"What is Mark 10:45?", opts:["A minor aside", "The key verse \u2014 He came to serve and give His life as a ransom for many", "A parable"], correct:1, explain:"Spoken right after James and John asked for the best seats." },
+        { q:"Who confesses Jesus as Son of God at the cross?", opts:["Peter", "The Roman centurion who executed Him", "John"], correct:1, explain:"The confession Mark has been building toward for fifteen chapters comes from a Gentile soldier." }
+      ],
+      deepDive: "Mark is the fastest and rawest of the Gospels \u2014 short, urgent, and unflattering toward the disciples, which is part of why it reads as honest. The book is built around a single question, asked in the boat and again on the road: who is this? The first half piles up evidence of authority over sickness, weather, demons, and death; the second half turns toward Jerusalem and insists the authority will be exercised by dying. That's the hinge in chapter 8, where Peter gets the identity right and the mission wrong. Two moments frame the whole answer: God tearing the temple curtain from the top down, and an executioner saying what the disciples couldn't \u2014 surely this man was the Son of God."
+    },
+    "Luke": {
+      title: "Luke overview",
+      overview: [
+        "A physician's carefully investigated account \u2014 and four hundred years of silence broken during an ordinary temple shift.",
+        "Mary's song: rulers brought down, the humble lifted, the hungry filled and the rich sent away empty.",
+        "No guest room, a feeding trough, and shepherds as heaven's first audience.",
+        "At Nazareth He read Isaiah, said \u2018today this is fulfilled,\u2019 and was nearly thrown off a cliff.",
+        "A disgraced woman washed His feet with tears while a respectable host stayed dry-eyed.",
+        "The Good Samaritan: the despised outsider became the model, and mercy came with a bill.",
+        "\u2018Martha, Martha\u2026 few things are needed \u2014 or indeed only one.\u2019",
+        "Lost sheep, lost coin, lost son \u2014 and a father who ran while his son was still far off.",
+        "Zacchaeus was welcomed first, and gave back fourfold afterward.",
+        "\u2018Father, forgive them\u2019 \u2014 and \u2018today you will be with me in paradise.\u2019",
+        "And on the Emmaus road, the risen Christ explained all the Scriptures concerning Himself."
+      ],
+      questions: [
+        { q:"What runs through Luke's whole Gospel?", opts:["Court intrigue", "Attention to outsiders \u2014 the poor, women, Samaritans, tax collectors", "Military history"], correct:1, explain:"From Mary's song to Zacchaeus, Luke keeps putting the overlooked at the center." },
+        { q:"What turned admiration into fury at Nazareth?", opts:["A miracle", "His examples of God's mercy reaching Gentiles", "His age"], correct:1, explain:"They welcomed a hometown Messiah and rejected one whose grace extended past them." },
+        { q:"What's the point of the two-debtor parable in Luke 7?", opts:["Repay your debts", "Whoever is forgiven little loves little", "Both were ungrateful"], correct:1, explain:"Cool love is usually a symptom of an underestimated debt." },
+        { q:"How many lost sons are in Luke 15?", opts:["One", "Two \u2014 the younger in a far country, the older in the yard", "Three"], correct:1, explain:"The parable's second half is aimed at the religious people listening." },
+        { q:"What could the criminal on the cross offer?", opts:["Years of service", "Nothing \u2014 no time, no restitution, no reformed life", "A donation"], correct:1, explain:"The clearest case in Scripture of salvation entirely apart from works." }
+      ],
+      deepDive: "Luke is a historian and a physician writing for outsiders, and his Gospel is the one that keeps noticing people other accounts might skip: shepherds, widows, Samaritans, women, tax collectors, and a criminal minutes from death. That emphasis is announced early in Mary's song about thrones toppling and the hungry being filled, and it never lets up. Luke also gives us the greatest parables \u2014 the Samaritan, the prodigal, the lost coin \u2014 all of them turning on mercy that arrives before it's earned. And he ends on the Emmaus road, with the risen Jesus teaching two grieving disciples to read the whole Bible as a story about Himself, which is exactly how Luke wants his readers to read it."
+    },
+    "John": {
+      title: "John overview",
+      overview: [
+        "Not Bethlehem but before Genesis: \u2018In the beginning was the Word, and the Word was God.\u2019",
+        "\u2018The Word became flesh and made his dwelling among us\u2019 \u2014 pitched His tent, full of grace and truth.",
+        "The first sign was rescuing a wedding, with 150 gallons of the best wine anyone had tasted.",
+        "Nicodemus, with the best credentials available, was told he had to be born \u2014 something done to you.",
+        "A Samaritan woman at noon got His longest conversation and His clearest early self-disclosure.",
+        "\u2018I am the bread of life\u2019 \u2014 and many disciples turned back that same day.",
+        "\u2018Neither do I condemn you\u2019 and \u2018go now and leave your life of sin,\u2019 in two sentences.",
+        "\u2018I was blind but now I see\u2019 \u2014 a man who couldn't win the argument and didn't need to.",
+        "\u2018I am the good shepherd\u2019 \u2014 claiming Ezekiel 34, and adding that this shepherd dies.",
+        "\u2018I am the resurrection and the life\u2019 \u2014 and Jesus wept anyway.",
+        "The towel and basin, including Judas' feet, and a new command: love as I have loved you.",
+        "\u2018I am the vine\u2019 \u2014 fruit from connection, not effort.",
+        "\u2018It is finished\u2019 \u2014 tetelestai, paid in full \u2014 and then breakfast on the beach with Peter."
+      ],
+      questions: [
+        { q:"What does \u2018made his dwelling among us\u2019 literally picture?", opts:["A brief visit", "Pitching a tent \u2014 the tabernacle language of Exodus", "Building a temple"], correct:1, explain:"God camping with His people again, except this time the tent had a face." },
+        { q:"Why is \u2018born again\u2019 the right image for Nicodemus?", opts:["It's gradual", "Nobody arranges their own birth \u2014 it strips away achievement", "It's painless"], correct:1, explain:"For a man used to mastering material, he had to receive what he couldn't produce." },
+        { q:"What did Jesus do when disciples left over hard teaching?", opts:["Softened it", "Let them go, and asked the Twelve if they would leave too", "Followed them"], correct:1, explain:"Peter's answer: to whom shall we go? You have the words of eternal life." },
+        { q:"What identifying mark did Jesus give His disciples?", opts:["Correct doctrine", "Love for one another", "Miraculous power"], correct:1, explain:"\u2018By this everyone will know that you are my disciples.\u2019" },
+        { q:"What does \u2018it is finished\u2019 mean?", opts:["\u2018I am defeated\u2019", "Tetelestai \u2014 paid in full, a completed work", "\u2018It is over\u2019"], correct:1, explain:"A commercial term stamped on settled accounts: nothing outstanding." }
+      ],
+      deepDive: "John is the most theological Gospel and the most intimate \u2014 the one that starts before creation and ends with breakfast on a beach. Its structure runs on seven signs and seven \u2018I am\u2019 statements, each one answering a human need: bread for hunger, light for darkness, shepherd for lostness, resurrection for death, vine for fruitlessness, way for confusion. John states his purpose outright near the end: these are written that you may believe and have life in His name. And the two halves of the book hold together what Christians often separate \u2014 the highest possible claims about Christ's divinity, and the most human portrait of Him: tired at a well, weeping at a tomb, kneeling with a towel, cooking fish for the friend who denied Him."
     }
   };
 
@@ -4228,7 +4903,44 @@
         { h: "\u201cThe sun of righteousness will rise\u201d", b: "The Old Testament's last promise is a sunrise with healing in its rays, and then a note about a coming messenger like Elijah. And then \u2014 nothing. Four hundred years of prophetic silence, during which faithful people kept the scroll's kind of faithfulness with no new word at all. That gap is part of the story: the dawn was promised, and the waiting was long, and the people who kept trusting through it are the ones God said He was writing down." }
       ],
       takeaway: "The Old Testament ends by recording the people who kept fearing God in an era when it looked futile \u2014 a scroll of remembrance for faithfulness that changed nothing visible \u2014 and then promises sunrise with healing before four hundred years of silence.",
-      reflection: "Where have you been faithful for a long time without visible return, and started to wonder if it's futile? Who are the people you could talk with about it \u2014 and have you told them?" }
+      reflection: "Where have you been faithful for a long time without visible return, and started to wonder if it's futile? Who are the people you could talk with about it \u2014 and have you told them?" },
+
+    "Matthew": { focus: "Matthew 5:1\u201312", title: "The Beatitudes",
+      sections: [
+        { h: "Announcements, not requirements", b: "Read them again and notice the grammar: Jesus doesn't say \u2018become poor in spirit and then you'll be blessed.\u2019 He says blessed ARE they. These are declarations about who already has God's favor, spoken over a crowd of ordinary Galileans \u2014 not entry requirements to be achieved. That order matters, because the rest of the sermon is impossibly demanding, and it rests on this foundation of grace announced first." },
+        { h: "\u201cPoor in spirit\u201d \u2014 the doorway", b: "The first beatitude is the entry point to everything else. The word describes destitution, not modest need \u2014 someone with nothing to offer, no currency for the transaction. And theirs is the kingdom, present tense, already. Everyone who has tried to be good enough for God and quietly failed is standing in exactly the place Jesus calls blessed. You cannot begin this sermon by trying harder. You begin it by admitting you're empty." },
+        { h: "The wrong list, on purpose", b: "In a culture that read prosperity as divine approval, Jesus pronounces favor on the mourning, the meek, the hungry, and the persecuted. Every category inverts what any society would call fortunate. This is not a suggestion that suffering is good \u2014 it's an announcement that God's kingdom operates on entirely different arithmetic, and that the people who look furthest from blessing may be closest to it." },
+        { h: "The promises attached", b: "Notice that each declaration comes with something specific: comfort for mourners, the earth for the meek, satisfaction for the hungry, mercy for the merciful, seeing God for the pure in heart. None of them are vague. And the last one is the strangest \u2014 blessed are you when people insult and persecute you, \u2018for great is your reward in heaven.\u2019 Jesus tells them to rejoice in that, placing them in the line of the prophets. He is being honest, at the very start, about what following Him will cost." }
+      ],
+      takeaway: "The Beatitudes are announcements, not achievements \u2014 favor declared over the bankrupt, grieving, and hungry. And the first one is the door: theirs is the kingdom, present tense, because they finally have nothing to offer. That grace is the foundation the impossible sermon rests on.",
+      reflection: "Which beatitude describes where you actually are right now \u2014 not where you wish you were? Sit with the promise attached to that one specifically." },
+    "Mark": { focus: "Mark 10:35\u201345", title: "Not to be served, but to serve",
+      sections: [
+        { h: "The worst possible timing", b: "Mark places this immediately after Jesus described His own torture and execution in detail \u2014 mocked, flogged, killed. James and John's response is a request for the two best seats in the kingdom. It would be almost comic if it weren't so recognizable: the sermon lands, and we start calculating our position. Mark doesn't soften it, and neither does Jesus." },
+        { h: "\u201cYou don't know what you are asking\u201d", b: "Jesus' reply isn't a rebuke but a question about the cup and the baptism \u2014 the suffering He's about to undergo. They answer \u2018we can,\u2019 with no idea what they're agreeing to. Notice He doesn't dismiss their ambition; He tells them it leads somewhere they haven't imagined. James would be the first apostle executed. They did drink the cup, eventually, just not the way they pictured." },
+        { h: "\u201cNot so with you\u201d", b: "The other ten are indignant, which Mark quietly notes was competitive rather than principled \u2014 they wanted the seats too. So Jesus addresses all twelve and draws a line: Gentile rulers lord it over people and make their authority felt. \u2018Not so with you.\u2019 Greatness isn't abolished in the kingdom; it's inverted. Whoever wants to be great must serve, and whoever wants to be first must be slave of all." },
+        { h: "\u201cA ransom for many\u201d", b: "Then Jesus points to Himself as the pattern and, for the first time in Mark, states plainly what the cross is for: the Son of Man came not to be served but to serve, and to give His life as a ransom for many. A ransom was the price paid to free a captive. This isn't only an example of humility to imitate \u2014 it's a transaction accomplished on behalf of people who could not pay it themselves. The model and the rescue are the same act." }
+      ],
+      takeaway: "Jesus answers a request for the best seats not by condemning ambition but by relocating it: greatness is real in the kingdom, and it looks like service. And He grounds it in Himself \u2014 the Son of Man came to serve and to give His life as a ransom for many.",
+      reflection: "Where is your ambition currently pointed \u2014 at position, or at people? Name one place this week where you could serve without anyone knowing it was you." },
+    "Luke": { focus: "Luke 15:11\u201332", title: "The father who ran",
+      sections: [
+        { h: "A request that wished him dead", b: "Asking for your inheritance while your father lives was, in that culture, effectively telling him you'd rather he were gone. It was a public humiliation, and the village would have known. The remarkable thing is the father's response: he gives it. Love in this parable does not prevent the leaving \u2014 which is one of the hardest things about how God actually deals with people." },
+        { h: "\u201cHe came to his senses\u201d", b: "Rock bottom is a Gentile pig farm and envy of the animals' food. Notice that his repentance starts out fairly self-interested \u2014 he rehearses a speech about becoming a hired servant, and the motive named is hunger. Scripture doesn't require his motives to be pure before he starts walking home. Sometimes the first step back is just running out of options, and that's allowed." },
+        { h: "\u201cWhile he was still a long way off\u201d", b: "The father saw him at a distance, which means he had been watching the road \u2014 probably for a long time. Then he ran, which elderly men of standing in that culture did not do; running required lifting your robe and exposing your legs, a public loss of dignity. The father absorbed shame to reach his son first, before the village could. And the rehearsed speech never gets finished \u2014 it's cut off by a robe, a ring, sandals, and a feast." },
+        { h: "The son who stayed", b: "Then the second half, aimed at the Pharisees who prompted the story. The older brother is outside, furious, and his language gives him away: \u2018all these years I've been slaving for you,\u2019 and \u2018this son of yours\u2019 \u2014 no father, no brother. He kept every rule and never enjoyed being a son. And the father comes out a second time, leaving his own party to plead with him. Jesus never tells us whether he went in. The story ends with the invitation open, which is where He leaves His audience." }
+      ],
+      takeaway: "There are two lost sons in this parable. One left and came back to a father who ran, absorbing public shame and cutting off the apology with a feast. The other stayed, served without joy, and stood in the yard \u2014 and the ending is left open on purpose.",
+      reflection: "Which son do you recognize yourself in more honestly \u2014 and if it's the older one, what would walking into the party actually require of you?" },
+    "John": { focus: "John 13:1\u201317", title: "The towel and the basin",
+      sections: [
+        { h: "What He knew when He stood up", b: "John's setup is deliberate and enormous: \u2018Jesus knew that the Father had put all things under his power, and that he had come from God and was returning to God \u2014 so he got up\u2026 and began to wash his disciples' feet.\u2019 The service flows out of security, not insecurity. He didn't need anything from that room, which is exactly why He could kneel in it. People who are unsure of their standing rarely serve freely; they're too busy protecting position." },
+        { h: "The job nobody took", b: "Foot-washing was the lowest household task, normally done by a servant on arrival. There was no servant, a basin sat there, and twelve men \u2014 who had recently argued about who was greatest \u2014 all let it sit. Jesus took off His outer clothing, wrapped a towel around His waist, and did the work none of them would. He didn't ask for a volunteer or shame them into it. He just did it." },
+        { h: "Judas' feet were in the water", b: "John has already told us the betrayal was set in motion. Jesus knew, and washed his feet anyway. That detail refuses every attempt to make this a story about serving people who deserve it. He knelt in front of the man who would sell Him within hours and washed the dust off his feet. Whatever \u2018as I have loved you\u2019 means, it includes that." },
+        { h: "\u201cAs I have loved you\u201d", b: "Then the new command, and what makes it new is the standard \u2014 not \u2018love your neighbor as yourself\u2019 but \u2018as I have loved you.\u2019 The measure is no longer your own self-interest but His demonstrated love, which just knelt on a floor for a betrayer. And He attaches the church's public credential to it: by this everyone will know you are my disciples. Not by accuracy, not by size, not by influence. By this." }
+      ],
+      takeaway: "Knowing He held all authority, Jesus picked up a towel and did the lowest job in the room \u2014 including for the man about to betray Him. Then He made that love the standard and the identifying mark of His people: as I have loved you, so you must love one another.",
+      reflection: "What is the \u2018basin\u2019 sitting untouched in your household, workplace, or church \u2014 the task everyone sees and nobody takes? What would it cost you to just do it this week?" }
   };
 
   function todayStr(){ return new Date().toISOString().slice(0,10); }
