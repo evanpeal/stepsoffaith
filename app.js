@@ -89,6 +89,22 @@
         { type:'sparkle', style:{ top:'40%', height:'26%' } }
       ]
     },
+    "1 Chronicles": {
+      gradient: 'linear-gradient(180deg, #14122a 0%, #2a2450 16%, #443a70 32%, #644e8e 48%, #8e70a6 62%, #b898b0 76%, #e0c294 90%, #c99a52 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'18%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(232,222,255,0.75) 0%, rgba(170,150,225,0.3) 46%, rgba(170,150,225,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'28%' } }
+      ]
+    },
+    "2 Chronicles": {
+      gradient: 'linear-gradient(180deg, #1a1230 0%, #302254 16%, #4e3676 32%, #705290 48%, #9a76a4 62%, #c4a2a0 76%, #e6c684 90%, #c9963e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'30%' } },
+        { type:'glow', style:{ left:'50%', top:'16%', width:260, height:260, marginLeft:-130, marginTop:-130, background:'radial-gradient(circle, rgba(255,236,190,0.8) 0%, rgba(230,180,110,0.32) 46%, rgba(230,180,110,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'6%', height:'16%', background:'#7a5c40', opacity:0.5, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
     "1 Samuel": {
       gradient: 'linear-gradient(180deg, #12102b 0%, #241d4a 18%, #3b2a63 34%, #5c3a6e 50%, #8a4d63 64%, #c98a56 80%, #e0b25c 92%, #a9793f 100%)',
       decor: [
@@ -1732,6 +1748,83 @@
         { q:"How does the book choose to end?", opts:["With the burning temple", "With exiled king Jehoiachin freed from prison, eating at the king's table", "With Zedekiah's capture"], correct:1, explain:"A strange, deliberate flicker of hope \u2014 David's line alive at a table in Babylon, the promise not yet dead." }
       ],
       deepDive: "The fall of Jerusalem is the catastrophe the whole long story has been dreading \u2014 temple burned, city broken, promises seemingly buried in Babylonian rubble. The book could have ended at the ashes of chapter 25:21: \u2018So Judah went into captivity.\u2019 Instead the narrator adds one more paragraph, decades later and hundreds of miles away: Jehoiachin, David's heir, lifted from prison to a place at the king's table. It's a whisper, not a trumpet \u2014 but it's deliberate. The lamp of David still burns; the covenant of 2 Samuel 7 has survived the worst; and the stage is set for exile's prophets, the long wait, and a genealogy in Matthew that walks straight through Jehoiachin to Bethlehem. Even at the Bible's darkest ending, the story is not over." },
+        { id:369, book:"1 Chronicles", title:"A genealogy that remembers everyone", side:"c",
+      passage: "Chronicles opens with nine chapters of names \u2014 from Adam, through the patriarchs, the tribes, down to the exiles returning home. It looks like the driest possible way to start a book, until you notice who's writing and when: this was compiled after the exile, for a scattered, defeated people trying to remember who they were. Buried in the lists is a strange, tender interruption: \u201cJabez was more honorable than his brothers\u2026 Jabez cried out to the God of Israel, \u2018Oh, that you would bless me and enlarge my territory! Let your hand be with me.\u2019 And God granted his request.\u201d",
+      keyVerses: [
+        { ref: "1 Chronicles 4:10", text: "Jabez cried out to the God of Israel, \u201cOh, that you would bless me\u2026 Let your hand be with me.\u201d And God granted his request." }
+      ],
+      questions: [
+        { q:"Why open a book with nine chapters of genealogy?", opts:["Filler", "To tell a scattered, defeated people after exile that they still belonged to a story", "Legal record-keeping only"], correct:1, explain:"Names are identity work for people who had lost their land and nearly lost their story." },
+        { q:"What's remarkable about Jabez's prayer?", opts:["Its length", "It's a single honest, bold request embedded in a list of names", "It went unanswered"], correct:1, explain:"A flicker of an actual person and an actual prayer inside pages of ancestry." },
+        { q:"What does the placement of names suggest about God's record?", opts:["Only the famous matter", "Every generation, known and unknown, is remembered by name", "Genealogies are irrelevant to faith"], correct:1, explain:"Chronicles insists ordinary, forgotten people are still part of the story God is telling." }
+      ],
+      deepDive: "It's easy to skip Chronicles' opening genealogies, but they're doing real work. This book was likely written after the exile, for people who had lost their land, their temple, and much of their sense of who they were. Before telling them anything else, the Chronicler tells them their names are remembered \u2014 all the way back to Adam, all the way through defeat and dispersal, down to the very people now reading it. Jabez's prayer, one verse long, interrupts the lists like a light switching on: an ordinary, unknown man cried out honestly and God answered. If you've ever felt like a footnote, Chronicles opens by insisting nobody in this story actually is one." },
+    { id:370, book:"1 Chronicles", title:"David's heart for a house", side:"l",
+      passage: "Once secure on the throne, David told the prophet Nathan he was ashamed to live in a palace of cedar while God's ark stayed in a tent. That night God gave Nathan a message: David would not build the temple \u2014 \u201cYou have shed much blood and have fought many wars\u201d \u2014 but his son would, and God would establish his house forever. David's response wasn't disappointment. He sat before the LORD and prayed: \u201cWho am I, LORD God, and what is my family, that you have brought me this far?\u2026 There is no one like you, LORD, and there is no God but you.\u201d",
+      keyVerses: [
+        { ref: "1 Chronicles 17:16", text: "Who am I, LORD God, and what is my family, that you have brought me this far?" }
+      ],
+      questions: [
+        { q:"Why was David told he couldn't build the temple?", opts:["He wasn't wealthy enough", "He had shed much blood in war", "God didn't want a temple"], correct:1, explain:"The temple of worship needed a builder whose reign wasn't defined by warfare." },
+        { q:"How did David respond to being told no?", opts:["Anger", "Worship \u2014 amazed that God had done this much for him already", "He built it anyway"], correct:1, explain:"Denied his desire, he responded with gratitude rather than protest." },
+        { q:"What did God promise instead?", opts:["Nothing", "David's house and throne established forever", "A smaller temple"], correct:1, explain:"The redirected desire became a permanent dynastic promise, ultimately fulfilled in Christ." }
+      ],
+      deepDive: "David wanted to build God a house; God turned it around and promised to build David one instead \u2014 a dynasty, not a building. What's most instructive is David's posture when his plan was declined. He didn't sulk or negotiate. He sat before the LORD \u2014 an unusual, humble position for a king \u2014 and prayed one of Scripture's most disarming prayers: who am I, and what is my family, that you have brought me this far? Being told no to a good desire, offered sincerely to God, became the occasion for some of David's deepest worship. That's a pattern worth having ready the next time your own good plan gets redirected." },
+    { id:371, book:"1 Chronicles", title:"Preparing for a temple he'd never see", side:"r",
+      passage: "David spent his final years gathering what Solomon would need: gold, silver, bronze, iron, cedar, and stone \u2014 \u201cwith great pains I have provided for the temple of the LORD.\u201d Then he gave the plans to Solomon and charged him publicly: \u201cBe strong and courageous, and do the work. Do not be afraid or discouraged, for the LORD God, my God, is with you.\u201d He led the people in giving, and they gave willingly, and David prayed: \u201cBut who am I, and who are my people, that we should be able to give as generously as this? Everything comes from you, and we have given you only what comes from your hand.\u201d",
+      keyVerses: [
+        { ref: "1 Chronicles 29:14", text: "Everything comes from you, and we have given you only what comes from your hand." }
+      ],
+      questions: [
+        { q:"What did David spend his final years doing?", opts:["Fighting more wars", "Preparing materials and plans for a temple he'd never enter", "Retiring quietly"], correct:1, explain:"He invested enormous effort into a project he knew he would not live to see completed." },
+        { q:"What's the theology behind David's prayer over the offerings?", opts:["Generosity earns merit", "Even our giving is only returning what was already His", "Wealth proves righteousness"], correct:1, explain:"He refuses to let generosity become a source of pride \u2014 the resources were never truly theirs to begin with." },
+        { q:"What charge did David give Solomon?", opts:["Avoid conflict", "Be strong and courageous \u2014 the LORD is with you", "Wait for a sign"], correct:1, explain:"The same charge God gave Joshua, now passed from father to son." }
+      ],
+      deepDive: "There's a particular kind of faithfulness in working hard on something you'll never get to see finished. David gathered gold, silver, and stone for decades, drew up detailed plans, and handed the whole project to his son \u2014 knowing he himself would never walk through the doors. And when the people responded with lavish generosity, David's prayer refused to let anyone take credit, including himself: everything comes from you, and we have only given back what was already yours. That combination \u2014 pouring yourself into work you won't see completed, and refusing to claim credit for the resources it took \u2014 is a rare and valuable posture." },
+    { id:372, book:"2 Chronicles", title:"Solomon's prayer at the dedication", side:"c",
+      passage: "When the temple was finished, Solomon knelt before the whole assembly, spread his hands toward heaven, and prayed: \u201cBut will God really dwell on earth with humans? The heavens, even the highest heavens, cannot contain you. How much less this temple I have built!\u201d He asked that God would hear prayers offered toward this place \u2014 for Israelites and for the foreigner who comes from a distant land, \u201cso that all the peoples of the earth may know your name.\u201d Fire fell from heaven and consumed the offering, and the glory of the LORD filled the temple so that the priests could not enter.",
+      keyVerses: [
+        { ref: "2 Chronicles 6:18", text: "But will God really dwell on earth with humans? The heavens, even the highest heavens, cannot contain you. How much less this temple I have built!" }
+      ],
+      questions: [
+        { q:"What tension does Solomon name in his prayer?", opts:["None", "That the God of the whole universe cannot be contained by any building", "That the temple was too small"], correct:1, explain:"He builds the temple and immediately admits it cannot hold the One it's built for." },
+        { q:"Who does Solomon specifically pray for?", opts:["Only Israelites", "Israelites and foreigners from distant lands", "Only the priests"], correct:1, explain:"An early, surprising vision of the temple's welcome extending to outsiders \u2014 so all peoples would know God's name." },
+        { q:"How did God respond to the dedication?", opts:["Silence", "Fire fell and consumed the offering; his glory filled the temple", "Nothing visible"], correct:1, explain:"An unmistakable, visible sign of acceptance and presence." }
+      ],
+      deepDive: "Solomon's prayer is remarkable for admitting its own inadequacy while still praying it. He builds the most magnificent structure his kingdom could produce and then says plainly: the heavens cannot contain you, how much less this house. That honesty protects the whole project from becoming an idol of its own \u2014 the temple was never meant to capture God, only to be a place where His people could turn and be heard. And his prayer for the foreigner is easy to miss but striking: centuries before the gospel went to the nations, Solomon asked that this house be a place where anyone from anywhere could come and know God's name." },
+    { id:373, book:"2 Chronicles", title:"If my people will humble themselves", side:"l",
+      passage: "After the dedication, God appeared to Solomon at night with both warning and promise. If the people ever turned to idols, the temple itself would become a cautionary tale to every passerby. But first, the promise that has outlasted the building by three thousand years: \u201cIf my people, who are called by my name, will humble themselves and pray and seek my face and turn from their wicked ways, then I will hear from heaven, and I will forgive their sin and will heal their land.\u201d",
+      keyVerses: [
+        { ref: "2 Chronicles 7:14", text: "If my people, who are called by my name, will humble themselves and pray and seek my face and turn from their wicked ways, then I will hear from heaven, and I will forgive their sin and will heal their land." }
+      ],
+      questions: [
+        { q:"What four things are asked of God's people?", opts:["Sacrifice, ritual, fasting, silence", "Humble themselves, pray, seek his face, turn from wicked ways", "Nothing \u2014 it's unconditional"], correct:1, explain:"A real response is invited, though the initiative and the healing remain God's." },
+        { q:"What three things does God promise in return?", opts:["Wealth, power, fame", "Hear from heaven, forgive their sin, heal their land", "Nothing specific"], correct:1, explain:"Attention, pardon, and restoration \u2014 addressing the relationship and its visible consequences." },
+        { q:"Who is this promise specifically for?", opts:["Any nation", "\u2018My people, who are called by my name\u2019", "Only kings"], correct:1, explain:"It's addressed to God's covenant people, not a general civic principle, though its shape has echoed far beyond its original audience." }
+      ],
+      deepDive: "This verse has been quoted in more sermons about national revival than almost any other in Scripture, and it's worth reading in its actual setting: a specific covenant promise to a specific temple-building people, not a blank check for any nation to claim. Still, its structure teaches something permanent about how restoration works throughout the Bible. It doesn't begin with God overlooking sin; it begins with humility, prayer, seeking, and turning \u2014 and only then hearing, forgiving, and healing. Chronicles will spend the rest of its pages showing kings who did exactly this, and kings who didn't, as a working demonstration of the promise." },
+    { id:374, book:"2 Chronicles", title:"Two revivals under Hezekiah and Josiah", side:"r",
+      passage: "Generations after Solomon, two kings reopened what had been shut. Hezekiah found the temple doors closed and the courts abandoned; he reopened them, cleansed the temple, and called the nation back to Passover \u2014 \u201cthe people rejoiced at what God had brought about for them.\u201d Later, young King Josiah found the Book of the Law forgotten in the temple rubble during repairs. Hearing it read, he tore his robes in grief and led the most thorough reform in the kingdom's history: \u201cNeither before nor after Josiah was there a king like him who turned to the LORD as he did.\u201d",
+      keyVerses: [
+        { ref: "2 Chronicles 34:27", text: "Because your heart was tender and you humbled yourself before God\u2026 and because you humbled yourself before me and tore your robes and wept in my presence, I have heard you." }
+      ],
+      questions: [
+        { q:"What had happened to the temple before Hezekiah's reform?", opts:["It was destroyed", "The doors were shut and it had fallen into neglect", "It was expanded"], correct:1, explain:"Neglect, not necessarily open rebellion, had let worship simply stop happening." },
+        { q:"What triggered Josiah's reform?", opts:["A military victory", "Rediscovering the forgotten Book of the Law during temple repairs", "A prophet's rebuke"], correct:1, explain:"Scripture had been lost inside the very building meant to house it \u2014 a sobering image." },
+        { q:"What was God's verdict on Josiah's response?", opts:["Too little, too late", "His tender heart and humility before tearing his robes were what God heard", "Indifference"], correct:1, explain:"The posture of the heart mattered as much as the reform that followed it." }
+      ],
+      deepDive: "Both stories describe the same basic tragedy: worship that had simply stopped, not through dramatic apostasy but through neglect \u2014 doors closed, Scripture misplaced inside its own building. And both describe the same remedy: a king willing to grieve honestly over what had been lost and act decisively to restore it. Josiah's detail is the most haunting \u2014 the Book of the Law itself had been buried in rubble inside the temple, forgotten by the very people meant to keep it. Chronicles doesn't record these revivals as museum pieces; it records them as evidence that 7:14's promise actually worked, generation after generation, whenever a king chose to humble himself." },
+    { id:375, book:"2 Chronicles", title:"The decree that ends the story", side:"c",
+      passage: "Chronicles catalogues king after king \u2014 some faithful, most not \u2014 until Jerusalem finally falls and the temple burns: \u201cThe LORD kept sending word to them through his messengers\u2026 but they mocked God's messengers, despised his words and scoffed at his prophets until the wrath of the LORD was aroused against his people and there was no remedy.\u201d Judah was carried into exile, \u201cuntil the land had enjoyed its Sabbath rests.\u201d But the very last words of the Hebrew Bible refuse to end in ruin: \u201cThis is what Cyrus king of Persia says: \u2018The LORD, the God of heaven\u2026 has appointed me to build a temple for him\u2026 Any of his people among you may go up, and may the LORD their God be with them.\u2019\u201d",
+      keyVerses: [
+        { ref: "2 Chronicles 36:23", text: "Any of his people among you may go up, and may the LORD their God be with them." }
+      ],
+      questions: [
+        { q:"What is named as the reason for the exile?", opts:["Military weakness", "Persistent mockery of God's messengers despite repeated warnings", "Bad luck"], correct:1, explain:"Chronicles is careful to show judgment as the last resort after patient warning, not an arbitrary strike." },
+        { q:"How does the whole Hebrew Bible traditionally end?", opts:["In despair", "With Cyrus's decree inviting the exiles to go home and rebuild", "With a battle"], correct:1, explain:"In the traditional Jewish ordering of Scripture, this is literally the Bible's final sentence." },
+        { q:"What does the ending say about God's story?", opts:["It's finished and closed", "Even after total collapse, restoration is offered and the story continues", "Judgment always has the last word"], correct:1, explain:"The Hebrew Bible refuses to end on ruin \u2014 the last note is an open door home." }
+      ],
+      deepDive: "Chronicles was likely the closing book of the Hebrew Bible in its traditional arrangement, which makes its final sentence one of the most consequential in Scripture. After chapters cataloguing failure after failure, culminating in total destruction, the story does not end in the ashes. It ends with a pagan emperor's decree, quoted word for word, inviting a broken people to go home and build again. That is the whole shape of the biblical story compressed into one paragraph: patient warning, deserved consequence, and a door left open at the very end, wide enough for anyone who wants to go up. The Bible's last word, in its own internal ordering, is an invitation." },
     { id:108, book:"Ezra", title:"Cyrus opens the door home", side:"c",
       passage: "Seventy years after Jerusalem burned, the impossible happened: Cyrus, king of Persia \u2014 the new superpower that had swallowed Babylon \u2014 issued a decree that God's people could go home and rebuild the temple. The book's first sentence names the engine behind it: \u201cthe LORD moved the heart of Cyrus.\u201d Nearly fifty thousand made the journey, carrying back the temple articles Nebuchadnezzar had looted, funded in part by the empire that had once destroyed them.",
       keyVerses: [
@@ -2062,6 +2155,50 @@
         { q:"How does the psalm end?", opts:["Hiding from the searching God", "Inviting the search \u2014 \u2018Search me, God... lead me in the way everlasting\u2019", "With fear"], correct:1, explain:"The psalmist's response to being fully known is to open the last doors himself \u2014 known-ness embraced as safety." }
       ],
       deepDive: "Psalm 139 takes the fact people find most frightening \u2014 being completely known \u2014 and turns it into the deepest comfort. Every hiding place is tested and closed: distance (the far side of the sea), darkness (light to Him), even time (days written before one came to be). For the psalmist this total exposure isn't surveillance but embrace: \u2018you hem me in, behind and before\u2019 \u2014 the language of protection, not capture. The womb passage grounds human dignity earlier than any accomplishment or failure: worth was knitted in, in the dark, before anyone was watching \u2014 except Someone was. And the ending is the psalm's bravest move: having described God's inescapable search, David requests it \u2014 \u2018search me, know my heart, see if there is any offensive way in me.\u2019 Only someone convinced that the Searcher is for him could pray that. That conviction is the psalm." },
+        { id:381, book:"Psalms", title:"Psalm 63 \u2014 My soul thirsts for you", side:"c",
+      passage: "Written in a dry and weary land, David's opening line names his ache with total clarity: \u201cYou, God, are my God, earnestly I seek you; I thirst for you, my whole being longs for you, in a dry and parched land where there is no water.\u201d He remembers seeing God's power and glory in the sanctuary, and declares, \u201cBecause your love is better than life, my lips will glorify you.\u201d Even lying awake at night, he thinks of God: \u201cOn my bed I remember you; I think of you through the watches of the night.\u201d",
+      keyVerses: [
+        { ref: "Psalm 63:1", text: "You, God, are my God, earnestly I seek you; I thirst for you, my whole being longs for you, in a dry and parched land where there is no water." }
+      ],
+      questions: [
+        { q:"What physical image describes David's longing?", opts:["Hunger for bread", "Thirst in a dry, parched land", "Cold in winter"], correct:1, explain:"Written literally in a wilderness, the metaphor and his actual circumstances match exactly." },
+        { q:"What does David say is better than life itself?", opts:["Victory", "God's love", "Wealth"], correct:1, explain:"A striking ranking from a man whose life was frequently under threat." },
+        { q:"When does he think of God, according to verse 6?", opts:["Only in worship services", "Through the watches of the night, lying awake in bed", "Only in crisis"], correct:1, explain:"Longing that fills unstructured, sleepless hours, not just scheduled devotion." }
+      ],
+      deepDive: "Psalm 63 gives words to a specific, physical kind of spiritual hunger \u2014 not vague dissatisfaction but thirst, the kind that reorganizes your whole body around finding water. David wrote it while literally in a wilderness, fleeing danger, and instead of only praying for rescue, he prays his longing for God's presence itself. The line 'your love is better than life' is worth sitting with; David isn't saying life doesn't matter, he's saying he has found something that outranks even survival. And the detail about the night watches is quietly comforting for anyone who lies awake: that insomnia can become the very hours where longing for God gets its clearest voice." },
+    { id:382, book:"Psalms", title:"Psalm 84 \u2014 Better is one day", side:"l",
+      passage: "A pilgrim's love song for the temple: \u201cHow lovely is your dwelling place, LORD Almighty! My soul yearns, even faints, for the courts of the LORD.\u201d Even the sparrow finds a home near God's altars. \u201cBlessed are those who dwell in your house; they are ever praising you.\u201d Blessed too are those whose hearts are set on pilgrimage, who \u201cas they pass through the Valley of Baka, they make it a place of springs.\u201d And the famous declaration: \u201cBetter is one day in your courts than a thousand elsewhere; I would rather be a doorkeeper in the house of my God than dwell in the tents of the wicked.\u201d",
+      keyVerses: [
+        { ref: "Psalm 84:10", text: "Better is one day in your courts than a thousand elsewhere; I would rather be a doorkeeper in the house of my God than dwell in the tents of the wicked." }
+      ],
+      questions: [
+        { q:"What image opens the psalm's longing?", opts:["A mountain", "A sparrow finding a home near God's altars", "A river"], correct:1, explain:"Even the smallest, most ordinary creature has found rest near God's presence." },
+        { q:"What do pilgrims do in the Valley of Baka?", opts:["Get lost", "Turn a place of weeping into a place of springs", "Turn back"], correct:1, explain:"Baka means weeping; those journeying toward God transform hardship along the way." },
+        { q:"What position would the psalmist prefer over comfort with the wicked?", opts:["King", "Doorkeeper in God's house", "Wealthy landowner"], correct:1, explain:"The lowest job near God's presence outranks the best position away from it." }
+      ],
+      deepDive: "Psalm 84 is pure longing for presence, expressed by someone who may not have even had regular access to the temple \u2014 a pilgrim, dreaming of the journey and the destination both. The sparrow image is deceptively simple: if the smallest bird has found rest near God's altars, what does that say about a person avoiding it? And the pilgrims turning the Valley of Weeping into springs is a portrait of how proximity to God changes the journey itself, not just the arrival \u2014 the road toward him becomes different, not only the destination. The closing preference for being a doorkeeper over comfort elsewhere ranks nearness to God above every alternative status available." },
+    { id:383, book:"Psalms", title:"Psalm 90 \u2014 Teach us to number our days", side:"r",
+      passage: "Moses' only psalm opens with the deepest possible contrast: \u201cLord, you have been our dwelling place throughout all generations. Before the mountains were born or you brought forth the whole world, from everlasting to everlasting you are God.\u201d Against that eternity, human life is brief \u2014 \u201cthe length of our days is seventy years\u2014or eighty, if our strength endures\u2026 yet their span is but trouble and sorrow, for they quickly pass, and we fly away.\u201d The prayer that follows has steadied countless people facing their own mortality: \u201cTeach us to number our days, that we may gain a heart of wisdom.\u201d",
+      keyVerses: [
+        { ref: "Psalm 90:12", text: "Teach us to number our days, that we may gain a heart of wisdom." }
+      ],
+      questions: [
+        { q:"Who traditionally wrote this psalm?", opts:["David", "Moses \u2014 his only psalm in the Psalter", "Solomon"], correct:1, explain:"A man who led a generation through forty years of wilderness wandering and death." },
+        { q:"What contrast opens the psalm?", opts:["Rich and poor", "God's eternity against human brevity", "War and peace"], correct:1, explain:"From everlasting to everlasting, set against a human life of seventy or eighty years." },
+        { q:"What does numbering your days produce?", opts:["Anxiety", "A heart of wisdom", "Despair"], correct:1, explain:"Awareness of limited time is treated as the doorway to living wisely, not a reason for dread." }
+      ],
+      deepDive: "This is the only psalm attributed to Moses, and its weight makes sense once you remember his life \u2014 forty years watching an entire generation die in the wilderness because of unbelief, himself included in the sentence. Few people have had more reason to think honestly about mortality. His prayer doesn't ask for longer life; it asks for wisdom sized correctly to a short one. 'Teach us to number our days' isn't morbid arithmetic \u2014 it's a request to live with accurate awareness of how limited our time actually is, so that awareness can shape what we do with it, rather than letting denial waste what's left." },
+    { id:384, book:"Psalms", title:"Psalm 145 \u2014 The LORD is good to all", side:"c",
+      passage: "David's sweeping praise, gathering everything the Psalter has said about God into one song: \u201cThe LORD is gracious and compassionate, slow to anger and rich in love. The LORD is good to all; he has compassion on all he has made.\u201d Creation itself joins the chorus \u2014 \u201call your works praise you, LORD.\u201d And the personal promise: \u201cThe LORD is near to all who call on him, to all who call on him in truth. He fulfills the desires of those who fear him; he hears their cry and saves them.\u201d",
+      keyVerses: [
+        { ref: "Psalm 145:18\u201319", text: "The LORD is near to all who call on him, to all who call on him in truth. He fulfills the desires of those who fear him; he hears their cry and saves them." }
+      ],
+      questions: [
+        { q:"What is the scope of God's goodness in this psalm?", opts:["Only Israel", "All \u2014 he has compassion on all he has made", "Only the righteous"], correct:1, explain:"Repeated deliberately: good to all, compassion on all, near to all who call." },
+        { q:"Who joins in praising God?", opts:["Only humans", "All his works \u2014 creation itself", "Only angels"], correct:1, explain:"The praise widens past the human choir to everything God has made." },
+        { q:"What condition is attached to being heard?", opts:["Perfect performance", "Calling on him in truth", "Wealth or status"], correct:1, explain:"Sincerity, not achievement, is the entry point to being heard." }
+      ],
+      deepDive: "Psalm 145 is a summary psalm, gathering threads that have run through the whole book into one confident song. Its repeated word is 'all' \u2014 good to all, compassion on all he has made, near to all who call on him \u2014 which pushes back against any reading of the Psalms as a private club's songbook. And the promise in verses 18\u201319 is worth memorizing for its precision: nearness is promised to everyone who calls in truth, not to the flawless or the impressive. The bar for being heard is honesty, which is available to absolutely everyone reading this right now." },
     { id:138, book:"Proverbs", title:"Chapter 1 \u2014 Wisdom shouts in the street", side:"c",
       passage: "Proverbs opens by stating its own purpose: these sayings exist for gaining wisdom, discipline, and understanding \u2014 \u201cfor giving prudence to those who are simple, knowledge and discretion to the young.\u201d Then the cornerstone: \u201cThe fear of the LORD is the beginning of knowledge, but fools despise wisdom and instruction.\u201d The chapter warns a son against a gang promising easy money (\u201cthrow in your lot with us\u201d), and ends with Wisdom personified as a woman shouting in the public square \u2014 not hidden in a temple, but calling out in the street where everyone passes.",
       keyVerses: [
@@ -3960,6 +4097,61 @@
       ],
       deepDive: "The \u2018therefore\u2019 in Romans 12:1 is one of the most important words in the letter, because it means everything practical rests on everything doctrinal. Paul doesn't lead with behavior; he leads with mercy and then asks for a response in view of it. And the image is deliberately strange \u2014 a living sacrifice, which is the one kind that can climb off the altar, and does, daily. Note the mechanism of change: renewed thinking, not gritted teeth. What you believe about God's mercy is what reshapes how you live. And the list that follows is refreshingly ordinary: hospitality, sincere love, patience, blessing people who make life hard." }
 ,
+        { id:376, book:"Romans", title:"My heart's desire", side:"l",
+      passage: "Before defending God's faithfulness to Israel, Paul establishes his own heart on the matter: \u201cI have great sorrow and unceasing anguish in my heart. For I could wish that I myself were cursed and cut off from Christ for the sake of my people, those of my own race, the people of Israel.\u201d He lists their privileges \u2014 the adoption, the covenants, the law, the temple worship, the promises, the patriarchs, and Christ himself, \u201cwho is God over all, forever praised.\u201d Then he clarifies: \u201cIt is not as though God's word had failed. For not all who are descended from Israel are Israel.\u201d",
+      keyVerses: [
+        { ref: "Romans 9:2\u20133", text: "I have great sorrow and unceasing anguish in my heart. For I could wish that I myself were cursed and cut off from Christ for the sake of my people." }
+      ],
+      questions: [
+        { q:"What does Paul say he'd be willing to sacrifice?", opts:["Nothing", "His own standing with Christ, for the sake of his people", "His reputation only"], correct:1, explain:"An almost unthinkable statement of love for people who largely rejected his message." },
+        { q:"What privileges does he list belonging to Israel?", opts:["None remain", "Adoption, covenants, the law, worship, promises, the patriarchs, and Christ himself", "Only the land"], correct:1, explain:"He honors what was genuinely given before addressing the hard question of unbelief." },
+        { q:"What does \u2018not all who are descended from Israel are Israel\u2019 mean?", opts:["Ethnic identity is irrelevant", "Physical descent alone was never the same as belonging to the promise", "Israel no longer exists"], correct:1, explain:"Paul distinguishes ethnic lineage from the deeper covenant identity, a distinction he'll develop through the chapter." }
+      ],
+      deepDive: "Before Paul argues anything in chapters 9\u201311, he shows you his heart, and it's important that you see it before the harder theology that follows. This is not a detached doctrinal essay about who's in and who's out \u2014 it's written by a man in anguish over his own people's rejection of the Messiah he's spent his life proclaiming. He would trade his own place with Christ to see them included, which tells you these three chapters are wrestling with something that cost Paul enormously, not settling an abstract puzzle. Whatever conclusions follow, they come from grief, not indifference." },
+    { id:377, book:"Romans", title:"Not by works, but by him who calls", side:"r",
+      passage: "Paul traces God's selecting purpose through Israel's own history \u2014 Isaac chosen over Ishmael, Jacob over Esau, before either had done anything good or bad, \u201cin order that God's purpose in election might stand: not by works but by him who calls.\u201d He anticipates the objection \u2014 is God unjust? \u2014 and answers with God's own words to Moses: \u201cI will have mercy on whom I have mercy.\u201d Then the potter image returns: \u201cDoes not the potter have the right to make out of the same lump of clay some pottery for special purposes and some for common use?\u201d",
+      keyVerses: [
+        { ref: "Romans 9:16", text: "It does not, therefore, depend on human desire or effort, but on God's mercy." }
+      ],
+      questions: [
+        { q:"What point does the Isaac/Ishmael and Jacob/Esau history make?", opts:["Birth order matters most", "God's purposes have always operated on his choice, not human merit", "Israel earned its status"], correct:1, explain:"Paul shows this pattern was present from the very beginning of the covenant family." },
+        { q:"What objection does Paul anticipate?", opts:["That God is too generous", "That this makes God unjust", "That the history is inaccurate"], correct:1, explain:"He raises the hardest question himself rather than letting readers wonder silently." },
+        { q:"What image does he use to answer it?", opts:["A judge and a courtroom", "A potter and clay", "A shepherd and sheep"], correct:1, explain:"Echoing Jeremiah 18 \u2014 the maker's right over what he has made." }
+      ],
+      deepDive: "This is the hardest passage in Romans, and Paul doesn't soften it. He's addressing why some who seemed to have every covenant advantage rejected Christ, and his answer reaches back to God's sovereign choosing throughout Israel's own story \u2014 a pattern present since Isaac and Ishmael, long before anyone could claim credit. The potter image is not Paul's invention; it's borrowed from Jeremiah, where the response of the clay still mattered enormously to the story. Whatever discomfort this passage produces, Paul intends it to produce humility rather than resignation \u2014 nobody, Jew or Gentile, ever had a claim on God's mercy to begin with, which is precisely why it's mercy." },
+    { id:378, book:"Romans", title:"How beautiful are the feet", side:"c",
+      passage: "Paul explains Israel's stumbling: they pursued righteousness by works instead of by faith, and \u201cstumbled over the stumbling stone,\u201d Christ himself. His heart's desire and prayer for them is that they be saved \u2014 they have zeal, but not according to knowledge. \u201cFor Christ is the culmination of the law so that there may be righteousness for everyone who believes.\u201d Faith comes by hearing the message, and the message by the word of Christ. \u201cHow, then, can they call on the one they have not believed in? And how can they believe in the one of whom they have not heard? And how can they hear without someone preaching to them?\u2026 How beautiful are the feet of those who bring good news!\u201d",
+      keyVerses: [
+        { ref: "Romans 10:14\u201315", text: "How, then, can they call on the one they have not believed in? And how can they believe in the one of whom they have not heard? How beautiful are the feet of those who bring good news!" }
+      ],
+      questions: [
+        { q:"Why did Israel stumble, according to Paul?", opts:["They had no zeal", "They pursued righteousness by works rather than by faith", "They lacked knowledge of Scripture"], correct:1, explain:"Genuine zeal, misdirected toward earning rather than receiving." },
+        { q:"What is Christ called in relation to the law?", opts:["Its abolisher", "Its culmination \u2014 the goal it was pointing toward", "Irrelevant to it"], correct:1, explain:"Not opposed to the law but its fulfillment and endpoint." },
+        { q:"What chain does Paul trace back to preaching?", opts:["Calling requires believing, believing requires hearing, hearing requires a preacher", "Faith requires no message", "Belief precedes hearing"], correct:1, explain:"A logical sequence that makes ordinary preachers indispensable to the whole process." }
+      ],
+      deepDive: "Paul's diagnosis of Israel's stumbling is precise and painful: not a lack of zeal but zeal aimed at the wrong target \u2014 earning righteousness instead of receiving it. And his solution isn't primarily an argument; it's a supply chain. Calling depends on believing, believing depends on hearing, hearing depends on someone actually going and saying something out loud. That's why he breaks into praise over ordinary feet: \u2018how beautiful are the feet of those who bring good news.\u2019 Whatever grand theology of election and mercy runs through these chapters, it still depends, in Paul's own logic, on someone being willing to show up and speak." },
+    { id:379, book:"Romans", title:"Grafted into the tree", side:"l",
+      passage: "Has God rejected his people? \u201cBy no means!\u201d Paul himself, an Israelite, is proof there's always a remnant. He pictures an olive tree: some branches broken off, and a wild olive shoot \u2014 Gentile believers \u2014 grafted in among the others, sharing in the nourishing sap of the root. He warns the wild branches against arrogance: \u201cyou do not support the root, but the root supports you.\u201d And if God did not spare the natural branches, the grafted-in ones should not presume either. \u201cAnd if they do not persist in unbelief, they will be grafted in, for God is able to graft them in again.\u201d",
+      keyVerses: [
+        { ref: "Romans 11:18", text: "Do not consider yourself to be superior to those other branches. If you do, consider this: You do not support the root, but the root supports you." }
+      ],
+      questions: [
+        { q:"What proves God hasn't rejected his people?", opts:["Nothing", "Paul himself \u2014 an Israelite believer, evidence of a remaining remnant", "A prophecy"], correct:1, explain:"His own conversion is offered as living proof the door was never fully shut." },
+        { q:"What warning does Paul give Gentile believers?", opts:["To feel guilty", "Against arrogance \u2014 you don't support the root, the root supports you", "To disengage from Israel entirely"], correct:1, explain:"Grafted branches drawing life from a root they didn't grow have nothing to boast about." },
+        { q:"What possibility does Paul hold open?", opts:["None \u2014 the door is permanently shut", "That broken-off branches can be grafted back in again", "Only Gentiles can ever be included"], correct:1, explain:"God's ability to re-graft keeps the door explicitly open, not closed." }
+      ],
+      deepDive: "The olive tree image corrects a temptation Gentile Christians in Rome were apparently already falling into: assuming their inclusion meant Israel's permanent exclusion, and feeling superior about it. Paul dismantles that quickly. The tree is one tree, rooted in the promises to the patriarchs; some natural branches were broken off through unbelief, and wild branches were grafted in through faith \u2014 but grafted branches don't get to boast over the root that feeds them, and the door for the broken-off branches to return was never welded shut. It's a picture built to produce humility in the included and hope for the excluded, not triumphalism in either direction." },
+    { id:380, book:"Romans", title:"Oh, the depth of the riches", side:"r",
+      passage: "Paul's argument through three difficult chapters ends not in a formula but in worship: \u201cOh, the depth of the riches of the wisdom and knowledge of God! How unsearchable his judgments, and his paths beyond tracing out! \u2018Who has known the mind of the Lord? Or who has been his counselor?\u2019\u2026 For from him and through him and to him are all things. To him be the glory forever! Amen.\u201d",
+      keyVerses: [
+        { ref: "Romans 11:33", text: "Oh, the depth of the riches of the wisdom and knowledge of God! How unsearchable his judgments, and his paths beyond tracing out!" }
+      ],
+      questions: [
+        { q:"How does Paul end his argument about Israel and the Gentiles?", opts:["With a tidy formula", "In worship \u2014 overwhelmed by what he can't fully explain", "With a warning"], correct:1, explain:"After the most difficult theological chapters he's written, he lands in praise rather than a complete system." },
+        { q:"What does \u2018his paths beyond tracing out\u2019 admit?", opts:["That Scripture is unreliable", "That some of God's ways exceed full human comprehension", "That the previous chapters were wrong"], correct:1, explain:"An honest limit on how far reasoning alone can take you into the mystery of God's purposes." },
+        { q:"What phrase summarizes everything's origin and destiny?", opts:["\u2018From chance, through effort, to nothing\u2019", "\u2018From him and through him and to him are all things\u2019", "\u2018From Israel, through the law, to Rome\u2019"], correct:1, explain:"Everything, without exception, traced back to its source and forward to its purpose in God." }
+      ],
+      deepDive: "After three chapters of Paul's most demanding theological reasoning, the whole argument dissolves into doxology. That's instructive in itself. He doesn't close with a diagram explaining exactly how election, human choice, Jewish unbelief, and Gentile inclusion fit together into a system you could master. He closes overwhelmed \u2014 unsearchable judgments, untraceable paths, a mind he cannot fully know. For anyone who has tried to reason their way to total certainty about God's hardest purposes, Paul's own example is the corrective: understanding runs out eventually, and worship is the right response when it does, not frustration." },
     { id:310, book:"1 Corinthians", title:"The foolishness of the cross", side:"c",
       passage: "Corinth's church was talented, wealthy, and fractured \u2014 quarreling over which teacher they followed. Paul refuses the game: \u201cIs Christ divided? Was Paul crucified for you?\u201d Then he names why: \u201cFor the message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God\u2026 God chose the foolish things of the world to shame the wise; God chose the weak things to shame the strong.\u201d And of himself: \u201cI resolved to know nothing while I was with you except Jesus Christ and him crucified.\u201d",
       keyVerses: [
@@ -4625,6 +4817,8 @@
     "2 Samuel": "You're partway through 2 Samuel. David waited years between the anointing and the crown, and asked God before every move. Where in your life are you in the space between a promise and its fulfillment \u2014 and what would waiting faithfully look like?",
     "1 Kings": "You're partway through 1 Kings. Solomon asked for a hearing heart instead of riches. If God offered you anything tonight, what would you honestly ask for \u2014 and what does that answer tell you?",
     "2 Kings": "You're partway through 2 Kings. Elisha prayed \u2018open his eyes\u2019 \u2014 the fiery army was already there; only the sight was missing. Where in your life might the protection already be present, waiting for you to see it?",
+    "1 Chronicles": "You're partway through 1 Chronicles. Jabez's one honest prayer interrupts pages of forgotten names. What honest, specific request have you been afraid to actually voice to God?",
+    "2 Chronicles": "You're partway through 2 Chronicles. Solomon admitted the temple couldn't contain the God it was built for. Where have you let a building, routine, or ritual start to feel bigger than the God it's meant to point to?",
     "Ezra": "You're partway through Ezra. At the foundation, joy and weeping made one indistinguishable sound. What in your life right now is both a genuine new beginning and a real loss \u2014 and can you let yourself feel both?",
     "Nehemiah": "You're partway through Nehemiah. He prayed for four months, then prayed again in the half-second before answering the king. Which kind of prayer does your life have less of \u2014 the long kind or the instant kind?",
     "Esther": "You're partway through Esther. God is never named in this book, yet He's moving in every coincidence. Where in your own story might the \u2018coincidences\u2019 deserve a second look?",
@@ -4691,6 +4885,8 @@
     "2 Samuel": "Looking back at 2 Samuel \u2014 the covenant, the fall with Bathsheba, Nathan's mirror, Absalom's grief, the final song \u2014 David sinned terribly and repented completely. Is there anything in your life waiting for a \u2018You are the man\u2019 moment of honesty, and what would full confession look like?",
     "1 Kings": "Looking back at 1 Kings \u2014 Solomon's wisdom and slow drift, the divided kingdom, Elijah's fire and whisper \u2014 the book's warning is that starting well isn't ending well. What small compromise, if left alone for years, could quietly divide your heart \u2014 and what's one step to close that gap this week?",
     "2 Kings": "Looking back at 2 Kings \u2014 the cloak falling to Elisha, Naaman's muddy obedience, the lost book found, the fall of two kingdoms \u2014 warnings were given for generations before judgment came. What warning has God been patiently repeating to you, and what would it take to finally act on it?",
+    "1 Chronicles": "Looking back at 1 Chronicles \u2014 nine chapters of remembered names, David's redirected desire, and decades spent preparing a temple he'd never enter \u2014 David prayed \u2018who am I, that you have brought me this far?\u2019 What are you currently building that you may never see finished, and can you make peace with that?",
+    "2 Chronicles": "Looking back at 2 Chronicles \u2014 Solomon's prayer, \u20187:14\u2019, Hezekiah and Josiah's revivals, and Cyrus's closing decree \u2014 the whole story ends not in ashes but with an open door home. What door has God left open for you that you've been too discouraged to walk through?",
     "Ezra": "Looking back at Ezra \u2014 the door home opened by a pagan king, the stalled work restarted by preaching, the scribe's set heart \u2014 Ezra studied, did, and then taught, in that order. Which of those three steps is your life currently skipping?",
     "Nehemiah": "Looking back at Nehemiah \u2014 the burden, the wall, the sword and trowel, the joy that was strength, and the relapse of the final chapter \u2014 what has God helped you rebuild that now needs maintaining, and what would \u2018chapter 13 honesty\u2019 about it look like?",
     "Esther": "Looking back at Esther \u2014 the hidden identity, the sleepless night, the reversal \u2014 the whole book asks Mordecai's question: what position, access, or comfort do you hold right now that might exist \u2018for such a time as this\u2019?",
@@ -5103,7 +5299,11 @@
         "Psalm 46 faces mountains falling into the sea and hears the command: \u2018Be still, and know that I am God.\u2019",
         "Psalm 51 is repentance with the exits sealed: \u2018Create in me a pure heart.\u2019",
         "Psalm 103 disciplines memory into gratitude: sins removed as far as east from west.",
-        "Psalm 139 turns total exposure into total embrace: \u2018Search me, God, and know my heart.\u2019"
+        "Psalm 139 turns total exposure into total embrace: \u2018Search me, God, and know my heart.\u2019",
+        "Psalm 63: thirst in a dry land, and a night spent remembering God.",
+        "Psalm 84: \u2018Better is one day in your courts than a thousand elsewhere.\u2019",
+        "Psalm 90, Moses\u2019 only psalm: \u2018Teach us to number our days, that we may gain a heart of wisdom.\u2019",
+        "Psalm 145: the LORD is good to all, and near to all who call on him in truth"
       ],
       questions: [
         { q:"What single habit defines Psalm 1's rooted person?", opts:["Constant travel", "Delight-driven meditation on God's word, day and night", "Wealth management"], correct:1, explain:"The tree is planted by what it drinks \u2014 the Word turned over like food being chewed." },
@@ -5664,6 +5864,7 @@
         "\u2018There is now no condemnation for those who are in Christ Jesus.\u2019",
         "The Spirit interceding through wordless groans when we don't know how to pray.",
         "Nothing in all creation can separate us from the love of God.",
+        "Chapters 9\u201311 wrestle honestly with Israel\u2019s place in the story \u2014 ending not in a formula but in worship: \u2018Oh, the depth of the riches of the wisdom of God!\u2019",
         "Therefore: living sacrifices, renewed minds, sincere love, and welcoming one another."
       ],
       questions: [
@@ -6102,6 +6303,47 @@
         { q:"How does the Bible end?", opts:["With a warning", "With an invitation and \u2018Come, Lord Jesus\u2019", "With a genealogy"], correct:1, explain:"Longing and welcome, and grace as the final word." }
       ],
       deepDive: "Revelation is famous for its terrors and ends in extraordinary tenderness. It was written to real churches facing real pressure, and it opens not with prophecy but with presence \u2014 Christ walking among the lampstands, hand on a terrified man's shoulder, holding the keys of death. Its interpretive key is chapter 5: John hears a Lion announced and turns to see a slaughtered Lamb, which means every claim about conquest in this book must be read through a cross. And it closes by reopening Eden \u2014 river, tree of life, no curse, God's face seen \u2014 with an invitation to anyone thirsty and a church praying for her Lord to hurry back."
+    },
+    "1 Chronicles": {
+      title: "1 Chronicles overview",
+      overview: [
+        "Nine chapters of genealogy, written to remind a scattered post-exile people that they still belonged to a story.",
+        "Jabez's one bold prayer interrupts the lists \u2014 and God granted his request.",
+        "David wanted to build God a house; God promised to build David one instead.",
+        "\u2018Who am I, LORD God, that you have brought me this far?\u2019",
+        "David spent his final years gathering materials and plans for a temple he'd never enter.",
+        "\u2018Everything comes from you, and we have given you only what comes from your hand.\u2019",
+        "\u2018Be strong and courageous\u2026 the LORD my God is with you\u2019 \u2014 David's charge to Solomon."
+      ],
+      questions: [
+        { q:"Why open with nine chapters of names?", opts:["Filler", "To tell a scattered people after exile they still belonged to the story", "Legal record only"], correct:1, explain:"Identity work for people who had lost their land and nearly lost their story." },
+        { q:"Why couldn't David build the temple?", opts:["Lack of funds", "He had shed much blood in war", "God forbade all temples"], correct:1, explain:"The house of worship needed a builder whose reign wasn't defined by warfare." },
+        { q:"How did David respond to being told no?", opts:["Anger", "Worship and gratitude", "He built it anyway"], correct:1, explain:"His prayer afterward is one of Scripture's most humble responses to a denied desire." },
+        { q:"What did David spend his final years doing?", opts:["Resting", "Preparing materials and plans for a temple he'd never see finished", "Fighting more wars"], correct:1, explain:"Faithful investment in something beyond his own lifetime." },
+        { q:"What did David's prayer over the offerings insist?", opts:["Generosity earns favor", "Even our giving only returns what was already His", "Wealth proves righteousness"], correct:1, explain:"He refuses to let generosity become a source of pride." }
+      ],
+      deepDive: "1 Chronicles retells David's story to a very different audience than 2 Samuel did \u2014 not a nation at the height of its power, but survivors of exile trying to remember who they were and what they still belonged to. That's why it opens with nine chapters of names: before anything else, the Chronicler insists that every generation, known and unknown, is remembered. And it's why David's arc centers not on his conquests but on a redirected desire \u2014 wanting to build God a house, and instead spending his final years preparing the way for a temple, and a dynasty, he would never personally see completed."
+    },
+    "2 Chronicles": {
+      title: "2 Chronicles overview",
+      overview: [
+        "Solomon dedicates the temple, admitting the heavens themselves cannot contain the God it houses.",
+        "He prays for Israelites and for foreigners from distant lands \u2014 so all peoples may know God's name.",
+        "Fire fell from heaven; the glory of the LORD filled the temple.",
+        "\u2018If my people\u2026 will humble themselves and pray\u2026 I will hear from heaven and heal their land.\u2019",
+        "Hezekiah reopened the temple's shut doors and restored Passover.",
+        "Josiah rediscovered the forgotten Book of the Law and led the greatest reform in the kingdom's history.",
+        "Jerusalem finally fell after repeated warnings were mocked \u2014 \u2018there was no remedy.\u2019",
+        "And the very last words of the Hebrew Bible: Cyrus's decree inviting the exiles to go home and rebuild."
+      ],
+      questions: [
+        { q:"What tension does Solomon's prayer name?", opts:["None", "That no building can contain the God of the whole universe", "That the temple was too small"], correct:1, explain:"He builds the grandest structure his kingdom could produce and admits its limits immediately." },
+        { q:"What four things does 7:14 ask of God's people?", opts:["Sacrifice, ritual, fasting, silence", "Humble themselves, pray, seek his face, turn from wicked ways", "Nothing"], correct:1, explain:"A real response invited before the promised healing." },
+        { q:"What triggered Josiah's reform?", opts:["A military victory", "Rediscovering the forgotten Book of the Law during temple repairs", "A prophet's rebuke"], correct:1, explain:"Scripture itself had been lost inside its own building." },
+        { q:"What reason is given for the exile?", opts:["Bad luck", "Persistent mockery of God's messengers despite repeated warnings", "Weak leadership alone"], correct:1, explain:"Judgment presented as a last resort after patient warning." },
+        { q:"How does the book \u2014 and the Hebrew Bible \u2014 end?", opts:["In despair", "With Cyrus's decree inviting exiles to go home and rebuild", "With a battle"], correct:1, explain:"The story refuses to end on ashes; the last note is an open door." }
+      ],
+      deepDive: "2 Chronicles tracks the kings of Judah alone, weighing each one against a single question: did they turn toward God or away? Its theological center is 7:14, God's promise that humility, prayer, and turning can heal what's broken \u2014 and the book proves it twice, in Hezekiah's and Josiah's revivals, before showing what happens when kings and people finally stop listening altogether. Jerusalem falls, the temple burns, and it looks like the end. But the book \u2014 and in the traditional Hebrew ordering, the entire Bible \u2014 closes with a pagan king's decree inviting the broken people home. Even total collapse doesn't get the final word."
     }
   };
 
@@ -6440,6 +6682,24 @@
       ],
       takeaway: "The Old Testament ends by recording the people who kept fearing God in an era when it looked futile \u2014 a scroll of remembrance for faithfulness that changed nothing visible \u2014 and then promises sunrise with healing before four hundred years of silence.",
       reflection: "Where have you been faithful for a long time without visible return, and started to wonder if it's futile? Who are the people you could talk with about it \u2014 and have you told them?" },
+    "1 Chronicles": { focus: "1 Chronicles 29:10\u201319", title: "Who am I, that we could give this",
+      sections: [
+        { h: "A king who prepared and wouldn't finish", b: "David spent his final years amassing gold, silver, bronze, iron, and cut stone \u2014 by his own account, \u2018with great pains\u2019 \u2014 for a temple he had already been told he would never enter. There's no bitterness in the text about this. He simply kept working, because the work mattered more than getting to see it done." },
+        { h: "The people gave willingly", b: "When David called for offerings toward the project, the response wasn't grudging \u2014 leaders and ordinary people gave gold, silver, bronze, iron, and precious stones, and Scripture says they \u2018gave willingly\u2019 and \u2018rejoiced.\u2019 Generosity offered freely, without pressure, tends to produce joy in the giver rather than resentment." },
+        { h: "\u201cWho am I, and who are my people?\u201d", b: "David's prayer over the gifts refuses to let anyone \u2014 himself included \u2014 take credit. \u2018Everything comes from you, and we have given you only what comes from your hand.\u2019 Even the resources given back to God were never truly the people's own possession to begin with; they were simply passing through borrowed hands to their rightful owner." },
+        { h: "A prayer for the next generation", b: "David closes by praying not for himself but for Solomon and the people who would come after him: give my son Solomon wholehearted devotion, and keep this desire in the hearts of your people forever. His final recorded prayer looks entirely forward, toward a temple and a generation he wouldn't live to see." }
+      ],
+      takeaway: "David poured decades of effort into a temple he'd never enter, and when the people responded with lavish generosity, his prayer refused to let anyone claim credit \u2014 everything given was only ever a return of what already belonged to God.",
+      reflection: "What are you currently investing in that you may never see completed \u2014 and can you offer that work, like David did, without needing to witness the finish?" },
+    "2 Chronicles": { focus: "2 Chronicles 7:11\u201322", title: "If my people",
+      sections: [
+        { h: "The vision comes after the dedication", b: "God appears to Solomon at night, after the fire has fallen and the glory has filled the temple \u2014 after the celebration, not during it. Sometimes the clearest word from God comes in the quiet that follows a mountaintop moment, not in the moment itself." },
+        { h: "A warning built into the promise", b: "God tells Solomon plainly: if the people turn to other gods, this magnificent temple will become a byword, an object of ridicule to everyone who passes it. The very thing built to honor God's presence could become evidence of its absence. Nothing about the building itself guaranteed anything." },
+        { h: "Four verbs, then three gifts", b: "\u2018If my people\u2026 will humble themselves and pray and seek my face and turn from their wicked ways\u2019 \u2014 four active, costly postures. Only then: \u2018I will hear\u2026 forgive\u2026 heal.\u2019 The order matters. God doesn't begin by overlooking what's wrong; he begins by inviting an honest turn, and everything else follows from there." },
+        { h: "Called by my name", b: "The promise is addressed specifically to \u2018my people, who are called by my name\u2019 \u2014 not a general civic principle available to any nation on any terms, but a covenant word to a covenant people. That specificity doesn't shrink its power; it grounds it. This is a relationship being described, not a formula being handed out." }
+      ],
+      takeaway: "God's promise to Solomon came with a warning built in: even the temple itself offered no guarantee. Restoration always follows the same order in Scripture \u2014 humility, prayer, seeking, and turning, before hearing, forgiveness, and healing.",
+      reflection: "Of the four postures named \u2014 humbling yourself, praying, seeking God's face, turning from wrong \u2014 which one have you been skipping while still hoping for the healing?" },
 
     "Matthew": { focus: "Matthew 5:1\u201312", title: "The Beatitudes",
       sections: [
