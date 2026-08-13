@@ -7500,6 +7500,25 @@
     return result;
   }
 
+  function keyboardStates(guesses, target){
+    const rank = { gray:0, yellow:1, green:2 };
+    const states = {};
+    guesses.forEach(g => {
+      const res = evaluateGuess(g, target);
+      for (let i = 0; i < 5; i++) {
+        const letter = g[i];
+        if (!states[letter] || rank[res[i]] > rank[states[letter]]) states[letter] = res[i];
+      }
+    });
+    return states;
+  }
+
+  const KEYBOARD_ROWS = [
+    ['Q','W','E','R','T','Y','U','I','O','P'],
+    ['A','S','D','F','G','H','J','K','L'],
+    ['ENTER','Z','X','C','V','B','N','M','BACK']
+  ];
+
   const AVATAR_OPTIONS = ['\ud83d\udcd6', '\u271d\ufe0f', '\ud83d\udd4a\ufe0f', '\ud83d\udc11', '\ud83d\udc1f', '\u26f0\ufe0f', '\ud83d\ude4f', '\ud83c\udf3f'];
   const BADGES = [
     { id:'seeker', icon:'\ud83d\udd0d', title:'Seeker', cost:30 },
@@ -7791,6 +7810,27 @@
       if (stored && stored.date === today) return stored;
       return { date: today, guesses: [], done: false, won: false };
     }
+
+    function pressWordleKey(key){
+      const w = todaysWordleState();
+      if (w.done) return;
+      if (key === 'ENTER') { submitWordleGuess(); return; }
+      if (key === 'BACK') { setWordleInput(s => s.slice(0, -1)); return; }
+      setWordleInput(s => s.length < 5 ? s + key : s);
+    }
+
+    React.useEffect(() => {
+      if (tab !== 'daily') return;
+      function handler(ev){
+        const w = todaysWordleState();
+        if (w.done) return;
+        if (ev.key === 'Enter') { ev.preventDefault(); submitWordleGuess(); }
+        else if (ev.key === 'Backspace') { setWordleInput(s => s.slice(0, -1)); }
+        else if (/^[a-zA-Z]$/.test(ev.key)) { setWordleInput(s => s.length < 5 ? s + ev.key.toUpperCase() : s); }
+      }
+      window.addEventListener('keydown', handler);
+      return () => window.removeEventListener('keydown', handler);
+    }, [tab, state.dailyWord, wordleInput]);
 
     function submitWordleGuess(){
       const guess = wordleInput.trim().toUpperCase();
@@ -8088,14 +8128,15 @@
           const w = todaysWordleState();
           const target = todaysWord();
           const rowsLeft = 5 - w.guesses.length;
+          const kbStates = keyboardStates(w.guesses, target.word);
           return e('div', {className:'dl-wordle-card' + (wordleShake ? ' shake' : ''), key:'wordle'}, [
             e('div', {className:'dl-wordle-clue', key:'clue'}, [String.fromCodePoint(0x1F4A1), ' ', target.clue]),
             e('div', {className:'dl-wordle-grid', key:'grid'},
               w.guesses.map((g, gi) => e('div', {className:'dl-wordle-row', key:'g'+gi},
-                evaluateGuess(g, target.word).map((res, li) => e('div', {className:'dl-wordle-tile ' + res, key:li}, g[li]))
+                evaluateGuess(g, target.word).map((res, li) => e('div', {className:'dl-wordle-tile revealed ' + res, style:{transitionDelay:(li*90)+'ms', animationDelay:(li*90)+'ms'}, key:li}, g[li]))
               )).concat(
                 w.done ? [] : [ e('div', {className:'dl-wordle-row', key:'active'},
-                  Array.from({length:5}).map((_, li) => e('div', {className:'dl-wordle-tile' + (wordleInput[li] ? ' filled' : ''), key:li}, wordleInput[li] || ''))
+                  Array.from({length:5}).map((_, li) => e('div', {className:'dl-wordle-tile' + (wordleInput[li] ? ' filled pop' : ''), key:li}, wordleInput[li] || ''))
                 ) ]
               ).concat(
                 Array.from({length: Math.max(0, rowsLeft - (w.done?0:1))}).map((_, ri) => e('div', {className:'dl-wordle-row', key:'empty'+ri},
@@ -8110,10 +8151,14 @@
                   e('div', {className:'dl-wordle-result-sub', key:'clue2'}, target.clue),
                   e('div', {className:'dl-wordle-refresh', key:'r'}, 'New word in ' + formatCountdown(msUntilMidnight()))
                 ])
-              : e('div', {className:'dl-wordle-input-row', key:'input'}, [
-                  e('input', {className:'dl-wordle-input', value:wordleInput, maxLength:5, placeholder:'Guess a 5-letter word', onChange: ev => setWordleInput(ev.target.value.toUpperCase().replace(/[^A-Z]/g,'')), onKeyDown: ev => { if (ev.key === 'Enter') submitWordleGuess(); }, key:'i'}),
-                  e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', width:'auto', padding:'0 20px'}, onClick: submitWordleGuess, key:'go'}, 'Guess')
-                ])
+              : e('div', {className:'dl-wordle-keyboard', key:'kb'}, KEYBOARD_ROWS.map((row, ri) => e('div', {className:'dl-wordle-kb-row', key:'row'+ri},
+                  row.map(k => {
+                    const isWide = k === 'ENTER' || k === 'BACK';
+                    const cls = 'dl-wordle-key' + (isWide ? ' wide' : '') + (kbStates[k] ? ' ' + kbStates[k] : '');
+                    const label = k === 'BACK' ? String.fromCodePoint(0x232B) : (k === 'ENTER' ? 'ENTER' : k);
+                    return e('button', {className:cls, onClick:()=>pressWordleKey(k), key:k}, label);
+                  })
+                )))
           ]);
         })(),
 
