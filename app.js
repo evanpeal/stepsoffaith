@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -7213,136 +7213,174 @@
 
   const TESTS = [
     { id:'people_easy', title:'Names & People', tier:'Easy', type:'multiple', icon:'\ud83e\uddd1', cost:20,
+      intro:{ ref:'Hebrews 11:1\u20132', verse:'By faith the people of old received their commendation.', note:'A quick tour of the most famous names in Scripture \u2014 great if you\u2019re just getting your feet under you.' },
       questions: [
         { q:"Who was thrown into a lions' den for praying?", opts:["Daniel","Samson","David","Elijah"], correct:0, explain:"Daniel kept praying despite the king's decree, and God shut the lions' mouths." },
         { q:"Who led the Israelites out of Egypt?", opts:["Joshua","Moses","Aaron","Noah"], correct:1, explain:"Moses confronted Pharaoh and led Israel through the Red Sea to freedom." },
         { q:"Who was the first man, according to Genesis?", opts:["Noah","Abraham","Adam","Cain"], correct:2, explain:"Adam was formed from the dust and placed in the Garden of Eden." },
         { q:"Who betrayed Jesus for 30 pieces of silver?", opts:["Peter","Judas Iscariot","Thomas","John"], correct:1, explain:"Judas identified Jesus to the authorities with a kiss." },
         { q:"Who was known for his great strength and long hair?", opts:["Samson","Goliath","Gideon","Saul"], correct:0, explain:"Samson's strength was tied to a vow never to cut his hair." },
-        { q:"Who was swallowed by a great fish?", opts:["Elijah","Jonah","Peter","Job"], correct:1, explain:"Jonah spent three days inside the fish before being spit out onto dry land." }
+        { q:"Who was swallowed by a great fish?", opts:["Elijah","Jonah","Peter","Job"], correct:1, explain:"Jonah spent three days inside the fish before being spit out onto dry land." },
+        { q:"Who was Jesus' mother?", opts:["Martha","Elizabeth","Mary","Anna"], correct:2, explain:"Mary was the young woman chosen to carry and raise Jesus." }
       ] },
     { id:'numbers_medium', title:'Numbers in the Bible', tier:'Medium', type:'multiple', icon:'\ud83d\udd22', cost:35,
+      intro:{ ref:'Deuteronomy 8:2', verse:'Remember the whole way that the LORD your God has led you these forty years in the wilderness.', note:'Scripture is full of specific numbers that carry real weight \u2014 this one rewards paying attention to the details.' },
       questions: [
         { q:"How many days and nights did it rain during the flood?", opts:["7","40","100","3"], correct:1, explain:"Forty days and nights of rain flooded the earth in Noah's story." },
-        { q:"How many commandments did God give Moses?", opts:["10","12","7","5"], correct:0, explain:"The Ten Commandments were given at Mount Sinai." },
+        { q:"How many years did Jacob work for Laban before marrying both Leah and Rachel?", opts:["7","14","20","10"], correct:1, explain:"Seven years for Leah (after being deceived) and seven more for Rachel \u2014 fourteen total." },
         { q:"How many disciples did Jesus choose?", opts:["7","10","12","20"], correct:2, explain:"Jesus chose twelve disciples to follow and learn from Him closely." },
-        { q:"How many years did the Israelites wander in the wilderness?", opts:["10","40","100","4"], correct:1, explain:"Forty years passed before Israel entered the promised land." },
+        { q:"How many years of famine did Joseph predict from Pharaoh's dream?", opts:["3","5","7","10"], correct:2, explain:"Seven years of plenty would be followed by seven years of famine." },
         { q:"How many days was Jesus in the tomb before rising?", opts:["1","3","7","40"], correct:1, explain:"Jesus rose on the third day, a central claim of the Christian faith." },
-        { q:"How many plagues struck Egypt before Pharaoh let Israel go?", opts:["5","7","10","12"], correct:2, explain:"Ten plagues struck Egypt, ending with the death of the firstborn." }
+        { q:"How many plagues struck Egypt before Pharaoh let Israel go?", opts:["5","7","10","12"], correct:2, explain:"Ten plagues struck Egypt, ending with the death of the firstborn." },
+        { q:"How many years did Solomon take to build the temple?", opts:["3","7","12","20"], correct:1, explain:"The temple took seven years to complete." }
       ] },
     { id:'books_hard', title:'Books of the Bible', tier:'Hard', type:'multiple', icon:'\ud83d\udcda', cost:50,
+      intro:{ ref:'2 Timothy 3:16', verse:'All Scripture is God-breathed and is useful for teaching.', note:'This one goes past the basics \u2014 book order, structure, and a few genuinely obscure details.' },
       questions: [
-        { q:"What is the first book of the Bible?", opts:["Exodus","Genesis","Psalms","Matthew"], correct:1, explain:"Genesis opens with creation and the earliest stories of humanity." },
-        { q:"What is the last book of the New Testament?", opts:["Revelation","Acts","Jude","John"], correct:0, explain:"Revelation closes the New Testament with visions of the end of the age." },
-        { q:"Which book comes right after Matthew?", opts:["Luke","John","Mark","Acts"], correct:2, explain:"Mark is the second of the four Gospels, known for its fast pace." },
-        { q:"How many books are in the New Testament?", opts:["27","39","66","12"], correct:0, explain:"The New Testament contains 27 books, from Matthew to Revelation." },
-        { q:"Which Old Testament book is a collection of songs and prayers?", opts:["Proverbs","Psalms","Job","Ruth"], correct:1, explain:"Psalms is Israel's songbook, full of praise, lament, and prayer." },
-        { q:"Who wrote most of the New Testament letters?", opts:["Peter","John","Paul","James"], correct:2, explain:"Paul wrote roughly half of the New Testament's books as letters to churches." }
+        { q:"Which Old Testament book never mentions God's name directly?", opts:["Ruth","Esther","Job","Nahum"], correct:1, explain:"Esther's story is famous for God working behind the scenes without being named outright." },
+        { q:"Which two Old Testament books are named after women?", opts:["Ruth and Esther","Naomi and Ruth","Sarah and Rebekah","Deborah and Ruth"], correct:0, explain:"Ruth and Esther are the only two Old Testament books named for their female protagonists." },
+        { q:"How many chapters does the book of Obadiah have?", opts:["1","3","5","12"], correct:0, explain:"Obadiah is the shortest book in the Old Testament \u2014 just one chapter, twenty-one verses." },
+        { q:"Which book comes immediately before the Gospels in most English Bibles?", opts:["Malachi","Zechariah","Daniel","Nehemiah"], correct:0, explain:"Malachi closes the Old Testament, followed by roughly four centuries of silence before Matthew opens the New." },
+        { q:"Which New Testament letter is addressed to a specific individual about a runaway slave?", opts:["Titus","Philemon","Jude","3 John"], correct:1, explain:"Paul wrote Philemon as a personal appeal on behalf of Onesimus." },
+        { q:"Which book of the Bible is traditionally attributed to an anonymous author, despite being included among Paul's letters in many old Bibles?", opts:["Galatians","Hebrews","Philippians","Titus"], correct:1, explain:"Hebrews never names its author, and its authorship has been debated since the early church." },
+        { q:"Which Old Testament book is entirely a poem structured as an acrostic, working through the Hebrew alphabet?", opts:["Nahum","Lamentations","Joel","Micah"], correct:1, explain:"Lamentations' poems are built letter by letter through the Hebrew alphabet as a structure for grief." }
       ] },
-    { id:'lightning', title:'Lightning Round', tier:'Timed', type:'timed', icon:'\u26a1', cost:40, timeLimit:45,
+    { id:'true_false_1', title:'True or False: Old Testament', tier:'Easy', type:'multiple', icon:'\ud83d\udd25', cost:20,
+      intro:{ ref:'Psalm 119:160', verse:'The sum of your word is truth.', note:'Some of these sound true because they\u2019re famous \u2014 but a few are popular misquotes. Read carefully.' },
       questions: [
-        { q:"True or false: Noah built an ark.", opts:["True","False"], correct:0, explain:"Noah built the ark at God's instruction to survive the flood." },
+        { q:"True or false: Abraham was originally named Abram.", opts:["True","False"], correct:0, explain:"God renamed him Abraham, meaning \u201cfather of many,\u201d after the covenant." },
+        { q:"True or false: Moses saw the Promised Land but did not enter it.", opts:["True","False"], correct:0, explain:"Moses viewed Canaan from a mountain but died before crossing in." },
         { q:"True or false: The Bible says Jonah was swallowed by a whale.", opts:["True","False"], correct:1, explain:"Scripture says a \u201cgreat fish,\u201d not specifically a whale." },
-        { q:"True or false: Moses parted the Red Sea.", opts:["True","False"], correct:0, explain:"God parted the sea through Moses at the edge of Egypt." },
+        { q:"True or false: The Israelites wandered the wilderness for 100 years.", opts:["True","False"], correct:1, explain:"It was forty years, not one hundred." },
+        { q:"True or false: Joseph had a coat of many colors.", opts:["True","False"], correct:0, explain:"The special coat from his father was part of what made his brothers jealous." },
         { q:"True or false: David defeated Goliath with a sword.", opts:["True","False"], correct:1, explain:"David used a sling and a stone, not a sword, to defeat Goliath." },
-        { q:"True or false: Jesus turned water into wine.", opts:["True","False"], correct:0, explain:"This was Jesus' first recorded miracle, at a wedding in Cana." },
-        { q:"True or false: There are twelve tribes of Israel.", opts:["True","False"], correct:0, explain:"The twelve tribes descend from Jacob's twelve sons." },
-        { q:"True or false: The Ten Commandments were given on Mount Sinai.", opts:["True","False"], correct:0, explain:"Sinai is the mountain where God gave Moses the Law." },
-        { q:"True or false: Adam and Eve had three sons named in Genesis.", opts:["True","False"], correct:0, explain:"Cain, Abel, and Seth are all named as sons of Adam and Eve." }
+        { q:"True or false: Ruth was Naomi's daughter-in-law.", opts:["True","False"], correct:0, explain:"Ruth stayed loyal to Naomi even after both of their husbands died." },
+        { q:"True or false: Esther saved her people as queen of Persia.", opts:["True","False"], correct:0, explain:"Esther risked her life to expose a plot against the Jewish people." }
       ] },
-    { id:'verse_fill', title:'Complete the Verse', tier:'Fill-in', type:'fill', icon:'\u270d\ufe0f', cost:30,
+    { id:'verse_fill', title:'Complete the Verse', tier:'Medium', type:'fill', icon:'\u270d\ufe0f', cost:30,
+      intro:{ ref:'Psalm 119:11', verse:'I have stored up your word in my heart, that I might not sin against you.', note:'These are some of the most-quoted verses in Scripture \u2014 fill in the missing word from memory.' },
       questions: [
         { text:"\u201cIn the beginning God created the heavens and the ___.\u201d", ref:"Genesis 1:1", answer:"earth", explain:"The very first verse of the Bible sets the stage for everything after." },
         { text:"\u201cThe Lord is my shepherd; I shall not ___.\u201d", ref:"Psalm 23:1", answer:"want", explain:"One of the most well-known verses, describing trust in God's provision." },
         { text:"\u201cFor God so loved the world, that he gave his one and only ___.\u201d", ref:"John 3:16", answer:"Son", explain:"This verse is often called the gospel in a single sentence." },
         { text:"\u201cI can do all things through Christ who strengthens ___.\u201d", ref:"Philippians 4:13", answer:"me", explain:"Paul wrote this from prison, about contentment in any circumstance." },
-        { text:"\u201cTrust in the Lord with all your ___.\u201d", ref:"Proverbs 3:5", answer:"heart", explain:"This proverb continues: \u2018and do not lean on your own understanding.\u2019" }
+        { text:"\u201cTrust in the Lord with all your ___.\u201d", ref:"Proverbs 3:5", answer:"heart", explain:"This proverb continues: \u2018and do not lean on your own understanding.\u2019" },
+        { text:"\u201cBe strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you ___.\u201d", ref:"Joshua 1:9", answer:"go", explain:"God's charge to Joshua as he took over leadership from Moses." }
       ] },
     { id:'miracles_medium', title:'Miracles of Jesus', tier:'Medium', type:'multiple', icon:'\u2728', cost:35,
+      intro:{ ref:'John 20:30\u201331', verse:'Jesus did many other signs\u2026 but these are written so that you may believe.', note:'Every miracle in the Gospels pointed at something \u2014 see how well you know the details behind the wonder.' },
       questions: [
         { q:"What was Jesus' first recorded miracle?", opts:["Turning water into wine", "Walking on water", "Healing a blind man", "Feeding the 5,000"], correct:0, explain:"This happened at a wedding in Cana, at His mother's request." },
         { q:"How many people did Jesus feed with five loaves and two fish?", opts:["500", "5,000", "50", "50,000"], correct:1, explain:"This miracle, feeding 5,000, appears in all four Gospels." },
         { q:"What did Jesus do for Lazarus?", opts:["Healed his blindness", "Raised him from the dead", "Cast out a demon", "Cured his leprosy"], correct:1, explain:"Lazarus had been dead four days when Jesus called him out of the tomb." },
         { q:"How did Jesus calm a storm on the sea?", opts:["He rowed to shore", "He spoke and rebuked the wind and waves", "He prayed all night first", "He waited it out"], correct:1, explain:"His disciples were amazed that even the wind and waves obeyed Him." },
-        { q:"How many lepers did Jesus heal who then didn't return to thank Him, except one?", opts:["Ten", "Three", "Seven", "Twelve"], correct:0, explain:"Of the ten healed, only one, a Samaritan, came back to give thanks." }
+        { q:"How many lepers did Jesus heal who then didn't return to thank Him, except one?", opts:["Ten", "Three", "Seven", "Twelve"], correct:0, explain:"Of the ten healed, only one, a Samaritan, came back to give thanks." },
+        { q:"What did Jesus do when Peter tried to walk on water and began to sink?", opts:["Let him struggle to learn a lesson", "Immediately reached out and caught him", "Called for the other disciples to help", "Told him to swim to the boat"], correct:1, explain:"Jesus reached out immediately, asking why Peter doubted." }
       ] },
     { id:'parables_medium', title:'Parables of Jesus', tier:'Medium', type:'multiple', icon:'\ud83c\udf3e', cost:35,
+      intro:{ ref:'Matthew 13:34\u201335', verse:'All these things Jesus said to the crowds in parables.', note:'Jesus taught the deepest truths through ordinary stories \u2014 farmers, coins, sheep, and feasts.' },
       questions: [
         { q:"In the Parable of the Prodigal Son, what does the father do when the son returns?", opts:["Turns him away", "Runs to him and celebrates", "Makes him work as a servant", "Ignores him"], correct:1, explain:"The father's joyful welcome is the heart of this well-known parable." },
         { q:"In the Parable of the Good Samaritan, who stopped to help the injured man?", opts:["A priest", "A Levite", "A Samaritan", "A Pharisee"], correct:2, explain:"The Samaritan, someone the audience wouldn't expect, is the one who shows mercy." },
         { q:"In the Parable of the Sower, what happened to seed that fell on rocky ground?", opts:["It grew into a large tree", "It sprang up quickly but withered", "It never grew at all", "Birds ate it immediately"], correct:1, explain:"Without deep roots, the plant couldn't survive when troubles came." },
         { q:"In the Parable of the Lost Sheep, how many sheep did the shepherd leave to find the one?", opts:["9", "50", "99", "100"], correct:2, explain:"The shepherd leaves ninety-nine to go after the one that wandered off." },
-        { q:"In the Parable of the Talents, what happened to the servant who buried his talent?", opts:["He was praised for caution", "He was rebuked for not using it", "He was given more talents", "He was made a ruler"], correct:1, explain:"The parable praises those who put what they were given to use." }
+        { q:"In the Parable of the Talents, what happened to the servant who buried his talent?", opts:["He was praised for caution", "He was rebuked for not using it", "He was given more talents", "He was made a ruler"], correct:1, explain:"The parable praises those who put what they were given to use." },
+        { q:"In the Parable of the Ten Virgins, what separated the wise from the foolish?", opts:["Their wealth", "Whether they brought extra oil for their lamps", "Their age", "Where they stood in line"], correct:1, explain:"The wise virgins prepared with extra oil; the foolish ones ran out waiting for the bridegroom." }
       ] },
     { id:'prophets_hard', title:'Old Testament Prophets', tier:'Hard', type:'multiple', icon:'\ud83d\udcdc', cost:50,
+      intro:{ ref:'Amos 3:7', verse:'Surely the Lord GOD does nothing without revealing his secret to his servants the prophets.', note:'This one leans into specific prophets and their less-famous moments \u2014 not just Elijah and Isaiah.' },
       questions: [
         { q:"Which prophet was taken up to heaven in a whirlwind?", opts:["Elisha", "Elijah", "Isaiah", "Jeremiah"], correct:1, explain:"Elijah was taken up in a whirlwind, with Elisha watching, in 2 Kings." },
         { q:"Which prophet confronted King David about his sin with Bathsheba?", opts:["Samuel", "Nathan", "Gad", "Elijah"], correct:1, explain:"Nathan told David a parable that exposed his own wrongdoing." },
-        { q:"Which prophet is known for weeping over Jerusalem's coming destruction?", opts:["Jeremiah", "Ezekiel", "Daniel", "Hosea"], correct:0, explain:"Jeremiah is often called \u201cthe weeping prophet.\u201d" },
+        { q:"Which prophet married a woman named Gomer at God's command, as a living picture of Israel's unfaithfulness?", opts:["Hosea", "Joel", "Amos", "Micah"], correct:0, explain:"Hosea's marriage became a lived-out sermon about God's persistent love." },
         { q:"Which prophet saw a vision of dry bones coming to life?", opts:["Isaiah", "Ezekiel", "Amos", "Micah"], correct:1, explain:"Ezekiel's vision symbolized new life for a discouraged Israel." },
-        { q:"Which prophet confronted the prophets of Baal on Mount Carmel?", opts:["Elisha", "Elijah", "Samuel", "Jonah"], correct:1, explain:"Elijah's contest on Mount Carmel proved God's power over Baal's prophets." }
+        { q:"Which prophet was told to marry an unfaithful woman as an illustration of God's love for Israel?", opts:["Amos", "Hosea", "Habakkuk", "Zephaniah"], correct:1, explain:"Hosea's own marriage became the sermon \u2014 love that pursues even after betrayal." },
+        { q:"Which minor prophet's entire message is a single chapter directed at the nation of Edom?", opts:["Obadiah", "Nahum", "Habakkuk", "Haggai"], correct:0, explain:"Obadiah, the Bible's shortest Old Testament book, confronts Edom's pride and betrayal." },
+        { q:"Which prophet argued with God after being told he'd be sent to preach mercy to Nineveh, Israel's enemy?", opts:["Jonah", "Nahum", "Micah", "Joel"], correct:0, explain:"Jonah ran the opposite direction because he didn't want Nineveh to be spared." }
       ] },
     { id:'kings_hard', title:'Kings of Israel', tier:'Hard', type:'multiple', icon:'\ud83d\udc51', cost:50,
+      intro:{ ref:'1 Samuel 8:6\u20137', verse:'The people\u2019s request for a king displeased Samuel\u2026 for they have not rejected you, but they have rejected me.', note:'Every king in this test made real choices with real consequences \u2014 this test rewards knowing the specifics.' },
       questions: [
         { q:"Who was Israel's first king?", opts:["David", "Saul", "Solomon", "Samuel"], correct:1, explain:"Saul was anointed Israel's first king, though he later lost God's favor." },
         { q:"Which king was known for his wisdom and building the first temple?", opts:["David", "Solomon", "Saul", "Rehoboam"], correct:1, explain:"Solomon asked God for wisdom and used it to build the temple in Jerusalem." },
-        { q:"Which king defeated Goliath before becoming king himself?", opts:["Saul", "David", "Solomon", "Ahab"], correct:1, explain:"David's victory over Goliath as a young shepherd made him famous long before his coronation." },
+        { q:"Which king's foolish response to his people's request for lighter labor caused the kingdom to split?", opts:["Solomon", "Rehoboam", "Jeroboam", "Saul"], correct:1, explain:"Rehoboam threatened even heavier burdens than his father Solomon, and ten tribes broke away." },
         { q:"Which wicked king married Jezebel?", opts:["Ahab", "Saul", "Jeroboam", "Omri"], correct:0, explain:"Ahab and Jezebel led Israel deep into idol worship." },
+        { q:"Which king rediscovered the forgotten Book of the Law during temple repairs and led a sweeping national reform?", opts:["Hezekiah", "Josiah", "Jehoshaphat", "Uzziah"], correct:1, explain:"Josiah tore his robes in grief upon hearing the Law read and reformed the kingdom around it." },
+        { q:"Which king reigned the longest in Judah's history, despite a wicked start marked by idolatry and even child sacrifice?", opts:["Manasseh", "Ahaz", "Amon", "Joash"], correct:0, explain:"Manasseh reigned 55 years \u2014 the longest of any king of Judah \u2014 and later repented after being taken captive." },
         { q:"After Solomon's reign, the kingdom split into Israel and what other kingdom?", opts:["Judah", "Egypt", "Babylon", "Assyria"], correct:0, explain:"The united kingdom split into Israel in the north and Judah in the south." }
       ] },
     { id:'geography_medium', title:'Bible Geography & Places', tier:'Medium', type:'multiple', icon:'\ud83d\uddfa\ufe0f', cost:35,
+      intro:{ ref:'Acts 17:26', verse:'He determined allotted periods and the boundaries of their dwelling place.', note:'Places matter throughout Scripture \u2014 this test covers where the biggest moments actually happened.' },
       questions: [
         { q:"In which river was Jesus baptized?", opts:["The Nile", "The Jordan River", "The Euphrates", "The Tigris"], correct:1, explain:"John baptized Jesus in the Jordan River, where the Spirit descended like a dove." },
         { q:"Which city is known as the city of David and Israel's capital?", opts:["Bethlehem", "Jerusalem", "Nazareth", "Jericho"], correct:1, explain:"Jerusalem became the political and spiritual center of Israel under David." },
         { q:"Where was Jesus born?", opts:["Nazareth", "Jerusalem", "Bethlehem", "Capernaum"], correct:2, explain:"Bethlehem fulfilled an Old Testament prophecy about the Messiah's birthplace." },
         { q:"Which sea did the Israelites cross during the Exodus?", opts:["The Dead Sea", "The Red Sea", "The Mediterranean Sea", "The Sea of Galilee"], correct:1, explain:"God parted the Red Sea for Israel to cross on dry ground." },
-        { q:"Where did Jesus grow up?", opts:["Bethlehem", "Jerusalem", "Nazareth", "Capernaum"], correct:2, explain:"Jesus is often called \u201cJesus of Nazareth\u201d because that's where He was raised." }
+        { q:"Where did Jesus grow up?", opts:["Bethlehem", "Jerusalem", "Nazareth", "Capernaum"], correct:2, explain:"Jesus is often called \u201cJesus of Nazareth\u201d because that's where He was raised." },
+        { q:"On what mountain did Moses receive the Ten Commandments?", opts:["Mount Carmel", "Mount Sinai", "Mount Zion", "Mount of Olives"], correct:1, explain:"Sinai is where God gave Moses the Law after Israel left Egypt." },
+        { q:"On which mountain did Elijah confront the prophets of Baal?", opts:["Mount Sinai", "Mount Carmel", "Mount Nebo", "Mount Hermon"], correct:1, explain:"Elijah's contest with 450 prophets of Baal took place on Mount Carmel." }
       ] },
     { id:'wisdom_easy', title:'Wisdom & Proverbs', tier:'Easy', type:'multiple', icon:'\ud83e\udd89', cost:20,
+      intro:{ ref:'Proverbs 4:7', verse:'The beginning of wisdom is this: Get wisdom.', note:'The easiest, most widely known lines from Proverbs and the wisdom books \u2014 a gentle warm-up.' },
       questions: [
         { q:"According to Proverbs, what should you trust with all your heart?", opts:["Yourself", "The Lord", "Your riches", "Your friends"], correct:1, explain:"\u201cTrust in the Lord with all your heart\u201d is one of Proverbs' best-known verses." },
         { q:"Which book is known for wisdom sayings written largely by Solomon?", opts:["Psalms", "Proverbs", "Job", "Ecclesiastes"], correct:1, explain:"Proverbs is a collection of short, practical wisdom sayings." },
         { q:"According to Proverbs, what does pride come before?", opts:["A blessing", "A fall or destruction", "A reward", "Wisdom"], correct:1, explain:"\u201cPride goeth before destruction\u201d warns against arrogance." },
         { q:"Which book explores the suffering of a righteous man tested by hardship?", opts:["Job", "Ruth", "Esther", "Jonah"], correct:0, explain:"Job's story wrestles with why bad things happen to a faithful person." },
-        { q:"Proverbs describes wisdom as more valuable than what?", opts:["Rubies or gold", "Land", "Cattle", "Servants"], correct:0, explain:"Wisdom is repeatedly held up as more precious than any material wealth." }
+        { q:"Proverbs describes wisdom as more valuable than what?", opts:["Rubies or gold", "Land", "Cattle", "Servants"], correct:0, explain:"Wisdom is repeatedly held up as more precious than any material wealth." },
+        { q:"According to Proverbs, what turns away wrath?", opts:["A gentle answer", "Silence", "Running away", "Money"], correct:0, explain:"\u201cA gentle answer turns away wrath, but a harsh word stirs up anger.\u201d" }
       ] },
     { id:'nt_basics_easy', title:'New Testament Basics', tier:'Easy', type:'multiple', icon:'\u2721\ufe0f', cost:20,
+      intro:{ ref:'Mark 1:1', verse:'The beginning of the gospel of Jesus Christ, the Son of God.', note:'A friendly starting point covering the biggest, most familiar names and events in the New Testament.' },
       questions: [
         { q:"What are the first four books of the New Testament called?", opts:["The Epistles", "The Gospels", "The Prophecies", "The Psalms"], correct:1, explain:"Matthew, Mark, Luke, and John are known as the four Gospels." },
         { q:"Which book tells the story of the early church after Jesus?", opts:["Acts", "Romans", "Revelation", "Hebrews"], correct:0, explain:"Acts follows the apostles as the church spreads after Jesus' ascension." },
         { q:"Who baptized Jesus?", opts:["Peter", "John the Baptist", "Paul", "Andrew"], correct:1, explain:"John the Baptist baptized Jesus in the Jordan River." },
         { q:"Which apostle denied knowing Jesus three times?", opts:["Peter", "John", "James", "Thomas"], correct:0, explain:"Peter denied Jesus three times before the rooster crowed, just as Jesus predicted." },
-        { q:"Who is traditionally credited with writing the most New Testament letters?", opts:["Peter", "Paul", "John", "James"], correct:1, explain:"Paul wrote roughly half of the New Testament's books as letters to churches." }
+        { q:"Who is traditionally credited with writing the most New Testament letters?", opts:["Peter", "Paul", "John", "James"], correct:1, explain:"Paul wrote roughly half of the New Testament's books as letters to churches." },
+        { q:"On what day of the week did Jesus rise from the dead?", opts:["Friday", "Saturday", "Sunday", "Monday"], correct:2, explain:"The resurrection on Sunday is why Christians have historically gathered for worship on that day." }
       ] },
-    { id:'ot_speed', title:'Old Testament Speed Round', tier:'Timed', type:'timed', icon:'\ud83d\udd25', cost:40, timeLimit:40,
+    { id:'women_medium', title:'Women of the Bible', tier:'Medium', type:'multiple', icon:'\ud83d\udc51', cost:35,
+      intro:{ ref:'Proverbs 31:30', verse:'A woman who fears the LORD is to be praised.', note:'From queens to prophets to ordinary mothers, these women shaped the story in ways worth knowing well.' },
       questions: [
-        { q:"True or false: Abraham was originally named Abram.", opts:["True","False"], correct:0, explain:"God renamed him Abraham, meaning \u201cfather of many,\u201d after the covenant." },
-        { q:"True or false: Moses saw the Promised Land but did not enter it.", opts:["True","False"], correct:0, explain:"Moses viewed Canaan from a mountain but died before crossing in." },
-        { q:"True or false: Cain killed his brother Abel.", opts:["True","False"], correct:0, explain:"This was the first murder recorded in the Bible." },
-        { q:"True or false: The Israelites wandered the wilderness for 100 years.", opts:["True","False"], correct:1, explain:"It was forty years, not one hundred." },
-        { q:"True or false: Joseph had a coat of many colors.", opts:["True","False"], correct:0, explain:"The special coat from his father was part of what made his brothers jealous." },
-        { q:"True or false: Samson lost his strength when his hair was cut.", opts:["True","False"], correct:0, explain:"His strength was tied to a vow that included never cutting his hair." },
-        { q:"True or false: Ruth was Naomi's daughter-in-law.", opts:["True","False"], correct:0, explain:"Ruth stayed loyal to Naomi even after both of their husbands died." },
-        { q:"True or false: Esther saved her people as queen of Persia.", opts:["True","False"], correct:0, explain:"Esther risked her life to expose a plot against the Jewish people." }
+        { q:"Which woman hid two Israelite spies in Jericho and was spared when the city fell?", opts:["Rahab", "Deborah", "Jael", "Ruth"], correct:0, explain:"Rahab's faith and courage are later celebrated in Hebrews 11 and James 2." },
+        { q:"Who was the only female judge of Israel, leading the nation to victory over a Canaanite army?", opts:["Miriam", "Deborah", "Huldah", "Abigail"], correct:1, explain:"Deborah judged Israel and led alongside the military commander Barak." },
+        { q:"Which queen risked her life by approaching the king unsummoned to save her people from genocide?", opts:["Esther", "Bathsheba", "Vashti", "Jezebel"], correct:0, explain:"Esther's courage \u2014 \u2018if I perish, I perish\u2019 \u2014 saved the Jewish people in Persia." },
+        { q:"Who was Naomi's loyal Moabite daughter-in-law who became King David's great-grandmother?", opts:["Orpah", "Ruth", "Leah", "Tamar"], correct:1, explain:"Ruth's line runs directly to David, and ultimately to Jesus." },
+        { q:"Which sister of Moses watched over him as a baby in the Nile and later led Israel in a song of victory?", opts:["Miriam", "Deborah", "Zipporah", "Rebekah"], correct:0, explain:"Miriam appears at both the beginning and a major turning point of the Exodus story." },
+        { q:"Which woman anointed Jesus' feet with expensive perfume and wiped them with her hair?", opts:["Martha", "Mary Magdalene", "A sinful woman in Simon's house (and separately, Mary of Bethany)", "Joanna"], correct:2, explain:"Two different Gospel accounts describe women anointing Jesus' feet this way, at different times." }
       ] },
-    { id:'verse_fill_2', title:'Complete the Verse II', tier:'Fill-in', type:'fill', icon:'\ud83d\udcd6', cost:30,
+    { id:'letters_hard', title:'Letters of Paul', tier:'Hard', type:'multiple', icon:'\u2709\ufe0f', cost:50,
+      intro:{ ref:'2 Peter 3:15\u201316', verse:'Our beloved brother Paul also wrote to you\u2026 There are some things in them that are hard to understand.', note:'Paul wrote roughly half the New Testament \u2014 this test digs into the specifics of what, where, and to whom.' },
       questions: [
-        { text:"\u201cBe strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you ___.\u201d", ref:"Joshua 1:9", answer:"go", explain:"God's charge to Joshua as he took over leadership from Moses." },
+        { q:"Which of Paul's letters was written to defend the gospel against teachers requiring circumcision and law-keeping for salvation?", opts:["Romans", "Galatians", "Ephesians", "Colossians"], correct:1, explain:"Galatians is Paul's sharpest defense of salvation by faith alone, apart from the works of the law." },
+        { q:"From which city was Paul writing when he wrote Philippians, Ephesians, Colossians, and Philemon \u2014 the so-called \u2018prison epistles\u2019?", opts:["Corinth", "Rome", "Ephesus", "Athens"], correct:1, explain:"Paul wrote these four letters under house arrest in Rome, awaiting trial before Caesar." },
+        { q:"In which letter does Paul confront a church for tolerating a man in an incestuous relationship and quarreling over which teacher they followed?", opts:["1 Corinthians", "Galatians", "1 Timothy", "Titus"], correct:0, explain:"1 Corinthians addresses a church with real spiritual gifts and real dysfunction." },
+        { q:"Which letter contains Paul's personal appeal for a runaway slave named Onesimus?", opts:["Titus", "Philemon", "2 Timothy", "1 Thessalonians"], correct:1, explain:"Paul asked Philemon to receive Onesimus back \u2018no longer as a slave, but as a dear brother.\u2019" },
+        { q:"Which letter was written to correct the false belief that the day of the Lord had already come, causing some believers to stop working?", opts:["1 Thessalonians", "2 Thessalonians", "1 Timothy", "Titus"], correct:1, explain:"Paul insisted that anticipating Christ's return should produce diligence, not idleness." },
+        { q:"In which letter does Paul write \u2018I have learned, in whatsoever state I am, therewith to be content\u2019?", opts:["Philippians", "Colossians", "1 Timothy", "Ephesians"], correct:0, explain:"Written from prison, Philippians is Paul's letter most focused on joy and contentment." }
+      ] },
+    { id:'verse_fill_2', title:'Complete the Verse II', tier:'Hard', type:'fill', icon:'\ud83d\udcd6', cost:30,
+      intro:{ ref:'Colossians 3:16', verse:'Let the word of Christ dwell in you richly.', note:'A tougher round \u2014 these verses are well-loved but less universally memorized word-for-word.' },
+      questions: [
         { text:"\u201cThis is the day that the Lord has made; we will rejoice and be glad in ___.\u201d", ref:"Psalm 118:24", answer:"it", explain:"A verse often used to greet each new day with gratitude." },
         { text:"\u201cAsk, and it will be given to you; seek, and you will ___.\u201d", ref:"Matthew 7:7", answer:"find", explain:"Jesus taught persistence in prayer using this pattern of ask, seek, knock." },
         { text:"\u201cLove is patient, love is ___.\u201d", ref:"1 Corinthians 13:4", answer:"kind", explain:"Paul's famous chapter on love \u2014 one of the most quoted passages at weddings." },
-        { text:"\u201cBut those who wait on the Lord shall renew their ___.\u201d", ref:"Isaiah 40:31", answer:"strength", explain:"A promise of renewed energy for those who wait on God rather than rush ahead." }
+        { text:"\u201cBut those who wait on the Lord shall renew their ___.\u201d", ref:"Isaiah 40:31", answer:"strength", explain:"A promise of renewed energy for those who wait on God rather than rush ahead." },
+        { text:"\u201cAnd we know that in all things God works for the good of those who love him, who have been called according to his ___.\u201d", ref:"Romans 8:28", answer:"purpose", explain:"A verse often quoted without its full, careful wording about God's purpose specifically." },
+        { text:"\u201cThe LORD is my strength and my shield; my heart trusts in him, and he helps me; my heart exults, and with my song I give ___ to him.\u201d", ref:"Psalm 28:7", answer:"thanks", explain:"A less-quoted psalm verse that rewards close, careful reading." }
       ] },
     { id:'bible_iq', title:'Bible IQ Challenge', tier:'Hard', type:'multiple', icon:'\ud83e\udde0', cost:60,
+      intro:{ ref:'Proverbs 25:2', verse:'It is the glory of God to conceal things, but the glory of kings is to search things out.', note:'The hardest test in the app \u2014 obscure details, minor figures, and questions that reward real Bible reading.' },
       questions: [
         { q:"What is commonly cited as the shortest verse in the Bible?", opts:["\u201cJesus wept\u201d", "\u201cIn the beginning\u201d", "\u201cThe Lord is my shepherd\u201d", "\u201cLet there be light\u201d"], correct:0, explain:"John 11:35, just two words in most English translations." },
         { q:"Which Old Testament figure interpreted dreams for Pharaoh?", opts:["Daniel", "Joseph", "Moses", "Solomon"], correct:1, explain:"Joseph's gift for interpreting dreams led to his rise in Egypt." },
         { q:"Which short New Testament letter is a personal appeal about a runaway slave?", opts:["Philemon", "Titus", "Jude", "3 John"], correct:0, explain:"Paul wrote Philemon on behalf of Onesimus, appealing for mercy and reconciliation." },
-        { q:"Who was the mother of Jesus?", opts:["Mary", "Martha", "Elizabeth", "Anna"], correct:0, explain:"Mary is described as a young woman chosen to carry and raise Jesus." },
         { q:"Which disciple is remembered as \u201cdoubting\u201d for questioning Jesus' resurrection?", opts:["Thomas", "Philip", "Bartholomew", "Matthew"], correct:0, explain:"Thomas wanted to see and touch Jesus' wounds before he'd believe." },
         { q:"What was the final plague that convinced Pharaoh to free Israel?", opts:["Locusts", "Darkness", "Death of the firstborn", "Hail"], correct:2, explain:"This tenth and final plague broke Pharaoh's resistance for good." },
-        { q:"Which short Old Testament book is commonly noted for never mentioning God's name directly?", opts:["Esther", "Ruth", "Job", "Nahum"], correct:0, explain:"Esther's story is famous for God working behind the scenes without being named outright." },
-        { q:"Which two Old Testament books are named after women?", opts:["Ruth and Esther", "Naomi and Ruth", "Sarah and Rebekah", "Deborah and Ruth"], correct:0, explain:"Ruth and Esther are the only two Old Testament books named for their female protagonists." }
+        { q:"Which obscure figure blessed Abraham and received a tithe from him, later used in Hebrews to argue for Christ's priesthood?", opts:["Melchizedek", "Lot", "Eliezer", "Jethro"], correct:0, explain:"This mysterious priest-king appears briefly in Genesis 14 and becomes central to the argument of Hebrews 7." },
+        { q:"Which prophet's book ends the Old Testament by promising a messenger like Elijah before four centuries of prophetic silence?", opts:["Zechariah", "Malachi", "Haggai", "Micah"], correct:1, explain:"Malachi's closing words set up the long wait that ends with John the Baptist." },
+        { q:"Which New Testament book is traditionally the only one attributed to a physician?", opts:["Luke", "Mark", "James", "Jude"], correct:0, explain:"Luke, described by Paul as \u2018the beloved physician,\u2019 wrote both Luke and Acts." }
       ] }
   ];
 
@@ -7356,6 +7394,111 @@
     { id:'well_done', icon:'\ud83d\udc51', title:'Well done, good and faithful', desc:'Take 3 different tests.', target:3, reward:30, get: (s) => Object.keys(s.testBest).length },
     { id:'iron_sharpens', icon:'\u2694\ufe0f', title:'Iron sharpens iron', desc:'Score perfectly on any test.', target:1, reward:35, get: (s) => Object.entries(s.testBest).some(([id, score]) => { const t = TESTS.find(x => x.id === id); return t && score === t.questions.length; }) ? 1 : 0 }
   ];
+
+  function dailyTests(){
+    const seed = dayOfYear();
+    const pool = TESTS.slice();
+    // deterministic shuffle based on today's seed
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = (seed * 9301 + i * 49297) % (i + 1);
+      const tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+    }
+    return pool.slice(0, 6);
+  }
+
+  function msUntilMidnight(){
+    const now = new Date();
+    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+    return midnight - now;
+  }
+
+  function formatCountdown(ms){
+    if (ms < 0) ms = 0;
+    const h = Math.floor(ms / 3600000);
+    const m = Math.floor((ms % 3600000) / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    return pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+
+  const WORD_BANK = [
+    { word:'FAITH', clue:'Trusting God without seeing the full picture' },
+    { word:'GRACE', clue:'Unearned favor \u2014 a gift, not a wage' },
+    { word:'MERCY', clue:'Not receiving the punishment that was deserved' },
+    { word:'PEACE', clue:'What Christ gives that the world can\u2019t' },
+    { word:'TRUTH', clue:'What sets people free, according to John 8' },
+    { word:'HONOR', clue:'What the fifth commandment asks children to give parents' },
+    { word:'DAVID', clue:'The shepherd boy who became Israel\u2019s greatest king' },
+    { word:'MOSES', clue:'Led Israel out of slavery in Egypt' },
+    { word:'ANGEL', clue:'A heavenly messenger \u2014 often the first words are \u2018do not be afraid\u2019' },
+    { word:'CROSS', clue:'Where Jesus said \u2018it is finished\u2019' },
+    { word:'BREAD', clue:'What fell from heaven each morning in the wilderness' },
+    { word:'BLESS', clue:'What Jacob wrestled all night to receive' },
+    { word:'PRIDE', clue:'What goes before a fall or destruction, per Proverbs' },
+    { word:'JUDGE', clue:'A leader like Deborah or Gideon, before Israel had a king' },
+    { word:'THORN', clue:'Paul\u2019s unnamed, unremoved affliction \u2014 \u2018in the flesh\u2019' },
+    { word:'SAINT', clue:'Paul\u2019s common address for ordinary believers' },
+    { word:'ALTAR', clue:'Where Abraham raised the knife over Isaac' },
+    { word:'TRIBE', clue:'Israel was divided into twelve of these' },
+    { word:'GLORY', clue:'What filled the temple so the priests couldn\u2019t enter' },
+    { word:'MANNA', clue:'Bread from heaven, gathered fresh every morning' },
+    { word:'EAGLE', clue:'The bird whose wings picture renewed strength in Isaiah 40' },
+    { word:'EXILE', clue:'Seventy years away from home, promised by Jeremiah' },
+    { word:'WOMAN', clue:'Found the lost coin after lighting a lamp and sweeping the house' },
+    { word:'ELDER', clue:'A church leader Paul told Timothy and Titus to appoint' },
+    { word:'DEMON', clue:'What Jesus cast out with a word, again and again' },
+    { word:'HEART', clue:'Above all else, guard this \u2014 Proverbs 4:23' },
+    { word:'SOWER', clue:'Scattered seed on four kinds of soil in a famous parable' },
+    { word:'VOICE', clue:'Elijah heard God in a still, small one of these' },
+    { word:'SHEEP', clue:'What the Good Shepherd leaves ninety-nine of to find one' },
+    { word:'TITHE', clue:'A tenth, given back to God' },
+    { word:'PSALM', clue:'A song or prayer \u2014 there are 150 of them' },
+    { word:'ROYAL', clue:'A priesthood believers are called, in 1 Peter 2:9' },
+    { word:'SPIES', clue:'Twelve were sent into Canaan; only two came back with a good report' },
+    { word:'GIANT', clue:'Goliath, standing over nine feet tall' },
+    { word:'TOWER', clue:'Built at Babel, reaching toward the heavens' },
+    { word:'FLOOD', clue:'Covered the earth for forty days and nights' },
+    { word:'SWORD', clue:'What God\u2019s word is compared to \u2014 sharper than any double-edged one' },
+    { word:'ROBES', clue:'Washed white in the blood of the Lamb, in Revelation 7' },
+    { word:'STONE', clue:'What David chose five smooth ones of, from a stream' },
+    { word:'WATER', clue:'Turned to wine at a wedding in Cana' },
+    { word:'LIGHT', clue:'What Jesus called Himself \u2014 \u2018of the world\u2019' },
+    { word:'TEARS', clue:'What God promises to wipe away in the new creation' },
+    { word:'EARTH', clue:'What the meek will inherit, per the Beatitudes' },
+    { word:'CHILD', clue:'\u2018Unless you become like one, you won\u2019t enter the kingdom\u2019' },
+    { word:'BABEL', clue:'Where languages were confused and people scattered' },
+    { word:'JACOB', clue:'Wrestled with God and came away limping, renamed Israel' },
+    { word:'ISAAC', clue:'The promised son, nearly offered on Mount Moriah' },
+    { word:'JONAH', clue:'Ran from God\u2019s call and ended up inside a great fish' },
+    { word:'JAMES', clue:'Wrote that faith without works is dead' },
+    { word:'SIMON', clue:'Peter\u2019s other name, before Jesus renamed him \u2018the rock\u2019' },
+    { word:'PETER', clue:'Denied Jesus three times, then was restored over breakfast' },
+    { word:'JUDAS', clue:'Betrayed Jesus for thirty pieces of silver' },
+    { word:'HEROD', clue:'The king who tried to kill the infant Jesus' }
+  ];
+
+  function todaysWord(){
+    return WORD_BANK[dayOfYear() % WORD_BANK.length];
+  }
+
+  function evaluateGuess(guess, target){
+    const result = new Array(5).fill('gray');
+    const targetLetters = target.split('');
+    const guessLetters = guess.split('');
+    const used = new Array(5).fill(false);
+    for (let i = 0; i < 5; i++) {
+      if (guessLetters[i] === targetLetters[i]) { result[i] = 'green'; used[i] = true; }
+    }
+    for (let i = 0; i < 5; i++) {
+      if (result[i] === 'green') continue;
+      let found = -1;
+      for (let j = 0; j < 5; j++) {
+        if (!used[j] && targetLetters[j] === guessLetters[i]) { found = j; break; }
+      }
+      if (found !== -1) { result[i] = 'yellow'; used[found] = true; }
+    }
+    return result;
+  }
 
   const AVATAR_OPTIONS = ['\ud83d\udcd6', '\u271d\ufe0f', '\ud83d\udd4a\ufe0f', '\ud83d\udc11', '\ud83d\udc1f', '\u26f0\ufe0f', '\ud83d\ude4f', '\ud83c\udf3f'];
   const BADGES = [
@@ -7426,7 +7569,15 @@
     const [tScore, setTScore] = React.useState(0);
     const [tEarned, setTEarned] = React.useState(0);
     const [tFinished, setTFinished] = React.useState(false);
-    const [tTimeLeft, setTTimeLeft] = React.useState(0);
+    const [tShowIntro, setTShowIntro] = React.useState(false);
+    const [wordleInput, setWordleInput] = React.useState('');
+    const [wordleShake, setWordleShake] = React.useState(false);
+    const [nowTick, setNowTick] = React.useState(Date.now());
+
+    React.useEffect(() => {
+      const iv = setInterval(() => setNowTick(Date.now()), 1000);
+      return () => clearInterval(iv);
+    }, []);
 
     const [user, setUser] = React.useState(null);
     const [authChecked, setAuthChecked] = React.useState(false);
@@ -7579,8 +7730,11 @@
     function startTest(test){
       if (state.gems < test.cost) return;
       persist({ ...state, gems: state.gems - test.cost });
-      setActiveTest(test); setTIndex(0); setTPicked(null); setTFillInput(''); setTFillResult(null); setTScore(0); setTFinished(false); setTEarned(0);
-      if (test.type === 'timed') setTTimeLeft(test.timeLimit);
+      setActiveTest(test); setTIndex(0); setTPicked(null); setTFillInput(''); setTFillResult(null); setTScore(0); setTFinished(false); setTEarned(0); setTShowIntro(true);
+    }
+
+    function beginTestQuestions(){
+      setTShowIntro(false);
     }
 
     function finishTest(finalScore){
@@ -7624,18 +7778,33 @@
       }
     }
 
-    React.useEffect(() => {
-      if (!activeTest || activeTest.type !== 'timed' || tFinished) return;
-      if (tTimeLeft <= 0) { finishTest(tScore); return; }
-      const timer = setTimeout(() => setTTimeLeft(t => t - 1), 1000);
-      return () => clearTimeout(timer);
-    }, [activeTest, tTimeLeft, tFinished]);
-
     function checkInToday(){
       const today = todayStr();
       if (state.lastCheckIn === today) return;
       const wasYesterday = state.lastCheckIn === yesterdayStr();
       persist({ ...state, dailyStreak: wasYesterday ? state.dailyStreak + 1 : 1, lastCheckIn: today });
+    }
+
+    function todaysWordleState(){
+      const today = todayStr();
+      const stored = state.dailyWord;
+      if (stored && stored.date === today) return stored;
+      return { date: today, guesses: [], done: false, won: false };
+    }
+
+    function submitWordleGuess(){
+      const guess = wordleInput.trim().toUpperCase();
+      if (guess.length !== 5) { setWordleShake(true); setTimeout(()=>setWordleShake(false), 400); return; }
+      const w = todaysWordleState();
+      if (w.done) return;
+      const target = todaysWord().word;
+      const nextGuesses = [...w.guesses, guess];
+      const won = guess === target;
+      const done = won || nextGuesses.length >= 5;
+      const nextWordle = { date: w.date, guesses: nextGuesses, done, won };
+      const gemsBonus = won ? 15 : 0;
+      persist({ ...state, dailyWord: nextWordle, gems: state.gems + gemsBonus });
+      setWordleInput('');
     }
 
     function claimQuest(q){
@@ -7914,9 +8083,44 @@
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
         ]),
 
-        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Tests']),
-        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Spend gems to play \u2014 earn pearls for every question you get right, and spend pearls on badges in your Profile.'),
-        ...TESTS.map(test => {
+        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word of the Day']),
+        (() => {
+          const w = todaysWordleState();
+          const target = todaysWord();
+          const rowsLeft = 5 - w.guesses.length;
+          return e('div', {className:'dl-wordle-card' + (wordleShake ? ' shake' : ''), key:'wordle'}, [
+            e('div', {className:'dl-wordle-clue', key:'clue'}, [String.fromCodePoint(0x1F4A1), ' ', target.clue]),
+            e('div', {className:'dl-wordle-grid', key:'grid'},
+              w.guesses.map((g, gi) => e('div', {className:'dl-wordle-row', key:'g'+gi},
+                evaluateGuess(g, target.word).map((res, li) => e('div', {className:'dl-wordle-tile ' + res, key:li}, g[li]))
+              )).concat(
+                w.done ? [] : [ e('div', {className:'dl-wordle-row', key:'active'},
+                  Array.from({length:5}).map((_, li) => e('div', {className:'dl-wordle-tile' + (wordleInput[li] ? ' filled' : ''), key:li}, wordleInput[li] || ''))
+                ) ]
+              ).concat(
+                Array.from({length: Math.max(0, rowsLeft - (w.done?0:1))}).map((_, ri) => e('div', {className:'dl-wordle-row', key:'empty'+ri},
+                  Array.from({length:5}).map((__, li) => e('div', {className:'dl-wordle-tile', key:li}, ''))
+                ))
+              )
+            ),
+            w.done
+              ? e('div', {className:'dl-wordle-result', key:'result'}, [
+                  e('div', {className:'dl-wordle-result-text', key:'t'}, w.won ? (String.fromCodePoint(0x1F389) + ' You got it \u2014 ' + target.word) : ('The word was ' + target.word)),
+                  w.won ? e('div', {className:'dl-wordle-result-sub', key:'s'}, '+15 \ud83d\udc8e gems earned') : null,
+                  e('div', {className:'dl-wordle-result-sub', key:'clue2'}, target.clue),
+                  e('div', {className:'dl-wordle-refresh', key:'r'}, 'New word in ' + formatCountdown(msUntilMidnight()))
+                ])
+              : e('div', {className:'dl-wordle-input-row', key:'input'}, [
+                  e('input', {className:'dl-wordle-input', value:wordleInput, maxLength:5, placeholder:'Guess a 5-letter word', onChange: ev => setWordleInput(ev.target.value.toUpperCase().replace(/[^A-Z]/g,'')), onKeyDown: ev => { if (ev.key === 'Enter') submitWordleGuess(); }, key:'i'}),
+                  e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', width:'auto', padding:'0 20px'}, onClick: submitWordleGuess, key:'go'}, 'Guess')
+                ])
+          ]);
+        })(),
+
+        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Tests']),
+        e('div', {className:'dl-empty-note', key:'note'}, 'Spend gems to play \u2014 earn pearls for every question you get right, and spend pearls on badges in your Profile.'),
+        e('div', {className:'dl-refresh-pill', key:'refresh'}, [String.fromCodePoint(0x1F504), ' New tests in ' + formatCountdown(msUntilMidnight())]),
+        ...dailyTests().map(test => {
           const best = state.testBest[test.id];
           const canAfford = state.gems >= test.cost;
           return e('div', {className:'dl-test-card', key:test.id}, [
@@ -7924,7 +8128,10 @@
               e('div', {className:'dl-test-icon', key:'icon'}, test.icon),
               e('div', {style:{flex:1}, key:'text'}, [
                 e('div', {className:'dl-test-title', key:'t'}, test.title),
-                e('div', {className:'dl-test-tier', key:'tier'}, test.tier + ' \u00b7 ' + test.questions.length + ' questions')
+                e('div', {className:'dl-test-tier', key:'tier'}, [
+                  e('span', {className:'dl-tier-badge tier-' + test.tier.toLowerCase().replace(/[^a-z]/g,''), key:'tb'}, test.tier),
+                  ' \u00b7 ' + test.questions.length + ' questions'
+                ])
               ]),
               e('div', {className:'dl-test-cost', key:'cost'}, [String.fromCodePoint(0x1F48E), ' ' + test.cost])
             ]),
@@ -8118,7 +8325,23 @@
 
       e('div', {className:'dl-dc-modal-bg' + (activeTest ? ' open' : ''), key:'testmodal'},
         activeTest && (
-          tFinished
+          tShowIntro
+          ? e('div', {className:'dl-dc-done-wrap'}, [
+              e('button', {className:'dl-x', style:{alignSelf:'flex-start'}, onClick:()=>setActiveTest(null), key:'x'}, String.fromCodePoint(0x2715)),
+              e('div', {className:'dl-dc-done-badge', style:{background:'var(--teal)', boxShadow:'0 6px 0 var(--teal-dark)'}, key:'badge'}, activeTest.icon),
+              e('div', {className:'dl-dc-done-title', key:'t'}, activeTest.title),
+              e('div', {className:'dl-dc-done-sub', key:'s'}, [
+                e('span', {className:'dl-tier-badge tier-' + activeTest.tier.toLowerCase().replace(/[^a-z]/g,''), key:'tb'}, activeTest.tier),
+                ' \u00b7 ' + activeTest.questions.length + ' questions'
+              ]),
+              activeTest.intro ? e('div', {className:'dl-passage-card', style:{marginTop:'18px', textAlign:'left'}, key:'introcard'}, [
+                e('div', {className:'dl-passage-ref', key:'r'}, activeTest.intro.ref),
+                e('div', {className:'dl-passage-text', key:'v'}, '\u201c' + activeTest.intro.verse + '\u201d')
+              ]) : null,
+              activeTest.intro ? e('div', {className:'dl-test-intro-note', key:'note'}, activeTest.intro.note) : null,
+              e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', maxWidth:'240px', marginTop:'20px'}, onClick: beginTestQuestions, key:'begin'}, 'Start')
+            ])
+          : tFinished
           ? e('div', {className:'dl-dc-done-wrap'}, [
               e('div', {className:'dl-dc-done-badge', style:{background:'var(--teal)', boxShadow:'0 6px 0 var(--teal-dark)'}, key:'badge'}, activeTest.icon),
               e('div', {className:'dl-dc-done-title', key:'t'}, 'Test complete!'),
@@ -8129,8 +8352,7 @@
           : [
               e('div', {className:'dl-lesson-top', key:'ltop'}, [
                 e('button', {className:'dl-x', onClick:()=>setActiveTest(null), key:'x'}, String.fromCodePoint(0x2715)),
-                e('div', {className:'dl-bar-track', key:'track'}, e('div', {className:'dl-bar-fill', style:{background:'var(--teal)', width: Math.round((tIndex / activeTest.questions.length) * 100) + '%'}})),
-                activeTest.type === 'timed' && e('div', {className:'dl-timer-pill', key:'timer'}, tTimeLeft + 's')
+                e('div', {className:'dl-bar-track', key:'track'}, e('div', {className:'dl-bar-fill', style:{background:'var(--teal)', width: Math.round((tIndex / activeTest.questions.length) * 100) + '%'}}))
               ]),
               e('div', {className:'dl-dc-body', key:'body'},
                 activeTest.type === 'fill'
