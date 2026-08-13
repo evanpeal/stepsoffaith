@@ -237,6 +237,111 @@
         { type:'sparkle', style:{ top:'12%', height:'26%' } },
         { type:'glow', style:{ left:'50%', bottom:'2%', width:230, height:180, marginLeft:-115, marginBottom:-90, background:'radial-gradient(circle, rgba(255,200,110,0.75) 0%, rgba(230,150,50,0.3) 50%, rgba(230,150,50,0) 76%)' } }
       ]
+    },
+    "Ezekiel": {
+      gradient: 'linear-gradient(180deg, #0e1020 0%, #1c2038 14%, #303a5c 30%, #4a5a7e 46%, #6e7a96 60%, #a89a86 74%, #d9b872 88%, #a8813e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'30%' } },
+        { type:'glow', style:{ left:'50%', top:'28%', width:280, height:280, marginLeft:-140, marginTop:-140, background:'radial-gradient(circle, rgba(220,230,255,0.7) 0%, rgba(150,180,230,0.28) 48%, rgba(150,180,230,0) 74%)' } },
+        { type:'sparkle', style:{ top:'14%', height:'26%' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#7a6a48', opacity:0.55, clipPath:RIDGE_JAG_BACK } }
+      ]
+    },
+    "Hosea": {
+      gradient: 'linear-gradient(180deg, #2a1420 0%, #4a2434 14%, #6e3a44 30%, #94564e 46%, #b8785a 62%, #d9a074 78%, #b87a4e 90%, #7a4e2e 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'18%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(255,200,180,0.6) 0%, rgba(220,140,120,0.25) 48%, rgba(220,140,120,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'8%', height:'18%', background:'#8a5a38', opacity:0.55, clipPath:DUNE_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#6e4428', opacity:0.7, clipPath:DUNE_FRONT } }
+      ]
+    },
+    "Joel": {
+      gradient: 'linear-gradient(180deg, #241a10 0%, #46301a 16%, #6e4a24 32%, #94682e 48%, #b88a3e 62%, #d9b25c 78%, #a8823a 90%, #6e5222 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'22%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(255,220,140,0.7) 0%, rgba(230,170,70,0.28) 48%, rgba(230,170,70,0) 74%)' } },
+        { type:'sparkle', style:{ top:'8%', height:'26%' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#7a5a26', opacity:0.6, clipPath:DUNE_BACK } }
+      ]
+    },
+    "Amos": {
+      gradient: 'linear-gradient(180deg, #1a1c14 0%, #303426 16%, #4e5238 32%, #72704a 48%, #9a8e5c 62%, #c0ac72 76%, #94804c 88%, #5c4e2c 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'26%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(240,240,200,0.6) 0%, rgba(200,190,120,0.24) 48%, rgba(200,190,120,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'8%', height:'20%', background:'#6e6238', opacity:0.55, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'15%', background:'#4e4626', opacity:0.75, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Obadiah": {
+      gradient: 'linear-gradient(180deg, #14161e 0%, #262a38 16%, #3e4454 34%, #5a5e6e 50%, #7a7482 66%, #56505e 82%, #2e2a38 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'ridge', style:{ bottom:'10%', height:'26%', background:'#4a4654', opacity:0.7, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'20%', background:'#302c3a', opacity:0.85, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Jonah": {
+      gradient: 'linear-gradient(180deg, #0a1a2e 0%, #123048 16%, #1c4a63 32%, #2e6a7e 48%, #4a8a94 62%, #7ab0ae 76%, #b8cfae 88%, #d9c88c 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'16%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(190,230,240,0.65) 0%, rgba(110,180,200,0.26) 48%, rgba(110,180,200,0) 74%)' } },
+        { type:'water', style:{ background:'linear-gradient(180deg, rgba(40,110,130,0) 0%, rgba(40,110,130,0.55) 100%)' } },
+        { type:'sparkle', style:{ top:'10%', height:'24%' } }
+      ]
+    },
+    "Micah": {
+      gradient: 'linear-gradient(180deg, #161426 0%, #2a2440 16%, #443a5c 32%, #63527a 48%, #8a7290 62%, #b09a9e 76%, #d9bc94 90%, #a8865a 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', top:'34%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(230,214,255,0.6) 0%, rgba(170,150,220,0.24) 48%, rgba(170,150,220,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'6%', height:'20%', background:'#7a6248', opacity:0.55, clipPath:RIDGE_JAG_BACK } }
+      ]
+    },
+    "Nahum": {
+      gradient: 'linear-gradient(180deg, #180e12 0%, #2e1820 16%, #4a2426 32%, #6e3628 48%, #8a4a2c 62%, #6e3822 78%, #401e14 92%, #24100c 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'34%', width:250, height:250, marginLeft:-125, marginTop:-125, background:'radial-gradient(circle, rgba(255,170,90,0.6) 0%, rgba(220,110,50,0.24) 48%, rgba(220,110,50,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'8%', height:'20%', background:'#5c2c1c', opacity:0.7, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'15%', background:'#3a1c12', opacity:0.85, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Habakkuk": {
+      gradient: 'linear-gradient(180deg, #101426 0%, #1e2642 16%, #343e64 32%, #4e5a84 48%, #74799e 62%, #a898a8 76%, #d9b48c 90%, #b8863e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'40%', width:260, height:260, marginLeft:-130, marginTop:-130, background:'radial-gradient(circle, rgba(255,220,170,0.6) 0%, rgba(220,170,110,0.24) 48%, rgba(220,170,110,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'6%', height:'18%', background:'#6e5a3e', opacity:0.55, clipPath:DUNE_BACK } }
+      ]
+    },
+    "Zephaniah": {
+      gradient: 'linear-gradient(180deg, #14101c 0%, #281e34 16%, #443050 32%, #644a68 48%, #8a6a76 62%, #b8927e 78%, #e8c48c 92%, #c99a4e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'30%' } },
+        { type:'glow', style:{ left:'50%', bottom:'6%', width:250, height:200, marginLeft:-125, marginBottom:-100, background:'radial-gradient(circle, rgba(255,224,150,0.75) 0%, rgba(230,180,90,0.3) 50%, rgba(230,180,90,0) 76%)' } },
+        { type:'sparkle', style:{ top:'12%', height:'26%' } }
+      ]
+    },
+    "Haggai": {
+      gradient: 'linear-gradient(180deg, #1e1a12 0%, #3a3220 16%, #5c4e2e 32%, #806c3c 48%, #a48c4e 62%, #c9ae66 78%, #9a8244 90%, #62522a 100%)',
+      decor: [
+        { type:'glow', style:{ left:'50%', top:'24%', width:240, height:240, marginLeft:-120, marginTop:-120, background:'radial-gradient(circle, rgba(255,236,170,0.7) 0%, rgba(220,180,90,0.28) 48%, rgba(220,180,90,0) 74%)' } },
+        { type:'ridge', style:{ bottom:'8%', height:'18%', background:'#6e5c30', opacity:0.6, clipPath:RIDGE_JAG_BACK } },
+        { type:'ridge', style:{ bottom:'0%', height:'14%', background:'#4e4020', opacity:0.75, clipPath:RIDGE_JAG_FRONT } }
+      ]
+    },
+    "Zechariah": {
+      gradient: 'linear-gradient(180deg, #0e1226 0%, #1a2444 16%, #2e3e66 32%, #48588a 48%, #7078a8 62%, #a89ab8 76%, #d9c096 90%, #b0873e 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'34%' } },
+        { type:'glow', style:{ left:'50%', top:'26%', width:270, height:270, marginLeft:-135, marginTop:-135, background:'radial-gradient(circle, rgba(215,225,255,0.7) 0%, rgba(150,170,230,0.28) 48%, rgba(150,170,230,0) 74%)' } },
+        { type:'sparkle', style:{ top:'10%', height:'28%' } }
+      ]
+    },
+    "Malachi": {
+      gradient: 'linear-gradient(180deg, #12101e 0%, #241e36 16%, #3c3050 32%, #584464 48%, #7c5e6e 62%, #a8827a 76%, #e0b878 90%, #c9903a 100%)',
+      decor: [
+        { type:'stars', style:{ top:0, height:'32%' } },
+        { type:'glow', style:{ left:'50%', bottom:'8%', width:260, height:210, marginLeft:-130, marginBottom:-105, background:'radial-gradient(circle, rgba(255,214,130,0.8) 0%, rgba(235,175,70,0.32) 50%, rgba(235,175,70,0) 76%)' } },
+        { type:'sparkle', style:{ top:'14%', height:'24%' } }
+      ]
     }
   };
 
@@ -2513,6 +2618,414 @@
         { q:"On what basis does he ask?", opts:["Israel's obedience", "God's great mercy alone \u2014 explicitly not their righteousness", "A bargain"], correct:1, explain:"He removes merit from the equation entirely, which is why the prayer has been a model ever since." }
       ],
       deepDive: "Daniel 9 answers a question people still ask: if God has promised something, why pray about it? Daniel's example is the reply \u2014 discovering the promise was nearly due drove him into fasting and sackcloth. Promises invite participation rather than replacing it. And notice the pronouns: a man whose enemies couldn't find a flaw prays 'we have sinned, we have not listened,' standing with his people rather than above them. Finally, verse 18 strips away every basis but one \u2014 not because we are righteous, but because of your great mercy. That sentence is where prayer actually stands." }
+,
+    { id:207, book:"Ezekiel", title:"Wheels and glory by the river", side:"c",
+      passage: "Ezekiel was a priest in exile by the Kebar River in Babylon \u2014 far from the temple where a priest was supposed to serve. There, \u201cthe heavens were opened and I saw visions of God.\u201d A windstorm, immense wheels full of eyes, living creatures with four faces, and above it all a throne with a figure \u201clike that of a man\u201d surrounded by brilliant light. \u201cThis was the appearance of the likeness of the glory of the LORD. When I saw it, I fell facedown.\u201d The point was unmistakable to an exile: God's throne has wheels. He is not confined to Jerusalem.",
+      keyVerses: [
+        { ref: "Ezekiel 1:28", text: "This was the appearance of the likeness of the glory of the LORD. When I saw it, I fell facedown." }
+      ],
+      questions: [
+        { q:"Where was Ezekiel when he saw this vision?", opts:["In the temple", "In exile by a river in Babylon", "On Mount Sinai"], correct:1, explain:"A priest with no temple, in a foreign land \u2014 and God's throne showed up anyway." },
+        { q:"What's the significance of the wheels?", opts:["Decoration", "God's throne is mobile \u2014 He isn't tied to one place or one nation", "They represent chariots of war"], correct:1, explain:"For people convinced God stayed behind in Jerusalem, a rolling throne was the whole message." },
+        { q:"What was Ezekiel's response?", opts:["He took notes calmly", "He fell facedown", "He fled"], correct:1, explain:"Same reaction as Isaiah and John \u2014 seeing God's glory puts a person on the floor." }
+      ],
+      deepDive: "Ezekiel's opening vision is famously strange, and the strangeness is doing something. He was a priest, trained for a temple he'd never serve in, living among people who assumed their God had stayed behind in the ruins of Jerusalem. Then the heavens open in Babylon \u2014 of all places \u2014 and the throne he sees has wheels, moving in any direction without turning. The theology is simple under all the fire and eyes: God is not local, not defeated, and not absent from the place you were carried to against your will. Whatever exile you're in, this vision insists it isn't outside His range." },
+    { id:208, book:"Ezekiel", title:"The watchman", side:"l",
+      passage: "God gave Ezekiel a job description with weight: \u201cSon of man, I have made you a watchman for the people of Israel; so hear the word I speak and give them warning from me.\u201d If a watchman sees the sword coming and stays silent, the blood is on his hands. If he sounds the trumpet and no one listens, he has saved himself. God adds His own heart on the matter: \u201cI take no pleasure in the death of the wicked, but rather that they turn from their ways and live. Turn! Turn from your evil ways!\u201d",
+      keyVerses: [
+        { ref: "Ezekiel 33:11", text: "I take no pleasure in the death of the wicked, but rather that they turn from their ways and live." }
+      ],
+      questions: [
+        { q:"What is a watchman's job?", opts:["To fight the enemy", "To see danger coming and sound the warning", "To rule the city"], correct:1, explain:"Not to force a response \u2014 only to make sure the warning was actually given." },
+        { q:"What happens if the watchman warns and no one listens?", opts:["He's responsible", "He has done his duty \u2014 the responsibility shifts", "He must warn again forever"], correct:1, explain:"Faithfulness is measured by the warning given, not the response received." },
+        { q:"What does God say about His own attitude toward judgment?", opts:["He enjoys it", "He takes no pleasure in it \u2014 He wants people to turn and live", "He is indifferent"], correct:1, explain:"The most quoted line in Ezekiel, and the heart behind every warning in the book." }
+      ],
+      deepDive: "The watchman image has shaped how believers think about speaking hard truth for millennia, and it cuts both ways. It creates real responsibility \u2014 silence when you see danger isn't neutral \u2014 and it also sets a limit: the watchman controls the warning, never the response. That distinction has saved a lot of people from despair over those who wouldn't listen. And notice where God plants His own heart in the middle of a warning chapter: 'I take no pleasure in the death of the wicked.' The judgment in this book is real and reluctant. The invitation \u2014 turn and live \u2014 is the reason the warnings exist at all." },
+    { id:209, book:"Ezekiel", title:"The valley of dry bones", side:"r",
+      passage: "God set Ezekiel down in a valley full of bones \u2014 \u201cthey were very dry\u201d \u2014 and asked, \u201cSon of man, can these bones live?\u201d Ezekiel answered carefully: \u201cSovereign LORD, you alone know.\u201d Then: prophesy to the bones. As he spoke there was a rattling, and bones came together, tendons and flesh appeared, skin covered them \u2014 but no breath. He prophesied again to the breath, \u201cand they came to life and stood up on their feet \u2014 a vast army.\u201d The meaning: \u201cThese bones are the people of Israel. They say, \u2018Our hope is gone; we are cut off.\u2019\u201d",
+      keyVerses: [
+        { ref: "Ezekiel 37:5", text: "This is what the Sovereign LORD says to these bones: I will make breath enter you, and you will come to life." }
+      ],
+      questions: [
+        { q:"What did the bones represent?", opts:["Literal graves", "Exiled Israel \u2014 people saying \u2018our hope is gone, we are cut off\u2019", "Enemy armies"], correct:1, explain:"The vision addresses the death of hope, not just physical death." },
+        { q:"How did Ezekiel answer \u2018can these bones live?\u2019", opts:["\u2018No\u2019", "\u2018Sovereign LORD, you alone know\u2019", "\u2018Of course\u2019"], correct:1, explain:"Honest faith \u2014 he wouldn't claim certainty, and he wouldn't rule God out." },
+        { q:"What was the two-stage process?", opts:["Bones assembled, then breath entered", "Breath first, then bones", "It happened instantly"], correct:0, explain:"Bodies were reassembled but lifeless until the breath came \u2014 structure isn't the same as life." }
+      ],
+      deepDive: "This is the Bible's greatest picture of hopelessness reversed. Note the detail: the bones were 'very dry' \u2014 not recently dead, long past any natural chance. And the diagnosis is quoted directly from the exiles' own mouths: 'our hope is gone; we are cut off.' God's response isn't a pep talk but a resurrection. The two stages matter too: bodies assembled but breathless, then the breath entering \u2014 the same word as spirit, and the same word from Genesis 2. Whatever in your life has been dead long enough to look permanent, this chapter's question is the one God asks: can these bones live? The honest answer is Ezekiel's \u2014 you alone know." },
+    { id:210, book:"Ezekiel", title:"A new heart and a new spirit", side:"c",
+      passage: "The promise underneath the whole book: \u201cI will sprinkle clean water on you, and you will be clean; I will cleanse you from all your impurities and from all your idols. I will give you a new heart and put a new spirit in you; I will remove from you your heart of stone and give you a heart of flesh. And I will put my Spirit in you and move you to follow my decrees.\u201d And the reason given is startling: not because they deserved it, but \u201cfor the sake of my holy name.\u201d",
+      keyVerses: [
+        { ref: "Ezekiel 36:26", text: "I will give you a new heart and put a new spirit in you; I will remove from you your heart of stone and give you a heart of flesh." }
+      ],
+      questions: [
+        { q:"What is replaced in this promise?", opts:["Their circumstances only", "The heart itself \u2014 stone exchanged for flesh", "Their leaders"], correct:1, explain:"God addresses the organ that kept failing, rather than issuing more instructions to a stone." },
+        { q:"Who does the work?", opts:["The people, through effort", "God \u2014 every verb is \u2018I will\u2019", "A future king"], correct:1, explain:"Read the passage counting the \u2018I wills\u2019; human contribution isn't the mechanism here." },
+        { q:"What reason does God give?", opts:["Their repentance earned it", "For the sake of His own holy name", "Their suffering was enough"], correct:1, explain:"Grace anchored in God's character rather than their performance \u2014 which is why it holds." }
+      ],
+      deepDive: "Ezekiel 36 is the twin of Jeremiah 31, and together they're the Old Testament's clearest promise of what the New Testament calls being born again. The problem all along was never that the law was unclear; it was that a heart of stone can't respond no matter how clear the instruction. So God promises a transplant \u2014 and adds His own Spirit as the power to actually walk in it. The most freeing detail is the stated reason: 'for the sake of my holy name.' If the promise depended on their record, it would collapse; because it rests on His character, it doesn't. Jesus assumed Nicodemus should have known this passage when He said 'you must be born again.'" },
+    { id:211, book:"Ezekiel", title:"The shepherds of Israel", side:"l",
+      passage: "God brings charges against Israel's leaders: \u201cWoe to you shepherds of Israel who only take care of yourselves! Should not shepherds take care of the flock?... You have not strengthened the weak or healed the sick or bound up the injured. You have not brought back the strays or searched for the lost.\u201d So God takes the job Himself: \u201cI myself will search for my sheep and look after them... I will bring back the strays and bind up the injured and strengthen the weak.\u201d",
+      keyVerses: [
+        { ref: "Ezekiel 34:11", text: "I myself will search for my sheep and look after them." }
+      ],
+      questions: [
+        { q:"What was the shepherds' failure?", opts:["Poor teaching", "Caring for themselves instead of the flock \u2014 the weak, sick, injured, and lost neglected", "Military weakness"], correct:1, explain:"The indictment is specific and practical: those needing the most care got the least." },
+        { q:"What does God do about it?", opts:["Appoints better shepherds only", "Takes the job Himself \u2014 \u2018I myself will search for my sheep\u2019", "Abandons the flock"], correct:1, explain:"The failure of human leadership becomes the occasion for God's direct care." },
+        { q:"How does this connect to the New Testament?", opts:["It doesn't", "Jesus says \u2018I am the good shepherd\u2019 \u2014 claiming this chapter", "It refers only to David"], correct:1, explain:"John 10 reads as a direct claim on Ezekiel 34 \u2014 the shepherd God promised, arrived." }
+      ],
+      deepDive: "Ezekiel 34 is one of Scripture's most searching passages on leadership, and its test is simple: who is being cared for, and who is being used? The shepherds ate well, wore wool, and left the injured untended \u2014 leadership as consumption. God's response is the turn everything depends on: if the shepherds won't, He will, personally. Jesus reaches for this exact chapter in John 10 \u2014 'I am the good shepherd' \u2014 and adds what Ezekiel didn't say: the good shepherd lays down his life for the sheep. If you lead anything, the diagnostic here is the weak, sick, injured, and straying: are they better off because you're in charge?" },
+    { id:212, book:"Ezekiel", title:"The glory departs \u2014 and returns", side:"r",
+      passage: "In the book's most devastating scene, Ezekiel watches the glory of the LORD leave the temple by stages \u2014 from the ark, to the threshold, to the east gate, and finally to the mountain east of the city. God's presence, which had filled Solomon's temple, withdraws from a house that had filled itself with idols. But at the book's end, the vision reverses: \u201cI saw the glory of the God of Israel coming from the east... and the glory of the LORD entered the temple.\u201d The last words of the book name the restored city: \u201cTHE LORD IS THERE.\u201d",
+      keyVerses: [
+        { ref: "Ezekiel 48:35", text: "And the name of the city from that time on will be: THE LORD IS THERE." }
+      ],
+      questions: [
+        { q:"How did the glory leave the temple?", opts:["Suddenly", "By stages \u2014 slowly, reluctantly, pausing along the way", "It never left"], correct:1, explain:"The text lingers on each stop; even judgment moves slowly in Ezekiel." },
+        { q:"Why did the glory depart?", opts:["The building was too small", "The temple had been filled with idolatry \u2014 God will not share His house", "The people asked Him to"], correct:1, explain:"Chapters 8\u201310 tour the idolatry hidden inside the temple itself before the glory withdraws." },
+        { q:"How does the book end?", opts:["In ruins", "With the glory returning and the city named \u2018THE LORD IS THERE\u2019", "In exile"], correct:1, explain:"Ezekiel's final word is presence restored \u2014 the whole point of everything that came before." }
+      ],
+      deepDive: "Ezekiel's structure is the departure and return of glory, and the pacing of the departure is the tell: God leaves in stages, pausing at the threshold, at the gate, at the mountain \u2014 as though reluctant at every step. That slowness is mercy shaped like hesitation. And the book's final sentence is one of the great endings in Scripture: the restored city's name is not a description of its walls or its wealth but of its resident \u2014 THE LORD IS THERE. Everything the prophets promise ultimately comes down to that: not better circumstances but restored presence. Revelation's last chapters borrow this vision almost wholesale." },
+    { id:213, book:"Ezekiel", title:"The river from the temple", side:"c",
+      passage: "Ezekiel is shown water trickling from under the temple threshold. His guide measures a thousand cubits and leads him in \u2014 ankle-deep. Another thousand \u2014 knee-deep. Another \u2014 waist-deep. Another \u2014 \u201ca river that no one could cross\u201d and had to be swum. Wherever the river flows, everything lives: fish teem, the salt sea turns fresh, and trees line both banks whose \u201cleaves will not wither, nor will their fruit fail... Their fruit will serve for food and their leaves for healing.\u201d",
+      keyVerses: [
+        { ref: "Ezekiel 47:9", text: "Where the river flows everything will live." }
+      ],
+      questions: [
+        { q:"How does the river change as it flows?", opts:["It shrinks", "It deepens \u2014 ankles, knees, waist, then too deep to cross", "It stays the same"], correct:1, explain:"A river deepening without tributaries \u2014 the source itself keeps supplying more." },
+        { q:"What happens where the river goes?", opts:["Nothing", "Everything lives \u2014 even the salt sea turns fresh", "It floods the land"], correct:1, explain:"Life follows the water, including into a sea famous for supporting nothing." },
+        { q:"Where does the river start?", opts:["A mountain spring", "From under the temple \u2014 from God's presence", "The Jordan"], correct:1, explain:"The source is presence; everything downstream is the effect of it." }
+      ],
+      deepDive: "The measured wade into the river is one of Scripture's most quietly personal images: ankles, knees, waist, and then water you can't stand up in. Every stage is genuinely in the river, and every stage is deeper \u2014 which is a fair picture of a life with God, where 'in' isn't a single point but a going further. And the destination is the Dead Sea, the most lifeless water in the region, turned fresh. Revelation 22 takes this river, these trees, and these healing leaves and places them at the center of the new creation. Where the river flows, everything lives." },
+    { id:214, book:"Hosea", title:"Go, marry an unfaithful wife", side:"l",
+      passage: "God gives Hosea the hardest assignment in the prophets: \u201cGo, marry a promiscuous woman and have children with her, for like an adulterous wife this land is guilty of unfaithfulness to the LORD.\u201d He marries Gomer. She leaves. Their children are given names that spell judgment \u2014 \u2018Not Loved,\u2019 \u2018Not My People.\u2019 And then God tells him to go get her back: \u201cGo, show your love to your wife again, though she is loved by another man and is an adulteress. Love her as the LORD loves the Israelites.\u201d Hosea buys her back for fifteen shekels and a measure of barley.",
+      keyVerses: [
+        { ref: "Hosea 3:1", text: "Go, show your love to your wife again... Love her as the LORD loves the Israelites." }
+      ],
+      questions: [
+        { q:"What was Hosea's assignment?", opts:["To preach in the temple", "To marry an unfaithful woman \u2014 living out God's own experience", "To write a history"], correct:1, explain:"The prophet's marriage became the sermon: his pain was a window into God's." },
+        { q:"What happened after Gomer left?", opts:["Hosea divorced her", "God told him to go get her back and love her again", "She was punished"], correct:1, explain:"The command wasn't tolerance \u2014 it was pursuit, at cost, of someone who had left." },
+        { q:"What did Hosea have to do to get her back?", opts:["Nothing", "Buy her \u2014 pay a price to redeem his own wife", "Ask the king"], correct:1, explain:"Redemption pictured literally: paying to reclaim what was already his." }
+      ],
+      deepDive: "Hosea is God saying, in effect: you want to know what this feels like from my side? Marry her. The prophet's ruined marriage becomes the most emotionally raw picture of God's love in the Old Testament \u2014 not the calm love of a distant deity but the grief of a betrayed spouse who goes and buys his wife back out of the situation she chose. Notice the price: fifteen shekels and barley, roughly the cost of a slave. That's the shape of redemption throughout Scripture \u2014 love that pays to reclaim what it already owns. If God's love has ever sounded abstract to you, this book makes it painfully concrete." },
+    { id:215, book:"Hosea", title:"I desire mercy, not sacrifice", side:"r",
+      passage: "Hosea calls the people back with tenderness and honesty: \u201cCome, let us return to the LORD. He has torn us to pieces but he will heal us... Let us acknowledge the LORD; let us press on to acknowledge him. As surely as the sun rises, he will appear.\u201d But their loyalty is \u201clike the morning mist, like the early dew that disappears.\u201d Then the line Jesus would quote twice: \u201cFor I desire mercy, not sacrifice, and acknowledgment of God rather than burnt offerings.\u201d",
+      keyVerses: [
+        { ref: "Hosea 6:6", text: "For I desire mercy, not sacrifice, and acknowledgment of God rather than burnt offerings." }
+      ],
+      questions: [
+        { q:"What image describes their loyalty?", opts:["A mountain", "Morning mist and early dew \u2014 real, and gone by noon", "A river"], correct:1, explain:"Sincere while it lasts, and it doesn't last \u2014 a devastatingly accurate picture of shallow devotion." },
+        { q:"What does God prefer over sacrifice?", opts:["Longer prayers", "Mercy, and knowing Him", "Larger offerings"], correct:1, explain:"Ritual isn't rejected; ritual substituting for a changed heart and merciful life is." },
+        { q:"Where does Jesus quote this?", opts:["Nowhere", "Twice in Matthew \u2014 defending his eating with sinners and his disciples in the grain fields", "Only at the cross"], correct:1, explain:"He tells the Pharisees twice: \u2018go and learn what this means.\u2019" }
+      ],
+      deepDive: "'I desire mercy, not sacrifice' may be the most important sentence in the minor prophets for religious people specifically. It doesn't attack devotion; it attacks devotion that leaves you unmerciful. Jesus quoted it twice, both times to religious experts who were technically correct and relationally cruel \u2014 which suggests the temptation never went away. And Hosea's morning-mist line is the honest mirror alongside it: most of us have real devotion that burns off by mid-morning. The chapter's invitation is gentler than it deserves to be: come, let us return \u2014 and 'as surely as the sun rises, he will appear.'" },
+    { id:216, book:"Hosea", title:"How can I give you up?", side:"c",
+      passage: "God remembers Israel's childhood: \u201cWhen Israel was a child, I loved him... It was I who taught Ephraim to walk, taking them by the arms... I led them with cords of human kindness, with ties of love... and bent down to feed them.\u201d Then, at the point where judgment is fully deserved, God's own heart breaks open: \u201cHow can I give you up, Ephraim? How can I hand you over?... My heart is changed within me; all my compassion is aroused.\u201d And the book ends with healing: \u201cI will heal their waywardness and love them freely.\u201d",
+      keyVerses: [
+        { ref: "Hosea 11:8", text: "How can I give you up, Ephraim?... My heart is changed within me; all my compassion is aroused." }
+      ],
+      questions: [
+        { q:"What image describes God's early care for Israel?", opts:["A king and subjects", "A parent teaching a child to walk and bending down to feed them", "A general and army"], correct:1, explain:"One of the tenderest pictures of God in Scripture \u2014 stooping to feed a toddler." },
+        { q:"What happens at the moment judgment is deserved?", opts:["It falls immediately", "God's compassion overrules \u2014 \u2018how can I give you up?\u2019", "Israel repents first"], correct:1, explain:"The turn comes from God's heart, not from any change in their behavior." },
+        { q:"How does the book end?", opts:["In judgment", "\u2018I will heal their waywardness and love them freely\u2019", "Unresolved"], correct:1, explain:"Freely \u2014 the word rules out anything earned." }
+      ],
+      deepDive: "Hosea 11 is the emotional summit of the prophets. God remembers teaching a child to walk, and then \u2014 at exactly the moment justice is due \u2014 says something that shouldn't be possible for a judge: how can I give you up? My heart is changed within me. This isn't God being talked out of anything; it's God revealing what has been true underneath the whole confrontation. And the book's last chapter delivers the two words everything hangs on: 'love them freely.' Not because the waywardness was small, and not because they finally earned it. Freely. That's the word Hosea's whole ruined marriage was written to define." },
+    { id:217, book:"Joel", title:"Return to me with all your heart", side:"l",
+      passage: "A locust plague strips the land bare \u2014 \u201cwhat the locust swarm has left the great locusts have eaten\u201d \u2014 and Joel reads the disaster as a summons. \u201cEven now, declares the LORD, return to me with all your heart, with fasting and weeping and mourning. Rend your heart and not your garments. Return to the LORD your God, for he is gracious and compassionate, slow to anger and abounding in love.\u201d And a promise for what was lost: \u201cI will repay you for the years the locusts have eaten.\u201d",
+      keyVerses: [
+        { ref: "Joel 2:25", text: "I will repay you for the years the locusts have eaten." }
+      ],
+      questions: [
+        { q:"What does \u2018rend your heart and not your garments\u2019 mean?", opts:["Tear your clothes properly", "Real inward repentance rather than a public display", "Fast longer"], correct:1, explain:"Tearing clothes was the visible sign; God asks for the thing the sign was supposed to represent." },
+        { q:"What two words open the invitation?", opts:["\u2018Too late\u2019", "\u2018Even now\u2019 \u2014 after the devastation, the door is still open", "\u2018Perhaps someday\u2019"], correct:1, explain:"The most hopeful phrase in the book, spoken over a stripped landscape." },
+        { q:"What does God promise about lost years?", opts:["They're gone forever", "\u2018I will repay you for the years the locusts have eaten\u2019", "They never mattered"], correct:1, explain:"Not merely forgiveness but restoration \u2014 God addressing the wasted time itself." }
+      ],
+      deepDive: "Joel takes a natural disaster and reads it as a wake-up call, and his invitation contains two of the Bible's most quoted phrases. 'Rend your heart and not your garments' cuts at performed repentance \u2014 the visible signs are easier than the inward turn they're meant to represent. And 'I will repay you for the years the locusts have eaten' has carried people through the specific grief of wasted time: years lost to addiction, a bad decade, a season eaten by something. The promise doesn't rewind the calendar. It says God is able to make the outcome fuller than the loss." },
+    { id:218, book:"Joel", title:"I will pour out my Spirit", side:"r",
+      passage: "Then the promise that changed everything: \u201cAnd afterward, I will pour out my Spirit on all people. Your sons and daughters will prophesy, your old men will dream dreams, your young men will see visions. Even on my servants, both men and women, I will pour out my Spirit in those days.\u201d And the invitation attached: \u201cEveryone who calls on the name of the LORD will be saved.\u201d On the day of Pentecost, Peter stood up and said: this is that.",
+      keyVerses: [
+        { ref: "Joel 2:28", text: "And afterward, I will pour out my Spirit on all people." }
+      ],
+      questions: [
+        { q:"Who receives the Spirit in this promise?", opts:["Only prophets and priests", "All people \u2014 sons and daughters, old and young, male and female servants", "Only Israel's leaders"], correct:1, explain:"In an age when God's Spirit came on select individuals, this promised everyone." },
+        { q:"What does Peter do with this passage?", opts:["Ignores it", "Quotes it at Pentecost \u2014 \u2018this is what was spoken by the prophet Joel\u2019", "Argues against it"], correct:1, explain:"The church's first sermon is an exposition of Joel 2." },
+        { q:"What is the invitation attached to it?", opts:["Only the worthy may come", "\u2018Everyone who calls on the name of the LORD will be saved\u2019", "Wait for a sign"], correct:1, explain:"Paul quotes this same line in Romans 10 \u2014 the door is opened to anyone who calls." }
+      ],
+      deepDive: "Joel 2:28 is one of the Old Testament's most radical promises. Under the old arrangement, God's Spirit came upon particular people for particular tasks \u2014 a judge, a king, a prophet. Joel announces a flood instead of a trickle, poured on 'all people,' explicitly including the categories that had the least standing: young, old, and servants of both sexes. Peter recognized it happening on the day the church was born and said so out loud. The last line is the door: everyone who calls on the name of the LORD will be saved. Everyone \u2014 which Paul later hammers home to make sure no one reads it narrowly." },
+    { id:219, book:"Amos", title:"Judgment begins abroad \u2014 and comes home", side:"c",
+      passage: "Amos was a shepherd and fig farmer, not a professional prophet. He opens by pronouncing judgment on Israel's neighbors \u2014 Damascus, Gaza, Tyre, Edom, Ammon, Moab \u2014 for atrocities in war. His audience would have cheered each one. Then he turns to Judah. Then to Israel itself: \u201cThey sell the innocent for silver, and the needy for a pair of sandals. They trample on the heads of the poor as on the dust of the ground.\u201d The sermon that started as foreign policy ended in the room.",
+      keyVerses: [
+        { ref: "Amos 2:6\u20137", text: "They sell the innocent for silver, and the needy for a pair of sandals. They trample on the heads of the poor." }
+      ],
+      questions: [
+        { q:"Who was Amos before he prophesied?", opts:["A priest", "A shepherd and fig farmer", "A royal official"], correct:1, explain:"An outsider with no professional stake, which is part of why he could speak so plainly." },
+        { q:"What's the rhetorical strategy of chapters 1\u20132?", opts:["Start with Israel", "Judge the neighbors first \u2014 then turn the same standard on the audience", "Praise everyone"], correct:1, explain:"They cheered through six oracles before the seventh landed on them." },
+        { q:"What specific sins does he name in Israel?", opts:["Wrong sacrifices", "Selling the needy, trampling the poor \u2014 economic injustice", "Foreign alliances"], correct:1, explain:"Amos's concern throughout is what prosperity was doing to the vulnerable." }
+      ],
+      deepDive: "Amos's opening is a masterpiece of preaching. Each oracle against a neighbor would have drawn applause \u2014 yes, judge Damascus, judge Gaza \u2014 and each one narrows the circle until the same standard lands on the people nodding along. That move is worth remembering whenever you find yourself enjoying a critique of someone else. And his charges are startlingly concrete: not vague unfaithfulness but selling people for silver and a pair of sandals. Amos was a farmer who saw what a booming economy was doing at the bottom, and he refused to call it prosperity." },
+    { id:220, book:"Amos", title:"Let justice roll down", side:"l",
+      passage: "God rejects worship offered by an unjust society in the strongest terms in Scripture: \u201cI hate, I despise your religious festivals; your assemblies are a stench to me... Away with the noise of your songs! I will not listen to the music of your harps.\u201d And then the demand: \u201cBut let justice roll on like a river, righteousness like a never-failing stream!\u201d",
+      keyVerses: [
+        { ref: "Amos 5:24", text: "But let justice roll on like a river, righteousness like a never-failing stream!" }
+      ],
+      questions: [
+        { q:"What is God rejecting here?", opts:["All worship forever", "Worship offered by people practicing injustice", "Only music"], correct:1, explain:"The festivals were correct; the society producing them was crushing the poor." },
+        { q:"What image describes the alternative?", opts:["A trickle", "A rolling river and a never-failing stream", "A rainstorm"], correct:1, explain:"Not an occasional charitable event \u2014 continuous, structural, unstoppable justice." },
+        { q:"Why does this verse still get quoted?", opts:["Its poetry alone", "Martin Luther King Jr. and generations of reformers built on it", "It's rarely quoted"], correct:1, explain:"It has anchored the church's justice tradition for centuries \u2014 famously in King's speeches." }
+      ],
+      deepDive: "Amos 5:24 is the verse the modern church quotes most often from the minor prophets, and its context sharpens it: God is not asking for justice in addition to worship, He is refusing worship that comes from an unjust life. That's an uncomfortable claim for anyone who has separated Sunday from the rest of the week. The image itself is worth sitting with \u2014 a never-failing stream, not a seasonal wadi that runs during the rainy season and dries up. Occasional generosity is a wadi. Amos wants a river." },
+    { id:221, book:"Amos", title:"The plumb line", side:"r",
+      passage: "God shows Amos a vision: \u201cThe Lord was standing by a wall that had been built true to plumb, with a plumb line in his hand. And the LORD asked me, \u2018What do you see, Amos?\u2019 \u2018A plumb line,\u2019 I replied. Then the Lord said, \u2018Look, I am setting a plumb line among my people Israel; I will spare them no longer.\u2019\u201d The priest Amaziah promptly told Amos to go prophesy somewhere else \u2014 \u201cdon't prophesy anymore at Bethel, because this is the king's sanctuary.\u201d",
+      keyVerses: [
+        { ref: "Amos 7:8", text: "Look, I am setting a plumb line among my people Israel; I will spare them no longer." }
+      ],
+      questions: [
+        { q:"What is a plumb line used for?", opts:["Measuring length", "Testing whether a wall is truly vertical", "Weighing goods"], correct:1, explain:"A weighted string \u2014 gravity's own standard, impossible to argue with." },
+        { q:"What does the image say about God's standard?", opts:["It shifts with culture", "It's fixed and objective \u2014 the wall either matches it or doesn't", "It's unknowable"], correct:1, explain:"Walls can look straight until measured; so can lives and societies." },
+        { q:"How did the establishment respond to Amos?", opts:["Repentance", "Told him to go prophesy elsewhere \u2014 this is the king's sanctuary", "Promoted him"], correct:1, explain:"When religion belongs to power, uncomfortable truth gets reassigned to another zip code." }
+      ],
+      deepDive: "The plumb line is one of Scripture's most useful images for how God evaluates. A wall doesn't look crooked to the people living behind it; it looks normal, because their eyes adjusted years ago. Only an external standard \u2014 a weighted string obeying gravity \u2014 tells the truth. That's what Scripture does to a life or a society: it doesn't argue with your sense of normal, it just hangs straight beside it. And Amaziah's response is the timeless one: don't say that here, this is the king's sanctuary. Truth that threatens power always gets told to relocate." },
+    { id:222, book:"Obadiah", title:"The pride of Edom", side:"c",
+      passage: "The Bible's shortest book \u2014 twenty-one verses \u2014 aimed at Edom, the nation descended from Esau, Jacob's brother. Their sin: standing by, and then joining in, when Jerusalem fell. \u201cYou should not gloat over your brother in the day of his misfortune... nor seize their wealth in the day of their disaster.\u201d And their confidence: \u201cThe pride of your heart has deceived you, you who live in the clefts of the rocks... You who say to yourself, \u2018Who can bring me down to the ground?\u2019\u201d God's answer: \u201cThough you soar like the eagle... from there I will bring you down.\u201d",
+      keyVerses: [
+        { ref: "Obadiah 1:3", text: "The pride of your heart has deceived you, you who live in the clefts of the rocks and make your home on the heights." }
+      ],
+      questions: [
+        { q:"What was Edom's relationship to Israel?", opts:["Strangers", "Brothers \u2014 descended from Esau, Jacob's twin", "Ancient allies"], correct:1, explain:"The betrayal is a family one, which is why the language is so sharp." },
+        { q:"What was Edom's sin?", opts:["Idolatry", "Gloating over a brother's disaster \u2014 and profiting from it", "Breaking a treaty"], correct:1, explain:"Standing by, then looting: the sin of the bystander who becomes a participant." },
+        { q:"What deceived them?", opts:["False prophets", "The pride of their own hearts \u2014 secured in mountain strongholds", "Foreign advisors"], correct:1, explain:"Their cliff fortresses felt untouchable, and safety became self-deception." }
+      ],
+      deepDive: "Obadiah is one page long and lands two permanent points. First, God notices what you do when someone else is having their worst day \u2014 Edom didn't destroy Jerusalem, they just enjoyed it and took a share. Passive complicity gets a whole book. Second, the diagnosis of pride is precisely worded: 'the pride of your heart has deceived you.' Pride's danger isn't that it's unattractive but that it distorts perception \u2014 living high in the rocks, they genuinely could not imagine falling. The shortest book in the Old Testament exists to say that both of those things are visible from heaven." },
+    { id:223, book:"Jonah", title:"Running the other way", side:"l",
+      passage: "\u201cThe word of the LORD came to Jonah: \u2018Go to the great city of Nineveh and preach against it.\u2019 But Jonah ran away from the LORD and headed for Tarshish\u201d \u2014 the opposite direction, as far west as ships went. A violent storm nearly broke the ship apart; the pagan sailors prayed while the prophet slept below. Discovering the cause, Jonah told them to throw him overboard. They tried to row back to land first \u2014 the pagans showing more mercy than the prophet \u2014 and finally did. \u201cThe LORD provided a huge fish to swallow Jonah.\u201d",
+      keyVerses: [
+        { ref: "Jonah 1:3", text: "But Jonah ran away from the LORD and headed for Tarshish." }
+      ],
+      questions: [
+        { q:"Why is Nineveh significant?", opts:["It was a friendly city", "It was the capital of Assyria \u2014 Israel's brutal enemy", "It was uninhabited"], correct:1, explain:"Jonah wasn't afraid of Nineveh; he didn't want them spared, as chapter 4 admits outright." },
+        { q:"Who behaves better in chapter 1 \u2014 the prophet or the sailors?", opts:["The prophet", "The pagan sailors \u2014 they pray, and try to save him before throwing him over", "Neither"], correct:1, explain:"The book keeps making outsiders look better than the insider, on purpose." },
+        { q:"What was the fish?", opts:["A punishment only", "God's provision \u2014 the text says the LORD \u2018provided\u2019 it", "A coincidence"], correct:1, explain:"The same verb is used for the plant and the worm later \u2014 all of it arranged rescue." }
+      ],
+      deepDive: "Jonah is the only prophet who runs, and the book never lets you forget that the problem isn't fear \u2014 he says plainly in chapter 4 that he fled because he knew God was merciful and might spare his enemies. Notice the contrasts the author builds: pagan sailors praying while the prophet sleeps, and doing everything possible to avoid throwing him overboard. The outsiders keep out-behaving the insider. And the fish is called provision, not punishment \u2014 the first hint that this book is about a God who rescues people who don't want to be where He's sending them." },
+    { id:224, book:"Jonah", title:"From inside the fish", side:"r",
+      passage: "\u201cFrom inside the fish Jonah prayed to the LORD his God.\u201d The prayer is mostly quotations from the Psalms, spoken from the strangest place anyone has prayed: \u201cIn my distress I called to the LORD, and he answered me. From deep in the realm of the dead I called for help, and you listened to my cry... When my life was ebbing away, I remembered you, LORD... What I have vowed I will make good. I will say, \u2018Salvation comes from the LORD.\u2019 And the LORD commanded the fish, and it vomited Jonah onto dry land.\u201d",
+      keyVerses: [
+        { ref: "Jonah 2:9", text: "What I have vowed I will make good. I will say, \u2018Salvation comes from the LORD.\u2019" }
+      ],
+      questions: [
+        { q:"What is Jonah's prayer largely made of?", opts:["New material", "Lines from the Psalms \u2014 remembered Scripture surfacing in crisis", "Complaints"], correct:1, explain:"What he had memorized in better days became his vocabulary at the bottom." },
+        { q:"Where does Jonah say he called from?", opts:["The ship", "\u2018Deep in the realm of the dead\u2019 \u2014 the lowest place he could name", "Nineveh"], correct:1, explain:"The prayer treats the fish as a grave from which God retrieved him." },
+        { q:"What's the prayer's conclusion?", opts:["\u2018I deserved better\u2019", "\u2018Salvation comes from the LORD\u2019", "\u2018Send someone else\u2019"], correct:1, explain:"The right theology, from a man who will still resent it being applied to his enemies." }
+      ],
+      deepDive: "Two things stand out about this prayer. First, its raw material: Jonah is quoting psalms he clearly knew by heart, which is a quiet argument for filling your memory with Scripture before you need it. What's stored surfaces when you're too far gone to compose anything new. Second, the irony the book builds: Jonah declares 'salvation comes from the LORD' while being personally rescued \u2014 and then spends chapter 4 furious that the same salvation reached Nineveh. It's possible to have excellent theology about your own rescue and resent it being extended to someone you dislike." },
+    { id:225, book:"Jonah", title:"Nineveh believes", side:"c",
+      passage: "The word comes a second time, and this time Jonah goes. His sermon is eight words in Hebrew: \u201cForty more days and Nineveh will be overthrown.\u201d No mention of God, no offer of mercy, no invitation \u2014 possibly the worst sermon ever preached. And it produced the greatest revival in Scripture: \u201cThe Ninevites believed God.\u201d They declared a fast, from the greatest to the least; even the king stepped off his throne and sat in dust. \u201cWhen God saw what they did and how they turned from their evil ways, he relented.\u201d",
+      keyVerses: [
+        { ref: "Jonah 3:10", text: "When God saw what they did and how they turned from their evil ways, he relented." }
+      ],
+      questions: [
+        { q:"What was remarkable about Jonah's sermon?", opts:["Its eloquence", "Its brevity and bleakness \u2014 eight words, no mercy offered", "Its length"], correct:1, explain:"The results plainly had nothing to do with the messenger's skill or enthusiasm." },
+        { q:"How far did the repentance reach?", opts:["A few citizens", "From the greatest to the least \u2014 including the king off his throne", "Only the priests"], correct:1, explain:"An entire enemy capital turning \u2014 the largest response to any prophet in the Bible." },
+        { q:"What did God do?", opts:["Destroyed them anyway", "Relented \u2014 He saw their turning and did not bring the threatened disaster", "Waited forty more years"], correct:1, explain:"Exactly what Jonah feared, and exactly what the book exists to celebrate." }
+      ],
+      deepDive: "The joke of Jonah 3 is that the worst sermon in Scripture produced its biggest revival. Eight words, delivered by a reluctant man who wanted them destroyed, and a whole city turns \u2014 which makes the point unmistakable: the power was never in the preacher. There's something freeing in that for anyone who has ever felt unqualified to say anything about God. And the king's proclamation contains one of the Bible's humblest lines: 'Who knows? God may yet relent.' No presumption, no bargaining \u2014 just turning, and hoping." },
+    { id:226, book:"Jonah", title:"The worm and the question", side:"l",
+      passage: "\u201cBut to Jonah this seemed very wrong, and he became angry\u201d \u2014 and finally admits why he ran: \u201cI knew that you are a gracious and compassionate God, slow to anger and abounding in love, a God who relents from sending calamity.\u201d He sulks outside the city hoping for fireworks. God provides a plant for shade; Jonah is delighted. God provides a worm; the plant dies; Jonah wants to die too. Then God's closing question: you cared about a plant you didn't grow \u2014 \u201cshould I not have concern for the great city of Nineveh, in which there are more than a hundred and twenty thousand people?\u201d The book ends on that question, unanswered.",
+      keyVerses: [
+        { ref: "Jonah 4:11", text: "And should I not have concern for the great city of Nineveh, in which there are more than a hundred and twenty thousand people?" }
+      ],
+      questions: [
+        { q:"Why did Jonah say he ran?", opts:["Fear of Nineveh", "Because he knew God was gracious and might spare them", "He doubted God existed"], correct:1, explain:"He didn't doubt God's mercy \u2014 he objected to it, which is a different problem entirely." },
+        { q:"What was the plant and worm for?", opts:["Comfort only", "To expose Jonah's misplaced compassion \u2014 grieving a plant, not a city", "A punishment"], correct:1, explain:"God argues by experience: you cared about this; now consider what I care about." },
+        { q:"How does the book end?", opts:["Jonah repents", "With God's question hanging in the air, unanswered", "Nineveh is destroyed"], correct:1, explain:"The question is left for the reader \u2014 which is exactly why it still lands." }
+      ],
+      deepDive: "Jonah's last chapter reveals that the book was never about a fish. Jonah's complaint is that God is too merciful \u2014 he quotes God's own self-description from Exodus 34 as an accusation. Then the plant exposes him: he grieved a vine he didn't plant while resenting mercy toward 120,000 people. And the book simply stops on God's question, with no reply from Jonah. That silence is deliberate; the question is aimed past him at whoever is reading. Is there a group you'd be quietly disappointed to see God bless? Jonah is the book that asks it and refuses to answer for you." },
+    { id:227, book:"Micah", title:"What does the LORD require?", side:"r",
+      passage: "Micah stages a courtroom scene \u2014 God's case against His people, with the mountains as jury. The people answer by escalating offers: shall I come with burnt offerings? Thousands of rams? Ten thousand rivers of oil? My firstborn for my transgression? The reply cuts through all of it: \u201cHe has shown you, O mortal, what is good. And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God.\u201d",
+      keyVerses: [
+        { ref: "Micah 6:8", text: "And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God." }
+      ],
+      questions: [
+        { q:"What were the people offering?", opts:["Nothing", "Escalating sacrifices \u2014 rams, rivers of oil, even a firstborn child", "Prayers only"], correct:1, explain:"They kept raising the price, assuming the problem was quantity." },
+        { q:"What does God actually require?", opts:["Larger offerings", "Act justly, love mercy, walk humbly", "Perfect record-keeping"], correct:1, explain:"Three phrases covering how you treat people and how you stand before God." },
+        { q:"What's the difference between the three?", opts:["They're identical", "Justice is what you do; mercy is what you love; humility is how you walk with God", "Only the first matters"], correct:1, explain:"Action, affection, and posture \u2014 covering behavior, heart, and relationship." }
+      ],
+      deepDive: "Micah 6:8 is the Old Testament's most quoted summary of what God wants, and its power is in what it replaces. The people were bidding upward \u2014 more rams, more oil, ultimately a child \u2014 assuming God was expensive. The answer says the currency was wrong from the start. Notice the three verbs: act justly (behavior toward others), love mercy (not merely doing mercy but wanting to), and walk humbly with your God (a posture, ongoing, relational). It's simple enough to memorize in a minute and demanding enough to take a lifetime. If you want a single verse to test a week against, this is a strong candidate." },
+    { id:228, book:"Micah", title:"But you, Bethlehem", side:"c",
+      passage: "In the middle of judgment, a promise about a town nobody counted: \u201cBut you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel, whose origins are from of old, from ancient times.\u201d He will \u201cstand and shepherd his flock in the strength of the LORD... And he will be their peace.\u201d Seven centuries later, when Herod asked where the Messiah would be born, the scribes quoted this verse from memory.",
+      keyVerses: [
+        { ref: "Micah 5:2", text: "But you, Bethlehem Ephrathah, though you are small among the clans of Judah, out of you will come for me one who will be ruler over Israel." }
+      ],
+      questions: [
+        { q:"What's emphasized about Bethlehem?", opts:["Its power", "Its smallness \u2014 \u2018small among the clans of Judah\u2019", "Its wealth"], correct:1, explain:"God's pattern again: the significant thing comes out of the overlooked place." },
+        { q:"What's said about the ruler's origins?", opts:["Recent", "\u2018From of old, from ancient times\u2019", "Unknown"], correct:1, explain:"A phrase reaching back beyond any human genealogy \u2014 hinting at more than a local king." },
+        { q:"How is the ruler described?", opts:["A conqueror", "A shepherd \u2014 and \u2018he will be their peace\u2019", "A judge"], correct:1, explain:"Strength exercised as care, which is how the Bible keeps defining real kingship." }
+      ],
+      deepDive: "Micah 5:2 is one of the most specific predictions in the Old Testament, and it was still common knowledge seven hundred years later \u2014 Herod's scribes quoted it without needing to look it up. What's most characteristic is the emphasis on smallness: not Jerusalem, not a capital, but a village too minor to be listed among Judah's clans. The Bible does this relentlessly \u2014 younger sons, barren women, minor towns \u2014 as if to make sure no one confuses God's work with human prominence. And the promised ruler's job description is shepherding, not conquering. He will be their peace." },
+    { id:229, book:"Micah", title:"Who is a God like you?", side:"l",
+      passage: "Micah ends with wonder at God's character: \u201cWho is a God like you, who pardons sin and forgives the transgression of the remnant of his inheritance? You do not stay angry forever but delight to show mercy. You will again have compassion on us; you will tread our sins underfoot and hurl all our iniquities into the depths of the sea.\u201d The prophet's own name means \u2018who is like the LORD?\u2019 \u2014 and the book ends by answering its own question.",
+      keyVerses: [
+        { ref: "Micah 7:18\u201319", text: "You do not stay angry forever but delight to show mercy... you will hurl all our iniquities into the depths of the sea." }
+      ],
+      questions: [
+        { q:"What does God \u2018delight\u2019 in?", opts:["Judgment", "Showing mercy", "Sacrifices"], correct:1, explain:"Not reluctant forgiveness but pleasure in it \u2014 mercy as God's preference, not His concession." },
+        { q:"What happens to the sins?", opts:["Recorded permanently", "Hurled into the depths of the sea", "Reduced"], correct:1, explain:"Thrown, deliberately, into the one place ancient people knew nothing returns from." },
+        { q:"What does the name \u2018Micah\u2019 mean?", opts:["Servant of God", "Who is like the LORD?", "God saves"], correct:1, explain:"The book closes by asking the question its author's name has been asking the whole time." }
+      ],
+      deepDive: "Micah's ending is a small masterpiece. The prophet whose name asks 'who is like the LORD?' answers it not with power or knowledge but with mercy: this is a God who does not stay angry and actually delights in forgiving. The image of sins hurled into the depths of the sea is deliberately final \u2014 not filed, not reduced, not suspended, but thrown where nothing is recovered. Corrie ten Boom famously added that God then posts a sign: no fishing. If you are someone who keeps dredging up what God has already dealt with, this is the passage to memorize." },
+    { id:230, book:"Nahum", title:"Slow to anger, great in power", side:"r",
+      passage: "A century after Jonah, Nineveh had returned to its brutality \u2014 and Nahum announces its fall. But he opens by holding two truths together: \u201cThe LORD is slow to anger but great in power; the LORD will not leave the guilty unpunished.\u201d And in the middle of the judgment, a sentence for the frightened: \u201cThe LORD is good, a refuge in times of trouble. He cares for those who trust in him.\u201d For a small nation crushed under Assyria for generations, this book was not cruelty \u2014 it was the announcement that the bully would not last forever.",
+      keyVerses: [
+        { ref: "Nahum 1:7", text: "The LORD is good, a refuge in times of trouble. He cares for those who trust in him." }
+      ],
+      questions: [
+        { q:"How does Nahum connect to Jonah?", opts:["No connection", "Same city \u2014 Nineveh repented under Jonah, and a century later returned to brutality", "Same prophet"], correct:1, explain:"Mercy received in one generation was not inherited by the next." },
+        { q:"What two things does 1:3 hold together?", opts:["Anger and indifference", "Slow to anger AND will not leave the guilty unpunished", "Power and distance"], correct:1, explain:"Patience is not the same as permission \u2014 both are true of God at once." },
+        { q:"Who was this book good news for?", opts:["Assyria", "The small nations Assyria had crushed for generations", "No one"], correct:1, explain:"Judgment on an empire reads very differently from underneath its boot." }
+      ],
+      deepDive: "Nahum is uncomfortable reading until you consider the audience. Assyria was the ancient world's most efficient terror state, famous for flaying prisoners and deporting whole populations, and this book announces to their victims that it ends. Read from that position, the judgment is not vengeance porn \u2014 it's the promise that evil has an expiration date. And verse 7 sits right in the middle of it: the LORD is good, a refuge in trouble, caring for those who take shelter in Him. The same chapter says God is slow to anger and will not let the guilty go. Both, at once, are what makes Him trustworthy." },
+    { id:231, book:"Habakkuk", title:"How long, LORD?", side:"c",
+      passage: "Habakkuk doesn't preach to people \u2014 he argues with God. \u201cHow long, LORD, must I call for help, but you do not listen? Or cry out to you, \u2018Violence!\u2019 but you do not save? Why do you make me look at injustice?\u201d God's answer makes it worse: I am raising up the Babylonians \u2014 a nation more violent still \u2014 as the instrument. Habakkuk pushes back harder: \u201cYour eyes are too pure to look on evil... Why then do you tolerate the treacherous? Why are you silent while the wicked swallow up those more righteous than themselves?\u201d",
+      keyVerses: [
+        { ref: "Habakkuk 1:2", text: "How long, LORD, must I call for help, but you do not listen?" }
+      ],
+      questions: [
+        { q:"What's unusual about this book?", opts:["It's a history", "It's a prophet arguing with God rather than preaching to people", "It has no author"], correct:1, explain:"The whole book is a dialogue \u2014 complaint, answer, harder complaint, answer." },
+        { q:"What was God's first answer?", opts:["Immediate justice", "He was raising up Babylon \u2014 an even more violent nation \u2014 as His instrument", "Silence"], correct:1, explain:"The answer created a bigger problem than the question, which Habakkuk says out loud." },
+        { q:"How does Scripture treat his complaints?", opts:["As faithlessness", "As faith \u2014 they're preserved, answered, and never rebuked", "As unimportant"], correct:1, explain:"Like Job, honest wrestling directed at God is treated as legitimate prayer." }
+      ],
+      deepDive: "Habakkuk is the book for anyone who has looked at the world and thought: how is God letting this continue? The prophet asks it directly, gets an answer he finds worse than the silence, and asks again \u2014 and none of it is treated as rebellion. That's the first gift of the book: your hardest question about God's apparent inaction has a chapter in the Bible. Notice also what he does with his complaint \u2014 he brings it to God rather than about God, and then, in chapter 2, he climbs the watchtower to wait for a reply. Complaint plus expectation is the posture the whole book models." },
+    { id:232, book:"Habakkuk", title:"The righteous will live by faith", side:"l",
+      passage: "Habakkuk stations himself on the ramparts to watch for God's reply. It comes: \u201cWrite down the revelation and make it plain on tablets so that a herald may run with it. For the revelation awaits an appointed time... Though it linger, wait for it; it will certainly come and will not delay.\u201d And at its center, the sentence that would later ignite the Reformation: \u201cSee, the enemy is puffed up; his desires are not upright \u2014 but the righteous person will live by his faithfulness.\u201d",
+      keyVerses: [
+        { ref: "Habakkuk 2:4", text: "The righteous person will live by his faithfulness." }
+      ],
+      questions: [
+        { q:"What did Habakkuk do after complaining?", opts:["Left", "Stationed himself on the watchtower to wait for God's answer", "Complained louder"], correct:1, explain:"He expected a reply \u2014 complaint with expectation, not resignation." },
+        { q:"What does God say about the timing?", opts:["Immediate", "It awaits an appointed time \u2014 \u2018though it linger, wait for it\u2019", "Never"], correct:1, explain:"An answer certain in substance and slow in schedule \u2014 which is most of the Bible's answers." },
+        { q:"Why is 2:4 historically important?", opts:["It isn't", "Paul quotes it in Romans and Galatians; it shaped Luther and the Reformation", "Only Jews cite it"], correct:1, explain:"One line from a minor prophet became the backbone of the doctrine of justification by faith." }
+      ],
+      deepDive: "Habakkuk 2:4 is the most consequential sentence in the minor prophets. Paul quotes it in Romans and Galatians, the writer of Hebrews quotes it too, and Luther's rediscovery of it lit the fuse of the Reformation. In context it's the answer to 'how do I live while the wicked prosper and God seems slow?' \u2014 the righteous will live by faith, meaning steady trust when the evidence hasn't arrived. And notice God's instruction about the vision: write it plainly, because you'll need to read it during the wait. Whatever God has told you, get it in writing before the lingering starts." },
+    { id:233, book:"Habakkuk", title:"Though the fig tree does not bud", side:"r",
+      passage: "The book ends in worship, with everything still unresolved: \u201cThough the fig tree does not bud and there are no grapes on the vines, though the olive crop fails and the fields produce no food, though there are no sheep in the pen and no cattle in the stalls, yet I will rejoice in the LORD, I will be joyful in God my Savior. The Sovereign LORD is my strength; he makes my feet like the feet of a deer, he enables me to tread on the heights.\u201d",
+      keyVerses: [
+        { ref: "Habakkuk 3:17\u201318", text: "Though the fig tree does not bud... yet I will rejoice in the LORD, I will be joyful in God my Savior." }
+      ],
+      questions: [
+        { q:"What has changed in Habakkuk's circumstances by the end?", opts:["Everything improved", "Nothing \u2014 the crops still fail and the invasion is still coming", "He moved away"], correct:1, explain:"The book's resolution is internal; the situation is unchanged." },
+        { q:"What's the force of the word \u2018yet\u2019?", opts:["Uncertainty", "Deliberate choice \u2014 joy decided in spite of the facts listed", "Denial"], correct:1, explain:"He lists every failure honestly and then plants a decision on the other side of them." },
+        { q:"Where is his joy located?", opts:["In the harvest", "In the LORD Himself \u2014 \u2018God my Savior\u2019", "In future crops"], correct:1, explain:"Joy anchored to a Person rather than to conditions is the only kind that survives conditions." }
+      ],
+      deepDive: "Habakkuk's ending is one of the bravest sentences in Scripture, and it works only because of the honesty of the list preceding it. He doesn't say the crops will recover \u2014 he names each failure specifically: no figs, no grapes, no olives, no grain, no sheep, no cattle. Total agricultural collapse in an agricultural economy. And then: yet. That word is the whole Christian life in three letters. Joy here isn't a feeling produced by circumstances but a decision anchored in a Person, which is precisely why it can survive when the fields are empty." },
+    { id:234, book:"Zephaniah", title:"The great day of the LORD", side:"c",
+      passage: "Zephaniah preaches the day of the LORD in its most sweeping terms \u2014 a coming reckoning that leaves no one on the sidelines, including those \u201cwho are complacent, who are like wine left on its dregs, who think, \u2018The LORD will do nothing, either good or bad.\u2019\u201d Against that indifference he calls for a different posture: \u201cSeek the LORD, all you humble of the land, you who do what he commands. Seek righteousness, seek humility; perhaps you will be sheltered on the day of the LORD's anger.\u201d",
+      keyVerses: [
+        { ref: "Zephaniah 2:3", text: "Seek the LORD, all you humble of the land... Seek righteousness, seek humility." }
+      ],
+      questions: [
+        { q:"What sin does Zephaniah single out?", opts:["Idolatry only", "Complacency \u2014 assuming God will do nothing, either good or bad", "Poverty"], correct:1, explain:"The \u2018wine left on its dregs\u2019 image: settled, thickened, unstirred indifference." },
+        { q:"Who is told to seek the LORD?", opts:["Kings", "The humble of the land \u2014 those who do what He commands", "Priests only"], correct:1, explain:"The invitation runs toward the overlooked rather than the powerful." },
+        { q:"What is the tone of \u2018perhaps you will be sheltered\u2019?", opts:["Cynical", "Humble hope \u2014 no presumption, but real invitation", "Despairing"], correct:1, explain:"The same humility as Nineveh's king: \u2018who knows?\u2019 \u2014 seeking without demanding." }
+      ],
+      deepDive: "Zephaniah's most modern indictment is complacency \u2014 people who wouldn't call themselves rebellious, just unbothered: 'the LORD will do nothing, either good or bad.' Practical atheism, held by people still attending the festivals. His image is precise: wine left too long on its sediment, thickened and stale from never being stirred. Against that he calls the humble to actively seek \u2014 righteousness, humility \u2014 without any guarantee, only a 'perhaps.' There's integrity in that. The book asks whether your sense that God isn't going to act has quietly become the reason you've stopped moving." },
+    { id:235, book:"Zephaniah", title:"He will rejoice over you with singing", side:"l",
+      passage: "The book that opened with sweeping judgment ends with one of the most tender sentences in Scripture: \u201cThe LORD your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will no longer rebuke you, but will rejoice over you with singing.\u201d The judgment is past; the fear is removed \u2014 \u201cDo not fear, Zion; do not let your hands hang limp\u201d \u2014 and God Himself is pictured, astonishingly, singing.",
+      keyVerses: [
+        { ref: "Zephaniah 3:17", text: "The LORD your God is with you, the Mighty Warrior who saves. He will take great delight in you... he will rejoice over you with singing." }
+      ],
+      questions: [
+        { q:"What is God pictured doing?", opts:["Judging", "Delighting, quieting, and singing over His people", "Departing"], correct:1, explain:"One of only a few places in Scripture where God Himself is described as singing." },
+        { q:"What two titles sit side by side?", opts:["Judge and jury", "Mighty Warrior who saves \u2014 and one who delights and sings", "King and priest"], correct:1, explain:"Power and tenderness in a single verse, neither cancelling the other." },
+        { q:"How does the placement of this verse matter?", opts:["It's unrelated to the judgment", "It comes after the judgment \u2014 delight on the far side of dealing honestly with sin", "It opens the book"], correct:1, explain:"The tenderness isn't denial; it's what remains once the confrontation is finished." }
+      ],
+      deepDive: "Zephaniah 3:17 catches people off guard, mostly because they've never read the two chapters before it. This is the same book that opened with 'I will sweep away everything' \u2014 and it ends with God delighting, quieting with His love, and singing over His people. That progression is the whole prophetic message in miniature: honest confrontation first, and joy on the other side of it. The picture is worth sitting with, because most people can imagine God tolerating them, and some can imagine Him forgiving them. Very few picture Him singing." },
+    { id:236, book:"Haggai", title:"Give careful thought to your ways", side:"r",
+      passage: "The exiles were home, but the temple lay unfinished for years while everyone got on with life. Haggai's question is blunt: \u201cIs it a time for you yourselves to be living in your paneled houses, while this house remains a ruin?\u201d Then the diagnosis: \u201cYou have planted much, but harvested little. You eat, but never have enough... You earn wages, only to put them in a purse with holes in it. Give careful thought to your ways.\u201d The people obeyed \u2014 and \u201cthe LORD stirred up the spirit\u201d of the governor, the priest, and the whole remnant, and they began to build.",
+      keyVerses: [
+        { ref: "Haggai 1:5", text: "Now this is what the LORD Almighty says: Give careful thought to your ways." }
+      ],
+      questions: [
+        { q:"What was the problem?", opts:["Persecution", "Misplaced priorities \u2014 paneled houses finished, God's house left in ruins", "Lack of materials"], correct:1, explain:"Nobody decided to abandon the temple; it just kept not being the priority." },
+        { q:"What image describes their frustration?", opts:["An empty field", "Wages put in a purse with holes in it", "A broken plow"], correct:1, explain:"Effort producing nothing that stays \u2014 the felt experience of misordered priorities." },
+        { q:"How did the people respond to Haggai?", opts:["They ignored him", "They obeyed \u2014 and God stirred their spirits to build", "They exiled him"], correct:1, explain:"One of the few prophets in Scripture whose audience actually listened, and quickly." }
+      ],
+      deepDive: "Haggai is short, practical, and uncomfortably relevant. Nobody in Jerusalem voted to abandon the temple \u2014 they just had legitimate things to do, and sixteen years passed. That's how priorities usually die: not by decision but by postponement. The purse with holes is the image that stings, because it names a real feeling \u2014 working hard and watching it evaporate. And the phrase repeated through the book, 'give careful thought to your ways,' is an invitation to audit rather than a condemnation. What have you postponed so long that the postponement has become the decision?" },
+    { id:237, book:"Haggai", title:"The glory of this house", side:"c",
+      passage: "As the new temple rose, the older people who remembered Solomon's saw how small it was. Haggai names the discouragement directly: \u201cWho of you is left who saw this house in its former glory? How does it look to you now? Does it not seem to you like nothing?\u201d Then, three times: \u201cBe strong... and work. For I am with you.\u201d And the promise: \u201cThe glory of this present house will be greater than the glory of the former house, says the LORD Almighty. And in this place I will grant peace.\u201d",
+      keyVerses: [
+        { ref: "Haggai 2:9", text: "The glory of this present house will be greater than the glory of the former house, says the LORD Almighty." }
+      ],
+      questions: [
+        { q:"What discouraged the builders?", opts:["Enemy attacks", "Comparison \u2014 the new temple looked like nothing beside the old one", "Bad weather"], correct:1, explain:"The same grief as Ezra 3: those who remembered the former glory wept." },
+        { q:"What does God repeat three times?", opts:["\u2018Give more\u2019", "\u2018Be strong... and work. For I am with you\u2019", "\u2018Wait longer\u2019"], correct:1, explain:"Encouragement plus assignment plus presence \u2014 in that order, three times over." },
+        { q:"What's promised about the modest new house?", opts:["It will be rebuilt bigger", "Its glory will exceed the former \u2014 and God will grant peace there", "It will be temporary"], correct:1, explain:"Glory measured by God's presence and purpose, not by square footage or gold." }
+      ],
+      deepDive: "Haggai 2 speaks precisely to the discouragement of building something that looks small next to what used to be. God doesn't dismiss the comparison \u2014 He names it out loud, twice \u2014 and then refuses to let it be the final word. The promise is that this modest house would hold a greater glory than Solomon's, which is a strange claim about a smaller building until you remember who eventually walked through its courts. Whatever you're rebuilding that feels like a downgrade from before, the instruction here is the one repeated three times: be strong, work, and remember who is with you." },
+    { id:238, book:"Zechariah", title:"Not by might, nor by power", side:"l",
+      passage: "Zechariah sees a golden lampstand fed by two olive trees \u2014 a light with a permanent, self-supplying oil source. Asked what it means, the angel gives the word for Zerubbabel, who was trying to rebuild the temple with a discouraged remnant and no resources: \u201cNot by might nor by power, but by my Spirit, says the LORD Almighty.\u201d And to those unimpressed by the small beginning: \u201cWho dares despise the day of small things?\u201d",
+      keyVerses: [
+        { ref: "Zechariah 4:6", text: "Not by might nor by power, but by my Spirit, says the LORD Almighty." }
+      ],
+      questions: [
+        { q:"What does the lampstand vision picture?", opts:["Human effort", "A light with a continuous supply it doesn't generate itself", "A treasury"], correct:1, explain:"Oil flowing directly from the trees to the lamp \u2014 supply without human pumping." },
+        { q:"What does 4:6 rule out?", opts:["All effort", "Might and power as the source \u2014 the work runs on God's Spirit", "Prayer"], correct:1, explain:"Zerubbabel still built; the verse names what the building actually ran on." },
+        { q:"What does \u2018the day of small things\u2019 address?", opts:["Impatience with big projects", "Contempt for modest beginnings", "Poor planning"], correct:1, explain:"A direct word to anyone embarrassed by how small their start looks." }
+      ],
+      deepDive: "Zechariah 4:6 is quoted constantly and usually detached from its setting, which is a shame, because the setting is the point: a discouraged governor trying to rebuild a temple with a fraction of the people and money the first one had. Into that, God says the work will run on His Spirit rather than on resources. And the follow-up line is for everyone who has felt embarrassed by the size of their start: 'who dares despise the day of small things?' God apparently enjoys small beginnings; most of the Bible's turning points are one. Do the small faithful thing, and stop measuring it against what you wish it were." },
+    { id:239, book:"Zechariah", title:"Your king comes, riding a donkey", side:"r",
+      passage: "Zechariah's visions turn toward a coming king: \u201cRejoice greatly, Daughter Zion! Shout, Daughter Jerusalem! See, your king comes to you, righteous and victorious, lowly and riding on a donkey, on a colt, the foal of a donkey.\u201d He will take away the war horses and the battle bow, \u201cand he will proclaim peace to the nations.\u201d Centuries later, Jesus deliberately sent two disciples to find a colt before riding into Jerusalem \u2014 quoting this verse with His entrance.",
+      keyVerses: [
+        { ref: "Zechariah 9:9", text: "See, your king comes to you, righteous and victorious, lowly and riding on a donkey." }
+      ],
+      questions: [
+        { q:"What's unusual about the king's arrival?", opts:["A war horse", "A donkey \u2014 lowly, not the mount of a conquering general", "He walks"], correct:1, explain:"Conquerors rode horses; a donkey signaled peace, and everyone watching knew it." },
+        { q:"What does the king remove?", opts:["Taxes", "The war horses and battle bow \u2014 and proclaims peace to the nations", "The temple"], correct:1, explain:"His victory results in disarmament, not a bigger army." },
+        { q:"How did Jesus use this passage?", opts:["He avoided it", "He deliberately arranged a colt and rode it into Jerusalem", "He quoted it in a sermon only"], correct:1, explain:"A public, unmistakable claim to be this king \u2014 acted out rather than announced." }
+      ],
+      deepDive: "Zechariah 9:9 is a portrait of the strangest kind of victory: a king who is righteous and victorious, and also 'lowly,' arriving on a donkey and disarming his own side. Everyone in Jerusalem knew the code \u2014 horses meant war, donkeys meant peace \u2014 which is why the triumphal entry was so charged. Jesus didn't stumble into that image; He sent disciples ahead specifically to arrange it. It's the clearest picture of how His kingdom differs from every other one: real authority, arriving without a weapon, proclaiming peace to the nations rather than conquering them." },
+    { id:240, book:"Zechariah", title:"They will look on me", side:"c",
+      passage: "Zechariah's later visions grow intense: a fountain opened \u201cto cleanse them from sin and impurity,\u201d a shepherd struck and the sheep scattered, and a line the Gospels quote at the crucifixion: \u201cThey will look on me, the one they have pierced, and they will mourn for him as one mourns for an only child.\u201d The book ends with the LORD reigning as king over the whole earth \u2014 and even the cooking pots in Jerusalem declared \u201cHOLY TO THE LORD.\u201d",
+      keyVerses: [
+        { ref: "Zechariah 12:10", text: "They will look on me, the one they have pierced, and they will mourn for him as one mourns for an only child." }
+      ],
+      questions: [
+        { q:"What does the fountain represent?", opts:["Irrigation", "Cleansing from sin and impurity \u2014 opened, not earned", "A water supply"], correct:1, explain:"A source made available; the imagery of washing runs throughout Zechariah's later chapters." },
+        { q:"Where do the Gospels quote 12:10?", opts:["At the resurrection", "At the crucifixion \u2014 John cites it when Jesus' side is pierced", "At the baptism"], correct:1, explain:"John quotes it directly; Revelation echoes it too." },
+        { q:"What does the ending say about ordinary objects?", opts:["They're worthless", "Even cooking pots will be \u2018HOLY TO THE LORD\u2019", "They'll be destroyed"], correct:1, explain:"Holiness spreading past the temple into ordinary kitchen equipment \u2014 the sacred/secular divide erased." }
+      ],
+      deepDive: "Zechariah's last chapters are dense and strange, and they contain some of the Old Testament's most startling anticipations \u2014 a struck shepherd, a pierced one mourned like an only child, a fountain opened for uncleanness. The New Testament reaches for these images repeatedly. But don't miss the ending, which is quietly one of the best in the prophets: on that day, the bells on the horses and the cooking pots in every house will be inscribed 'HOLY TO THE LORD.' The line between sacred and ordinary disappears entirely. Everything, down to the pans, belongs to God." },
+    { id:241, book:"Malachi", title:"Where is the honor due me?", side:"l",
+      passage: "The last prophet before four hundred years of silence opens with an argument. God says, \u201cI have loved you\u201d \u2014 and the people answer, \u201cHow have you loved us?\u201d That pattern repeats through the book: God speaks, the people talk back. He charges them with offering blind, lame, and diseased animals: \u201cTry offering them to your governor! Would he be pleased with you?\u201d The issue isn't ignorance but contempt \u2014 giving God what they'd be embarrassed to give a human official.",
+      keyVerses: [
+        { ref: "Malachi 1:6", text: "A son honors his father, and a slave his master. If I am a father, where is the honor due me?" }
+      ],
+      questions: [
+        { q:"What's the book's distinctive style?", opts:["Poetry", "Argument \u2014 God speaks, and the people answer back with objections", "Narrative"], correct:1, explain:"Six disputes structure the book, each with the people's own defensive question quoted." },
+        { q:"What was wrong with their offerings?", opts:["Too small", "Blind, lame, and diseased animals \u2014 leftovers dressed as worship", "The wrong species"], correct:1, explain:"They kept the good animals and gave God the ones nobody wanted." },
+        { q:"What test does God propose?", opts:["A sacrifice contest", "Offer it to your governor and see if he accepts it", "A fast"], correct:1, explain:"A devastating comparison: they showed more care for a human official than for God." }
+      ],
+      deepDive: "Malachi is a book of arguments, and the people's defensive questions \u2014 'how have you loved us?', 'how have we defiled you?' \u2014 make it feel unnervingly modern. The central charge isn't dramatic rebellion but cheapness: giving God what costs nothing, the animals they couldn't sell. God's test is brilliant and humiliating: try that with your governor. The application isn't about livestock. It's about whether God gets your leftover time, attention, and energy \u2014 the version of you nobody else would accept \u2014 while your best goes everywhere else." },
+    { id:242, book:"Malachi", title:"Test me in this", side:"r",
+      passage: "God levels a charge with a challenge attached: \u201cWill a mere mortal rob God? Yet you rob me. But you ask, \u2018How are we robbing you?\u2019 In tithes and offerings.\u201d Then the one place in Scripture where God invites a test: \u201cBring the whole tithe into the storehouse... Test me in this, says the LORD Almighty, and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it.\u201d",
+      keyVerses: [
+        { ref: "Malachi 3:10", text: "Test me in this, says the LORD Almighty, and see if I will not throw open the floodgates of heaven." }
+      ],
+      questions: [
+        { q:"What makes this passage unique?", opts:["Its length", "God explicitly invites His people to test Him", "It's a parable"], correct:1, explain:"Elsewhere testing God is forbidden; here He opens the books on this one point." },
+        { q:"What was being withheld?", opts:["Prayers", "Tithes and offerings \u2014 the portion designated for God's work and the poor", "Attendance"], correct:1, explain:"The storehouse supported the temple and the vulnerable; withholding hurt both." },
+        { q:"What's the promised response?", opts:["A small return", "Floodgates opened \u2014 blessing beyond room to store", "Silence"], correct:1, explain:"The image is agricultural abundance, not a guaranteed financial scheme." }
+      ],
+      deepDive: "This is the one place God says 'test me,' which is remarkable given how often Scripture forbids testing Him. The context is a community withholding what supported both worship and the poor, while wondering aloud why things felt dry. A caution worth stating plainly: this isn't a formula for guaranteed wealth, and reading it that way has done real damage. What it is, is an invitation to find out experimentally whether generosity toward God leaves you poorer. Generations have taken the test and reported back. The safest way to engage the passage is the way it's written \u2014 not as a calculation, but as a dare." },
+    { id:243, book:"Malachi", title:"The sun of righteousness", side:"c",
+      passage: "The Old Testament's final page. God notices those who feared Him: \u201cA scroll of remembrance was written in his presence concerning those who feared the LORD and honored his name. \u2018They will be mine,\u2019 says the LORD... \u2018I will spare them, just as a father has compassion and spares his son.\u2019\u201d And the last promise: \u201cBut for you who revere my name, the sun of righteousness will rise with healing in its rays.\u201d Then a final word about a coming prophet like Elijah \u2014 and four hundred years of silence before an angel appears to a priest named Zechariah.",
+      keyVerses: [
+        { ref: "Malachi 4:2", text: "But for you who revere my name, the sun of righteousness will rise with healing in its rays." }
+      ],
+      questions: [
+        { q:"What is the scroll of remembrance?", opts:["A record of sins", "A record of those who feared the LORD and honored His name", "A census"], correct:1, explain:"Faithfulness in a discouraging era isn't unnoticed \u2014 it's written down." },
+        { q:"What image ends the Old Testament?", opts:["A storm", "The sun of righteousness rising with healing in its rays", "A closed door"], correct:1, explain:"Sunrise \u2014 the last picture before four centuries of waiting." },
+        { q:"What follows Malachi historically?", opts:["Immediate fulfillment", "About four hundred years of prophetic silence", "Another prophet"], correct:1, explain:"The next voice is John the Baptist \u2014 the promised messenger who prepares the way." }
+      ],
+      deepDive: "Malachi ends the Old Testament with sunrise and then silence. The scroll of remembrance is worth pausing on: in a discouraged, cynical era, people who still feared God talked with each other about it, and God had it written down. Faithfulness in a bad season is recorded even when it changes nothing visible. Then the final image \u2014 the sun of righteousness rising with healing in its rays \u2014 and four hundred years of nothing. That gap is part of the story: God's people waited across generations for a dawn they'd been promised. Then a priest named Zechariah met an angel in the temple, and the silence broke." }
   ];
 
   const MIDPOINT_REFLECTIONS = {
@@ -2539,7 +3052,20 @@
     "Isaiah": "You're partway through Isaiah. He saw God high and lifted up, and his first response was \u2018woe to me.\u2019 When did you last feel genuinely small before God \u2014 and did it crush you or clean you?",
     "Jeremiah": "You're partway through Jeremiah. He preached forty years to a nation that never listened, and God's promise was presence, not results. Where are you measuring faithfulness by response instead of obedience?",
     "Lamentations": "You're partway through Lamentations. This book gives grief a whole language and refuses to rush it. Is there a loss you've been hurrying past instead of naming?",
-    "Daniel": "You're partway through Daniel. He accepted much of Babylon and drew one clear line \u2014 decided in advance. What's your line, and have you settled it before the pressure arrives?"
+    "Daniel": "You're partway through Daniel. He accepted much of Babylon and drew one clear line \u2014 decided in advance. What's your line, and have you settled it before the pressure arrives?",
+    "Ezekiel": "You're partway through Ezekiel. God's throne had wheels \u2014 it showed up in Babylon, the last place the exiles expected. Where have you assumed God isn't, because of where you ended up?",
+    "Hosea": "You're partway through Hosea. God told a prophet to go buy his unfaithful wife back. What does it do to you that this is the picture Scripture chose for God's love?",
+    "Joel": "You're partway through Joel. \u2018Rend your heart and not your garments.\u2019 Where is your repentance currently more visible than it is real?",
+    "Amos": "You're partway through Amos. He judged the neighbors first, and everyone cheered \u2014 until the same standard turned on them. Whose failings are you enjoying critiquing lately?",
+    "Obadiah": "You're partway through Obadiah. Edom's sin was standing by and then profiting when a brother fell. Is there someone whose hard season you've been watching without stepping in?",
+    "Jonah": "You're partway through Jonah. He ran because he feared God would be merciful to people he hated. Is there anyone you'd be quietly disappointed to see God bless?",
+    "Micah": "You're partway through Micah. Act justly, love mercy, walk humbly \u2014 which of those three is thinnest in your life right now?",
+    "Nahum": "You're partway through Nahum. \u2018Slow to anger\u2019 and \u2018will not leave the guilty unpunished\u2019 sit in the same verse. Which of those two do you find easier to believe about God?",
+    "Habakkuk": "You're partway through Habakkuk. He argued with God and Scripture kept the transcript. What question about God have you been too polite to actually ask Him?",
+    "Zephaniah": "You're partway through Zephaniah. He indicts people who assume \u2018the LORD will do nothing, either good or bad.\u2019 Has that quiet assumption crept into how you pray?",
+    "Haggai": "You're partway through Haggai. The temple sat unfinished for sixteen years \u2014 not by decision, just by postponement. What have you postponed so long that the delay has become the decision?",
+    "Zechariah": "You're partway through Zechariah. \u2018Not by might nor by power, but by my Spirit.\u2019 What are you currently trying to accomplish mostly on your own strength?",
+    "Malachi": "You're partway through Malachi. They offered God the animals nobody wanted. What version of you does God usually get \u2014 your best, or your leftovers?"
   };
   const CHECKPOINT_REFLECTIONS = {
     Genesis: "Looking back at the whole book of Genesis, what stands out to you most about who God is \u2014 and what's one thing you're taking with you?",
@@ -2565,7 +3091,20 @@
     "Isaiah": "Looking back at Isaiah \u2014 scarlet made white, the throne room, the child born, wings like eagles, the suffering servant, and the new creation \u2014 the book pairs honest judgment with unreasonable grace. Which do you find harder to accept about yourself: the diagnosis or the pardon?",
     "Jeremiah": "Looking back at Jeremiah \u2014 the call before birth, the broken cisterns, the potter's wheel, the letter to exiles, the fire in his bones, the new covenant \u2014 he was faithful for forty years with almost nothing to show for it. What are you doing right now that God may be measuring differently than you are?",
     "Lamentations": "Looking back at Lamentations \u2014 the ruined city, the mercies new every morning, the unresolved final plea \u2014 Scripture gave grief a whole book and let it end still waiting. What grief of yours needs to be spoken to God in full, without hurrying to the comfort?",
-    "Daniel": "Looking back at Daniel \u2014 the line drawn at the table, the furnace, the humbled king, the writing on the wall, the open windows, the son of man \u2014 he lived seventy years in a foreign empire without losing himself. What habit, practiced quietly for decades, would you want found in you if pressure came tomorrow?"
+    "Daniel": "Looking back at Daniel \u2014 the line drawn at the table, the furnace, the humbled king, the writing on the wall, the open windows, the son of man \u2014 he lived seventy years in a foreign empire without losing himself. What habit, practiced quietly for decades, would you want found in you if pressure came tomorrow?",
+    "Ezekiel": "Looking back at Ezekiel \u2014 the wheeled throne, the watchman, the dry bones, the heart of flesh, the shepherd who searches, and the city named THE LORD IS THERE \u2014 the whole book moves from glory departing to glory returning. What in your life has been dead long enough to look permanent, and what would it mean to ask God if those bones can live?",
+    "Hosea": "Looking back at Hosea \u2014 the unfaithful wife bought back, mercy over sacrifice, and \u2018how can I give you up?\u2019 \u2014 God chose a broken marriage as the picture of His own love. Where have you assumed God's patience with you had run out?",
+    "Joel": "Looking back at Joel \u2014 the locusts, \u2018even now, return to me,\u2019 the years repaid, and the Spirit poured out on all people \u2014 what \u2018eaten years\u2019 in your life do you need to hand to the God who promises to repay them?",
+    "Amos": "Looking back at Amos \u2014 the widening circle of judgment, justice rolling like a river, and the plumb line \u2014 he insisted worship and injustice cannot coexist. If a plumb line were hung beside your ordinary week, where is the wall out of true?",
+    "Obadiah": "Looking back at Obadiah \u2014 one page about pride and standing by \u2014 God gave a whole book to what a nation did while a brother suffered. What would it look like this month to step in somewhere you've been spectating?",
+    "Jonah": "Looking back at Jonah \u2014 the running, the fish, the eight-word sermon, the worm, and God's unanswered question \u2014 the book ends by asking whether you share God's concern for people you'd rather He judged. What's your honest answer?",
+    "Micah": "Looking back at Micah \u2014 what the LORD requires, the promise over Bethlehem, and sins hurled into the sea \u2014 the book asks \u2018who is a God like you?\u2019 and answers with mercy. What sin do you keep fishing back out of the water God threw it into?",
+    "Nahum": "Looking back at Nahum \u2014 Nineveh's fall a century after its repentance \u2014 mercy received in one generation wasn't inherited by the next. What has God done in your life that you need to make sure gets passed on rather than assumed?",
+    "Habakkuk": "Looking back at Habakkuk \u2014 \u2018how long?\u2019, the watchtower, the righteous living by faith, and \u2018though the fig tree does not bud\u2019 \u2014 he ended in worship with nothing resolved. Could you write your own version of that \u2018yet\u2019 sentence tonight, naming the failures honestly and choosing joy anyway?",
+    "Zephaniah": "Looking back at Zephaniah \u2014 the day of the LORD, the call to the humble, and God rejoicing over His people with singing \u2014 the book moves from sweeping judgment to a God who sings. Which of those two pictures of God do you carry around more often, and why?",
+    "Haggai": "Looking back at Haggai \u2014 paneled houses, the purse with holes, and \u2018be strong and work, for I am with you\u2019 \u2014 the people actually listened and built. What's the one thing you'd start this week if you took \u2018give careful thought to your ways\u2019 seriously?",
+    "Zechariah": "Looking back at Zechariah \u2014 not by might, the day of small things, the king on a donkey, the pierced one, and cooking pots marked HOLY \u2014 what small beginning in your life have you been despising, and what would it look like to honor it instead?",
+    "Malachi": "Looking back at Malachi \u2014 the arguments, the blind offerings, \u2018test me in this,\u2019 the scroll of remembrance, and the sun of righteousness \u2014 the Old Testament ends with sunrise and then four hundred years of silence. What are you currently waiting on God for, and what would faithfulness look like during the wait?"
   };
 
   const CHECKPOINTS = {
@@ -3086,6 +3625,272 @@
         { q:"Why does \u2018son of man\u2019 matter?", opts:["It's a minor detail", "It's the throne-room title Jesus most often used for Himself", "It refers to Daniel"], correct:1, explain:"A name that sounds humble and quietly claims Daniel 7's scene." }
       ],
       deepDive: "Daniel is the Bible's manual for faithfulness in a culture that isn't yours \u2014 seventy years inside a hostile empire without either withdrawing from it or dissolving into it. The pattern repeats: engage fully, draw the line early, refuse to make obedience conditional on rescue, and give God the credit publicly. Its visions supply the theology underneath that courage \u2014 empires look like a gleaming statue from the ground and like beasts from heaven, and every one of them is temporary. Against them stands a kingdom not cut by human hands and one like a son of man given everlasting dominion. The book's most quietly convicting detail may be Daniel's open windows: what he did under a death sentence was simply what he had always done."
+    },
+
+    "Ezekiel": {
+      title: "Ezekiel overview",
+      overview: [
+        "A priest with no temple saw God's throne \u2014 with wheels \u2014 in Babylon. God isn't local.",
+        "The watchman: sound the warning; you control the trumpet, never the response.",
+        "\u201cI take no pleasure in the death of the wicked\u201d \u2014 the heart behind every warning in the book.",
+        "The valley of very dry bones, and the honest answer: \u2018Sovereign LORD, you alone know.\u2019",
+        "A new heart of flesh for a heart of stone \u2014 every verb in the promise is \u2018I will.\u2019",
+        "Woe to shepherds who feed themselves; \u2018I myself will search for my sheep.\u2019",
+        "The glory departed by stages \u2014 slowly, reluctantly \u2014 and returned at the end.",
+        "A river from the temple, deepening ankle to waist to unswimmable \u2014 where it flows, everything lives.",
+        "And the final word: the city's name is THE LORD IS THERE."
+      ],
+      questions: [
+        { q:"Why did the wheeled throne matter to exiles?", opts:["It was impressive", "It showed God is not confined to Jerusalem \u2014 He came to Babylon", "It predicted chariots"], correct:1, explain:"Their assumption was that God stayed behind in the ruins; the vision says otherwise." },
+        { q:"What is the watchman responsible for?", opts:["The response", "The warning \u2014 sounding it faithfully", "The outcome of the battle"], correct:1, explain:"Faithfulness measured by the trumpet, not by who listens." },
+        { q:"What did the dry bones represent?", opts:["Enemy armies", "Exiles saying \u2018our hope is gone; we are cut off\u2019", "Literal graves"], correct:1, explain:"The vision addresses the death of hope specifically." },
+        { q:"Who does the work in the new-heart promise?", opts:["The people", "God \u2014 every verb is \u2018I will\u2019", "The priests"], correct:1, explain:"A transplant, not a resolution \u2014 and His Spirit as the power to walk in it." },
+        { q:"How does the book end?", opts:["In exile", "With glory returned and the city named THE LORD IS THERE", "With judgment"], correct:1, explain:"Everything the prophets promise comes down to restored presence." }
+      ],
+      deepDive: "Ezekiel is the book of glory departing and returning, written for people convinced God had been left behind in the rubble. Its visions are famously strange, and every one of them argues the same thing: God is mobile, God is not finished, and God intends to fix the thing that actually broke \u2014 the human heart. The valley of dry bones and the promise of a heart of flesh are the two hinges; together they say that hopelessness and hard-heartedness are both within His power to reverse. And the ending is the whole Bible in four words: THE LORD IS THERE."
+    },
+    "Hosea": {
+      title: "Hosea overview",
+      overview: [
+        "A prophet told to marry an unfaithful woman \u2014 his ruined marriage became the sermon.",
+        "Children named \u2018Not Loved\u2019 and \u2018Not My People\u2019 \u2014 judgment spoken over a family.",
+        "And then: go get her back, and love her again, as the LORD loves Israel.",
+        "He bought his own wife back for the price of a slave.",
+        "Their loyalty was \u2018like the morning mist\u2019 \u2014 real, and gone by noon.",
+        "\u2018I desire mercy, not sacrifice\u2019 \u2014 quoted twice by Jesus to religious experts.",
+        "God remembers teaching Israel to walk and bending down to feed them.",
+        "\u2018How can I give you up?\u2019 \u2014 compassion overruling deserved judgment.",
+        "And the ending: \u2018I will heal their waywardness and love them freely.\u2019"
+      ],
+      questions: [
+        { q:"What was Hosea's assignment?", opts:["To rebuild the temple", "To marry an unfaithful woman and live out God's experience", "To crown a king"], correct:1, explain:"His pain became a window into God's." },
+        { q:"What did he do after she left?", opts:["Divorced her", "Bought her back and loved her again", "Nothing"], correct:1, explain:"Redemption pictured literally \u2014 paying to reclaim what was already his." },
+        { q:"What does God desire over sacrifice?", opts:["Longer prayers", "Mercy, and knowing Him", "Bigger offerings"], correct:1, explain:"Jesus quoted this twice to people who were technically correct and relationally cruel." },
+        { q:"What image describes their devotion?", opts:["A river", "Morning mist \u2014 sincere and short-lived", "A mountain"], correct:1, explain:"An uncomfortably accurate picture of most shallow devotion." },
+        { q:"How does the book end?", opts:["In judgment", "\u2018I will heal their waywardness and love them freely\u2019", "Unresolved"], correct:1, explain:"\u2018Freely\u2019 rules out anything earned." }
+      ],
+      deepDive: "Hosea is God answering the question of what betrayal feels like from His side by making a prophet live it. The result is the rawest picture of divine love in the Old Testament \u2014 not calm benevolence but the grief of a betrayed spouse who goes and buys his wife back out of the life she chose. The book's two most quoted lines pull in the same direction: 'I desire mercy, not sacrifice' aims at religion without compassion, and 'how can I give you up?' shows God's compassion overruling at the exact moment judgment was due. It ends with two words that define the whole book: love them freely."
+    },
+    "Joel": {
+      title: "Joel overview",
+      overview: [
+        "A locust plague strips the land \u2014 and Joel reads the disaster as a summons.",
+        "\u2018Even now, return to me with all your heart\u2019 \u2014 the door still open after devastation.",
+        "\u2018Rend your heart and not your garments\u2019 \u2014 the inward turn, not the visible sign.",
+        "God described as gracious, compassionate, slow to anger, abounding in love.",
+        "\u2018I will repay you for the years the locusts have eaten.\u2019",
+        "And afterward: the Spirit poured out on all people \u2014 sons and daughters, old and young, servants.",
+        "\u2018Everyone who calls on the name of the LORD will be saved.\u2019",
+        "Peter stood up at Pentecost and said: this is that."
+      ],
+      questions: [
+        { q:"What does \u2018rend your heart, not your garments\u2019 mean?", opts:["Tear clothes correctly", "Real inward repentance rather than a public display", "Fast longer"], correct:1, explain:"The sign was easier than the thing it represented." },
+        { q:"What two words open the invitation?", opts:["\u2018Too late\u2019", "\u2018Even now\u2019", "\u2018Perhaps someday\u2019"], correct:1, explain:"Spoken over a stripped landscape \u2014 the door hadn't closed." },
+        { q:"What does God promise about lost time?", opts:["It's gone", "\u2018I will repay you for the years the locusts have eaten\u2019", "It never mattered"], correct:1, explain:"Not a rewind, but an outcome fuller than the loss." },
+        { q:"Who receives the outpoured Spirit?", opts:["Prophets only", "All people \u2014 including the young, old, and servants of both sexes", "Priests"], correct:1, explain:"A flood where there had been a trickle." },
+        { q:"Where is Joel 2 quoted?", opts:["Nowhere", "Peter's sermon at Pentecost", "Only in Revelation"], correct:1, explain:"The church's first sermon is an exposition of this chapter." }
+      ],
+      deepDive: "Joel is short and lands two enormous promises. The first is for the past: 'I will repay you for the years the locusts have eaten' \u2014 spoken to people looking at stripped fields, and carried ever since by anyone grieving a wasted season. The second is for the future: God's Spirit poured out on everyone, explicitly including the people with the least standing. Between them sits the invitation that makes both possible \u2014 'even now, return to me with all your heart,' with the reminder that the God being returned to is gracious, compassionate, and slow to anger."
+    },
+    "Amos": {
+      title: "Amos overview",
+      overview: [
+        "A shepherd and fig farmer, not a professional prophet, sent to a booming economy.",
+        "Judgment on the neighbors first \u2014 and the audience cheered, until the circle closed on them.",
+        "The charges were concrete: selling the needy for a pair of sandals, trampling the poor.",
+        "\u2018I hate, I despise your religious festivals\u2019 \u2014 worship rejected from an unjust society.",
+        "\u2018Let justice roll on like a river, righteousness like a never-failing stream.\u2019",
+        "The plumb line: a fixed standard held beside a wall that looked fine to everyone living behind it.",
+        "The priest's response: go prophesy somewhere else \u2014 this is the king's sanctuary."
+      ],
+      questions: [
+        { q:"Who was Amos?", opts:["A priest", "A shepherd and fig farmer", "A prince"], correct:1, explain:"An outsider with no career at stake, which is part of why he spoke so plainly." },
+        { q:"What's the strategy of chapters 1\u20132?", opts:["Flattery", "Judge the neighbors first, then turn the same standard on the audience", "Historical review"], correct:1, explain:"They applauded six oracles before the seventh landed at home." },
+        { q:"Why was their worship rejected?", opts:["Wrong music", "It came from a society crushing the poor", "Too infrequent"], correct:1, explain:"God refuses worship that runs alongside injustice." },
+        { q:"What does a plumb line do?", opts:["Measure length", "Test whether a wall is truly vertical", "Weigh goods"], correct:1, explain:"An external standard, because eyes adjust to crooked over time." },
+        { q:"What image describes the justice God wants?", opts:["An occasional shower", "A river and a never-failing stream", "A well"], correct:1, explain:"Continuous, not seasonal \u2014 occasional generosity is a wadi, not a river." }
+      ],
+      deepDive: "Amos is the prophet of justice, and his aim is precise: not a nation that abandoned religion but one that kept it while grinding the poor. His opening is a preaching masterpiece \u2014 six oracles against neighbors that draw applause, then a seventh that lands on the applauders. His most famous line has anchored the church's justice tradition for centuries, and its image matters: a never-failing stream, not a seasonal one. And the plumb line explains why any of it was needed \u2014 walls look straight to the people living behind them, and only an outside standard tells the truth."
+    },
+    "Obadiah": {
+      title: "Obadiah overview",
+      overview: [
+        "The shortest book in the Old Testament \u2014 twenty-one verses.",
+        "Aimed at Edom, descended from Esau: a family betrayal, not a foreign one.",
+        "Their sin was standing by when Jerusalem fell \u2014 then gloating, then looting.",
+        "\u2018The pride of your heart has deceived you\u2019 \u2014 mountain strongholds that felt untouchable.",
+        "\u2018Though you soar like the eagle, from there I will bring you down.\u2019",
+        "And a closing promise: the kingdom will be the LORD's."
+      ],
+      questions: [
+        { q:"Who was Edom to Israel?", opts:["Strangers", "Brothers \u2014 descendants of Esau", "Longtime allies"], correct:1, explain:"Which is why the language is so sharp; this was family." },
+        { q:"What was their sin?", opts:["Idolatry", "Gloating over a brother's disaster and profiting from it", "Breaking a treaty"], correct:1, explain:"The bystander who becomes a participant gets a whole book." },
+        { q:"What deceived them?", opts:["False prophets", "The pride of their own hearts", "Bad advisors"], correct:1, explain:"Pride distorts perception \u2014 they genuinely could not imagine falling." },
+        { q:"What does the book's brevity suggest?", opts:["It's unimportant", "That God gave a whole book to how a nation treated someone on their worst day", "It was unfinished"], correct:1, explain:"One page, two permanent points \u2014 pride, and what you do while others suffer." }
+      ],
+      deepDive: "Obadiah takes one page to make two points that don't expire. First, God notices what you do when someone else is having their worst day \u2014 Edom didn't destroy Jerusalem, they watched, cheered, and took a share, and that was enough. Passive complicity is treated as participation. Second, the diagnosis of pride is exactly worded: 'the pride of your heart has deceived you.' Its danger isn't that it looks bad but that it distorts vision \u2014 secure in cliffs, they could not conceive of falling. The shortest book in the Old Testament exists to say both things are fully visible from heaven."
+    },
+    "Jonah": {
+      title: "Jonah overview",
+      overview: [
+        "Sent to Nineveh \u2014 capital of Israel's cruelest enemy \u2014 Jonah booked passage the opposite way.",
+        "Pagan sailors prayed while the prophet slept, and tried to save him before throwing him over.",
+        "The fish was provision, not punishment \u2014 the text says the LORD \u2018provided\u2019 it.",
+        "From inside it, Jonah prayed in remembered psalms: \u2018Salvation comes from the LORD.\u2019",
+        "An eight-word sermon produced the largest revival in Scripture.",
+        "The whole city turned \u2014 from the greatest to the least, the king off his throne.",
+        "God relented. Jonah was furious, and admitted why he ran: he knew God was merciful.",
+        "The plant, the worm, and a question left hanging: should I not have concern for that city?"
+      ],
+      questions: [
+        { q:"Why did Jonah run?", opts:["Fear of Nineveh", "He knew God was merciful and might spare his enemies", "He doubted the call"], correct:1, explain:"He didn't doubt God's mercy \u2014 he objected to it." },
+        { q:"Who behaves better in chapter 1?", opts:["The prophet", "The pagan sailors", "Neither"], correct:1, explain:"The book keeps making outsiders look better than the insider, on purpose." },
+        { q:"What's notable about his sermon?", opts:["Its eloquence", "Eight words, no mercy offered \u2014 and the biggest revival in the Bible", "Its length"], correct:1, explain:"The power plainly wasn't in the preacher." },
+        { q:"What was the plant and worm for?", opts:["Shade only", "To expose Jonah grieving a vine while resenting mercy toward 120,000 people", "Punishment"], correct:1, explain:"God argued by experience rather than lecture." },
+        { q:"How does the book end?", opts:["Jonah repents", "With God's question unanswered", "Nineveh falls"], correct:1, explain:"The silence aims the question past Jonah, at the reader." }
+      ],
+      deepDive: "Jonah is a book about a prophet's heart, not a fish. He runs not from danger but from the possibility of mercy reaching people he hates, and says so out loud in chapter 4 while quoting God's own self-description as an accusation. Everything in the book is arranged to expose that: pagan sailors who pray, a pagan city that repents instantly, and a prophet who is angrier about a dead plant than about a spared city. Then it simply stops on God's question, unanswered. That ending is deliberate, and the question it leaves is the one worth carrying: is there anyone you'd rather God judged than saved?"
+    },
+    "Micah": {
+      title: "Micah overview",
+      overview: [
+        "A courtroom scene: God's case against His people, with the mountains as jury.",
+        "The people bid upward \u2014 rams, rivers of oil, even a firstborn \u2014 assuming God was expensive.",
+        "The answer: act justly, love mercy, walk humbly with your God.",
+        "\u2018But you, Bethlehem\u2019 \u2014 the ruler would come from a town too small to be listed.",
+        "His origins \u2018from of old,\u2019 and his work shepherding: \u2018he will be their peace.\u2019",
+        "And the closing wonder: who is a God like you, who delights to show mercy?",
+        "Sins hurled into the depths of the sea."
+      ],
+      questions: [
+        { q:"What were the people offering?", opts:["Nothing", "Escalating sacrifices, up to a firstborn child", "Prayers only"], correct:1, explain:"They kept raising the price, assuming the problem was quantity." },
+        { q:"What are the three requirements of 6:8?", opts:["Pray, fast, give", "Act justly, love mercy, walk humbly", "Study, obey, teach"], correct:1, explain:"Behavior, affection, and posture \u2014 covering others and God." },
+        { q:"What's emphasized about Bethlehem?", opts:["Its wealth", "Its smallness", "Its walls"], correct:1, explain:"God's pattern: significance out of the overlooked place." },
+        { q:"What does God delight in?", opts:["Judgment", "Showing mercy", "Sacrifice"], correct:1, explain:"Not reluctant forgiveness \u2014 pleasure in it." },
+        { q:"What happens to forgiven sins?", opts:["Filed", "Hurled into the depths of the sea", "Reduced"], correct:1, explain:"Thrown where nothing is recovered \u2014 deliberately final." }
+      ],
+      deepDive: "Micah holds together the two things the prophets keep insisting belong together: what God requires and what God is like. The requirement is the most memorable summary in the Old Testament \u2014 act justly, love mercy, walk humbly \u2014 offered in place of a bidding war of sacrifices. And the answer to what God is like comes in the book's final wonder: a God who does not stay angry and actually delights in mercy, throwing sins into the sea. In between sits the promise over a village too small to list, which Herod's scribes could still quote from memory seven centuries later."
+    },
+    "Nahum": {
+      title: "Nahum overview",
+      overview: [
+        "A century after Jonah, Nineveh returned to its brutality \u2014 and Nahum announces its fall.",
+        "\u2018The LORD is slow to anger but great in power; he will not leave the guilty unpunished.\u2019",
+        "Patience is not permission \u2014 both truths sit in the same verse.",
+        "\u2018The LORD is good, a refuge in times of trouble. He cares for those who trust in him.\u2019",
+        "For nations crushed under Assyria for generations, this was good news, not cruelty.",
+        "Mercy received in one generation was not inherited by the next."
+      ],
+      questions: [
+        { q:"How does Nahum relate to Jonah?", opts:["No connection", "Same city, a century later \u2014 repentance not sustained", "Same prophet"], correct:1, explain:"Nineveh's turning under Jonah didn't pass down to the next generation." },
+        { q:"What two truths sit in 1:3?", opts:["Anger and indifference", "Slow to anger, and will not leave the guilty unpunished", "Power and distance"], correct:1, explain:"Patience is not the same as permission." },
+        { q:"Who was this book good news for?", opts:["Assyria", "The nations Assyria had crushed", "No one"], correct:1, explain:"Judgment on an empire reads differently from underneath its boot." },
+        { q:"What does 1:7 say?", opts:["God is distant", "The LORD is good, a refuge in trouble, caring for those who trust Him", "Judgment is coming"], correct:1, explain:"Placed right inside the judgment \u2014 shelter for those who take it." }
+      ],
+      deepDive: "Nahum is hard reading until you consider who it was written for. Assyria was the ancient world's most efficient terror state, and this book told its victims that the terror had an expiration date. Read from underneath, judgment is not vengeance \u2014 it's justice finally arriving. The book's balance is in its opening verses: slow to anger and unwilling to leave guilt unaddressed, both true at once, with a promise of refuge planted in the middle for anyone who runs to Him. And its relationship to Jonah is its own sober lesson: a generation's repentance has to be handed down, not assumed."
+    },
+    "Habakkuk": {
+      title: "Habakkuk overview",
+      overview: [
+        "A prophet who argues with God instead of preaching to people.",
+        "\u2018How long, LORD, must I call for help, but you do not listen?\u2019",
+        "God's answer made it worse: I am raising up Babylon \u2014 and Habakkuk pushed back harder.",
+        "He stationed himself on the watchtower to wait for a reply \u2014 complaint with expectation.",
+        "\u2018Write the revelation and make it plain... though it linger, wait for it.\u2019",
+        "\u2018The righteous person will live by his faithfulness\u2019 \u2014 the line that lit the Reformation.",
+        "And the ending: though the fig tree does not bud... yet I will rejoice in the LORD."
+      ],
+      questions: [
+        { q:"What's unusual about this book?", opts:["It's a history", "It's a dialogue \u2014 the prophet argues with God", "It has no author"], correct:1, explain:"Complaint, answer, harder complaint, answer \u2014 and none of it rebuked." },
+        { q:"What did Habakkuk do after complaining?", opts:["Left", "Climbed the watchtower to wait for God's reply", "Complained louder"], correct:1, explain:"Complaint with expectation \u2014 the posture the whole book models." },
+        { q:"Why is 2:4 historically significant?", opts:["It isn't", "Paul quotes it twice; it shaped Luther and the Reformation", "It's obscure"], correct:1, explain:"One line from a minor prophet became the backbone of justification by faith." },
+        { q:"What changed by the book's end?", opts:["Everything improved", "Nothing \u2014 the crops still fail; the change is internal", "He moved away"], correct:1, explain:"The resolution is worship, not circumstances." },
+        { q:"What's the force of \u2018yet\u2019 in 3:18?", opts:["Uncertainty", "A deliberate choice of joy after listing every failure honestly", "Denial"], correct:1, explain:"Joy anchored to a Person rather than conditions." }
+      ],
+      deepDive: "Habakkuk is the book for anyone who has looked at the world and wondered how God tolerates it. The prophet asks directly, receives an answer he finds worse than silence, asks again \u2014 and Scripture preserves all of it without a word of rebuke. Its two most famous lines answer the question in different registers: 'the righteous will live by faith' is the theology, and 'though the fig tree does not bud... yet I will rejoice' is the practice. The ending is the bravest sentence in the minor prophets, and it works because it names every failure specifically before planting that 'yet' on the other side."
+    },
+    "Zephaniah": {
+      title: "Zephaniah overview",
+      overview: [
+        "The day of the LORD announced in sweeping terms \u2014 no one on the sidelines.",
+        "A pointed indictment of complacency: \u2018the LORD will do nothing, either good or bad.\u2019",
+        "\u2018Wine left on its dregs\u2019 \u2014 settled, thickened, unstirred indifference.",
+        "\u2018Seek the LORD, all you humble of the land... perhaps you will be sheltered.\u2019",
+        "And then the turn: judgment past, fear removed, hands no longer hanging limp.",
+        "\u2018The LORD your God is with you, the Mighty Warrior who saves.\u2019",
+        "He will take great delight in you, and rejoice over you with singing."
+      ],
+      questions: [
+        { q:"What sin does Zephaniah single out?", opts:["Idolatry only", "Complacency \u2014 practical atheism among the religious", "Poverty"], correct:1, explain:"People who assumed God simply wouldn't act, either way." },
+        { q:"What does the \u2018wine on its dregs\u2019 picture?", opts:["Celebration", "Settled, stale indifference from never being stirred", "Wealth"], correct:1, explain:"An image of a life gone thick with unexamined assumptions." },
+        { q:"Who is invited to seek the LORD?", opts:["Kings", "The humble of the land", "Priests only"], correct:1, explain:"The invitation runs toward the overlooked." },
+        { q:"What is God pictured doing in 3:17?", opts:["Judging", "Delighting, quieting, and singing over His people", "Departing"], correct:1, explain:"One of the few places God Himself is described as singing." },
+        { q:"Where does that verse sit in the book?", opts:["At the opening", "After the judgment \u2014 joy on the far side of honest confrontation", "In the middle of the warnings"], correct:1, explain:"The tenderness isn't denial; it's what remains once the confrontation is done." }
+      ],
+      deepDive: "Zephaniah moves from one of the Bible's bleakest openings to one of its warmest endings, and both halves are needed. The indictment lands on complacency \u2014 not rebellion but the quiet assumption that God isn't going to do anything either way, which is practical atheism wearing religious clothes. Against that he calls the humble to actively seek, without guarantees, only a 'perhaps.' And then the book ends with God delighting, quieting with His love, and singing. Most people can imagine God tolerating them. Very few picture Him singing."
+    },
+    "Haggai": {
+      title: "Haggai overview",
+      overview: [
+        "The exiles were home, and the temple sat unfinished for sixteen years.",
+        "\u2018Is it a time for you to be living in your paneled houses, while this house remains a ruin?\u2019",
+        "The felt result of misordered priorities: wages in a purse with holes in it.",
+        "\u2018Give careful thought to your ways\u2019 \u2014 an invitation to audit, repeated through the book.",
+        "The people obeyed, and God stirred their spirits to build \u2014 a prophet actually listened to.",
+        "Then discouragement: the new temple looked like nothing beside Solomon's.",
+        "Three times: be strong, and work, for I am with you.",
+        "\u2018The glory of this present house will be greater than the former.\u2019"
+      ],
+      questions: [
+        { q:"What was the problem?", opts:["Persecution", "Postponement \u2014 paneled houses finished, God's house left in ruins", "No materials"], correct:1, explain:"Nobody decided to abandon it; sixteen years just passed." },
+        { q:"What image names their frustration?", opts:["An empty barn", "Wages put in a purse with holes", "A broken plow"], correct:1, explain:"Effort producing nothing that stays." },
+        { q:"How did the people respond?", opts:["They ignored him", "They obeyed and began to build", "They exiled him"], correct:1, explain:"One of the few prophets whose audience actually listened." },
+        { q:"What discouraged the builders later?", opts:["Enemies", "Comparison with the former temple", "Illness"], correct:1, explain:"God named the comparison out loud rather than pretending it away." },
+        { q:"What did God repeat three times?", opts:["\u2018Give more\u2019", "\u2018Be strong... and work. For I am with you\u2019", "\u2018Wait\u2019"], correct:1, explain:"Encouragement, assignment, presence \u2014 in that order." }
+      ],
+      deepDive: "Haggai is short, practical, and uncomfortably current. Its subject is how good intentions die \u2014 not by decision but by postponement, one reasonable delay at a time until sixteen years have gone. The purse with holes names the feeling that results: working hard and watching it evaporate. And the second half addresses the discouragement that comes after you finally start, when what you're building looks small beside what used to be. God's answer isn't to dismiss the comparison but to outlast it: be strong, work, I am with you \u2014 and this modest house will hold a greater glory than the first."
+    },
+    "Zechariah": {
+      title: "Zechariah overview",
+      overview: [
+        "Visions to encourage a discouraged remnant rebuilding with almost nothing.",
+        "A lampstand fed by olive trees \u2014 a light with a supply it doesn't generate itself.",
+        "\u2018Not by might nor by power, but by my Spirit, says the LORD Almighty.\u2019",
+        "\u2018Who dares despise the day of small things?\u2019",
+        "A king arriving righteous and victorious \u2014 and lowly, riding a donkey.",
+        "He removes the war horses and the battle bow, and proclaims peace to the nations.",
+        "A fountain opened for cleansing; a shepherd struck; one pierced and mourned as an only child.",
+        "And an ending where even the cooking pots are marked HOLY TO THE LORD."
+      ],
+      questions: [
+        { q:"What does the lampstand vision picture?", opts:["Human effort", "A light continuously supplied from a source it doesn't produce", "A treasury"], correct:1, explain:"Oil flowing straight from the trees \u2014 supply without pumping." },
+        { q:"What does 4:6 rule out?", opts:["All work", "Might and power as the source of the work", "Prayer"], correct:1, explain:"Zerubbabel still built; the verse names what it ran on." },
+        { q:"What does \u2018the day of small things\u2019 address?", opts:["Impatience", "Contempt for modest beginnings", "Poor planning"], correct:1, explain:"A direct word to anyone embarrassed by how small their start looks." },
+        { q:"Why does the donkey matter in 9:9?", opts:["Practicality", "Horses meant war; a donkey signaled peace \u2014 and everyone knew it", "It was cheaper"], correct:1, explain:"Jesus deliberately arranged this entrance." },
+        { q:"What's remarkable about the book's ending?", opts:["Nothing", "Even cooking pots are inscribed HOLY TO THE LORD", "It ends in judgment"], correct:1, explain:"The line between sacred and ordinary disappears entirely." }
+      ],
+      deepDive: "Zechariah was written to people rebuilding something that looked pitiful next to what used to be, and its most quoted line is aimed exactly there: not by might nor by power, but by my Spirit. Alongside it sits the question that has rescued a lot of small faithful beginnings \u2014 who dares despise the day of small things? The later chapters turn toward a coming king whose victory arrives on a donkey and results in disarmament, and toward a pierced one mourned like an only child, images the Gospels reach for directly. And the ending erases the line between sacred and ordinary: even the pots are holy."
+    },
+    "Malachi": {
+      title: "Malachi overview",
+      overview: [
+        "Six arguments \u2014 God speaks, and the people answer back with defensive questions.",
+        "\u2018I have loved you.\u2019 \u2018How have you loved us?\u2019",
+        "Blind, lame, and diseased animals offered \u2014 leftovers dressed as worship.",
+        "\u2018Try offering them to your governor. Would he be pleased with you?\u2019",
+        "\u2018Will a mere mortal rob God?\u2019 \u2014 in tithes and offerings.",
+        "The one place God says: test me in this, and see if I do not open the floodgates.",
+        "A scroll of remembrance written for those who feared the LORD in a cynical age.",
+        "\u2018The sun of righteousness will rise with healing in its rays\u2019 \u2014 and then four hundred years of silence."
+      ],
+      questions: [
+        { q:"What's the book's structure?", opts:["Poetry", "Six disputes, with the people's objections quoted back", "A narrative"], correct:1, explain:"The defensive questions make it feel unnervingly modern." },
+        { q:"What was wrong with the offerings?", opts:["Too small", "Blind and diseased animals \u2014 what nobody wanted", "The wrong species"], correct:1, explain:"Cheapness dressed as devotion." },
+        { q:"What test does God propose about the offerings?", opts:["A contest", "Offer them to your governor and see", "A fast"], correct:1, explain:"They showed more care for a human official than for God." },
+        { q:"What's unique about the tithe passage?", opts:["Nothing", "God explicitly invites His people to test Him", "It's a parable"], correct:1, explain:"Elsewhere testing God is forbidden; here He opens the books." },
+        { q:"How does the Old Testament end?", opts:["In judgment", "With sunrise promised \u2014 then four hundred years of silence", "With a new king"], correct:1, explain:"The next voice is John the Baptist, the promised messenger." }
+      ],
+      deepDive: "Malachi closes the Old Testament with an argument and a sunrise. Its central charge isn't dramatic rebellion but cheapness \u2014 giving God what costs nothing while showing more care for a human official. The test God proposes cuts through every defense: try that with your governor. And then two gifts before the silence: a scroll of remembrance, recording the people who kept fearing God in a cynical era when it changed nothing visible, and the promise of the sun of righteousness rising with healing in its rays. Four hundred years later, an angel appeared to a priest in the temple, and the silence broke."
     }
   };
 
@@ -3305,7 +4110,125 @@
         { h: "The king who couldn't sleep", b: "The story's most human detail is Darius \u2014 trapped by his own decree, fasting all night, refusing entertainment, and running to the den at first light calling out hopefully. The man with absolute power is helpless, and the man in the pit is safe. Daniel's answer in the morning credits God and adds a striking line: \u2018I was found innocent in his sight,\u2019 and also, before the king, \u2018I have never done any wrong.\u2019 The lions' mouths were shut; the record was already clean." }
       ],
       takeaway: "Daniel's rivals could find nothing against him except his faithfulness, and when prayer was outlawed he prayed exactly as he always had. The chapter's argument is that character under pressure is mostly a habit already formed \u2014 the windows were open long before the decree.",
-      reflection: "If someone investigated your last ten years looking for something to use, what would they find \u2014 and what daily habit of yours would still be running if it suddenly became costly?" }
+      reflection: "If someone investigated your last ten years looking for something to use, what would they find \u2014 and what daily habit of yours would still be running if it suddenly became costly?" },
+
+    "Ezekiel": { focus: "Ezekiel 37:1\u201314", title: "Can these bones live?",
+      sections: [
+        { h: "\u201cThey were very dry\u201d", b: "God doesn't set Ezekiel down in a hospital or a graveyard of the recently buried \u2014 the valley is full of bones long past any natural hope, bleached and scattered. The detail is deliberate. Whatever this vision is going to claim, it can't be mistaken for a hard case that might have recovered on its own. God leads him back and forth among them first, making sure he sees the scale before He asks anything." },
+        { h: "\u201cSon of man, can these bones live?\u201d", b: "It's a genuine question with an obvious answer, and Ezekiel gives the only honest reply available: \u2018Sovereign LORD, you alone know.\u2019 He won't say yes, because the evidence says no. He won't say no, because of who's asking. That sentence is one of the most useful models of faith in Scripture \u2014 refusing both denial and despair, and leaving the outcome with God." },
+        { h: "Rattling, tendons, flesh \u2014 and no breath", b: "The reassembly is described in stages, and then the vision stops short: bodies complete, standing, and lifeless. \u2018But there was no breath in them.\u2019 It's a crucial pause. Structure isn't life; a restored appearance isn't a restored person. Only when Ezekiel prophesies to the breath \u2014 the same Hebrew word as spirit, and the same word from Genesis 2 \u2014 do they stand up as a vast army." },
+        { h: "\u201cOur hope is gone; we are cut off\u201d", b: "God finally names what the bones represent, quoting the exiles' own words back to them. This vision was never about a battlefield; it was about people who had concluded their story was over. And notice the promise attached: \u2018I will put my Spirit in you and you will live, and I will settle you in your own land.\u2019 The resurrection of hope and the restoration of a future arrive together, and both are God's doing." }
+      ],
+      takeaway: "The dry bones vision addresses the death of hope, not just the death of bodies. Its honest question \u2014 can these bones live? \u2014 gets an honest answer: you alone know. And the answer God gives is a two-stage resurrection: reassembly, then breath, because structure alone isn't life.",
+      reflection: "What in your life has been dead long enough that you stopped praying about it? What would it look like to bring that specific thing back to God with Ezekiel's answer: \u2018Sovereign LORD, you alone know\u2019?" },
+    "Hosea": { focus: "Hosea 11:1\u201311", title: "How can I give you up?",
+      sections: [
+        { h: "\u201cWhen Israel was a child, I loved him\u201d", b: "God begins not with the charges but with the memory \u2014 a child loved, called out of Egypt, taught to walk. The tenderness is startling in a book full of confrontation: \u2018it was I who taught Ephraim to walk, taking them by the arms.\u2019 Whatever comes next in the chapter, it comes from someone with a history of stooping down to help." },
+        { h: "\u201cI bent down to feed them\u201d", b: "The image is a parent lowering themselves to a toddler's height. Alongside it: \u2018I led them with cords of human kindness, with ties of love.\u2019 Not chains \u2014 the cords are kindness itself. This is God describing His own methods, and they are gentler than most people assume: leading rather than dragging, feeding rather than demanding." },
+        { h: "\u201cThe more I called them, the further they went\u201d", b: "Then the grief. Every kindness listed was met with turning away \u2014 sacrificing to Baals, burning incense to images. The chapter doesn't minimize this; the judgment described is real and deserved. What makes the passage extraordinary is that it presents the betrayal in full and then refuses to end there." },
+        { h: "\u201cMy heart is changed within me\u201d", b: "At the exact point where the sentence should fall, God says something that shouldn't be possible from a judge: \u2018How can I give you up, Ephraim? How can I hand you over?... My heart is changed within me; all my compassion is aroused.\u2019 Nothing in Israel changed to produce this \u2014 the turn happens inside God. And the reason given is His own nature: \u2018For I am God, and not a man \u2014 the Holy One among you.\u2019 Human justice would have finished the sentence. Holiness, it turns out, includes this." }
+      ],
+      takeaway: "Hosea 11 shows God remembering a child He taught to walk, naming the betrayal honestly, and then \u2014 at the exact moment judgment is due \u2014 revealing a heart that will not give them up. The turn comes from God's own nature, not from anything Israel did.",
+      reflection: "Where have you assumed God's patience with you had finally run out? What would it mean to read \u2018how can I give you up?\u2019 as spoken over your own name?" },
+    "Joel": { focus: "Joel 2:12\u201332", title: "Even now, return to me",
+      sections: [
+        { h: "\u201cEven now\u201d", b: "Two words carrying the weight of the whole book. The land has been stripped by successive waves of locusts; the damage is done and irreversible by any human means. And into that, God says \u2018even now\u2019 \u2014 after the failure, after the loss, after the point where returning seems pointless. The invitation is not extended before the disaster as a warning. It's extended after, as an offer." },
+        { h: "\u201cRend your heart and not your garments\u201d", b: "Tearing your robe was the standard public sign of grief and repentance \u2014 visible, immediate, and cheap. God asks for the thing the sign was invented to represent. It's a line worth holding up against modern equivalents: posting, confessing, apologizing publicly. None of those are wrong; all of them are easier than the inward turn they're supposed to reflect." },
+        { h: "\u201cGracious and compassionate, slow to anger\u201d", b: "The reason given for returning isn't fear of worse consequences \u2014 it's God's character, quoted from Exodus 34. He is gracious, compassionate, slow to anger, abounding in love, and one who relents from sending calamity. Repentance in Scripture is almost always motivated this way: not by how bad the punishment will be but by how good the One is you're returning to." },
+        { h: "\u201cI will repay you for the years the locusts have eaten\u201d", b: "This is the promise that makes Joel unforgettable. Not just forgiveness of what was done but restoration of what was lost \u2014 the years themselves, addressed. It doesn't rewind the calendar; the locust years still happened. It promises an outcome so full that the loss is answered. And it's followed immediately by the outpouring of the Spirit on all people \u2014 the restoration widening from a nation's fields to everyone who calls on His name." }
+      ],
+      takeaway: "Joel's invitation comes after the devastation, not before it: \u2018even now, return to me.\u2019 It asks for the inward turn rather than the visible sign, motivates it by God's character rather than fear, and attaches a promise that addresses lost years themselves.",
+      reflection: "What \u2018eaten years\u2019 would you name if you were honest \u2014 a season lost to something? Can you bring that specific loss to God as something He offers to repay rather than merely forgive?" },
+    "Amos": { focus: "Amos 5:18\u201324", title: "Let justice roll down",
+      sections: [
+        { h: "\u201cWoe to you who long for the day of the LORD\u201d", b: "Amos begins by dismantling their confidence. They looked forward to God's day as vindication \u2014 and he tells them it will be darkness, not light, \u2018as though a man fled from a lion only to meet a bear.\u2019 The assumption that God's arrival would automatically be good news for them was exactly what needed breaking. Being religious and being on God's side were not the same thing." },
+        { h: "\u201cI hate, I despise your religious festivals\u201d", b: "The strongest rejection of worship anywhere in Scripture, and it's important to see what's being rejected. Not the wrong festivals \u2014 the right ones, correctly observed. Not idols \u2014 offerings to the true God. The problem was the society producing them: an economy running on the backs of the poor while the worship calendar ran perfectly. God calls the songs noise and asks them to stop." },
+        { h: "\u201cBut let justice roll on like a river\u201d", b: "The alternative isn't better music or more sincerity \u2014 it's justice and righteousness, described with two deliberate images. A river, and a never-failing stream. In that climate, most watercourses were wadis: dramatic during the rainy season, bone dry the rest of the year. Occasional generosity is a wadi. God is asking for the kind that runs in August." },
+        { h: "What this asks of ordinary people", b: "It would be easy to read this as a message for nations and leaders only, but Amos's charges were specific and local: rigged scales, bribed courts, the poor sold for a pair of sandals. The application scales down. Where do your purchases, your business practices, your vote, your silence, and your generosity actually land on the people with the least power? That's the question this passage exists to force." }
+      ],
+      takeaway: "Amos 5 rejects worship offered by an unjust society \u2014 the right festivals, correctly performed, called noise \u2014 and asks instead for justice that runs like a permanent river rather than a seasonal stream. Being religious and being on God's side were not the same thing.",
+      reflection: "Is your justice a river or a wadi \u2014 continuous, or seasonal and event-based? Name one ongoing practice, not a one-time gift, that would move it toward being a stream that doesn't fail." },
+    "Obadiah": { focus: "Obadiah 1:1\u201315", title: "The day of your brother",
+      sections: [
+        { h: "\u201cThe pride of your heart has deceived you\u201d", b: "Edom's capital was carved into cliffs \u2014 Petra's rock strongholds, reachable through a narrow gorge, effectively unassailable. That geography became theology: \u2018who can bring me down to the ground?\u2019 The verse names the mechanism precisely: pride deceives. It doesn't only make you unpleasant; it makes you unable to imagine your own fall, which is exactly the blindness that precedes one." },
+        { h: "\u201cYou should not gloat over your brother\u201d", b: "The charge sheet is a list of things Edom did not do and one thing they did. They did not invade. They stood at the crossroads, watched Jerusalem burn, cheered, and then cut down fugitives trying to escape. Verse after verse repeats \u2018in the day of\u2019 \u2014 the day of his misfortune, his destruction, his trouble. God timestamps it. What you do on someone's worst day is recorded with the date attached." },
+        { h: "Family makes it worse", b: "Edom descended from Esau; Israel from Jacob. Twins. The entire indictment is framed as a family betrayal \u2014 \u2018your brother Jacob\u2019 \u2014 which is why the language carries the heat it does. Scripture consistently treats harm done by insiders as heavier than the same harm from strangers, because proximity was supposed to mean protection." },
+        { h: "\u201cAs you have done, it will be done to you\u201d", b: "The book's justice is exactly proportional: the ones who watched will be watched; the plunderers will be plundered. But it doesn't end in symmetry. The last verse turns outward and upward \u2014 \u2018and the kingdom will be the LORD's.\u2019 Even a book this short about a grudge this old ends by relocating the throne. The final word isn't Edom's fall; it's God's reign." }
+      ],
+      takeaway: "Obadiah gives an entire book to what a nation did while standing by: watching, gloating, and profiting on a brother's worst day. And it names pride's real danger \u2014 not arrogance but self-deception, the inability to imagine falling from your own safe heights.",
+      reflection: "Whose hard season have you been watching from a safe distance? What would stepping in \u2014 practically, this week \u2014 actually look like?" },
+    "Jonah": { focus: "Jonah 4", title: "The question at the end",
+      sections: [
+        { h: "\u201cIsn't this what I said when I was still at home?\u201d", b: "The confession that explains the whole book arrives in the last chapter. Jonah ran because he knew God was \u2018gracious and compassionate, slow to anger and abounding in love, a God who relents from sending calamity\u2019 \u2014 and he quotes God's own self-description from Exodus 34 as an accusation. His problem was never doubt about God's character. It was disagreement with it." },
+        { h: "The prophet who wanted a front-row seat", b: "Jonah leaves the city and builds a shelter to the east, waiting to see what would happen \u2014 hoping the forty days weren't finished. The picture is remarkable: a man who has just witnessed the largest revival in Scripture, sitting outside the city sulking, hoping it gets destroyed. Success in ministry and sickness in the heart, occupying the same person on the same day." },
+        { h: "The plant, the worm, and the wind", b: "God provides three things in quick succession \u2014 the same verb used for the fish. A plant for shade, which delights Jonah; a worm to kill it; a scorching wind. When the shade dies Jonah wants to die too. The setup is a trap of God's own careful construction, designed to surface what Jonah actually cares about and how little it takes to devastate him when it's removed." },
+        { h: "\u201cShould I not have concern?\u201d", b: "God's closing argument is simple arithmetic: you cared about a plant you did not plant, that grew overnight and died overnight. Should I not care about a city of 120,000 people \u2014 and, He adds almost tenderly, \u2018also many animals\u2019? Then nothing. No reply from Jonah, no narration, no resolution. The book ends mid-question, which means the question is no longer aimed at Jonah. It's aimed at whoever is still reading." }
+      ],
+      takeaway: "Jonah's final chapter reveals he ran not from danger but from mercy \u2014 quoting God's own compassion as a complaint. The plant exposes his misplaced compassion, and the book ends on God's unanswered question, deliberately aimed past Jonah at the reader.",
+      reflection: "Is there a person or group you would be quietly disappointed to see God bless? Sit with that honestly \u2014 and then read God's closing question again as if it were addressed to you." },
+    "Micah": { focus: "Micah 6:1\u20138", title: "What does the LORD require?",
+      sections: [
+        { h: "A courtroom with mountains for a jury", b: "God opens a legal case and calls creation itself as witness: \u2018Stand up, plead my case before the mountains.\u2019 Then, remarkably, the plaintiff speaks first \u2014 not with charges but with a question: \u2018My people, what have I done to you? How have I burdened you? Answer me.\u2019 God submits Himself to cross-examination before making any accusation. The rehearsal that follows is a list of rescues, not demands." },
+        { h: "The bidding war", b: "The people's response is to escalate: burnt offerings? Calves a year old? Thousands of rams? Ten thousand rivers of oil? My firstborn for my transgression? Each offer is more extravagant and more desperate than the last. It's the logic of a transaction \u2014 if God is displeased, raise the price. The final offer is horrifying, and it reveals the misunderstanding completely: they think the problem is that they haven't paid enough." },
+        { h: "\u201cHe has shown you\u201d", b: "The answer begins by pointing out that this was never hidden: he has shown you, O mortal, what is good. No secret knowledge, no higher tier of spirituality. What follows is famously brief \u2014 three phrases where they expected a price list. Notice also the address: \u2018O mortal\u2019 (literally, \u2018O man\u2019) \u2014 this is aimed at human beings generally, not just Israel." },
+        { h: "Justice, mercy, humility", b: "Three requirements, each doing distinct work. Act justly \u2014 behavior toward others, active and public. Love mercy \u2014 not merely practicing kindness but wanting to, an affection rather than a duty. And walk humbly with your God \u2014 a posture, ongoing, relational, with \u2018walk\u2019 implying a whole direction of life rather than a moment. Together they cover what you do, what you love, and who you're with." }
+      ],
+      takeaway: "Micah 6 answers a bidding war with a definition. The people offered escalating sacrifices assuming God was expensive; God answered with three things already shown: act justly, love mercy, walk humbly. Simple enough to memorize in a minute, demanding enough for a lifetime.",
+      reflection: "Of the three \u2014 doing justice, loving mercy, walking humbly \u2014 which is thinnest in your life right now? What is one concrete change this week that would strengthen exactly that one?" },
+    "Nahum": { focus: "Nahum 1:1\u201315", title: "Slow to anger, and not indifferent",
+      sections: [
+        { h: "Two truths in one verse", b: "\u2018The LORD is slow to anger but great in power; the LORD will not leave the guilty unpunished.\u2019 Most people hold one of these and quietly drop the other \u2014 either a God so patient He never acts, or one so severe He never waits. Nahum insists on both in a single sentence. Patience that never became justice would not be kindness to Assyria's victims; justice without patience would have ended the world long ago." },
+        { h: "Written from underneath", b: "Assyria flayed prisoners, deported whole populations, and ran its empire on terror for over a century. This book was written to the people living under that. Read from a comfortable chair, the language sounds harsh; read from underneath the boot, it is the first good news in generations \u2014 the announcement that the bully does not last forever, and that Someone with power has noticed." },
+        { h: "\u201cThe LORD is good, a refuge in times of trouble\u201d", b: "Verse 7 sits in the middle of the judgment like a door left open: the LORD is good, a refuge in times of trouble, and He cares for those who trust in Him \u2014 literally, who take shelter in Him. The same chapter announcing an empire's collapse offers personal shelter to anyone who runs to Him. Judgment and refuge aren't opposite messages here; they're the same message heard from two different positions." },
+        { h: "A century after Jonah", b: "Nineveh had repented under Jonah \u2014 the whole city, from the king down. A hundred years later the same city is back to its brutality, which is this book's sober footnote: mercy received in one generation is not automatically inherited by the next. What God did in your life has to be told, taught, and handed on deliberately. Nothing spiritual passes down by default." }
+      ],
+      takeaway: "Nahum holds patience and justice together in one sentence, announces an empire's end as good news to its victims, and plants a promise of personal refuge right inside the judgment. Its footnote is sobering: Nineveh's earlier repentance wasn't inherited by the generation that followed.",
+      reflection: "What has God done in your life that you've assumed the people after you will simply absorb? What would it take to actually tell them?" },
+    "Zephaniah": { focus: "Zephaniah 3:14\u201320", title: "He will rejoice over you with singing",
+      sections: [
+        { h: "Where this comes in the book", b: "Zephaniah opened with one of the most sweeping judgments in Scripture \u2014 \u2018I will sweep away everything from the face of the earth.\u2019 That makes the ending almost disorienting. This tenderness isn't naivety about sin; it's what's left standing after sin has been dealt with honestly. Joy on the near side of confrontation is denial. Joy on the far side of it is the gospel." },
+        { h: "\u201cThe LORD your God is with you\u201d", b: "The verse begins with presence, and the title attached is startling: \u2018the Mighty Warrior who saves.\u2019 Strength and tenderness in the same breath \u2014 the One who fights for you is the One who delights in you. Neither cancels the other, and most people's working picture of God badly needs both installed at once." },
+        { h: "\u201cHe will take great delight in you\u201d", b: "Delight, not tolerance. The Hebrew is the language of rejoicing over something you're genuinely glad about. Then: \u2018in his love he will no longer rebuke you\u2019 \u2014 some translations read \u2018he will quiet you with his love,\u2019 the image of a parent settling a distressed child. The confrontation is finished, and what remains is a love that calms rather than accuses." },
+        { h: "\u201cHe will rejoice over you with singing\u201d", b: "This is one of very few places in the entire Bible where God Himself is described as singing, and the object of the song is His people. Most believers can imagine God putting up with them; many can imagine Him forgiving them. Almost nobody pictures Him singing over them. The verse is worth reading out loud with your own name in it, slowly, until the strangeness of it actually lands." }
+      ],
+      takeaway: "Zephaniah ends with God present, delighting, quieting with His love, and singing over His people \u2014 and it arrives after two chapters of sweeping judgment, which is exactly what makes it credible rather than sentimental.",
+      reflection: "Which picture of God do you carry around most \u2014 tolerating you, forgiving you, or delighting in you? Read 3:17 aloud with your name in it and notice what resists." },
+    "Haggai": { focus: "Haggai 1:1\u201315", title: "Give careful thought to your ways",
+      sections: [
+        { h: "\u201cThe time has not yet come\u201d", b: "The people's excuse opens the book, and it sounds reasonable: the time hasn't come to rebuild the LORD's house. Not a refusal \u2014 a deferral. Sixteen years of deferral. That's how most important things die: not by a decision against them, but through a series of defensible postponements, each of which made sense on the day it was made." },
+        { h: "\u201cPaneled houses\u201d", b: "God's reply is a single devastating comparison: is it a time for you to live in paneled houses while this house remains a ruin? Paneled meant finished, decorated, complete. Their own projects reached completion; His didn't. The question isn't whether they were allowed houses \u2014 it's what got finished and what stayed a ruin, which is a fair audit of anyone's calendar and bank statement." },
+        { h: "\u201cA purse with holes in it\u201d", b: "Then the symptoms: planting much and harvesting little, eating without being full, drinking without being satisfied, earning wages and putting them in a purse with holes. This is the felt experience of misordered priorities \u2014 not dramatic collapse but a persistent sense that effort isn't converting into anything that stays. \u2018Give careful thought to your ways\u2019 repeats through this short book. It's an invitation to audit, not a condemnation." },
+        { h: "\u201cThe LORD stirred up their spirit\u201d", b: "And then something rare in the prophets: the people listened and obeyed, within about three weeks. Notice the sequence \u2014 God spoke, they obeyed, and then \u2018the LORD stirred up the spirit\u2019 of the governor, the priest, and the whole remnant. The motivation followed the obedience rather than preceding it. Waiting to feel stirred before starting gets the order backwards." }
+      ],
+      takeaway: "Haggai diagnoses how good intentions actually die \u2014 not by decision but by sixteen years of defensible postponement \u2014 names the symptom (effort that never converts into anything lasting), and shows motivation arriving after obedience rather than before it.",
+      reflection: "What have you postponed long enough that the postponing has quietly become the decision? What's the smallest possible first step, and could you take it this week?" },
+    "Zechariah": { focus: "Zechariah 4:1\u201310", title: "Not by might, nor by power",
+      sections: [
+        { h: "A lamp that supplies itself", b: "Zechariah sees a golden lampstand with a bowl on top, seven lamps, and two olive trees beside it feeding oil directly into the bowl. In the temple, priests refilled the lamps by hand every day. This lampstand has no priest \u2014 the oil arrives from a living source without anyone carrying it. Before a word of explanation is given, the picture has already said something about where the work's fuel comes from." },
+        { h: "The man it was spoken to", b: "The word goes to Zerubbabel, governor of a small, poor, discouraged remnant trying to rebuild a temple with a fraction of Solomon's resources and hostile neighbors nearby. This isn't a slogan for people with momentum. It's addressed to someone staring at a job clearly beyond his means \u2014 which is exactly who needs it." },
+        { h: "\u201cNot by might nor by power, but by my Spirit\u201d", b: "The two Hebrew words cover armies and individual strength \u2014 collective resources and personal capability. Both are ruled out as the source. Note carefully what isn't ruled out: work. Zerubbabel still had to lay stones. The verse doesn't remove human effort; it names what the effort actually runs on, which changes how both failure and success get read." },
+        { h: "\u201cWho dares despise the day of small things?\u201d", b: "Verse 10 answers the unspoken embarrassment: the foundation looked pathetic, and everyone knew it. God's response isn't a promise that it will look impressive soon, but a challenge to the contempt itself \u2014 and the added detail that \u2018the eyes of the LORD range throughout the earth\u2019 and rejoice to see the plumb line in Zerubbabel's hand. God is watching the small beginning with pleasure, not embarrassment." }
+      ],
+      takeaway: "Zechariah's lampstand is fed by a source it doesn't generate, and the word attached is for a governor whose project was clearly beyond his means: not by might nor by power, but by my Spirit \u2014 with a direct challenge to anyone despising a small start.",
+      reflection: "What are you currently attempting mostly on your own strength \u2014 and what beginning have you been quietly embarrassed by? What changes if God is watching that small start with pleasure?" },
+    "Habakkuk": { focus: "Habakkuk 3:16\u201319", title: "Though the fig tree does not bud",
+      sections: [
+        { h: "\u201cMy heart pounded, my lips quivered\u201d", b: "Before the famous declaration comes an admission most readers skip: Habakkuk is physically shaken. His heart pounds, his lips quiver, decay creeps into his bones, his legs tremble. This is not a man who has stopped feeling the threat. The faith at the end of this book is not calm because the fear went away \u2014 it's a decision made by someone still trembling." },
+        { h: "\u201cYet I will wait patiently\u201d", b: "The first \u2018yet\u2019 comes before the famous one: yet I will wait patiently for the day of calamity to come on the nation invading us. He isn't promised rescue from the invasion \u2014 he's promised that justice arrives eventually, on a timeline he won't control. Waiting patiently is what faith looks like between the promise and the fulfillment, and it's harder than either." },
+        { h: "The inventory of failure", b: "Then the list, and its thoroughness is the point: no buds on the fig tree, no grapes on the vines, the olive crop failed, the fields producing no food, no sheep in the pen, no cattle in the stalls. In an agricultural economy this is total collapse \u2014 no income, no food, no livestock, no seed for next year. He names each one specifically. Nothing is minimized before the turn." },
+        { h: "\u201cYet I will rejoice in the LORD\u201d", b: "And then the sentence that has carried people through unemployment, illness, and grief for twenty-five centuries. Joy is not produced by the circumstances \u2014 every circumstance just got listed as a failure. It's located elsewhere: \u2018in the LORD... in God my Savior.\u2019 The closing image is a deer on high places: sure-footed on terrain that should be impossible. Not removed from the heights \u2014 enabled to walk on them." }
+      ],
+      takeaway: "Habakkuk ends with everything unresolved and everything named honestly \u2014 six specific failures listed before the word \u2018yet.\u2019 The joy is anchored in God rather than conditions, which is the only reason it can survive conditions like these.",
+      reflection: "Write your own version: list the things in your life that genuinely aren't budding right now, specifically and honestly. Then write your \u2018yet\u2019 sentence underneath, and mean it." },
+    "Malachi": { focus: "Malachi 3:13\u20134:6", title: "The scroll of remembrance",
+      sections: [
+        { h: "\u201cIt is futile to serve God\u201d", b: "The final dispute is the bleakest. People are saying it out loud: what did we gain by keeping His requirements? The arrogant prosper, evildoers succeed, and those who challenge God get away with it. This isn't a complaint from outsiders \u2014 it's from the congregation, and it names the quiet cynicism that grows in anyone who has been faithful for a long time without visible return." },
+        { h: "\u201cThen those who feared the LORD talked with each other\u201d", b: "The response comes from an unnamed minority who did the simplest possible thing: they talked to each other. No program, no reform movement \u2014 just people who still feared God finding each other and speaking. In a cynical era, that conversation was enough to be worth recording. It's a quiet argument for the people you surround yourself with when belief is costly." },
+        { h: "\u201cA scroll of remembrance was written\u201d", b: "God listens, and has it written down. The image is a royal chronicle \u2014 the same kind of record that saved Mordecai in Esther. Faithfulness that changes nothing visible, in a season where it seems futile, is nonetheless entered into a permanent record. \u2018They will be mine,\u2019 God says, \u2018my treasured possession... I will spare them, just as a father has compassion.\u2019" },
+        { h: "\u201cThe sun of righteousness will rise\u201d", b: "The Old Testament's last promise is a sunrise with healing in its rays, and then a note about a coming messenger like Elijah. And then \u2014 nothing. Four hundred years of prophetic silence, during which faithful people kept the scroll's kind of faithfulness with no new word at all. That gap is part of the story: the dawn was promised, and the waiting was long, and the people who kept trusting through it are the ones God said He was writing down." }
+      ],
+      takeaway: "The Old Testament ends by recording the people who kept fearing God in an era when it looked futile \u2014 a scroll of remembrance for faithfulness that changed nothing visible \u2014 and then promises sunrise with healing before four hundred years of silence.",
+      reflection: "Where have you been faithful for a long time without visible return, and started to wonder if it's futile? Who are the people you could talk with about it \u2014 and have you told them?" }
   };
 
   function todayStr(){ return new Date().toISOString().slice(0,10); }
@@ -3492,6 +4415,8 @@
     { id:'pillar_wisdom', icon:'\ud83c\udfdb\ufe0f', title:'Pillar of Wisdom', cost:420 }
   ];
   const SHEPHERD_LOGO_SVG = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="lbg" cx="50%" cy="32%" r="75%"><stop offset="0%" stop-color="#a56cf0"/><stop offset="100%" stop-color="#4a2f7a"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#lbg)"/><g fill="#fdfaf3"><circle cx="47" cy="30" r="7.5"/><path d="M32 76 Q30 48 47 41 Q64 48 62 76 Z"/></g><path d="M68 24 Q60 22 61 32 L61 78" fill="none" stroke="#fdfaf3" stroke-width="3" stroke-linecap="round"/></svg>';
+  const NEW_TESTAMENT = ["Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"];
+
   const DEFAULT_VERSE = 'Be strong and courageous \u2014 Joshua 1:9';
 
   const DAILY_DEVOTIONALS = [
@@ -3999,16 +4924,30 @@
       ]),
 
       tab === 'path' ? e('div', {key:'path'}, [
-        e('div', {className:'dl-book-picker', key:'picker'}, booksForward.map(book => {
-          const total = bookLessons(book).length;
-          const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
-          const complete = done === total && state.completedCheckpoints.includes(book);
-          return e('button', {className:'dl-book-chip' + (book===selectedBook?' active':''), onClick:()=>selectBook(book), key:book}, [
-            complete ? e('span', {key:'check'}, String.fromCodePoint(0x2705) + ' ') : null,
-            book,
-            e('span', {className:'dl-book-chip-progress', key:'p'}, ' ' + done + '/' + total)
-          ]);
-        })),
+        e('div', {className:'dl-book-picker-wrap', key:'picker'}, [
+          e('div', {className:'dl-testament-label', key:'otl'}, 'Old Testament'),
+          e('div', {className:'dl-book-picker', key:'ot'}, booksForward.filter(b => !NEW_TESTAMENT.includes(b)).map(book => {
+            const total = bookLessons(book).length;
+            const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
+            const complete = done === total && state.completedCheckpoints.includes(book);
+            return e('button', {className:'dl-book-chip' + (book===selectedBook?' active':''), onClick:()=>selectBook(book), key:book}, [
+              complete ? e('span', {key:'check'}, String.fromCodePoint(0x2705) + ' ') : null,
+              book,
+              e('span', {className:'dl-book-chip-progress', key:'p'}, ' ' + done + '/' + total)
+            ]);
+          })),
+          booksForward.some(b => NEW_TESTAMENT.includes(b)) ? e('div', {className:'dl-testament-label nt', key:'ntl'}, 'New Testament') : null,
+          booksForward.some(b => NEW_TESTAMENT.includes(b)) ? e('div', {className:'dl-book-picker', key:'nt'}, booksForward.filter(b => NEW_TESTAMENT.includes(b)).map(book => {
+            const total = bookLessons(book).length;
+            const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
+            const complete = done === total && state.completedCheckpoints.includes(book);
+            return e('button', {className:'dl-book-chip nt' + (book===selectedBook?' active':''), onClick:()=>selectBook(book), key:book}, [
+              complete ? e('span', {key:'check'}, String.fromCodePoint(0x2705) + ' ') : null,
+              book,
+              e('span', {className:'dl-book-chip-progress', key:'p'}, ' ' + done + '/' + total)
+            ]);
+          })) : null
+        ]),
         e('div', {className:'dl-path', key:'pathinner'}, renderBookPath(selectedBook))
       ]) : null,
 
