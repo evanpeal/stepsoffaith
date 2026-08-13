@@ -4924,30 +4924,20 @@
       ]),
 
       tab === 'path' ? e('div', {key:'path'}, [
-        e('div', {className:'dl-book-picker-wrap', key:'picker'}, [
-          e('div', {className:'dl-testament-label', key:'otl'}, 'Old Testament'),
-          e('div', {className:'dl-book-picker', key:'ot'}, booksForward.filter(b => !NEW_TESTAMENT.includes(b)).map(book => {
-            const total = bookLessons(book).length;
-            const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
-            const complete = done === total && state.completedCheckpoints.includes(book);
-            return e('button', {className:'dl-book-chip' + (book===selectedBook?' active':''), onClick:()=>selectBook(book), key:book}, [
-              complete ? e('span', {key:'check'}, String.fromCodePoint(0x2705) + ' ') : null,
-              book,
-              e('span', {className:'dl-book-chip-progress', key:'p'}, ' ' + done + '/' + total)
-            ]);
-          })),
-          booksForward.some(b => NEW_TESTAMENT.includes(b)) ? e('div', {className:'dl-testament-label nt', key:'ntl'}, 'New Testament') : null,
-          booksForward.some(b => NEW_TESTAMENT.includes(b)) ? e('div', {className:'dl-book-picker', key:'nt'}, booksForward.filter(b => NEW_TESTAMENT.includes(b)).map(book => {
-            const total = bookLessons(book).length;
-            const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
-            const complete = done === total && state.completedCheckpoints.includes(book);
-            return e('button', {className:'dl-book-chip nt' + (book===selectedBook?' active':''), onClick:()=>selectBook(book), key:book}, [
-              complete ? e('span', {key:'check'}, String.fromCodePoint(0x2705) + ' ') : null,
-              book,
-              e('span', {className:'dl-book-chip-progress', key:'p'}, ' ' + done + '/' + total)
-            ]);
-          })) : null
-        ]),
+        e('div', {className:'dl-book-picker', key:'picker'}, booksForward.reduce((out, book, i) => {
+          const total = bookLessons(book).length;
+          const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
+          const complete = done === total && state.completedCheckpoints.includes(book);
+          const isNT = NEW_TESTAMENT.includes(book);
+          const prevWasOT = i > 0 && !NEW_TESTAMENT.includes(booksForward[i-1]);
+          if (isNT && prevWasOT) out.push(e('span', {className:'dl-testament-divider', key:'div-'+book}));
+          out.push(e('button', {className:'dl-book-chip' + (isNT?' nt':'') + (book===selectedBook?' active':''), onClick:()=>selectBook(book), key:book}, [
+            complete ? e('span', {key:'check'}, String.fromCodePoint(0x2705) + ' ') : null,
+            book,
+            e('span', {className:'dl-book-chip-progress', key:'p'}, ' ' + done + '/' + total)
+          ]));
+          return out;
+        }, [])),
         e('div', {className:'dl-path', key:'pathinner'}, renderBookPath(selectedBook))
       ]) : null,
 
