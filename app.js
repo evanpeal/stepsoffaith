@@ -8207,31 +8207,6 @@
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
         ]),
 
-        (() => {
-          const w = weeklyStats(state);
-          return e('div', {className:'dl-recap-card', key:'recap'}, [
-            e('div', {className:'dl-recap-title', key:'t'}, [String.fromCodePoint(0x1F4CA), ' This Week']),
-            e('div', {className:'dl-recap-grid', key:'grid'}, [
-              e('div', {className:'dl-recap-stat', key:'lessons'}, [
-                e('div', {className:'dl-recap-num', key:'n'}, w.lessonsThisWeek),
-                e('div', {className:'dl-recap-label', key:'l'}, w.lessonsThisWeek === 1 ? 'lesson' : 'lessons')
-              ]),
-              e('div', {className:'dl-recap-stat', key:'books'}, [
-                e('div', {className:'dl-recap-num', key:'n'}, w.booksTouched),
-                e('div', {className:'dl-recap-label', key:'l'}, w.booksTouched === 1 ? 'book' : 'books')
-              ]),
-              e('div', {className:'dl-recap-stat', key:'streak'}, [
-                e('div', {className:'dl-recap-num', key:'n'}, state.dailyStreak),
-                e('div', {className:'dl-recap-label', key:'l'}, 'day streak')
-              ]),
-              e('div', {className:'dl-recap-stat', key:'gems'}, [
-                e('div', {className:'dl-recap-num', key:'n'}, state.gems),
-                e('div', {className:'dl-recap-label', key:'l'}, 'gems')
-              ])
-            ]),
-            w.lessonsThisWeek === 0 ? e('div', {className:'dl-recap-nudge', key:'nudge'}, 'No lessons yet this week \u2014 today\u2019s a good day to start.') : null
-          ]);
-        })(),
         e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word of the Day']),
         (() => {
           const w = todaysWordleState();
@@ -8361,7 +8336,11 @@
           e('div', {className:'dl-hero-week', key:'week'}, last7Days().map(d => {
             const lit = streakDateSet(state).has(d);
             return e('span', {className:'dl-hero-dot' + (lit?' lit':''), key:d}, lit ? String.fromCodePoint(0x1F525) : '');
-          }))
+          })),
+          (() => {
+            const w = weeklyStats(state);
+            return e('div', {className:'dl-hero-week-sub', key:'sub'}, w.lessonsThisWeek === 0 ? 'No lessons yet this week' : (w.lessonsThisWeek + ' ' + (w.lessonsThisWeek===1?'lesson':'lessons') + ' this week \u00b7 ' + w.booksTouched + ' ' + (w.booksTouched===1?'book':'books')));
+          })()
         ]),
 
         e('div', {className:'dl-profile-grid', key:'grid'}, [
@@ -8370,30 +8349,31 @@
           e('div', {className:'dl-stat', key:'daily'}, [e('div',{className:'dl-stat-badge b3', key:'ic'}, String.fromCodePoint(0x1F3C6)), e('div',{className:'dl-stat-num', key:'n'}, state.completedCheckpoints.length), e('div',{className:'dl-stat-label', key:'l'}, 'Checkpoints')]),
           e('div', {className:'dl-stat', key:'reflections'}, [e('div',{className:'dl-stat-badge b4', key:'ic'}, String.fromCodePoint(0x1F4DD)), e('div',{className:'dl-stat-num', key:'n'}, state.reflections.length), e('div',{className:'dl-stat-label', key:'l'}, 'Reflections')])
         ]),
-        e('div', {className:'dl-section-title', style:{marginTop:'8px'}, key:'trophylabel'}, [String.fromCodePoint(0x1F3C6), ' Trophy Case']),
-        e('div', {className:'dl-trophy-grid', key:'trophygrid'}, TROPHIES.map(t => {
+
+        e('div', {className:'dl-section-title', key:'trophylabel'}, [String.fromCodePoint(0x1F3C6), ' Trophy Case']),
+        e('div', {className:'dl-trophy-scroll', key:'trophygrid'}, TROPHIES.map(t => {
           const earned = t.check(state);
-          return e('div', {className:'dl-trophy' + (earned ? ' earned' : ''), key:t.id}, [
+          return e('div', {className:'dl-trophy' + (earned ? ' earned' : ''), key:t.id, title:t.desc}, [
             e('div', {className:'dl-trophy-icon', key:'i'}, t.icon),
-            e('div', {className:'dl-trophy-title', key:'t'}, t.title),
-            e('div', {className:'dl-trophy-desc', key:'d'}, t.desc)
+            e('div', {className:'dl-trophy-title', key:'t'}, t.title)
           ]);
         })),
 
-        (state.favorites || []).length > 0 ? e('div', {className:'dl-section-title', style:{marginTop:'8px'}, key:'favlabel'}, [String.fromCodePoint(0x2B50), ' Favorites']) : null,        (state.favorites || []).length > 0 ? e('div', {className:'dl-fav-list', key:'favlist'}, (state.favorites || []).map(id => {
+        (state.favorites || []).length > 0 ? e('div', {className:'dl-section-title', key:'favlabel'}, [String.fromCodePoint(0x2B50), ' Favorites']) : null,
+        (state.favorites || []).length > 0 ? e('div', {className:'dl-fav-scroll', key:'favlist'}, (state.favorites || []).map(id => {
           const lesson = LESSONS.find(l => l.id === id);
           if (!lesson) return null;
-          return e('button', {className:'dl-fav-item', onClick:()=>openIfAvailable(lesson), key:id}, [
-            e('span', {className:'dl-fav-book', key:'b'}, lesson.book), ' ',
+          return e('button', {className:'dl-fav-chip', onClick:()=>openIfAvailable(lesson), key:id}, [
+            e('span', {className:'dl-fav-book', key:'b'}, lesson.book),
             e('span', {className:'dl-fav-title', key:'t'}, lesson.title)
           ]);
         })) : null,
-        e('div', {className:'dl-book-header', style:{padding:'8px 0'}, key:'badgeslbl'}, e('span', {className:'dl-band-label', style:{background:'#e2c8f7', color:'#4a2380', borderBottomColor:'#c9a0ea'}}, 'Book badges')),        state.completedCheckpoints.length === 0
+
+        e('div', {className:'dl-section-title', key:'badgeslbl'}, [String.fromCodePoint(0x1F539), ' Badges']),
+        state.completedCheckpoints.length === 0
           ? e('div', {className:'dl-empty-note', key:'empty'}, 'Finish a book to earn your first badge.')
           : e('div', {className:'dl-badge-row', key:'badges'}, state.completedCheckpoints.map(b => e('div', {className:'dl-badge', key:b}, [String.fromCodePoint(0x1F3C6), ' ' + b]))),
-
-        e('div', {className:'dl-section-title', style:{marginTop:'28px'}, key:'shoplabel'}, [String.fromCodePoint(0x1F539), ' Badge shop']),
-        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'shopnote'}, 'Spend pearls earned from tests to unlock badges for your profile.'),
+        e('div', {className:'dl-empty-note', style:{margin:'10px 0'}, key:'shopnote'}, 'Spend pearls earned from tests to unlock more badges.'),
         e('div', {className:'dl-shop-grid', key:'shopgrid'}, BADGES.map(badge => {
           const owned = (state.ownedBadges||[]).includes(badge.id);
           const canAfford = (state.pearls||0) >= badge.cost;
@@ -8406,7 +8386,7 @@
           ]);
         })),
 
-        e('div', {className:'dl-section-title', style:{marginTop:'28px'}, key:'rlabel'}, [String.fromCodePoint(0x1F4DD), ' Your reflections']),
+        e('div', {className:'dl-section-title', style:{marginTop:'22px'}, key:'rlabel'}, [String.fromCodePoint(0x1F4DD), ' Your reflections']),
         state.reflections.length === 0
           ? e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'rnote'}, 'Reflections you save after lessons will show up here.')
           : e('div', {key:'rlist'}, state.reflections.map(r => e('div', {className:'dl-reflection-card', key:r.id}, [
@@ -8415,7 +8395,7 @@
               e('div', {className:'dl-reflection-body', key:'b'}, r.text)
             ]))),
 
-        e('div', {className:'dl-section-title', style:{marginTop:'28px'}, key:'tlabel'}, [String.fromCodePoint(0x1F4D3), ' Your testimony']),
+        e('div', {className:'dl-section-title', style:{marginTop:'22px'}, key:'tlabel'}, [String.fromCodePoint(0x1F4D3), ' Your testimony']),
         e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'tnote'}, 'Only visible to you \u2014 a reminder of your story.'),
         editingTestimony
           ? e('div', {key:'tedit'}, [
@@ -8628,21 +8608,9 @@
                 e('button', {className:'dl-x', onClick: closeModal, key:'x'}, String.fromCodePoint(0x2715)),
                 e('div', {className:'dl-bar-track', key:'track'}, e('div', {className:'dl-bar-fill' + (isCheckpoint?' purple':''), style:{width: (step==='passage'||step==='overview' ? 8 : Math.round(((qIndex + (step==='explain'?1:0)) / activeModal.questions.length) * 92) + 8) + '%'}}))
               ]),
-              (!isCheckpoint && (step === 'passage')) ? e('div', {className:'dl-lesson-actions', key:'lactions'}, [
-                e('button', {className:'dl-lesson-action-btn' + ((state.favorites||[]).includes(openLesson.id) ? ' active' : ''), onClick:()=>toggleFavorite(openLesson.id), key:'fav'}, [
-                  String.fromCodePoint((state.favorites||[]).includes(openLesson.id) ? 0x2B50 : 0x2606), ' ', (state.favorites||[]).includes(openLesson.id) ? 'Favorited' : 'Favorite'
-                ]),
-                e('button', {className:'dl-lesson-action-btn' + (isSpeaking ? ' active' : ''), onClick:()=>toggleReadAloud(openLesson), key:'audio'}, [
-                  String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen'
-                ])
-              ]) : null,
               e('div', {className:'dl-lesson-body', key:'body'},
                 (step === 'passage' || step === 'overview')
                 ? [
-                    (activeModal.book === 'Proverbs' && !isCheckpoint) ? e('div', {className:'dl-pace-note', key:'pace'}, [
-                      e('span', {className:'dl-pace-icon', key:'i'}, String.fromCodePoint(0x1F305)),
-                      e('span', {key:'t'}, 'One proverb a day. Read it slowly, then carry it with you \u2014 the next one will be here tomorrow.')
-                    ]) : null,
                     (activeModal.book === 'Proverbs' && !isCheckpoint) ? e('div', {className:'dl-pace-note', key:'pace'}, [
                       e('span', {className:'dl-pace-icon', key:'i'}, String.fromCodePoint(0x1F331)),
                       e('span', {key:'t'}, 'One proverb a day. Read it slowly, then carry it with you \u2014 the next one will be here tomorrow.')
@@ -8653,7 +8621,13 @@
                           e('ul', {className:'dl-overview-list', key:'ol'}, activeModal.overview.map((pt, i) => e('li', {key:i}, pt)))
                         ]
                       : [
-                          e('div', {className:'dl-passage-ref', key:'r'}, openLesson.book + ' \u00b7 ' + openLesson.title),
+                          e('div', {className:'dl-passage-ref-row', key:'rr'}, [
+                            e('div', {className:'dl-passage-ref', key:'r'}, openLesson.book + ' \u00b7 ' + openLesson.title),
+                            e('div', {className:'dl-passage-icon-row', key:'icons'}, [
+                              e('button', {className:'dl-passage-icon-btn' + ((state.favorites||[]).includes(openLesson.id) ? ' active' : ''), onClick:()=>toggleFavorite(openLesson.id), title:'Favorite', key:'fav'}, String.fromCodePoint((state.favorites||[]).includes(openLesson.id) ? 0x2B50 : 0x2606)),
+                              e('button', {className:'dl-passage-icon-btn' + (isSpeaking ? ' active' : ''), onClick:()=>toggleReadAloud(openLesson), title:'Listen', key:'audio'}, String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A))
+                            ])
+                          ]),
                           e('div', {className:'dl-passage-text', key:'t'}, openLesson.passage),
                           ...(openLesson.keyVerses || []).map((kv, i) => e('div', {className:'dl-keyverse', key:'kv'+i}, [
                             e('div', {className:'dl-keyverse-mark', key:'m'}, String.fromCodePoint(0x275D)),
