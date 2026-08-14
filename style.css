@@ -652,3 +652,12 @@
   .dl-chat-send { width: 42px; height: 42px; flex-shrink: 0; border: none; border-radius: 50%; background: var(--teal); color: #fff; font-size: 17px; cursor: pointer; }
   .dl-chat-send:disabled { background: var(--gray-light); color: var(--gray); }
   .dl-chat-joinbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 12px 14px; font-size: 13px; font-weight: 700; color: var(--gray); }
+
+  .dl-name-prompt { display: flex; align-items: center; gap: 12px; background: #fff8e6; border: 2px solid #ffe4a8; border-radius: 14px; padding: 13px 14px; margin-bottom: 14px; }
+  .dl-name-prompt-icon { font-size: 22px; }
+  .dl-name-prompt-title { font-size: 14px; font-weight: 800; color: var(--ink); }
+  .dl-name-prompt-sub { font-size: 12px; font-weight: 700; color: var(--gray); line-height: 1.4; }
+  .dl-newroom-banner { background: #e6fbf2; border: 2px solid #a8e6d2; border-radius: 14px; padding: 14px; margin-bottom: 14px; text-align: center; }
+  .dl-newroom-title { font-size: 13px; font-weight: 800; color: var(--teal-dark); margin-bottom: 8px; }
+  .dl-newroom-code { font-family: 'Baloo 2', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: 5px; color: var(--ink); margin-bottom: 10px; }
+  .dl-newroom-close { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 7px 18px; font-weight: 800; font-size: 12.5px; cursor: pointer; }
