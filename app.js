@@ -2026,10 +2026,7 @@
     const DEFAULT_ROOMS = [
       { code:'PRAY01', name:'Prayer Requests', desc:'Share what you need prayer for, and pray for others.', icon:'\ud83d\ude4f' },
       { code:'ASK001', name:'Faith Questions', desc:'Ask anything about faith, the Bible, or doubt.', icon:'\u2753' },
-      { code:'DAILY1', name:'Daily Encouragement', desc:'Share a verse or a word that carried you today.', icon:'\u2600\ufe0f' },
-      { code:'START1', name:'New to Faith', desc:'Just starting out? Everyone was new once.', icon:'\ud83c\udf31' },
-      { code:'TESTI1', name:'Testimonies', desc:'Share what God has done in your life.', icon:'\u2728' },
-      { code:'PRAIS1', name:'Praise Reports', desc:'Answered prayers and good news.', icon:'\ud83c\udf89' }
+      { code:'DAILY1', name:'Daily Encouragement', desc:'Share a verse or a word that carried you today.', icon:'\u2600\ufe0f' }
     ];
 
     async function loadPublicGroups(){
@@ -2049,7 +2046,8 @@
           const { data: created } = await sb.from('groups').insert(toAdd).select();
           if (created && created.length) rooms = rooms.concat(created);
         }
-        setPublicGroups(rooms);
+        const keep = new Set(DEFAULT_ROOMS.map(r => r.code));
+        setPublicGroups(rooms.filter(r => keep.has(r.join_code)));
         setSocialMsg('');
       } catch (ex) {
         setPublicGroups([]);
@@ -3377,20 +3375,21 @@
                 ])
               ])),
 
-              e('div', {className:'dl-gm-label', key:'publbl'}, 'Discover rooms'),
+              e('div', {className:'dl-gm-label', key:'publbl'}, 'Open to everyone'),
               publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).length === 0
-                ? e('div', {className:'dl-empty-note', key:'nopub'}, myGroups.length ? 'You\u2019ve joined every public room.' : 'Loading rooms\u2026')
+                ? e('div', {className:'dl-empty-note', key:'nopub'}, myGroups.length ? 'You\u2019re in every public room.' : 'Loading rooms\u2026')
                 : e('div', {key:'publist'}, publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).map(g =>
-                    e('div', {className:'dl-gm-row discover', key:g.id}, [
-                      e('button', {className:'dl-gm-open', onClick:()=>setOpenGroup(g.id), key:'o'}, [
-                        e('span', {className:'dl-gm-avatar', key:'i'}, roomIcon(g)),
-                        e('span', {className:'dl-gm-mid', key:'t'}, [
-                          e('div', {className:'dl-gm-name', key:'n'}, g.name),
-                          e('div', {className:'dl-gm-preview', key:'d'}, g.description),
-                          e('div', {className:'dl-gm-members', key:'m'}, (g.member_count || 0) + ' members')
+                    e('div', {className:'dl-bigroom', key:g.id}, [
+                      e('button', {className:'dl-bigroom-tap', onClick:()=>setOpenGroup(g.id), key:'o'}, [
+                        e('div', {className:'dl-bigroom-icon', key:'i'}, roomIcon(g)),
+                        e('div', {className:'dl-bigroom-name', key:'n'}, g.name),
+                        e('div', {className:'dl-bigroom-desc', key:'d'}, g.description),
+                        e('div', {className:'dl-bigroom-members', key:'m'}, [
+                          e('span', {className:'dl-bigroom-dot', key:'dt'}),
+                          (g.member_count || 0) + (g.member_count === 1 ? ' person here' : ' people here')
                         ])
                       ]),
-                      e('button', {className:'dl-gm-join', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join')
+                      e('button', {className:'dl-bigroom-join', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join room')
                     ])
                   )),
 
