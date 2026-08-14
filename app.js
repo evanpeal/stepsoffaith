@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], trackDone: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -1272,6 +1272,157 @@
     ]}
   ];
 
+  const TRACKS = [
+    {
+      id:'realfight',
+      name:'The Real Fight',
+      icon:'\u2694\ufe0f',
+      tag:'For adults',
+      blurb:'Honest, unflinching studies on what people actually wrestle with \u2014 the things that are hard to say out loud. Written without shame, and without pretending it\u2019s simple.',
+      note:'Frank language and adult subject matter.',
+      modules:[
+        {
+          id:'purity',
+          title:'Purity & Desire',
+          icon:'\ud83d\udd25',
+          summary:'On lust, pornography, and wanting something real underneath the wanting.',
+          lessons:[
+            {
+              id:'rf-p1',
+              title:'Say it plainly',
+              scripture:{ ref:'Psalm 32:3\u20135', text:'When I kept silent, my bones wasted away through my groaning all day long. For day and night your hand was heavy on me; my strength was sapped as in the heat of summer. Then I acknowledged my sin to you and did not cover up my iniquity. I said, \u201cI will confess my transgressions to the LORD.\u201d And you forgave the guilt of my sin.' },
+              body:'Most people carrying this have never said it out loud to another human being. Not once. They\u2019ve prayed about it in the dark, promised God it was the last time, and then said nothing to anyone \u2014 for years.\n\nDavid describes what that costs, and he describes it physically. Bones wasting. Strength drained. He isn\u2019t being poetic about guilt; he\u2019s describing what silence does to a body over time. The exhaustion of managing a secret is its own separate weight, on top of the thing itself.\n\nNotice what actually breaks it. Not trying harder. Not a better filter or a stricter schedule. He acknowledged it and stopped covering it up. The relief in that psalm comes from the saying, not from the fixing.\n\nAnd notice what God does with it: forgives the guilt. Not a lecture. Not probation. Not a wait-and-see. The verse turns fast because that\u2019s how fast God moves when someone finally stops hiding.\n\nThere\u2019s a reason shame keeps this quiet. Shame\u2019s whole argument is that if anyone knew, you\u2019d be finished. But shame has never once made anyone free \u2014 it just makes them better at hiding, which makes the next time easier.',
+              reflect:'What have you never said out loud to anyone? Not the whole story \u2014 just the first true sentence. What would it be?',
+              prayer:'God, I\u2019ve been carrying this alone and it\u2019s wearing me down. I\u2019m not going to pretend anymore. You already know. I\u2019m saying it anyway.'
+            },
+            {
+              id:'rf-p2',
+              title:'What you\u2019re actually after',
+              scripture:{ ref:'Jeremiah 2:13', text:'My people have committed two sins: They have forsaken me, the spring of living water, and have dug their own cisterns, broken cisterns that cannot hold water.' },
+              body:'Jeremiah\u2019s image is worth sitting with. A spring is moving water \u2014 it keeps coming, you don\u2019t maintain it. A cistern is a pit you dig yourself to hold water you carry there. A broken cistern is worse: you do all the work of digging, all the work of hauling, and it drains out anyway. So you go back and haul more.\n\nThat is an unnervingly accurate description of a habit like this. The work of hiding it, the work of getting to it, the promise that this time it will satisfy \u2014 and then the drain, immediately, so that the wanting comes back exactly as it was.\n\nHere is what most teaching on this gets wrong. It treats the desire itself as the enemy. But God made desire, and Jeremiah\u2019s complaint isn\u2019t that the people are thirsty. Thirst is fine. Thirst is correct. The complaint is where they took it.\n\nSo the question worth asking isn\u2019t \u201cwhy am I like this?\u201d It\u2019s \u201cwhat am I actually thirsty for?\u201d Under most of it is something specific: to be wanted, to feel powerful, to not feel alone tonight, to stop feeling anything at all for twenty minutes. Those are real needs. Pornography is a broken cistern promising to meet them and structurally unable to.\n\nYou will not win this by wanting less. You win it by finally being honest about what you want, and taking that to the only place it can actually be met.',
+              reflect:'Think about the last time you gave in. What was the day like? What were you feeling an hour before? What were you actually looking for?',
+              prayer:'God, I keep going back to something that empties out every time. Show me what I\u2019m really thirsty for, and be that for me instead.'
+            },
+            {
+              id:'rf-p3',
+              title:'Why willpower keeps failing',
+              scripture:{ ref:'Romans 7:15, 18\u201319, 24\u201325', text:'I do not understand what I do. For what I want to do I do not do, but what I hate I do\u2026 For I have the desire to do what is good, but I cannot carry it out. For I do not do the good I want to do, but the evil I do not want to do \u2014 this I keep on doing\u2026 What a wretched man I am! Who will rescue me from this body that is subject to death? Thanks be to God, who delivers me through Jesus Christ our Lord!' },
+              body:'The apostle Paul wrote that. In the present tense. That should change how you read your own failures.\n\nHere\u2019s the part worth understanding: your brain is doing exactly what it was built to do. Every time you go to this, you get a chemical reward, and your brain files it as something that works \u2014 fast, reliable, no rejection risk. Repeat that enough and you build a groove. Stress arrives, and before you\u2019ve decided anything, the groove is already open.\n\nThat is not weak character. That is a nervous system doing its job with bad training data. And it explains why sheer resolve fails: you\u2019re trying to out-decide something that fires before deciding happens.\n\nPaul\u2019s cry \u2014 who will rescue me \u2014 is the right question because it\u2019s the honest one. He doesn\u2019t say who will help me try harder. He asks for rescue, which is what you ask for when you\u2019ve established you can\u2019t self-extract.\n\nAnd then, immediately, chapter 8: there is now no condemnation. Paul goes straight from describing failure to declaring no condemnation, with nothing in between about earning it back. Whatever you think God feels toward you in the aftermath, Paul put those two things back to back on purpose.\n\nSo stop building your strategy on willpower. It\u2019s the weakest tool you have. What actually rewires a groove is time, different inputs, other people knowing, and grace that doesn\u2019t evaporate when you fail \u2014 because a plan that collapses the first time you slip was never a plan.',
+              reflect:'What does your inner voice say about you right after you fail? Now read Romans 8:1 again. Which one are you actually going to believe?',
+              prayer:'God, I\u2019ve tried to beat this by force and I keep losing. I need rescue, not another promise from me. I\u2019m asking for it.'
+            },
+            {
+              id:'rf-p4',
+              title:'Bring in one person',
+              scripture:{ ref:'James 5:16', text:'Therefore confess your sins to each other and pray for each other so that you may be healed. The prayer of a righteous person is powerful and effective.' },
+              body:'This is the verse the church quietly skips. We\u2019re fine confessing to God \u2014 it\u2019s private, and nobody\u2019s face changes. James says confess to each other, and attaches healing to it.\n\nThere\u2019s a mechanism here, not just a rule. A secret has power in proportion to how hidden it is. The moment one other person knows, the thing shrinks. It stops being who you are and becomes something you\u2019re dealing with. People who beat this almost always describe the same turning point, and it\u2019s rarely a technique \u2014 it\u2019s the day somebody knew.\n\nBe careful who. This should be someone who is for you: another man if you\u2019re a man, another woman if you\u2019re a woman, someone who won\u2019t flinch and won\u2019t gossip. Not your girlfriend or boyfriend \u2014 that puts a weight on them they shouldn\u2019t carry. A pastor, a counselor, an older friend who has walked this.\n\nAnd say a real sentence. Not \u201cI\u2019ve been struggling lately.\u201d Something true: \u201cI look at porn, it\u2019s been years, and I want it to stop.\u201d Vagueness protects the secret. It\u2019s the thing shame lets you say so you can feel brave without actually being exposed.\n\nOne more thing, plainly: if this has a genuine grip \u2014 if it\u2019s escalating, eating hours, or you\u2019ve tried to stop many times and can\u2019t \u2014 talk to a counselor. That is not spiritual failure. Some things need a doctor and prayer, and God is not offended by you getting help. He\u2019s usually the one who sent it.',
+              reflect:'Who is one person who could know? Not everyone \u2014 one. What\u2019s stopping you, and is that reason actually true?',
+              prayer:'God, give me the nerve to tell one person. Put the right one in front of me, and don\u2019t let me talk myself out of it.'
+            },
+            {
+              id:'rf-p5',
+              title:'The next ten minutes',
+              scripture:{ ref:'1 Corinthians 10:13', text:'No temptation has overtaken you except what is common to mankind. And God is faithful; he will not let you be tempted beyond what you can bear. But when you are tempted, he will also provide a way out so that you can endure it.' },
+              body:'Two things in this verse people miss.\n\nFirst: common to mankind. Whatever you\u2019ve convinced yourself is uniquely broken about you \u2014 it isn\u2019t. The isolation of thinking you\u2019re the only one is itself part of what keeps it going.\n\nSecond, and more useful: he will provide a way out. Singular. A way out. Not a general sense of divine support \u2014 an exit, in the moment, that you have to actually take. Which means part of your job is knowing where the door is before you need it.\n\nThe practical truth is that this is almost never won at the moment of temptation. It\u2019s won an hour earlier, in the decisions nobody sees. The urge tends to arrive at predictable times \u2014 late at night, alone, bored, stressed, after a rejection, after a drink. Those aren\u2019t random. They\u2019re a pattern, and a pattern can be planned against.\n\nSo be concrete. Where does it usually happen, and can you not be there? Phone out of the bedroom \u2014 the single most effective change most people make. Filters and accountability software on every device, set up by someone else so you can\u2019t quietly undo it at 1am. And a specific plan for the ten minutes when it hits: text the person who knows, leave the room, go outside, do push-ups until it passes. Urges peak and fall. Ten minutes of doing literally anything else is usually enough.\n\nNone of that is spiritual heroics. It\u2019s just taking the door God provided instead of standing next to it admiring how faithful He is.',
+              reflect:'When does it usually happen \u2014 what time, where, after what feeling? Name the pattern, then name one physical change you\u2019ll make this week.',
+              prayer:'God, show me the way out before I need it, and give me the guts to take it when I do.'
+            },
+            {
+              id:'rf-p6',
+              title:'When you fail again',
+              scripture:{ ref:'Lamentations 3:22\u201323', text:'Because of the LORD\u2019s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.' },
+              body:'You will fail again. Saying so isn\u2019t permission \u2014 it\u2019s planning. Because what you do in the hour after a slip decides more than the slip does.\n\nThe usual pattern goes: fail, feel disgusted, decide you\u2019re a fraud, pull back from God because you feel filthy, stop talking to the person who knows, isolate \u2014 and isolation is the exact condition the whole thing runs on. That spiral does more damage over a month than the original failure did in twenty minutes.\n\nLamentations was written by a man watching his city burn, sitting in genuine ruin. He isn\u2019t being cheerful. And from there he says the mercies are new every morning. Not new every time you\u2019ve earned a clean week. New every morning \u2014 on a schedule that has nothing to do with your performance.\n\nSo build the recovery in advance. Tell the person, same day, before you can convince yourself to hide it. Don\u2019t restart the count as if the last month meant nothing \u2014 it didn\u2019t. Ask what happened in the hours before, because there\u2019s information in it. And then keep the next thing you were going to do anyway; showing up to church or to prayer the day after a failure is one of the most defiant things you can do.\n\nProgress here almost never looks like a clean break. It looks like the gaps getting longer, the recovery getting faster, and the grip getting weaker \u2014 over months. Measure it that way and you\u2019ll see movement you\u2019d otherwise miss.\n\nAnd the aim was never just stopping. It\u2019s becoming someone whose desires point somewhere real \u2014 who can love an actual person, be fully present, and not be quietly managing a secret. That\u2019s the thing worth walking toward.',
+              reflect:'What\u2019s your plan for the hour after the next slip? Write it now, while you\u2019re thinking clearly \u2014 you won\u2019t be then.',
+              prayer:'God, tomorrow morning your mercy is new whether I win tonight or not. Help me get up instead of hiding. Keep pulling me forward.'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id:'firststeps',
+      name:'First Steps',
+      icon:'\ud83c\udf31',
+      tag:'For kids',
+      blurb:'The basics, explained simply and gently. Who God is, who Jesus is, and what it means to follow Him \u2014 without big words or scary parts.',
+      note:'Written for younger readers.',
+      modules:[
+        {
+          id:'basics',
+          title:'Getting Started',
+          icon:'\u2b50',
+          summary:'The first things to know about God.',
+          lessons:[
+            {
+              id:'fs-1',
+              title:'Who is God?',
+              scripture:{ ref:'Psalm 139:13\u201314', text:'You made every part of me. You put me together inside my mother. I praise you because you made me in an amazing and wonderful way.' },
+              body:'God made everything. The sky, the ocean, every animal, and every person \u2014 including you.\n\nHe didn\u2019t make you by accident. The Bible says He knew you before you were even born, and He picked out every single thing about you on purpose. Your laugh. Your voice. The things you\u2019re good at.\n\nGod is bigger than anything we can imagine. But He is also close. He isn\u2019t far away watching from the sky. He is right here, and He likes being with you.\n\nHere is the most important thing to know: God loves you. Not because you are good at things. Not because you always behave. He loves you because you are His.',
+              reflect:'What is something about yourself you like? God made that on purpose.',
+              prayer:'God, thank you for making me. Help me remember you are close to me today.'
+            },
+            {
+              id:'fs-2',
+              title:'Who is Jesus?',
+              scripture:{ ref:'John 3:16', text:'God loved the world so much that he gave his only Son. Anyone who believes in him will not be lost, but will have life forever.' },
+              body:'Jesus is God\u2019s Son. A long time ago, He came to earth as a real baby, born in a place where animals were kept, because there was nowhere else for His family to stay.\n\nHe grew up like other kids. He had a family. He learned to work with wood.\n\nWhen He was a grown-up, Jesus went everywhere helping people. He made sick people well. He fed people who were hungry. He was kind to people nobody else was kind to.\n\nAnd He told everyone something amazing: if you want to know what God is like, look at me.\n\nJesus is how we know God isn\u2019t scary. God is like Jesus \u2014 kind, gentle, and always making room for people.',
+              reflect:'What is one kind thing Jesus did that you like hearing about?',
+              prayer:'Jesus, thank you for coming here. Help me learn more about who you are.'
+            },
+            {
+              id:'fs-3',
+              title:'What is the Bible?',
+              scripture:{ ref:'Psalm 119:105', text:'Your word is like a lamp for my feet and a light on my path.' },
+              body:'The Bible is one big book made of lots of smaller books \u2014 66 of them.\n\nIt was written a long, long time ago by many different people. But all of it is about the same thing: God, and how much He loves people.\n\nSome parts are stories. Some parts are songs and prayers. Some parts are letters that people wrote to each other.\n\nThe Bible is like a light. When it\u2019s dark outside and you have a flashlight, you can see where to step next. The Bible helps us see how to live \u2014 not the whole path at once, just the next step.\n\nYou don\u2019t have to understand all of it. Nobody does! You just start, and God helps you learn a little at a time.',
+              reflect:'What is one story from the Bible you already know?',
+              prayer:'God, help me understand your words. Thank you for giving them to us.'
+            },
+            {
+              id:'fs-4',
+              title:'How do I pray?',
+              scripture:{ ref:'Matthew 6:6', text:'When you pray, go into your room and close the door. Pray to your Father who cannot be seen. Your Father can see what is done in secret, and he will reward you.' },
+              body:'Praying is just talking to God.\n\nYou don\u2019t need special words. You don\u2019t have to sound fancy. You don\u2019t have to close your eyes or fold your hands, though you can if you want.\n\nYou can pray out loud or quietly in your head. You can pray in your room, on the bus, or lying in bed at night.\n\nYou can tell God anything. When you\u2019re happy. When you\u2019re scared. When you\u2019re mad \u2014 even mad at Him. He can handle it.\n\nJesus\u2019 friends once asked Him how to pray, and He gave them a short prayer to use. It starts with \u201cOur Father.\u201d That word matters. God isn\u2019t a stranger you have to be polite to. He\u2019s a good dad who is glad you came.',
+              reflect:'What is one thing you\u2019d like to tell God right now?',
+              prayer:'God, thank you that I can talk to you anytime. Here is what I want to tell you today\u2026'
+            },
+            {
+              id:'fs-5',
+              title:'Why is the world broken?',
+              scripture:{ ref:'Romans 3:23\u201324', text:'All people have sinned and are not good enough for God\u2019s glory. They are made right with God by his grace, which is a free gift.' },
+              body:'If God made everything good, why are there mean people? Why do people get sick? Why do sad things happen?\n\nHere is what the Bible says. God made the world good, and He gave people a choice \u2014 because love that isn\u2019t chosen isn\u2019t really love. And people chose to go their own way instead of God\u2019s way.\n\nThat choice broke something. Not just for them, for everything.\n\nThe Bible has a word for going our own way instead of God\u2019s way: sin. And everyone does it. Not just really bad people \u2014 everyone. When you lie, or leave someone out, or say something mean, that\u2019s it too.\n\nThat sounds like bad news, and it is. But it\u2019s only the first half. God did not leave the world broken. He had a plan to fix it, and the plan cost Him everything.\n\nThat\u2019s the next lesson.',
+              reflect:'Can you think of a time you knew the right thing and did the other thing anyway? Everybody has.',
+              prayer:'God, I know I don\u2019t always do what\u2019s right. Thank you that you didn\u2019t give up on us.'
+            },
+            {
+              id:'fs-6',
+              title:'The cross',
+              scripture:{ ref:'1 Peter 3:18', text:'Christ himself suffered for sins once. He was not guilty, but he suffered for those who are guilty, to bring you to God.' },
+              body:'This is the most important part of the whole Bible.\n\nSome people did not like what Jesus taught. They were angry that He said He was God\u2019s Son. So they arrested Him, even though He had never done anything wrong.\n\nJesus was killed on a cross. His friends were heartbroken. They thought it was over.\n\nBut something else was happening that they couldn\u2019t see. Jesus was taking the punishment for everything wrong that everyone has ever done \u2014 so that we wouldn\u2019t have to.\n\nHe didn\u2019t have to do it. He wasn\u2019t guilty of anything. He chose it, because He loves us that much.\n\nAnd that is why the cross is not a sad symbol for Christians. It is the moment God fixed what we broke.',
+              reflect:'Jesus chose to do that for people who didn\u2019t deserve it. How does it feel knowing He included you?',
+              prayer:'Jesus, thank you for what you did on the cross. I don\u2019t fully understand it, but thank you.'
+            },
+            {
+              id:'fs-7',
+              title:'He didn\u2019t stay dead',
+              scripture:{ ref:'Matthew 28:5\u20136', text:'The angel said to the women, \u201cDon\u2019t be afraid. I know you are looking for Jesus, who was killed on the cross. He is not here. He has risen from the dead as he said he would.\u201d' },
+              body:'Jesus\u2019 friends put His body in a tomb, which is like a cave with a big stone rolled in front of it. Everybody went home sad.\n\nThree days later, some women went back to the tomb early in the morning.\n\nThe stone was rolled away. The tomb was empty.\n\nAn angel told them: He isn\u2019t here. He\u2019s alive.\n\nAt first nobody believed them. Then Jesus started showing up \u2014 walking, talking, even eating breakfast with His friends on a beach. He was really, truly alive.\n\nThis is why Christians celebrate Easter. Not just because Jesus died for us, but because death didn\u2019t win. And because He\u2019s alive, we get to be with Him forever too.',
+              reflect:'The women were the first ones to find out. Why do you think God chose them?',
+              prayer:'Jesus, you are alive! Thank you that death didn\u2019t win. Help me be excited about that today.'
+            },
+            {
+              id:'fs-8',
+              title:'What do I do now?',
+              scripture:{ ref:'Micah 6:8', text:'The LORD has told you what is good. This is what he wants from you: Do what is right to other people. Love being kind to others. And live humbly, obeying your God.' },
+              body:'So what does God actually want from you?\n\nNot to be perfect. Not to never mess up. Not to be the best at anything.\n\nThe Bible says it simply in one verse: be fair to people, love being kind, and stay close to God.\n\nThat\u2019s it. That\u2019s the whole thing.\n\nBeing fair means treating people the way you\u2019d want to be treated \u2014 including the kid nobody sits with.\n\nBeing kind means you don\u2019t just do nice things, you actually like doing them.\n\nStaying close to God means talking to Him, learning about Him, and remembering you don\u2019t have to do life alone.\n\nAnd when you mess up \u2014 because you will, everyone does \u2014 you just tell God, and He forgives you. Every single time. You never run out.',
+              reflect:'Who is one person you could be kind to this week? What could you do?',
+              prayer:'God, help me be fair and kind today, and help me remember you\u2019re with me. Thank you for forgiving me when I get it wrong.'
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
   const CHARACTERS = [
     { id:'jesus', name:'Jesus', icon:'\u271d\ufe0f', tag:'The whole story, from His side',
       summary:'Most people meet Jesus through four books written about Him. This walks the same road from inside His own life \u2014 what He chose, what it cost Him, what He said when almost nobody understood, and what He was steadily walking toward.',
@@ -1710,6 +1861,9 @@
     const [openTopic, setOpenTopic] = React.useState(null);
     const [exploreView, setExploreView] = React.useState('topics');
     const [openCharacter, setOpenCharacter] = React.useState(null);
+    const [openTrack, setOpenTrack] = React.useState(null);
+    const [openModule, setOpenModule] = React.useState(null);
+    const [openLessonTrack, setOpenLessonTrack] = React.useState(null);
     const [planReflectDraft, setPlanReflectDraft] = React.useState('');
     const [myProfile, setMyProfile] = React.useState(null);
     const [friends, setFriends] = React.useState([]);
@@ -3355,8 +3509,109 @@
           ]),
           e('button', {className:'dl-explore-btn' + (exploreView==='people'?' active':''), onClick:()=>{setExploreView('people'); setOpenTopic(null);}, key:'p'}, [
             e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F464)), 'People'
+          ]),
+          e('button', {className:'dl-explore-btn' + (exploreView==='tracks'?' active':''), onClick:()=>{setExploreView('tracks'); setOpenTopic(null);}, key:'tr'}, [
+            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F6E4)), 'Tracks'
           ])
         ]),
+
+        exploreView === 'tracks' ? e('div', {key:'tracks'},
+          openLessonTrack ? (() => {
+            const tr = TRACKS.find(t => t.id === openTrack);
+            const mod = tr && tr.modules.find(m => m.id === openModule);
+            const les = mod && mod.lessons.find(l => l.id === openLessonTrack);
+            if (!les) return null;
+            const idx = mod.lessons.findIndex(l => l.id === openLessonTrack);
+            const done = (state.trackDone || []).includes(les.id);
+            return e('div', {key:'tl'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenLessonTrack(null), key:'b'}, String.fromCodePoint(0x2190) + ' ' + mod.title),
+              e('div', {className:'dl-tl-step', key:'st'}, 'Lesson ' + (idx+1) + ' of ' + mod.lessons.length),
+              e('div', {className:'dl-tl-h', key:'h'}, les.title),
+              e('div', {className:'dl-tl-scripture', key:'sc'}, [
+                e('div', {className:'dl-tl-ref', key:'r'}, les.scripture.ref),
+                e('div', {className:'dl-tl-verse', key:'v'}, les.scripture.text)
+              ]),
+              e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(les.scripture.text + '. ' + les.body), key:'ls'},
+                [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen']),
+              ...les.body.split('\n\n').map((para, pi) => e('p', {className:'dl-tl-body', key:'p'+pi}, para)),
+              e('div', {className:'dl-tl-reflect', key:'rf'}, [
+                e('div', {className:'dl-tl-reflect-h', key:'h'}, [String.fromCodePoint(0x1F4AD), ' Sit with this']),
+                e('div', {key:'t'}, les.reflect)
+              ]),
+              e('div', {className:'dl-tl-prayer', key:'pr'}, [
+                e('div', {className:'dl-tl-prayer-h', key:'h'}, [String.fromCodePoint(0x1F64F), ' A prayer']),
+                e('div', {key:'t'}, les.prayer)
+              ]),
+              e('button', {className:'dl-continue', style:{marginTop:'16px'}, onClick:()=>{
+                if (!done) {
+                  const list = state.trackDone || [];
+                  persist({ ...state, trackDone: [...list, les.id] });
+                }
+                const next = mod.lessons[idx+1];
+                if (next) setOpenLessonTrack(next.id); else setOpenLessonTrack(null);
+              }, key:'c'}, mod.lessons[idx+1] ? (done ? 'Next lesson' : 'Mark done \u00b7 Next') : (done ? 'Finish' : 'Mark done \u00b7 Finish'))
+            ]);
+          })()
+          : openModule ? (() => {
+            const tr = TRACKS.find(t => t.id === openTrack);
+            const mod = tr && tr.modules.find(m => m.id === openModule);
+            if (!mod) return null;
+            return e('div', {key:'mod'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenModule(null), key:'b'}, String.fromCodePoint(0x2190) + ' ' + tr.name),
+              e('div', {className:'dl-mod-head', key:'h'}, [
+                e('div', {className:'dl-mod-icon', key:'i'}, mod.icon),
+                e('div', {className:'dl-mod-title', key:'t'}, mod.title),
+                e('div', {className:'dl-mod-sum', key:'s'}, mod.summary)
+              ]),
+              ...mod.lessons.map((l, li) => {
+                const d = (state.trackDone || []).includes(l.id);
+                return e('button', {className:'dl-modles' + (d ? ' done' : ''), onClick:()=>setOpenLessonTrack(l.id), key:l.id}, [
+                  e('span', {className:'dl-modles-num', key:'n'}, d ? String.fromCodePoint(0x2713) : (li+1)),
+                  e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
+                    e('div', {className:'dl-modles-title', key:'a'}, l.title),
+                    e('div', {className:'dl-modles-ref', key:'b'}, l.scripture.ref)
+                  ]),
+                  e('span', {className:'dl-group-arrow', key:'x'}, String.fromCodePoint(0x203A))
+                ]);
+              })
+            ]);
+          })()
+          : openTrack ? (() => {
+            const tr = TRACKS.find(t => t.id === openTrack);
+            if (!tr) return null;
+            return e('div', {key:'tk'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenTrack(null), key:'b'}, String.fromCodePoint(0x2190) + ' All tracks'),
+              e('div', {className:'dl-track-head', key:'h'}, [
+                e('div', {className:'dl-track-icon', key:'i'}, tr.icon),
+                e('div', {className:'dl-track-name', key:'n'}, tr.name),
+                e('div', {className:'dl-track-blurb', key:'bl'}, tr.blurb),
+                tr.note ? e('div', {className:'dl-track-note', key:'nt'}, tr.note) : null
+              ]),
+              ...tr.modules.map(m => {
+                const total = m.lessons.length;
+                const doneN = m.lessons.filter(l => (state.trackDone || []).includes(l.id)).length;
+                return e('button', {className:'dl-modcard', onClick:()=>setOpenModule(m.id), key:m.id}, [
+                  e('span', {className:'dl-modcard-icon', key:'i'}, m.icon),
+                  e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
+                    e('div', {className:'dl-modcard-title', key:'a'}, m.title),
+                    e('div', {className:'dl-modcard-sum', key:'b'}, m.summary),
+                    e('div', {className:'dl-modcard-prog', key:'c'}, doneN + ' of ' + total + ' done')
+                  ]),
+                  e('span', {className:'dl-group-arrow', key:'x'}, String.fromCodePoint(0x203A))
+                ]);
+              })
+            ]);
+          })()
+          : [
+            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Guided studies built around real life, not book order. Pick the one that fits where you are.'),
+            ...TRACKS.map(tr => e('button', {className:'dl-trackcard', onClick:()=>setOpenTrack(tr.id), key:tr.id}, [
+              e('div', {className:'dl-trackcard-icon', key:'i'}, tr.icon),
+              e('div', {className:'dl-trackcard-tag', key:'g'}, tr.tag),
+              e('div', {className:'dl-trackcard-name', key:'n'}, tr.name),
+              e('div', {className:'dl-trackcard-blurb', key:'b'}, tr.blurb)
+            ]))
+          ]
+        ) : null,
 
         exploreView === 'timeline' ? e('div', {key:'timeline'}, [
           e('div', {className:'dl-empty-note', style:{marginBottom:'16px'}, key:'n'}, 'The whole story in order, from creation to the church. Dates are approximate.'),
