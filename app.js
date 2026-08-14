@@ -1336,6 +1336,198 @@
               prayer:'God, tomorrow morning your mercy is new whether I win tonight or not. Help me get up instead of hiding. Keep pulling me forward.'
             }
           ]
+        },
+        {
+          id:'substances',
+          title:'Drinking & Numbing',
+          icon:'\ud83c\udf7b',
+          summary:'On alcohol, vaping, weed, and whatever else you reach for when you don\u2019t want to feel it.',
+          lessons:[
+            {
+              id:'rf-s1',
+              title:'What it\u2019s doing for you',
+              scripture:{ ref:'Ephesians 5:18', text:'Do not get drunk on wine, which leads to debauchery. Instead, be filled with the Spirit.' },
+              body:'Nobody starts because they want a problem. You started because it worked.\n\nIt took the edge off a week that was too much. It made a room full of people survivable. It let you stop replaying the conversation at 11pm and actually sleep. Whatever it did, it did it fast and it did it reliably, and that is exactly why it got its hooks in.\n\nSo let\u2019s not begin with whether it\u2019s allowed. Begin with what it\u2019s for.\n\nNotice how Paul phrases it. He doesn\u2019t say don\u2019t drink, full stop \u2014 and Scripture doesn\u2019t either; Jesus made wine at a wedding. Paul draws the line at drunk, and then he does something more interesting: he offers a substitute. Instead, be filled. He\u2019s not just closing a door, he\u2019s naming what you were reaching for.\n\nBecause that\u2019s the honest thing here. You\u2019re not chasing the taste. You\u2019re chasing a feeling \u2014 loose, unafraid, unbothered, not in your own head for a while. Those aren\u2019t evil desires. They\u2019re desires for peace, for courage, for rest. God is not opposed to you having any of those. He\u2019s opposed to the cheap version that charges interest.\n\nAnd it does charge interest. The dose creeps up. The reason list grows \u2014 it started with hard weeks and now includes ordinary Tuesdays. You do the mental math about whether anyone noticed. Somewhere in there it stopped being something you chose and became something you arrange your life around.\n\nBefore any of the fixing, just answer this one honestly: what is it actually doing for you? Not what does it cost. What does it give? You cannot replace something until you know what it was replacing.',
+              reflect:'Finish this sentence without softening it: \u201cI drink / vape / smoke when I feel ______.\u201d What\u2019s the feeling underneath?',
+              prayer:'God, I know what I reach for and I know why. Show me what I\u2019m actually looking for, and start filling that place yourself.'
+            },
+            {
+              id:'rf-s2',
+              title:'The lie of one more',
+              scripture:{ ref:'Proverbs 23:35', text:'\u201cThey hit me,\u201d you will say, \u201cbut I\u2019m not hurt! They beat me, but I don\u2019t feel it! When will I wake up so I can find another drink?\u201d' },
+              body:'Proverbs 23 is the most uncomfortably modern passage in the Bible. It describes bloodshot eyes, needless bruises, seeing strange things, being unable to remember \u2014 and then it ends with the line above, which is essentially a man surveying the damage and immediately planning the next round.\n\nWhat makes it land isn\u2019t the judgment. It\u2019s the accuracy. Whoever wrote it had watched this closely, or lived it.\n\nAnd notice the specific lie it names: I\u2019m not hurt. I don\u2019t feel it. That\u2019s not defiance, that\u2019s the whole mechanism. The thing you use to not feel it is also the thing that convinces you there\u2019s nothing to feel. It anaesthetises the evidence against itself.\n\nThis is why \u201cI can stop whenever I want\u201d is so common and so rarely tested. It doesn\u2019t need to be true. It just needs to be believed on Thursday night.\n\nHere are the questions that actually surface something. Have you ever set a limit and gone past it? Have you hidden how much? Have you needed it to do something you used to do without it \u2014 socialise, sleep, calm down? Has anyone who loves you said something, even once, even gently?\n\nIf you answered yes to more than one of those, that\u2019s worth taking seriously. Not as a verdict on your character. As information.\n\nAnd hear this clearly, because the church has been bad at saying it: if this has a real grip, you need more than a devotional. Talk to a doctor or a counsellor. Find a group \u2014 there\u2019s one in nearly every town, and they are full of people who tried willpower first too. Getting help is not a failure of faith. Some things God heals through a physician, and He is not insulted when you go.',
+              reflect:'Have you ever set yourself a limit and gone past it? What did you tell yourself afterwards?',
+              prayer:'God, I don\u2019t want to be honest about this and I\u2019m going to be anyway. Show me clearly what\u2019s actually true, even the parts I\u2019ve been managing around.'
+            },
+            {
+              id:'rf-s3',
+              title:'Feeling it instead',
+              scripture:{ ref:'Psalm 42:3, 5', text:'My tears have been my food day and night, while people say to me all day long, \u201cWhere is your God?\u201d\u2026 Why, my soul, are you downcast? Why so disturbed within me? Put your hope in God, for I will yet praise him, my Saviour and my God.' },
+              body:'Here is what nobody tells you about stopping: the feelings you were drowning are still there, and they surface immediately. That\u2019s the actual difficulty. Not the craving \u2014 the return of everything the craving was covering.\n\nSo you need somewhere to put it, or you will go back. Not because you\u2019re weak. Because feelings that have nowhere to go will find the door they know.\n\nThe Psalms are the somewhere. Read Psalm 42 again and notice how bad it\u2019s allowed to get. Tears for food. People mocking him. He asks God twice why He has forgotten him. This is in the worship book. Israel sang this out loud, together.\n\nThat should reset your idea of what\u2019s permitted. You do not have to arrive composed. You don\u2019t have to convert the feeling into something presentable before you bring it. The psalmist just says it \u2014 I am downcast, I am disturbed, where are you \u2014 and then, in the same breath, talks to himself: put your hope in God. Both. Not one instead of the other.\n\nPractically, this means learning to name it. Not \u201cI\u2019m fine\u201d and not \u201cI\u2019m a mess,\u201d but the actual thing: I am lonely. I am ashamed about work. I am angry at my father and I have been for eleven years. Naming it does something. Vague dread is unmanageable; a named feeling can be prayed about, talked about, and sat with.\n\nAnd sitting with it does not kill you. That is the discovery on the other side. The feeling you\u2019ve spent years outrunning turns out to be survivable when you finally stop and let it be there. It rises, it peaks, it passes \u2014 and you\u2019re still here.',
+              reflect:'What feeling do you most want to avoid? Say its actual name. Then tell God about it in plain words.',
+              prayer:'God, I\u2019ve been running from things I don\u2019t want to feel. I\u2019m going to stop running and let it be here. Sit with me in it.'
+            },
+            {
+              id:'rf-s4',
+              title:'Change the room',
+              scripture:{ ref:'Proverbs 4:14\u201315', text:'Do not set foot on the path of the wicked or walk in the way of evildoers. Avoid it, do not travel on it; turn from it and go on your way.' },
+              body:'Four verbs in one sentence: avoid, do not travel, turn, go. There\u2019s no subtlety. It\u2019s not \u201cwalk that road with strong convictions.\u201d It\u2019s: use a different road.\n\nWe overspiritualise this. We ask God for strength to resist while keeping every condition that makes resisting necessary at full strength. Then we treat the inevitable outcome as a character failure.\n\nSo get concrete. Where is it, physically? A bottle in the cupboard you walk past nightly is a decision you have to win every single night, forever. Get it out. That\u2019s not weakness, it\u2019s arithmetic \u2014 you\u2019re removing a hundred future decisions with one present one.\n\nWho is it with? Some friendships are built entirely around this, and you\u2019ll discover which when you stop. That\u2019s painful and it\u2019s also clarifying. You don\u2019t have to cut anyone off. You do have to notice that certain nights with certain people are not a fair fight, and stop pretending you\u2019ll be the exception.\n\nWhen is it? Almost everyone has a window \u2014 after work, after everyone\u2019s asleep, Friday at six. Put something in the window. Something physical if possible. A walk, a gym, a shower, calling someone. The window is the fight; the rest of the day mostly isn\u2019t.\n\nAnd tell one person the plan. Not so they can police you \u2014 so it exists outside your own head, where you can\u2019t quietly renegotiate it at 9pm.\n\nNone of this is a lack of faith. Proverbs is a book of practical wisdom in the Bible, and its advice about temptation is stunningly unspiritual: don\u2019t go there. Take the other street. God gave you the ability to arrange your life, and using it is obedience, not cheating.',
+              reflect:'Name the room, the people, and the time of day. Now pick one of the three and change something this week.',
+              prayer:'God, give me the humility to move things out of my way instead of pretending I\u2019m strong enough to walk past them forever.'
+            },
+            {
+              id:'rf-s5',
+              title:'Who you\u2019re becoming',
+              scripture:{ ref:'2 Corinthians 5:17', text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!' },
+              body:'If the whole goal is stopping, you will white-knuckle for a while and then drift back, because you\u2019ll have removed something and put nothing in its place. Absence is not a life.\n\nSo aim at something instead.\n\nImagine yourself two years from now, on the other side of this. What\u2019s different? Probably not just the drinking. You\u2019re present in conversations instead of half-checked-out. You remember evenings. You wake up without doing the mental audit of what you said. You have money you didn\u2019t notice you were spending. You\u2019re someone people can rely on at 9pm, not just before six.\n\nThat person is the target. Not \u201csober.\u201d Him. Her.\n\nAnd here is the thing Paul insists on: that person is not a distant possibility you might earn. In Christ, the new creation has come \u2014 present tense, already begun. You are not building someone from scratch. You\u2019re catching up to something God has already declared true about you.\n\nThat changes the emotional weather of the whole fight. You are not auditioning for God\u2019s approval, one clean week at a time. You already have it. You\u2019re just learning to live like the person He says you now are.\n\nWhich also means the setbacks aren\u2019t verdicts. They\u2019re lag. Real, frustrating, worth learning from \u2014 but not proof that the new thing was fake.\n\nOne last practical word. Track months, not days. Notice the gaps stretching. Notice you handled a hard week differently than you would have last year. That\u2019s the actual shape of progress, and it\u2019s almost invisible up close. Look back far enough and you\u2019ll see it.',
+              reflect:'Describe the version of you two years past this. Be specific. What does an ordinary Tuesday evening look like?',
+              prayer:'God, you already call me new. Help me live into that instead of trying to earn it. Keep pulling me toward who you say I am.'
+            }
+          ]
+        },
+        {
+          id:'anger',
+          title:'Anger & Bitterness',
+          icon:'\ud83c\udf29\ufe0f',
+          summary:'On the temper you regret, and the grudge you\u2019ve been feeding for years.',
+          lessons:[
+            {
+              id:'rf-a1',
+              title:'Anger isn\u2019t the sin',
+              scripture:{ ref:'Ephesians 4:26\u201327', text:'In your anger do not sin: Do not let the sun go down while you are still angry, and do not give the devil a foothold.' },
+              body:'Read that verse slowly, because most people misremember it. It does not say do not be angry. It says in your anger, do not sin. Anger is assumed. It\u2019s the handling that\u2019s in question.\n\nThat matters, especially if you grew up being told anger itself was ungodly. Because Jesus was angry. He made a whip and cleared a temple. He called religious leaders whitewashed tombs. Mark says he looked around at them in anger, deeply distressed at their stubborn hearts \u2014 and then healed a man in front of them out of spite for their rules.\n\nAnger is a signal. It fires when something you value is threatened or violated. That\u2019s useful information. People who feel no anger at injustice aren\u2019t holy, they\u2019re asleep.\n\nThe problem is what we do in the eight seconds after it fires.\n\nSo the useful question is not \u201cwhy am I angry\u201d as a self-accusation. It\u2019s: what is this protecting? Under most anger is something softer that got hit. Disrespect usually means you feel small. Rage at your kids often means fear. Snapping at your spouse is frequently exhaustion or shame with nowhere else to go. Anger is the bodyguard; something quieter is the thing being guarded.\n\nAnd note Paul\u2019s deadline: before the sun goes down. Not because unresolved anger is untidy, but because of what he says next \u2014 it gives the devil a foothold. A foothold is small. Nobody loses a wall in one night. They lose it because something got a grip and was left alone long enough to widen.\n\nToday, don\u2019t try to stop feeling angry. Just get underneath it.',
+              reflect:'Think of the last time you lost your temper. Strip the anger away \u2014 what were you actually feeling underneath it?',
+              prayer:'God, I\u2019m not going to pretend I\u2019m not angry. Show me what\u2019s under it, and help me deal with that instead of just the surface.'
+            },
+            {
+              id:'rf-a2',
+              title:'The eight seconds',
+              scripture:{ ref:'James 1:19\u201320', text:'My dear brothers and sisters, take note of this: Everyone should be quick to listen, slow to speak and slow to become angry, because human anger does not produce the righteousness that God desires.' },
+              body:'Notice the ratio. One thing to be fast about, two to be slow about. Almost every blow-up you regret came from reversing that.\n\nAnd notice the reason James gives \u2014 not that anger is unpleasant, but that it does not produce the righteousness God desires. Which is worth sitting with, because in the moment, anger feels productive. It feels like it\u2019s about to fix something. It almost never does. It usually just relocates the problem into the other person\u2019s hurt.\n\nThe practical fight happens in a very short window. There\u2019s a gap \u2014 a few seconds \u2014 between the surge and the sentence you can\u2019t take back. That gap is trainable.\n\nWhat works, in the moment: leave. Physically. \u201cI need ten minutes\u201d is a complete sentence and it is not weakness, it\u2019s the strongest available move. Your body is flooded with adrenaline and your reasoning is genuinely impaired \u2014 you are not at your best and you should not be making decisions about someone you love.\n\nAlso: slow the words down. Anger speeds speech up. Deliberately talking slower cools the whole exchange, including you.\n\nAnd get curious out loud. \u201cWhy does this bother me this much?\u201d asked honestly, even mid-argument, changes the temperature. It moves you from attacking to examining.\n\nWhat doesn\u2019t work: venting. The old advice about getting it all out has not held up \u2014 rehearsing anger tends to deepen the groove rather than drain it. There\u2019s a difference between processing something with a trusted person and simply reloading.\n\nOne warning worth saying plainly. If your anger has ever frightened someone, or you\u2019ve broken something, or someone in your house walks carefully around your moods \u2014 that\u2019s past a devotional. Get a counsellor. That\u2019s courage, not shame.',
+              reflect:'What is your earliest warning sign \u2014 jaw, chest, voice, a specific thought? Naming it gives you back the gap.',
+              prayer:'God, give me the second between feeling it and saying it. Help me use it.'
+            },
+            {
+              id:'rf-a3',
+              title:'The grudge you\u2019re feeding',
+              scripture:{ ref:'Hebrews 12:15', text:'See to it that no one falls short of the grace of God and that no bitter root grows up to cause trouble and defile many.' },
+              body:'Anger is weather. Bitterness is climate.\n\nAnger flares and passes. Bitterness is what happens when it doesn\u2019t \u2014 when something got done to you, it was genuinely wrong, and there was no repair, so you built around it. And you\u2019ve been maintaining it since.\n\nHebrews calls it a root, which is exactly right. Roots are underground. You don\u2019t see them; you see what they push up through. A comment that lands too hard. A whole category of person you can\u2019t be fair about. A relationship you keep at a distance for reasons you\u2019d struggle to explain now.\n\nAnd note the last phrase: defile many. Bitterness never stays contained to the person who earned it. It leaks onto people who had nothing to do with it \u2014 your kids get the version of you that was shaped by someone else\u2019s failure.\n\nHere is the hardest part, and I won\u2019t dress it up. Usually you were actually wronged. That\u2019s what makes it so hard to release. It feels like letting go means agreeing it was fine, or letting them win.\n\nIt doesn\u2019t. Forgiveness is not saying it didn\u2019t matter. It\u2019s deciding to stop being the one who carries the debt. Right now you\u2019re both the creditor and the one paying \u2014 you think about them, and they mostly don\u2019t think about you.\n\nAsk yourself honestly: what is this costing me, right now, today? Not what did they cost you then. What is it costing to keep holding it? Bitterness always feels like power and functions like a tax.',
+              reflect:'Who came to mind while reading this? You knew within the first paragraph. What has holding it cost you?',
+              prayer:'God, you know what happened and you know it was wrong. I\u2019m tired of carrying it. I don\u2019t know how to let go yet \u2014 start doing something in me.'
+            },
+            {
+              id:'rf-a4',
+              title:'What forgiveness isn\u2019t',
+              scripture:{ ref:'Colossians 3:13', text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.' },
+              body:'A lot of people are stuck not because they refuse to forgive but because they\u2019ve been handed a definition that isn\u2019t Christian. So let\u2019s clear the ground.\n\nForgiveness is not saying it was okay. If it was okay there\u2019d be nothing to forgive. The word only exists for things that were genuinely wrong.\n\nIt is not forgetting. You\u2019re not required to develop amnesia. God remembering our sins no more is a covenant statement about not holding them against us, not a claim about divine memory loss.\n\nIt is not trust restored. Trust is rebuilt through changed behaviour over time. You can forgive someone completely and still not hand them your car keys, your money, or unsupervised time with your children.\n\nIt is not reconciliation. That takes two people. Paul says elsewhere: if it is possible, as far as it depends on you, live at peace. Both those qualifiers are there because sometimes it isn\u2019t possible and it doesn\u2019t depend only on you.\n\nAnd it is not a feeling you wait for. If you wait until you feel like it, you will die waiting.\n\nSo what is it? It\u2019s a decision to release the debt \u2014 to stop demanding they pay, and to hand the matter to a God who sees it accurately, judges rightly, and doesn\u2019t need your help.\n\nThat decision usually has to be made more than once. You\u2019ll forgive on Tuesday and find it back on Friday, and think you failed. You didn\u2019t. You\u2019re just doing it again. Some things you forgive a hundred times before it finally stays down \u2014 which, incidentally, is roughly what Jesus told Peter when he asked how many times.',
+              reflect:'Which of those five did you have confused with forgiveness? Does that change what\u2019s actually being asked of you?',
+              prayer:'God, I\u2019m choosing to hand this over. Not because it didn\u2019t matter, but because I\u2019m not the right one to hold it. Take it. I\u2019ll probably bring it back \u2014 take it again.'
+            },
+            {
+              id:'rf-a5',
+              title:'Gentleness is not weakness',
+              scripture:{ ref:'Proverbs 15:1', text:'A gentle answer turns away wrath, but a harsh word stirs up anger.' },
+              body:'Here\u2019s something worth noticing about the fruit of the Spirit: gentleness is in it, and so is self-control, and they\u2019re listed alongside love and joy as if they belong in the same family. In Scripture, gentleness is not timidity. The same word describes a war horse under control \u2014 enormous power, responsive to the slightest signal. Strength with a hand on it.\n\nThat reframes the goal. You\u2019re not trying to become someone who feels less. You\u2019re trying to become someone whose force is under command.\n\nProverbs 15:1 is one of those verses that sounds like a nicety until you actually use it. A gentle answer genuinely does turn away wrath \u2014 it is almost mechanical. Escalation requires two people. When one of them doesn\u2019t supply the heat, the fire has nothing to burn.\n\nThe person who can stay level when someone is shouting at them is not the weak one in the room. Everyone present knows that.\n\nAnd this is where the whole module lands. You cannot manufacture gentleness by suppression \u2014 that just builds pressure until it blows somewhere worse. It grows, like fruit, from being someone whose deepest need is already met. It is very hard to threaten someone who isn\u2019t protecting anything fragile.\n\nWhich is why the answer to anger is finally not technique. It\u2019s security. The more settled you are in being loved by God, the less every slight has to be a battle for your worth.\n\nStart small. Pick one relationship this week where you\u2019re usually sharp, and answer gently once. Not passively \u2014 you can be completely honest, even firm. Just gently. Then notice what happens in the room, and notice what happens in you.',
+              reflect:'Who gets the sharpest version of you? What would one gentle answer look like this week \u2014 what would you actually say?',
+              prayer:'God, make me strong enough to be gentle. Settle me deep enough that I don\u2019t have to fight for my worth in every conversation.'
+            }
+          ]
+        },
+        {
+          id:'comparison',
+          title:'Comparison & Your Phone',
+          icon:'\ud83d\udcf1',
+          summary:'On scrolling, envy, and the quiet ache of everyone else\u2019s life.',
+          lessons:[
+            {
+              id:'rf-c1',
+              title:'The thief',
+              scripture:{ ref:'Galatians 6:4\u20135', text:'Each one should test their own actions. Then they can take pride in themselves alone, without comparing themselves to someone else, for each one should carry their own load.' },
+              body:'You can be perfectly content with your life until you see someone else\u2019s. Nothing about your situation changed in those four seconds. Only the reference point did.\n\nThat\u2019s what makes comparison so strange. It doesn\u2019t take anything from you. It just changes what you\u2019re measuring against, and suddenly a life you were fine with looks thin.\n\nPaul\u2019s instruction is oddly specific: test your own actions, and take pride in that alone, without comparing. He isn\u2019t saying never notice anyone else. He\u2019s saying the scoreboard is yours. Carry your own load \u2014 which means someone else\u2019s load, and how well they\u2019re carrying it, is not your business or your standard.\n\nAnd you should be clear about what you\u2019re actually comparing. You are holding your unedited insides against their curated outside. You know your doubts, your bank balance, the argument you had this morning, the thing you\u2019re ashamed of. You know none of that about them. You know what they chose to publish.\n\nThat isn\u2019t a fair fight, and some part of you knows it. It just doesn\u2019t help, because comparison doesn\u2019t run on logic. It runs on a feeling that arrives before you\u2019ve had a chance to reason.\n\nHere\u2019s what makes it worth taking seriously rather than shrugging off: comparison quietly disqualifies gratitude. You cannot be thankful for something you\u2019ve decided isn\u2019t enough. And a life without gratitude gets grey no matter what\u2019s in it.\n\nSo start by noticing. Just for a day. Catch the moment it happens \u2014 the small drop in the chest when a certain post loads. Don\u2019t judge it, just see it. You can\u2019t fight something you haven\u2019t looked at.',
+              reflect:'Whose life makes you feel worst about yours? What specifically do they have that you want?',
+              prayer:'God, I keep measuring my life against people I don\u2019t really know. Help me see what you\u2019ve actually put in front of me.'
+            },
+            {
+              id:'rf-c2',
+              title:'What envy is telling you',
+              scripture:{ ref:'James 3:16', text:'For where you have envy and selfish ambition, there you find disorder and every evil practice.' },
+              body:'Envy is a bad master and a useful informant.\n\nJames is blunt about the master part \u2014 where envy is, disorder follows. It corrodes friendships. It makes other people\u2019s good news feel like bad news, which is a genuinely awful way to live. You end up unable to celebrate anyone, and quietly relieved when things go wrong for them, and then ashamed of that.\n\nBut envy is also information, if you\u2019ll interrogate it instead of just feeling it.\n\nEnvy is specific. You are not envious of everyone about everything. You feel it about certain things, from certain people. That specificity is a signal pointing at something you want and either don\u2019t have or don\u2019t believe you can have.\n\nSo interrogate it. When you feel that pull, ask: what exactly is it? Not the surface \u2014 the substance. Envying someone\u2019s marriage might be a longing to be known. Envying a career might be wanting to matter, or wanting to stop worrying about money. Envying someone\u2019s ease might be exhaustion.\n\nOnce you have the real thing, you can do something with it. You can pray about it honestly. You can act on it if it\u2019s actionable. And you can grieve it if it isn\u2019t \u2014 some things you wanted are genuinely not going to happen, and grieving that in God\u2019s presence is far healthier than resenting whoever got it.\n\nWhat you cannot do is nothing. Unexamined envy doesn\u2019t evaporate. It settles into a low background bitterness about your own life, and eventually about God for the way He handed things out.',
+              reflect:'Take the last thing you envied. Keep asking \u201cwhat do I actually want here?\u201d until you hit something true.',
+              prayer:'God, I\u2019m tired of resenting people for having good things. Show me what I really want, and help me bring it to you instead of nursing it.'
+            },
+            {
+              id:'rf-c3',
+              title:'The machine is designed',
+              scripture:{ ref:'1 Corinthians 6:12', text:'\u201cI have the right to do anything,\u201d you say \u2014 but not everything is beneficial. \u201cI have the right to do anything\u201d \u2014 but I will not be mastered by anything.' },
+              body:'Paul\u2019s line here is one of the most useful sentences in the New Testament for modern life, and it hinges on a word: mastered.\n\nHe isn\u2019t arguing about permission. He grants the permission immediately \u2014 twice. Then he moves the question: is this useful, and who is in charge here?\n\nApply that honestly to your phone. Not \u201cis it allowed.\u201d Obviously. The real questions are: is it beneficial, and is it mastering you?\n\nAnd be clear-eyed about the fight you\u2019re in. These apps are not neutral tools you happen to overuse. They were built by very smart people whose job was to maximise the time you spend, using the same reward mechanics that make slot machines work \u2014 variable rewards, infinite scroll, notifications timed for re-engagement. Feeling like you can\u2019t put it down is not a personal defect. It is the intended outcome of significant investment.\n\nWhich should be freeing, actually. Stop treating it as a character flaw and start treating it as a designed system you can make different decisions inside of.\n\nThe practical stuff works, and it\u2019s dull: phone out of the bedroom overnight, so it isn\u2019t the first and last thing you touch. Notifications off for anything that isn\u2019t a human being contacting you directly. Unfollow, generously \u2014 if an account reliably makes you feel worse, that is sufficient reason, and you owe no explanation. Greyscale if you\u2019re serious; the colour is doing more work than you think.\n\nNone of that is legalism. It\u2019s just refusing to be mastered by something you were told was a tool.',
+              reflect:'Check your screen time honestly. How does that number compare to time spent on anything you\u2019d say actually matters to you?',
+              prayer:'God, I don\u2019t want anything running me but you. Give me the clarity to see what this is doing and the resolve to change it.'
+            },
+            {
+              id:'rf-c4',
+              title:'Your actual life',
+              scripture:{ ref:'Psalm 16:5\u20136', text:'LORD, you alone are my portion and my cup; you make my lot secure. The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.' },
+              body:'Boundary lines is a land term. When Israel entered the promised land, each family received a specific plot \u2014 marked out, bounded, theirs. Not all of it. A portion.\n\nDavid takes that image and applies it to his life. This is my plot. These are my edges. And he says something remarkable about it: the lines have fallen in pleasant places.\n\nEvery life has boundary lines. There are things you will not be, places you will not go, gifts you were not given. Comparison is essentially a refusal to accept your plot \u2014 a permanent low-grade objection to the shape of the land you were handed.\n\nAnd notice what David says first, before the land: you alone are my portion. The plot isn\u2019t the inheritance. God is. Which is why he can look at his actual, bounded, non-infinite life and call it delightful.\n\nHere is the practical shift. Look up from the feed and look at what\u2019s in front of you. Not the life you\u2019d have chosen from a catalogue \u2014 the one you actually have. The people in your house. The work in front of you this week. The friendships that have lasted. The body that mostly works. The fact that you\u2019re reading something about God at all.\n\nGratitude is not pretending your life is better than it is. It is the discipline of accurate attention \u2014 refusing to let the things you don\u2019t have blot out the things you do.\n\nTry this and mean it: three specific things from today. Not \u201cmy family.\u201d Something like \u2014 the way my daughter said my name when I got home. Specific gratitude is the only kind that actually moves anything.',
+              reflect:'Name three specific things from today \u2014 not categories, actual moments. Sit with them for a minute before moving on.',
+              prayer:'God, you are my portion, not the things I\u2019m missing. Help me see the good you\u2019ve actually put in my hands.'
+            },
+            {
+              id:'rf-c5',
+              title:'Celebrate someone',
+              scripture:{ ref:'Romans 12:15', text:'Rejoice with those who rejoice; mourn with those who mourn.' },
+              body:'The final move against comparison isn\u2019t discipline. It\u2019s the opposite of what envy wants you to do.\n\nRejoice with those who rejoice. Not tolerate their good news. Not manage your face while they tell you. Actually be glad.\n\nThis is harder than mourning with people. Grief invites us in \u2014 we know how to show up for someone who\u2019s hurting. Someone else\u2019s success quietly indicts us, and the polite congratulations we offer often has something sour underneath it that we hope isn\u2019t visible.\n\nBut here\u2019s what happens when you push through and genuinely celebrate someone: the envy loses its grip. You cannot simultaneously resent someone and be glad for them. Actively choosing gladness starves the other thing.\n\nAnd it has to be active, because it will not arrive on its own. Send the message. Say the specific thing you admire. Show up to the thing. Ask them about it and actually listen. The feeling tends to follow the action rather than precede it.\n\nThere\u2019s something deeper here too. Comparison assumes a world of scarcity \u2014 that their portion diminishes yours, that there\u2019s a fixed amount of good and they took some of yours. The gospel says otherwise. Their good news costs you nothing. God is not running out.\n\nIf you believe that, you can be free in a way that\u2019s genuinely rare. You can be the person who is honestly, uncomplicatedly happy for other people. Those people are magnetic, and there are very few of them.\n\nSo pick someone. Ideally someone you\u2019ve felt that twinge about. And go be glad for them out loud, this week.',
+              reflect:'Who have you struggled to celebrate? What is one specific thing you could genuinely tell them you admire?',
+              prayer:'God, make me someone who is honestly glad when others are blessed. Take the scarcity out of how I see the world.'
+            }
+          ]
+        },
+        {
+          id:'anxiety',
+          title:'Anxiety & Control',
+          icon:'\ud83c\udf0a',
+          summary:'On the 3am spiral, and trying to hold everything together yourself.',
+          lessons:[
+            {
+              id:'rf-x1',
+              title:'The 3am spiral',
+              scripture:{ ref:'Psalm 94:19', text:'When anxiety was great within me, your consolation brought me joy.' },
+              body:'It has a shape, doesn\u2019t it. You wake at some hour you didn\u2019t choose and your mind is already running \u2014 not on the actual problem, but three moves past it, into consequences that haven\u2019t happened and mostly won\u2019t.\n\nAnd it feels productive. That\u2019s the trick. It feels like by turning it over enough times you might find the angle that makes it safe. You never do. You just arrive at morning exhausted, having solved nothing.\n\nThe first thing worth saying is that this is not a faith problem, or not only one. Anxiety is partly a body doing what bodies do \u2014 a threat system that evolved for immediate danger, firing at things it cannot resolve by running or fighting. That\u2019s why \u201cjust trust God\u201d lands so badly when someone is mid-spiral. You\u2019re not arguing with a belief, you\u2019re arguing with adrenaline.\n\nSo the Bible\u2019s honesty here is a relief. Psalm 94 doesn\u2019t say anxiety shouldn\u2019t be great within me. It says when it was. The writer isn\u2019t apologising for having a nervous system.\n\nElijah collapsed under a tree and asked to die \u2014 and God\u2019s first response was food and sleep. Jesus in Gethsemane was so distressed He sweated blood and said His soul was overwhelmed to the point of death. Whatever anxiety is, it is not evidence that you\u2019re failing at faith. Some of Scripture\u2019s most faithful people were flattened by it.\n\nWhat you need first isn\u2019t a lecture. It\u2019s consolation \u2014 which is the word the psalm uses. Comfort. Presence. Something to hold onto while the wave goes through.\n\nTonight, when it starts, try this: stop trying to solve it. Just say out loud, even in a whisper, that you\u2019re afraid and you can\u2019t fix this at 3am. Then ask Him to stay with you while it passes. That\u2019s a complete prayer.',
+              reflect:'What does your spiral usually circle around? Name the actual fear underneath the loop.',
+              prayer:'God, my head won\u2019t stop and I can\u2019t fix anything from here. I\u2019m not asking you to solve it tonight. Just stay with me.'
+            },
+            {
+              id:'rf-x2',
+              title:'Control is the real habit',
+              scripture:{ ref:'Proverbs 16:9', text:'In their hearts humans plan their course, but the LORD establishes their steps.' },
+              body:'Underneath most chronic anxiety is a belief you\u2019d never say out loud: if I think hard enough, plan far enough, and stay alert enough, I can keep the bad thing from happening.\n\nIt is a form of taking responsibility for outcomes that were never yours. And it\u2019s exhausting precisely because it\u2019s impossible \u2014 you\u2019re trying to hold a weight that isn\u2019t liftable, and then feeling like a failure for straining.\n\nProverbs 16:9 holds two things together without embarrassment. You plan your course \u2014 that\u2019s good, do it, planning is wisdom. And the Lord establishes your steps. Both are true. You are responsible for your effort and not for your outcomes.\n\nSitting with that distinction is where the relief is. What is genuinely mine here? Usually: my effort, my honesty, my next action, my attitude. What isn\u2019t mine? How other people respond. What happens next year. Whether it works.\n\nMost anxiety is spent almost entirely in the second column.\n\nThere\u2019s an old prayer about this \u2014 the serenity to accept what can\u2019t be changed, courage to change what can, wisdom to know the difference \u2014 and it survives because the sorting is the whole battle. Not the accepting. The sorting.\n\nTry it literally. Write down what you\u2019re anxious about, then draw a line down the page. Left side: things I can actually act on. Right side: things I cannot. Then do something \u2014 anything \u2014 on the left, and pray specifically about the right.\n\nIt sounds too simple. It works because anxiety thrives on the two columns being blurred, so that everything feels simultaneously urgent and impossible.',
+              reflect:'What are you carrying right now that was never actually yours to carry?',
+              prayer:'God, I\u2019ve been trying to control things I was never given control of. Show me my part, and take the rest \u2014 I\u2019m not built for it.'
+            },
+            {
+              id:'rf-x3',
+              title:'Do not be anxious, actually',
+              scripture:{ ref:'Philippians 4:6\u20137', text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.' },
+              body:'This verse gets used as a rebuke, which is almost the opposite of what it is.\n\nRead it as an instruction rather than a scolding and it changes. Paul isn\u2019t saying you shouldn\u2019t feel anxious \u2014 which would be useless advice, like telling someone not to feel cold. He\u2019s giving a transfer procedure. Don\u2019t hold it. Move it. Here is how.\n\nAnd the method is more specific than it first appears.\n\nIn every situation \u2014 nothing is too small or too stupid. The thing you\u2019re embarrassed to be worried about counts.\n\nBy prayer and petition \u2014 petition means specific asks. Not \u201cGod, be with my week.\u201d Name it: the conversation on Thursday, the test results, the money in March. Vague prayer leaves anxiety exactly where it was, because you never actually handed anything over.\n\nWith thanksgiving \u2014 this is the one people skip, and it\u2019s doing real work. Naming something true and good while you\u2019re afraid interrupts the spiral\u2019s narrative that everything is bad and getting worse. It\u2019s not denial. It\u2019s balance.\n\nAnd then the promise, which is worth reading carefully. It doesn\u2019t say you\u2019ll get what you asked for. It says peace will guard your heart and mind. Guard is a military word \u2014 a garrison posted around a city. Not the absence of threat. Protection inside it.\n\nAlso notice: peace that transcends understanding. Meaning it won\u2019t make sense. You may still not know how the thing resolves, and be strangely okay anyway. That\u2019s not you having figured it out. That\u2019s the guard being posted.\n\nThis is a practice, not a one-off. You will hand the same worry over dozens of times. That\u2019s not failure; that\u2019s the exercise.',
+              reflect:'Write down one specific thing you\u2019re anxious about. Then write one thing you\u2019re thankful for. Then pray both, out loud.',
+              prayer:'God, here it is, specifically: ______. I\u2019m handing it to you. And thank you for ______, which is also true today. Guard my mind while I wait.'
+            },
+            {
+              id:'rf-x4',
+              title:'Today has enough',
+              scripture:{ ref:'Matthew 6:34', text:'Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.' },
+              body:'There\u2019s a dry realism in this verse that people miss because they\u2019re braced for a platitude.\n\nJesus does not say tomorrow will be fine. He says each day has enough trouble of its own. He\u2019s conceding the point \u2014 there will be trouble tomorrow, and there\u2019s trouble today, and today\u2019s is a full day\u2019s worth. His argument is about load, not optimism.\n\nAnxiety works by borrowing. You take tomorrow\u2019s difficulty and next month\u2019s and the worst version of next year\u2019s, and you carry them all today, in advance, alongside today\u2019s actual weight. No wonder you\u2019re flattened. You\u2019re carrying a load that was designed to be distributed across a year.\n\nAnd almost all of it is imaginary. Not the concerns \u2014 those may be real \u2014 but the versions you\u2019re carrying. You are rehearsing scenarios most of which will never occur, and grieving losses that haven\u2019t happened.\n\nThink about the wilderness. Manna came daily, and it rotted if hoarded. That was deliberate. God trained a nation in daily dependence by refusing to let them stockpile. It must have been maddening. It was also the point.\n\nSo the practical question is not \u201chow do I stop worrying about the future.\u201d It\u2019s: what is required of me today? Just today. What\u2019s the next actual thing?\n\nMostly it\u2019s small. Make the call. Send the email. Show up. Go to bed at a reasonable hour. The future is handled in a series of todays, and it is genuinely the only place you\u2019re able to act.\n\nWhen you catch yourself out in next March, come back. Ask what today asks of you. Do that. That is sufficient, and it is also all that\u2019s available.',
+              reflect:'What are you carrying today that belongs to a day that hasn\u2019t come? What does today actually ask of you?',
+              prayer:'God, I keep living in days I haven\u2019t reached yet. Bring me back to this one. Give me what I need for today and let tomorrow wait.'
+            },
+            {
+              id:'rf-x5',
+              title:'Cast it, and keep casting',
+              scripture:{ ref:'1 Peter 5:6\u20137', text:'Humble yourselves, therefore, under God\u2019s mighty hand, that he may lift you up in due time. Cast all your anxiety on him because he cares for you.' },
+              body:'These are one sentence in the original, and the join changes everything.\n\nHumbling yourself and casting your anxiety are the same movement. Which tells you something uncomfortable and freeing: a lot of worry is pride. Not arrogance \u2014 the quieter kind, where you\u2019ve assumed a level of responsibility for the universe that was never assigned to you. Letting go of it is humility. It\u2019s admitting you are not the one holding this together, and never were.\n\nThe verb matters too. Cast is forceful \u2014 throw, fling off. It\u2019s the same word used for the cloaks thrown over the colt at the triumphal entry. Not setting your worry down gently beside you where you can pick it back up in four minutes. Throwing it.\n\nYou will pick it back up. Everyone does. The instruction is not to cast it once and be finished; it\u2019s a practice you\u2019ll repeat until you die. Some days hourly. That\u2019s normal, and it\u2019s not evidence the first time didn\u2019t work.\n\nAnd then the reason, which is the part to hold onto: because he cares for you. Not because worry is unproductive, true as that is. Not because faith should be stronger. Because He cares about you specifically.\n\nThat\u2019s an astonishing claim if you slow down on it. The God who holds galaxies is described as caring about the thing keeping you awake. Not tolerating it. Caring.\n\nWhich means the invitation isn\u2019t to be less bothered. It\u2019s to be bothered in company \u2014 to stop white-knuckling in private and hand it, repeatedly, to someone who is not overwhelmed by it and does not think you\u2019re weak for bringing it again.\n\nSo bring it again. That is the whole spiritual practice. Bring it again.',
+              reflect:'What have you picked back up after handing it over? Throw it again \u2014 right now, out loud.',
+              prayer:'God, I\u2019m taking my hands off this. I\u2019ll probably grab it again in an hour, and I\u2019ll give it back then too. Thank you that you actually care about it.'
+            }
+          ]
         }
       ]
     },
@@ -1416,6 +1608,230 @@
               body:'So what does God actually want from you?\n\nNot to be perfect. Not to never mess up. Not to be the best at anything.\n\nThe Bible says it simply in one verse: be fair to people, love being kind, and stay close to God.\n\nThat\u2019s it. That\u2019s the whole thing.\n\nBeing fair means treating people the way you\u2019d want to be treated \u2014 including the kid nobody sits with.\n\nBeing kind means you don\u2019t just do nice things, you actually like doing them.\n\nStaying close to God means talking to Him, learning about Him, and remembering you don\u2019t have to do life alone.\n\nAnd when you mess up \u2014 because you will, everyone does \u2014 you just tell God, and He forgives you. Every single time. You never run out.',
               reflect:'Who is one person you could be kind to this week? What could you do?',
               prayer:'God, help me be fair and kind today, and help me remember you\u2019re with me. Thank you for forgiving me when I get it wrong.'
+            }
+          ]
+        },
+        {
+          id:'feelings',
+          title:'Big Feelings',
+          icon:'\ud83d\udc99',
+          summary:'What to do when you feel scared, mad, sad, or left out.',
+          lessons:[
+            {
+              id:'fs-f1',
+              title:'When you\u2019re scared',
+              scripture:{ ref:'Joshua 1:9', text:'Be strong and brave. Don\u2019t be afraid, because the LORD your God will be with you everywhere you go.' },
+              body:'Everybody gets scared. Grown-ups too, even if they don\u2019t say it.\n\nBeing brave doesn\u2019t mean you stop feeling scared. Brave people feel scared and do the thing anyway.\n\nGod told Joshua to be brave. But look at the reason He gave. He didn\u2019t say \u201cbecause it isn\u2019t scary.\u201d He said \u201cbecause I will be with you.\u201d\n\nThat\u2019s the whole thing. You\u2019re not brave because you\u2019re strong enough by yourself. You\u2019re brave because you\u2019re not by yourself.\n\nWhen you feel scared, you can tell God. Right then. You don\u2019t have to wait. You can just say, \u201cGod, I\u2019m scared,\u201d and He hears you every single time.',
+              reflect:'What makes you feel scared? You can tell God about it right now.',
+              prayer:'God, sometimes I get scared. Thank you that you are with me everywhere I go. Help me be brave today.'
+            },
+            {
+              id:'fs-f2',
+              title:'When you\u2019re mad',
+              scripture:{ ref:'James 1:19', text:'Everyone should be quick to listen, slow to speak, and slow to become angry.' },
+              body:'Being mad isn\u2019t bad. Even Jesus got mad sometimes, when people were being treated unfairly.\n\nWhat matters is what you do next.\n\nWhen you\u2019re mad, your body feels it. Your face gets hot. Your hands might squeeze. That\u2019s your body saying something feels wrong.\n\nHere\u2019s a trick that really works. Before you say anything, count to ten. Or walk to another room. Or take three big slow breaths.\n\nIt sounds too easy to work. But your mad feeling gets smaller after a few seconds, and then you can say what you mean without saying something mean.\n\nMost of the words we wish we could take back were said in the first five seconds.',
+              reflect:'What is something that makes you mad? What could you do instead of yelling next time?',
+              prayer:'God, help me slow down when I get mad. Help me say what I mean without hurting people.'
+            },
+            {
+              id:'fs-f3',
+              title:'When you\u2019re sad',
+              scripture:{ ref:'Psalm 34:18', text:'The LORD is close to people whose hearts have been broken.' },
+              body:'Sometimes you feel sad and you know exactly why. Somebody was mean. Someone moved away. A pet died.\n\nAnd sometimes you feel sad and you don\u2019t know why at all. That happens too, and it doesn\u2019t mean anything is wrong with you.\n\nYou don\u2019t have to hurry up and feel happy again. God doesn\u2019t rush you.\n\nDid you know Jesus cried? His friend Lazarus died, and Jesus cried in front of everyone \u2014 even though He knew He was about to bring him back to life. He still cried first.\n\nSo crying isn\u2019t weak. Jesus did it.\n\nWhen you\u2019re sad, tell somebody who loves you. A parent, a grandparent, a teacher. And tell God. Sad feelings get smaller when they\u2019re shared.',
+              reflect:'When you feel sad, who is someone safe you can tell?',
+              prayer:'God, when I\u2019m sad, thank you that you come close instead of going away. Help me tell somebody instead of hiding it.'
+            },
+            {
+              id:'fs-f4',
+              title:'When you feel left out',
+              scripture:{ ref:'Psalm 27:10', text:'If my father and mother leave me, the LORD will take me in.' },
+              body:'Feeling left out is one of the worst feelings there is.\n\nMaybe you weren\u2019t invited. Maybe everyone was talking about something you weren\u2019t there for. Maybe you were picked last.\n\nHere is something true: being left out does not mean something is wrong with you. Sometimes people just don\u2019t think. Sometimes kids are unkind. Neither of those is about how much you\u2019re worth.\n\nJesus knew what this felt like. His own hometown didn\u2019t want Him. His own family thought He was being weird. His friends fell asleep when He needed them most.\n\nSo when you feel left out, you\u2019re talking to someone who really understands \u2014 not someone guessing.\n\nAnd here\u2019s something you can do with that feeling: look around for someone else who\u2019s left out, and go sit with them. People who know what it feels like usually make the best friends.',
+              reflect:'Is there someone at school who often gets left out? What could you do this week?',
+              prayer:'God, when I feel left out, remind me you never leave me out. Help me notice other people who feel that way too.'
+            },
+            {
+              id:'fs-f5',
+              title:'When you mess up',
+              scripture:{ ref:'1 John 1:9', text:'If we confess our sins, he will forgive our sins, because we can trust God to do what is right.' },
+              body:'You are going to mess up. Everybody does. Not just kids \u2014 everybody, their whole life.\n\nWhen you mess up, your brain usually says one of two things. Either \u201chide it so nobody finds out,\u201d or \u201cyou\u2019re a bad person.\u201d\n\nBoth of those are lies.\n\nHiding it just makes it heavier. And messing up doesn\u2019t make you bad. It makes you a person.\n\nHere\u2019s what actually helps. Say what you did \u2014 to God, and to whoever you need to say sorry to. Then let it be done.\n\nGod isn\u2019t sitting there disappointed, waiting for you to feel bad long enough. The Bible says as soon as you tell Him, He forgives. Right away. Every time.\n\nYou never run out of chances with God. Not ever.',
+              reflect:'Is there something you need to say sorry for? You can start by telling God right now.',
+              prayer:'God, I mess up sometimes. Thank you that you forgive me every time and never get tired of me.'
+            },
+            {
+              id:'fs-f6',
+              title:'When you\u2019re thankful',
+              scripture:{ ref:'1 Thessalonians 5:18', text:'Give thanks whatever happens. That is what God wants for you in Christ Jesus.' },
+              body:'Here\u2019s a strange thing about being thankful: it doesn\u2019t just happen when good things happen. It\u2019s something you can practice, like shooting free throws.\n\nAnd the more you practice it, the more you notice good things you were walking right past.\n\nTry this. Every night before you sleep, think of three things from that day. Not big things \u2014 small, real things. What somebody said. A food you liked. Something funny. The way the sky looked.\n\nThen say thank you to God for them.\n\nIf you do that every night for a week, something changes. You start looking for good things during the day, because you know you\u2019ll be counting them later.\n\nThat\u2019s not pretending everything is perfect. Some days are hard. It just means the hard stuff doesn\u2019t get to hide all the good stuff.',
+              reflect:'Name three good things from today. Small ones count \u2014 those are usually the best ones.',
+              prayer:'God, thank you for today. Especially for ______ and ______ and ______. Help me notice more tomorrow.'
+            }
+          ]
+        },
+        {
+          id:'friends',
+          title:'Being a Good Friend',
+          icon:'\ud83e\udd1d',
+          summary:'How to treat people the way Jesus did.',
+          lessons:[
+            {
+              id:'fs-r1',
+              title:'The most important rule',
+              scripture:{ ref:'Matthew 7:12', text:'Do for other people the same things you want them to do for you.' },
+              body:'Jesus said a lot of things. But this one is so simple you can remember it forever.\n\nTreat people the way you want to be treated.\n\nThat\u2019s it. That\u2019s the rule.\n\nBefore you say something, you can ask yourself: would I want someone to say that to me?\n\nBefore you leave someone out, ask: would I want to be left out?\n\nIt sounds easy. It\u2019s actually pretty hard, because in the moment you usually don\u2019t stop to think. You just react.\n\nSo it takes practice. But the more you do it, the more it becomes just who you are \u2014 and people notice. People always notice who is safe to be around.',
+              reflect:'Think about today. Was there a moment where this rule would have changed what you did?',
+              prayer:'God, help me treat people the way I want to be treated \u2014 even when it\u2019s hard, even when they don\u2019t.'
+            },
+            {
+              id:'fs-r2',
+              title:'The Good Samaritan',
+              scripture:{ ref:'Luke 10:36\u201337', text:'\u201cWhich one of these three men do you think was a neighbor to the man?\u201d The teacher answered, \u201cThe one who showed him mercy.\u201d Jesus said, \u201cThen go and do the same thing.\u201d' },
+              body:'Jesus told this story when somebody asked Him who counts as a neighbor.\n\nA man was walking down a road and got attacked by robbers. They took everything and left him hurt on the side of the road.\n\nA priest walked by. He saw the man \u2014 and crossed to the other side of the road.\n\nThen another important religious man walked by. He did exactly the same thing.\n\nThen a Samaritan came along. Samaritans and Jews did not like each other at all. He should have been the one to keep walking.\n\nInstead he stopped. He cleaned the man\u2019s cuts. He put him on his own donkey, took him somewhere safe, and paid for him to stay there until he got better.\n\nJesus asked: which one was a real neighbor? And then He said \u2014 go do that.\n\nA neighbor isn\u2019t just someone who lives near you. It\u2019s anyone who needs help that you can give.',
+              reflect:'Have you ever seen someone who needed help and kept walking? What made it hard to stop?',
+              prayer:'God, help me be the one who stops. Give me eyes to notice people who need help.'
+            },
+            {
+              id:'fs-r3',
+              title:'Telling the truth',
+              scripture:{ ref:'Ephesians 4:25', text:'So you must stop telling lies. Tell each other the truth, because we all belong to each other.' },
+              body:'Lying feels like it makes a problem smaller. It almost always makes it bigger.\n\nHere\u2019s why. One lie usually needs another lie to hold it up. And then that one needs another. Pretty soon you\u2019re carrying around a stack of them and worrying about which one you told to who.\n\nTelling the truth can be scary. Sometimes you know you\u2019ll get in trouble.\n\nBut here\u2019s the thing \u2014 the trouble from telling the truth is almost always smaller than the trouble from getting caught in a lie. And it\u2019s over faster.\n\nThere\u2019s something else too. People find out who tells the truth. When you\u2019re known as someone honest, people trust you \u2014 and being trusted is worth more than getting out of trouble one time.\n\nIf you\u2019ve already told a lie, you can fix it. Just go say, \u201cI wasn\u2019t honest about something.\u201d It takes about five seconds of bravery.',
+              reflect:'Is there something you haven\u2019t been honest about? What would it take to fix it?',
+              prayer:'God, help me be honest even when it\u2019s scary. Give me courage to tell the truth.'
+            },
+            {
+              id:'fs-r4',
+              title:'Forgiving someone',
+              scripture:{ ref:'Colossians 3:13', text:'Forgive each other. Forgive as the Lord forgave you.' },
+              body:'When someone hurts you, forgiving them can feel impossible. It can even feel unfair \u2014 like you\u2019re saying what they did was okay.\n\nBut forgiving doesn\u2019t mean it was okay. It means you\u2019re not going to carry it around anymore.\n\nThink about carrying a heavy backpack full of rocks. Every mean thing someone did is a rock. If you never put them down, you\u2019re the one carrying all that weight around \u2014 not them.\n\nForgiving is putting the backpack down.\n\nAlso, forgiving doesn\u2019t always mean being best friends again. If someone keeps being mean, you\u2019re allowed to not spend as much time with them. Forgiving and trusting are two different things.\n\nAnd it usually doesn\u2019t happen all at once. Sometimes you have to forgive the same thing more than once, when the feeling comes back. That\u2019s normal.',
+              reflect:'Is there someone you\u2019re still upset with? What would putting that rock down feel like?',
+              prayer:'God, it\u2019s hard to forgive. Help me put it down instead of carrying it. You forgave me, so help me do the same.'
+            },
+            {
+              id:'fs-r5',
+              title:'Standing up for people',
+              scripture:{ ref:'Proverbs 31:8', text:'Speak up for those who cannot speak for themselves.' },
+              body:'When someone is being picked on, there are usually three kinds of people there.\n\nThe person being mean. The person getting hurt. And everybody else, watching and not saying anything.\n\nMost people are in that third group. It\u2019s the easiest place to be, because nothing happens to you.\n\nBut here\u2019s something worth knowing: the person getting picked on remembers who said nothing. And they remember, for a very long time, who said something.\n\nStanding up doesn\u2019t have to mean fighting. Usually it\u2019s smaller than that. Saying \u201chey, stop.\u201d Going and standing next to them. Telling a teacher. Asking them to come sit with you afterwards.\n\nOne person deciding not to stay quiet can change everything \u2014 because usually everybody else was waiting for someone to go first.\n\nBe the one who goes first.',
+              reflect:'Have you ever seen someone get picked on? What could you do next time?',
+              prayer:'God, make me brave enough to speak up when someone needs it. Help me not just watch.'
+            },
+            {
+              id:'fs-r6',
+              title:'Being kind on purpose',
+              scripture:{ ref:'Ephesians 4:32', text:'Be kind and loving to each other. Forgive each other just as God forgave you in Christ.' },
+              body:'Kindness isn\u2019t only about not being mean. Anybody can just not be mean \u2014 that only takes doing nothing.\n\nReal kindness takes doing something.\n\nIt\u2019s noticing the kid sitting alone and going over. It\u2019s saying the nice thing out loud instead of just thinking it. It\u2019s helping clean up when nobody asked you to.\n\nHere\u2019s a fun thing to try: do something kind and don\u2019t tell anyone you did it. No credit. Nobody knows but you and God.\n\nThat one is harder than it sounds! We really like getting credit.\n\nBut kindness that\u2019s just for show isn\u2019t really kindness \u2014 it\u2019s showing off wearing a kindness costume. The real thing doesn\u2019t need an audience.\n\nAnd kind people are the ones everybody wants around. Not the funniest, not the best at sports. The kind ones.',
+              reflect:'What is one kind thing you could do tomorrow that nobody would find out about?',
+              prayer:'God, help me be kind on purpose \u2014 even when nobody sees, even when nobody says thanks.'
+            }
+          ]
+        },
+        {
+          id:'stories',
+          title:'Stories Jesus Told',
+          icon:'\ud83d\udcd6',
+          summary:'The stories Jesus used to explain what God is like.',
+          lessons:[
+            {
+              id:'fs-t1',
+              title:'The lost sheep',
+              scripture:{ ref:'Luke 15:4', text:'Suppose one of you has a hundred sheep and loses one of them. Won\u2019t he leave the other ninety-nine and go and look for the lost one until he finds it?' },
+              body:'A shepherd had a hundred sheep. At the end of the day he counted them, and there were only ninety-nine.\n\nHere\u2019s what most people would do: shrug. Ninety-nine out of a hundred is pretty good.\n\nBut this shepherd left all ninety-nine and went out looking for the one. In the dark. And he didn\u2019t stop until he found it.\n\nWhen he did, he didn\u2019t yell at it. He picked it up, carried it home on his shoulders, and threw a party.\n\nJesus told this story to explain how God feels about people.\n\nHere\u2019s the part to remember: you are not one out of a hundred to God. If you were the only person who ever lived, He still would have come.\n\nGod is not a shepherd who counts. He\u2019s a shepherd who goes looking.',
+              reflect:'How does it feel knowing God would come looking just for you?',
+              prayer:'God, thank you that you don\u2019t give up on people. Thank you that you\u2019d come looking for me.'
+            },
+            {
+              id:'fs-t2',
+              title:'The son who came home',
+              scripture:{ ref:'Luke 15:20', text:'While the son was still a long way off, his father saw him and felt sorry for him. So the father ran to his son and hugged him.' },
+              body:'A young man told his dad he didn\u2019t want to wait for his inheritance \u2014 he wanted his money now. That was basically saying, \u201cI wish you were dead.\u201d\n\nHis dad gave it to him anyway. The son left and spent every bit of it.\n\nThen he ran out of money and ended up feeding pigs, so hungry he wanted to eat the pig food. And he thought: even the workers at my dad\u2019s house eat better than this.\n\nSo he practiced a little speech and started walking home.\n\nHere\u2019s the best part. While he was still far away \u2014 still a tiny dot on the road \u2014 his father saw him. Which means his father had been watching. Every day.\n\nAnd then his father ran. Grown men in that time did not run; it was undignified. He didn\u2019t care.\n\nThe son started his speech. His dad wasn\u2019t even listening \u2014 he was already shouting for a party.\n\nThat is what God is like when someone comes back.',
+              reflect:'The dad was watching the road every day. What does that tell you about how God feels about people who are far away?',
+              prayer:'God, thank you that you run toward people instead of away. Thank you that I can always come home.'
+            },
+            {
+              id:'fs-t3',
+              title:'Two houses',
+              scripture:{ ref:'Matthew 7:24', text:'Everyone who hears my words and obeys them is like a wise man who built his house on rock.' },
+              body:'Two men built houses.\n\nOne built his on rock. It was harder. Digging into rock takes a long time and it\u2019s no fun.\n\nThe other built his on sand. Way easier. Way faster. And when they were finished, both houses looked exactly the same.\n\nThen the storm came.\n\nThe house on the rock stayed standing. The house on the sand fell down flat.\n\nJesus said the rock is hearing what He says and actually doing it. The sand is hearing it and not doing anything about it.\n\nHere\u2019s why that matters: on a sunny day, you cannot tell the two houses apart. The difference only shows up when things get hard.\n\nThat\u2019s why the small stuff counts \u2014 being honest, being kind, praying when nothing is wrong. That\u2019s digging into rock. It doesn\u2019t look like much until you need it.',
+              reflect:'What is one small thing you could do this week that builds on rock?',
+              prayer:'God, help me actually do what you say, not just hear it. Help me build on rock.'
+            },
+            {
+              id:'fs-t4',
+              title:'The tiny seed',
+              scripture:{ ref:'Matthew 13:31\u201332', text:'The kingdom of heaven is like a mustard seed that a man planted in his field. It is the smallest of all seeds, but when it grows, it is the largest of the garden plants.' },
+              body:'A mustard seed is tiny. Smaller than the tip of a pencil. You could lose it in your hand.\n\nBut you plant that tiny thing and it grows into something so big that birds build nests in it.\n\nJesus said God\u2019s kingdom works like that.\n\nIt means small things aren\u2019t nothing. A small kindness. A small prayer. A small bit of faith on a day you barely have any.\n\nJesus actually said once that if you have faith the size of a mustard seed, that\u2019s enough. Not mountains of faith. A seed.\n\nSo if you ever feel like what you have to offer is too small to matter \u2014 remember this. God specializes in tiny things that grow into big ones.\n\nSeeds also grow slowly. You can\u2019t watch it happen. But it\u2019s happening the whole time, under the ground where you can\u2019t see.',
+              reflect:'What is one small good thing you could plant this week, even if you can\u2019t see it grow yet?',
+              prayer:'God, my faith feels small sometimes. Thank you that small is enough for you to work with.'
+            },
+            {
+              id:'fs-t5',
+              title:'The man who wouldn\u2019t forgive',
+              scripture:{ ref:'Matthew 18:33', text:'\u201cYou should have shown mercy to that other servant, just as I showed mercy to you.\u201d' },
+              body:'A servant owed the king a huge amount of money \u2014 more than he could ever pay back in his whole life.\n\nHe begged the king for more time. Instead, the king just canceled the whole thing. Gone. All of it.\n\nThen that same servant walked outside and ran into a guy who owed him a tiny amount. Like lunch money compared to what he\u2019d just been forgiven.\n\nAnd he grabbed him and had him thrown in jail over it.\n\nWhen the king found out, he was furious. You should have shown mercy, the way I showed you mercy.\n\nJesus told this story about forgiving people.\n\nHere\u2019s the point. God has forgiven us for way more than anybody has ever done to us. So when we refuse to forgive somebody over something small, it looks pretty strange.\n\nThat doesn\u2019t make forgiving easy. It just helps you remember you\u2019re not the only one who\u2019s needed it.',
+              reflect:'Think of something you needed forgiveness for. Now think of someone you\u2019re still upset with.',
+              prayer:'God, you\u2019ve forgiven me for so much. Help me remember that when it\u2019s my turn to forgive someone.'
+            },
+            {
+              id:'fs-t6',
+              title:'Two men praying',
+              scripture:{ ref:'Luke 18:13\u201314', text:'The tax collector would not even look up to heaven. He said, \u201cGod, have mercy on me, a sinner.\u201d I tell you, this man went home right with God.' },
+              body:'Two men went to the temple to pray.\n\nThe first one was very religious. He stood up front and prayed loudly about how good he was. \u201cThank you God that I\u2019m not like other people. I don\u2019t cheat. I fast twice a week. I give money.\u201d Every word of it was actually true.\n\nThe second man was a tax collector \u2014 which back then meant he cheated people for a living. Everybody knew it.\n\nHe stood way in the back. He couldn\u2019t even look up. He just said eight words: \u201cGod, have mercy on me, a sinner.\u201d\n\nJesus said the second man is the one who went home right with God.\n\nThat probably shocked everybody listening.\n\nHere\u2019s why. The first man didn\u2019t think he needed anything, so he didn\u2019t get anything. The second man knew he needed help, so he asked \u2014 and he got it.\n\nYou never have to clean yourself up before talking to God. You just have to be honest.',
+              reflect:'Which of those two men is easier for you to be like? Why do you think that is?',
+              prayer:'God, I don\u2019t want to pretend I have it all figured out. Have mercy on me. Thank you for listening anyway.'
+            }
+          ]
+        },
+        {
+          id:'questions',
+          title:'Questions You Might Have',
+          icon:'\u2753',
+          summary:'Honest answers to the things kids actually wonder about.',
+          lessons:[
+            {
+              id:'fs-q1',
+              title:'Where is God?',
+              scripture:{ ref:'Psalm 139:7\u20138', text:'Where can I go to get away from your Spirit? Where can I run from you? If I go up to the skies, you are there. If I lie down where the dead are, you are there.' },
+              body:'You can\u2019t see God. That\u2019s a real thing to wonder about, and it\u2019s a fair question.\n\nHere\u2019s one way to think about it. You can\u2019t see the wind either. But you can see the trees moving. You can feel it on your face. You know it\u2019s there because of what it does.\n\nGod is a bit like that. You see what He does \u2014 in the world He made, in people being kind, in the way you feel not-alone when you pray.\n\nThe Bible says God is everywhere. Not just at church. Not just when you\u2019re being good. In your room. On the bus. When you\u2019re happy and when you\u2019re having the worst day.\n\nThere is no place you can go where God isn\u2019t already there waiting.\n\nAnd if you ever feel like God is far away \u2014 that feeling is not the same as it being true. Feelings change. God doesn\u2019t move.',
+              reflect:'Where is a place you feel closest to God? Where do you feel furthest?',
+              prayer:'God, I can\u2019t see you, but you\u2019re here. Help me remember that even when I don\u2019t feel it.'
+            },
+            {
+              id:'fs-q2',
+              title:'Why doesn\u2019t God just fix everything?',
+              scripture:{ ref:'Revelation 21:4', text:'He will wipe away every tear from their eyes. There will be no more death, sadness, crying, or pain.' },
+              body:'This is one of the hardest questions there is, and grown-ups ask it too.\n\nIf God is good and God is strong, why are there still sad things?\n\nHere\u2019s an honest answer: nobody knows all of it. Anyone who says they completely understand is making it up.\n\nBut here are two things the Bible does say.\n\nFirst, God gave people real choices. And when people choose badly, it hurts other people. God didn\u2019t want to make robots who could only do what they\u2019re told \u2014 because love you\u2019re forced to give isn\u2019t really love.\n\nSecond, God is not okay with it either. He\u2019s not up there shrugging. Jesus came right into the middle of the mess and He cried at a funeral. And the Bible ends with a promise that one day He wipes away every tear, and pain is finished for good.\n\nSo it\u2019s not fixed yet. But it is going to be. And in the meantime, God is with us in it instead of watching from far away.',
+              reflect:'Is there something sad you\u2019ve wondered about? It\u2019s okay to ask God about it \u2014 He isn\u2019t bothered by questions.',
+              prayer:'God, some things don\u2019t make sense and they make me sad. Thank you that you\u2019re not okay with them either, and that one day you\u2019ll fix everything.'
+            },
+            {
+              id:'fs-q3',
+              title:'Does God hear me?',
+              scripture:{ ref:'1 John 5:14', text:'We can come to God with no doubts. This means that when we ask God for things (and those things agree with what God wants for us), God cares and listens.' },
+              body:'When you pray, nothing usually happens right away. No voice. No lights. So it\u2019s normal to wonder if anyone\u2019s actually listening.\n\nYes. He is.\n\nGod isn\u2019t too busy. He isn\u2019t only listening to grown-ups, or pastors, or people who use fancy words. The Bible says He knows how many hairs are on your head \u2014 which is a funny way of saying He pays attention to details nobody else would bother with.\n\nBut here\u2019s something important. God listening doesn\u2019t always mean you get what you asked for.\n\nSometimes the answer is yes. Sometimes it\u2019s no. Sometimes it\u2019s not yet.\n\nThat\u2019s hard, especially when you really wanted the yes. But a no from someone who loves you and can see the whole picture isn\u2019t the same as being ignored.\n\nKeep praying anyway. Even when you don\u2019t get an answer you like. Especially then.',
+              reflect:'Have you ever prayed for something and not gotten it? How did that feel?',
+              prayer:'God, thank you for listening even when I can\u2019t tell. Help me trust you when the answer isn\u2019t what I wanted.'
+            },
+            {
+              id:'fs-q4',
+              title:'What happens when we die?',
+              scripture:{ ref:'John 14:2\u20133', text:'There are many rooms in my Father\u2019s house\u2026 I am going there to prepare a place for you. I will come back and take you to be with me.' },
+              body:'This might be something you think about at night. Lots of kids do, and lots of grown-ups too.\n\nHere\u2019s what Christians believe.\n\nDying is not the end. Jesus died and then came back alive \u2014 that\u2019s the whole reason for Easter. And He said that because He\u2019s alive, people who trust Him get to be alive with Him too.\n\nJesus called it His Father\u2019s house with lots of rooms. He said He\u2019s getting a place ready.\n\nThe Bible says there will be no more crying and no more pain there. Nothing scary. Nothing sad.\n\nIf someone you love has died, it\u2019s okay to be really sad about it. Missing them isn\u2019t a lack of faith. Jesus cried when His friend died, and He knew exactly what happens next.\n\nBeing sad and having hope can be true at the same time.',
+              reflect:'Do you have questions about this? Ask a grown-up who loves you \u2014 it\u2019s a good thing to talk about, not a scary one.',
+              prayer:'God, thank you that death isn\u2019t the end. Help me not be scared, and help me when I miss people.'
+            },
+            {
+              id:'fs-q5',
+              title:'Am I good enough?',
+              scripture:{ ref:'Ephesians 2:8\u20139', text:'You have been saved by grace because you believe. You did not save yourselves. It was a gift from God. It was not the result of your own efforts, so you cannot brag about it.' },
+              body:'Here\u2019s a question a lot of people carry around quietly: am I good enough for God to love me?\n\nThe answer is no. And that\u2019s actually good news, so stay with me.\n\nNobody is good enough. Not the best kid in your class. Not your parents. Not the pastor. Nobody has ever earned it.\n\nWhich means God\u2019s love was never something you get by being good enough in the first place. It\u2019s a gift.\n\nThink about a birthday present. You don\u2019t earn a present. Somebody just gives it to you because they wanted to. If you had to work for it, it wouldn\u2019t be a present anymore.\n\nSo you can stop trying to be good enough. You already have it.\n\nAnd here\u2019s the part that surprises people: once you really believe you\u2019re loved no matter what, you actually want to do good things more \u2014 not because you\u2019re scared of losing it, but because you\u2019re thankful.',
+              reflect:'Do you ever feel like you have to earn God\u2019s love? What would change if you knew for sure you already had it?',
+              prayer:'God, thank you that your love is a gift and not a prize. Help me believe that even on my worst days.'
+            },
+            {
+              id:'fs-q6',
+              title:'What if I have doubts?',
+              scripture:{ ref:'Mark 9:24', text:'The father said, \u201cI do believe! Help me to believe more!\u201d' },
+              body:'Sometimes you might wonder if any of this is even real. That can feel scary, like maybe you\u2019re doing something wrong.\n\nYou\u2019re not.\n\nThere\u2019s a story in the Bible about a dad whose son was very sick. He asked Jesus for help and said, \u201cif you can do anything, please help us.\u201d\n\nJesus asked him about believing. And the dad said the most honest thing in the whole Bible: \u201cI do believe \u2014 help me believe more!\u201d\n\nBoth at once. Believing and doubting, in the same sentence.\n\nAnd Jesus helped him. He didn\u2019t say come back when you\u2019ve sorted yourself out. He just helped.\n\nSo if you have questions, ask them. Ask your parents. Ask a pastor. Ask God straight out.\n\nQuestions don\u2019t break faith. Hiding them does, because a question you never ask just sits there getting bigger.\n\nGod is not nervous about your questions. He\u2019s the one who made you curious.',
+              reflect:'Is there a question about God you\u2019ve never asked out loud? Who could you ask?',
+              prayer:'God, I believe \u2014 and sometimes I don\u2019t. Help me believe more. Thank you that you don\u2019t mind my questions.'
             }
           ]
         }
