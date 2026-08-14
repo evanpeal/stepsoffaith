@@ -1219,6 +1219,152 @@
     return { done, total: all.length, pct: Math.round((done / all.length) * 100) };
   }
 
+  const TIMELINE = [
+    { era:'Beginnings', tint:'#8e6ad6', events:[
+      { when:'In the beginning', title:'Creation', text:'God speaks the world into being and calls it good.', book:'Genesis' },
+      { when:'Early days', title:'The fall', text:'Adam and Eve eat from the one forbidden tree, and everything fractures.', book:'Genesis' },
+      { when:'Generations later', title:'The flood', text:'Noah builds an ark; the world is washed and started again.', book:'Genesis' },
+      { when:'After the flood', title:'Babel', text:'A tower reaching for heaven ends in scattered languages.', book:'Genesis' }
+    ]},
+    { era:'The Patriarchs', tint:'#c98a34', approx:'c. 2000\u20131800 BC', events:[
+      { when:'c. 2000 BC', title:'God calls Abram', text:'Leave your country. I will make you into a great nation.', book:'Genesis' },
+      { when:'c. 1900 BC', title:'Isaac on the mountain', text:'Abraham raises the knife; God provides a ram instead.', book:'Genesis' },
+      { when:'c. 1850 BC', title:'Jacob wrestles God', text:'He walks away limping, and renamed Israel.', book:'Genesis' },
+      { when:'c. 1800 BC', title:'Joseph in Egypt', text:'Sold by his brothers, he rises to save them from famine.', book:'Genesis' }
+    ]},
+    { era:'Exodus & Wilderness', tint:'#c2452d', approx:'c. 1450\u20131400 BC', events:[
+      { when:'c. 1450 BC', title:'The burning bush', text:'A shepherd is sent back to the empire he fled.', book:'Exodus' },
+      { when:'c. 1446 BC', title:'Passover and the Red Sea', text:'Ten plagues, a night of blood on doorposts, and a sea split open.', book:'Exodus' },
+      { when:'Weeks later', title:'Sinai', text:'God gives the Law to a people who have never been free before.', book:'Exodus' },
+      { when:'40 years', title:'The wilderness', text:'A generation wanders; manna every morning.', book:'Numbers' }
+    ]},
+    { era:'Conquest & Judges', tint:'#3f7a4f', approx:'c. 1400\u20131050 BC', events:[
+      { when:'c. 1400 BC', title:'Jericho falls', text:'Marching, trumpets, and a shout bring the walls down.', book:'Joshua' },
+      { when:'c. 1350 BC', title:'The judges', text:'A cycle repeats: the people drift, an enemy rises, God sends a rescuer.', book:'Judges' },
+      { when:'c. 1150 BC', title:'Gideon and Samson', text:'Unlikely deliverers with obvious flaws.', book:'Judges' },
+      { when:'c. 1100 BC', title:'Ruth', text:'A Moabite widow\u2019s loyalty puts her in the line of David.', book:'Ruth' }
+    ]},
+    { era:'The Kings', tint:'#b8923e', approx:'c. 1050\u2013586 BC', events:[
+      { when:'c. 1050 BC', title:'Israel demands a king', text:'Saul is anointed. Samuel warns them what it will cost.', book:'1 Samuel' },
+      { when:'c. 1010 BC', title:'David', text:'A shepherd boy kills a giant and eventually takes the throne.', book:'2 Samuel' },
+      { when:'c. 970 BC', title:'Solomon builds the temple', text:'Wisdom, gold, and a house for God \u2014 then a slow drift.', book:'1 Kings' },
+      { when:'c. 930 BC', title:'The kingdom splits', text:'Rehoboam\u2019s arrogance breaks Israel into two.', book:'1 Kings' },
+      { when:'c. 860 BC', title:'Elijah on Carmel', text:'Fire falls; 450 prophets of Baal are answered by silence.', book:'1 Kings' }
+    ]},
+    { era:'Prophets & Exile', tint:'#4a6d9e', approx:'c. 760\u2013539 BC', events:[
+      { when:'c. 760 BC', title:'Amos, Hosea, Jonah', text:'Prophets confront a comfortable, unjust nation.', book:'Amos' },
+      { when:'722 BC', title:'Israel falls to Assyria', text:'The northern kingdom is carried off and does not return.', book:'2 Kings' },
+      { when:'c. 700 BC', title:'Isaiah', text:'Judgment and the promise of a suffering servant.', book:'Isaiah' },
+      { when:'586 BC', title:'Jerusalem burns', text:'Babylon destroys the temple. Judah goes into exile.', book:'2 Kings' },
+      { when:'c. 580 BC', title:'Ezekiel and Daniel', text:'Dry bones rise; a young exile refuses the king\u2019s table.', book:'Daniel' }
+    ]},
+    { era:'Return & Silence', tint:'#7a6a9e', approx:'539\u20135 BC', events:[
+      { when:'539 BC', title:'Cyrus lets them go home', text:'The Hebrew Bible ends on an open door.', book:'2 Chronicles' },
+      { when:'c. 516 BC', title:'The second temple', text:'Older men weep remembering the first one.', book:'Ezra' },
+      { when:'c. 445 BC', title:'Nehemiah rebuilds the wall', text:'Fifty-two days, with a trowel in one hand.', book:'Nehemiah' },
+      { when:'c. 430 BC', title:'Malachi', text:'The last prophet promises a messenger \u2014 then four centuries of quiet.', book:'Malachi' }
+    ]},
+    { era:'Jesus', tint:'#d4a03c', approx:'c. 5 BC \u2013 AD 30', events:[
+      { when:'c. 5 BC', title:'Born in Bethlehem', text:'No room. Shepherds are the first told.', book:'Luke' },
+      { when:'c. AD 27', title:'Baptism and temptation', text:'The Spirit descends; forty days in the wilderness follow.', book:'Matthew' },
+      { when:'AD 27\u201330', title:'Ministry in Galilee', text:'Sermons, miracles, parables, and a widening circle.', book:'Mark' },
+      { when:'c. AD 30', title:'The cross', text:'\u201cIt is finished.\u201d The curtain tears top to bottom.', book:'John' },
+      { when:'Third day', title:'The resurrection', text:'The tomb is empty. Everything changes.', book:'John' }
+    ]},
+    { era:'The Church', tint:'#3f8f8a', approx:'AD 30\u201395', events:[
+      { when:'c. AD 30', title:'Pentecost', text:'Wind, fire, and every language hearing one message.', book:'Acts' },
+      { when:'c. AD 34', title:'The Damascus road', text:'The church\u2019s fiercest enemy becomes its greatest missionary.', book:'Acts' },
+      { when:'AD 46\u201357', title:'Paul\u2019s journeys', text:'Churches planted across the Roman world, letters written to hold them.', book:'Romans' },
+      { when:'c. AD 60', title:'Paul reaches Rome', text:'In chains, preaching unhindered.', book:'Acts' },
+      { when:'c. AD 95', title:'Revelation', text:'An exile on Patmos sees the end \u2014 and a new beginning.', book:'Revelation' }
+    ]}
+  ];
+
+  const CHARACTERS = [
+    { id:'abraham', name:'Abraham', icon:'\u2b50', tag:'Father of many nations',
+      summary:'Called out of everything familiar on a promise he wouldn\u2019t live to see fulfilled. His faith is the Bible\u2019s benchmark \u2014 and it wobbled more than once.',
+      beats:[
+        { t:'The call', d:'Leave your country, your people, your father\u2019s household. He goes without a map.', book:'Genesis' },
+        { t:'The long wait', d:'Decades pass with no son. He tries to help God along, and it costs him.', book:'Genesis' },
+        { t:'Isaac', d:'The promised son arrives when it is biologically absurd.', book:'Genesis' },
+        { t:'The mountain', d:'Asked to give the son back. He raises the knife; God provides the ram.', book:'Genesis' }
+      ],
+      takeaway:'Faith here isn\u2019t certainty. It\u2019s moving before the outcome is visible.' },
+    { id:'moses', name:'Moses', icon:'\ud83d\udcdc', tag:'Reluctant deliverer',
+      summary:'A murderer hiding in the desert, called back to confront an empire. He argued with God more than almost anyone \u2014 and spoke with Him face to face.',
+      beats:[
+        { t:'The basket', d:'Saved from a genocide by his mother, his sister, and Pharaoh\u2019s daughter.', book:'Exodus' },
+        { t:'The burning bush', d:'Five excuses, all answered. \u201cI will be with you.\u201d', book:'Exodus' },
+        { t:'The Red Sea', d:'A nation walks out of slavery on dry ground.', book:'Exodus' },
+        { t:'Sinai', d:'Forty days on a mountain; he comes down glowing.', book:'Exodus' },
+        { t:'The view from Nebo', d:'He sees the land and does not enter it.', book:'Deuteronomy' }
+      ],
+      takeaway:'God\u2019s call rarely waits for you to feel qualified.' },
+    { id:'david', name:'David', icon:'\ud83d\udc51', tag:'Shepherd, king, poet',
+      summary:'The Bible spends more words on David than almost anyone. Giant-killer, worship writer, adulterer, grieving father \u2014 and still called a man after God\u2019s own heart.',
+      beats:[
+        { t:'Anointed young', d:'Samuel passes over seven older brothers for the one out with the sheep.', book:'1 Samuel' },
+        { t:'Goliath', d:'Five stones and a sling against a nine-foot soldier.', book:'1 Samuel' },
+        { t:'Hunted by Saul', d:'Years on the run, twice sparing the man trying to kill him.', book:'1 Samuel' },
+        { t:'Bathsheba', d:'The lowest chapter: adultery, then a murder to cover it.', book:'2 Samuel' },
+        { t:'Psalm 51', d:'Confronted by Nathan, he writes the Bible\u2019s rawest confession.', book:'Psalms' },
+        { t:'Absalom', d:'His own son rebels. \u201cO Absalom, my son, my son.\u201d', book:'2 Samuel' }
+      ],
+      takeaway:'A heart after God is not a clean record. It\u2019s where you run after you fail.' },
+    { id:'elijah', name:'Elijah', icon:'\ud83d\udd25', tag:'Fire and exhaustion',
+      summary:'Called down fire in front of a nation, then sat under a tree and asked to die. One of Scripture\u2019s most honest pictures of burnout.',
+      beats:[
+        { t:'The drought', d:'He announces three years without rain, then hides by a brook fed by ravens.', book:'1 Kings' },
+        { t:'Mount Carmel', d:'450 prophets of Baal, one soaked altar, fire from heaven.', book:'1 Kings' },
+        { t:'Under the broom tree', d:'One threat from Jezebel and the same man collapses.', book:'1 Kings' },
+        { t:'The whisper', d:'Not the wind, earthquake, or fire \u2014 a gentle whisper.', book:'1 Kings' },
+        { t:'The whirlwind', d:'He never dies; a chariot of fire takes him.', book:'2 Kings' }
+      ],
+      takeaway:'God met his exhaustion with food, sleep, and a whisper \u2014 not a rebuke.' },
+    { id:'peter', name:'Peter', icon:'\ud83e\udea8', tag:'The one who kept failing forward',
+      summary:'Loud, impulsive, and wrong constantly. He denied Jesus three times and preached the sermon that started the church seven weeks later.',
+      beats:[
+        { t:'Drop your nets', d:'A fisherman leaves everything mid-shift.', book:'Matthew' },
+        { t:'Walking on water', d:'He actually does it \u2014 until he looks at the waves.', book:'Matthew' },
+        { t:'You are the Messiah', d:'The confession everything hinges on. Minutes later Jesus calls him Satan.', book:'Matthew' },
+        { t:'Three denials', d:'By a fire, to a servant girl, before the rooster.', book:'Luke' },
+        { t:'Breakfast on the beach', d:'Three questions: do you love me? Restoration, not a lecture.', book:'John' },
+        { t:'Pentecost', d:'The same man preaches, and three thousand believe.', book:'Acts' }
+      ],
+      takeaway:'Failure wasn\u2019t the end of his story. It was the middle of it.' },
+    { id:'paul', name:'Paul', icon:'\u2709\ufe0f', tag:'From persecutor to apostle',
+      summary:'He hunted Christians house to house. Then a light on a road, and he spent the rest of his life planting the churches he once tried to destroy.',
+      beats:[
+        { t:'Holding the coats', d:'He approves of Stephen\u2019s stoning and hears him forgive his killers.', book:'Acts' },
+        { t:'Damascus road', d:'\u201cSaul, why do you persecute me?\u201d Blinded, led by the hand.', book:'Acts' },
+        { t:'Brother Saul', d:'An ordinary disciple named Ananias risks his life to welcome him in.', book:'Acts' },
+        { t:'The journeys', d:'Beaten, shipwrecked, jailed \u2014 and churches spring up behind him.', book:'Acts' },
+        { t:'The thorn', d:'He begs three times. \u201cMy grace is sufficient for you.\u201d', book:'2 Corinthians' },
+        { t:'Finishing', d:'From a cold cell: I have fought the good fight, I have finished the race.', book:'2 Timothy' }
+      ],
+      takeaway:'Nobody is too far gone. His whole life was proof placed in Scripture on purpose.' },
+    { id:'mary', name:'Mary', icon:'\ud83c\udf1f', tag:'She said yes',
+      summary:'A teenager in a nowhere town, asked to carry God. She said let it be, and then watched her son die.',
+      beats:[
+        { t:'The announcement', d:'\u201cHow can this be?\u201d Then: I am the Lord\u2019s servant.', book:'Luke' },
+        { t:'The Magnificat', d:'Her song is a revolution \u2014 rulers pulled down, the humble lifted.', book:'Luke' },
+        { t:'Bethlehem', d:'No room. She lays him in a feeding trough.', book:'Luke' },
+        { t:'Treasured in her heart', d:'Shepherds, magi, a boy left behind at the temple.', book:'Luke' },
+        { t:'Cana', d:'\u201cDo whatever he tells you\u201d \u2014 the last words we have from her.', book:'John' },
+        { t:'At the cross', d:'She stays to the end. Jesus gives her into John\u2019s care.', book:'John' }
+      ],
+      takeaway:'Obedience cost her everything, and she chose it anyway.' },
+    { id:'ruth', name:'Ruth', icon:'\ud83c\udf3e', tag:'Loyalty against the odds',
+      summary:'A foreign widow who refused to leave her mother-in-law, gleaned in fields to keep them alive, and ended up King David\u2019s great-grandmother.',
+      beats:[
+        { t:'Where you go, I will go', d:'She binds herself to Naomi and to Naomi\u2019s God.', book:'Ruth' },
+        { t:'The barley field', d:'She works behind harvesters, taking what\u2019s left.', book:'Ruth' },
+        { t:'Boaz notices', d:'A relative with the right to redeem, and the willingness to.', book:'Ruth' },
+        { t:'The line of David', d:'The genealogy of Jesus runs through a Moabite widow.', book:'Ruth' }
+      ],
+      takeaway:'Ordinary faithfulness in a hard season is how God moved history.' }
+  ];
+
   const TOPICS = [
     { id:'anxious', icon:'\ud83d\ude30', label:'Anxious or worried', keywords:['anxious','anxiety','worry','worried','stress','stressed','panic','fear','afraid','nervous','overwhelmed'],
       intro:'God never once tells you to feel calm before you come to Him \u2014 He tells you to bring it.',
@@ -1435,6 +1581,8 @@
     const [isSpeaking, setIsSpeaking] = React.useState(false);
     const [searchQuery, setSearchQuery] = React.useState('');
     const [openTopic, setOpenTopic] = React.useState(null);
+    const [exploreView, setExploreView] = React.useState('topics');
+    const [openCharacter, setOpenCharacter] = React.useState(null);
     const [planReflectDraft, setPlanReflectDraft] = React.useState('');
     const [myProfile, setMyProfile] = React.useState(null);
     const [friends, setFriends] = React.useState([]);
@@ -3162,11 +3310,85 @@
       ]) : null,
 
       tab === 'search' ? e('div', {className:'dl-daily-wrap', key:'search'}, [
-        e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'lbl'}, [String.fromCodePoint(0x1F50D), ' Find what you need']),
-        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Search how you\u2019re feeling, or what you\u2019re walking through \u2014 or tap a topic below.'),
-        e('input', {className:'dl-search-input', value:searchQuery, placeholder:'Try \u201canxious\u201d, \u201cgrief\u201d, \u201chope\u201d\u2026', onChange: ev => setSearchQuery(ev.target.value), key:'input'}),
+        e('div', {className:'dl-page-title', key:'pt'}, 'Explore'),
+        e('div', {className:'dl-explore-nav', key:'nav'}, [
+          e('button', {className:'dl-explore-btn' + (exploreView==='topics'?' active':''), onClick:()=>setExploreView('topics'), key:'t'}, [
+            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F50D)), 'Topics'
+          ]),
+          e('button', {className:'dl-explore-btn' + (exploreView==='timeline'?' active':''), onClick:()=>{setExploreView('timeline'); setOpenTopic(null);}, key:'l'}, [
+            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F4C5)), 'Timeline'
+          ]),
+          e('button', {className:'dl-explore-btn' + (exploreView==='people'?' active':''), onClick:()=>{setExploreView('people'); setOpenTopic(null);}, key:'p'}, [
+            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F464)), 'People'
+          ])
+        ]),
 
-        openTopic ? (() => {
+        exploreView === 'timeline' ? e('div', {key:'timeline'}, [
+          e('div', {className:'dl-empty-note', style:{marginBottom:'16px'}, key:'n'}, 'The whole story in order, from creation to the church. Dates are approximate.'),
+          ...TIMELINE.map((era, ei) => e('div', {className:'dl-era', key:'era'+ei}, [
+            e('div', {className:'dl-era-head', key:'h'}, [
+              e('span', {className:'dl-era-dot', style:{background:era.tint}, key:'d'}),
+              e('div', {style:{flex:1}, key:'t'}, [
+                e('div', {className:'dl-era-name', key:'n'}, era.era),
+                era.approx ? e('div', {className:'dl-era-when', key:'w'}, era.approx) : null
+              ])
+            ]),
+            e('div', {className:'dl-era-line', style:{borderColor:era.tint}, key:'line'}, era.events.map((ev, xi) =>
+              e('div', {className:'dl-tl-event', key:xi}, [
+                e('span', {className:'dl-tl-dot', style:{background:era.tint}, key:'d'}),
+                e('div', {className:'dl-tl-when', key:'w'}, ev.when),
+                e('div', {className:'dl-tl-title', key:'t'}, ev.title),
+                e('div', {className:'dl-tl-text', key:'x'}, ev.text),
+                e('button', {className:'dl-tl-book', onClick:()=>{ setExploreView('topics'); setSearchQuery(ev.book); }, key:'b'}, ev.book)
+              ])
+            ))
+          ]))
+        ]) : null,
+
+        exploreView === 'people' ? e('div', {key:'people'},
+          openCharacter ? (() => {
+            const ch = CHARACTERS.find(x => x.id === openCharacter);
+            if (!ch) return null;
+            return e('div', {key:'char'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenCharacter(null), key:'back'}, String.fromCodePoint(0x2190) + ' All people'),
+              e('div', {className:'dl-char-head', key:'h'}, [
+                e('div', {className:'dl-char-icon', key:'i'}, ch.icon),
+                e('div', {className:'dl-char-name', key:'n'}, ch.name),
+                e('div', {className:'dl-char-tag', key:'t'}, ch.tag)
+              ]),
+              e('div', {className:'dl-char-summary', key:'s'}, ch.summary),
+              e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(ch.summary + ' ' + ch.beats.map(b => b.t + '. ' + b.d).join(' ') + ' ' + ch.takeaway), key:'listen'},
+                [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen']),
+              ...ch.beats.map((b, bi) => e('div', {className:'dl-char-beat', key:bi}, [
+                e('span', {className:'dl-char-num', key:'n'}, bi + 1),
+                e('div', {style:{flex:1}, key:'c'}, [
+                  e('div', {className:'dl-char-beat-t', key:'t'}, b.t),
+                  e('div', {className:'dl-char-beat-d', key:'d'}, b.d),
+                  e('button', {className:'dl-tl-book', onClick:()=>{ setExploreView('topics'); setSearchQuery(b.book); }, key:'b'}, b.book)
+                ])
+              ])),
+              e('div', {className:'dl-char-takeaway', key:'tk'}, [
+                e('div', {className:'dl-char-takeaway-h', key:'h'}, [String.fromCodePoint(0x1F511), ' The takeaway']),
+                e('div', {key:'t'}, ch.takeaway)
+              ])
+            ]);
+          })() : [
+            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Follow one life all the way through, instead of book by book.'),
+            e('div', {className:'dl-char-grid', key:'grid'}, CHARACTERS.map(ch =>
+              e('button', {className:'dl-char-card', onClick:()=>setOpenCharacter(ch.id), key:ch.id}, [
+                e('div', {className:'dl-char-card-icon', key:'i'}, ch.icon),
+                e('div', {className:'dl-char-card-name', key:'n'}, ch.name),
+                e('div', {className:'dl-char-card-tag', key:'t'}, ch.tag)
+              ])
+            ))
+          ]
+        ) : null,
+
+        exploreView === 'topics' ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'lbl'}, [String.fromCodePoint(0x1F50D), ' Find what you need']) : null,
+        exploreView === 'topics' ? e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Search how you\u2019re feeling, or what you\u2019re walking through \u2014 or tap a topic below.') : null,
+        exploreView === 'topics' ? e('input', {className:'dl-search-input', value:searchQuery, placeholder:'Try \u201canxious\u201d, \u201cgrief\u201d, \u201chope\u201d\u2026', onChange: ev => setSearchQuery(ev.target.value), key:'input'}) : null,
+
+        (exploreView === 'topics' && openTopic) ? (() => {
           const t = TOPICS.find(x => x.id === openTopic);
           if (!t) return null;
           return e('div', {className:'dl-topic-open', key:'topicopen'}, [
@@ -3184,7 +3406,7 @@
           ]);
         })() : null,
 
-        (!openTopic && searchQuery.trim()) ? (() => {
+        (exploreView === 'topics' && !openTopic && searchQuery.trim()) ? (() => {
           const topicHits = searchTopics(searchQuery);
           const verseHits = searchVerses(searchQuery);
           const lessonHits = searchLessons(searchQuery);
@@ -3210,7 +3432,7 @@
           ]);
         })() : null,
 
-        (!openTopic && !searchQuery.trim()) ? e('div', {className:'dl-topic-grid', key:'grid'}, TOPICS.map(t =>
+        (exploreView === 'topics' && !openTopic && !searchQuery.trim()) ? e('div', {className:'dl-topic-grid', key:'grid'}, TOPICS.map(t =>
           e('button', {className:'dl-topic-card', onClick:()=>setOpenTopic(t.id), key:t.id}, [
             e('div', {className:'dl-topic-card-icon', key:'i'}, t.icon),
             e('div', {className:'dl-topic-card-label', key:'l'}, t.label)
@@ -3771,7 +3993,7 @@
       e('div', {className:'dl-tabs', key:'tabs'}, [
         e('button', {className:'dl-tab' + (tab==='path'?' active':''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4D6)), 'Path']),
         e('button', {className:'dl-tab' + (tab==='daily'?' active':''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
-        e('button', {className:'dl-tab' + (tab==='search'?' active':''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F50D)), 'Find']),
+        e('button', {className:'dl-tab' + (tab==='search'?' active':''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F9ED)), 'Explore']),
         e('button', {className:'dl-tab' + (tab==='callings'?' active':''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Plans']),
         e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community', incomingReqs.length > 0 ? e('span', {className:'dl-tab-dot', key:'d'}, incomingReqs.length) : null]),
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
