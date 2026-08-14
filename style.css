@@ -596,3 +596,25 @@
   .dl-vp-stat-num { font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; color: var(--purple-dark); }
   .dl-vp-stat-lbl { font-size: 10.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; }
   .dl-vp-private { font-size: 11.5px; font-weight: 700; color: var(--gray); background: #f5f5f7; border-radius: 20px; padding: 8px 12px; display: inline-block; }
+
+  /* Community redesign: people, requests, search */
+  .dl-search-wrap { display: flex; align-items: center; gap: 8px; background: #f5f5f7; border-radius: 14px; padding: 4px 12px; margin-bottom: 16px; }
+  .dl-search-icon { font-size: 15px; opacity: 0.6; }
+  .dl-people-search { flex: 1; min-width: 0; border: none; background: none; padding: 12px 0; font-size: 15px; font-weight: 700; font-family: inherit; color: var(--ink); }
+  .dl-people-search:focus { outline: none; }
+  .dl-search-clear { background: none; border: none; color: var(--gray); font-size: 13px; cursor: pointer; padding: 4px; }
+  .dl-person-row { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 10px 12px; margin-bottom: 8px; }
+  .dl-person-main { display: flex; align-items: center; gap: 11px; flex: 1; min-width: 0; background: none; border: none; text-align: left; cursor: pointer; padding: 0; }
+  .dl-person-avatar { font-size: 26px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: #f1e7ff; border-radius: 50%; flex-shrink: 0; }
+  .dl-person-name { font-size: 14.5px; font-weight: 800; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dl-person-sub { font-size: 11.5px; font-weight: 700; color: var(--gray); }
+  .dl-person-add { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 8px 16px; font-weight: 800; font-size: 12.5px; cursor: pointer; flex-shrink: 0; }
+  .dl-person-pending { background: #f5f5f7; color: var(--gray); border: none; border-radius: 20px; padding: 8px 14px; font-weight: 800; font-size: 12px; cursor: pointer; flex-shrink: 0; }
+  .dl-person-tag { background: #e6fbf2; color: var(--teal-dark); border-radius: 20px; padding: 7px 14px; font-weight: 800; font-size: 12px; flex-shrink: 0; }
+  .dl-req-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .dl-req-accept { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 8px 15px; font-weight: 800; font-size: 12.5px; cursor: pointer; }
+  .dl-req-decline { background: #f5f5f7; color: var(--gray); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 12px; cursor: pointer; }
+  .dl-tab-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; background: var(--red); color: #fff; border-radius: 20px; font-size: 10.5px; font-weight: 800; margin-left: 6px; padding: 0 5px; }
+  .dl-whatsnew-list { text-align: left; margin: 16px 0 20px; }
+  .dl-whatsnew-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--ink); margin-bottom: 12px; }
+  .dl-whatsnew-icon { font-size: 17px; flex-shrink: 0; }

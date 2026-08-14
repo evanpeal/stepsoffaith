@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -7912,6 +7912,12 @@
     const [prayerAnon, setPrayerAnon] = React.useState(false);
     const [publicGroups, setPublicGroups] = React.useState([]);
     const [viewingProfile, setViewingProfile] = React.useState(null);
+    const [incomingReqs, setIncomingReqs] = React.useState([]);
+    const [outgoingReqs, setOutgoingReqs] = React.useState([]);
+    const [peopleQuery, setPeopleQuery] = React.useState('');
+    const [peopleResults, setPeopleResults] = React.useState([]);
+    const [suggested, setSuggested] = React.useState([]);
+    const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
     const [qIndex, setQIndex] = React.useState(0);
@@ -8013,9 +8019,20 @@
       if (!sb || !user || !state) return;
       syncPublicProfile(state);
       loadFriends();
+      loadRequests();
       loadGroups();
       loadPublicGroups();
+      if (!state.seenWhatsNewCommunity) setShowWhatsNew(true);
     }, [user && user.id, state === null]);
+
+    React.useEffect(() => {
+      if (sb && user && friends !== null) loadSuggested();
+    }, [friends.length, outgoingReqs.length, incomingReqs.length]);
+
+    function dismissWhatsNew(){
+      setShowWhatsNew(false);
+      if (state) persist({ ...state, seenWhatsNewCommunity: true });
+    }
 
     React.useEffect(() => {
       if (openGroup) loadGroupDetail(openGroup);
@@ -8094,29 +8111,106 @@
       try {
         const { data: links } = await sb.from('friendships').select('friend_id').eq('user_id', user.id);
         const ids = (links || []).map(l => l.friend_id);
-        if (!ids.length) { setFriends([]); setSocialLoading(false); return; }
-        const { data: profs } = await sb.from('profiles').select('*').in('id', ids);
-        setFriends(profs || []);
+        if (ids.length) {
+          const { data: profs } = await sb.from('profiles').select('*').in('id', ids);
+          setFriends(profs || []);
+        } else { setFriends([]); }
       } catch (ex) { setFriends([]); }
       setSocialLoading(false);
     }
 
-    async function addFriendByCode(code){
+    async function loadRequests(){
       if (!sb || !user) return;
-      const clean = code.trim().toUpperCase();
-      if (!clean) return;
-      setSocialMsg('');
       try {
-        const { data: found } = await sb.from('profiles').select('*').eq('friend_code', clean).maybeSingle();
-        if (!found) { setSocialMsg('No one found with that code.'); return; }
-        if (found.id === user.id) { setSocialMsg('That\u2019s your own code!'); return; }
-        // Create the link both directions so both people see each other
-        await sb.from('friendships').upsert({ user_id: user.id, friend_id: found.id });
-        await sb.from('friendships').upsert({ user_id: found.id, friend_id: user.id });
-        setSocialMsg('Added ' + found.display_name + '!');
-        setFriendCodeInput('');
+        const { data: inc } = await sb.from('friend_requests')
+          .select('*').eq('to_id', user.id).eq('status', 'pending');
+        const { data: out } = await sb.from('friend_requests')
+          .select('*').eq('from_id', user.id).eq('status', 'pending');
+        const incoming = inc || [];
+        const outgoing = out || [];
+        const ids = incoming.map(r => r.from_id);
+        if (ids.length) {
+          const { data: profs } = await sb.from('profiles').select('*').in('id', ids);
+          const byId = {};
+          (profs || []).forEach(p => { byId[p.id] = p; });
+          setIncomingReqs(incoming.map(r => ({ ...r, profile: byId[r.from_id] })).filter(r => r.profile));
+        } else { setIncomingReqs([]); }
+        setOutgoingReqs(outgoing);
+      } catch (ex) { setIncomingReqs([]); setOutgoingReqs([]); }
+    }
+
+    async function searchPeople(q){
+      if (!sb || !user) return;
+      const term = q.trim();
+      if (term.length < 2) { setPeopleResults([]); return; }
+      setSocialLoading(true);
+      try {
+        const { data } = await sb.from('profiles')
+          .select('*').ilike('display_name', '%' + term + '%').limit(20);
+        setPeopleResults((data || []).filter(p => p.id !== user.id));
+      } catch (ex) { setPeopleResults([]); }
+      setSocialLoading(false);
+    }
+
+    async function loadSuggested(){
+      if (!sb || !user) return;
+      try {
+        const { data } = await sb.from('profiles')
+          .select('*').order('lessons_done', { ascending: false }).limit(30);
+        const friendIds = new Set(friends.map(f => f.id));
+        const pendingIds = new Set([
+          ...outgoingReqs.map(r => r.to_id),
+          ...incomingReqs.map(r => r.from_id)
+        ]);
+        setSuggested((data || []).filter(p =>
+          p.id !== user.id && !friendIds.has(p.id) && !pendingIds.has(p.id)
+        ).slice(0, 8));
+      } catch (ex) { setSuggested([]); }
+    }
+
+    function friendStatus(personId){
+      if (friends.some(f => f.id === personId)) return 'friend';
+      if (outgoingReqs.some(r => r.to_id === personId)) return 'sent';
+      if (incomingReqs.some(r => r.from_id === personId)) return 'incoming';
+      return 'none';
+    }
+
+    async function sendFriendRequest(personId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friend_requests').upsert(
+          { from_id: user.id, to_id: personId, status: 'pending' },
+          { onConflict: 'from_id,to_id' }
+        );
+        loadRequests();
+      } catch (ex) { setSocialMsg('Could not send request.'); }
+    }
+
+    async function acceptRequest(req){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friendships').upsert({ user_id: user.id, friend_id: req.from_id });
+        await sb.from('friendships').upsert({ user_id: req.from_id, friend_id: user.id });
+        await sb.from('friend_requests').delete().eq('id', req.id);
+        loadRequests();
         loadFriends();
-      } catch (ex) { setSocialMsg('Something went wrong \u2014 try again.'); }
+      } catch (ex) { setSocialMsg('Could not accept.'); }
+    }
+
+    async function declineRequest(req){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friend_requests').delete().eq('id', req.id);
+        loadRequests();
+      } catch (ex) {}
+    }
+
+    async function cancelRequest(personId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friend_requests').delete().eq('from_id', user.id).eq('to_id', personId);
+        loadRequests();
+      } catch (ex) {}
     }
 
     async function removeFriend(friendId){
@@ -8127,6 +8221,29 @@
         loadFriends();
       } catch (ex) {}
     }
+
+
+    function personRow(p, keyPrefix){
+      const status = friendStatus(p.id);
+      return e('div', {className:'dl-person-row', key:keyPrefix + p.id}, [
+        e('button', {className:'dl-person-main', onClick:()=>viewProfile(p.id), key:'m'}, [
+          e('span', {className:'dl-person-avatar', key:'a'}, p.avatar || String.fromCodePoint(0x1F4D6)),
+          e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+            e('div', {className:'dl-person-name', key:'nm'}, p.display_name),
+            e('div', {className:'dl-person-sub', key:'s'}, (p.lessons_done||0) + ' lessons \u00b7 ' + (p.daily_streak||0) + ' day streak')
+          ])
+        ]),
+        status === 'friend'
+          ? e('span', {className:'dl-person-tag', key:'t'}, 'Friends')
+          : status === 'sent'
+          ? e('button', {className:'dl-person-pending', onClick:()=>cancelRequest(p.id), key:'t'}, 'Requested')
+          : status === 'incoming'
+          ? e('button', {className:'dl-person-add', onClick:()=>{ const r = incomingReqs.find(x=>x.from_id===p.id); if(r) acceptRequest(r); }, key:'t'}, 'Accept')
+          : e('button', {className:'dl-person-add', onClick:()=>sendFriendRequest(p.id), key:'t'}, 'Add')
+      ]);
+    }
+
+    function personRowEnd(){ return null; }
 
     async function loadGroups(){
       if (!sb || !user) return;
@@ -9177,41 +9294,73 @@
           })()
 
         : e('div', {key:'main'}, [
-            myProfile && myProfile.friend_code ? e('div', {className:'dl-friendcode', key:'code'}, [
-              e('span', {className:'dl-friendcode-label', key:'l'}, 'Your friend code'),
-              e('span', {className:'dl-friendcode-val', key:'v'}, myProfile.friend_code)
-            ]) : null,
-
             e('div', {className:'dl-social-tabs', key:'stabs'}, [
-              e('button', {className:'dl-social-tab' + (socialTab==='groups'?' active':''), onClick:()=>{setSocialTab('groups'); setSocialMsg('');}, key:'g'}, 'Groups'),
-              e('button', {className:'dl-social-tab' + (socialTab==='friends'?' active':''), onClick:()=>{setSocialTab('friends'); setSocialMsg('');}, key:'f'}, 'Friends')
+              e('button', {className:'dl-social-tab' + (socialTab==='groups'?' active':''), onClick:()=>{setSocialTab('groups'); setSocialMsg('');}, key:'g'}, 'Rooms'),
+              e('button', {className:'dl-social-tab' + (socialTab==='friends'?' active':''), onClick:()=>{setSocialTab('friends'); setSocialMsg('');}, key:'f'}, [
+                'Friends',
+                incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
+              ])
             ]),
 
             socialMsg ? e('div', {className:'dl-social-msg', key:'msg'}, socialMsg) : null,
 
             socialTab === 'friends' ? e('div', {key:'friendspane'}, [
-              e('div', {className:'dl-social-row', key:'add'}, [
-                e('input', {className:'dl-social-input', value:friendCodeInput, placeholder:'Enter a friend code', maxLength:6, onChange: ev=>setFriendCodeInput(ev.target.value.toUpperCase()), key:'i'}),
-                e('button', {className:'dl-social-btn', onClick:()=>addFriendByCode(friendCodeInput), key:'b'}, 'Add')
+              e('div', {className:'dl-search-wrap', key:'search'}, [
+                e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
+                e('input', {className:'dl-people-search', value:peopleQuery, placeholder:'Search people by name\u2026', onChange: ev=>{ setPeopleQuery(ev.target.value); searchPeople(ev.target.value); }, key:'in'}),
+                peopleQuery ? e('button', {className:'dl-search-clear', onClick:()=>{setPeopleQuery(''); setPeopleResults([]);}, key:'c'}, String.fromCodePoint(0x2715)) : null
               ]),
-              friends.length === 0
-                ? e('div', {className:'dl-empty-note', key:'none'}, 'No friends yet \u2014 share your code above so others can add you.')
-                : e('div', {key:'list'}, friends
-                    .slice()
-                    .sort((a,b) => (b.lessons_done||0) - (a.lessons_done||0))
-                    .map((f, i) => e('div', {className:'dl-friend-row', key:f.id}, [
-                      e('span', {className:'dl-friend-rank', key:'r'}, '#' + (i+1)),
-                      e('button', {className:'dl-friend-main', onClick:()=>viewProfile(f.id), key:'main'}, [
-                        e('span', {className:'dl-friend-avatar', key:'a'}, f.avatar || String.fromCodePoint(0x1F4D6)),
-                        e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
-                          e('div', {className:'dl-friend-name', key:'nm'}, f.display_name),
-                          e('div', {className:'dl-friend-stats', key:'st'}, (f.lessons_done||0) + ' lessons \u00b7 ' + (f.daily_streak||0) + ' day streak')
-                        ])
-                      ]),
-                      e('button', {className:'dl-friend-remove', onClick:()=>removeFriend(f.id), key:'x'}, String.fromCodePoint(0x2715))
-                    ]))
-                  )
+
+              peopleQuery.trim().length >= 2 ? e('div', {key:'results'},
+                peopleResults.length === 0
+                  ? e('div', {className:'dl-empty-note', key:'nr'}, 'No one found with that name.')
+                  : peopleResults.map(p => personRow(p, 'res'))
+              ) : null,
+
+              (!peopleQuery.trim() && incomingReqs.length > 0) ? e('div', {key:'reqs'}, [
+                e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'l'}, [String.fromCodePoint(0x1F4E9), ' Friend requests']),
+                ...incomingReqs.map(r => e('div', {className:'dl-person-row', key:r.id}, [
+                  e('button', {className:'dl-person-main', onClick:()=>viewProfile(r.profile.id), key:'m'}, [
+                    e('span', {className:'dl-person-avatar', key:'a'}, r.profile.avatar || String.fromCodePoint(0x1F4D6)),
+                    e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                      e('div', {className:'dl-person-name', key:'nm'}, r.profile.display_name),
+                      e('div', {className:'dl-person-sub', key:'s'}, 'wants to be friends')
+                    ])
+                  ]),
+                  e('div', {className:'dl-req-actions', key:'act'}, [
+                    e('button', {className:'dl-req-accept', onClick:()=>acceptRequest(r), key:'a'}, 'Accept'),
+                    e('button', {className:'dl-req-decline', onClick:()=>declineRequest(r), key:'d'}, String.fromCodePoint(0x2715))
+                  ])
+                ]))
+              ]) : null,
+
+              (!peopleQuery.trim()) ? e('div', {key:'friendlist'}, [
+                e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x1F465), ' Your friends']),
+                friends.length === 0
+                  ? e('div', {className:'dl-empty-note', key:'none'}, 'No friends yet \u2014 search a name above or add someone suggested below.')
+                  : e('div', {key:'list'}, friends
+                      .slice()
+                      .sort((a,b) => (b.lessons_done||0) - (a.lessons_done||0))
+                      .map((f, i) => e('div', {className:'dl-person-row', key:f.id}, [
+                        e('span', {className:'dl-friend-rank', key:'r'}, '#' + (i+1)),
+                        e('button', {className:'dl-person-main', onClick:()=>viewProfile(f.id), key:'m'}, [
+                          e('span', {className:'dl-person-avatar', key:'a'}, f.avatar || String.fromCodePoint(0x1F4D6)),
+                          e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                            e('div', {className:'dl-person-name', key:'nm'}, f.display_name),
+                            e('div', {className:'dl-person-sub', key:'st'}, (f.lessons_done||0) + ' lessons \u00b7 ' + (f.daily_streak||0) + ' day streak')
+                          ])
+                        ]),
+                        e('button', {className:'dl-friend-remove', onClick:()=>removeFriend(f.id), key:'x'}, String.fromCodePoint(0x2715))
+                      ]))
+                    )
+              ]) : null,
+
+              (!peopleQuery.trim() && suggested.length > 0) ? e('div', {key:'sugg'}, [
+                e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x2728), ' People you might know']),
+                ...suggested.map(p => personRow(p, 'sg'))
+              ]) : null
             ]) : null,
+
 
             socialTab === 'groups' ? e('div', {key:'groupspane'}, [
               myGroups.length > 0 ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'mylbl'}, 'Your groups') : null,
@@ -9376,6 +9525,34 @@
         e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community']),
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),
+
+      e('div', {className:'dl-dc-modal-bg' + (showWhatsNew ? ' open' : ''), key:'whatsnew'},
+        showWhatsNew ? e('div', {className:'dl-dc-done-wrap'}, [
+          e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, String.fromCodePoint(0x1F465)),
+          e('div', {className:'dl-dc-done-title', key:'t'}, 'Community is here'),
+          e('div', {className:'dl-dc-done-sub', key:'s'}, 'Something new in Steps to Faith'),
+          e('div', {className:'dl-whatsnew-list', key:'list'}, [
+            e('div', {className:'dl-whatsnew-item', key:'1'}, [
+              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F64F)),
+              e('span', {key:'t'}, 'Public rooms for prayer requests, faith questions, testimonies and more \u2014 open to everyone.')
+            ]),
+            e('div', {className:'dl-whatsnew-item', key:'2'}, [
+              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F465)),
+              e('span', {key:'t'}, 'Add friends by searching their name, and see how they\u2019re walking through Scripture.')
+            ]),
+            e('div', {className:'dl-whatsnew-item', key:'3'}, [
+              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F512)),
+              e('span', {key:'t'}, 'Create private rooms with a code for your own small group.')
+            ]),
+            e('div', {className:'dl-whatsnew-item', key:'4'}, [
+              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F6E1)),
+              e('span', {key:'t'}, 'Your testimony and reflections always stay private \u2014 never shared.')
+            ])
+          ]),
+          e('button', {className:'dl-continue', style:{maxWidth:'260px', marginTop:'6px'}, onClick:()=>{ dismissWhatsNew(); setTab('community'); }, key:'go'}, 'Take a look'),
+          e('button', {className:'dl-plan-leave', style:{marginTop:'10px'}, onClick: dismissWhatsNew, key:'later'}, 'Maybe later')
+        ]) : null
+      ),
 
       e('div', {className:'dl-dc-modal-bg' + (openStudyBook ? ' open' : ''), key:'studymodal'},
         openStudyBook && DEEP_STUDIES[openStudyBook] && (
