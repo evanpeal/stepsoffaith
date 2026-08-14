@@ -7635,6 +7635,15 @@
       return () => clearInterval(iv);
     }, []);
 
+    React.useEffect(() => {
+      if (!window.speechSynthesis) return;
+      // Voices load asynchronously in some browsers - trigger the load early
+      window.speechSynthesis.getVoices();
+      const handler = () => window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged = handler;
+      return () => { window.speechSynthesis.onvoiceschanged = null; };
+    }, []);
+
     const [user, setUser] = React.useState(null);
     const [authChecked, setAuthChecked] = React.useState(false);
     const [authOpen, setAuthOpen] = React.useState(false);
@@ -7942,6 +7951,7 @@
     }
 
     function completeDeepStudy(book){
+      stopSpeaking();
       const done = state.deepStudies || [];
       if (!done.includes(book)) {
         persist({ ...state, deepStudies: [...done, book] });
@@ -7993,21 +8003,79 @@
       persist({ ...state, favorites: already ? favs.filter(id => id !== lessonId) : [...favs, lessonId] });
     }
 
-    function toggleReadAloud(lesson){
-      if (!window.speechSynthesis) return;
-      if (isSpeaking) {
-        window.speechSynthesis.cancel();
-        setIsSpeaking(false);
-        return;
+    function pickBestVoice(){
+      const voices = window.speechSynthesis.getVoices() || [];
+      if (!voices.length) return null;
+      // Prefer high-quality natural voices, in order of preference
+      const preferred = [
+        'Google UK English Female', 'Google US English', 'Samantha', 'Karen', 'Daniel',
+        'Microsoft Aria Online (Natural) - English (United States)',
+        'Microsoft Guy Online (Natural) - English (United States)',
+        'Microsoft Jenny Online (Natural) - English (United States)'
+      ];
+      for (const name of preferred) {
+        const match = voices.find(v => v.name === name);
+        if (match) return match;
       }
+      const natural = voices.find(v => /natural|neural|enhanced|premium/i.test(v.name) && /^en/i.test(v.lang));
+      if (natural) return natural;
+      const googleEn = voices.find(v => /^Google/i.test(v.name) && /^en/i.test(v.lang));
+      if (googleEn) return googleEn;
+      return voices.find(v => /^en/i.test(v.lang)) || voices[0];
+    }
+
+    function speakText(rawText){
+      if (!window.speechSynthesis) return;
       window.speechSynthesis.cancel();
-      const text = lesson.passage + '. ' + (lesson.keyVerses || []).map(kv => kv.ref + '. ' + kv.text).join('. ');
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.rate = 0.95;
-      utter.onend = () => setIsSpeaking(false);
-      utter.onerror = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utter);
+      // Clean up characters that make TTS stumble
+      const text = String(rawText)
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/\u2014/g, ' - ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      if (!text) return;
+      // Split into sentence-sized chunks: avoids the browser cutoff bug on long text
+      // and lets speech breathe naturally between sentences.
+      const parts = text.match(/[^.!?]+[.!?]*/g) || [text];
+      const chunks = [];
+      let buffer = '';
+      parts.forEach(p => {
+        if ((buffer + p).length > 180) { if (buffer) chunks.push(buffer.trim()); buffer = p; }
+        else { buffer += p; }
+      });
+      if (buffer.trim()) chunks.push(buffer.trim());
+
+      const voice = pickBestVoice();
+      let idx = 0;
+      function speakNext(){
+        if (idx >= chunks.length) { setIsSpeaking(false); return; }
+        const utter = new SpeechSynthesisUtterance(chunks[idx]);
+        if (voice) { utter.voice = voice; utter.lang = voice.lang; }
+        utter.rate = 0.92;
+        utter.pitch = 1.0;
+        utter.volume = 1.0;
+        utter.onend = () => { idx++; speakNext(); };
+        utter.onerror = () => setIsSpeaking(false);
+        window.speechSynthesis.speak(utter);
+      }
       setIsSpeaking(true);
+      speakNext();
+    }
+
+    function stopSpeaking(){
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+
+    function toggleSpeak(text){
+      if (isSpeaking) { stopSpeaking(); return; }
+      speakText(text);
+    }
+
+    function toggleReadAloud(lesson){
+      if (isSpeaking) { stopSpeaking(); return; }
+      speakText(lesson.passage + ' ' + (lesson.keyVerses || []).map(kv => kv.ref + '. ' + kv.text).join(' '));
     }
 
     function continueFromDeepDive(){
@@ -8426,7 +8494,7 @@
           studyStep === 'prayer'
           ? [
               e('div', {className:'dl-lesson-top', key:'ltop'}, [
-                e('button', {className:'dl-x', onClick:()=>setOpenStudyBook(null), key:'x'}, String.fromCodePoint(0x2715))
+                e('button', {className:'dl-x', onClick:()=>{ stopSpeaking(); setOpenStudyBook(null); }, key:'x'}, String.fromCodePoint(0x2715))
               ]),
               e('div', {className:'dl-prayer-wrap', key:'prayer'}, [
                 e('div', {className:'dl-prayer-icon', key:'icon'}, String.fromCodePoint(0x1F64F)),
@@ -8437,7 +8505,7 @@
             ]
           : [
           e('div', {className:'dl-lesson-top', key:'ltop'}, [
-            e('button', {className:'dl-x', onClick:()=>setOpenStudyBook(null), key:'x'}, String.fromCodePoint(0x2715))
+            e('button', {className:'dl-x', onClick:()=>{ stopSpeaking(); setOpenStudyBook(null); }, key:'x'}, String.fromCodePoint(0x2715))
           ]),
           e('div', {className:'dl-dc-body', key:'body'}, [
             e('div', {className:'dl-study-header', key:'hdr'}, [
@@ -8445,6 +8513,11 @@
               e('div', {className:'dl-study-focus', key:'f'}, openStudyBook + ' \u00b7 ' + DEEP_STUDIES[openStudyBook].focus),
               e('div', {className:'dl-study-title', key:'t'}, DEEP_STUDIES[openStudyBook].title)
             ]),
+            e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), style:{marginBottom:'14px'}, onClick:()=>toggleSpeak(
+              DEEP_STUDIES[openStudyBook].title + '. ' +
+              DEEP_STUDIES[openStudyBook].sections.map(s => s.h + '. ' + s.b).join(' ') + ' ' +
+              (DEEP_STUDIES[openStudyBook].takeaway || '')
+            ), key:'studylisten'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen to this study']),
             e('div', {className:'dl-study-purpose', key:'purpose'}, [
               e('div', {className:'dl-study-purpose-h', key:'h'}, 'What is a Deep Study?'),
               e('div', {className:'dl-study-purpose-b', key:'b'}, 'Lessons move story by story \u2014 a Deep Study slows all the way down and sits with one landmark passage from ' + openStudyBook + ', a few verses at a time. There\u2019s no quiz and no reward here. The goal isn\u2019t speed or points \u2014 it\u2019s depth: noticing what a fast read misses, and letting the passage read you back.'),
@@ -8575,6 +8648,7 @@
           ? e('div', {className:'dl-deepdive-wrap'}, [
               e('div', {className:'dl-deepdive-icon', key:'icon'}, String.fromCodePoint(0x1F56F)),
               e('div', {className:'dl-deepdive-title', key:'t'}, 'What this means'),
+              e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(currentDeepDive()), key:'listen'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen']),
               e('div', {className:'dl-deepdive-text', key:'p'}, currentDeepDive()),
               e('button', {className:'dl-continue' + (isCheckpoint?' purple':''), onClick: continueFromDeepDive, key:'cont'}, 'Continue')
             ])
@@ -8617,7 +8691,10 @@
                     ]) : null,
                     e('div', {className:'dl-passage-card' + (isCheckpoint?' purple':''), key:'pc'}, isCheckpoint
                       ? [
-                          e('div', {className:'dl-passage-ref', key:'r'}, activeModal.title),
+                          e('div', {className:'dl-passage-ref-row', key:'rr'}, [
+                            e('div', {className:'dl-passage-ref', key:'r'}, activeModal.title),
+                            e('button', {className:'dl-passage-icon-btn' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(activeModal.title + '. ' + activeModal.overview.join('. ')), title:'Listen', key:'audio'}, String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A))
+                          ]),
                           e('ul', {className:'dl-overview-list', key:'ol'}, activeModal.overview.map((pt, i) => e('li', {key:i}, pt)))
                         ]
                       : [
@@ -8652,7 +8729,8 @@
                     ]),
                     step === 'explain' && e('div', {className:'dl-explain', key:'explain'}, [
                       e('div', {className:'dl-explain-label', key:'l'}, 'Correct'),
-                      e('div', {className:'dl-explain-text', key:'t'}, activeModal.questions[qIndex].explain)
+                      e('div', {className:'dl-explain-text', key:'t'}, activeModal.questions[qIndex].explain),
+                      e('button', {className:'dl-listen-inline small' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(activeModal.questions[qIndex].explain), key:'listen'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen'])
                     ])
                   ]
               ),
