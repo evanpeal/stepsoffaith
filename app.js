@@ -7571,6 +7571,188 @@
 
   const DEFAULT_VERSE = 'Be strong and courageous \u2014 Joshua 1:9';
 
+  const TOPICS = [
+    { id:'anxious', icon:'\ud83d\ude30', label:'Anxious or worried', keywords:['anxious','anxiety','worry','worried','stress','stressed','panic','fear','afraid','nervous','overwhelmed'],
+      intro:'God never once tells you to feel calm before you come to Him \u2014 He tells you to bring it.',
+      verses:[
+        { ref:'Philippians 4:6\u20137', text:'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds.' },
+        { ref:'1 Peter 5:7', text:'Cast all your anxiety on him because he cares for you.' },
+        { ref:'Matthew 6:34', text:'Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.' },
+        { ref:'Isaiah 41:10', text:'Fear not, for I am with you; be not dismayed, for I am your God. I will strengthen you and help you.' },
+        { ref:'Psalm 94:19', text:'When anxiety was great within me, your consolation brought me joy.' }
+      ] },
+    { id:'grieving', icon:'\ud83d\udcad', label:'Grieving or hurting', keywords:['grief','grieving','loss','died','death','mourning','mourn','hurt','hurting','pain','broken','heartbroken','sad'],
+      intro:'Scripture never rushes grief. It gives it a whole book, and God Himself weeps in it.',
+      verses:[
+        { ref:'Psalm 34:18', text:'The LORD is close to the brokenhearted and saves those who are crushed in spirit.' },
+        { ref:'Matthew 5:4', text:'Blessed are those who mourn, for they will be comforted.' },
+        { ref:'Revelation 21:4', text:'He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away.' },
+        { ref:'John 11:35', text:'Jesus wept.' },
+        { ref:'Psalm 147:3', text:'He heals the brokenhearted and binds up their wounds.' },
+        { ref:'2 Corinthians 1:3\u20134', text:'The Father of compassion and the God of all comfort, who comforts us in all our troubles.' }
+      ] },
+    { id:'hope', icon:'\ud83c\udf05', label:'Needing hope', keywords:['hope','hopeless','discouraged','despair','giving up','give up','stuck','tired','weary','exhausted','burnt out','burned out'],
+      intro:'Hope in Scripture isn\u2019t optimism about circumstances \u2014 it\u2019s confidence in who God is.',
+      verses:[
+        { ref:'Jeremiah 29:11', text:'For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future.' },
+        { ref:'Isaiah 40:31', text:'But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.' },
+        { ref:'Lamentations 3:22\u201323', text:'Because of the LORD\u2019s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.' },
+        { ref:'Romans 15:13', text:'May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.' },
+        { ref:'Galatians 6:9', text:'Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.' }
+      ] },
+    { id:'guilt', icon:'\ud83d\udd4a\ufe0f', label:'Guilt or shame', keywords:['guilt','guilty','shame','ashamed','forgive','forgiveness','sin','sinned','failed','failure','unworthy','regret','mistake'],
+      intro:'The distance God puts between you and your sin is measured in directions that never meet.',
+      verses:[
+        { ref:'1 John 1:9', text:'If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness.' },
+        { ref:'Psalm 103:12', text:'As far as the east is from the west, so far has he removed our transgressions from us.' },
+        { ref:'Romans 8:1', text:'Therefore, there is now no condemnation for those who are in Christ Jesus.' },
+        { ref:'Isaiah 1:18', text:'Though your sins are like scarlet, they shall be as white as snow.' },
+        { ref:'Micah 7:19', text:'You will again have compassion on us; you will tread our sins underfoot and hurl all our iniquities into the depths of the sea.' },
+        { ref:'Psalm 51:10', text:'Create in me a pure heart, O God, and renew a steadfast spirit within me.' }
+      ] },
+    { id:'lonely', icon:'\ud83c\udf19', label:'Lonely or alone', keywords:['lonely','alone','isolated','abandoned','forgotten','nobody','friendless','left out'],
+      intro:'The promise running through the whole Bible isn\u2019t an easy road \u2014 it\u2019s company on the road.',
+      verses:[
+        { ref:'Deuteronomy 31:6', text:'Be strong and courageous. Do not be afraid... for the LORD your God goes with you; he will never leave you nor forsake you.' },
+        { ref:'Psalm 139:7\u201310', text:'Where can I go from your Spirit? Where can I flee from your presence?... even there your hand will guide me, your right hand will hold me fast.' },
+        { ref:'Matthew 28:20', text:'And surely I am with you always, to the very end of the age.' },
+        { ref:'Hebrews 13:5', text:'Never will I leave you; never will I forsake you.' },
+        { ref:'Psalm 68:6', text:'God sets the lonely in families.' }
+      ] },
+    { id:'thankful', icon:'\ud83d\ude4f', label:'Thankful or joyful', keywords:['thankful','thanks','grateful','gratitude','joy','joyful','happy','praise','blessed','celebrate'],
+      intro:'Gratitude in Scripture is mostly a discipline of accurate memory.',
+      verses:[
+        { ref:'Psalm 103:1\u20132', text:'Praise the LORD, my soul; all my inmost being, praise his holy name. Praise the LORD, my soul, and forget not all his benefits.' },
+        { ref:'1 Thessalonians 5:16\u201318', text:'Rejoice always, pray continually, give thanks in all circumstances; for this is God\u2019s will for you in Christ Jesus.' },
+        { ref:'Psalm 118:24', text:'This is the day that the LORD has made; let us rejoice and be glad in it.' },
+        { ref:'James 1:17', text:'Every good and perfect gift is from above, coming down from the Father of the heavenly lights.' },
+        { ref:'Philippians 4:4', text:'Rejoice in the Lord always. I will say it again: Rejoice!' }
+      ] },
+    { id:'decisions', icon:'\ud83e\udded', label:'Facing a decision', keywords:['decision','decide','choice','choose','guidance','direction','confused','lost','wisdom','what should i do','future','plan'],
+      intro:'You draft the route; He establishes the steps. Both are real.',
+      verses:[
+        { ref:'Proverbs 3:5\u20136', text:'Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.' },
+        { ref:'James 1:5', text:'If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you.' },
+        { ref:'Proverbs 16:9', text:'In their hearts humans plan their course, but the LORD establishes their steps.' },
+        { ref:'Psalm 119:105', text:'Your word is a lamp for my feet, a light on my path.' },
+        { ref:'Isaiah 30:21', text:'Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, \u201cThis is the way; walk in it.\u201d' }
+      ] },
+    { id:'temptation', icon:'\u26a1', label:'Facing temptation', keywords:['temptation','tempted','struggle','struggling','addiction','habit','relapse','weakness','self control','discipline'],
+      intro:'The one you\u2019re bringing this to was tempted in every way you are \u2014 and understands.',
+      verses:[
+        { ref:'1 Corinthians 10:13', text:'No temptation has overtaken you except what is common to mankind. And God is faithful; he will not let you be tempted beyond what you can bear.' },
+        { ref:'Hebrews 4:15\u201316', text:'We do not have a high priest who is unable to empathize with our weaknesses... Let us then approach God\u2019s throne of grace with confidence.' },
+        { ref:'James 4:7', text:'Submit yourselves, then, to God. Resist the devil, and he will flee from you.' },
+        { ref:'Galatians 5:16', text:'So I say, walk by the Spirit, and you will not gratify the desires of the flesh.' },
+        { ref:'Psalm 119:11', text:'I have hidden your word in my heart that I might not sin against you.' }
+      ] },
+    { id:'angry', icon:'\ud83d\ude24', label:'Angry or bitter', keywords:['angry','anger','mad','furious','bitter','bitterness','resentment','rage','hate','forgive someone','betrayed'],
+      intro:'Scripture doesn\u2019t forbid anger \u2014 it warns about what you do with it and how long you keep it.',
+      verses:[
+        { ref:'Ephesians 4:26\u201327', text:'In your anger do not sin: do not let the sun go down while you are still angry, and do not give the devil a foothold.' },
+        { ref:'James 1:19\u201320', text:'Everyone should be quick to listen, slow to speak and slow to become angry, because human anger does not produce the righteousness that God desires.' },
+        { ref:'Proverbs 15:1', text:'A gentle answer turns away wrath, but a harsh word stirs up anger.' },
+        { ref:'Colossians 3:13', text:'Bear with each other and forgive one another if any of you has a grievance against someone. Forgive as the Lord forgave you.' },
+        { ref:'Romans 12:19', text:'Do not take revenge, my dear friends, but leave room for God\u2019s wrath.' }
+      ] },
+    { id:'doubt', icon:'\ud83e\udd14', label:'Doubting or questioning', keywords:['doubt','doubting','questions','questioning','unbelief','faith struggling','why god','does god exist','silent'],
+      intro:'The Bible is full of people who argued with God \u2014 and it kept every word of it.',
+      verses:[
+        { ref:'Mark 9:24', text:'I do believe; help me overcome my unbelief!' },
+        { ref:'Jude 1:22', text:'Be merciful to those who doubt.' },
+        { ref:'John 20:27', text:'Then he said to Thomas, \u201cPut your finger here; see my hands... Stop doubting and believe.\u201d' },
+        { ref:'Habakkuk 1:2', text:'How long, LORD, must I call for help, but you do not listen?' },
+        { ref:'Psalm 13:1\u20132', text:'How long, LORD? Will you forget me forever? How long will you hide your face from me?' }
+      ] },
+    { id:'money', icon:'\ud83d\udcb0', label:'Money or provision', keywords:['money','finances','financial','provision','bills','poor','broke','job','work','provide','need','debt'],
+      intro:'The question Scripture keeps asking isn\u2019t how much you have, but what has you.',
+      verses:[
+        { ref:'Matthew 6:31\u201333', text:'So do not worry, saying, \u201cWhat shall we eat?\u201d... But seek first his kingdom and his righteousness, and all these things will be given to you as well.' },
+        { ref:'Philippians 4:19', text:'And my God will meet all your needs according to the riches of his glory in Christ Jesus.' },
+        { ref:'1 Timothy 6:6\u20137', text:'But godliness with contentment is great gain. For we brought nothing into the world, and we can take nothing out of it.' },
+        { ref:'Proverbs 3:9\u201310', text:'Honor the LORD with your wealth, with the firstfruits of all your crops.' },
+        { ref:'Hebrews 13:5', text:'Keep your lives free from the love of money and be content with what you have.' }
+      ] },
+    { id:'strength', icon:'\ud83d\udcaa', label:'Needing strength', keywords:['strength','strong','weak','weakness','courage','brave','endure','persevere','keep going','hard time','trial'],
+      intro:'God\u2019s power tends to show up most clearly right where you have the least.',
+      verses:[
+        { ref:'2 Corinthians 12:9', text:'My grace is sufficient for you, for my power is made perfect in weakness.' },
+        { ref:'Philippians 4:13', text:'I can do all this through him who gives me strength.' },
+        { ref:'Joshua 1:9', text:'Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.' },
+        { ref:'Nehemiah 8:10', text:'Do not grieve, for the joy of the LORD is your strength.' },
+        { ref:'Psalm 46:1', text:'God is our refuge and strength, an ever-present help in trouble.' }
+      ] },
+    { id:'relationships', icon:'\u2764\ufe0f', label:'Relationships & family', keywords:['relationship','marriage','family','friend','friendship','love','spouse','parents','kids','children','conflict'],
+      intro:'The mark Jesus gave His people wasn\u2019t knowledge or power \u2014 it was how they treat each other.',
+      verses:[
+        { ref:'1 Corinthians 13:4\u20137', text:'Love is patient, love is kind. It does not envy, it does not boast, it is not proud... It always protects, always trusts, always hopes, always perseveres.' },
+        { ref:'John 13:34\u201335', text:'As I have loved you, so you must love one another. By this everyone will know that you are my disciples.' },
+        { ref:'Proverbs 17:17', text:'A friend loves at all times, and a brother is born for a time of adversity.' },
+        { ref:'Ephesians 4:32', text:'Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.' },
+        { ref:'Proverbs 27:17', text:'As iron sharpens iron, so one person sharpens another.' }
+      ] },
+    { id:'purpose', icon:'\ud83e\udded', label:'Purpose & calling', keywords:['purpose','calling','called','meaning','why am i here','identity','worth','value','significance'],
+      intro:'You were known and set apart before you had a record to be judged by.',
+      verses:[
+        { ref:'Jeremiah 1:5', text:'Before I formed you in the womb I knew you, before you were born I set you apart.' },
+        { ref:'Ephesians 2:10', text:'For we are God\u2019s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.' },
+        { ref:'Esther 4:14', text:'And who knows but that you have come to your royal position for such a time as this?' },
+        { ref:'Psalm 139:13\u201314', text:'For you created my inmost being; you knit me together in my mother\u2019s womb. I praise you because I am fearfully and wonderfully made.' },
+        { ref:'Micah 6:8', text:'And what does the LORD require of you? To act justly and to love mercy and to walk humbly with your God.' }
+      ] },
+    { id:'sick', icon:'\ud83c\udfe5', label:'Sickness or healing', keywords:['sick','sickness','illness','ill','healing','heal','disease','hospital','cancer','health','suffering','pain'],
+      intro:'Presence is promised inside the fire, not only instead of it.',
+      verses:[
+        { ref:'Isaiah 43:2', text:'When you pass through the waters, I will be with you; and when you pass through the rivers, they will not sweep over you.' },
+        { ref:'James 5:14\u201315', text:'Is anyone among you sick? Let them call the elders of the church to pray over them.' },
+        { ref:'Psalm 41:3', text:'The LORD sustains them on their sickbed and restores them from their bed of illness.' },
+        { ref:'2 Corinthians 4:16', text:'Therefore we do not lose heart. Though outwardly we are wasting away, yet inwardly we are being renewed day by day.' },
+        { ref:'Matthew 11:28', text:'Come to me, all you who are weary and burdened, and I will give you rest.' }
+      ] },
+    { id:'newfaith', icon:'\ud83c\udf31', label:'New to faith', keywords:['new','start','beginning','saved','salvation','believe','christian','born again','baptism','how do i start'],
+      intro:'The entry requirement in Scripture is thirst, not qualification.',
+      verses:[
+        { ref:'John 3:16', text:'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.' },
+        { ref:'Romans 10:9', text:'If you declare with your mouth, \u201cJesus is Lord,\u201d and believe in your heart that God raised him from the dead, you will be saved.' },
+        { ref:'Ephesians 2:8\u20139', text:'For it is by grace you have been saved, through faith \u2014 and this is not from yourselves, it is the gift of God \u2014 not by works, so that no one can boast.' },
+        { ref:'2 Corinthians 5:17', text:'Therefore, if anyone is in Christ, the new creation has come: The old has gone, the new is here!' },
+        { ref:'Revelation 22:17', text:'Let the one who is thirsty come; and let the one who wishes take the free gift of the water of life.' }
+      ] }
+  ];
+
+  function searchTopics(query){
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    return TOPICS.filter(t =>
+      t.label.toLowerCase().includes(q) ||
+      t.keywords.some(k => k.includes(q) || q.includes(k))
+    );
+  }
+
+  function searchVerses(query){
+    const q = query.trim().toLowerCase();
+    if (q.length < 3) return [];
+    const hits = [];
+    TOPICS.forEach(t => {
+      t.verses.forEach(v => {
+        if (v.text.toLowerCase().includes(q) || v.ref.toLowerCase().includes(q)) {
+          hits.push({ ...v, topic: t.label });
+        }
+      });
+    });
+    return hits.slice(0, 12);
+  }
+
+  function searchLessons(query){
+    const q = query.trim().toLowerCase();
+    if (q.length < 3) return [];
+    return LESSONS.filter(l =>
+      l.title.toLowerCase().includes(q) ||
+      l.book.toLowerCase().includes(q) ||
+      (l.passage || '').toLowerCase().includes(q)
+    ).slice(0, 12);
+  }
+
   const DAILY_DEVOTIONALS = [
     { ref: 'Philippians 4:6\u20137', verse: 'Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God.', title: 'Bring it, don\u2019t carry it', text: 'Whatever\u2019s weighing on you today, this verse doesn\u2019t say to feel calm first \u2014 it says to bring it to God first. Try naming one specific worry in a short prayer right now, thanking Him for one thing in the middle of it.' },
     { ref: 'Psalm 23:1\u20133', verse: 'The LORD is my shepherd; I shall not want. He makes me lie down in green pastures; he leads me beside still waters; he restores my soul.', title: 'Let Him lead today', text: 'A shepherd doesn\u2019t just protect \u2014 he leads somewhere good. If today feels rushed or uncertain, ask God to lead your next hour, not just your big decisions.' },
@@ -7603,6 +7785,8 @@
     const [tab, setTab] = React.useState("path");
     const [openLesson, setOpenLesson] = React.useState(null);
     const [isSpeaking, setIsSpeaking] = React.useState(false);
+    const [searchQuery, setSearchQuery] = React.useState('');
+    const [openTopic, setOpenTopic] = React.useState(null);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
     const [qIndex, setQIndex] = React.useState(0);
@@ -8392,6 +8576,63 @@
         })
       ]) : null,
 
+      tab === 'search' ? e('div', {className:'dl-daily-wrap', key:'search'}, [
+        e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'lbl'}, [String.fromCodePoint(0x1F50D), ' Find what you need']),
+        e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Search how you\u2019re feeling, or what you\u2019re walking through \u2014 or tap a topic below.'),
+        e('input', {className:'dl-search-input', value:searchQuery, placeholder:'Try \u201canxious\u201d, \u201cgrief\u201d, \u201chope\u201d\u2026', onChange: ev => setSearchQuery(ev.target.value), key:'input'}),
+
+        openTopic ? (() => {
+          const t = TOPICS.find(x => x.id === openTopic);
+          if (!t) return null;
+          return e('div', {className:'dl-topic-open', key:'topicopen'}, [
+            e('button', {className:'dl-topic-back', onClick:()=>setOpenTopic(null), key:'back'}, String.fromCodePoint(0x2190) + ' All topics'),
+            e('div', {className:'dl-topic-open-head', key:'head'}, [
+              e('span', {className:'dl-topic-open-icon', key:'i'}, t.icon),
+              e('span', {className:'dl-topic-open-label', key:'l'}, t.label)
+            ]),
+            e('div', {className:'dl-topic-intro', key:'intro'}, t.intro),
+            e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(t.verses.map(v => v.ref + '. ' + v.text).join(' ')), key:'listen'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen to these verses']),
+            ...t.verses.map((v, i) => e('div', {className:'dl-topic-verse', key:i}, [
+              e('div', {className:'dl-topic-verse-ref', key:'r'}, v.ref),
+              e('div', {className:'dl-topic-verse-text', key:'t'}, v.text)
+            ]))
+          ]);
+        })() : null,
+
+        (!openTopic && searchQuery.trim()) ? (() => {
+          const topicHits = searchTopics(searchQuery);
+          const verseHits = searchVerses(searchQuery);
+          const lessonHits = searchLessons(searchQuery);
+          const nothing = !topicHits.length && !verseHits.length && !lessonHits.length;
+          return e('div', {key:'results'}, [
+            nothing ? e('div', {className:'dl-empty-note', key:'none'}, 'Nothing found for that \u2014 try a feeling like \u201cafraid\u201d, or a book name.') : null,
+            topicHits.length ? e('div', {className:'dl-section-title', key:'th'}, 'Topics') : null,
+            ...topicHits.map(t => e('button', {className:'dl-topic-chip', onClick:()=>{ setOpenTopic(t.id); }, key:'t'+t.id}, [
+              e('span', {className:'dl-topic-chip-icon', key:'i'}, t.icon),
+              e('span', {key:'l'}, t.label)
+            ])),
+            verseHits.length ? e('div', {className:'dl-section-title', key:'vh'}, 'Verses') : null,
+            ...verseHits.map((v, i) => e('div', {className:'dl-topic-verse', key:'v'+i}, [
+              e('div', {className:'dl-topic-verse-ref', key:'r'}, v.ref),
+              e('div', {className:'dl-topic-verse-text', key:'t'}, v.text)
+            ])),
+            lessonHits.length ? e('div', {className:'dl-section-title', key:'lh'}, 'Lessons') : null,
+            ...lessonHits.map(l => e('button', {className:'dl-search-lesson', onClick:()=>openIfAvailable(l), key:'l'+l.id}, [
+              e('span', {className:'dl-fav-book', key:'b'}, l.book),
+              e('span', {className:'dl-fav-title', key:'t'}, l.title),
+              nodeStatus(l) === 'locked' ? e('span', {className:'dl-search-locked', key:'lk'}, String.fromCodePoint(0x1F512)) : null
+            ]))
+          ]);
+        })() : null,
+
+        (!openTopic && !searchQuery.trim()) ? e('div', {className:'dl-topic-grid', key:'grid'}, TOPICS.map(t =>
+          e('button', {className:'dl-topic-card', onClick:()=>setOpenTopic(t.id), key:t.id}, [
+            e('div', {className:'dl-topic-card-icon', key:'i'}, t.icon),
+            e('div', {className:'dl-topic-card-label', key:'l'}, t.label)
+          ])
+        )) : null
+      ]) : null,
+
       tab === 'profile' ? e('div', {className:'dl-profile-outer', key:'profileouter'}, [
         e('div', {className:'dl-profile-stars', key:'stars'}),
         e('div', {className:'dl-profile-glow', key:'glow'}),
@@ -8524,6 +8765,7 @@
       e('div', {className:'dl-tabs', key:'tabs'}, [
         e('button', {className:'dl-tab' + (tab==='path'?' active':''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4D6)), 'Path']),
         e('button', {className:'dl-tab' + (tab==='daily'?' active':''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
+        e('button', {className:'dl-tab' + (tab==='search'?' active':''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F50D)), 'Find']),
         e('button', {className:'dl-tab' + (tab==='callings'?' active':''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Callings']),
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),

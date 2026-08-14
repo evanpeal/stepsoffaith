@@ -110,7 +110,7 @@
   @keyframes dl-pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
 
   .dl-tabs { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 2px solid var(--gray-light); display: flex; z-index: 5; }
-  .dl-tab { flex: 1; text-align: center; padding: 10px 0 8px; font-size: 11px; font-weight: 800; color: var(--gray); cursor: pointer; border: none; background: none; }
+  .dl-tab { flex: 1; text-align: center; padding: 10px 2px 8px; font-size: 10px; font-weight: 800; color: var(--gray); cursor: pointer; border: none; background: none; }
   .dl-tab.active { color: var(--green); }
   .dl-tab-icon { display: block; font-size: 20px; margin-bottom: 2px; }
 
@@ -490,3 +490,24 @@
   .dl-wordle-result-text { font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
   .dl-wordle-result-sub { font-size: 13px; color: var(--gray); margin-bottom: 4px; }
   .dl-wordle-refresh { font-size: 12px; font-weight: 700; color: var(--purple-dark); margin-top: 10px; }
+
+  /* Topical search */
+  .dl-search-input { width: 100%; border: 2px solid var(--gray-light); border-radius: 14px; padding: 13px 16px; font-size: 15px; font-weight: 700; font-family: inherit; color: var(--ink); margin-bottom: 18px; }
+  .dl-search-input:focus { outline: none; border-color: var(--purple); }
+  .dl-topic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .dl-topic-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 14px; padding: 14px 12px; text-align: left; cursor: pointer; }
+  .dl-topic-card:active { transform: translateY(1px); border-bottom-width: 2px; }
+  .dl-topic-card-icon { font-size: 22px; }
+  .dl-topic-card-label { font-size: 13px; font-weight: 800; color: var(--ink); line-height: 1.3; }
+  .dl-topic-chip { display: flex; align-items: center; gap: 8px; width: 100%; background: #f1e7ff; border: none; border-radius: 12px; padding: 12px 14px; font-size: 14px; font-weight: 800; color: #4a2380; text-align: left; cursor: pointer; margin-bottom: 8px; }
+  .dl-topic-chip-icon { font-size: 18px; }
+  .dl-topic-back { background: none; border: none; color: var(--purple-dark); font-weight: 800; font-size: 13px; padding: 0 0 12px; cursor: pointer; }
+  .dl-topic-open-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .dl-topic-open-icon { font-size: 28px; }
+  .dl-topic-open-label { font-size: 19px; font-weight: 800; color: var(--ink); }
+  .dl-topic-intro { font-size: 14px; font-weight: 700; color: var(--gray); line-height: 1.5; margin-bottom: 12px; }
+  .dl-topic-verse { background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+  .dl-topic-verse-ref { font-size: 11.5px; font-weight: 800; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .dl-topic-verse-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); }
+  .dl-search-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
+  .dl-search-locked { margin-left: auto; font-size: 13px; }
