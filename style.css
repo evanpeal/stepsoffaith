@@ -511,3 +511,18 @@
   .dl-topic-verse-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); }
   .dl-search-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
   .dl-search-locked { margin-left: auto; font-size: 13px; }
+
+  /* Reading plans */
+  .dl-plan-card { background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 16px; padding: 16px; margin-bottom: 12px; }
+  .dl-plan-card-top, .dl-plan-active-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .dl-plan-icon { font-size: 26px; }
+  .dl-plan-title { font-size: 16px; font-weight: 800; color: var(--ink); }
+  .dl-plan-meta, .dl-plan-day { font-size: 12px; font-weight: 700; color: var(--gray); }
+  .dl-plan-blurb { font-size: 13.5px; line-height: 1.5; color: var(--gray); margin-bottom: 12px; }
+  .dl-plan-progress { font-size: 12px; font-weight: 800; color: var(--teal-dark); margin: 8px 0 12px; }
+  .dl-plan-active { background: linear-gradient(135deg, #e6fbf2 0%, #eef7ff 100%); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
+  .dl-plan-today-label { font-size: 11.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.6px; margin: 14px 0 8px; }
+  .dl-plan-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
+  .dl-plan-lesson.done { opacity: 0.6; }
+  .dl-plan-check { margin-left: auto; font-size: 13px; }
+  .dl-plan-leave { background: none; border: none; color: var(--gray); font-weight: 800; font-size: 12px; padding: 6px 0 0; cursor: pointer; text-decoration: underline; }

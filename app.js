@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, voiceName: null, voiceRate: 0.86 };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, voiceName: null, voiceRate: 0.86, activePlan: null, planStarted: null };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -7571,6 +7571,112 @@
 
   const DEFAULT_VERSE = 'Be strong and courageous \u2014 Joshua 1:9';
 
+  const READING_PLANS = [
+    {
+      id:'gospels_30',
+      icon:'\u271d\ufe0f',
+      title:'The Life of Jesus',
+      length:30,
+      blurb:'Thirty days walking through the four Gospels \u2014 birth, ministry, cross, and resurrection.',
+      books:['Matthew','Mark','Luke','John']
+    },
+    {
+      id:'foundations_14',
+      icon:'\ud83e\uddf1',
+      title:'Foundations',
+      length:14,
+      blurb:'Two weeks on the essentials \u2014 creation, the fall, the promise, and the rescue. Best place to start if you\u2019re new.',
+      lessonRefs:[
+        ['Genesis', 0], ['Genesis', 1], ['Genesis', 2], ['Genesis', 3],
+        ['Exodus', 0], ['Exodus', 2],
+        ['Psalms', 1], ['Isaiah', 8],
+        ['Luke', 2], ['John', 0], ['John', 2],
+        ['Romans', 1], ['Romans', 4], ['Ephesians', 1]
+      ]
+    },
+    {
+      id:'wisdom_21',
+      icon:'\ud83e\udd89',
+      title:'Wisdom for Daily Life',
+      length:21,
+      blurb:'Three weeks in Proverbs, Ecclesiastes, and James \u2014 practical, blunt, and immediately usable.',
+      books:['Proverbs','Ecclesiastes','James']
+    },
+    {
+      id:'psalms_30',
+      icon:'\ud83c\udfb5',
+      title:'Prayers for Every Season',
+      length:30,
+      blurb:'A month in the Psalms \u2014 joy, grief, doubt, and praise, all given words.',
+      books:['Psalms','Lamentations']
+    },
+    {
+      id:'nt_60',
+      icon:'\ud83d\udcd6',
+      title:'New Testament in 60 Days',
+      length:60,
+      blurb:'Two months covering the entire New Testament, Matthew through Revelation.',
+      testament:'new'
+    },
+    {
+      id:'ot_120',
+      icon:'\ud83d\udcdc',
+      title:'Old Testament Journey',
+      length:120,
+      blurb:'Four months through the whole Old Testament \u2014 the long story that sets up everything else.',
+      testament:'old'
+    },
+    {
+      id:'whole_bible',
+      icon:'\ud83d\udc51',
+      title:'The Whole Bible',
+      length:180,
+      blurb:'Genesis to Revelation, about three lessons a day for six months. The full journey.',
+      testament:'all'
+    },
+    {
+      id:'advent',
+      icon:'\ud83c\udf1f',
+      title:'Advent \u2014 Waiting for the King',
+      length:24,
+      blurb:'Twenty-four days from the prophets\u2019 promise to the manger. Built for December.',
+      lessonRefs:[
+        ['Isaiah', 2], ['Isaiah', 8], ['Micah', 1], ['Malachi', 2],
+        ['Luke', 0], ['Luke', 1], ['Luke', 2],
+        ['Matthew', 0], ['Matthew', 1], ['John', 0]
+      ]
+    }
+  ];
+
+  function planLessons(plan){
+    if (plan.lessonRefs) {
+      return plan.lessonRefs.map(([book, idx]) => {
+        const inBook = LESSONS.filter(l => l.book === book);
+        return inBook[idx] || inBook[0];
+      }).filter(Boolean);
+    }
+    if (plan.books) {
+      return LESSONS.filter(l => plan.books.includes(l.book));
+    }
+    if (plan.testament === 'new') return LESSONS.filter(l => NEW_TESTAMENT.includes(l.book));
+    if (plan.testament === 'old') return LESSONS.filter(l => !NEW_TESTAMENT.includes(l.book));
+    return LESSONS.slice();
+  }
+
+  function planDayLessons(plan, day){
+    const all = planLessons(plan);
+    const perDay = Math.max(1, Math.ceil(all.length / plan.length));
+    const start = (day - 1) * perDay;
+    return all.slice(start, start + perDay);
+  }
+
+  function planProgress(plan, state){
+    const all = planLessons(plan);
+    if (!all.length) return { done: 0, total: 0, pct: 0 };
+    const done = all.filter(l => state.completed.includes(l.id)).length;
+    return { done, total: all.length, pct: Math.round((done / all.length) * 100) };
+  }
+
   const TOPICS = [
     { id:'anxious', icon:'\ud83d\ude30', label:'Anxious or worried', keywords:['anxious','anxiety','worry','worried','stress','stressed','panic','fear','afraid','nervous','overwhelmed'],
       intro:'God never once tells you to feel calm before you come to Him \u2014 He tells you to bring it.',
@@ -8181,6 +8287,17 @@
       }
     }
 
+    function startPlan(planId){
+      persist({ ...state, activePlan: planId, planStarted: todayStr() });
+    }
+    function stopPlan(){
+      persist({ ...state, activePlan: null, planStarted: null });
+    }
+    function currentPlanDay(){
+      if (!state.planStarted) return 1;
+      return Math.max(1, daysBetween(state.planStarted, todayStr()) + 1);
+    }
+
     function toggleFavorite(lessonId){
       const favs = state.favorites || [];
       const already = favs.includes(lessonId);
@@ -8547,7 +8664,52 @@
       ]) : null,
 
       tab === 'callings' ? e('div', {className:'dl-daily-wrap', key:'callings'}, [
-        e('div', {className:'dl-callings-header', key:'chdr'}, [
+        e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'plabel'}, [String.fromCodePoint(0x1F5D3), ' Reading plans']),
+        state.activePlan ? (() => {
+          const plan = READING_PLANS.find(p => p.id === state.activePlan);
+          if (!plan) return null;
+          const day = Math.min(currentPlanDay(), plan.length);
+          const todays = planDayLessons(plan, day);
+          const prog = planProgress(plan, state);
+          return e('div', {className:'dl-plan-active', key:'active'}, [
+            e('div', {className:'dl-plan-active-top', key:'top'}, [
+              e('span', {className:'dl-plan-icon', key:'i'}, plan.icon),
+              e('div', {style:{flex:1}, key:'txt'}, [
+                e('div', {className:'dl-plan-title', key:'t'}, plan.title),
+                e('div', {className:'dl-plan-day', key:'d'}, 'Day ' + day + ' of ' + plan.length)
+              ])
+            ]),
+            e('div', {className:'dl-quest-bar-track', key:'track'}, e('div', {className:'dl-quest-bar-fill', style:{width: prog.pct + '%'}})),
+            e('div', {className:'dl-plan-progress', key:'p'}, prog.done + ' of ' + prog.total + ' lessons complete'),
+            e('div', {className:'dl-plan-today-label', key:'tl'}, 'Today\u2019s reading'),
+            ...todays.map(l => e('button', {className:'dl-plan-lesson' + (state.completed.includes(l.id) ? ' done' : ''), onClick:()=>openIfAvailable(l), key:l.id}, [
+              e('span', {className:'dl-fav-book', key:'b'}, l.book),
+              e('span', {className:'dl-fav-title', key:'t'}, l.title),
+              state.completed.includes(l.id) ? e('span', {className:'dl-plan-check', key:'c'}, String.fromCodePoint(0x2705)) : null
+            ])),
+            todays.length === 0 ? e('div', {className:'dl-empty-note', key:'none'}, 'Plan complete \u2014 well done.') : null,
+            e('button', {className:'dl-plan-leave', onClick: stopPlan, key:'leave'}, 'Leave this plan')
+          ]);
+        })() : [
+          e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Pick a plan to follow alongside your main path \u2014 it just guides which lessons to read each day.'),
+          ...READING_PLANS.map(plan => {
+            const prog = planProgress(plan, state);
+            return e('div', {className:'dl-plan-card', key:plan.id}, [
+              e('div', {className:'dl-plan-card-top', key:'top'}, [
+                e('span', {className:'dl-plan-icon', key:'i'}, plan.icon),
+                e('div', {style:{flex:1}, key:'txt'}, [
+                  e('div', {className:'dl-plan-title', key:'t'}, plan.title),
+                  e('div', {className:'dl-plan-meta', key:'m'}, plan.length + ' days \u00b7 ' + prog.total + ' lessons')
+                ])
+              ]),
+              e('div', {className:'dl-plan-blurb', key:'b'}, plan.blurb),
+              prog.done > 0 ? e('div', {className:'dl-plan-progress', key:'p'}, prog.done + ' of ' + prog.total + ' already done') : null,
+              e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)'}, onClick:()=>startPlan(plan.id), key:'start'}, 'Start this plan')
+            ]);
+          })
+        ],
+
+        e('div', {className:'dl-callings-header', style:{marginTop:'28px'}, key:'chdr'}, [
           e('div', {className:'dl-callings-icon', key:'i'}, String.fromCodePoint(0x1F4DC)),
           e('div', {className:'dl-callings-title', key:'t'}, 'Callings'),
           e('div', {className:'dl-callings-sub', key:'s'}, QUESTS.filter(q => state.claimedQuests.includes(q.id)).length + ' of ' + QUESTS.length + ' answered')
