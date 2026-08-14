@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -7187,6 +7187,11 @@
 
   function todayStr(){ return new Date().toISOString().slice(0,10); }
   function yesterdayStr(){ const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); }
+  function daysBetween(dateStr1, dateStr2){
+    const d1 = new Date(dateStr1 + 'T00:00:00');
+    const d2 = new Date(dateStr2 + 'T00:00:00');
+    return Math.round((d2 - d1) / 86400000);
+  }
   function seededShuffle(arr, seedStr){
     let seed = 0;
     for (let i = 0; i < seedStr.length; i++) seed = (seed * 31 + seedStr.charCodeAt(i)) >>> 0;
@@ -7800,8 +7805,23 @@
     function checkInToday(){
       const today = todayStr();
       if (state.lastCheckIn === today) return;
-      const wasYesterday = state.lastCheckIn === yesterdayStr();
-      persist({ ...state, dailyStreak: wasYesterday ? state.dailyStreak + 1 : 1, lastCheckIn: today });
+      if (!state.lastCheckIn) { persist({ ...state, dailyStreak: 1, lastCheckIn: today }); return; }
+      const gap = daysBetween(state.lastCheckIn, today);
+      if (gap === 1) {
+        persist({ ...state, dailyStreak: state.dailyStreak + 1, lastCheckIn: today });
+        return;
+      }
+      const missed = gap - 1;
+      if (missed > 0 && state.streakFreezes >= missed) {
+        persist({ ...state, dailyStreak: state.dailyStreak + 1, lastCheckIn: today, streakFreezes: state.streakFreezes - missed, streakFreezeUsedDate: today });
+      } else {
+        persist({ ...state, dailyStreak: 1, lastCheckIn: today });
+      }
+    }
+
+    function buyStreakFreeze(){
+      if (state.gems < 40) return;
+      persist({ ...state, gems: state.gems - 40, streakFreezes: state.streakFreezes + 1 });
     }
 
     function todaysWordleState(){
@@ -8118,6 +8138,13 @@
           e('div', {className:'dl-streak-num', key:'n'}, state.dailyStreak),
           e('div', {className:'dl-streak-label', key:'l'}, state.dailyStreak === 1 ? 'day streak' : 'day streak'),
           e('div', {className:'dl-streak-week', key:'week'}, last7Days().map(d => e('span', {className:'dl-streak-dot', style:{background: streakDateSet(state).has(d) ? 'var(--gold)' : 'var(--gray-light)'}, key:d}))),
+          state.streakFreezeUsedDate === todayStr() && state.lastCheckIn === todayStr()
+            ? e('div', {className:'dl-freeze-banner', key:'saved'}, [String.fromCodePoint(0x1F9CA), ' Streak Freeze used \u2014 your streak is safe!'])
+            : null,
+          e('div', {className:'dl-freeze-row', key:'freezerow'}, [
+            e('div', {className:'dl-freeze-count', key:'count'}, [String.fromCodePoint(0x1F9CA), ' ', state.streakFreezes, ' streak freeze' + (state.streakFreezes === 1 ? '' : 's')]),
+            e('button', {className:'dl-freeze-buy', disabled: state.gems < 40, onClick: buyStreakFreeze, key:'buy'}, 'Buy for 40 \ud83d\udc8e')
+          ]),
           state.lastCheckIn === todayStr()
             ? e('div', {className:'dl-checked-in', key:'done'}, [String.fromCodePoint(0x2705), ' You\u2019re checked in for today']) 
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
