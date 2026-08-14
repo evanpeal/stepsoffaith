@@ -7664,12 +7664,12 @@
         try {
           const { data, error } = await sb.from('progress').select('data').eq('id', currentUser.id).maybeSingle();
           if (error) throw error;
-          if (data && data.data) { setState(data.data); return; }
+          if (data && data.data) { setState({ ...DEFAULT_STATE, ...data.data }); return; }
           // No row yet for this account - start from local guest progress if any, else defaults
           let starting = { ...DEFAULT_STATE };
           try {
             const local = localStorage.getItem(KEY);
-            if (local) starting = JSON.parse(local);
+            if (local) starting = { ...DEFAULT_STATE, ...JSON.parse(local) };
           } catch (ex) {}
           await sb.from('progress').upsert({ id: currentUser.id, data: starting });
           setState(starting);
@@ -7678,7 +7678,7 @@
       }
       try {
         const local = localStorage.getItem(KEY);
-        setState(local ? JSON.parse(local) : { ...DEFAULT_STATE });
+        setState(local ? { ...DEFAULT_STATE, ...JSON.parse(local) } : { ...DEFAULT_STATE });
       } catch (ex) { setState({ ...DEFAULT_STATE }); }
     }
 
@@ -7812,8 +7812,8 @@
         return;
       }
       const missed = gap - 1;
-      if (missed > 0 && state.streakFreezes >= missed) {
-        persist({ ...state, dailyStreak: state.dailyStreak + 1, lastCheckIn: today, streakFreezes: state.streakFreezes - missed, streakFreezeUsedDate: today });
+      if (missed > 0 && (state.streakFreezes || 0) >= missed) {
+        persist({ ...state, dailyStreak: state.dailyStreak + 1, lastCheckIn: today, streakFreezes: (state.streakFreezes || 0) - missed, streakFreezeUsedDate: today });
       } else {
         persist({ ...state, dailyStreak: 1, lastCheckIn: today });
       }
@@ -7821,7 +7821,8 @@
 
     function buyStreakFreeze(){
       if (state.gems < 40) return;
-      persist({ ...state, gems: state.gems - 40, streakFreezes: state.streakFreezes + 1 });
+      const current = state.streakFreezes || 0;
+      persist({ ...state, gems: state.gems - 40, streakFreezes: current + 1 });
     }
 
     function todaysWordleState(){
@@ -8142,7 +8143,7 @@
             ? e('div', {className:'dl-freeze-banner', key:'saved'}, [String.fromCodePoint(0x1F9CA), ' Streak Freeze used \u2014 your streak is safe!'])
             : null,
           e('div', {className:'dl-freeze-row', key:'freezerow'}, [
-            e('div', {className:'dl-freeze-count', key:'count'}, [String.fromCodePoint(0x1F9CA), ' ', state.streakFreezes, ' streak freeze' + (state.streakFreezes === 1 ? '' : 's')]),
+            e('div', {className:'dl-freeze-count', key:'count'}, [String.fromCodePoint(0x1F9CA), ' ', (state.streakFreezes || 0), ' streak freeze' + ((state.streakFreezes || 0) === 1 ? '' : 's')]),
             e('button', {className:'dl-freeze-buy', disabled: state.gems < 40, onClick: buyStreakFreeze, key:'buy'}, 'Buy for 40 \ud83d\udc8e')
           ]),
           state.lastCheckIn === todayStr()
