@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, voiceName: null, voiceRate: 0.86, activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -8329,20 +8329,9 @@
       persist({ ...state, favorites: already ? favs.filter(id => id !== lessonId) : [...favs, lessonId] });
     }
 
-    function englishVoices(){
-      const voices = window.speechSynthesis ? (window.speechSynthesis.getVoices() || []) : [];
-      return voices.filter(v => /^en/i.test(v.lang));
-    }
-
     function pickBestVoice(){
       const voices = window.speechSynthesis.getVoices() || [];
       if (!voices.length) return null;
-      // Honor the user's saved choice first
-      const savedName = state && state.voiceName;
-      if (savedName) {
-        const saved = voices.find(v => v.name === savedName);
-        if (saved) return saved;
-      }
       const en = voices.filter(v => /^en/i.test(v.lang));
       const pool = en.length ? en : voices;
       // Score voices: higher = better quality / warmer delivery
@@ -8388,7 +8377,7 @@
       if (buffer.trim()) chunks.push(buffer.trim());
 
       const voice = pickBestVoice();
-      const rate = (state && state.voiceRate) || 0.86;
+      const rate = 0.86;
       let idx = 0;
       function speakNext(){
         if (idx >= chunks.length) { setIsSpeaking(false); return; }
@@ -8719,7 +8708,7 @@
                 e('span', {className:'dl-plan-pace-label', key:'l'}, 'Your pace'),
                 e('span', {className:'dl-plan-pace-val', key:'v'}, len + ' days \u00b7 ' + Math.max(1, Math.ceil(total / len)) + '/day')
               ]),
-              e('input', {type:'range', min:String(minDays), max:String(maxDays), step:'1', value:len, onChange: ev => setPlanDays(parseInt(ev.target.value,10)), className:'dl-voice-range', key:'r'}),
+              e('input', {type:'range', min:String(minDays), max:String(maxDays), step:'1', value:len, onChange: ev => setPlanDays(parseInt(ev.target.value,10)), className:'dl-range', key:'r'}),
               e('div', {className:'dl-plan-pace-hint', key:'h'}, 'Recommended: ' + plan.length + ' days. Slower is fine \u2014 depth beats speed.')
             ]),
 
@@ -8939,21 +8928,6 @@
           ]);
         })),
 
-        e('div', {className:'dl-section-title', key:'voicelabel'}, [String.fromCodePoint(0x1F50A), ' Read-aloud voice']),
-        e('div', {className:'dl-voice-card', key:'voicecard'}, [
-          e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'note'}, 'Voices come from your device \u2014 try a few to find the one you like best.'),
-          e('select', {className:'dl-voice-select', value: (state.voiceName || ''), onChange: ev => persist({ ...state, voiceName: ev.target.value || null }), key:'sel'},
-            [e('option', {value:'', key:'auto'}, 'Automatic (best available)')].concat(
-              englishVoices().map(v => e('option', {value:v.name, key:v.name}, v.name))
-            )
-          ),
-          e('div', {className:'dl-voice-speed-row', key:'speed'}, [
-            e('span', {className:'dl-voice-speed-label', key:'l'}, 'Speed'),
-            e('input', {type:'range', min:'0.6', max:'1.2', step:'0.02', value:(state.voiceRate || 0.86), onChange: ev => persist({ ...state, voiceRate: parseFloat(ev.target.value) }), className:'dl-voice-range', key:'r'}),
-            e('span', {className:'dl-voice-speed-val', key:'v'}, (state.voiceRate || 0.86).toFixed(2) + 'x')
-          ]),
-          e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), style:{marginBottom:0}, onClick:()=>toggleSpeak('The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.'), key:'test'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Test this voice'])
-        ]),
 
         e('div', {className:'dl-section-title', style:{marginTop:'22px'}, key:'rlabel'}, [String.fromCodePoint(0x1F4DD), ' Your reflections']),
         state.reflections.length === 0
