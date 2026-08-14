@@ -1474,6 +1474,9 @@
     const [showContactBox, setShowContactBox] = React.useState(false);
     const [inviteCopied, setInviteCopied] = React.useState(false);
     const [newFriendMsg, setNewFriendMsg] = React.useState('');
+    const [browsingType, setBrowsingType] = React.useState(null);
+    const [roomSearch, setRoomSearch] = React.useState('');
+    const [typeRooms, setTypeRooms] = React.useState([]);
     const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
@@ -1833,6 +1836,34 @@
       setContactBusy(false);
     }
 
+    // If someone opened a room invite link, put them in that exact room
+    React.useEffect(() => {
+      if (!sb || !user) return;
+      let code = '';
+      try {
+        const params = new URLSearchParams(window.location.search);
+        code = (params.get('room') || '').trim().toUpperCase();
+      } catch (ex) {}
+      if (!code) return;
+      (async () => {
+        try {
+          const { data: g } = await sb.from('groups').select('*').eq('join_code', code).maybeSingle();
+          if (!g) return;
+          const full = (g.member_count || 0) >= (g.capacity || 75);
+          const alreadyIn = myGroups.some(x => x.id === g.id);
+          if (full && !alreadyIn) {
+            setSocialMsg('That room just filled up \u2014 joining another one.');
+            setTab('community');
+            joinRoomType(g.room_type || g.join_code);
+          } else {
+            await joinGroupDirect(g.id);
+            setTab('community');
+          }
+          try { window.history.replaceState({}, '', window.location.pathname); } catch (ex) {}
+        } catch (ex) {}
+      })();
+    }, [user && user.id, myGroups.length]);
+
     // If someone arrived via an invite link, connect them to whoever shared it
     React.useEffect(() => {
       if (!sb || !user || !myProfile) return;
@@ -2029,29 +2060,94 @@
       { code:'DAILY1', name:'Daily Encouragement', desc:'Share a verse or a word that carried you today.', icon:'\u2600\ufe0f' }
     ];
 
+    const ROOM_CAP = 75;
+
     async function loadPublicGroups(){
       if (!sb || !user) return;
       try {
-        const { data: gs, error } = await sb.from('groups').select('*').eq('is_public', true).order('created_at', { ascending: true });
+        const { data: gs, error } = await sb.from('groups').select('*').eq('is_public', true).order('room_number', { ascending: true });
         if (error) throw error;
         let rooms = gs || [];
-        // If the standard rooms are missing, create them so they always exist.
-        const have = new Set(rooms.map(r => r.join_code));
-        const missing = DEFAULT_ROOMS.filter(r => !have.has(r.code));
+        // Make sure the first copy of each room type exists
+        const haveTypes = new Set(rooms.map(r => r.room_type || r.join_code));
+        const missing = DEFAULT_ROOMS.filter(r => !haveTypes.has(r.code));
         if (missing.length) {
           const toAdd = missing.map(r => ({
             name: r.name, description: r.desc, join_code: r.code,
+            room_type: r.code, room_number: 1, capacity: ROOM_CAP,
             is_public: true, owner_id: user.id
           }));
           const { data: created } = await sb.from('groups').insert(toAdd).select();
           if (created && created.length) rooms = rooms.concat(created);
         }
         const keep = new Set(DEFAULT_ROOMS.map(r => r.code));
-        setPublicGroups(rooms.filter(r => keep.has(r.join_code)));
-        setSocialMsg('');
+        setPublicGroups(rooms.filter(r => keep.has(r.room_type || r.join_code)));
       } catch (ex) {
         setPublicGroups([]);
         setSocialMsg('Could not load rooms: ' + (ex && ex.message ? ex.message : 'unknown'));
+      }
+    }
+
+    async function loadTypeRooms(type){
+      if (!sb || !user) return;
+      try {
+        const { data } = await sb.from('groups').select('*')
+          .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
+        setTypeRooms(data || []);
+      } catch (ex) { setTypeRooms([]); }
+    }
+
+    async function openRoomBrowser(type){
+      setBrowsingType(type);
+      setRoomSearch('');
+      await loadTypeRooms(type);
+    }
+
+    // One card per room type, with everyone across all its copies counted
+    function publicRoomTypes(){
+      const byType = {};
+      publicGroups.forEach(g => {
+        const t = g.room_type || g.join_code;
+        if (!byType[t]) byType[t] = { type: t, name: g.name, description: g.description, rooms: [], total: 0 };
+        byType[t].rooms.push(g);
+        byType[t].total += (g.member_count || 0);
+      });
+      // Keep them in the order we defined
+      return DEFAULT_ROOMS.map(d => byType[d.code]).filter(Boolean);
+    }
+
+    // Which copy am I already in, if any?
+    function myRoomForType(type){
+      return myGroups.find(g => (g.room_type || g.join_code) === type);
+    }
+
+    // Join a room type: slot into a copy with space, or open a fresh one
+    async function joinRoomType(type){
+      if (!sb || !user) return;
+      const mine = myRoomForType(type);
+      if (mine) { setOpenGroup(mine.id); return; }
+      try {
+        const { data: all } = await sb.from('groups').select('*')
+          .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
+        const rooms = all || [];
+        const open = rooms.find(r => (r.member_count || 0) < (r.capacity || ROOM_CAP));
+        if (open) { await joinGroupDirect(open.id); return; }
+
+        // Every copy is full - open the next one
+        const def = DEFAULT_ROOMS.find(d => d.code === type);
+        const nextNum = rooms.length ? Math.max(...rooms.map(r => r.room_number || 1)) + 1 : 1;
+        const { data: created, error } = await sb.from('groups').insert({
+          name: (def ? def.name : (rooms[0] ? rooms[0].name : 'Room')),
+          description: def ? def.desc : (rooms[0] ? rooms[0].description : ''),
+          join_code: type + '-' + nextNum,
+          room_type: type, room_number: nextNum, capacity: ROOM_CAP,
+          is_public: true, owner_id: user.id
+        }).select().maybeSingle();
+        if (error) throw error;
+        await joinGroupDirect(created.id);
+        loadPublicGroups();
+      } catch (ex) {
+        setSocialMsg('Could not join: ' + (ex && ex.message ? ex.message : 'unknown'));
       }
     }
 
@@ -3182,10 +3278,27 @@
                 e('button', {className:'dl-chat-back', onClick:()=>setOpenGroup(null), key:'back'}, String.fromCodePoint(0x2039)),
                 e('div', {className:'dl-chat-head-icon', key:'ic'}, g.is_public ? String.fromCodePoint(0x1F30D) : String.fromCodePoint(0x1F512)),
                 e('div', {style:{flex:1, minWidth:0}, key:'t'}, [
-                  e('div', {className:'dl-chat-title', key:'n'}, g.name),
-                  e('div', {className:'dl-chat-sub', key:'s'}, (g.member_count || groupMembers.length || 0) + ' members' + (g.is_public ? '' : ' \u00b7 Code ' + g.join_code))
-                ])
+                  e('div', {className:'dl-chat-title', key:'n'}, [
+                    g.name,
+                    (g.room_number && g.room_number > 1) ? e('span', {className:'dl-room-num', key:'rn'}, ' #' + g.room_number) : null
+                  ]),
+                  e('div', {className:'dl-chat-sub', key:'s'}, (() => {
+                    const count = g.member_count || groupMembers.length || 0;
+                    const cap = g.capacity || 75;
+                    if (!g.is_public) return count + ' members \u00b7 Code ' + g.join_code;
+                    const left = Math.max(0, cap - count);
+                    return count + ' of ' + cap + (left > 0 ? ' \u00b7 ' + left + ' spots left' : ' \u00b7 full');
+                  })())
+                ]),
+                (isMember && (g.member_count || 0) < (g.capacity || 75)) ? e('button', {className:'dl-room-invite', title:'Invite friends', onClick:()=>{
+                  const link = 'https://stepstofaith.com/?room=' + g.join_code;
+                  try {
+                    if (navigator.share) { navigator.share({ title: g.name, text: 'Join me in ' + g.name + ' on Steps to Faith', url: link }); }
+                    else { navigator.clipboard.writeText(link); setSocialMsg('Room link copied!'); setTimeout(()=>setSocialMsg(''), 2500); }
+                  } catch (ex) { try { navigator.clipboard.writeText(link); setSocialMsg('Room link copied!'); setTimeout(()=>setSocialMsg(''),2500); } catch (e2) {} }
+                }, key:'inv'}, String.fromCodePoint(0x1F465)) : null
               ]),
+              socialMsg ? e('div', {className:'dl-social-msg', key:'rmsg'}, socialMsg) : null,
 
               e('div', {className:'dl-chat-scroll', key:'scroll'},
                 chatMessages.length === 0
@@ -3366,7 +3479,10 @@
               ...myGroups.map(g => e('button', {className:'dl-gm-row', onClick:()=>setOpenGroup(g.id), key:g.id}, [
                 e('span', {className:'dl-gm-avatar', key:'i'}, roomIcon(g)),
                 e('span', {className:'dl-gm-mid', key:'t'}, [
-                  e('div', {className:'dl-gm-name', key:'n'}, g.name),
+                  e('div', {className:'dl-gm-name', key:'n'}, [
+                    g.name,
+                    (g.room_number && g.room_number > 1) ? e('span', {className:'dl-room-num', key:'rn'}, ' #' + g.room_number) : null
+                  ]),
                   e('div', {className:'dl-gm-preview', key:'d'}, g.description || 'Tap to open')
                 ]),
                 e('span', {className:'dl-gm-meta', key:'m'}, [
@@ -3375,26 +3491,86 @@
                 ])
               ])),
 
+              browsingType ? (() => {
+                const def = DEFAULT_ROOMS.find(d => d.code === browsingType);
+                const q = roomSearch.trim().toLowerCase();
+                const list = typeRooms.filter(r => {
+                  if (!q) return true;
+                  return String(r.room_number).includes(q) || (r.join_code || '').toLowerCase().includes(q);
+                });
+                return e('div', {key:'browser'}, [
+                  e('button', {className:'dl-topic-back', onClick:()=>setBrowsingType(null), key:'back'}, String.fromCodePoint(0x2190) + ' All rooms'),
+                  e('div', {className:'dl-browse-head', key:'bh'}, [
+                    e('div', {className:'dl-browse-icon', key:'i'}, def ? def.icon : String.fromCodePoint(0x1F30D)),
+                    e('div', {style:{flex:1}, key:'t'}, [
+                      e('div', {className:'dl-browse-title', key:'n'}, def ? def.name : 'Rooms'),
+                      e('div', {className:'dl-browse-sub', key:'s'}, typeRooms.length + (typeRooms.length === 1 ? ' room open' : ' rooms open'))
+                    ])
+                  ]),
+                  e('button', {className:'dl-quickjoin', onClick:()=>joinRoomType(browsingType), key:'qj'}, [
+                    e('span', {key:'i'}, String.fromCodePoint(0x26A1)), ' Quick join \u2014 put me anywhere'
+                  ]),
+                  e('div', {className:'dl-search-wrap', style:{marginBottom:'12px'}, key:'search'}, [
+                    e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
+                    e('input', {className:'dl-people-search', value:roomSearch, placeholder:'Search by room number\u2026', onChange: ev=>setRoomSearch(ev.target.value), key:'in'})
+                  ]),
+                  list.length === 0
+                    ? e('div', {className:'dl-empty-note', key:'none'}, 'No rooms match that.')
+                    : e('div', {key:'rlist'}, list.map(r => {
+                        const count = r.member_count || 0;
+                        const cap = r.capacity || 75;
+                        const full = count >= cap;
+                        const inIt = myGroups.some(m => m.id === r.id);
+                        const pct = Math.min(100, Math.round((count / cap) * 100));
+                        return e('div', {className:'dl-roomcard' + (full ? ' full' : ''), key:r.id}, [
+                          e('div', {className:'dl-roomcard-top', key:'t'}, [
+                            e('div', {className:'dl-roomcard-id', key:'id'}, '#' + (r.room_number || 1)),
+                            e('div', {style:{flex:1}, key:'m'}, [
+                              e('div', {className:'dl-roomcard-count', key:'c'}, count + ' / ' + cap + ' people'),
+                              e('div', {className:'dl-roomcard-bar', key:'b'}, e('div', {className:'dl-roomcard-fill' + (pct > 85 ? ' hot' : ''), style:{width: pct + '%'}}))
+                            ]),
+                            inIt
+                              ? e('button', {className:'dl-roomcard-btn in', onClick:()=>setOpenGroup(r.id), key:'o'}, 'Open')
+                              : full
+                              ? e('span', {className:'dl-roomcard-full', key:'f'}, 'Full')
+                              : e('button', {className:'dl-roomcard-btn', onClick:()=>joinGroupDirect(r.id), key:'j'}, 'Join')
+                          ])
+                        ]);
+                      })),
+                  e('button', {className:'dl-newroom-btn', onClick:()=>joinRoomType(browsingType), key:'new'},
+                    String.fromCodePoint(0x2795) + ' Open a new room')
+                ]);
+              })() : [
+
               e('div', {className:'dl-gm-label', key:'publbl'}, 'Open to everyone'),
-              publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).length === 0
-                ? e('div', {className:'dl-empty-note', key:'nopub'}, myGroups.length ? 'You\u2019re in every public room.' : 'Loading rooms\u2026')
-                : e('div', {key:'publist'}, publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).map(g =>
-                    e('div', {className:'dl-bigroom', key:g.id}, [
-                      e('button', {className:'dl-bigroom-tap', onClick:()=>setOpenGroup(g.id), key:'o'}, [
-                        e('div', {className:'dl-bigroom-icon', key:'i'}, roomIcon(g)),
-                        e('div', {className:'dl-bigroom-name', key:'n'}, g.name),
-                        e('div', {className:'dl-bigroom-desc', key:'d'}, g.description),
+              publicRoomTypes().length === 0
+                ? e('div', {className:'dl-empty-note', key:'nopub'}, 'Loading rooms\u2026')
+                : e('div', {key:'publist'}, publicRoomTypes().map(rt => {
+                    const mine = myRoomForType(rt.type);
+                    const def = DEFAULT_ROOMS.find(d => d.code === rt.type);
+                    return e('div', {className:'dl-bigroom', key:rt.type}, [
+                      e('button', {className:'dl-bigroom-tap', onClick:()=>openRoomBrowser(rt.type), key:'o'}, [
+                        e('div', {className:'dl-bigroom-icon', key:'i'}, def ? def.icon : String.fromCodePoint(0x1F30D)),
+                        e('div', {className:'dl-bigroom-name', key:'n'}, rt.name),
+                        e('div', {className:'dl-bigroom-desc', key:'d'}, rt.description),
                         e('div', {className:'dl-bigroom-members', key:'m'}, [
                           e('span', {className:'dl-bigroom-dot', key:'dt'}),
-                          (g.member_count || 0) + (g.member_count === 1 ? ' person here' : ' people here')
+                          rt.total + (rt.total === 1 ? ' person here' : ' people here'),
+                          rt.rooms.length > 1 ? e('span', {className:'dl-bigroom-rooms', key:'r'}, ' \u00b7 ' + rt.rooms.length + ' rooms') : null
                         ])
                       ]),
-                      e('button', {className:'dl-bigroom-join', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join room')
-                    ])
-                  )),
+                      e('div', {className:'dl-bigroom-actions', key:'a'}, [
+                        e('button', {className:'dl-bigroom-join' + (mine ? ' inroom' : ''), onClick:()=>joinRoomType(rt.type), key:'j'},
+                          mine ? 'Open chat' : 'Quick join'),
+                        e('button', {className:'dl-bigroom-browse', onClick:()=>openRoomBrowser(rt.type), key:'b'}, 'Browse rooms')
+                      ])
+                    ]);
+                  })),
 
-              e('div', {className:'dl-gm-label', key:'privlbl'}, 'Private rooms'),
-              e('div', {className:'dl-gm-private', key:'privbox'}, [
+              ],
+
+              !browsingType ? e('div', {className:'dl-gm-label', key:'privlbl'}, 'Private rooms') : null,
+              !browsingType ? e('div', {className:'dl-gm-private', key:'privbox'}, [
                 e('div', {className:'dl-social-row', style:{marginBottom:'12px'}, key:'join'}, [
                   e('input', {className:'dl-social-input', value:groupCodeInput, placeholder:'Have a code? Enter it', maxLength:6, onChange: ev=>setGroupCodeInput(ev.target.value.toUpperCase()), key:'i'}),
                   e('button', {className:'dl-social-btn', onClick:()=>joinGroupByCode(groupCodeInput), key:'b'}, 'Join')
@@ -3409,7 +3585,7 @@
                       ])
                     ])
                   : e('button', {className:'dl-gm-newbtn', onClick:()=>setShowCreateRoom(true), key:'new'}, [String.fromCodePoint(0x2795), ' Create a private room'])
-              ])
+              ]) : null
             ]) : null
           ])
       ]) : null,

@@ -758,3 +758,32 @@
   .dl-msg-row.grouped { margin-top: -10px; }
   .dl-msg-time { font-size: 10.5px; margin-top: 4px; opacity: 0.75; }
   .dl-chat-day { margin: 14px 0 6px; }
+
+  .dl-room-num { font-size: 0.8em; font-weight: 800; color: var(--gray); }
+  .dl-bigroom-rooms { color: var(--gray); font-weight: 700; }
+  .dl-bigroom-join.inroom { background: #f1e7ff; color: #4a2380; border-bottom-color: #c9a0ea; }
+  .dl-room-invite { width: 40px; height: 40px; flex-shrink: 0; border: none; border-radius: 50%; background: #f1e7ff; font-size: 17px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .dl-room-invite:active { transform: scale(0.94); }
+
+  /* Room browser */
+  .dl-browse-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .dl-browse-icon { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #a56cf0, #7e3ff2); display: flex; align-items: center; justify-content: center; font-size: 25px; }
+  .dl-browse-title { font-size: 19px; font-weight: 800; color: var(--ink); }
+  .dl-browse-sub { font-size: 12.5px; font-weight: 700; color: var(--gray); }
+  .dl-quickjoin { width: 100%; background: var(--teal); color: #fff; border: none; border-bottom: 4px solid var(--teal-dark); border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; margin-bottom: 14px; }
+  .dl-quickjoin:active { transform: translateY(2px); border-bottom-width: 2px; }
+  .dl-roomcard { background: #fff; border-radius: 14px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  .dl-roomcard.full { opacity: 0.6; }
+  .dl-roomcard-top { display: flex; align-items: center; gap: 14px; }
+  .dl-roomcard-id { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; color: var(--purple-dark); min-width: 42px; }
+  .dl-roomcard-count { font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .dl-roomcard-bar { height: 7px; background: #eee; border-radius: 10px; overflow: hidden; }
+  .dl-roomcard-fill { height: 100%; background: var(--teal); border-radius: 10px; transition: width 0.3s; }
+  .dl-roomcard-fill.hot { background: var(--gold); }
+  .dl-roomcard-btn { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 9px 18px; font-size: 13px; font-weight: 800; cursor: pointer; flex-shrink: 0; }
+  .dl-roomcard-btn.in { background: #f1e7ff; color: #4a2380; }
+  .dl-roomcard-full { font-size: 12.5px; font-weight: 800; color: var(--gray); flex-shrink: 0; }
+  .dl-newroom-btn { width: 100%; background: #f1e7ff; color: #4a2380; border: none; border-radius: 12px; padding: 13px; font-weight: 800; font-size: 13.5px; cursor: pointer; margin-top: 4px; }
+  .dl-bigroom-actions { display: flex; gap: 8px; }
+  .dl-bigroom-actions .dl-bigroom-join { flex: 1; }
+  .dl-bigroom-browse { flex: 1; background: #f5f5f7; color: var(--ink); border: none; border-bottom: 4px solid #ddd; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; }
