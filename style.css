@@ -700,3 +700,19 @@
   .dl-locked-icon { font-size: 20px; opacity: 0.7; }
   .dl-locked-title { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.85); }
   .dl-locked-sub { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); }
+
+  .dl-person-reason { font-size: 11px; font-weight: 800; color: var(--teal-dark); margin: 1px 0; }
+  .dl-setname-nudge { display: flex; align-items: center; gap: 12px; background: rgba(255,200,0,0.15); border: 1px solid rgba(255,200,0,0.35); border-radius: 14px; padding: 13px 14px; margin-bottom: 14px; cursor: pointer; position: relative; z-index: 1; }
+  .dl-setname-icon { font-size: 20px; }
+  .dl-setname-title { font-size: 14px; font-weight: 800; color: #fff; }
+  .dl-setname-sub { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); line-height: 1.4; }
+  .dl-setname-cta { background: var(--gold); color: #4a3200; font-size: 12px; font-weight: 800; padding: 7px 14px; border-radius: 20px; }
+
+  /* People you may know: invite + contacts */
+  .dl-grow-row { display: flex; gap: 10px; margin-bottom: 12px; }
+  .dl-grow-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 14px; padding: 14px 8px; font-size: 12.5px; font-weight: 800; color: var(--ink); cursor: pointer; text-align: center; }
+  .dl-grow-btn:active { transform: translateY(1px); border-bottom-width: 2px; }
+  .dl-grow-icon { font-size: 22px; }
+  .dl-contact-box { background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+  .dl-contact-note { font-size: 12px; line-height: 1.5; color: var(--gray); margin-bottom: 10px; }
+  .dl-edit-hint { font-size: 11.5px; line-height: 1.45; color: var(--gray); margin: -4px 0 6px; }

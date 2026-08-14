@@ -1467,6 +1467,12 @@
     const [nameGateInput, setNameGateInput] = React.useState('');
     const [nameGateErr, setNameGateErr] = React.useState('');
     const [showCreateRoom, setShowCreateRoom] = React.useState(false);
+    const [contactMatches, setContactMatches] = React.useState([]);
+    const [contactMsg, setContactMsg] = React.useState('');
+    const [contactBusy, setContactBusy] = React.useState(false);
+    const [contactPaste, setContactPaste] = React.useState('');
+    const [showContactBox, setShowContactBox] = React.useState(false);
+    const [inviteCopied, setInviteCopied] = React.useState(false);
     const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
@@ -1477,6 +1483,8 @@
     const [editName, setEditName] = React.useState('');
     const [editAvatar, setEditAvatar] = React.useState('\ud83d\udcd6');
     const [editVerse, setEditVerse] = React.useState('');
+    const [editChurch, setEditChurch] = React.useState('');
+    const [editCity, setEditCity] = React.useState('');
     const [openStudyBook, setOpenStudyBook] = React.useState(null);
     const [studyStep, setStudyStep] = React.useState('prayer');
     const [editingTestimony, setEditingTestimony] = React.useState(false);
@@ -1585,7 +1593,7 @@
 
     React.useEffect(() => {
       if (sb && user && friends !== null) loadSuggested();
-    }, [friends.length, outgoingReqs.length, incomingReqs.length]);
+    }, [friends.length, outgoingReqs.length, incomingReqs.length, myGroups.length]);
 
     function dismissWhatsNew(){
       setShowWhatsNew(false);
@@ -1660,6 +1668,8 @@
           display_name: bestDisplayName(s),
           avatar: (s.profile && s.profile.avatar) || '\ud83d\udcd6',
           verse: (s.profile && s.profile.verse) || '',
+          church: (s.profile && s.profile.church) || '',
+          city: (s.profile && s.profile.city) || '',
           lessons_done: s.completed ? s.completed.length : 0,
           checkpoints_done: s.completedCheckpoints ? s.completedCheckpoints.length : 0,
           daily_streak: s.dailyStreak || 0,
@@ -1672,6 +1682,11 @@
         }
         await sb.from('profiles').upsert(row);
         setMyProfile(row);
+        // Store a one-way hash of the email so contact matching can work
+        if (user && user.email) {
+          const h = await hashEmail(user.email);
+          if (h) { try { await sb.from('profiles').update({ email_hash: h }).eq('id', user.id); } catch (ex) {} }
+        }
       } catch (ex) { /* non-fatal */ }
     }
 
@@ -1727,19 +1742,147 @@
       setSocialLoading(false);
     }
 
+    // One-way hash so we can match contacts without ever sending real emails
+    async function hashEmail(email){
+      try {
+        const norm = String(email || '').trim().toLowerCase();
+        if (!norm) return null;
+        const buf = new TextEncoder().encode(norm);
+        const digest = await crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2,'0')).join('');
+      } catch (ex) { return null; }
+    }
+
+    async function matchContacts(){
+      if (!sb || !user) return;
+      setContactMsg('');
+      setContactBusy(true);
+      try {
+        let emails = [];
+        if (navigator.contacts && navigator.contacts.select) {
+          const picked = await navigator.contacts.select(['email'], { multiple: true });
+          picked.forEach(c => (c.email || []).forEach(em => emails.push(em)));
+        } else {
+          const typed = contactPaste.split(/[\s,;]+/).filter(x => x.includes('@'));
+          emails = typed;
+        }
+        if (!emails.length) { setContactMsg('No email addresses found to check.'); setContactBusy(false); return; }
+        const hashes = (await Promise.all(emails.slice(0, 500).map(hashEmail))).filter(Boolean);
+        if (!hashes.length) { setContactMsg('Could not read those contacts.'); setContactBusy(false); return; }
+        const { data } = await sb.from('profiles').select('*').in('email_hash', hashes).limit(50);
+        const friendIds = new Set(friends.map(f => f.id));
+        const found = (data || []).filter(p => p.id !== user.id && !friendIds.has(p.id));
+        setContactMatches(found);
+        setContactMsg(found.length ? found.length + ' of your contacts are here!' : 'None of those contacts have joined yet.');
+      } catch (ex) {
+        setContactMsg('Contact check cancelled.');
+      }
+      setContactBusy(false);
+    }
+
+    // If someone arrived via an invite link, connect them to whoever shared it
+    React.useEffect(() => {
+      if (!sb || !user || !myProfile) return;
+      let code = '';
+      try {
+        const params = new URLSearchParams(window.location.search);
+        code = (params.get('invite') || '').trim().toUpperCase();
+      } catch (ex) {}
+      if (!code || code === myProfile.friend_code) return;
+      (async () => {
+        try {
+          const { data: inviter } = await sb.from('profiles').select('*').eq('friend_code', code).maybeSingle();
+          if (!inviter || inviter.id === user.id) return;
+          await sb.from('friend_requests').upsert(
+            { from_id: user.id, to_id: inviter.id, status: 'pending' },
+            { onConflict: 'from_id,to_id' }
+          );
+          setSocialMsg('Friend request sent to ' + inviter.display_name + '!');
+          setTab('community');
+          loadRequests();
+          try { window.history.replaceState({}, '', window.location.pathname); } catch (ex) {}
+        } catch (ex) {}
+      })();
+    }, [user && user.id, myProfile && myProfile.friend_code]);
+
     async function loadSuggested(){
       if (!sb || !user) return;
       try {
-        const { data } = await sb.from('profiles')
-          .select('*').order('lessons_done', { ascending: false }).limit(30);
         const friendIds = new Set(friends.map(f => f.id));
         const pendingIds = new Set([
           ...outgoingReqs.map(r => r.to_id),
           ...incomingReqs.map(r => r.from_id)
         ]);
-        setSuggested((data || []).filter(p =>
-          p.id !== user.id && !friendIds.has(p.id) && !pendingIds.has(p.id)
-        ).slice(0, 8));
+        const scores = {};   // candidateId -> score
+        const reasons = {};  // candidateId -> why we're suggesting them
+
+        function bump(id, points, reason){
+          if (!id || id === user.id || friendIds.has(id) || pendingIds.has(id)) return;
+          scores[id] = (scores[id] || 0) + points;
+          if (!reasons[id] || points > (reasons[id].points || 0)) reasons[id] = { text: reason, points: points };
+        }
+
+        // 1) Friends of your friends - the strongest signal
+        if (friendIds.size) {
+          const { data: fof } = await sb.from('friendships')
+            .select('user_id, friend_id').in('user_id', Array.from(friendIds));
+          const mutualCount = {};
+          (fof || []).forEach(link => {
+            if (link.friend_id === user.id) return;
+            mutualCount[link.friend_id] = (mutualCount[link.friend_id] || 0) + 1;
+          });
+          Object.keys(mutualCount).forEach(id => {
+            const n = mutualCount[id];
+            bump(id, 100 + n * 10, n === 1 ? '1 mutual friend' : n + ' mutual friends');
+          });
+        }
+
+        // 2) People in the same rooms as you
+        const myGroupIds = myGroups.map(g => g.id);
+        if (myGroupIds.length) {
+          const { data: mates } = await sb.from('group_members')
+            .select('user_id, group_id').in('group_id', myGroupIds);
+          const shared = {};
+          (mates || []).forEach(m => {
+            if (m.user_id === user.id) return;
+            shared[m.user_id] = (shared[m.user_id] || 0) + 1;
+          });
+          Object.keys(shared).forEach(id => {
+            const gname = myGroups[0] ? myGroups[0].name : 'a room';
+            bump(id, 50 + shared[id] * 5, shared[id] > 1 ? 'In ' + shared[id] + ' of your rooms' : 'In ' + gname);
+          });
+        }
+
+        // 3) Same church, then same city - strongest real-world signal for a faith app
+        const myChurch = (state && state.profile && state.profile.church || '').trim();
+        const myCity = (state && state.profile && state.profile.city || '').trim();
+        if (myChurch) {
+          const { data: same } = await sb.from('profiles').select('*').ilike('church', myChurch).limit(30);
+          (same || []).forEach(p => bump(p.id, 150, 'Goes to ' + p.church));
+        }
+        if (myCity) {
+          const { data: nearby } = await sb.from('profiles').select('*').ilike('city', myCity).limit(30);
+          (nearby || []).forEach(p => bump(p.id, 60, 'Lives in ' + p.city));
+        }
+
+        // 4) People at a similar point in their reading
+        const myLessons = (state && state.completed) ? state.completed.length : 0;
+        const { data: near } = await sb.from('profiles')
+          .select('*')
+          .gte('lessons_done', Math.max(0, myLessons - 25))
+          .lte('lessons_done', myLessons + 25)
+          .limit(40);
+        (near || []).forEach(p => bump(p.id, 20, 'Reading at a similar pace'));
+
+        const ids = Object.keys(scores);
+        if (!ids.length) { setSuggested([]); return; }
+
+        const { data: profs } = await sb.from('profiles').select('*').in('id', ids.slice(0, 60));
+        const ranked = (profs || [])
+          .map(p => ({ ...p, _score: scores[p.id] || 0, _reason: (reasons[p.id] || {}).text || '' }))
+          .sort((a, b) => b._score - a._score)
+          .slice(0, 8);
+        setSuggested(ranked);
       } catch (ex) { setSuggested([]); }
     }
 
@@ -1805,6 +1948,7 @@
           e('span', {className:'dl-person-avatar', key:'a'}, p.avatar || String.fromCodePoint(0x1F4D6)),
           e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
             e('div', {className:'dl-person-name', key:'nm'}, p.display_name),
+            p._reason ? e('div', {className:'dl-person-reason', key:'r'}, p._reason) : null,
             e('div', {className:'dl-person-sub', key:'s'}, (p.lessons_done||0) + ' lessons \u00b7 ' + (p.daily_streak||0) + ' day streak')
           ])
         ]),
@@ -2238,14 +2382,21 @@
       persist({ ...state, claimedQuests: [...state.claimedQuests, q.id], gems: state.gems + q.reward });
     }
 
-    function saveProfile(name, avatar, verse){
-      persist({ ...state, profile: { name: name.trim() || 'Your name', avatar, verse: verse.trim() || DEFAULT_VERSE } });
+    function saveProfile(name, avatar, verse, church, city){
+      persist({ ...state, profile: {
+        name: name.trim() || 'Your name', avatar,
+        verse: verse.trim() || DEFAULT_VERSE,
+        church: (church || '').trim(),
+        city: (city || '').trim()
+      } });
     }
 
     function openEditProfile(){
       setEditName(state.profile.name);
       setEditAvatar(state.profile.avatar);
       setEditVerse(state.profile.verse || DEFAULT_VERSE);
+      setEditChurch(state.profile.church || '');
+      setEditCity(state.profile.city || '');
       setEditingProfile(true);
     }
 
@@ -3125,6 +3276,39 @@
                     )
               ]) : null,
 
+              (!peopleQuery.trim()) ? e('div', {key:'grow'}, [
+                e('div', {className:'dl-section-title', key:'gl'}, [String.fromCodePoint(0x1F517), ' Find people you know']),
+                e('div', {className:'dl-grow-row', key:'grow2'}, [
+                  e('button', {className:'dl-grow-btn', onClick:()=>{
+                    const link = 'https://stepstofaith.com/?invite=' + ((myProfile && myProfile.friend_code) || '');
+                    try {
+                      if (navigator.share) { navigator.share({ title:'Steps to Faith', text:'Walk through the Bible with me', url: link }); }
+                      else { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false), 2500); }
+                    } catch (ex) { try { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false),2500); } catch (e2) {} }
+                  }, key:'inv'}, [
+                    e('span', {className:'dl-grow-icon', key:'i'}, String.fromCodePoint(0x1F4E4)),
+                    e('span', {key:'t'}, inviteCopied ? 'Link copied!' : 'Invite a friend')
+                  ]),
+                  e('button', {className:'dl-grow-btn', onClick:()=>{
+                    if (navigator.contacts && navigator.contacts.select) matchContacts();
+                    else setShowContactBox(!showContactBox);
+                  }, key:'con'}, [
+                    e('span', {className:'dl-grow-icon', key:'i'}, String.fromCodePoint(0x1F4D2)),
+                    e('span', {key:'t'}, contactBusy ? 'Checking\u2026' : 'Check contacts')
+                  ])
+                ]),
+                showContactBox ? e('div', {className:'dl-contact-box', key:'cbox'}, [
+                  e('div', {className:'dl-contact-note', key:'n'}, 'Paste email addresses to see who\u2019s already here. They\u2019re scrambled before sending \u2014 we never see or store the actual addresses.'),
+                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:contactPaste, placeholder:'friend@example.com, another@example.com', onChange: ev=>setContactPaste(ev.target.value), key:'ta'}),
+                  e('button', {className:'dl-social-btn', style:{marginTop:'10px', width:'100%'}, disabled:contactBusy, onClick: matchContacts, key:'go'}, contactBusy ? 'Checking\u2026' : 'Find my contacts')
+                ]) : null,
+                contactMsg ? e('div', {className:'dl-social-msg', key:'cm'}, contactMsg) : null,
+                contactMatches.length > 0 ? e('div', {key:'cmatches'}, [
+                  e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x1F4D2), ' From your contacts']),
+                  ...contactMatches.map(p => personRow(p, 'ct'))
+                ]) : null
+              ]) : null,
+
               (!peopleQuery.trim() && suggested.length > 0) ? e('div', {key:'sugg'}, [
                 e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x2728), ' People you might know']),
                 ...suggested.map(p => personRow(p, 'sg'))
@@ -3198,6 +3382,14 @@
           e('div', {className:'dl-profile-verse', key:'verse'}, '\u201c' + (state.profile.verse || DEFAULT_VERSE) + '\u201d'),
           e('button', {className:'dl-profile-edit-btn', onClick: openEditProfile, key:'edit'}, 'Edit profile')
         ]),
+        needsDisplayName() ? e('div', {className:'dl-setname-nudge', onClick: openEditProfile, key:'setname'}, [
+          e('span', {className:'dl-setname-icon', key:'i'}, String.fromCodePoint(0x1F44B)),
+          e('div', {style:{flex:1}, key:'t'}, [
+            e('div', {className:'dl-setname-title', key:'a'}, 'Add your name'),
+            e('div', {className:'dl-setname-sub', key:'b'}, 'Friends search by name \u2014 set yours so they can find you.')
+          ]),
+          e('span', {className:'dl-setname-cta', key:'c'}, 'Set')
+        ]) : null,
 
         e('div', {className:'dl-account-row', key:'account'},
           user
@@ -3481,9 +3673,18 @@
             e('label', {key:'l'}, 'Your verse'),
             e('input', {value:editVerse, onChange: ev=>setEditVerse(ev.target.value), placeholder:'A verse that means something to you', key:'i'})
           ]),
+          e('div', {className:'dl-edit-field', key:'churchfield'}, [
+            e('label', {key:'l'}, 'Church (optional)'),
+            e('input', {value:editChurch, onChange: ev=>setEditChurch(ev.target.value), placeholder:'e.g. Grace Community Church', key:'i'})
+          ]),
+          e('div', {className:'dl-edit-field', key:'cityfield'}, [
+            e('label', {key:'l'}, 'City (optional)'),
+            e('input', {value:editCity, onChange: ev=>setEditCity(ev.target.value), placeholder:'e.g. Louisville', key:'i'})
+          ]),
+          e('div', {className:'dl-edit-hint', key:'hint'}, 'Church and city help connect you with people nearby. Leave blank to skip.'),
           e('div', {style:{display:'flex', gap:'10px', marginTop:'10px'}, key:'actions'}, [
             e('button', {className:'dl-continue', style:{background:'#fff', color:'var(--ink)', border:'2px solid var(--gray-light)', borderBottomWidth:'4px'}, onClick:()=>setEditingProfile(false), key:'cancel'}, 'Cancel'),
-            e('button', {className:'dl-continue', onClick:()=>{ saveProfile(editName, editAvatar, editVerse); setEditingProfile(false); }, key:'save'}, 'Save')
+            e('button', {className:'dl-continue', onClick:()=>{ saveProfile(editName, editAvatar, editVerse, editChurch, editCity); setEditingProfile(false); }, key:'save'}, 'Save')
           ])
         ])
       ) : null,
