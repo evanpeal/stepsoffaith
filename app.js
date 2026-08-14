@@ -1789,40 +1789,26 @@
       setContactMsg('');
       setContactBusy(true);
       try {
-        let numbers = [], emails = [];
+        let numbers = [];
         if (navigator.contacts && navigator.contacts.select) {
-          const props = (await navigator.contacts.getProperties()) || [];
-          const want = ['tel', 'email'].filter(p => props.includes(p));
-          const picked = await navigator.contacts.select(want.length ? want : ['tel'], { multiple: true });
-          picked.forEach(cn => {
-            (cn.tel || []).forEach(t => numbers.push(t));
-            (cn.email || []).forEach(em => emails.push(em));
-          });
+          const picked = await navigator.contacts.select(['tel'], { multiple: true });
+          picked.forEach(cn => (cn.tel || []).forEach(t => numbers.push(t)));
         } else {
-          contactPaste.split(/[\s,;]+/).forEach(v => {
-            if (v.includes('@')) emails.push(v);
-            else if (normalizePhone(v)) numbers.push(v);
-          });
+          contactPaste.split(/[\s,;]+/).forEach(v => { if (normalizePhone(v)) numbers.push(v); });
         }
-        if (!numbers.length && !emails.length) {
-          setContactMsg('No contacts found to check.'); setContactBusy(false); return;
+        if (!numbers.length) {
+          setContactMsg('No phone numbers found to check.'); setContactBusy(false); return;
         }
         const phoneHashes = (await Promise.all(numbers.slice(0,500).map(hashPhone))).filter(Boolean);
-        const emailHashes = (await Promise.all(emails.slice(0,500).map(hashEmail))).filter(Boolean);
+        if (!phoneHashes.length) { setContactMsg('Could not read those numbers.'); setContactBusy(false); return; }
 
-        const found = {};
-        if (phoneHashes.length) {
-          const { data } = await sb.from('profiles').select('*').in('phone_hash', phoneHashes).limit(50);
-          (data || []).forEach(p => { found[p.id] = p; });
-        }
-        if (emailHashes.length) {
-          const { data } = await sb.from('profiles').select('*').in('email_hash', emailHashes).limit(50);
-          (data || []).forEach(p => { found[p.id] = p; });
-        }
+        const { data } = await sb.from('profiles').select('*').in('phone_hash', phoneHashes).limit(50);
         const friendIds = new Set(friends.map(f => f.id));
-        const list = Object.values(found).filter(p => p.id !== user.id && !friendIds.has(p.id));
+        const list = (data || []).filter(p => p.id !== user.id && !friendIds.has(p.id));
         setContactMatches(list);
-        setContactMsg(list.length ? list.length + ' of your contacts are here!' : 'None of your contacts have joined yet.');
+        setContactMsg(list.length
+          ? list.length + (list.length === 1 ? ' of your contacts is here!' : ' of your contacts are here!')
+          : 'None of your contacts have joined yet.');
       } catch (ex) {
         setContactMsg('Contact check cancelled.');
       }
@@ -3357,8 +3343,8 @@
                   ])
                 ]),
                 showContactBox ? e('div', {className:'dl-contact-box', key:'cbox'}, [
-                  e('div', {className:'dl-contact-note', key:'n'}, 'Paste phone numbers or emails to see who\u2019s already here. They\u2019re scrambled before sending \u2014 we never see or store them.'),
-                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:contactPaste, placeholder:'555-123-4567, friend@example.com', onChange: ev=>setContactPaste(ev.target.value), key:'ta'}),
+                  e('div', {className:'dl-contact-note', key:'n'}, 'Paste phone numbers to see who\u2019s already here. They\u2019re scrambled before sending \u2014 we never see or store them.'),
+                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:contactPaste, placeholder:'555-123-4567, 555-987-6543', onChange: ev=>setContactPaste(ev.target.value), key:'ta'}),
                   e('button', {className:'dl-social-btn', style:{marginTop:'10px', width:'100%'}, disabled:contactBusy, onClick: matchContacts, key:'go'}, contactBusy ? 'Checking\u2026' : 'Find my contacts')
                 ]) : null,
                 contactMsg ? e('div', {className:'dl-social-msg', key:'cm'}, contactMsg) : null,
@@ -3446,8 +3432,8 @@
           e('div', {style:{flex:1}, key:'t'}, [
             e('div', {className:'dl-setname-title', key:'a'}, 'Connect with more people'),
             e('div', {className:'dl-setname-sub', key:'b'}, (!state.profile.church && !state.profile.phone)
-              ? 'Add your church and phone number to find people you know.'
-              : (!state.profile.church ? 'Add your church to find others who go there.' : 'Add your phone so friends can find you.'))
+              ? 'Add your phone so friends can find you \u2014 and your church (optional) to meet others who go there.'
+              : (!state.profile.church ? 'Optional: add your church to meet others who go there.' : 'Add your phone so friends can find you.'))
           ]),
           e('span', {className:'dl-setname-cta', key:'c'}, 'Add')
         ]) : null,
@@ -3743,7 +3729,7 @@
             e('input', {value:editVerse, onChange: ev=>setEditVerse(ev.target.value), placeholder:'A verse that means something to you', key:'i'})
           ]),
           e('div', {className:'dl-edit-field', key:'echurch'}, [
-            e('label', {key:'l'}, 'Church'),
+            e('label', {key:'l'}, 'Church (optional)'),
             e('input', {value:editChurch, onChange: ev=>{ setEditChurch(ev.target.value); loadChurchOptions(ev.target.value); }, placeholder:'Start typing your church\u2026', key:'i'}),
             churchOptions.length ? e('div', {className:'dl-church-opts', key:'opts'}, churchOptions.map(ch =>
               e('button', {className:'dl-church-opt', onClick:()=>{ setEditChurch(ch); setChurchOptions([]); }, key:ch}, ch)
