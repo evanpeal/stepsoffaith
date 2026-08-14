@@ -7894,6 +7894,24 @@
     const [searchQuery, setSearchQuery] = React.useState('');
     const [openTopic, setOpenTopic] = React.useState(null);
     const [planReflectDraft, setPlanReflectDraft] = React.useState('');
+    const [myProfile, setMyProfile] = React.useState(null);
+    const [friends, setFriends] = React.useState([]);
+    const [myGroups, setMyGroups] = React.useState([]);
+    const [groupMembers, setGroupMembers] = React.useState([]);
+    const [groupPrayers, setGroupPrayers] = React.useState([]);
+    const [prayedRows, setPrayedRows] = React.useState([]);
+    const [openGroup, setOpenGroup] = React.useState(null);
+    const [socialTab, setSocialTab] = React.useState('friends');
+    const [socialLoading, setSocialLoading] = React.useState(false);
+    const [socialMsg, setSocialMsg] = React.useState('');
+    const [friendCodeInput, setFriendCodeInput] = React.useState('');
+    const [groupCodeInput, setGroupCodeInput] = React.useState('');
+    const [newGroupName, setNewGroupName] = React.useState('');
+    const [newGroupDesc, setNewGroupDesc] = React.useState('');
+    const [prayerDraft, setPrayerDraft] = React.useState('');
+    const [prayerAnon, setPrayerAnon] = React.useState(false);
+    const [publicGroups, setPublicGroups] = React.useState([]);
+    const [viewingProfile, setViewingProfile] = React.useState(null);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
     const [qIndex, setQIndex] = React.useState(0);
@@ -7991,6 +8009,18 @@
       return () => { if (listener && listener.subscription) listener.subscription.unsubscribe(); };
     }, []);
 
+    React.useEffect(() => {
+      if (!sb || !user || !state) return;
+      syncPublicProfile(state);
+      loadFriends();
+      loadGroups();
+      loadPublicGroups();
+    }, [user && user.id, state === null]);
+
+    React.useEffect(() => {
+      if (openGroup) loadGroupDetail(openGroup);
+    }, [openGroup]);
+
     async function load(currentUser){
       if (sb && currentUser) {
         try {
@@ -8017,9 +8047,221 @@
     async function persist(next){
       setState(next);
       if (sb && user) {
-        try { await sb.from('progress').upsert({ id: user.id, data: next, updated_at: new Date().toISOString() }); return; } catch (ex) {}
+        try { await sb.from('progress').upsert({ id: user.id, data: next, updated_at: new Date().toISOString() }); } catch (ex) {}
+        syncPublicProfile(next);
+        return;
       }
       try { localStorage.setItem(KEY, JSON.stringify(next)); } catch (ex) {}
+    }
+
+    function makeFriendCode(){
+      const chars = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+      let out = '';
+      for (let i = 0; i < 6; i++) out += chars[Math.floor(Math.random() * chars.length)];
+      return out;
+    }
+
+    // Mirrors a safe, public slice of the user's info so friends can see it.
+    async function syncPublicProfile(st){
+      if (!sb || !user) return;
+      const s = st || state;
+      if (!s) return;
+      try {
+        const { data: existing } = await sb.from('profiles').select('friend_code').eq('id', user.id).maybeSingle();
+        const row = {
+          id: user.id,
+          display_name: (s.profile && s.profile.name) || 'Friend',
+          avatar: (s.profile && s.profile.avatar) || '\ud83d\udcd6',
+          verse: (s.profile && s.profile.verse) || '',
+          lessons_done: s.completed ? s.completed.length : 0,
+          checkpoints_done: s.completedCheckpoints ? s.completedCheckpoints.length : 0,
+          daily_streak: s.dailyStreak || 0,
+          updated_at: new Date().toISOString()
+        };
+        if (existing && existing.friend_code) {
+          row.friend_code = existing.friend_code;
+        } else {
+          row.friend_code = makeFriendCode();
+        }
+        await sb.from('profiles').upsert(row);
+        setMyProfile(row);
+      } catch (ex) { /* non-fatal */ }
+    }
+
+    async function loadFriends(){
+      if (!sb || !user) return;
+      setSocialLoading(true);
+      try {
+        const { data: links } = await sb.from('friendships').select('friend_id').eq('user_id', user.id);
+        const ids = (links || []).map(l => l.friend_id);
+        if (!ids.length) { setFriends([]); setSocialLoading(false); return; }
+        const { data: profs } = await sb.from('profiles').select('*').in('id', ids);
+        setFriends(profs || []);
+      } catch (ex) { setFriends([]); }
+      setSocialLoading(false);
+    }
+
+    async function addFriendByCode(code){
+      if (!sb || !user) return;
+      const clean = code.trim().toUpperCase();
+      if (!clean) return;
+      setSocialMsg('');
+      try {
+        const { data: found } = await sb.from('profiles').select('*').eq('friend_code', clean).maybeSingle();
+        if (!found) { setSocialMsg('No one found with that code.'); return; }
+        if (found.id === user.id) { setSocialMsg('That\u2019s your own code!'); return; }
+        // Create the link both directions so both people see each other
+        await sb.from('friendships').upsert({ user_id: user.id, friend_id: found.id });
+        await sb.from('friendships').upsert({ user_id: found.id, friend_id: user.id });
+        setSocialMsg('Added ' + found.display_name + '!');
+        setFriendCodeInput('');
+        loadFriends();
+      } catch (ex) { setSocialMsg('Something went wrong \u2014 try again.'); }
+    }
+
+    async function removeFriend(friendId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friendships').delete().eq('user_id', user.id).eq('friend_id', friendId);
+        await sb.from('friendships').delete().eq('user_id', friendId).eq('friend_id', user.id);
+        loadFriends();
+      } catch (ex) {}
+    }
+
+    async function loadGroups(){
+      if (!sb || !user) return;
+      try {
+        const { data: mem } = await sb.from('group_members').select('group_id').eq('user_id', user.id);
+        const ids = (mem || []).map(m => m.group_id);
+        if (!ids.length) { setMyGroups([]); return; }
+        const { data: gs } = await sb.from('groups').select('*').in('id', ids);
+        setMyGroups(gs || []);
+      } catch (ex) { setMyGroups([]); }
+    }
+
+    async function loadPublicGroups(){
+      if (!sb || !user) return;
+      try {
+        const { data: gs } = await sb.from('groups').select('*').eq('is_public', true).order('member_count', { ascending: false });
+        setPublicGroups(gs || []);
+      } catch (ex) { setPublicGroups([]); }
+    }
+
+    async function joinGroupDirect(groupId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('group_members').upsert({ group_id: groupId, user_id: user.id });
+        loadGroups();
+        loadPublicGroups();
+        setOpenGroup(groupId);
+      } catch (ex) { setSocialMsg('Could not join \u2014 try again.'); }
+    }
+
+    async function viewProfile(profileId){
+      if (!sb) return;
+      setSocialLoading(true);
+      try {
+        const { data } = await sb.from('profiles').select('*').eq('id', profileId).maybeSingle();
+        setViewingProfile(data || null);
+      } catch (ex) { setViewingProfile(null); }
+      setSocialLoading(false);
+    }
+
+    async function createGroup(name, desc, isPublic){
+      if (!sb || !user || !name.trim()) return;
+      setSocialMsg('');
+      try {
+        const code = makeFriendCode();
+        const { data, error } = await sb.from('groups').insert({
+          name: name.trim(), description: desc.trim(), join_code: code,
+          is_public: !!isPublic, owner_id: user.id
+        }).select().maybeSingle();
+        if (error) throw error;
+        await sb.from('group_members').insert({ group_id: data.id, user_id: user.id });
+        setNewGroupName(''); setNewGroupDesc('');
+        setSocialMsg('Group created! Share code: ' + code);
+        loadGroups();
+      } catch (ex) { setSocialMsg('Could not create group \u2014 try again.'); }
+    }
+
+    async function joinGroupByCode(code){
+      if (!sb || !user) return;
+      const clean = code.trim().toUpperCase();
+      if (!clean) return;
+      setSocialMsg('');
+      try {
+        const { data: g } = await sb.from('groups').select('*').eq('join_code', clean).maybeSingle();
+        if (!g) { setSocialMsg('No group found with that code.'); return; }
+        await sb.from('group_members').upsert({ group_id: g.id, user_id: user.id });
+        setGroupCodeInput('');
+        setSocialMsg('Joined ' + g.name + '!');
+        loadGroups();
+      } catch (ex) { setSocialMsg('Could not join \u2014 try again.'); }
+    }
+
+    async function leaveGroup(groupId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('group_members').delete().eq('group_id', groupId).eq('user_id', user.id);
+        if (openGroup === groupId) setOpenGroup(null);
+        loadGroups();
+      } catch (ex) {}
+    }
+
+    async function loadGroupDetail(groupId){
+      if (!sb || !user) return;
+      setSocialLoading(true);
+      try {
+        const { data: mem } = await sb.from('group_members').select('user_id').eq('group_id', groupId);
+        const ids = (mem || []).map(m => m.user_id);
+        const { data: profs } = ids.length ? await sb.from('profiles').select('*').in('id', ids) : { data: [] };
+        setGroupMembers(profs || []);
+        const { data: prayers } = await sb.from('prayer_requests').select('*').eq('group_id', groupId).order('created_at', { ascending: false });
+        setGroupPrayers(prayers || []);
+        const { data: prayed } = await sb.from('prayer_prayed').select('request_id, user_id');
+        setPrayedRows(prayed || []);
+      } catch (ex) { setGroupMembers([]); setGroupPrayers([]); }
+      setSocialLoading(false);
+    }
+
+    async function postPrayer(groupId, body, anon){
+      if (!sb || !user || !body.trim()) return;
+      try {
+        await sb.from('prayer_requests').insert({
+          group_id: groupId, user_id: user.id, body: body.trim(), is_anonymous: !!anon
+        });
+        setPrayerDraft('');
+        loadGroupDetail(groupId);
+      } catch (ex) { setSocialMsg('Could not post \u2014 try again.'); }
+    }
+
+    async function togglePrayed(requestId, groupId){
+      if (!sb || !user) return;
+      const already = prayedRows.some(p => p.request_id === requestId && p.user_id === user.id);
+      try {
+        if (already) {
+          await sb.from('prayer_prayed').delete().eq('request_id', requestId).eq('user_id', user.id);
+        } else {
+          await sb.from('prayer_prayed').insert({ request_id: requestId, user_id: user.id });
+        }
+        loadGroupDetail(groupId);
+      } catch (ex) {}
+    }
+
+    async function markPrayerAnswered(requestId, groupId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('prayer_requests').update({ answered: true }).eq('id', requestId).eq('user_id', user.id);
+        loadGroupDetail(groupId);
+      } catch (ex) {}
+    }
+
+    async function deletePrayer(requestId, groupId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('prayer_requests').delete().eq('id', requestId).eq('user_id', user.id);
+        loadGroupDetail(groupId);
+      } catch (ex) {}
     }
 
     async function signUp(){
@@ -8843,6 +9085,175 @@
         )) : null
       ]) : null,
 
+      tab === 'community' ? e('div', {className:'dl-daily-wrap', key:'community'}, [
+        e('div', {className:'dl-page-title', key:'ptitle'}, 'Community'),
+
+        !user
+          ? e('div', {className:'dl-signin-prompt', key:'signin'}, [
+              e('div', {className:'dl-signin-icon', key:'i'}, String.fromCodePoint(0x1F465)),
+              e('div', {className:'dl-signin-title', key:'t'}, 'Sign in to join the community'),
+              e('div', {className:'dl-signin-sub', key:'s'}, 'Add friends, join groups, and share prayer requests with others walking the same path.'),
+              e('button', {className:'dl-continue', style:{maxWidth:'260px', margin:'16px auto 0'}, onClick: ()=>{ setAuthMode('signup'); setAuthError(''); setAuthOpen(true); }, key:'b'}, 'Sign in / Create account')
+            ])
+
+        : viewingProfile
+        ? e('div', {key:'viewprofile'}, [
+            e('button', {className:'dl-topic-back', onClick:()=>setViewingProfile(null), key:'back'}, String.fromCodePoint(0x2190) + ' Back'),
+            e('div', {className:'dl-vp-card', key:'card'}, [
+              e('div', {className:'dl-vp-avatar', key:'av'}, viewingProfile.avatar || String.fromCodePoint(0x1F4D6)),
+              e('div', {className:'dl-vp-name', key:'n'}, viewingProfile.display_name),
+              viewingProfile.verse ? e('div', {className:'dl-vp-verse', key:'v'}, '\u201c' + viewingProfile.verse + '\u201d') : null,
+              e('div', {className:'dl-vp-stats', key:'st'}, [
+                e('div', {className:'dl-vp-stat', key:'l'}, [
+                  e('div', {className:'dl-vp-stat-num', key:'n'}, viewingProfile.lessons_done || 0),
+                  e('div', {className:'dl-vp-stat-lbl', key:'l'}, 'Lessons')
+                ]),
+                e('div', {className:'dl-vp-stat', key:'c'}, [
+                  e('div', {className:'dl-vp-stat-num', key:'n'}, viewingProfile.checkpoints_done || 0),
+                  e('div', {className:'dl-vp-stat-lbl', key:'l'}, 'Books')
+                ]),
+                e('div', {className:'dl-vp-stat', key:'s'}, [
+                  e('div', {className:'dl-vp-stat-num', key:'n'}, viewingProfile.daily_streak || 0),
+                  e('div', {className:'dl-vp-stat-lbl', key:'l'}, 'Day streak')
+                ])
+              ]),
+              e('div', {className:'dl-vp-private', key:'priv'}, [String.fromCodePoint(0x1F512), ' Testimony and reflections stay private'])
+            ])
+          ])
+
+        : openGroup
+        ? (() => {
+            const g = myGroups.find(x => x.id === openGroup) || publicGroups.find(x => x.id === openGroup);
+            if (!g) return null;
+            const isMember = myGroups.some(x => x.id === openGroup);
+            return e('div', {key:'groupdetail'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenGroup(null), key:'back'}, String.fromCodePoint(0x2190) + ' All groups'),
+              e('div', {className:'dl-group-head', key:'head'}, [
+                e('div', {className:'dl-group-name', key:'n'}, g.name),
+                g.description ? e('div', {className:'dl-group-desc', key:'d'}, g.description) : null,
+                e('div', {className:'dl-group-meta-row', key:'m'}, [
+                  g.is_public ? e('span', {className:'dl-group-tag public', key:'p'}, 'Public') : e('span', {className:'dl-group-tag', key:'p'}, 'Private'),
+                  e('span', {className:'dl-group-count', key:'c'}, (g.member_count || groupMembers.length) + ' members'),
+                  !g.is_public ? e('span', {className:'dl-group-code', key:'jc'}, 'Code: ' + g.join_code) : null
+                ])
+              ]),
+              e('div', {className:'dl-group-members', key:'mem'}, groupMembers.map(m =>
+                e('button', {className:'dl-group-member', onClick:()=>viewProfile(m.id), key:m.id}, [m.avatar || String.fromCodePoint(0x1F4D6), ' ', m.display_name])
+              )),
+              e('div', {className:'dl-section-title', style:{marginTop:'18px'}, key:'plbl'}, [String.fromCodePoint(0x1F64F), ' Prayer requests']),
+              isMember ? e('div', {key:'postbox'}, [
+                e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:prayerDraft, placeholder:'Share what you\u2019d like prayer for\u2026', onChange: ev=>setPrayerDraft(ev.target.value), key:'ta'}),
+                e('div', {className:'dl-prayer-actions', key:'pa'}, [
+                  e('label', {className:'dl-anon-label', key:'anon'}, [
+                    e('input', {type:'checkbox', checked:prayerAnon, onChange: ev=>setPrayerAnon(ev.target.checked), key:'cb'}),
+                    ' Post anonymously'
+                  ]),
+                  e('button', {className:'dl-social-btn', onClick:()=>postPrayer(g.id, prayerDraft, prayerAnon), key:'post'}, 'Share')
+                ])
+              ]) : e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', marginBottom:'14px'}, onClick:()=>joinGroupDirect(g.id), key:'joinfirst'}, 'Join to post and pray'),
+              groupPrayers.length === 0
+                ? e('div', {className:'dl-empty-note', key:'nop'}, 'No prayer requests yet.')
+                : e('div', {key:'plist'}, groupPrayers.map(p => {
+                    const author = groupMembers.find(m => m.id === p.user_id);
+                    const count = prayedRows.filter(r => r.request_id === p.id).length;
+                    const iPrayed = prayedRows.some(r => r.request_id === p.id && r.user_id === user.id);
+                    const mine = p.user_id === user.id;
+                    return e('div', {className:'dl-prayer-card' + (p.answered?' answered':''), key:p.id}, [
+                      e('div', {className:'dl-prayer-who', key:'w'}, [
+                        p.is_anonymous ? 'Anonymous' : ((author && author.display_name) || 'Someone'),
+                        p.answered ? e('span', {className:'dl-prayer-answered', key:'a'}, ' \u00b7 Answered \ud83d\ude4c') : null
+                      ]),
+                      e('div', {className:'dl-prayer-body', key:'b'}, p.body),
+                      e('div', {className:'dl-prayer-foot', key:'f'}, [
+                        isMember ? e('button', {className:'dl-pray-btn' + (iPrayed?' active':''), onClick:()=>togglePrayed(p.id, g.id), key:'pray'}, [String.fromCodePoint(0x1F64F), ' ', iPrayed ? 'Praying' : 'Pray']) : null,
+                        count > 0 ? e('span', {className:'dl-pray-count', key:'c'}, count + ' praying') : null,
+                        mine && !p.answered ? e('button', {className:'dl-prayer-mini', onClick:()=>markPrayerAnswered(p.id, g.id), key:'ans'}, 'Mark answered') : null,
+                        mine ? e('button', {className:'dl-prayer-mini', onClick:()=>deletePrayer(p.id, g.id), key:'del'}, 'Delete') : null
+                      ])
+                    ]);
+                  })),
+              isMember ? e('button', {className:'dl-plan-leave', onClick:()=>leaveGroup(g.id), key:'leave'}, 'Leave this group') : null
+            ]);
+          })()
+
+        : e('div', {key:'main'}, [
+            myProfile && myProfile.friend_code ? e('div', {className:'dl-friendcode', key:'code'}, [
+              e('span', {className:'dl-friendcode-label', key:'l'}, 'Your friend code'),
+              e('span', {className:'dl-friendcode-val', key:'v'}, myProfile.friend_code)
+            ]) : null,
+
+            e('div', {className:'dl-social-tabs', key:'stabs'}, [
+              e('button', {className:'dl-social-tab' + (socialTab==='groups'?' active':''), onClick:()=>{setSocialTab('groups'); setSocialMsg('');}, key:'g'}, 'Groups'),
+              e('button', {className:'dl-social-tab' + (socialTab==='friends'?' active':''), onClick:()=>{setSocialTab('friends'); setSocialMsg('');}, key:'f'}, 'Friends')
+            ]),
+
+            socialMsg ? e('div', {className:'dl-social-msg', key:'msg'}, socialMsg) : null,
+
+            socialTab === 'friends' ? e('div', {key:'friendspane'}, [
+              e('div', {className:'dl-social-row', key:'add'}, [
+                e('input', {className:'dl-social-input', value:friendCodeInput, placeholder:'Enter a friend code', maxLength:6, onChange: ev=>setFriendCodeInput(ev.target.value.toUpperCase()), key:'i'}),
+                e('button', {className:'dl-social-btn', onClick:()=>addFriendByCode(friendCodeInput), key:'b'}, 'Add')
+              ]),
+              friends.length === 0
+                ? e('div', {className:'dl-empty-note', key:'none'}, 'No friends yet \u2014 share your code above so others can add you.')
+                : e('div', {key:'list'}, friends
+                    .slice()
+                    .sort((a,b) => (b.lessons_done||0) - (a.lessons_done||0))
+                    .map((f, i) => e('div', {className:'dl-friend-row', key:f.id}, [
+                      e('span', {className:'dl-friend-rank', key:'r'}, '#' + (i+1)),
+                      e('button', {className:'dl-friend-main', onClick:()=>viewProfile(f.id), key:'main'}, [
+                        e('span', {className:'dl-friend-avatar', key:'a'}, f.avatar || String.fromCodePoint(0x1F4D6)),
+                        e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                          e('div', {className:'dl-friend-name', key:'nm'}, f.display_name),
+                          e('div', {className:'dl-friend-stats', key:'st'}, (f.lessons_done||0) + ' lessons \u00b7 ' + (f.daily_streak||0) + ' day streak')
+                        ])
+                      ]),
+                      e('button', {className:'dl-friend-remove', onClick:()=>removeFriend(f.id), key:'x'}, String.fromCodePoint(0x2715))
+                    ]))
+                  )
+            ]) : null,
+
+            socialTab === 'groups' ? e('div', {key:'groupspane'}, [
+              myGroups.length > 0 ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'mylbl'}, 'Your groups') : null,
+              ...myGroups.map(g => e('button', {className:'dl-group-row', onClick:()=>setOpenGroup(g.id), key:g.id}, [
+                e('span', {className:'dl-group-icon', key:'i'}, g.is_public ? String.fromCodePoint(0x1F30D) : String.fromCodePoint(0x1F512)),
+                e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
+                  e('div', {className:'dl-friend-name', key:'n'}, g.name),
+                  e('div', {className:'dl-friend-stats', key:'d'}, (g.member_count || 1) + ' members')
+                ]),
+                e('span', {className:'dl-group-arrow', key:'a'}, String.fromCodePoint(0x203A))
+              ])),
+
+              e('div', {className:'dl-section-title', key:'publbl'}, [String.fromCodePoint(0x1F30D), ' Public rooms']),
+              e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'pubnote'}, 'Open to everyone \u2014 jump in anytime.'),
+              publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).length === 0
+                ? e('div', {className:'dl-empty-note', key:'nopub'}, 'You\u2019ve joined all the public rooms.')
+                : e('div', {key:'publist'}, publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).map(g =>
+                    e('div', {className:'dl-pubgroup', key:g.id}, [
+                      e('div', {style:{flex:1, minWidth:0}, key:'t'}, [
+                        e('div', {className:'dl-friend-name', key:'n'}, g.name),
+                        e('div', {className:'dl-pubgroup-desc', key:'d'}, g.description),
+                        e('div', {className:'dl-friend-stats', key:'m'}, (g.member_count || 0) + ' members')
+                      ]),
+                      e('button', {className:'dl-social-btn', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join')
+                    ])
+                  )),
+
+              e('div', {className:'dl-section-title', key:'privlbl'}, [String.fromCodePoint(0x1F512), ' Private rooms']),
+              e('div', {className:'dl-social-row', key:'join'}, [
+                e('input', {className:'dl-social-input', value:groupCodeInput, placeholder:'Enter a room code', maxLength:6, onChange: ev=>setGroupCodeInput(ev.target.value.toUpperCase()), key:'i'}),
+                e('button', {className:'dl-social-btn', onClick:()=>joinGroupByCode(groupCodeInput), key:'b'}, 'Join')
+              ]),
+              e('div', {className:'dl-create-box', key:'create'}, [
+                e('div', {className:'dl-create-title', key:'t'}, 'Start your own private room'),
+                e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'8px'}, value:newGroupName, placeholder:'Room name', onChange: ev=>setNewGroupName(ev.target.value), key:'gn'}),
+                e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'10px'}, value:newGroupDesc, placeholder:'Short description (optional)', onChange: ev=>setNewGroupDesc(ev.target.value), key:'gd'}),
+                e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)'}, onClick:()=>createGroup(newGroupName, newGroupDesc, false), key:'create'}, 'Create private room')
+              ])
+            ]) : null
+          ])
+      ]) : null,
+
       tab === 'profile' ? e('div', {className:'dl-profile-outer', key:'profileouter'}, [
         e('div', {className:'dl-profile-stars', key:'stars'}),
         e('div', {className:'dl-profile-glow', key:'glow'}),
@@ -8962,6 +9373,7 @@
         e('button', {className:'dl-tab' + (tab==='daily'?' active':''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
         e('button', {className:'dl-tab' + (tab==='search'?' active':''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F50D)), 'Find']),
         e('button', {className:'dl-tab' + (tab==='callings'?' active':''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Plans']),
+        e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community']),
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),
 
