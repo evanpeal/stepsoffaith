@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -1473,6 +1473,7 @@
     const [contactPaste, setContactPaste] = React.useState('');
     const [showContactBox, setShowContactBox] = React.useState(false);
     const [inviteCopied, setInviteCopied] = React.useState(false);
+    const [newFriendMsg, setNewFriendMsg] = React.useState('');
     const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
@@ -1702,7 +1703,24 @@
         const ids = (links || []).map(l => l.friend_id);
         if (ids.length) {
           const { data: profs } = await sb.from('profiles').select('*').in('id', ids);
-          setFriends(profs || []);
+          const list = profs || [];
+          try {
+            const seen = (state && state.seenFriendIds) || [];
+            if (seen.length) {
+              const fresh = list.filter(f => seen.indexOf(f.id) === -1);
+              if (fresh.length) {
+                setNewFriendMsg(fresh.length === 1
+                  ? fresh[0].display_name + ' accepted your friend request!'
+                  : fresh.length + ' people accepted your friend requests!');
+                setTimeout(() => setNewFriendMsg(''), 8000);
+              }
+            }
+            const nowIds = list.map(f => f.id);
+            if (state && JSON.stringify(nowIds) !== JSON.stringify(seen)) {
+              persist({ ...state, seenFriendIds: nowIds });
+            }
+          } catch (ex) {}
+          setFriends(list);
         } else { setFriends([]); }
       } catch (ex) { setFriends([]); }
       setSocialLoading(false);
@@ -3322,36 +3340,20 @@
               ]) : null,
 
               (!peopleQuery.trim()) ? e('div', {key:'grow'}, [
-                e('div', {className:'dl-section-title', key:'gl'}, [String.fromCodePoint(0x1F517), ' Find people you know']),
-                e('div', {className:'dl-grow-row', key:'grow2'}, [
-                  e('button', {className:'dl-grow-btn', onClick:()=>{
-                    const link = 'https://stepstofaith.com/?invite=' + ((myProfile && myProfile.friend_code) || '');
-                    try {
-                      if (navigator.share) { navigator.share({ title:'Steps to Faith', text:'Walk through the Bible with me', url: link }); }
-                      else { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false), 2500); }
-                    } catch (ex) { try { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false),2500); } catch (e2) {} }
-                  }, key:'inv'}, [
-                    e('span', {className:'dl-grow-icon', key:'i'}, String.fromCodePoint(0x1F4E4)),
-                    e('span', {key:'t'}, inviteCopied ? 'Link copied!' : 'Invite a friend')
-                  ]),
-                  e('button', {className:'dl-grow-btn', onClick:()=>{
-                    if (navigator.contacts && navigator.contacts.select) matchContacts();
-                    else setShowContactBox(!showContactBox);
-                  }, key:'con'}, [
-                    e('span', {className:'dl-grow-icon', key:'i'}, String.fromCodePoint(0x1F4D2)),
-                    e('span', {key:'t'}, contactBusy ? 'Checking\u2026' : 'Check contacts')
+                e('div', {className:'dl-section-title', key:'gl'}, [String.fromCodePoint(0x1F517), ' Invite someone']),
+                e('button', {className:'dl-invite-wide', onClick:()=>{
+                  const link = 'https://stepstofaith.com/?invite=' + ((myProfile && myProfile.friend_code) || '');
+                  try {
+                    if (navigator.share) { navigator.share({ title:'Steps to Faith', text:'Walk through the Bible with me', url: link }); }
+                    else { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false), 2500); }
+                  } catch (ex) { try { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false),2500); } catch (e2) {} }
+                }, key:'inv'}, [
+                  e('span', {className:'dl-invite-icon', key:'i'}, String.fromCodePoint(0x1F4E4)),
+                  e('span', {style:{flex:1, textAlign:'left'}, key:'t'}, [
+                    e('div', {className:'dl-invite-title', key:'a'}, inviteCopied ? 'Link copied!' : 'Share your invite link'),
+                    e('div', {className:'dl-invite-sub', key:'b'}, 'Anyone who joins through it gets added to you')
                   ])
-                ]),
-                showContactBox ? e('div', {className:'dl-contact-box', key:'cbox'}, [
-                  e('div', {className:'dl-contact-note', key:'n'}, 'Paste phone numbers to see who\u2019s already here. They\u2019re scrambled before sending \u2014 we never see or store them.'),
-                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:contactPaste, placeholder:'555-123-4567, 555-987-6543', onChange: ev=>setContactPaste(ev.target.value), key:'ta'}),
-                  e('button', {className:'dl-social-btn', style:{marginTop:'10px', width:'100%'}, disabled:contactBusy, onClick: matchContacts, key:'go'}, contactBusy ? 'Checking\u2026' : 'Find my contacts')
-                ]) : null,
-                contactMsg ? e('div', {className:'dl-social-msg', key:'cm'}, contactMsg) : null,
-                contactMatches.length > 0 ? e('div', {key:'cmatches'}, [
-                  e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x1F4D2), ' From your contacts']),
-                  ...contactMatches.map(p => personRow(p, 'ct'))
-                ]) : null
+                ])
               ]) : null,
 
               (!peopleQuery.trim() && suggested.length > 0) ? e('div', {key:'sugg'}, [
@@ -3545,12 +3547,17 @@
         ])
       ]) : null,
 
+      newFriendMsg ? e('div', {className:'dl-toast', key:'toast'}, [
+        e('span', {className:'dl-toast-icon', key:'i'}, String.fromCodePoint(0x1F389)),
+        e('span', {key:'t'}, newFriendMsg)
+      ]) : null,
+
       e('div', {className:'dl-tabs', key:'tabs'}, [
         e('button', {className:'dl-tab' + (tab==='path'?' active':''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4D6)), 'Path']),
         e('button', {className:'dl-tab' + (tab==='daily'?' active':''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
         e('button', {className:'dl-tab' + (tab==='search'?' active':''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F50D)), 'Find']),
         e('button', {className:'dl-tab' + (tab==='callings'?' active':''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Plans']),
-        e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community']),
+        e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community', incomingReqs.length > 0 ? e('span', {className:'dl-tab-dot', key:'d'}, incomingReqs.length) : null]),
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),
 
