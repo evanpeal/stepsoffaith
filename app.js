@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0 };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -7216,6 +7216,15 @@
     return set;
   }
 
+  function weeklyStats(state){
+    const week = new Set(last7Days());
+    const log = state.completedLog || [];
+    const lessonsThisWeek = log.filter(entry => week.has(entry.date)).length;
+    const ids = log.filter(entry => week.has(entry.date)).map(entry => entry.id);
+    const booksTouched = new Set(ids.map(id => { const l = LESSONS.find(x => x.id === id); return l ? l.book : null; }).filter(Boolean));
+    return { lessonsThisWeek, booksTouched: booksTouched.size };
+  }
+
   const TESTS = [
     { id:'people_easy', title:'Names & People', tier:'Easy', type:'multiple', icon:'\ud83e\uddd1', cost:20,
       intro:{ ref:'Hebrews 11:1\u20132', verse:'By faith the people of old received their commendation.', note:'A quick tour of the most famous names in Scripture \u2014 great if you\u2019re just getting your feet under you.' },
@@ -7538,6 +7547,28 @@
   const SHEPHERD_LOGO_SVG = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="lbg" cx="50%" cy="32%" r="75%"><stop offset="0%" stop-color="#a56cf0"/><stop offset="100%" stop-color="#4a2f7a"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(#lbg)"/><g fill="#fdfaf3"><circle cx="47" cy="30" r="7.5"/><path d="M32 76 Q30 48 47 41 Q64 48 62 76 Z"/></g><path d="M68 24 Q60 22 61 32 L61 78" fill="none" stroke="#fdfaf3" stroke-width="3" stroke-linecap="round"/></svg>';
   const NEW_TESTAMENT = ["Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"];
 
+  const TORAH = ["Genesis","Exodus","Leviticus","Numbers","Deuteronomy"];
+  const GOSPELS = ["Matthew","Mark","Luke","John"];
+
+  const TROPHIES = [
+    { id:'first_steps', icon:'\ud83d\udc63', title:'First Steps', desc:'Complete your first lesson', check: s => s.completed.length >= 1 },
+    { id:'ten_lessons', icon:'\ud83d\udcda', title:'Getting Rooted', desc:'Complete 10 lessons', check: s => s.completed.length >= 10 },
+    { id:'fifty_lessons', icon:'\ud83c\udf33', title:'Deeply Rooted', desc:'Complete 50 lessons', check: s => s.completed.length >= 50 },
+    { id:'hundred_lessons', icon:'\ud83c\udfdb\ufe0f', title:'Pillar of the Word', desc:'Complete 100 lessons', check: s => s.completed.length >= 100 },
+    { id:'torah', icon:'\ud83d\udcdc', title:'Torah Complete', desc:'Finish Genesis through Deuteronomy', check: s => TORAH.every(b => LESSONS.filter(l => l.book === b).every(l => s.completed.includes(l.id))) },
+    { id:'gospels', icon:'\u271d\ufe0f', title:'The Four Gospels', desc:'Finish Matthew, Mark, Luke, and John', check: s => GOSPELS.every(b => LESSONS.filter(l => l.book === b).every(l => s.completed.includes(l.id))) },
+    { id:'old_testament', icon:'\ud83d\udd4a\ufe0f', title:'Old Testament Finished', desc:'Complete every Old Testament book', check: s => LESSONS.filter(l => !NEW_TESTAMENT.includes(l.book)).every(l => s.completed.includes(l.id)) },
+    { id:'new_testament', icon:'\ud83d\udd77\ufe0f', title:'New Testament Finished', desc:'Complete every New Testament book', check: s => LESSONS.filter(l => NEW_TESTAMENT.includes(l.book)).every(l => s.completed.includes(l.id)) },
+    { id:'whole_bible', icon:'\ud83d\udc51', title:'Genesis to Revelation', desc:'Complete the entire Bible', check: s => LESSONS.every(l => s.completed.includes(l.id)) },
+    { id:'streak_7', icon:'\ud83d\udd25', title:'One Week Strong', desc:'Reach a 7-day streak', check: s => s.dailyStreak >= 7 },
+    { id:'streak_30', icon:'\ud83d\udd25', title:'One Month Faithful', desc:'Reach a 30-day streak', check: s => s.dailyStreak >= 30 },
+    { id:'streak_100', icon:'\ud83d\udd25', title:'Unshakeable', desc:'Reach a 100-day streak', check: s => s.dailyStreak >= 100 },
+    { id:'quiz_perfect', icon:'\ud83e\udde0', title:'Quiz Master', desc:'Score a perfect result on any test', check: s => TESTS.some(t => (s.testBest[t.id] || 0) >= t.questions.length) },
+    { id:'wordle_win', icon:'\ud83d\udcac', title:'Word Sleuth', desc:'Solve the Word of the Day', check: s => (s.wordleWins || 0) >= 1 },
+    { id:'checkpoints_5', icon:'\ud83d\udcd6', title:'Checking In', desc:'Pass 5 book checkpoints', check: s => s.completedCheckpoints.length >= 5 },
+    { id:'reflections_5', icon:'\ud83d\udcdd', title:'Reflective Heart', desc:'Write 5 personal reflections', check: s => s.reflections.length >= 5 }
+  ];
+
   const DEFAULT_VERSE = 'Be strong and courageous \u2014 Joshua 1:9';
 
   const DAILY_DEVOTIONALS = [
@@ -7571,6 +7602,7 @@
     const [state, setState] = React.useState(null);
     const [tab, setTab] = React.useState("path");
     const [openLesson, setOpenLesson] = React.useState(null);
+    const [isSpeaking, setIsSpeaking] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
     const [qIndex, setQIndex] = React.useState(0);
@@ -7864,7 +7896,7 @@
       const done = won || nextGuesses.length >= 5;
       const nextWordle = { date: w.date, guesses: nextGuesses, done, won };
       const gemsBonus = won ? 15 : 0;
-      persist({ ...state, dailyWord: nextWordle, gems: state.gems + gemsBonus });
+      persist({ ...state, dailyWord: nextWordle, gems: state.gems + gemsBonus, wordleWins: (state.wordleWins || 0) + (won ? 1 : 0) });
       setWordleInput('');
     }
 
@@ -7949,9 +7981,33 @@
         setStep("deepdive");
       } else {
         const already = state.completed.includes(openLesson.id);
-        persist({ ...state, completed: already ? state.completed : [...state.completed, openLesson.id], streak: already ? state.streak : state.streak + 1, gems: state.gems + (already ? 0 : 10) });
+        const log = state.completedLog || [];
+        persist({ ...state, completed: already ? state.completed : [...state.completed, openLesson.id], completedLog: already ? log : [...log, { id: openLesson.id, date: todayStr() }], streak: already ? state.streak : state.streak + 1, gems: state.gems + (already ? 0 : 10) });
         setStep("deepdive");
       }
+    }
+
+    function toggleFavorite(lessonId){
+      const favs = state.favorites || [];
+      const already = favs.includes(lessonId);
+      persist({ ...state, favorites: already ? favs.filter(id => id !== lessonId) : [...favs, lessonId] });
+    }
+
+    function toggleReadAloud(lesson){
+      if (!window.speechSynthesis) return;
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        setIsSpeaking(false);
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const text = lesson.passage + '. ' + (lesson.keyVerses || []).map(kv => kv.ref + '. ' + kv.text).join('. ');
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.rate = 0.95;
+      utter.onend = () => setIsSpeaking(false);
+      utter.onerror = () => setIsSpeaking(false);
+      window.speechSynthesis.speak(utter);
+      setIsSpeaking(true);
     }
 
     function continueFromDeepDive(){
@@ -7993,7 +8049,7 @@
       setStep("done");
     }
 
-    function closeModal(){ setOpenLesson(null); setOpenCheckpoint(null); }
+    function closeModal(){ if (window.speechSynthesis) window.speechSynthesis.cancel(); setIsSpeaking(false); setOpenLesson(null); setOpenCheckpoint(null); }
 
     if (state === null) return e('div', {className:'dl-loading'}, [
       e('div', {className:'dl-loading-logo', dangerouslySetInnerHTML:{__html: SHEPHERD_LOGO_SVG}, key:'logo'}),
@@ -8151,6 +8207,31 @@
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
         ]),
 
+        (() => {
+          const w = weeklyStats(state);
+          return e('div', {className:'dl-recap-card', key:'recap'}, [
+            e('div', {className:'dl-recap-title', key:'t'}, [String.fromCodePoint(0x1F4CA), ' This Week']),
+            e('div', {className:'dl-recap-grid', key:'grid'}, [
+              e('div', {className:'dl-recap-stat', key:'lessons'}, [
+                e('div', {className:'dl-recap-num', key:'n'}, w.lessonsThisWeek),
+                e('div', {className:'dl-recap-label', key:'l'}, w.lessonsThisWeek === 1 ? 'lesson' : 'lessons')
+              ]),
+              e('div', {className:'dl-recap-stat', key:'books'}, [
+                e('div', {className:'dl-recap-num', key:'n'}, w.booksTouched),
+                e('div', {className:'dl-recap-label', key:'l'}, w.booksTouched === 1 ? 'book' : 'books')
+              ]),
+              e('div', {className:'dl-recap-stat', key:'streak'}, [
+                e('div', {className:'dl-recap-num', key:'n'}, state.dailyStreak),
+                e('div', {className:'dl-recap-label', key:'l'}, 'day streak')
+              ]),
+              e('div', {className:'dl-recap-stat', key:'gems'}, [
+                e('div', {className:'dl-recap-num', key:'n'}, state.gems),
+                e('div', {className:'dl-recap-label', key:'l'}, 'gems')
+              ])
+            ]),
+            w.lessonsThisWeek === 0 ? e('div', {className:'dl-recap-nudge', key:'nudge'}, 'No lessons yet this week \u2014 today\u2019s a good day to start.') : null
+          ]);
+        })(),
         e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word of the Day']),
         (() => {
           const w = todaysWordleState();
@@ -8289,8 +8370,25 @@
           e('div', {className:'dl-stat', key:'daily'}, [e('div',{className:'dl-stat-badge b3', key:'ic'}, String.fromCodePoint(0x1F3C6)), e('div',{className:'dl-stat-num', key:'n'}, state.completedCheckpoints.length), e('div',{className:'dl-stat-label', key:'l'}, 'Checkpoints')]),
           e('div', {className:'dl-stat', key:'reflections'}, [e('div',{className:'dl-stat-badge b4', key:'ic'}, String.fromCodePoint(0x1F4DD)), e('div',{className:'dl-stat-num', key:'n'}, state.reflections.length), e('div',{className:'dl-stat-label', key:'l'}, 'Reflections')])
         ]),
-        e('div', {className:'dl-book-header', style:{padding:'8px 0'}, key:'badgeslbl'}, e('span', {className:'dl-band-label', style:{background:'#e2c8f7', color:'#4a2380', borderBottomColor:'#c9a0ea'}}, 'Book badges')),
-        state.completedCheckpoints.length === 0
+        e('div', {className:'dl-section-title', style:{marginTop:'8px'}, key:'trophylabel'}, [String.fromCodePoint(0x1F3C6), ' Trophy Case']),
+        e('div', {className:'dl-trophy-grid', key:'trophygrid'}, TROPHIES.map(t => {
+          const earned = t.check(state);
+          return e('div', {className:'dl-trophy' + (earned ? ' earned' : ''), key:t.id}, [
+            e('div', {className:'dl-trophy-icon', key:'i'}, t.icon),
+            e('div', {className:'dl-trophy-title', key:'t'}, t.title),
+            e('div', {className:'dl-trophy-desc', key:'d'}, t.desc)
+          ]);
+        })),
+
+        (state.favorites || []).length > 0 ? e('div', {className:'dl-section-title', style:{marginTop:'8px'}, key:'favlabel'}, [String.fromCodePoint(0x2B50), ' Favorites']) : null,        (state.favorites || []).length > 0 ? e('div', {className:'dl-fav-list', key:'favlist'}, (state.favorites || []).map(id => {
+          const lesson = LESSONS.find(l => l.id === id);
+          if (!lesson) return null;
+          return e('button', {className:'dl-fav-item', onClick:()=>openIfAvailable(lesson), key:id}, [
+            e('span', {className:'dl-fav-book', key:'b'}, lesson.book), ' ',
+            e('span', {className:'dl-fav-title', key:'t'}, lesson.title)
+          ]);
+        })) : null,
+        e('div', {className:'dl-book-header', style:{padding:'8px 0'}, key:'badgeslbl'}, e('span', {className:'dl-band-label', style:{background:'#e2c8f7', color:'#4a2380', borderBottomColor:'#c9a0ea'}}, 'Book badges')),        state.completedCheckpoints.length === 0
           ? e('div', {className:'dl-empty-note', key:'empty'}, 'Finish a book to earn your first badge.')
           : e('div', {className:'dl-badge-row', key:'badges'}, state.completedCheckpoints.map(b => e('div', {className:'dl-badge', key:b}, [String.fromCodePoint(0x1F3C6), ' ' + b]))),
 
@@ -8530,6 +8628,14 @@
                 e('button', {className:'dl-x', onClick: closeModal, key:'x'}, String.fromCodePoint(0x2715)),
                 e('div', {className:'dl-bar-track', key:'track'}, e('div', {className:'dl-bar-fill' + (isCheckpoint?' purple':''), style:{width: (step==='passage'||step==='overview' ? 8 : Math.round(((qIndex + (step==='explain'?1:0)) / activeModal.questions.length) * 92) + 8) + '%'}}))
               ]),
+              (!isCheckpoint && (step === 'passage')) ? e('div', {className:'dl-lesson-actions', key:'lactions'}, [
+                e('button', {className:'dl-lesson-action-btn' + ((state.favorites||[]).includes(openLesson.id) ? ' active' : ''), onClick:()=>toggleFavorite(openLesson.id), key:'fav'}, [
+                  String.fromCodePoint((state.favorites||[]).includes(openLesson.id) ? 0x2B50 : 0x2606), ' ', (state.favorites||[]).includes(openLesson.id) ? 'Favorited' : 'Favorite'
+                ]),
+                e('button', {className:'dl-lesson-action-btn' + (isSpeaking ? ' active' : ''), onClick:()=>toggleReadAloud(openLesson), key:'audio'}, [
+                  String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen'
+                ])
+              ]) : null,
               e('div', {className:'dl-lesson-body', key:'body'},
                 (step === 'passage' || step === 'overview')
                 ? [
