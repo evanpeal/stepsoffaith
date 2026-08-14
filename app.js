@@ -1575,6 +1575,11 @@
       loadRequests();
       loadGroups();
       loadPublicGroups();
+      // If they just signed up, make sure the name they typed is saved
+      if (pendingSignupName && (!state.profile || !state.profile.name || state.profile.name.toLowerCase() === 'your name')) {
+        persist({ ...state, profile: { ...(state.profile || {}), name: pendingSignupName } });
+        setPendingSignupName('');
+      }
       if (!state.seenWhatsNewCommunity) setShowWhatsNew(true);
     }, [user && user.id, state === null]);
 
@@ -2096,7 +2101,7 @@
               e('input', {type:'password', value:authPassword, onChange: ev=>setAuthPassword(ev.target.value), placeholder:'At least 6 characters', key:'i'})
             ]),
             authError ? e('div', {className:'dl-auth-error', key:'err'}, authError) : null,
-            e('button', {className:'dl-auth-submit', disabled: authLoading || !authEmail.trim() || !authPassword.trim(), onClick: authMode === 'signup' ? signUp : signIn, key:'go'}, authLoading ? '...' : (authMode === 'signup' ? 'Create account' : 'Log in')),
+            e('button', {className:'dl-auth-submit', disabled: authLoading || !authEmail.trim() || !authPassword.trim() || (authMode === 'signup' && (!authFirst.trim() || !authLast.trim())), onClick: authMode === 'signup' ? signUp : signIn, key:'go'}, authLoading ? '...' : (authMode === 'signup' ? 'Create account' : 'Log in')),
             e('button', {className:'dl-auth-cancel', onClick:()=>setAuthOpen(false), key:'cancel'}, 'Cancel'),
             e('button', {className:'dl-auth-switch', onClick:()=>{ setAuthMode(authMode === 'signup' ? 'login' : 'signup'); setAuthError(''); }, key:'switch'},
               authMode === 'signup' ? 'Already have an account? Log in' : "Don't have an account? Sign up")
