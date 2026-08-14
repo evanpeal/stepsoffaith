@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], trackDone: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, wordleGame: null, recentWords: [], streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], trackDone: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -3347,16 +3347,38 @@
       persist({ ...state, gems: state.gems - 40, streakFreezes: current + 1 });
     }
 
-    function todaysWordleState(){
-      const today = todayStr();
-      const stored = state && state.dailyWord;
-      if (stored && stored.date === today) return stored;
-      return { date: today, guesses: [], done: false, won: false };
+    const WORDLE_COST = 30;
+
+    function wordleGame(){
+      return (state && state.wordleGame) || null;
+    }
+
+    function startWordle(){
+      if (!state) return;
+      if ((state.gems || 0) < WORDLE_COST) return;
+      // Pick a word we haven't used recently so it feels fresh every time
+      const recent = (state.recentWords || []).slice(-20);
+      let pool = WORD_BANK.map((w, i) => i).filter(i => recent.indexOf(i) === -1);
+      if (!pool.length) pool = WORD_BANK.map((w, i) => i);
+      const wordIdx = pool[Math.floor(Math.random() * pool.length)];
+      setWordleInput('');
+      persist({
+        ...state,
+        gems: state.gems - WORDLE_COST,
+        wordleGame: { wordIdx: wordIdx, guesses: [], done: false, won: false },
+        recentWords: [...(state.recentWords || []), wordIdx].slice(-20)
+      });
+    }
+
+    function closeWordle(){
+      if (!state) return;
+      setWordleInput('');
+      persist({ ...state, wordleGame: null });
     }
 
     function pressWordleKey(key){
-      const w = todaysWordleState();
-      if (w.done) return;
+      const g = wordleGame();
+      if (!g || g.done) return;
       if (key === 'ENTER') { submitWordleGuess(); return; }
       if (key === 'BACK') { setWordleInput(s => s.slice(0, -1)); return; }
       setWordleInput(s => s.length < 5 ? s + key : s);
@@ -3365,28 +3387,32 @@
     React.useEffect(() => {
       if (tab !== 'daily' || !state) return;
       function handler(ev){
-        const w = todaysWordleState();
-        if (w.done) return;
+        const g = wordleGame();
+        if (!g || g.done) return;
         if (ev.key === 'Enter') { ev.preventDefault(); submitWordleGuess(); }
         else if (ev.key === 'Backspace') { setWordleInput(s => s.slice(0, -1)); }
         else if (/^[a-zA-Z]$/.test(ev.key)) { setWordleInput(s => s.length < 5 ? s + ev.key.toUpperCase() : s); }
       }
       window.addEventListener('keydown', handler);
       return () => window.removeEventListener('keydown', handler);
-    }, [tab, state && state.dailyWord, wordleInput]);
+    }, [tab, state && state.wordleGame, wordleInput]);
 
     function submitWordleGuess(){
+      const g = wordleGame();
+      if (!g || g.done) return;
       const guess = wordleInput.trim().toUpperCase();
       if (guess.length !== 5) { setWordleShake(true); setTimeout(()=>setWordleShake(false), 400); return; }
-      const w = todaysWordleState();
-      if (w.done) return;
-      const target = todaysWord().word;
-      const nextGuesses = [...w.guesses, guess];
+      const target = WORD_BANK[g.wordIdx].word;
+      const nextGuesses = [...g.guesses, guess];
       const won = guess === target;
       const done = won || nextGuesses.length >= 5;
-      const nextWordle = { date: w.date, guesses: nextGuesses, done, won };
-      const gemsBonus = won ? 15 : 0;
-      persist({ ...state, dailyWord: nextWordle, gems: state.gems + gemsBonus, wordleWins: (state.wordleWins || 0) + (won ? 1 : 0) });
+      const gemsBonus = won ? 45 : 0;
+      persist({
+        ...state,
+        gems: state.gems + gemsBonus,
+        wordleGame: { wordIdx: g.wordIdx, guesses: nextGuesses, done: done, won: won },
+        wordleWins: (state.wordleWins || 0) + (won ? 1 : 0)
+      });
       setWordleInput('');
     }
 
@@ -3812,33 +3838,52 @@
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
         ]),
 
-        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word of the Day']),
+        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word Game']),
         (() => {
-          const w = todaysWordleState();
-          const target = todaysWord();
-          const rowsLeft = 5 - w.guesses.length;
-          const kbStates = keyboardStates(w.guesses, target.word);
+          const g = wordleGame();
+          if (!g) {
+            const canPlay = (state.gems || 0) >= WORDLE_COST;
+            return e('div', {className:'dl-wordle-card', key:'wordle'}, [
+              e('div', {className:'dl-wg-intro', key:'i'}, [
+                e('div', {className:'dl-wg-icon', key:'ic'}, String.fromCodePoint(0x1F4AC)),
+                e('div', {className:'dl-wg-title', key:'t'}, 'Guess the Bible word'),
+                e('div', {className:'dl-wg-sub', key:'s'}, 'Five letters, five tries, and a clue to start you off. A brand new word every game.'),
+                e('div', {className:'dl-wg-reward', key:'r'}, [String.fromCodePoint(0x1F48E), ' Win back 45 gems']),
+                (state.wordleWins || 0) > 0 ? e('div', {className:'dl-wg-wins', key:'w'}, (state.wordleWins) + (state.wordleWins === 1 ? ' win so far' : ' wins so far')) : null
+              ]),
+              e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)'}, disabled: !canPlay, onClick: startWordle, key:'play'},
+                canPlay ? ('Play \u00b7 ' + WORDLE_COST + ' \ud83d\udc8e') : ('Need ' + WORDLE_COST + ' \ud83d\udc8e to play'))
+            ]);
+          }
+          const target = WORD_BANK[g.wordIdx];
+          const rowsLeft = 5 - g.guesses.length;
+          const kbStates = keyboardStates(g.guesses, target.word);
+          const canReplay = (state.gems || 0) >= WORDLE_COST;
           return e('div', {className:'dl-wordle-card' + (wordleShake ? ' shake' : ''), key:'wordle'}, [
             e('div', {className:'dl-wordle-clue', key:'clue'}, [String.fromCodePoint(0x1F4A1), ' ', target.clue]),
             e('div', {className:'dl-wordle-grid', key:'grid'},
-              w.guesses.map((g, gi) => e('div', {className:'dl-wordle-row', key:'g'+gi},
-                evaluateGuess(g, target.word).map((res, li) => e('div', {className:'dl-wordle-tile revealed ' + res, style:{transitionDelay:(li*90)+'ms', animationDelay:(li*90)+'ms'}, key:li}, g[li]))
+              g.guesses.map((gs, gi) => e('div', {className:'dl-wordle-row', key:'g'+gi},
+                evaluateGuess(gs, target.word).map((res, li) => e('div', {className:'dl-wordle-tile revealed ' + res, style:{transitionDelay:(li*90)+'ms', animationDelay:(li*90)+'ms'}, key:li}, gs[li]))
               )).concat(
-                w.done ? [] : [ e('div', {className:'dl-wordle-row', key:'active'},
+                g.done ? [] : [ e('div', {className:'dl-wordle-row', key:'active'},
                   Array.from({length:5}).map((_, li) => e('div', {className:'dl-wordle-tile' + (wordleInput[li] ? ' filled pop' : ''), key:li}, wordleInput[li] || ''))
                 ) ]
               ).concat(
-                Array.from({length: Math.max(0, rowsLeft - (w.done?0:1))}).map((_, ri) => e('div', {className:'dl-wordle-row', key:'empty'+ri},
+                Array.from({length: Math.max(0, rowsLeft - (g.done?0:1))}).map((_, ri) => e('div', {className:'dl-wordle-row', key:'empty'+ri},
                   Array.from({length:5}).map((__, li) => e('div', {className:'dl-wordle-tile', key:li}, ''))
                 ))
               )
             ),
-            w.done
+            g.done
               ? e('div', {className:'dl-wordle-result', key:'result'}, [
-                  e('div', {className:'dl-wordle-result-text', key:'t'}, w.won ? (String.fromCodePoint(0x1F389) + ' You got it \u2014 ' + target.word) : ('The word was ' + target.word)),
-                  w.won ? e('div', {className:'dl-wordle-result-sub', key:'s'}, '+15 \ud83d\udc8e gems earned') : null,
+                  e('div', {className:'dl-wordle-result-text', key:'t'}, g.won ? (String.fromCodePoint(0x1F389) + ' You got it \u2014 ' + target.word) : ('The word was ' + target.word)),
+                  g.won ? e('div', {className:'dl-wordle-result-sub', key:'s'}, '+45 \ud83d\udc8e gems earned') : null,
                   e('div', {className:'dl-wordle-result-sub', key:'clue2'}, target.clue),
-                  e('div', {className:'dl-wordle-refresh', key:'r'}, 'New word in ' + formatCountdown(msUntilMidnight()))
+                  e('div', {className:'dl-wg-again', key:'again'}, [
+                    e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', flex:1}, disabled: !canReplay, onClick: startWordle, key:'p'},
+                      canReplay ? ('Play again \u00b7 ' + WORDLE_COST + ' \ud83d\udc8e') : ('Need ' + WORDLE_COST + ' \ud83d\udc8e')),
+                    e('button', {className:'dl-wg-done', onClick: closeWordle, key:'d'}, 'Done')
+                  ])
                 ])
               : e('div', {className:'dl-wordle-keyboard', key:'kb'}, KEYBOARD_ROWS.map((row, ri) => e('div', {className:'dl-wordle-kb-row', key:'row'+ri},
                   row.map(k => {
