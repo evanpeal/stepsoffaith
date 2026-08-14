@@ -729,14 +729,6 @@
     const d2 = new Date(dateStr2 + 'T00:00:00');
     return Math.round((d2 - d1) / 86400000);
   }
-  function seededShuffle(arr, seedStr){
-    let seed = 0;
-    for (let i = 0; i < seedStr.length; i++) seed = (seed * 31 + seedStr.charCodeAt(i)) >>> 0;
-    function rand(){ seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
-    return a;
-  }
   function last7Days(){
     const days = [];
     for (let i = 6; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate()-i); days.push(d.toISOString().slice(0,10)); }
@@ -1723,18 +1715,15 @@
     const [friends, setFriends] = React.useState([]);
     const [myGroups, setMyGroups] = React.useState([]);
     const [groupMembers, setGroupMembers] = React.useState([]);
-    const [groupPrayers, setGroupPrayers] = React.useState([]);
     const [prayedRows, setPrayedRows] = React.useState([]);
     const [openGroup, setOpenGroup] = React.useState(null);
     const [socialTab, setSocialTab] = React.useState('groups');
     const [socialLoading, setSocialLoading] = React.useState(false);
     const [socialMsg, setSocialMsg] = React.useState('');
-    const [friendCodeInput, setFriendCodeInput] = React.useState('');
     const [groupCodeInput, setGroupCodeInput] = React.useState('');
     const [newGroupName, setNewGroupName] = React.useState('');
     const [newGroupDesc, setNewGroupDesc] = React.useState('');
     const [prayerDraft, setPrayerDraft] = React.useState('');
-    const [prayerAnon, setPrayerAnon] = React.useState(false);
     const [publicGroups, setPublicGroups] = React.useState([]);
     const [viewingProfile, setViewingProfile] = React.useState(null);
     const [incomingReqs, setIncomingReqs] = React.useState([]);
@@ -1747,14 +1736,9 @@
     const [chatDraft, setChatDraft] = React.useState('');
     const [chatKind, setChatKind] = React.useState('message');
     const [newRoomCode, setNewRoomCode] = React.useState('');
-    const [nameGateInput, setNameGateInput] = React.useState('');
-    const [nameGateErr, setNameGateErr] = React.useState('');
     const [showCreateRoom, setShowCreateRoom] = React.useState(false);
-    const [contactMatches, setContactMatches] = React.useState([]);
     const [contactMsg, setContactMsg] = React.useState('');
     const [contactBusy, setContactBusy] = React.useState(false);
-    const [contactPaste, setContactPaste] = React.useState('');
-    const [showContactBox, setShowContactBox] = React.useState(false);
     const [inviteCopied, setInviteCopied] = React.useState(false);
     const [newFriendMsg, setNewFriendMsg] = React.useState('');
     const [browsingType, setBrowsingType] = React.useState(null);
@@ -2088,37 +2072,6 @@
       } catch (ex) { setChurchOptions([]); }
     }
 
-    async function matchContacts(){
-      if (!sb || !user) return;
-      setContactMsg('');
-      setContactBusy(true);
-      try {
-        let numbers = [];
-        if (navigator.contacts && navigator.contacts.select) {
-          const picked = await navigator.contacts.select(['tel'], { multiple: true });
-          picked.forEach(cn => (cn.tel || []).forEach(t => numbers.push(t)));
-        } else {
-          contactPaste.split(/[\s,;]+/).forEach(v => { if (normalizePhone(v)) numbers.push(v); });
-        }
-        if (!numbers.length) {
-          setContactMsg('No phone numbers found to check.'); setContactBusy(false); return;
-        }
-        const phoneHashes = (await Promise.all(numbers.slice(0,500).map(hashPhone))).filter(Boolean);
-        if (!phoneHashes.length) { setContactMsg('Could not read those numbers.'); setContactBusy(false); return; }
-
-        const { data } = await sb.from('profiles').select('*').in('phone_hash', phoneHashes).limit(50);
-        const friendIds = new Set(friends.map(f => f.id));
-        const list = (data || []).filter(p => p.id !== user.id && !friendIds.has(p.id));
-        setContactMatches(list);
-        setContactMsg(list.length
-          ? list.length + (list.length === 1 ? ' of your contacts is here!' : ' of your contacts are here!')
-          : 'None of your contacts have joined yet.');
-      } catch (ex) {
-        setContactMsg('Contact check cancelled.');
-      }
-      setContactBusy(false);
-    }
-
     // If someone opened a room invite link, put them in that exact room
     React.useEffect(() => {
       if (!sb || !user) return;
@@ -2323,8 +2276,6 @@
           : e('button', {className:'dl-person-add', onClick:()=>sendFriendRequest(p.id), key:'t'}, 'Add')
       ]);
     }
-
-    function personRowEnd(){ return null; }
 
     async function loadGroups(){
       if (!sb || !user) return;
@@ -2584,46 +2535,6 @@
         if (sameDay) return time;
         return d.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + time;
       } catch (ex) { return ''; }
-    }
-
-    async function postPrayer(groupId, body, anon){
-      if (!sb || !user || !body.trim()) return;
-      try {
-        await sb.from('prayer_requests').insert({
-          group_id: groupId, user_id: user.id, body: body.trim(), is_anonymous: !!anon
-        });
-        setPrayerDraft('');
-        loadGroupDetail(groupId);
-      } catch (ex) { setSocialMsg('Could not post \u2014 try again.'); }
-    }
-
-    async function togglePrayed(requestId, groupId){
-      if (!sb || !user) return;
-      const already = prayedRows.some(p => p.request_id === requestId && p.user_id === user.id);
-      try {
-        if (already) {
-          await sb.from('prayer_prayed').delete().eq('request_id', requestId).eq('user_id', user.id);
-        } else {
-          await sb.from('prayer_prayed').insert({ request_id: requestId, user_id: user.id });
-        }
-        loadGroupDetail(groupId);
-      } catch (ex) {}
-    }
-
-    async function markPrayerAnswered(requestId, groupId){
-      if (!sb || !user) return;
-      try {
-        await sb.from('prayer_requests').update({ answered: true }).eq('id', requestId).eq('user_id', user.id);
-        loadGroupDetail(groupId);
-      } catch (ex) {}
-    }
-
-    async function deletePrayer(requestId, groupId){
-      if (!sb || !user) return;
-      try {
-        await sb.from('prayer_requests').delete().eq('id', requestId).eq('user_id', user.id);
-        loadGroupDetail(groupId);
-      } catch (ex) {}
     }
 
     async function signUp(){
@@ -3149,8 +3060,8 @@
       const atmosphere = BOOK_ATMOSPHERES[book];
 
       const checkpointRow = e('div', {className:'dl-scene', style: atmosphere ? {} : {background:'linear-gradient(180deg, #f1e7ff 0%, #f7f0ff 100%)'}, key:'cprow'}, [
-        e('div', {className:'dl-scene-inner', style:{justifyContent:'center'}}, [
-          e('div', {className:'dl-node-wrap'}, [
+        e('div', {className:'dl-scene-inner', style:{justifyContent:'center'}, key:'inner'}, [
+          e('div', {className:'dl-node-wrap', key:'wrap'}, [
             e('button', {className:'dl-node checkpoint ' + cpStatus, onClick:()=>openCheckpointIfAvailable(book), key:'node'}, [
               cpStatus === 'current' && e('span', {className:'dl-node-ring', key:'ring'}),
               cpStatus !== 'locked' && e('span', {className:'dl-node-icon', key:'icon'}, String.fromCodePoint(0x1F3C6))
@@ -3167,7 +3078,7 @@
         return e('div', {className:'dl-scene ' + sideClass, style:bgStyle, key:lesson.id}, [
           atmosphere ? null : lesson.scene.decor.map((d, di) => e('span', {className:'dl-decor', style:{top:d.t, left:d.l, right:d.r}, key:'d'+di}, String.fromCodePoint(d.i))),
           e('div', {className:'dl-scene-inner', key:'inner'}, [
-            e('div', {className:'dl-node-wrap'}, [
+            e('div', {className:'dl-node-wrap', key:'wrap'}, [
               e('button', {className:'dl-node ' + status, onClick:()=>openIfAvailable(lesson), key:'node'}, [
                 status === 'current' && e('span', {className:'dl-node-ring', key:'ring'}),
                 status !== 'locked' && e('span', {className:'dl-node-icon', key:'icon'}, status === 'done' ? String.fromCodePoint(0x2605) : String.fromCodePoint(0x25B6))
@@ -3180,8 +3091,8 @@
 
       const studyDone = (state.deepStudies || []).includes(book);
       const deepStudyRow = DEEP_STUDIES[book] ? e('div', {className:'dl-scene', style: atmosphere ? {} : {background:'transparent'}, key:'studyrow'}, [
-        e('div', {className:'dl-scene-inner', style:{justifyContent:'center'}}, [
-          e('div', {className:'dl-node-wrap'}, [
+        e('div', {className:'dl-scene-inner', style:{justifyContent:'center'}, key:'inner'}, [
+          e('div', {className:'dl-node-wrap', key:'wrap'}, [
             e('button', {className:'dl-node deepstudy' + (studyDone ? ' studied' : ''), onClick:()=>{ setOpenStudyBook(book); setStudyStep('prayer'); }, key:'node'},
               e('span', {className:'dl-node-icon', key:'icon'}, studyDone ? String.fromCodePoint(0x2713) : String.fromCodePoint(0x1F4DC))
             ),
