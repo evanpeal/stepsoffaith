@@ -626,19 +626,19 @@
   .dl-chat-head-icon { font-size: 22px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #f1e7ff; border-radius: 50%; }
   .dl-chat-title { font-size: 16px; font-weight: 800; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dl-chat-sub { font-size: 11.5px; font-weight: 700; color: var(--gray); }
-  .dl-chat-scroll { display: flex; flex-direction: column; gap: 12px; background: #faf9fc; border-radius: 16px; padding: 16px 12px; min-height: 260px; max-height: 52vh; overflow-y: auto; margin-bottom: 12px; }
+  .dl-chat-scroll { display: flex; flex-direction: column; gap: 14px; background: #f7f6fa; border-radius: 18px; padding: 18px 14px; min-height: 320px; max-height: 58vh; overflow-y: auto; margin-bottom: 12px; }
   .dl-chat-empty { text-align: center; color: var(--gray); font-size: 13.5px; font-weight: 700; padding: 30px 10px; line-height: 1.5; }
   .dl-chat-empty-icon { font-size: 32px; margin-bottom: 8px; }
   .dl-msg-row { display: flex; gap: 8px; align-items: flex-end; }
   .dl-msg-row.mine { flex-direction: row-reverse; }
   .dl-msg-avatar { width: 32px; height: 32px; flex-shrink: 0; border: none; background: #f1e7ff; border-radius: 50%; font-size: 17px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-  .dl-msg-col { display: flex; flex-direction: column; max-width: 76%; }
+  .dl-msg-col { display: flex; flex-direction: column; max-width: 78%; }
   .dl-msg-row.mine .dl-msg-col { align-items: flex-end; }
   .dl-msg-author { font-size: 11px; font-weight: 800; color: var(--gray); margin-bottom: 3px; padding-left: 4px; }
-  .dl-msg-bubble { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px 16px 16px 4px; padding: 10px 13px; font-size: 14.5px; line-height: 1.5; color: var(--ink); word-break: break-word; }
-  .dl-msg-bubble.mine { background: var(--teal); border-color: var(--teal-dark); color: #fff; border-radius: 16px 16px 4px 16px; }
-  .dl-msg-bubble.prayer { background: #f6efff; border-color: #d9c2f5; color: var(--ink); }
-  .dl-msg-bubble.prayer.mine { background: #ede0ff; border-color: #c9a0ea; }
+  .dl-msg-bubble { background: #fff; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.07); border-radius: 18px 18px 18px 5px; padding: 12px 15px; font-size: 15px; line-height: 1.55; color: var(--ink); word-break: break-word; }
+  .dl-msg-bubble.mine { background: var(--teal); color: #fff; border-radius: 18px 18px 5px 18px; }
+  .dl-msg-bubble.prayer { background: #f3ebff; color: var(--ink); border-left: 4px solid var(--purple); }
+  .dl-msg-bubble.prayer.mine { background: #e4d4ff; color: var(--ink); border-left: 4px solid var(--purple-dark); }
   .dl-msg-prayer-tag { font-size: 10.5px; font-weight: 800; color: #6b3fa0; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
   .dl-msg-time { display: flex; gap: 8px; align-items: center; font-size: 10.5px; font-weight: 700; color: var(--gray); margin-top: 3px; padding: 0 4px; }
   .dl-msg-del { background: none; border: none; color: var(--gray); font-size: 10.5px; font-weight: 700; text-decoration: underline; cursor: pointer; padding: 0; }
@@ -682,3 +682,21 @@
   .dl-gm-create { flex: 1; background: var(--teal); color: #fff; border: none; border-radius: 12px; padding: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; }
   .dl-gm-cancel { flex: 1; background: #f5f5f7; color: var(--gray); border: none; border-radius: 12px; padding: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; }
   .dl-name-row { display: flex; gap: 10px; }
+
+  /* Chat readability: grouping + day dividers */
+  .dl-msg-row.grouped { margin-top: -8px; }
+  .dl-msg-avatar.spacer { background: none; box-shadow: none; }
+  .dl-msg-bubble.grouped { border-radius: 18px; }
+  .dl-msg-row.mine .dl-msg-bubble.grouped { border-radius: 18px; }
+  .dl-msg-author { background: none; border: none; cursor: pointer; font-size: 11.5px; font-weight: 800; color: var(--purple-dark); margin-bottom: 4px; padding: 0 0 0 4px; text-align: left; }
+  .dl-msg-row.grouped .dl-msg-time { display: none; }
+  .dl-chat-day { display: flex; align-items: center; justify-content: center; margin: 8px 0 2px; }
+  .dl-chat-day span { background: rgba(0,0,0,0.06); color: var(--gray); font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Friend profile: locked sections */
+  .dl-vp-back { background: none; border: none; color: #fff; font-weight: 800; font-size: 13.5px; padding: 4px 0 12px; cursor: pointer; position: relative; z-index: 1; }
+  .dl-vp-friendtag { display: inline-block; background: rgba(255,255,255,0.18); color: #fff; font-size: 12.5px; font-weight: 800; padding: 7px 16px; border-radius: 20px; margin-top: 10px; position: relative; z-index: 1; }
+  .dl-locked-card { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.07); border: 1px dashed rgba(255,255,255,0.25); border-radius: 14px; padding: 14px; margin-bottom: 10px; position: relative; z-index: 1; }
+  .dl-locked-icon { font-size: 20px; opacity: 0.7; }
+  .dl-locked-title { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.85); }
+  .dl-locked-sub { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.5); }

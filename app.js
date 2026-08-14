@@ -2887,29 +2887,78 @@
             ])
 
         : viewingProfile
-        ? e('div', {key:'viewprofile'}, [
-            e('button', {className:'dl-topic-back', onClick:()=>setViewingProfile(null), key:'back'}, String.fromCodePoint(0x2190) + ' Back'),
-            e('div', {className:'dl-vp-card', key:'card'}, [
-              e('div', {className:'dl-vp-avatar', key:'av'}, viewingProfile.avatar || String.fromCodePoint(0x1F4D6)),
-              e('div', {className:'dl-vp-name', key:'n'}, viewingProfile.display_name),
-              viewingProfile.verse ? e('div', {className:'dl-vp-verse', key:'v'}, '\u201c' + viewingProfile.verse + '\u201d') : null,
-              e('div', {className:'dl-vp-stats', key:'st'}, [
-                e('div', {className:'dl-vp-stat', key:'l'}, [
-                  e('div', {className:'dl-vp-stat-num', key:'n'}, viewingProfile.lessons_done || 0),
-                  e('div', {className:'dl-vp-stat-lbl', key:'l'}, 'Lessons')
+        ? (() => {
+            const vp = viewingProfile;
+            const isFriend = friends.some(f => f.id === vp.id);
+            // Build a stand-in state so trophies can be checked from public data
+            const pseudo = {
+              completed: new Array(vp.lessons_done || 0).fill(-1),
+              completedCheckpoints: new Array(vp.checkpoints_done || 0).fill(''),
+              dailyStreak: vp.daily_streak || 0,
+              reflections: [], testBest: {}, wordleWins: 0
+            };
+            const earned = TROPHIES.filter(t => { try { return t.check(pseudo); } catch (ex) { return false; } });
+            return e('div', {className:'dl-profile-outer', key:'viewprofile'}, [
+              e('div', {className:'dl-profile-stars', key:'stars'}),
+              e('div', {className:'dl-profile-glow', key:'glow'}),
+              e('div', {className:'dl-daily-wrap dl-profile-page', key:'inner'}, [
+                e('button', {className:'dl-vp-back', onClick:()=>setViewingProfile(null), key:'back'}, String.fromCodePoint(0x2190) + ' Back'),
+
+                e('div', {className:'dl-profile-header', key:'ph'}, [
+                  e('span', {className:'dl-profile-cross', style:{top:'14px', left:'14%'}, key:'c1'}, String.fromCodePoint(0x271D)),
+                  e('span', {className:'dl-profile-cross', style:{top:'34px', right:'16%'}, key:'c2'}, String.fromCodePoint(0x271D)),
+                  e('span', {className:'dl-profile-cross', style:{bottom:'12px', left:'22%'}, key:'c3'}, String.fromCodePoint(0x271D)),
+                  e('span', {className:'dl-profile-cross', style:{bottom:'20px', right:'20%'}, key:'c4'}, String.fromCodePoint(0x271D)),
+                  e('div', {className:'dl-profile-avatar', key:'av'}, vp.avatar || String.fromCodePoint(0x1F4D6)),
+                  e('div', {className:'dl-profile-name', key:'name'}, vp.display_name),
+                  vp.verse ? e('div', {className:'dl-profile-verse', key:'verse'}, '\u201c' + vp.verse + '\u201d') : null,
+                  isFriend
+                    ? e('div', {className:'dl-vp-friendtag', key:'ft'}, [String.fromCodePoint(0x2713), ' Friends'])
+                    : e('button', {className:'dl-profile-edit-btn', onClick:()=>sendFriendRequest(vp.id), key:'add'},
+                        friendStatus(vp.id) === 'sent' ? 'Request sent' : 'Add friend')
                 ]),
-                e('div', {className:'dl-vp-stat', key:'c'}, [
-                  e('div', {className:'dl-vp-stat-num', key:'n'}, viewingProfile.checkpoints_done || 0),
-                  e('div', {className:'dl-vp-stat-lbl', key:'l'}, 'Books')
+
+                e('div', {className:'dl-hero-streak', key:'hero'}, [
+                  e('div', {className:'dl-hero-flame', key:'flame'}, String.fromCodePoint(0x1F525)),
+                  e('div', {className:'dl-hero-num', key:'num'}, vp.daily_streak || 0),
+                  e('div', {className:'dl-hero-label', key:'label'}, (vp.daily_streak === 1 ? 'day walking in the Word' : 'days walking in the Word'))
                 ]),
-                e('div', {className:'dl-vp-stat', key:'s'}, [
-                  e('div', {className:'dl-vp-stat-num', key:'n'}, viewingProfile.daily_streak || 0),
-                  e('div', {className:'dl-vp-stat-lbl', key:'l'}, 'Day streak')
+
+                e('div', {className:'dl-profile-grid', key:'grid'}, [
+                  e('div', {className:'dl-stat', key:'l'}, [e('div',{className:'dl-stat-badge b2', key:'i'}, String.fromCodePoint(0x1F4D6)), e('div',{className:'dl-stat-num', key:'n'}, vp.lessons_done || 0), e('div',{className:'dl-stat-label', key:'t'}, 'Lessons done')]),
+                  e('div', {className:'dl-stat', key:'c'}, [e('div',{className:'dl-stat-badge b3', key:'i'}, String.fromCodePoint(0x1F3C6)), e('div',{className:'dl-stat-num', key:'n'}, vp.checkpoints_done || 0), e('div',{className:'dl-stat-label', key:'t'}, 'Checkpoints')]),
+                  e('div', {className:'dl-stat', key:'s'}, [e('div',{className:'dl-stat-badge b1', key:'i'}, String.fromCodePoint(0x1F525)), e('div',{className:'dl-stat-num', key:'n'}, vp.daily_streak || 0), e('div',{className:'dl-stat-label', key:'t'}, 'Day streak')]),
+                  e('div', {className:'dl-stat', key:'tr'}, [e('div',{className:'dl-stat-badge b4', key:'i'}, String.fromCodePoint(0x1F3C5)), e('div',{className:'dl-stat-num', key:'n'}, earned.length), e('div',{className:'dl-stat-label', key:'t'}, 'Trophies')])
+                ]),
+
+                e('div', {className:'dl-section-title', key:'trlbl'}, [String.fromCodePoint(0x1F3C6), ' Trophy Case']),
+                earned.length === 0
+                  ? e('div', {className:'dl-empty-note', key:'notr'}, 'No trophies earned yet.')
+                  : e('div', {className:'dl-trophy-scroll', key:'trophies'}, earned.map(t =>
+                      e('div', {className:'dl-trophy earned', key:t.id, title:t.desc}, [
+                        e('div', {className:'dl-trophy-icon', key:'i'}, t.icon),
+                        e('div', {className:'dl-trophy-title', key:'t'}, t.title)
+                      ])
+                    )),
+
+                e('div', {className:'dl-section-title', key:'privlbl'}, [String.fromCodePoint(0x1F512), ' Private']),
+                e('div', {className:'dl-locked-card', key:'lock1'}, [
+                  e('span', {className:'dl-locked-icon', key:'i'}, String.fromCodePoint(0x1F512)),
+                  e('div', {key:'t'}, [
+                    e('div', {className:'dl-locked-title', key:'a'}, 'Reflections'),
+                    e('div', {className:'dl-locked-sub', key:'b'}, 'Only visible to ' + vp.display_name)
+                  ])
+                ]),
+                e('div', {className:'dl-locked-card', key:'lock2'}, [
+                  e('span', {className:'dl-locked-icon', key:'i'}, String.fromCodePoint(0x1F512)),
+                  e('div', {key:'t'}, [
+                    e('div', {className:'dl-locked-title', key:'a'}, 'Testimony'),
+                    e('div', {className:'dl-locked-sub', key:'b'}, 'Kept private, always')
+                  ])
                 ])
-              ]),
-              e('div', {className:'dl-vp-private', key:'priv'}, [String.fromCodePoint(0x1F512), ' Testimony and reflections stay private'])
-            ])
-          ])
+              ])
+            ]);
+          })()
 
         : openGroup
         ? (() => {
@@ -2932,25 +2981,55 @@
                       e('div', {className:'dl-chat-empty-icon', key:'i'}, String.fromCodePoint(0x1F4AC)),
                       e('div', {key:'t'}, g.description || 'Be the first to say something.')
                     ]) ]
-                  : chatMessages.map(m => {
-                      const author = chatAuthors[m.user_id];
-                      const mine = m.user_id === user.id;
-                      const isPrayer = m.kind === 'prayer';
-                      return e('div', {className:'dl-msg-row' + (mine ? ' mine' : ''), key:m.id}, [
-                        !mine ? e('button', {className:'dl-msg-avatar', onClick:()=>viewProfile(m.user_id), key:'av'}, (author && author.avatar) || String.fromCodePoint(0x1F4D6)) : null,
-                        e('div', {className:'dl-msg-col', key:'col'}, [
-                          !mine ? e('div', {className:'dl-msg-author', key:'a'}, (author && author.display_name) || 'Someone') : null,
-                          e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : ''), key:'b'}, [
-                            isPrayer ? e('div', {className:'dl-msg-prayer-tag', key:'pt'}, [String.fromCodePoint(0x1F64F), ' Prayer request']) : null,
-                            e('div', {key:'txt'}, m.body)
-                          ]),
-                          e('div', {className:'dl-msg-time', key:'t'}, [
-                            formatMsgTime(m.created_at),
-                            mine ? e('button', {className:'dl-msg-del', onClick:()=>deleteMessage(m.id, g.id), key:'d'}, 'Delete') : null
+                  : (() => {
+                      const out = [];
+                      let lastDay = '';
+                      chatMessages.forEach((m, idx) => {
+                        const author = chatAuthors[m.user_id];
+                        const mine = m.user_id === user.id;
+                        const isPrayer = m.kind === 'prayer';
+                        const prev = idx > 0 ? chatMessages[idx-1] : null;
+
+                        // Day divider
+                        let dayLabel = '';
+                        try {
+                          const d = new Date(m.created_at);
+                          const today = new Date();
+                          const yest = new Date(); yest.setDate(today.getDate()-1);
+                          if (d.toDateString() === today.toDateString()) dayLabel = 'Today';
+                          else if (d.toDateString() === yest.toDateString()) dayLabel = 'Yesterday';
+                          else dayLabel = d.toLocaleDateString([], { month:'long', day:'numeric' });
+                        } catch (ex) { dayLabel = ''; }
+                        if (dayLabel && dayLabel !== lastDay) {
+                          out.push(e('div', {className:'dl-chat-day', key:'day'+idx}, e('span', {}, dayLabel)));
+                          lastDay = dayLabel;
+                        }
+
+                        // Group consecutive messages from the same person
+                        const grouped = prev && prev.user_id === m.user_id && prev.kind === m.kind &&
+                          (new Date(m.created_at) - new Date(prev.created_at)) < 5*60*1000 &&
+                          dayLabel === lastDay;
+
+                        out.push(e('div', {className:'dl-msg-row' + (mine ? ' mine' : '') + (grouped ? ' grouped' : ''), key:m.id}, [
+                          !mine ? (grouped
+                            ? e('span', {className:'dl-msg-avatar spacer', key:'av'})
+                            : e('button', {className:'dl-msg-avatar', onClick:()=>viewProfile(m.user_id), key:'av'}, (author && author.avatar) || String.fromCodePoint(0x1F4D6))
+                          ) : null,
+                          e('div', {className:'dl-msg-col', key:'col'}, [
+                            (!mine && !grouped) ? e('button', {className:'dl-msg-author', onClick:()=>viewProfile(m.user_id), key:'a'}, (author && author.display_name) || 'Someone') : null,
+                            e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : '') + (grouped ? ' grouped' : ''), key:'b'}, [
+                              (isPrayer && !grouped) ? e('div', {className:'dl-msg-prayer-tag', key:'pt'}, [String.fromCodePoint(0x1F64F), ' Prayer request']) : null,
+                              e('div', {key:'txt'}, m.body)
+                            ]),
+                            e('div', {className:'dl-msg-time', key:'t'}, [
+                              formatMsgTime(m.created_at),
+                              mine ? e('button', {className:'dl-msg-del', onClick:()=>deleteMessage(m.id, g.id), key:'d'}, 'Delete') : null
+                            ])
                           ])
-                        ])
-                      ]);
-                    })
+                        ]));
+                      });
+                      return out;
+                    })()
               ),
 
               isMember
