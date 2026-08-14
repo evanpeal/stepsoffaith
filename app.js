@@ -2121,7 +2121,32 @@
       return myGroups.find(g => (g.room_type || g.join_code) === type);
     }
 
-    // Join a room type: slot into a copy with space, or open a fresh one
+    const ROOM_SEED_AT = 30;   // once a room reaches this, quietly open the next one
+
+    // Make sure there's always a room with plenty of space available
+    async function ensureFreshRoom(type){
+      if (!sb || !user) return null;
+      try {
+        const { data: all } = await sb.from('groups').select('*')
+          .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
+        const rooms = all || [];
+        const roomy = rooms.find(r => (r.member_count || 0) < ROOM_SEED_AT);
+        if (roomy) return null;   // there's still a quiet room, no need for another
+
+        const def = DEFAULT_ROOMS.find(d => d.code === type);
+        const nextNum = rooms.length ? Math.max(...rooms.map(r => r.room_number || 1)) + 1 : 1;
+        const { data: created } = await sb.from('groups').insert({
+          name: (def ? def.name : (rooms[0] ? rooms[0].name : 'Room')),
+          description: def ? def.desc : (rooms[0] ? rooms[0].description : ''),
+          join_code: type + '-' + nextNum,
+          room_type: type, room_number: nextNum, capacity: ROOM_CAP,
+          is_public: true, owner_id: user.id
+        }).select().maybeSingle();
+        return created || null;
+      } catch (ex) { return null; }
+    }
+
+    // Join a room type: slot into the fullest room that still has space
     async function joinRoomType(type){
       if (!sb || !user) return;
       const mine = myRoomForType(type);
@@ -2130,22 +2155,21 @@
         const { data: all } = await sb.from('groups').select('*')
           .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
         const rooms = all || [];
-        const open = rooms.find(r => (r.member_count || 0) < (r.capacity || ROOM_CAP));
-        if (open) { await joinGroupDirect(open.id); return; }
+        // Prefer rooms that already have people, so conversations stay lively
+        const withSpace = rooms.filter(r => (r.member_count || 0) < (r.capacity || ROOM_CAP))
+                               .sort((a, b) => (b.member_count || 0) - (a.member_count || 0));
+        let target = withSpace[0];
 
-        // Every copy is full - open the next one
-        const def = DEFAULT_ROOMS.find(d => d.code === type);
-        const nextNum = rooms.length ? Math.max(...rooms.map(r => r.room_number || 1)) + 1 : 1;
-        const { data: created, error } = await sb.from('groups').insert({
-          name: (def ? def.name : (rooms[0] ? rooms[0].name : 'Room')),
-          description: def ? def.desc : (rooms[0] ? rooms[0].description : ''),
-          join_code: type + '-' + nextNum,
-          room_type: type, room_number: nextNum, capacity: ROOM_CAP,
-          is_public: true, owner_id: user.id
-        }).select().maybeSingle();
-        if (error) throw error;
-        await joinGroupDirect(created.id);
+        if (!target) {
+          const fresh = await ensureFreshRoom(type);
+          target = fresh;
+        }
+        if (!target) { setSocialMsg('Could not find a room \u2014 try again.'); return; }
+
+        await joinGroupDirect(target.id);
+        await ensureFreshRoom(type);   // keep a spare ready for the next person
         loadPublicGroups();
+        if (browsingType === type) loadTypeRooms(type);
       } catch (ex) {
         setSocialMsg('Could not join: ' + (ex && ex.message ? ex.message : 'unknown'));
       }
@@ -2161,7 +2185,7 @@
       if (!sb || !user) return;
       try {
         await sb.from('group_members').upsert({ group_id: groupId, user_id: user.id });
-        loadGroups();
+        await loadGroups();
         loadPublicGroups();
         setOpenGroup(groupId);
       } catch (ex) { setSocialMsg('Could not join \u2014 try again.'); }
@@ -3533,12 +3557,11 @@
                               ? e('button', {className:'dl-roomcard-btn in', onClick:()=>setOpenGroup(r.id), key:'o'}, 'Open')
                               : full
                               ? e('span', {className:'dl-roomcard-full', key:'f'}, 'Full')
-                              : e('button', {className:'dl-roomcard-btn', onClick:()=>joinGroupDirect(r.id), key:'j'}, 'Join')
+                              : e('button', {className:'dl-roomcard-btn', onClick:()=>{ joinGroupDirect(r.id).then(()=>{ ensureFreshRoom(browsingType); loadTypeRooms(browsingType); }); }, key:'j'}, 'Join')
                           ])
                         ]);
                       })),
-                  e('button', {className:'dl-newroom-btn', onClick:()=>joinRoomType(browsingType), key:'new'},
-                    String.fromCodePoint(0x2795) + ' Open a new room')
+                  e('div', {className:'dl-browse-note', key:'note'}, 'New rooms open automatically as these fill up.')
                 ]);
               })() : [
 
