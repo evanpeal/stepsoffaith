@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], theme: 'light', activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -1506,6 +1506,17 @@
     const [wordleInput, setWordleInput] = React.useState('');
     const [wordleShake, setWordleShake] = React.useState(false);
     const [nowTick, setNowTick] = React.useState(Date.now());
+
+    React.useEffect(() => {
+      try {
+        const root = document.getElementById('dl-root');
+        if (root) root.setAttribute('data-theme', (state && state.theme === 'dark') ? 'dark' : 'light');
+      } catch (ex) {}
+    }, [state && state.theme]);
+
+    function toggleTheme(){
+      persist({ ...state, theme: (state.theme === 'dark' ? 'light' : 'dark') });
+    }
 
     React.useEffect(() => {
       const iv = setInterval(() => setNowTick(Date.now()), 1000);
@@ -3646,6 +3657,13 @@
           e('span', {className:'dl-setname-cta', key:'c'}, 'Set')
         ]) : null,
 
+        e('div', {className:'dl-theme-row', key:'theme'}, [
+          e('span', {className:'dl-theme-icon', key:'i'}, String.fromCodePoint(state.theme === 'dark' ? 0x1F319 : 0x2600)),
+          e('span', {style:{flex:1}, key:'t'}, state.theme === 'dark' ? 'Dark mode' : 'Light mode'),
+          e('button', {className:'dl-theme-switch' + (state.theme === 'dark' ? ' on' : ''), onClick: toggleTheme, key:'s'},
+            e('span', {className:'dl-theme-knob'})
+          )
+        ]),
         e('div', {className:'dl-account-row', key:'account'},
           user
             ? [

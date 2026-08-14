@@ -18,6 +18,10 @@
     --gray: #afafaf;
     --gray-light: #e5e5e5;
     --bg: #ffffff;
+    --card: #ffffff;
+    --card-2: #f5f5f7;
+    --surface: #f7f6fa;
+    --shadow: rgba(0,0,0,0.07);
     --locked: #d8d8d8;
     --locked-dark: #bcbcbc;
     font-family: 'Nunito', -apple-system, sans-serif;
@@ -30,7 +34,7 @@
   #dl-root * { box-sizing: border-box; }
   #dl-root h1, #dl-root h2, #dl-root h3, #dl-root button { font-family: 'Baloo 2', 'Nunito', sans-serif; }
 
-  .dl-top { display: flex; justify-content: space-between; align-items: center; padding: 14px 5vw; max-width: 600px; margin: 0 auto; border-bottom: 2px solid var(--gray-light); position: relative; z-index: 3; background: #fff; }
+  .dl-top { display: flex; justify-content: space-between; align-items: center; padding: 14px 5vw; max-width: 600px; margin: 0 auto; border-bottom: 2px solid var(--gray-light); position: relative; z-index: 3; background: var(--card); }
   .dl-pill { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 15px; }
   .dl-pill.fire { color: #ff9600; }
   .dl-pill.gem { color: var(--blue); }
@@ -38,7 +42,7 @@
 
   .dl-path { max-width: 600px; margin: 0 auto; }
   .dl-book-picker { display: flex; gap: 8px; overflow-x: auto; padding: 14px 5vw; max-width: 600px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
-  .dl-book-chip { flex-shrink: 0; background: #fff; border: 2px solid var(--gray-light); border-radius: 20px; padding: 9px 16px; font-weight: 800; font-size: 13px; color: var(--gray); cursor: pointer; white-space: nowrap; }
+  .dl-book-chip { flex-shrink: 0; background: var(--card); border: 2px solid var(--gray-light); border-radius: 20px; padding: 9px 16px; font-weight: 800; font-size: 13px; color: var(--gray); cursor: pointer; white-space: nowrap; }
   .dl-book-chip.active { background: var(--green); border-color: var(--green-dark); color: #fff; }
   .dl-book-chip-progress { font-weight: 700; opacity: 0.8; font-size: 11px; }
   .dl-book-header { padding: 18px 5vw 4px; }
@@ -90,12 +94,12 @@
   .dl-study-focus { font-size: 12px; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.5px; }
   .dl-study-title { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; margin-top: 4px; }
   .dl-study-intro { font-size: 13px; font-weight: 600; color: var(--gray); margin-top: 8px; max-width: 300px; margin-left: auto; margin-right: auto; }
-  .dl-study-section { margin-bottom: 22px; background: #fff; border: 2px solid #f0e2c0; border-radius: 16px; padding: 16px 18px; }
+  .dl-study-section { margin-bottom: 22px; background: var(--card); border: 2px solid #f0e2c0; border-radius: 16px; padding: 16px 18px; }
   .dl-study-part { font-size: 10.5px; font-weight: 800; color: #b8933e; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
   .dl-study-purpose { background: #fdf6e6; border: 2px solid #f0d9a0; border-radius: 16px; padding: 16px 18px; margin-bottom: 22px; }
   .dl-study-purpose-h { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 15px; color: #7a5a1c; margin-bottom: 6px; }
   .dl-study-purpose-b { font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500; margin-bottom: 12px; }
-  .dl-study-step { display: flex; gap: 10px; align-items: flex-start; background: #fff; border-radius: 12px; padding: 12px 14px; font-size: 13.5px; line-height: 1.55; color: var(--ink); font-weight: 600; }
+  .dl-study-step { display: flex; gap: 10px; align-items: flex-start; background: var(--card); border-radius: 12px; padding: 12px 14px; font-size: 13.5px; line-height: 1.55; color: var(--ink); font-weight: 600; }
   .dl-study-step-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: #5c4400; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
   .dl-study-takeaway { background: linear-gradient(160deg, #fdf3d8 0%, #f7e3ae 100%); border: 2px solid #e8c46c; border-radius: 16px; padding: 16px 18px; margin-bottom: 16px; }
   .dl-study-takeaway-h { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 15px; color: #7a5a1c; margin-bottom: 6px; }
@@ -109,7 +113,7 @@
   .dl-node.checkpoint .dl-node-ring { border-color: var(--purple); }
   @keyframes dl-pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-  .dl-tabs { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 2px solid var(--gray-light); display: flex; z-index: 5; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .dl-tabs { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card); border-top: 2px solid var(--gray-light); display: flex; z-index: 5; padding-bottom: env(safe-area-inset-bottom, 0px); }
   .dl-tab { flex: 1; min-width: 0; text-align: center; padding: 9px 2px 7px; font-size: 10.5px; font-weight: 800; color: var(--gray); cursor: pointer; border: none; background: none; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dl-tab.active { color: var(--green); }
   .dl-tab-icon { display: block; font-size: 24px; margin-bottom: 3px; line-height: 1; }
@@ -122,7 +126,7 @@
     .dl-tab-icon { font-size: 26px; }
   }
 
-  .dl-modal-bg { position: fixed; inset: 0; background: #fff; display: none; flex-direction: column; z-index: 20; }
+  .dl-modal-bg { position: fixed; inset: 0; background: var(--card); display: none; flex-direction: column; z-index: 20; }
   .dl-modal-bg.open { display: flex; }
   .dl-lesson-top { display: flex; align-items: center; gap: 12px; padding: 16px 20px; }
   .dl-lesson-actions { display: none; }
@@ -134,14 +138,14 @@
   .dl-listen-inline.active { background: #fff3cd; color: #b5750a; }
   .dl-listen-inline.small { font-size: 11px; padding: 5px 10px; margin: 8px 0 0; }
   .dl-range { width: 100%; accent-color: var(--teal); }
-  .dl-lesson-action-btn { display: flex; align-items: center; gap: 5px; background: #f5f5f7; color: var(--gray); border: none; font-weight: 800; font-size: 12px; padding: 6px 12px; border-radius: 20px; cursor: pointer; }
+  .dl-lesson-action-btn { display: flex; align-items: center; gap: 5px; background: var(--card-2); color: var(--gray); border: none; font-weight: 800; font-size: 12px; padding: 6px 12px; border-radius: 20px; cursor: pointer; }
   .dl-lesson-action-btn.active { background: #fff3cd; color: #b5750a; }
   .dl-fav-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 4px; -webkit-overflow-scrolling: touch; }
   .dl-fav-chip { flex: 0 0 auto; display: flex; flex-direction: column; gap: 2px; background: #fffaf0; border: 2px solid #ffe4a8; border-radius: 12px; padding: 9px 13px; text-align: left; cursor: pointer; max-width: 160px; }
   .dl-fav-book { font-size: 10px; font-weight: 800; color: #b5750a; text-transform: uppercase; }
   .dl-fav-title { font-size: 12.5px; font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dl-trophy-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 4px; -webkit-overflow-scrolling: touch; }
-  .dl-trophy { flex: 0 0 78px; background: #f5f5f7; border-radius: 14px; padding: 12px 6px; text-align: center; opacity: 0.4; filter: grayscale(1); }
+  .dl-trophy { flex: 0 0 78px; background: var(--card-2); border-radius: 14px; padding: 12px 6px; text-align: center; opacity: 0.4; filter: grayscale(1); }
   .dl-trophy.earned { background: #fff8e6; opacity: 1; filter: none; box-shadow: 0 2px 0 #ffe4a8; }
   .dl-trophy-icon { font-size: 24px; margin-bottom: 4px; }
   .dl-trophy-title { font-size: 10px; font-weight: 800; color: var(--ink); line-height: 1.25; }
@@ -171,7 +175,7 @@
 
   .dl-q-count { font-size: 12px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
   .dl-q { font-weight: 800; font-size: 19px; margin: 22px 0 16px; }
-  .dl-opt { display: block; width: 100%; text-align: left; background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; padding: 14px 16px; border-radius: 14px; font-size: 15px; font-weight: 700; margin-bottom: 10px; cursor: pointer; color: var(--ink); }
+  .dl-opt { display: block; width: 100%; text-align: left; background: var(--card); border: 2px solid var(--gray-light); border-bottom-width: 4px; padding: 14px 16px; border-radius: 14px; font-size: 15px; font-weight: 700; margin-bottom: 10px; cursor: pointer; color: var(--ink); }
   .dl-opt:active:not(:disabled) { border-bottom-width: 2px; transform: translateY(2px); }
   .dl-opt.correct { background: var(--green-bg); border-color: var(--green); color: var(--green-dark); }
   .dl-opt.wrong { background: #ffdfe0; border-color: var(--red); color: var(--red-dark); }
@@ -223,7 +227,7 @@
   .dl-welcome-btn.primary { background: linear-gradient(160deg, #b98cf5 0%, #8f57e8 100%); color: #fff; box-shadow: 0 4px 14px rgba(143,87,232,0.4); }
   .dl-welcome-btn:not(.primary) { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
 
-  .dl-auth-modal { background: #fff; border-radius: 22px; max-width: 380px; margin: 0 auto; overflow: hidden; }
+  .dl-auth-modal { background: var(--card); border-radius: 22px; max-width: 380px; margin: 0 auto; overflow: hidden; }
   .dl-auth-modal-header { background: linear-gradient(160deg, #6b4f9e 0%, #a56cf0 100%); padding: 26px 24px 22px; text-align: center; }
   .dl-auth-modal-logo { width: 54px; height: 54px; margin: 0 auto 12px; }
   .dl-auth-modal-title { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 20px; color: #fff; }
@@ -253,7 +257,7 @@
   .dl-challenge-sub { font-size: 12px; color: #0b4a66; font-weight: 600; }
   .dl-challenge-done { font-size: 13.5px; font-weight: 700; color: var(--blue-dark); }
 
-  .dl-dc-modal-bg { position: fixed; inset: 0; background: #fff; display: none; flex-direction: column; z-index: 20; }
+  .dl-dc-modal-bg { position: fixed; inset: 0; background: var(--card); display: none; flex-direction: column; z-index: 20; }
   .dl-dc-modal-bg.open { display: flex; }
   .dl-dc-body { flex: 1; overflow-y: auto; padding: 20px 24px; max-width: 480px; margin: 0 auto; width: 100%; }
   .dl-dc-count { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
@@ -267,7 +271,7 @@
   .dl-callings-icon { font-size: 32px; margin-bottom: 6px; }
   .dl-callings-title { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 22px; color: #fff; }
   .dl-callings-sub { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.85); margin-top: 2px; }
-  .dl-quest-card { background: #fff; border: 2px solid var(--gray-light); border-left: 6px solid var(--purple); border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; }
+  .dl-quest-card { background: var(--card); border: 2px solid var(--gray-light); border-left: 6px solid var(--purple); border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; }
   .dl-quest-card.claimed { opacity: 0.65; }
   .dl-quest-badge { width: 40px; height: 40px; border-radius: 50%; background: #f1e7ff; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
   .dl-quest-card.c1 { border-left-color: var(--teal); }
@@ -286,7 +290,7 @@
   .dl-quest-claim:disabled { background: var(--gray-light); border-bottom-color: var(--gray); color: var(--gray); cursor: default; }
   .dl-quest-claimed { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase; }
 
-  .dl-test-card { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; }
+  .dl-test-card { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 16px 18px; margin-bottom: 12px; }
   .dl-test-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .dl-test-icon { font-size: 26px; }
   .dl-test-title { font-weight: 800; font-size: 15px; }
@@ -295,7 +299,7 @@
   .dl-test-reward { font-size: 11.5px; font-weight: 700; color: var(--teal-dark); margin-bottom: 4px; }
   .dl-test-best { font-size: 12px; font-weight: 700; color: var(--teal-dark); margin-bottom: 10px; }
 
-  .dl-leaderboard-row { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
+  .dl-leaderboard-row { display: flex; align-items: center; gap: 10px; background: var(--card); border: 2px solid var(--gray-light); border-radius: 12px; padding: 10px 14px; margin-bottom: 8px; }
   .dl-leaderboard-rank { font-weight: 800; font-size: 13px; color: var(--gold-dark); width: 28px; }
   .dl-leaderboard-name { flex: 1; font-weight: 700; font-size: 13.5px; }
   .dl-leaderboard-score { font-weight: 800; font-size: 13px; color: var(--teal-dark); }
@@ -328,7 +332,7 @@
 
   .dl-profile-header { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; padding-bottom: 4px; }
   .dl-profile-cross { position: absolute; font-size: 13px; color: rgba(255,255,255,0.35); pointer-events: none; }
-  .dl-profile-avatar { position: relative; z-index: 1; width: 84px; height: 84px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 38px; margin-bottom: 10px; box-shadow: 0 0 0 4px rgba(255,255,255,0.3), 0 6px 0 rgba(0,0,0,0.18); font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
+  .dl-profile-avatar { position: relative; z-index: 1; width: 84px; height: 84px; border-radius: 50%; background: var(--card); display: flex; align-items: center; justify-content: center; font-size: 38px; margin-bottom: 10px; box-shadow: 0 0 0 4px rgba(255,255,255,0.3), 0 6px 0 rgba(0,0,0,0.18); font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
   .dl-profile-name { position: relative; z-index: 1; font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 21px; color: #fff; }
   .dl-profile-verse { position: relative; z-index: 1; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 0.2px; margin-top: 4px; max-width: 260px; text-align: center; font-style: italic; }
   .dl-profile-edit-btn { position: relative; z-index: 1; background: rgba(255,255,255,0.22); color: #fff; border: none; padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 800; margin-top: 10px; cursor: pointer; }
@@ -370,7 +374,7 @@
   .dl-prayer-text { font-size: 15.5px; line-height: 1.8; color: var(--ink); font-style: italic; font-weight: 600; margin-bottom: 30px; }
 
   .dl-shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px; }
-  .dl-shop-item { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 16px 12px; text-align: center; }
+  .dl-shop-item { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 16px 12px; text-align: center; }
   .dl-shop-item.owned { background: linear-gradient(160deg, #f6ecff 0%, #e6ceff 100%); border-color: #d8b8f5; }
   .dl-shop-icon { font-size: 28px; margin-bottom: 6px; }
   .dl-shop-title { font-size: 12.5px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
@@ -385,16 +389,16 @@
   .dl-avatar-opt.sel { border-color: var(--purple); background: #f1e7ff; }
 
   .dl-section-title { font-weight: 800; font-size: 15px; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
-  .dl-friend-row { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 10px 14px; margin-bottom: 8px; }
+  .dl-friend-row { display: flex; align-items: center; gap: 10px; background: var(--card); border: 2px solid var(--gray-light); border-radius: 14px; padding: 10px 14px; margin-bottom: 8px; }
   .dl-friend-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0; }
   .dl-friend-name { font-weight: 700; font-size: 14px; flex: 1; }
   .dl-del { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 18px; padding: 4px 6px; line-height: 1; }
   .dl-del:hover { color: var(--red); }
   .dl-add-row { display: flex; gap: 8px; margin-bottom: 16px; }
-  .dl-add-row input { flex: 1; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 10px 14px; font-size: 14px; font-family: inherit; }
+  .dl-add-row input { flex: 1; background: var(--card); border: 2px solid var(--gray-light); border-radius: 12px; padding: 10px 14px; font-size: 14px; font-family: inherit; }
   .dl-add-row button { background: var(--teal); color: #fff; border: none; border-bottom: 3px solid var(--teal-dark); padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer; white-space: nowrap; }
 
-  .dl-group-card { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; }
+  .dl-group-card { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; }
   .dl-group-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
   .dl-group-name { font-weight: 800; font-size: 14.5px; }
   .dl-group-meta { font-size: 12px; color: var(--gray); font-weight: 600; margin-top: 2px; }
@@ -404,10 +408,10 @@
   .dl-group-join { background: var(--purple); color: #fff; border: none; border-bottom: 3px solid var(--purple-dark); padding: 7px 14px; border-radius: 10px; font-size: 12px; font-weight: 800; cursor: pointer; margin-top: 8px; }
   .dl-group-code { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; color: var(--purple-dark); background: #f6ecff; padding: 3px 9px; border-radius: 8px; display: inline-block; margin-top: 6px; }
   .dl-tab-toggle { display: flex; gap: 8px; margin-bottom: 14px; }
-  .dl-tab-toggle button { flex: 1; padding: 9px; border-radius: 12px; border: 2px solid var(--gray-light); background: #fff; font-weight: 800; font-size: 13px; color: var(--gray); cursor: pointer; }
+  .dl-tab-toggle button { flex: 1; padding: 9px; border-radius: 12px; border: 2px solid var(--gray-light); background: var(--card); font-weight: 800; font-size: 13px; color: var(--gray); cursor: pointer; }
   .dl-tab-toggle button.active { background: var(--purple); border-color: var(--purple-dark); color: #fff; }
 
-  .dl-edit-modal { background: #fff; border-radius: 18px; padding: 22px; max-width: 380px; margin: 0 auto; }
+  .dl-edit-modal { background: var(--card); border-radius: 18px; padding: 22px; max-width: 380px; margin: 0 auto; }
 
   .dl-testimony-input { width: 100%; min-height: 140px; border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px; font-size: 14px; font-family: inherit; resize: vertical; line-height: 1.6; }
   .dl-testimony-card { background: #f6ecff; border: 2px solid #e2c8f7; border-radius: 16px; padding: 18px; }
@@ -434,7 +438,7 @@
   .dl-auth-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 6vw; background: linear-gradient(180deg, #f6f2ff 0%, #fff 40%); }
   .dl-auth-brand { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 28px; text-align: center; }
   .dl-auth-sub { font-size: 14px; color: var(--gray); font-weight: 600; text-align: center; margin-top: 4px; }
-  .dl-auth-card { background: #fff; border: 2px solid var(--gray-light); border-radius: 18px; padding: 22px; max-width: 340px; width: 100%; }
+  .dl-auth-card { background: var(--card); border: 2px solid var(--gray-light); border-radius: 18px; padding: 22px; max-width: 340px; width: 100%; }
   .dl-auth-error { background: #ffeceb; color: var(--red-dark); font-size: 12.5px; font-weight: 700; padding: 9px 12px; border-radius: 10px; margin-bottom: 12px; }
   .dl-edit-field { margin-bottom: 14px; }
   .dl-edit-field label { display: block; font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase; margin-bottom: 6px; }
@@ -444,7 +448,7 @@
   .dl-install-close { position: absolute; top: 8px; right: 10px; background: none; border: none; color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 800; cursor: pointer; padding: 4px; }
   .dl-install-title { font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 14.5px; color: #fff; margin-bottom: 3px; }
   .dl-install-sub { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.88); line-height: 1.45; }
-  .dl-install-btn { margin-top: 10px; background: #fff; color: #6a3fc9; border: none; border-radius: 18px; padding: 8px 20px; font-size: 13px; font-weight: 800; cursor: pointer; }
+  .dl-install-btn { margin-top: 10px; background: var(--card); color: #6a3fc9; border: none; border-radius: 18px; padding: 8px 20px; font-size: 13px; font-weight: 800; cursor: pointer; }
 
   .dl-pace-note { display: flex; gap: 10px; align-items: flex-start; background: #fdf6e6; border: 2px solid #f0d9a0; border-radius: 14px; padding: 12px 14px; margin-bottom: 14px; font-size: 13px; font-weight: 700; color: #7a5a1c; line-height: 1.5; }
   .dl-pace-icon { font-size: 18px; flex-shrink: 0; }
@@ -466,13 +470,13 @@
   .dl-refresh-pill { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; color: var(--purple-dark); background: #f1e7ff; padding: 6px 12px; border-radius: 20px; margin-bottom: 14px; }
 
   /* Wordle-style word game */
-  .dl-wordle-card { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 18px; margin-bottom: 20px; }
+  .dl-wordle-card { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 18px; margin-bottom: 20px; }
   .dl-wordle-card.shake { animation: dl-shake 0.4s; }
   @keyframes dl-shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);} }
   .dl-wordle-clue { font-size: 13.5px; font-weight: 700; color: var(--gray); margin-bottom: 14px; line-height: 1.4; }
   .dl-wordle-grid { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
   .dl-wordle-row { display: flex; gap: 6px; justify-content: center; }
-  .dl-wordle-tile { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; border: 2px solid var(--gray-light); border-radius: 8px; background: #fff; color: var(--ink); text-transform: uppercase; }
+  .dl-wordle-tile { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; border: 2px solid var(--gray-light); border-radius: 8px; background: var(--card); color: var(--ink); text-transform: uppercase; }
   .dl-wordle-tile.filled { border-color: var(--purple); }
   .dl-wordle-tile.green { background: var(--teal); border-color: var(--teal-dark); color: #fff; }
   .dl-wordle-tile.yellow { background: #f0b429; border-color: #c4890a; color: #fff; }
@@ -498,7 +502,7 @@
   .dl-search-input { width: 100%; border: 2px solid var(--gray-light); border-radius: 14px; padding: 13px 16px; font-size: 15px; font-weight: 700; font-family: inherit; color: var(--ink); margin-bottom: 18px; }
   .dl-search-input:focus { outline: none; border-color: var(--purple); }
   .dl-topic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .dl-topic-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 14px; padding: 14px 12px; text-align: left; cursor: pointer; }
+  .dl-topic-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: var(--card); border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 14px; padding: 14px 12px; text-align: left; cursor: pointer; }
   .dl-topic-card:active { transform: translateY(1px); border-bottom-width: 2px; }
   .dl-topic-card-icon { font-size: 22px; }
   .dl-topic-card-label { font-size: 13px; font-weight: 800; color: var(--ink); line-height: 1.3; }
@@ -509,14 +513,14 @@
   .dl-topic-open-icon { font-size: 28px; }
   .dl-topic-open-label { font-size: 19px; font-weight: 800; color: var(--ink); }
   .dl-topic-intro { font-size: 14px; font-weight: 700; color: var(--gray); line-height: 1.5; margin-bottom: 12px; }
-  .dl-topic-verse { background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+  .dl-topic-verse { background: var(--card); border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
   .dl-topic-verse-ref { font-size: 11.5px; font-weight: 800; color: var(--purple-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
   .dl-topic-verse-text { font-size: 14.5px; line-height: 1.6; color: var(--ink); }
-  .dl-search-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
+  .dl-search-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--card); border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
   .dl-search-locked { margin-left: auto; font-size: 13px; }
 
   /* Reading plans */
-  .dl-plan-card { background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 16px; padding: 16px; margin-bottom: 12px; }
+  .dl-plan-card { background: var(--card); border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 16px; padding: 16px; margin-bottom: 12px; }
   .dl-plan-card-top, .dl-plan-active-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
   .dl-plan-icon { font-size: 26px; }
   .dl-plan-title { font-size: 16px; font-weight: 800; color: var(--ink); }
@@ -525,7 +529,7 @@
   .dl-plan-progress { font-size: 12px; font-weight: 800; color: var(--teal-dark); margin: 8px 0 12px; }
   .dl-plan-active { background: linear-gradient(135deg, #e6fbf2 0%, #eef7ff 100%); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
   .dl-plan-today-label { font-size: 11.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.6px; margin: 14px 0 8px; }
-  .dl-plan-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: #fff; border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
+  .dl-plan-lesson { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--card); border: 2px solid var(--gray-light); border-radius: 12px; padding: 11px 14px; text-align: left; cursor: pointer; margin-bottom: 8px; }
   .dl-plan-lesson.done { opacity: 0.6; }
   .dl-plan-check { margin-left: auto; font-size: 13px; }
   .dl-plan-leave { background: none; border: none; color: var(--gray); font-weight: 800; font-size: 12px; padding: 6px 0 0; cursor: pointer; text-decoration: underline; }
@@ -539,22 +543,22 @@
   .dl-plan-reflect { background: rgba(255,255,255,0.7); border-radius: 12px; padding: 14px; margin-top: 14px; }
   .dl-plan-reflect-h { font-size: 12.5px; font-weight: 800; color: var(--purple-dark); margin-bottom: 8px; }
   .dl-plan-reflect-q { font-size: 13px; font-weight: 700; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
-  .dl-plan-reflect-saved { font-size: 13.5px; line-height: 1.6; color: var(--ink); background: #fff; border-radius: 10px; padding: 12px; }
+  .dl-plan-reflect-saved { font-size: 13.5px; line-height: 1.6; color: var(--ink); background: var(--card); border-radius: 10px; padding: 12px; }
 
   /* Community: friends, groups, prayer */
-  .dl-community { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 16px; }
+  .dl-community { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 16px; }
   .dl-friendcode { display: flex; align-items: center; justify-content: space-between; background: #f1e7ff; border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; }
   .dl-friendcode-label { font-size: 11.5px; font-weight: 800; color: #4a2380; text-transform: uppercase; letter-spacing: 0.5px; }
   .dl-friendcode-val { font-size: 17px; font-weight: 800; color: #4a2380; letter-spacing: 2px; font-family: 'Baloo 2', sans-serif; }
   .dl-social-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
-  .dl-social-tab { flex: 1; background: #f5f5f7; border: none; border-radius: 10px; padding: 9px; font-weight: 800; font-size: 13px; color: var(--gray); cursor: pointer; }
+  .dl-social-tab { flex: 1; background: var(--card-2); border: none; border-radius: 10px; padding: 9px; font-weight: 800; font-size: 13px; color: var(--gray); cursor: pointer; }
   .dl-social-tab.active { background: var(--teal); color: #fff; }
   .dl-social-msg { background: #e6fbf2; color: var(--teal-dark); font-size: 12.5px; font-weight: 800; padding: 9px 12px; border-radius: 10px; margin-bottom: 12px; }
   .dl-social-row { display: flex; gap: 8px; margin-bottom: 14px; }
   .dl-social-input { flex: 1; min-width: 0; border: 2px solid var(--gray-light); border-radius: 10px; padding: 10px 12px; font-size: 14px; font-weight: 700; font-family: inherit; color: var(--ink); }
   .dl-social-input:focus { outline: none; border-color: var(--purple); }
   .dl-social-btn { background: var(--teal); color: #fff; border: none; border-radius: 10px; padding: 0 18px; font-weight: 800; font-size: 13px; cursor: pointer; }
-  .dl-friend-row, .dl-group-row { display: flex; align-items: center; gap: 10px; width: 100%; background: #fafafa; border: none; border-radius: 12px; padding: 11px 13px; margin-bottom: 8px; text-align: left; cursor: pointer; }
+  .dl-friend-row, .dl-group-row { display: flex; align-items: center; gap: 10px; width: 100%; background: var(--card-2); border: none; border-radius: 12px; padding: 11px 13px; margin-bottom: 8px; text-align: left; cursor: pointer; }
   .dl-friend-rank { font-size: 12px; font-weight: 800; color: var(--gray); min-width: 24px; }
   .dl-friend-avatar { font-size: 20px; }
   .dl-friend-name { font-size: 14px; font-weight: 800; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -569,7 +573,7 @@
   .dl-group-member { background: #f1e7ff; color: #4a2380; font-size: 11.5px; font-weight: 800; padding: 5px 10px; border-radius: 20px; }
   .dl-prayer-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 10px 0 14px; }
   .dl-anon-label { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; color: var(--gray); }
-  .dl-prayer-card { background: #fafafa; border-radius: 12px; padding: 13px; margin-bottom: 10px; }
+  .dl-prayer-card { background: var(--card-2); border-radius: 12px; padding: 13px; margin-bottom: 10px; }
   .dl-prayer-card.answered { background: #e6fbf2; }
   .dl-prayer-who { font-size: 11.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
   .dl-prayer-answered { color: var(--teal-dark); }
@@ -581,47 +585,47 @@
   .dl-prayer-mini { background: none; border: none; color: var(--gray); font-size: 11.5px; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 0; }
 
   /* Community tab additions */
-  .dl-signin-prompt { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 28px 20px; text-align: center; }
+  .dl-signin-prompt { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 28px 20px; text-align: center; }
   .dl-signin-icon { font-size: 38px; margin-bottom: 10px; }
   .dl-signin-title { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
   .dl-signin-sub { font-size: 13.5px; line-height: 1.5; color: var(--gray); }
   .dl-friend-main { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; background: none; border: none; text-align: left; cursor: pointer; padding: 0; }
   .dl-group-icon { font-size: 18px; }
   .dl-group-meta-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-  .dl-group-tag { background: #f5f5f7; color: var(--gray); font-size: 10.5px; font-weight: 800; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .dl-group-tag { background: var(--card-2); color: var(--gray); font-size: 10.5px; font-weight: 800; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.4px; }
   .dl-group-tag.public { background: #e6fbf2; color: var(--teal-dark); }
   .dl-group-count { font-size: 11.5px; font-weight: 700; color: var(--gray); }
   .dl-group-member { background: #f1e7ff; color: #4a2380; font-size: 11.5px; font-weight: 800; padding: 5px 10px; border-radius: 20px; border: none; cursor: pointer; }
-  .dl-pubgroup { display: flex; align-items: center; gap: 10px; background: #fafafa; border-radius: 12px; padding: 12px 13px; margin-bottom: 8px; }
+  .dl-pubgroup { display: flex; align-items: center; gap: 10px; background: var(--card-2); border-radius: 12px; padding: 12px 13px; margin-bottom: 8px; }
   .dl-pubgroup-desc { font-size: 12px; color: var(--gray); line-height: 1.4; margin: 2px 0 3px; }
-  .dl-create-box { background: #fafafa; border-radius: 12px; padding: 14px; margin-top: 12px; }
+  .dl-create-box { background: var(--card-2); border-radius: 12px; padding: 14px; margin-top: 12px; }
   .dl-create-title { font-size: 13px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
-  .dl-vp-card { background: #fff; border: 2px solid var(--gray-light); border-radius: 18px; padding: 26px 20px; text-align: center; }
+  .dl-vp-card { background: var(--card); border: 2px solid var(--gray-light); border-radius: 18px; padding: 26px 20px; text-align: center; }
   .dl-vp-avatar { font-size: 52px; margin-bottom: 8px; }
   .dl-vp-name { font-size: 21px; font-weight: 800; color: var(--ink); }
   .dl-vp-verse { font-size: 13.5px; font-style: italic; color: var(--gray); line-height: 1.5; margin-top: 8px; }
   .dl-vp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 16px; }
   .dl-vp-stat-num { font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; color: var(--purple-dark); }
   .dl-vp-stat-lbl { font-size: 10.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; }
-  .dl-vp-private { font-size: 11.5px; font-weight: 700; color: var(--gray); background: #f5f5f7; border-radius: 20px; padding: 8px 12px; display: inline-block; }
+  .dl-vp-private { font-size: 11.5px; font-weight: 700; color: var(--gray); background: var(--card-2); border-radius: 20px; padding: 8px 12px; display: inline-block; }
 
   /* Community redesign: people, requests, search */
-  .dl-search-wrap { display: flex; align-items: center; gap: 8px; background: #f5f5f7; border-radius: 14px; padding: 4px 12px; margin-bottom: 16px; }
+  .dl-search-wrap { display: flex; align-items: center; gap: 8px; background: var(--card-2); border-radius: 14px; padding: 4px 12px; margin-bottom: 16px; }
   .dl-search-icon { font-size: 15px; opacity: 0.6; }
   .dl-people-search { flex: 1; min-width: 0; border: none; background: none; padding: 12px 0; font-size: 15px; font-weight: 700; font-family: inherit; color: var(--ink); }
   .dl-people-search:focus { outline: none; }
   .dl-search-clear { background: none; border: none; color: var(--gray); font-size: 13px; cursor: pointer; padding: 4px; }
-  .dl-person-row { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 10px 12px; margin-bottom: 8px; }
+  .dl-person-row { display: flex; align-items: center; gap: 10px; background: var(--card); border: 2px solid var(--gray-light); border-radius: 14px; padding: 10px 12px; margin-bottom: 8px; }
   .dl-person-main { display: flex; align-items: center; gap: 11px; flex: 1; min-width: 0; background: none; border: none; text-align: left; cursor: pointer; padding: 0; }
   .dl-person-avatar { font-size: 26px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: #f1e7ff; border-radius: 50%; flex-shrink: 0; }
   .dl-person-name { font-size: 14.5px; font-weight: 800; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dl-person-sub { font-size: 11.5px; font-weight: 700; color: var(--gray); }
   .dl-person-add { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 8px 16px; font-weight: 800; font-size: 12.5px; cursor: pointer; flex-shrink: 0; }
-  .dl-person-pending { background: #f5f5f7; color: var(--gray); border: none; border-radius: 20px; padding: 8px 14px; font-weight: 800; font-size: 12px; cursor: pointer; flex-shrink: 0; }
+  .dl-person-pending { background: var(--card-2); color: var(--gray); border: none; border-radius: 20px; padding: 8px 14px; font-weight: 800; font-size: 12px; cursor: pointer; flex-shrink: 0; }
   .dl-person-tag { background: #e6fbf2; color: var(--teal-dark); border-radius: 20px; padding: 7px 14px; font-weight: 800; font-size: 12px; flex-shrink: 0; }
   .dl-req-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
   .dl-req-accept { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 8px 15px; font-weight: 800; font-size: 12.5px; cursor: pointer; }
-  .dl-req-decline { background: #f5f5f7; color: var(--gray); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 12px; cursor: pointer; }
+  .dl-req-decline { background: var(--card-2); color: var(--gray); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 12px; cursor: pointer; }
   .dl-tab-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; background: var(--red); color: #fff; border-radius: 20px; font-size: 10.5px; font-weight: 800; margin-left: 6px; padding: 0 5px; }
   .dl-whatsnew-list { text-align: left; margin: 16px 0 20px; }
   .dl-whatsnew-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--ink); margin-bottom: 12px; }
@@ -629,12 +633,12 @@
 
   /* Group chat */
   .dl-chat-wrap { display: flex; flex-direction: column; }
-  .dl-chat-header { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 10px 12px; margin-bottom: 12px; }
+  .dl-chat-header { display: flex; align-items: center; gap: 10px; background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 10px 12px; margin-bottom: 12px; }
   .dl-chat-back { background: none; border: none; font-size: 28px; line-height: 1; color: var(--gray); cursor: pointer; padding: 0 4px; }
   .dl-chat-head-icon { font-size: 22px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #f1e7ff; border-radius: 50%; }
   .dl-chat-title { font-size: 16px; font-weight: 800; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .dl-chat-sub { font-size: 11.5px; font-weight: 700; color: var(--gray); }
-  .dl-chat-scroll { display: flex; flex-direction: column; gap: 14px; background: #f7f6fa; border-radius: 18px; padding: 18px 14px; min-height: 320px; max-height: 58vh; overflow-y: auto; margin-bottom: 12px; }
+  .dl-chat-scroll { display: flex; flex-direction: column; gap: 14px; background: var(--surface); border-radius: 18px; padding: 18px 14px; min-height: 320px; max-height: 58vh; overflow-y: auto; margin-bottom: 12px; }
   .dl-chat-empty { text-align: center; color: var(--gray); font-size: 13.5px; font-weight: 700; padding: 30px 10px; line-height: 1.5; }
   .dl-chat-empty-icon { font-size: 32px; margin-bottom: 8px; }
   .dl-msg-row { display: flex; gap: 8px; align-items: flex-end; }
@@ -643,23 +647,23 @@
   .dl-msg-col { display: flex; flex-direction: column; max-width: 78%; }
   .dl-msg-row.mine .dl-msg-col { align-items: flex-end; }
   .dl-msg-author { font-size: 11px; font-weight: 800; color: var(--gray); margin-bottom: 3px; padding-left: 4px; }
-  .dl-msg-bubble { background: #fff; border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.07); border-radius: 18px 18px 18px 5px; padding: 12px 15px; font-size: 15px; line-height: 1.55; color: var(--ink); word-break: break-word; }
+  .dl-msg-bubble { background: var(--card); border: none; box-shadow: 0 1px 2px rgba(0,0,0,0.07); border-radius: 18px 18px 18px 5px; padding: 12px 15px; font-size: 15px; line-height: 1.55; color: var(--ink); word-break: break-word; }
   .dl-msg-bubble.mine { background: var(--teal); color: #fff; border-radius: 18px 18px 5px 18px; }
   .dl-msg-bubble.prayer { background: #f3ebff; color: var(--ink); border-left: 4px solid var(--purple); }
   .dl-msg-bubble.prayer.mine { background: #e4d4ff; color: var(--ink); border-left: 4px solid var(--purple-dark); }
   .dl-msg-prayer-tag { font-size: 10.5px; font-weight: 800; color: #6b3fa0; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
   .dl-msg-time { display: flex; gap: 8px; align-items: center; font-size: 10.5px; font-weight: 700; color: var(--gray); margin-top: 3px; padding: 0 4px; }
   .dl-msg-del { background: none; border: none; color: var(--gray); font-size: 10.5px; font-weight: 700; text-decoration: underline; cursor: pointer; padding: 0; }
-  .dl-chat-composer { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 10px; }
+  .dl-chat-composer { background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 10px; }
   .dl-chat-kind { display: flex; gap: 6px; margin-bottom: 8px; }
-  .dl-kind-btn { background: #f5f5f7; border: none; border-radius: 20px; padding: 6px 13px; font-size: 11.5px; font-weight: 800; color: var(--gray); cursor: pointer; }
+  .dl-kind-btn { background: var(--card-2); border: none; border-radius: 20px; padding: 6px 13px; font-size: 11.5px; font-weight: 800; color: var(--gray); cursor: pointer; }
   .dl-kind-btn.active { background: var(--purple); color: #fff; }
   .dl-chat-input-row { display: flex; gap: 8px; align-items: flex-end; }
-  .dl-chat-input { flex: 1; min-width: 0; border: none; background: #f5f5f7; border-radius: 14px; padding: 12px 14px; font-size: 14.5px; font-family: inherit; font-weight: 600; color: var(--ink); resize: none; max-height: 110px; }
+  .dl-chat-input { flex: 1; min-width: 0; border: none; background: var(--card-2); border-radius: 14px; padding: 12px 14px; font-size: 14.5px; font-family: inherit; font-weight: 600; color: var(--ink); resize: none; max-height: 110px; }
   .dl-chat-input:focus { outline: none; }
   .dl-chat-send { width: 42px; height: 42px; flex-shrink: 0; border: none; border-radius: 50%; background: var(--teal); color: #fff; font-size: 17px; cursor: pointer; }
   .dl-chat-send:disabled { background: var(--gray-light); color: var(--gray); }
-  .dl-chat-joinbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 12px 14px; font-size: 13px; font-weight: 700; color: var(--gray); }
+  .dl-chat-joinbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--card); border: 2px solid var(--gray-light); border-radius: 16px; padding: 12px 14px; font-size: 13px; font-weight: 700; color: var(--gray); }
 
   .dl-name-prompt { display: flex; align-items: center; gap: 12px; background: #fff8e6; border: 2px solid #ffe4a8; border-radius: 14px; padding: 13px 14px; margin-bottom: 14px; }
   .dl-name-prompt-icon { font-size: 22px; }
@@ -672,8 +676,8 @@
 
   /* GroupMe-style room list */
   .dl-gm-label { font-size: 11.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.7px; margin: 20px 0 10px; }
-  .dl-gm-row { display: flex; align-items: center; gap: 12px; width: 100%; background: #fff; border: none; border-radius: 16px; padding: 12px 14px; margin-bottom: 8px; text-align: left; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-  .dl-gm-row:active { background: #fafafa; }
+  .dl-gm-row { display: flex; align-items: center; gap: 12px; width: 100%; background: var(--card); border: none; border-radius: 16px; padding: 12px 14px; margin-bottom: 8px; text-align: left; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .dl-gm-row:active { background: var(--card-2); }
   .dl-gm-row.discover { gap: 10px; }
   .dl-gm-open { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; background: none; border: none; text-align: left; cursor: pointer; padding: 0; }
   .dl-gm-avatar { width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background: linear-gradient(135deg, #a56cf0, #7e3ff2); display: flex; align-items: center; justify-content: center; font-size: 22px; }
@@ -685,10 +689,10 @@
   .dl-gm-count { background: #f1e7ff; color: #4a2380; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 20px; }
   .dl-gm-arrow { font-size: 22px; color: #ccc; }
   .dl-gm-join { background: var(--teal); color: #fff; border: none; border-radius: 20px; padding: 9px 18px; font-weight: 800; font-size: 13px; cursor: pointer; flex-shrink: 0; }
-  .dl-gm-private { background: #fff; border-radius: 16px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .dl-gm-private { background: var(--card); border-radius: 16px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   .dl-gm-newbtn { width: 100%; background: #f1e7ff; color: #4a2380; border: none; border-radius: 12px; padding: 13px; font-weight: 800; font-size: 13.5px; cursor: pointer; }
   .dl-gm-create { flex: 1; background: var(--teal); color: #fff; border: none; border-radius: 12px; padding: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; }
-  .dl-gm-cancel { flex: 1; background: #f5f5f7; color: var(--gray); border: none; border-radius: 12px; padding: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; }
+  .dl-gm-cancel { flex: 1; background: var(--card-2); color: var(--gray); border: none; border-radius: 12px; padding: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; }
   .dl-name-row { display: flex; gap: 10px; }
 
   /* Chat readability: grouping + day dividers */
@@ -718,10 +722,10 @@
 
   /* People you may know: invite + contacts */
   .dl-grow-row { display: flex; gap: 10px; margin-bottom: 12px; }
-  .dl-grow-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; background: #fff; border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 14px; padding: 14px 8px; font-size: 12.5px; font-weight: 800; color: var(--ink); cursor: pointer; text-align: center; }
+  .dl-grow-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; background: var(--card); border: 2px solid var(--gray-light); border-bottom-width: 4px; border-radius: 14px; padding: 14px 8px; font-size: 12.5px; font-weight: 800; color: var(--ink); cursor: pointer; text-align: center; }
   .dl-grow-btn:active { transform: translateY(1px); border-bottom-width: 2px; }
   .dl-grow-icon { font-size: 22px; }
-  .dl-contact-box { background: #fff; border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+  .dl-contact-box { background: var(--card); border: 2px solid var(--gray-light); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
   .dl-contact-note { font-size: 12px; line-height: 1.5; color: var(--gray); margin-bottom: 10px; }
   .dl-edit-hint { font-size: 11.5px; line-height: 1.45; color: var(--gray); margin: -4px 0 6px; }
 
@@ -739,7 +743,7 @@
   @keyframes dl-toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
   /* Big, open public room cards */
-  .dl-bigroom { background: #fff; border-radius: 20px; padding: 22px 20px 18px; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center; }
+  .dl-bigroom { background: var(--card); border-radius: 20px; padding: 22px 20px 18px; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center; }
   .dl-bigroom-tap { display: block; width: 100%; background: none; border: none; cursor: pointer; padding: 0; }
   .dl-bigroom-icon { width: 64px; height: 64px; margin: 0 auto 12px; border-radius: 50%; background: linear-gradient(135deg, #a56cf0, #7e3ff2); display: flex; align-items: center; justify-content: center; font-size: 30px; }
   .dl-bigroom-name { font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
@@ -772,7 +776,7 @@
   .dl-browse-sub { font-size: 12.5px; font-weight: 700; color: var(--gray); }
   .dl-quickjoin { width: 100%; background: var(--teal); color: #fff; border: none; border-bottom: 4px solid var(--teal-dark); border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; margin-bottom: 14px; }
   .dl-quickjoin:active { transform: translateY(2px); border-bottom-width: 2px; }
-  .dl-roomcard { background: #fff; border-radius: 14px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+  .dl-roomcard { background: var(--card); border-radius: 14px; padding: 14px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
   .dl-roomcard.full { opacity: 0.6; }
   .dl-roomcard-top { display: flex; align-items: center; gap: 14px; }
   .dl-roomcard-id { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; color: var(--purple-dark); min-width: 42px; }
@@ -786,6 +790,63 @@
   .dl-newroom-btn { width: 100%; background: #f1e7ff; color: #4a2380; border: none; border-radius: 12px; padding: 13px; font-weight: 800; font-size: 13.5px; cursor: pointer; margin-top: 4px; }
   .dl-bigroom-actions { display: flex; gap: 8px; }
   .dl-bigroom-actions .dl-bigroom-join { flex: 1; }
-  .dl-bigroom-browse { flex: 1; background: #f5f5f7; color: var(--ink); border: none; border-bottom: 4px solid #ddd; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; }
+  .dl-bigroom-browse { flex: 1; background: var(--card-2); color: var(--ink); border: none; border-bottom: 4px solid #ddd; border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; }
 
   .dl-browse-note { text-align: center; font-size: 12px; font-weight: 700; color: var(--gray); padding: 10px 0 4px; }
+
+  /* ---------- Dark mode ---------- */
+  #dl-root[data-theme="dark"] {
+    --ink: #ececf0;
+    --gray: #8f8f9c;
+    --gray-light: #33333d;
+    --bg: #14141a;
+    --card: #1e1e26;
+    --card-2: #262630;
+    --surface: #191920;
+    --shadow: rgba(0,0,0,0.5);
+    --locked: #2c2c36;
+    --locked-dark: #22222a;
+  }
+  #dl-root[data-theme="dark"] .dl-tabs { background: var(--card); border-top-color: var(--gray-light); }
+  #dl-root[data-theme="dark"] .dl-msg-bubble { box-shadow: 0 1px 2px rgba(0,0,0,0.4); }
+  #dl-root[data-theme="dark"] .dl-topic-verse,
+  #dl-root[data-theme="dark"] .dl-passage-card,
+  #dl-root[data-theme="dark"] .dl-wordle-card,
+  #dl-root[data-theme="dark"] .dl-community,
+  #dl-root[data-theme="dark"] .dl-plan-card,
+  #dl-root[data-theme="dark"] .dl-voice-card { border-color: var(--gray-light); }
+  #dl-root[data-theme="dark"] .dl-wordle-tile { border-color: var(--gray-light); background: var(--card-2); }
+  #dl-root[data-theme="dark"] .dl-wordle-key { background: var(--card-2); color: var(--ink); }
+  #dl-root[data-theme="dark"] .dl-shop-item,
+  #dl-root[data-theme="dark"] .dl-trophy { background: var(--card-2); }
+  #dl-root[data-theme="dark"] .dl-trophy.earned { background: #3a2f14; }
+  #dl-root[data-theme="dark"] .dl-fav-chip { background: #33290f; border-color: #5a4718; }
+  #dl-root[data-theme="dark"] .dl-topic-chip,
+  #dl-root[data-theme="dark"] .dl-group-member,
+  #dl-root[data-theme="dark"] .dl-gm-newbtn,
+  #dl-root[data-theme="dark"] .dl-newroom-btn,
+  #dl-root[data-theme="dark"] .dl-pray-btn { background: #2e2440; color: #cbb2f0; }
+  #dl-root[data-theme="dark"] .dl-social-msg { background: #14332c; }
+  #dl-root[data-theme="dark"] .dl-recap-card,
+  #dl-root[data-theme="dark"] .dl-invite-wide,
+  #dl-root[data-theme="dark"] .dl-plan-active { background: linear-gradient(135deg, #241d33, #16232e); }
+  #dl-root[data-theme="dark"] .dl-tier-badge.tiereasy { background: #12332a; }
+  #dl-root[data-theme="dark"] .dl-tier-badge.tiermedium { background: #35290f; }
+  #dl-root[data-theme="dark"] .dl-tier-badge.tierhard { background: #3a1d1d; }
+  #dl-root[data-theme="dark"] input,
+  #dl-root[data-theme="dark"] textarea,
+  #dl-root[data-theme="dark"] select { background: var(--card-2); color: var(--ink); border-color: var(--gray-light); }
+  #dl-root[data-theme="dark"] input::placeholder,
+  #dl-root[data-theme="dark"] textarea::placeholder { color: var(--gray); }
+  #dl-root[data-theme="dark"] .dl-chat-day span { background: rgba(255,255,255,0.08); }
+  #dl-root[data-theme="dark"] .dl-freeze-banner,
+  #dl-root[data-theme="dark"] .dl-freeze-buy { background: #14293a; color: #7ec4ee; }
+  #dl-root[data-theme="dark"] .dl-name-prompt,
+  #dl-root[data-theme="dark"] .dl-newroom-banner { background: #2e2612; border-color: #574718; }
+
+  .dl-theme-row { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.08); border-radius: 14px; padding: 13px 16px; margin-bottom: 12px; font-size: 14px; font-weight: 800; color: #fff; position: relative; z-index: 1; }
+  .dl-theme-icon { font-size: 18px; }
+  .dl-theme-switch { width: 50px; height: 28px; border-radius: 20px; border: none; background: rgba(255,255,255,0.25); cursor: pointer; padding: 3px; display: flex; transition: background 0.2s; }
+  .dl-theme-switch.on { background: var(--purple); }
+  .dl-theme-knob { width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: transform 0.2s; }
+  .dl-theme-switch.on .dl-theme-knob { transform: translateX(22px); }
