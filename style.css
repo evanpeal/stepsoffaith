@@ -526,3 +526,14 @@
   .dl-plan-lesson.done { opacity: 0.6; }
   .dl-plan-check { margin-left: auto; font-size: 13px; }
   .dl-plan-leave { background: none; border: none; color: var(--gray); font-weight: 800; font-size: 12px; padding: 6px 0 0; cursor: pointer; text-decoration: underline; }
+
+  .dl-page-title { font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 800; color: var(--ink); margin: 4px 0 6px; }
+  .dl-plan-pace { background: rgba(255,255,255,0.6); border-radius: 12px; padding: 12px 14px; margin: 14px 0 4px; }
+  .dl-plan-pace-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .dl-plan-pace-label { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; }
+  .dl-plan-pace-val { font-size: 12.5px; font-weight: 800; color: var(--teal-dark); }
+  .dl-plan-pace-hint { font-size: 11.5px; font-weight: 600; color: var(--gray); margin-top: 6px; line-height: 1.4; }
+  .dl-plan-reflect { background: rgba(255,255,255,0.7); border-radius: 12px; padding: 14px; margin-top: 14px; }
+  .dl-plan-reflect-h { font-size: 12.5px; font-weight: 800; color: var(--purple-dark); margin-bottom: 8px; }
+  .dl-plan-reflect-q { font-size: 13px; font-weight: 700; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
+  .dl-plan-reflect-saved { font-size: 13.5px; line-height: 1.6; color: var(--ink); background: #fff; border-radius: 10px; padding: 12px; }
