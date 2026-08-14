@@ -618,3 +618,37 @@
   .dl-whatsnew-list { text-align: left; margin: 16px 0 20px; }
   .dl-whatsnew-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; line-height: 1.5; color: var(--ink); margin-bottom: 12px; }
   .dl-whatsnew-icon { font-size: 17px; flex-shrink: 0; }
+
+  /* Group chat */
+  .dl-chat-wrap { display: flex; flex-direction: column; }
+  .dl-chat-header { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 10px 12px; margin-bottom: 12px; }
+  .dl-chat-back { background: none; border: none; font-size: 28px; line-height: 1; color: var(--gray); cursor: pointer; padding: 0 4px; }
+  .dl-chat-head-icon { font-size: 22px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #f1e7ff; border-radius: 50%; }
+  .dl-chat-title { font-size: 16px; font-weight: 800; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dl-chat-sub { font-size: 11.5px; font-weight: 700; color: var(--gray); }
+  .dl-chat-scroll { display: flex; flex-direction: column; gap: 12px; background: #faf9fc; border-radius: 16px; padding: 16px 12px; min-height: 260px; max-height: 52vh; overflow-y: auto; margin-bottom: 12px; }
+  .dl-chat-empty { text-align: center; color: var(--gray); font-size: 13.5px; font-weight: 700; padding: 30px 10px; line-height: 1.5; }
+  .dl-chat-empty-icon { font-size: 32px; margin-bottom: 8px; }
+  .dl-msg-row { display: flex; gap: 8px; align-items: flex-end; }
+  .dl-msg-row.mine { flex-direction: row-reverse; }
+  .dl-msg-avatar { width: 32px; height: 32px; flex-shrink: 0; border: none; background: #f1e7ff; border-radius: 50%; font-size: 17px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .dl-msg-col { display: flex; flex-direction: column; max-width: 76%; }
+  .dl-msg-row.mine .dl-msg-col { align-items: flex-end; }
+  .dl-msg-author { font-size: 11px; font-weight: 800; color: var(--gray); margin-bottom: 3px; padding-left: 4px; }
+  .dl-msg-bubble { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px 16px 16px 4px; padding: 10px 13px; font-size: 14.5px; line-height: 1.5; color: var(--ink); word-break: break-word; }
+  .dl-msg-bubble.mine { background: var(--teal); border-color: var(--teal-dark); color: #fff; border-radius: 16px 16px 4px 16px; }
+  .dl-msg-bubble.prayer { background: #f6efff; border-color: #d9c2f5; color: var(--ink); }
+  .dl-msg-bubble.prayer.mine { background: #ede0ff; border-color: #c9a0ea; }
+  .dl-msg-prayer-tag { font-size: 10.5px; font-weight: 800; color: #6b3fa0; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .dl-msg-time { display: flex; gap: 8px; align-items: center; font-size: 10.5px; font-weight: 700; color: var(--gray); margin-top: 3px; padding: 0 4px; }
+  .dl-msg-del { background: none; border: none; color: var(--gray); font-size: 10.5px; font-weight: 700; text-decoration: underline; cursor: pointer; padding: 0; }
+  .dl-chat-composer { background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 10px; }
+  .dl-chat-kind { display: flex; gap: 6px; margin-bottom: 8px; }
+  .dl-kind-btn { background: #f5f5f7; border: none; border-radius: 20px; padding: 6px 13px; font-size: 11.5px; font-weight: 800; color: var(--gray); cursor: pointer; }
+  .dl-kind-btn.active { background: var(--purple); color: #fff; }
+  .dl-chat-input-row { display: flex; gap: 8px; align-items: flex-end; }
+  .dl-chat-input { flex: 1; min-width: 0; border: none; background: #f5f5f7; border-radius: 14px; padding: 12px 14px; font-size: 14.5px; font-family: inherit; font-weight: 600; color: var(--ink); resize: none; max-height: 110px; }
+  .dl-chat-input:focus { outline: none; }
+  .dl-chat-send { width: 42px; height: 42px; flex-shrink: 0; border: none; border-radius: 50%; background: var(--teal); color: #fff; font-size: 17px; cursor: pointer; }
+  .dl-chat-send:disabled { background: var(--gray-light); color: var(--gray); }
+  .dl-chat-joinbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #fff; border: 2px solid var(--gray-light); border-radius: 16px; padding: 12px 14px; font-size: 13px; font-weight: 700; color: var(--gray); }

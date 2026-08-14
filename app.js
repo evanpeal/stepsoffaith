@@ -7901,7 +7901,7 @@
     const [groupPrayers, setGroupPrayers] = React.useState([]);
     const [prayedRows, setPrayedRows] = React.useState([]);
     const [openGroup, setOpenGroup] = React.useState(null);
-    const [socialTab, setSocialTab] = React.useState('friends');
+    const [socialTab, setSocialTab] = React.useState('groups');
     const [socialLoading, setSocialLoading] = React.useState(false);
     const [socialMsg, setSocialMsg] = React.useState('');
     const [friendCodeInput, setFriendCodeInput] = React.useState('');
@@ -7917,6 +7917,10 @@
     const [peopleQuery, setPeopleQuery] = React.useState('');
     const [peopleResults, setPeopleResults] = React.useState([]);
     const [suggested, setSuggested] = React.useState([]);
+    const [chatMessages, setChatMessages] = React.useState([]);
+    const [chatAuthors, setChatAuthors] = React.useState({});
+    const [chatDraft, setChatDraft] = React.useState('');
+    const [chatKind, setChatKind] = React.useState('message');
     const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
@@ -8333,12 +8337,51 @@
         const ids = (mem || []).map(m => m.user_id);
         const { data: profs } = ids.length ? await sb.from('profiles').select('*').in('id', ids) : { data: [] };
         setGroupMembers(profs || []);
-        const { data: prayers } = await sb.from('prayer_requests').select('*').eq('group_id', groupId).order('created_at', { ascending: false });
-        setGroupPrayers(prayers || []);
-        const { data: prayed } = await sb.from('prayer_prayed').select('request_id, user_id');
-        setPrayedRows(prayed || []);
-      } catch (ex) { setGroupMembers([]); setGroupPrayers([]); }
+        const { data: msgs } = await sb.from('group_messages')
+          .select('*').eq('group_id', groupId).order('created_at', { ascending: true }).limit(200);
+        const authorIds = [...new Set((msgs || []).map(m => m.user_id))];
+        let authorMap = {};
+        (profs || []).forEach(p => { authorMap[p.id] = p; });
+        const missing = authorIds.filter(id => !authorMap[id]);
+        if (missing.length) {
+          const { data: extra } = await sb.from('profiles').select('*').in('id', missing);
+          (extra || []).forEach(p => { authorMap[p.id] = p; });
+        }
+        setChatAuthors(authorMap);
+        setChatMessages(msgs || []);
+      } catch (ex) { setGroupMembers([]); setChatMessages([]); }
       setSocialLoading(false);
+    }
+
+    async function sendMessage(groupId, body, kind){
+      if (!sb || !user || !body.trim()) return;
+      const text = body.trim();
+      setChatDraft('');
+      try {
+        await sb.from('group_messages').insert({
+          group_id: groupId, user_id: user.id, body: text, kind: kind || 'message'
+        });
+        loadGroupDetail(groupId);
+      } catch (ex) { setSocialMsg('Could not send \u2014 make sure you\u2019ve joined this room.'); }
+    }
+
+    async function deleteMessage(msgId, groupId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('group_messages').delete().eq('id', msgId).eq('user_id', user.id);
+        loadGroupDetail(groupId);
+      } catch (ex) {}
+    }
+
+    function formatMsgTime(iso){
+      try {
+        const d = new Date(iso);
+        const now = new Date();
+        const sameDay = d.toDateString() === now.toDateString();
+        const time = d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+        if (sameDay) return time;
+        return d.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' ' + time;
+      } catch (ex) { return ''; }
     }
 
     async function postPrayer(groupId, body, anon){
@@ -9243,55 +9286,67 @@
             const g = myGroups.find(x => x.id === openGroup) || publicGroups.find(x => x.id === openGroup);
             if (!g) return null;
             const isMember = myGroups.some(x => x.id === openGroup);
-            return e('div', {key:'groupdetail'}, [
-              e('button', {className:'dl-topic-back', onClick:()=>setOpenGroup(null), key:'back'}, String.fromCodePoint(0x2190) + ' All groups'),
-              e('div', {className:'dl-group-head', key:'head'}, [
-                e('div', {className:'dl-group-name', key:'n'}, g.name),
-                g.description ? e('div', {className:'dl-group-desc', key:'d'}, g.description) : null,
-                e('div', {className:'dl-group-meta-row', key:'m'}, [
-                  g.is_public ? e('span', {className:'dl-group-tag public', key:'p'}, 'Public') : e('span', {className:'dl-group-tag', key:'p'}, 'Private'),
-                  e('span', {className:'dl-group-count', key:'c'}, (g.member_count || groupMembers.length) + ' members'),
-                  !g.is_public ? e('span', {className:'dl-group-code', key:'jc'}, 'Code: ' + g.join_code) : null
+            return e('div', {className:'dl-chat-wrap', key:'groupdetail'}, [
+              e('div', {className:'dl-chat-header', key:'head'}, [
+                e('button', {className:'dl-chat-back', onClick:()=>setOpenGroup(null), key:'back'}, String.fromCodePoint(0x2039)),
+                e('div', {className:'dl-chat-head-icon', key:'ic'}, g.is_public ? String.fromCodePoint(0x1F30D) : String.fromCodePoint(0x1F512)),
+                e('div', {style:{flex:1, minWidth:0}, key:'t'}, [
+                  e('div', {className:'dl-chat-title', key:'n'}, g.name),
+                  e('div', {className:'dl-chat-sub', key:'s'}, (g.member_count || groupMembers.length || 0) + ' members' + (g.is_public ? '' : ' \u00b7 Code ' + g.join_code))
                 ])
               ]),
-              e('div', {className:'dl-group-members', key:'mem'}, groupMembers.map(m =>
-                e('button', {className:'dl-group-member', onClick:()=>viewProfile(m.id), key:m.id}, [m.avatar || String.fromCodePoint(0x1F4D6), ' ', m.display_name])
-              )),
-              e('div', {className:'dl-section-title', style:{marginTop:'18px'}, key:'plbl'}, [String.fromCodePoint(0x1F64F), ' Prayer requests']),
-              isMember ? e('div', {key:'postbox'}, [
-                e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:prayerDraft, placeholder:'Share what you\u2019d like prayer for\u2026', onChange: ev=>setPrayerDraft(ev.target.value), key:'ta'}),
-                e('div', {className:'dl-prayer-actions', key:'pa'}, [
-                  e('label', {className:'dl-anon-label', key:'anon'}, [
-                    e('input', {type:'checkbox', checked:prayerAnon, onChange: ev=>setPrayerAnon(ev.target.checked), key:'cb'}),
-                    ' Post anonymously'
+
+              e('div', {className:'dl-chat-scroll', key:'scroll'},
+                chatMessages.length === 0
+                  ? [ e('div', {className:'dl-chat-empty', key:'empty'}, [
+                      e('div', {className:'dl-chat-empty-icon', key:'i'}, String.fromCodePoint(0x1F4AC)),
+                      e('div', {key:'t'}, g.description || 'Be the first to say something.')
+                    ]) ]
+                  : chatMessages.map(m => {
+                      const author = chatAuthors[m.user_id];
+                      const mine = m.user_id === user.id;
+                      const isPrayer = m.kind === 'prayer';
+                      return e('div', {className:'dl-msg-row' + (mine ? ' mine' : ''), key:m.id}, [
+                        !mine ? e('button', {className:'dl-msg-avatar', onClick:()=>viewProfile(m.user_id), key:'av'}, (author && author.avatar) || String.fromCodePoint(0x1F4D6)) : null,
+                        e('div', {className:'dl-msg-col', key:'col'}, [
+                          !mine ? e('div', {className:'dl-msg-author', key:'a'}, (author && author.display_name) || 'Someone') : null,
+                          e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : ''), key:'b'}, [
+                            isPrayer ? e('div', {className:'dl-msg-prayer-tag', key:'pt'}, [String.fromCodePoint(0x1F64F), ' Prayer request']) : null,
+                            e('div', {key:'txt'}, m.body)
+                          ]),
+                          e('div', {className:'dl-msg-time', key:'t'}, [
+                            formatMsgTime(m.created_at),
+                            mine ? e('button', {className:'dl-msg-del', onClick:()=>deleteMessage(m.id, g.id), key:'d'}, 'Delete') : null
+                          ])
+                        ])
+                      ]);
+                    })
+              ),
+
+              isMember
+                ? e('div', {className:'dl-chat-composer', key:'composer'}, [
+                    e('div', {className:'dl-chat-kind', key:'kind'}, [
+                      e('button', {className:'dl-kind-btn' + (chatKind==='message'?' active':''), onClick:()=>setChatKind('message'), key:'m'}, 'Message'),
+                      e('button', {className:'dl-kind-btn' + (chatKind==='prayer'?' active':''), onClick:()=>setChatKind('prayer'), key:'p'}, [String.fromCodePoint(0x1F64F), ' Prayer'])
+                    ]),
+                    e('div', {className:'dl-chat-input-row', key:'row'}, [
+                      e('textarea', {className:'dl-chat-input', value:chatDraft, rows:1,
+                        placeholder: chatKind==='prayer' ? 'Share a prayer request\u2026' : 'Write a message\u2026',
+                        onChange: ev=>setChatDraft(ev.target.value),
+                        onKeyDown: ev=>{ if(ev.key==='Enter' && !ev.shiftKey){ ev.preventDefault(); sendMessage(g.id, chatDraft, chatKind); } },
+                        key:'in'}),
+                      e('button', {className:'dl-chat-send', disabled: !chatDraft.trim(), onClick:()=>sendMessage(g.id, chatDraft, chatKind), key:'s'}, String.fromCodePoint(0x27A4))
+                    ])
+                  ])
+                : e('div', {className:'dl-chat-joinbar', key:'joinbar'}, [
+                    e('span', {key:'t'}, 'Join to join the conversation'),
+                    e('button', {className:'dl-social-btn', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join room')
                   ]),
-                  e('button', {className:'dl-social-btn', onClick:()=>postPrayer(g.id, prayerDraft, prayerAnon), key:'post'}, 'Share')
-                ])
-              ]) : e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)', marginBottom:'14px'}, onClick:()=>joinGroupDirect(g.id), key:'joinfirst'}, 'Join to post and pray'),
-              groupPrayers.length === 0
-                ? e('div', {className:'dl-empty-note', key:'nop'}, 'No prayer requests yet.')
-                : e('div', {key:'plist'}, groupPrayers.map(p => {
-                    const author = groupMembers.find(m => m.id === p.user_id);
-                    const count = prayedRows.filter(r => r.request_id === p.id).length;
-                    const iPrayed = prayedRows.some(r => r.request_id === p.id && r.user_id === user.id);
-                    const mine = p.user_id === user.id;
-                    return e('div', {className:'dl-prayer-card' + (p.answered?' answered':''), key:p.id}, [
-                      e('div', {className:'dl-prayer-who', key:'w'}, [
-                        p.is_anonymous ? 'Anonymous' : ((author && author.display_name) || 'Someone'),
-                        p.answered ? e('span', {className:'dl-prayer-answered', key:'a'}, ' \u00b7 Answered \ud83d\ude4c') : null
-                      ]),
-                      e('div', {className:'dl-prayer-body', key:'b'}, p.body),
-                      e('div', {className:'dl-prayer-foot', key:'f'}, [
-                        isMember ? e('button', {className:'dl-pray-btn' + (iPrayed?' active':''), onClick:()=>togglePrayed(p.id, g.id), key:'pray'}, [String.fromCodePoint(0x1F64F), ' ', iPrayed ? 'Praying' : 'Pray']) : null,
-                        count > 0 ? e('span', {className:'dl-pray-count', key:'c'}, count + ' praying') : null,
-                        mine && !p.answered ? e('button', {className:'dl-prayer-mini', onClick:()=>markPrayerAnswered(p.id, g.id), key:'ans'}, 'Mark answered') : null,
-                        mine ? e('button', {className:'dl-prayer-mini', onClick:()=>deletePrayer(p.id, g.id), key:'del'}, 'Delete') : null
-                      ])
-                    ]);
-                  })),
-              isMember ? e('button', {className:'dl-plan-leave', onClick:()=>leaveGroup(g.id), key:'leave'}, 'Leave this group') : null
+
+              isMember ? e('button', {className:'dl-plan-leave', style:{margin:'10px auto 0', display:'block'}, onClick:()=>leaveGroup(g.id), key:'leave'}, 'Leave this room') : null
             ]);
           })()
+
 
         : e('div', {key:'main'}, [
             e('div', {className:'dl-social-tabs', key:'stabs'}, [
