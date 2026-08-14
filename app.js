@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0 };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, voiceName: null, voiceRate: 0.86 };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -8003,25 +8003,40 @@
       persist({ ...state, favorites: already ? favs.filter(id => id !== lessonId) : [...favs, lessonId] });
     }
 
+    function englishVoices(){
+      const voices = window.speechSynthesis ? (window.speechSynthesis.getVoices() || []) : [];
+      return voices.filter(v => /^en/i.test(v.lang));
+    }
+
     function pickBestVoice(){
       const voices = window.speechSynthesis.getVoices() || [];
       if (!voices.length) return null;
-      // Prefer high-quality natural voices, in order of preference
-      const preferred = [
-        'Google UK English Female', 'Google US English', 'Samantha', 'Karen', 'Daniel',
-        'Microsoft Aria Online (Natural) - English (United States)',
-        'Microsoft Guy Online (Natural) - English (United States)',
-        'Microsoft Jenny Online (Natural) - English (United States)'
-      ];
-      for (const name of preferred) {
-        const match = voices.find(v => v.name === name);
-        if (match) return match;
+      // Honor the user's saved choice first
+      const savedName = state && state.voiceName;
+      if (savedName) {
+        const saved = voices.find(v => v.name === savedName);
+        if (saved) return saved;
       }
-      const natural = voices.find(v => /natural|neural|enhanced|premium/i.test(v.name) && /^en/i.test(v.lang));
-      if (natural) return natural;
-      const googleEn = voices.find(v => /^Google/i.test(v.name) && /^en/i.test(v.lang));
-      if (googleEn) return googleEn;
-      return voices.find(v => /^en/i.test(v.lang)) || voices[0];
+      const en = voices.filter(v => /^en/i.test(v.lang));
+      const pool = en.length ? en : voices;
+      // Score voices: higher = better quality / warmer delivery
+      function score(v){
+        const n = v.name;
+        let s = 0;
+        if (/premium|enhanced|neural|natural/i.test(n)) s += 60;
+        if (/siri/i.test(n)) s += 50;
+        if (/^Google/i.test(n)) s += 30;
+        if (/Microsoft.*Online/i.test(n)) s += 30;
+        // Warmer, deeper voices tend to suit reading Scripture
+        if (/onyx|guy|daniel|arthur|matthew|brian|aaron|tom|alex|oliver/i.test(n)) s += 14;
+        if (/samantha|karen|aria|jenny|serena|moira|ava|allison/i.test(n)) s += 10;
+        // Penalize obviously robotic/compact system voices
+        if (/compact|eloquence|espeak|pico/i.test(n)) s -= 40;
+        if (v.localService === false) s += 8;
+        if (/en[-_]?(US|GB)/i.test(v.lang)) s += 6;
+        return s;
+      }
+      return pool.slice().sort((a,b) => score(b) - score(a))[0] || voices[0];
     }
 
     function speakText(rawText){
@@ -8047,15 +8062,23 @@
       if (buffer.trim()) chunks.push(buffer.trim());
 
       const voice = pickBestVoice();
+      const rate = (state && state.voiceRate) || 0.86;
       let idx = 0;
       function speakNext(){
         if (idx >= chunks.length) { setIsSpeaking(false); return; }
-        const utter = new SpeechSynthesisUtterance(chunks[idx]);
+        const chunk = chunks[idx];
+        const utter = new SpeechSynthesisUtterance(chunk);
         if (voice) { utter.voice = voice; utter.lang = voice.lang; }
-        utter.rate = 0.92;
-        utter.pitch = 1.0;
+        utter.rate = rate;
+        utter.pitch = 0.92;
         utter.volume = 1.0;
-        utter.onend = () => { idx++; speakNext(); };
+        utter.onend = () => {
+          idx++;
+          // A short breath between sentences gives the reading weight
+          // instead of rushing straight into the next line.
+          const pause = /[.!?]"?$/.test(chunk.trim()) ? 420 : 200;
+          setTimeout(speakNext, pause);
+        };
         utter.onerror = () => setIsSpeaking(false);
         window.speechSynthesis.speak(utter);
       }
@@ -8453,6 +8476,22 @@
               : e('button', {className:'dl-shop-buy', disabled: !canAfford, onClick:()=>buyBadge(badge), key:'buy'}, canAfford ? ('Unlock \u00b7 ' + badge.cost) : (badge.cost + ' \ud83d\udd39'))
           ]);
         })),
+
+        e('div', {className:'dl-section-title', key:'voicelabel'}, [String.fromCodePoint(0x1F50A), ' Read-aloud voice']),
+        e('div', {className:'dl-voice-card', key:'voicecard'}, [
+          e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'note'}, 'Voices come from your device \u2014 try a few to find the one you like best.'),
+          e('select', {className:'dl-voice-select', value: (state.voiceName || ''), onChange: ev => persist({ ...state, voiceName: ev.target.value || null }), key:'sel'},
+            [e('option', {value:'', key:'auto'}, 'Automatic (best available)')].concat(
+              englishVoices().map(v => e('option', {value:v.name, key:v.name}, v.name))
+            )
+          ),
+          e('div', {className:'dl-voice-speed-row', key:'speed'}, [
+            e('span', {className:'dl-voice-speed-label', key:'l'}, 'Speed'),
+            e('input', {type:'range', min:'0.6', max:'1.2', step:'0.02', value:(state.voiceRate || 0.86), onChange: ev => persist({ ...state, voiceRate: parseFloat(ev.target.value) }), className:'dl-voice-range', key:'r'}),
+            e('span', {className:'dl-voice-speed-val', key:'v'}, (state.voiceRate || 0.86).toFixed(2) + 'x')
+          ]),
+          e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), style:{marginBottom:0}, onClick:()=>toggleSpeak('The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.'), key:'test'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Test this voice'])
+        ]),
 
         e('div', {className:'dl-section-title', style:{marginTop:'22px'}, key:'rlabel'}, [String.fromCodePoint(0x1F4DD), ' Your reflections']),
         state.reflections.length === 0
