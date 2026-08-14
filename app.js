@@ -1484,7 +1484,7 @@
     const [editAvatar, setEditAvatar] = React.useState('\ud83d\udcd6');
     const [editVerse, setEditVerse] = React.useState('');
     const [editChurch, setEditChurch] = React.useState('');
-    const [editCity, setEditCity] = React.useState('');
+    const [editPhone, setEditPhone] = React.useState('');
     const [openStudyBook, setOpenStudyBook] = React.useState(null);
     const [studyStep, setStudyStep] = React.useState('prayer');
     const [editingTestimony, setEditingTestimony] = React.useState(false);
@@ -1525,6 +1525,9 @@
     const [authFirst, setAuthFirst] = React.useState('');
     const [authLast, setAuthLast] = React.useState('');
     const [pendingSignupName, setPendingSignupName] = React.useState('');
+    const [authPhone, setAuthPhone] = React.useState('');
+    const [authChurch, setAuthChurch] = React.useState('');
+    const [churchOptions, setChurchOptions] = React.useState([]);
     const [authPassword, setAuthPassword] = React.useState('');
     const [authError, setAuthError] = React.useState('');
     const [authLoading, setAuthLoading] = React.useState(false);
@@ -1669,7 +1672,6 @@
           avatar: (s.profile && s.profile.avatar) || '\ud83d\udcd6',
           verse: (s.profile && s.profile.verse) || '',
           church: (s.profile && s.profile.church) || '',
-          city: (s.profile && s.profile.city) || '',
           lessons_done: s.completed ? s.completed.length : 0,
           checkpoints_done: s.completedCheckpoints ? s.completedCheckpoints.length : 0,
           daily_streak: s.dailyStreak || 0,
@@ -1683,9 +1685,11 @@
         await sb.from('profiles').upsert(row);
         setMyProfile(row);
         // Store a one-way hash of the email so contact matching can work
-        if (user && user.email) {
-          const h = await hashEmail(user.email);
-          if (h) { try { await sb.from('profiles').update({ email_hash: h }).eq('id', user.id); } catch (ex) {} }
+        const hashes = {};
+        if (user && user.email) { const h = await hashEmail(user.email); if (h) hashes.email_hash = h; }
+        if (s.profile && s.profile.phone) { const p = await hashPhone(s.profile.phone); if (p) hashes.phone_hash = p; }
+        if (Object.keys(hashes).length) {
+          try { await sb.from('profiles').update(hashes).eq('id', user.id); } catch (ex) {}
         }
       } catch (ex) { /* non-fatal */ }
     }
@@ -1753,27 +1757,72 @@
       } catch (ex) { return null; }
     }
 
+    function normalizePhone(raw){
+      const digits = String(raw || '').replace(/\D/g, '');
+      if (digits.length < 7) return null;
+      return digits.slice(-10);   // last 10 digits: ignores country code differences
+    }
+
+    async function hashPhone(raw){
+      const norm = normalizePhone(raw);
+      if (!norm) return null;
+      try {
+        const buf = new TextEncoder().encode(norm);
+        const digest = await crypto.subtle.digest('SHA-256', buf);
+        return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2,'0')).join('');
+      } catch (ex) { return null; }
+    }
+
+    async function loadChurchOptions(q){
+      if (!sb) return;
+      const term = (q || '').trim();
+      if (term.length < 2) { setChurchOptions([]); return; }
+      try {
+        const { data } = await sb.from('profiles').select('church').ilike('church', '%' + term + '%').limit(30);
+        const uniq = [...new Set((data || []).map(r => (r.church || '').trim()).filter(Boolean))];
+        setChurchOptions(uniq.slice(0, 6));
+      } catch (ex) { setChurchOptions([]); }
+    }
+
     async function matchContacts(){
       if (!sb || !user) return;
       setContactMsg('');
       setContactBusy(true);
       try {
-        let emails = [];
+        let numbers = [], emails = [];
         if (navigator.contacts && navigator.contacts.select) {
-          const picked = await navigator.contacts.select(['email'], { multiple: true });
-          picked.forEach(c => (c.email || []).forEach(em => emails.push(em)));
+          const props = (await navigator.contacts.getProperties()) || [];
+          const want = ['tel', 'email'].filter(p => props.includes(p));
+          const picked = await navigator.contacts.select(want.length ? want : ['tel'], { multiple: true });
+          picked.forEach(cn => {
+            (cn.tel || []).forEach(t => numbers.push(t));
+            (cn.email || []).forEach(em => emails.push(em));
+          });
         } else {
-          const typed = contactPaste.split(/[\s,;]+/).filter(x => x.includes('@'));
-          emails = typed;
+          contactPaste.split(/[\s,;]+/).forEach(v => {
+            if (v.includes('@')) emails.push(v);
+            else if (normalizePhone(v)) numbers.push(v);
+          });
         }
-        if (!emails.length) { setContactMsg('No email addresses found to check.'); setContactBusy(false); return; }
-        const hashes = (await Promise.all(emails.slice(0, 500).map(hashEmail))).filter(Boolean);
-        if (!hashes.length) { setContactMsg('Could not read those contacts.'); setContactBusy(false); return; }
-        const { data } = await sb.from('profiles').select('*').in('email_hash', hashes).limit(50);
+        if (!numbers.length && !emails.length) {
+          setContactMsg('No contacts found to check.'); setContactBusy(false); return;
+        }
+        const phoneHashes = (await Promise.all(numbers.slice(0,500).map(hashPhone))).filter(Boolean);
+        const emailHashes = (await Promise.all(emails.slice(0,500).map(hashEmail))).filter(Boolean);
+
+        const found = {};
+        if (phoneHashes.length) {
+          const { data } = await sb.from('profiles').select('*').in('phone_hash', phoneHashes).limit(50);
+          (data || []).forEach(p => { found[p.id] = p; });
+        }
+        if (emailHashes.length) {
+          const { data } = await sb.from('profiles').select('*').in('email_hash', emailHashes).limit(50);
+          (data || []).forEach(p => { found[p.id] = p; });
+        }
         const friendIds = new Set(friends.map(f => f.id));
-        const found = (data || []).filter(p => p.id !== user.id && !friendIds.has(p.id));
-        setContactMatches(found);
-        setContactMsg(found.length ? found.length + ' of your contacts are here!' : 'None of those contacts have joined yet.');
+        const list = Object.values(found).filter(p => p.id !== user.id && !friendIds.has(p.id));
+        setContactMatches(list);
+        setContactMsg(list.length ? list.length + ' of your contacts are here!' : 'None of your contacts have joined yet.');
       } catch (ex) {
         setContactMsg('Contact check cancelled.');
       }
@@ -1855,14 +1904,9 @@
 
         // 3) Same church, then same city - strongest real-world signal for a faith app
         const myChurch = (state && state.profile && state.profile.church || '').trim();
-        const myCity = (state && state.profile && state.profile.city || '').trim();
         if (myChurch) {
           const { data: same } = await sb.from('profiles').select('*').ilike('church', myChurch).limit(30);
           (same || []).forEach(p => bump(p.id, 150, 'Goes to ' + p.church));
-        }
-        if (myCity) {
-          const { data: nearby } = await sb.from('profiles').select('*').ilike('city', myCity).limit(30);
-          (nearby || []).forEach(p => bump(p.id, 60, 'Lives in ' + p.city));
         }
 
         // 4) People at a similar point in their reading
@@ -2190,13 +2234,13 @@
       // Save the name straight into their progress so it shows everywhere
       try {
         const base = state || { ...DEFAULT_STATE };
-        const next = { ...base, profile: { ...(base.profile || {}), name: fullName } };
+        const next = { ...base, profile: { ...(base.profile || {}), name: fullName, church: authChurch.trim(), phone: authPhone.trim() } };
         setState(next);
         try { localStorage.setItem(KEY, JSON.stringify(next)); } catch (ex) {}
         setPendingSignupName(fullName);
       } catch (ex) {}
       if (data && data.session) {
-        setAuthOpen(false); setAuthEmail(''); setAuthPassword(''); setAuthFirst(''); setAuthLast(''); setAuthError('');
+        setAuthOpen(false); setAuthEmail(''); setAuthPassword(''); setAuthFirst(''); setAuthLast(''); setAuthPhone(''); setAuthChurch(''); setAuthError('');
         return;
       }
       setAuthError('Check your email to confirm your account, then log in.');
@@ -2235,6 +2279,19 @@
                 e('label', {key:'l'}, 'Last name'),
                 e('input', {value:authLast, onChange: ev=>setAuthLast(ev.target.value), placeholder:'Last', key:'i'})
               ])
+            ]) : null,
+            authMode === 'signup' ? e('div', {className:'dl-edit-field', key:'phonefield'}, [
+              e('label', {key:'l'}, 'Phone number'),
+              e('input', {type:'tel', value:authPhone, onChange: ev=>setAuthPhone(ev.target.value), placeholder:'(555) 123-4567', key:'i'}),
+              e('div', {className:'dl-edit-hint', key:'h'}, 'Lets friends who have your number find you. Stored scrambled \u2014 never shown to anyone.')
+            ]) : null,
+            authMode === 'signup' ? e('div', {className:'dl-edit-field', key:'churchfield'}, [
+              e('label', {key:'l'}, 'Church (optional)'),
+              e('input', {value:authChurch, onChange: ev=>{ setAuthChurch(ev.target.value); loadChurchOptions(ev.target.value); }, placeholder:'Start typing your church\u2026', key:'i'}),
+              churchOptions.length ? e('div', {className:'dl-church-opts', key:'opts'}, churchOptions.map(ch =>
+                e('button', {className:'dl-church-opt', onClick:()=>{ setAuthChurch(ch); setChurchOptions([]); }, key:ch}, ch)
+              )) : null,
+              e('div', {className:'dl-edit-hint', key:'h'}, 'We\u2019ll connect you with others from your church.')
             ]) : null,
             e('div', {className:'dl-edit-field', key:'emailfield'}, [
               e('label', {key:'l'}, 'Email'),
@@ -2382,12 +2439,13 @@
       persist({ ...state, claimedQuests: [...state.claimedQuests, q.id], gems: state.gems + q.reward });
     }
 
-    function saveProfile(name, avatar, verse, church, city){
+    function saveProfile(name, avatar, verse, church, phone){
       persist({ ...state, profile: {
+        ...state.profile,
         name: name.trim() || 'Your name', avatar,
         verse: verse.trim() || DEFAULT_VERSE,
-        church: (church || '').trim(),
-        city: (city || '').trim()
+        church: (church !== undefined ? church : (state.profile.church || '')).trim(),
+        phone: (phone !== undefined ? phone : (state.profile.phone || '')).trim()
       } });
     }
 
@@ -2396,7 +2454,8 @@
       setEditAvatar(state.profile.avatar);
       setEditVerse(state.profile.verse || DEFAULT_VERSE);
       setEditChurch(state.profile.church || '');
-      setEditCity(state.profile.city || '');
+      setEditPhone(state.profile.phone || '');
+      setChurchOptions([]);
       setEditingProfile(true);
     }
 
@@ -3298,8 +3357,8 @@
                   ])
                 ]),
                 showContactBox ? e('div', {className:'dl-contact-box', key:'cbox'}, [
-                  e('div', {className:'dl-contact-note', key:'n'}, 'Paste email addresses to see who\u2019s already here. They\u2019re scrambled before sending \u2014 we never see or store the actual addresses.'),
-                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:contactPaste, placeholder:'friend@example.com, another@example.com', onChange: ev=>setContactPaste(ev.target.value), key:'ta'}),
+                  e('div', {className:'dl-contact-note', key:'n'}, 'Paste phone numbers or emails to see who\u2019s already here. They\u2019re scrambled before sending \u2014 we never see or store them.'),
+                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:contactPaste, placeholder:'555-123-4567, friend@example.com', onChange: ev=>setContactPaste(ev.target.value), key:'ta'}),
                   e('button', {className:'dl-social-btn', style:{marginTop:'10px', width:'100%'}, disabled:contactBusy, onClick: matchContacts, key:'go'}, contactBusy ? 'Checking\u2026' : 'Find my contacts')
                 ]) : null,
                 contactMsg ? e('div', {className:'dl-social-msg', key:'cm'}, contactMsg) : null,
@@ -3382,6 +3441,16 @@
           e('div', {className:'dl-profile-verse', key:'verse'}, '\u201c' + (state.profile.verse || DEFAULT_VERSE) + '\u201d'),
           e('button', {className:'dl-profile-edit-btn', onClick: openEditProfile, key:'edit'}, 'Edit profile')
         ]),
+        (!needsDisplayName() && state.profile && (!state.profile.church || !state.profile.phone)) ? e('div', {className:'dl-setname-nudge', onClick: openEditProfile, key:'completeprofile'}, [
+          e('span', {className:'dl-setname-icon', key:'i'}, String.fromCodePoint(0x1F91D)),
+          e('div', {style:{flex:1}, key:'t'}, [
+            e('div', {className:'dl-setname-title', key:'a'}, 'Connect with more people'),
+            e('div', {className:'dl-setname-sub', key:'b'}, (!state.profile.church && !state.profile.phone)
+              ? 'Add your church and phone number to find people you know.'
+              : (!state.profile.church ? 'Add your church to find others who go there.' : 'Add your phone so friends can find you.'))
+          ]),
+          e('span', {className:'dl-setname-cta', key:'c'}, 'Add')
+        ]) : null,
         needsDisplayName() ? e('div', {className:'dl-setname-nudge', onClick: openEditProfile, key:'setname'}, [
           e('span', {className:'dl-setname-icon', key:'i'}, String.fromCodePoint(0x1F44B)),
           e('div', {style:{flex:1}, key:'t'}, [
@@ -3673,18 +3742,22 @@
             e('label', {key:'l'}, 'Your verse'),
             e('input', {value:editVerse, onChange: ev=>setEditVerse(ev.target.value), placeholder:'A verse that means something to you', key:'i'})
           ]),
-          e('div', {className:'dl-edit-field', key:'churchfield'}, [
-            e('label', {key:'l'}, 'Church (optional)'),
-            e('input', {value:editChurch, onChange: ev=>setEditChurch(ev.target.value), placeholder:'e.g. Grace Community Church', key:'i'})
+          e('div', {className:'dl-edit-field', key:'echurch'}, [
+            e('label', {key:'l'}, 'Church'),
+            e('input', {value:editChurch, onChange: ev=>{ setEditChurch(ev.target.value); loadChurchOptions(ev.target.value); }, placeholder:'Start typing your church\u2026', key:'i'}),
+            churchOptions.length ? e('div', {className:'dl-church-opts', key:'opts'}, churchOptions.map(ch =>
+              e('button', {className:'dl-church-opt', onClick:()=>{ setEditChurch(ch); setChurchOptions([]); }, key:ch}, ch)
+            )) : null,
+            e('div', {className:'dl-edit-hint', key:'h'}, 'Connects you with others from your church.')
           ]),
-          e('div', {className:'dl-edit-field', key:'cityfield'}, [
-            e('label', {key:'l'}, 'City (optional)'),
-            e('input', {value:editCity, onChange: ev=>setEditCity(ev.target.value), placeholder:'e.g. Louisville', key:'i'})
+          e('div', {className:'dl-edit-field', key:'ephone'}, [
+            e('label', {key:'l'}, 'Phone number'),
+            e('input', {type:'tel', value:editPhone, onChange: ev=>setEditPhone(ev.target.value), placeholder:'(555) 123-4567', key:'i'}),
+            e('div', {className:'dl-edit-hint', key:'h'}, 'Lets friends who have your number find you. Stored scrambled \u2014 never shown to anyone.')
           ]),
-          e('div', {className:'dl-edit-hint', key:'hint'}, 'Church and city help connect you with people nearby. Leave blank to skip.'),
           e('div', {style:{display:'flex', gap:'10px', marginTop:'10px'}, key:'actions'}, [
             e('button', {className:'dl-continue', style:{background:'#fff', color:'var(--ink)', border:'2px solid var(--gray-light)', borderBottomWidth:'4px'}, onClick:()=>setEditingProfile(false), key:'cancel'}, 'Cancel'),
-            e('button', {className:'dl-continue', onClick:()=>{ saveProfile(editName, editAvatar, editVerse, editChurch, editCity); setEditingProfile(false); }, key:'save'}, 'Save')
+            e('button', {className:'dl-continue', onClick:()=>{ saveProfile(editName, editAvatar, editVerse, editChurch, editPhone); setEditingProfile(false); }, key:'save'}, 'Save')
           ])
         ])
       ) : null,
