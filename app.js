@@ -1466,6 +1466,7 @@
     const [newRoomCode, setNewRoomCode] = React.useState('');
     const [nameGateInput, setNameGateInput] = React.useState('');
     const [nameGateErr, setNameGateErr] = React.useState('');
+    const [showCreateRoom, setShowCreateRoom] = React.useState(false);
     const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
@@ -1513,6 +1514,9 @@
     const [authOpen, setAuthOpen] = React.useState(false);
     const [authMode, setAuthMode] = React.useState('login');
     const [authEmail, setAuthEmail] = React.useState('');
+    const [authFirst, setAuthFirst] = React.useState('');
+    const [authLast, setAuthLast] = React.useState('');
+    const [pendingSignupName, setPendingSignupName] = React.useState('');
     const [authPassword, setAuthPassword] = React.useState('');
     const [authError, setAuthError] = React.useState('');
     const [authLoading, setAuthLoading] = React.useState(false);
@@ -1822,16 +1826,44 @@
       } catch (ex) { setMyGroups([]); }
     }
 
+    const DEFAULT_ROOMS = [
+      { code:'PRAY01', name:'Prayer Requests', desc:'Share what you need prayer for, and pray for others.', icon:'\ud83d\ude4f' },
+      { code:'ASK001', name:'Faith Questions', desc:'Ask anything about faith, the Bible, or doubt.', icon:'\u2753' },
+      { code:'DAILY1', name:'Daily Encouragement', desc:'Share a verse or a word that carried you today.', icon:'\u2600\ufe0f' },
+      { code:'START1', name:'New to Faith', desc:'Just starting out? Everyone was new once.', icon:'\ud83c\udf31' },
+      { code:'TESTI1', name:'Testimonies', desc:'Share what God has done in your life.', icon:'\u2728' },
+      { code:'PRAIS1', name:'Praise Reports', desc:'Answered prayers and good news.', icon:'\ud83c\udf89' }
+    ];
+
     async function loadPublicGroups(){
       if (!sb || !user) return;
       try {
         const { data: gs, error } = await sb.from('groups').select('*').eq('is_public', true).order('created_at', { ascending: true });
         if (error) throw error;
-        setPublicGroups(gs || []);
+        let rooms = gs || [];
+        // If the standard rooms are missing, create them so they always exist.
+        const have = new Set(rooms.map(r => r.join_code));
+        const missing = DEFAULT_ROOMS.filter(r => !have.has(r.code));
+        if (missing.length) {
+          const toAdd = missing.map(r => ({
+            name: r.name, description: r.desc, join_code: r.code,
+            is_public: true, owner_id: user.id
+          }));
+          const { data: created } = await sb.from('groups').insert(toAdd).select();
+          if (created && created.length) rooms = rooms.concat(created);
+        }
+        setPublicGroups(rooms);
+        setSocialMsg('');
       } catch (ex) {
         setPublicGroups([]);
         setSocialMsg('Could not load rooms: ' + (ex && ex.message ? ex.message : 'unknown'));
       }
+    }
+
+    function roomIcon(g){
+      const d = DEFAULT_ROOMS.find(r => r.code === g.join_code);
+      if (d) return d.icon;
+      return g.is_public ? '\ud83c\udf0d' : '\ud83d\udd12';
     }
 
     async function joinGroupDirect(groupId){
@@ -1998,13 +2030,24 @@
 
     async function signUp(){
       if (!sb) return;
+      const first = authFirst.trim(), last = authLast.trim();
+      if (first.length < 2) { setAuthError('Please enter your first name.'); return; }
+      if (last.length < 1) { setAuthError('Please enter your last name.'); return; }
+      const fullName = first + ' ' + last;
       setAuthError(''); setAuthLoading(true);
       const { data, error } = await sb.auth.signUp({ email: authEmail, password: authPassword });
       setAuthLoading(false);
       if (error) { setAuthError(error.message); return; }
+      // Save the name straight into their progress so it shows everywhere
+      try {
+        const base = state || { ...DEFAULT_STATE };
+        const next = { ...base, profile: { ...(base.profile || {}), name: fullName } };
+        setState(next);
+        try { localStorage.setItem(KEY, JSON.stringify(next)); } catch (ex) {}
+        setPendingSignupName(fullName);
+      } catch (ex) {}
       if (data && data.session) {
-        // Email confirmation is off, or already confirmed - we're logged in immediately
-        setAuthOpen(false); setAuthEmail(''); setAuthPassword(''); setAuthError('');
+        setAuthOpen(false); setAuthEmail(''); setAuthPassword(''); setAuthFirst(''); setAuthLast(''); setAuthError('');
         return;
       }
       setAuthError('Check your email to confirm your account, then log in.');
@@ -2034,6 +2077,16 @@
             e('div', {className:'dl-auth-modal-sub', key:'sub'}, authMode === 'signup' ? 'Save your progress across every device' : 'Log in to pick up where you left off')
           ]),
           e('div', {className:'dl-auth-modal-body', key:'body'}, [
+            authMode === 'signup' ? e('div', {className:'dl-name-row', key:'namerow'}, [
+              e('div', {className:'dl-edit-field', style:{flex:1}, key:'f'}, [
+                e('label', {key:'l'}, 'First name'),
+                e('input', {value:authFirst, onChange: ev=>setAuthFirst(ev.target.value), placeholder:'First', key:'i'})
+              ]),
+              e('div', {className:'dl-edit-field', style:{flex:1}, key:'la'}, [
+                e('label', {key:'l'}, 'Last name'),
+                e('input', {value:authLast, onChange: ev=>setAuthLast(ev.target.value), placeholder:'Last', key:'i'})
+              ])
+            ]) : null,
             e('div', {className:'dl-edit-field', key:'emailfield'}, [
               e('label', {key:'l'}, 'Email'),
               e('input', {type:'email', value:authEmail, onChange: ev=>setAuthEmail(ev.target.value), placeholder:'you@example.com', key:'i'})
@@ -2996,41 +3049,52 @@
 
 
             socialTab === 'groups' ? e('div', {key:'groupspane'}, [
-              myGroups.length > 0 ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'mylbl'}, 'Your groups') : null,
-              ...myGroups.map(g => e('button', {className:'dl-group-row', onClick:()=>setOpenGroup(g.id), key:g.id}, [
-                e('span', {className:'dl-group-icon', key:'i'}, g.is_public ? String.fromCodePoint(0x1F30D) : String.fromCodePoint(0x1F512)),
-                e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
-                  e('div', {className:'dl-friend-name', key:'n'}, g.name),
-                  e('div', {className:'dl-friend-stats', key:'d'}, (g.member_count || 1) + ' members')
+              myGroups.length > 0 ? e('div', {className:'dl-gm-label', key:'mylbl'}, 'Your chats') : null,
+              ...myGroups.map(g => e('button', {className:'dl-gm-row', onClick:()=>setOpenGroup(g.id), key:g.id}, [
+                e('span', {className:'dl-gm-avatar', key:'i'}, roomIcon(g)),
+                e('span', {className:'dl-gm-mid', key:'t'}, [
+                  e('div', {className:'dl-gm-name', key:'n'}, g.name),
+                  e('div', {className:'dl-gm-preview', key:'d'}, g.description || 'Tap to open')
                 ]),
-                e('span', {className:'dl-group-arrow', key:'a'}, String.fromCodePoint(0x203A))
+                e('span', {className:'dl-gm-meta', key:'m'}, [
+                  e('span', {className:'dl-gm-count', key:'c'}, (g.member_count || 1)),
+                  e('span', {className:'dl-gm-arrow', key:'a'}, String.fromCodePoint(0x203A))
+                ])
               ])),
 
-              e('div', {className:'dl-section-title', key:'publbl'}, [String.fromCodePoint(0x1F30D), ' Public rooms']),
-              e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'pubnote'}, 'Open to everyone \u2014 jump in anytime.'),
+              e('div', {className:'dl-gm-label', key:'publbl'}, 'Discover rooms'),
               publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).length === 0
-                ? e('div', {className:'dl-empty-note', key:'nopub'}, 'You\u2019ve joined all the public rooms.')
+                ? e('div', {className:'dl-empty-note', key:'nopub'}, myGroups.length ? 'You\u2019ve joined every public room.' : 'Loading rooms\u2026')
                 : e('div', {key:'publist'}, publicGroups.filter(g => !myGroups.some(m => m.id === g.id)).map(g =>
-                    e('div', {className:'dl-pubgroup', key:g.id}, [
-                      e('div', {style:{flex:1, minWidth:0}, key:'t'}, [
-                        e('div', {className:'dl-friend-name', key:'n'}, g.name),
-                        e('div', {className:'dl-pubgroup-desc', key:'d'}, g.description),
-                        e('div', {className:'dl-friend-stats', key:'m'}, (g.member_count || 0) + ' members')
+                    e('div', {className:'dl-gm-row discover', key:g.id}, [
+                      e('button', {className:'dl-gm-open', onClick:()=>setOpenGroup(g.id), key:'o'}, [
+                        e('span', {className:'dl-gm-avatar', key:'i'}, roomIcon(g)),
+                        e('span', {className:'dl-gm-mid', key:'t'}, [
+                          e('div', {className:'dl-gm-name', key:'n'}, g.name),
+                          e('div', {className:'dl-gm-preview', key:'d'}, g.description),
+                          e('div', {className:'dl-gm-members', key:'m'}, (g.member_count || 0) + ' members')
+                        ])
                       ]),
-                      e('button', {className:'dl-social-btn', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join')
+                      e('button', {className:'dl-gm-join', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join')
                     ])
                   )),
 
-              e('div', {className:'dl-section-title', key:'privlbl'}, [String.fromCodePoint(0x1F512), ' Private rooms']),
-              e('div', {className:'dl-social-row', key:'join'}, [
-                e('input', {className:'dl-social-input', value:groupCodeInput, placeholder:'Enter a room code', maxLength:6, onChange: ev=>setGroupCodeInput(ev.target.value.toUpperCase()), key:'i'}),
-                e('button', {className:'dl-social-btn', onClick:()=>joinGroupByCode(groupCodeInput), key:'b'}, 'Join')
-              ]),
-              e('div', {className:'dl-create-box', key:'create'}, [
-                e('div', {className:'dl-create-title', key:'t'}, 'Start your own private room'),
-                e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'8px'}, value:newGroupName, placeholder:'Room name', onChange: ev=>setNewGroupName(ev.target.value), key:'gn'}),
-                e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'10px'}, value:newGroupDesc, placeholder:'Short description (optional)', onChange: ev=>setNewGroupDesc(ev.target.value), key:'gd'}),
-                e('button', {className:'dl-continue', style:{background:'var(--teal)', borderBottomColor:'var(--teal-dark)'}, onClick:()=>createGroup(newGroupName, newGroupDesc, false), key:'create'}, 'Create private room')
+              e('div', {className:'dl-gm-label', key:'privlbl'}, 'Private rooms'),
+              e('div', {className:'dl-gm-private', key:'privbox'}, [
+                e('div', {className:'dl-social-row', style:{marginBottom:'12px'}, key:'join'}, [
+                  e('input', {className:'dl-social-input', value:groupCodeInput, placeholder:'Have a code? Enter it', maxLength:6, onChange: ev=>setGroupCodeInput(ev.target.value.toUpperCase()), key:'i'}),
+                  e('button', {className:'dl-social-btn', onClick:()=>joinGroupByCode(groupCodeInput), key:'b'}, 'Join')
+                ]),
+                showCreateRoom
+                  ? e('div', {key:'form'}, [
+                      e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'8px'}, value:newGroupName, placeholder:'Room name', onChange: ev=>setNewGroupName(ev.target.value), key:'gn'}),
+                      e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'10px'}, value:newGroupDesc, placeholder:'What\u2019s it about? (optional)', onChange: ev=>setNewGroupDesc(ev.target.value), key:'gd'}),
+                      e('div', {style:{display:'flex', gap:'8px'}, key:'btns'}, [
+                        e('button', {className:'dl-gm-cancel', onClick:()=>setShowCreateRoom(false), key:'c'}, 'Cancel'),
+                        e('button', {className:'dl-gm-create', onClick:()=>createGroup(newGroupName, newGroupDesc, false), key:'cr'}, 'Create room')
+                      ])
+                    ])
+                  : e('button', {className:'dl-gm-newbtn', onClick:()=>setShowCreateRoom(true), key:'new'}, [String.fromCodePoint(0x2795), ' Create a private room'])
               ])
             ]) : null
           ])
@@ -3158,23 +3222,6 @@
         e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community']),
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),
-
-      e('div', {className:'dl-dc-modal-bg' + ((user && state && needsDisplayName()) ? ' open' : ''), key:'namegate'},
-        (user && state && needsDisplayName()) ? e('div', {className:'dl-dc-done-wrap'}, [
-          e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, String.fromCodePoint(0x1F44B)),
-          e('div', {className:'dl-dc-done-title', key:'t'}, 'What should we call you?'),
-          e('div', {className:'dl-dc-done-sub', key:'s'}, 'This is the name friends will see. Your email is never shown to anyone.'),
-          e('input', {className:'dl-social-input', style:{width:'100%', marginTop:'18px', textAlign:'center'}, value:nameGateInput, placeholder:'First and last name', onChange: ev=>setNameGateInput(ev.target.value), key:'in'}),
-          nameGateErr ? e('div', {className:'dl-auth-error', style:{marginTop:'10px'}, key:'err'}, nameGateErr) : null,
-          e('button', {className:'dl-continue', style:{maxWidth:'260px', marginTop:'16px'}, onClick:()=>{
-            const v = nameGateInput.trim();
-            if (v.length < 2) { setNameGateErr('Please enter your name.'); return; }
-            if (v.includes('@')) { setNameGateErr('Please use your name, not your email.'); return; }
-            setNameGateErr('');
-            persist({ ...state, profile: { ...state.profile, name: v } });
-          }, key:'save'}, 'Continue')
-        ]) : null
-      ),
 
       e('div', {className:'dl-dc-modal-bg' + (showWhatsNew ? ' open' : ''), key:'whatsnew'},
         showWhatsNew ? e('div', {className:'dl-dc-done-wrap'}, [
