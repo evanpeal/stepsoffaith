@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], theme: 'light', activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -1281,88 +1281,223 @@
   ];
 
   const CHARACTERS = [
-    { id:'abraham', name:'Abraham', icon:'\u2b50', tag:'Father of many nations',
-      summary:'Called out of everything familiar on a promise he wouldn\u2019t live to see fulfilled. His faith is the Bible\u2019s benchmark \u2014 and it wobbled more than once.',
+    { id:'jesus', name:'Jesus', icon:'\u271d\ufe0f', tag:'The whole story, from His side',
+      summary:'Most people meet Jesus through four books written about Him. This walks the same road from inside His own life \u2014 what He chose, what it cost Him, what He said when almost nobody understood, and what He was steadily walking toward.',
       beats:[
-        { t:'The call', d:'Leave your country, your people, your father\u2019s household. He goes without a map.', book:'Genesis' },
-        { t:'The long wait', d:'Decades pass with no son. He tries to help God along, and it costs him.', book:'Genesis' },
-        { t:'Isaac', d:'The promised son arrives when it is biologically absurd.', book:'Genesis' },
-        { t:'The mountain', d:'Asked to give the son back. He raises the knife; God provides the ram.', book:'Genesis' }
+        { t:'Before Bethlehem',
+          d:'John does not begin with a manger. He begins before the world existed: the Word was with God, and the Word was God. Everything that follows is that person choosing to enter His own creation. Not sent reluctantly, not arriving as a visitor \u2014 stepping into a story He wrote, as a character who could bleed.' },
+        { t:'Thirty quiet years',
+          d:'We have almost nothing from His first three decades. A carpenter in a small town under Roman occupation, in a family that eventually included brothers who did not believe Him. One glimpse at twelve, sitting with teachers in the temple, telling His frantic parents He had to be in His Father\u2019s house. Then silence again for eighteen years. Whatever He was, He was in no rush to prove it.' },
+        { t:'The wilderness',
+          d:'Right after His baptism \u2014 after the voice from heaven says beloved Son \u2014 He is driven into the desert and starved for forty days. Every temptation offers a shortcut to something He would eventually receive anyway: bread, safety, kingdoms. He refuses all three. He would get to the same destination, but by the long road, through the cross.' },
+        { t:'Rejected at home',
+          d:'His first sermon in Nazareth ends with the town trying to throw Him off a cliff. He reads Isaiah aloud, says the words are about Him, and the people who watched Him grow up cannot hold both things at once. He never lives there again. The gospel is preached first where He was known best, and it is refused there first too.' },
+        { t:'The people He chose',
+          d:'Not scholars. Fishermen, a tax collector working for the occupying empire, a political revolutionary, and a man who would sell Him. He spent three years with people who consistently missed the point, argued about who was greatest, and fell asleep when He asked them to stay awake. He never traded them in.' },
+        { t:'Touching the untouchable',
+          d:'A leper asks to be made clean. Jesus could have healed with a word \u2014 He does elsewhere. Instead He reaches out and touches a man no one had touched in years. That gesture runs through everything: the bleeding woman, the tax collectors\u2019 dinner tables, the Samaritan woman at noon, the children people tried to shoo away. He kept going to whoever had been pushed out.' },
+        { t:'Teaching in stories',
+          d:'He rarely explained Himself directly. He told stories about farmers, lost coins, wayward sons, and unfair employers \u2014 and let them work slowly. When people wanted a clean rule, He gave them a parable that indicted them. When they wanted a fight, He asked a question back. He seemed far more interested in changing what people wanted than in winning arguments.' },
+        { t:'The loneliness of being right',
+          d:'His family thought He was out of His mind. His hometown rejected Him. Crowds followed Him for bread and left when the teaching got hard \u2014 and He asked the twelve if they wanted to go too. Even Peter, who confessed Him as Messiah, tried to talk Him out of the cross minutes later. Almost nobody understood what He was doing until after it was done.' },
+        { t:'Setting His face toward Jerusalem',
+          d:'Luke marks the turn: He resolutely set out for Jerusalem. From there the whole gospel bends toward one week. He told them three times what would happen there and they could not hear it. He wept over the city that would kill Him, not for Himself, but for what it was missing.' },
+        { t:'The towel',
+          d:'On the last night, knowing everything He had come from and was going to, He got up from dinner, wrapped a towel around His waist, and washed the feet of twelve men \u2014 including the one already arranged to betray Him. It was the job of the lowest servant in the house. He never explained His authority more clearly than He did on His knees.' },
+        { t:'Gethsemane',
+          d:'This is the least guarded moment in His life. He tells His friends His soul is overwhelmed to the point of death, and asks them just to stay awake. Then He asks the Father three times to take the cup away. He does not want to do this. He does it anyway \u2014 not with calm certainty, but sweating, grieving, and choosing: not my will, but yours.' },
+        { t:'The silence at the trial',
+          d:'Accused, He mostly said nothing. Pilate is baffled by it. He had every argument available and used almost none of them. The one time He answers clearly is when asked directly if He is the Son of God \u2014 the answer that guarantees the sentence.' },
+        { t:'The cross',
+          d:'Between the nails and the mockery, He forgave the soldiers, promised paradise to a criminal dying beside Him, and made sure His mother would be cared for. Then the worst moment: my God, why have you forsaken me. Whatever else the cross is, it includes a Son experiencing the absence of His Father. And then \u2014 not a defeat, but a completion \u2014 it is finished.' },
+        { t:'Sunday',
+          d:'He appears first to a woman, in a culture where her testimony would not stand in court. He cooks breakfast on a beach for the men who abandoned Him. He lets Thomas touch the wounds instead of shaming him for asking. Even risen and vindicated, He is still doing what He always did: going to whoever feels furthest away.' }
       ],
-      takeaway:'Faith here isn\u2019t certainty. It\u2019s moving before the outcome is visible.' },
-    { id:'moses', name:'Moses', icon:'\ud83d\udcdc', tag:'Reluctant deliverer',
-      summary:'A murderer hiding in the desert, called back to confront an empire. He argued with God more than almost anyone \u2014 and spoke with Him face to face.',
+      takeaway:'He knew what it would cost before He started, and He came anyway \u2014 for people who would not understand Him until it was over.' },
+
+    { id:'david', name:'David', icon:'\ud83d\udc51', tag:'Shepherd, fugitive, king, failure, poet',
+      summary:'Scripture gives more space to David than almost anyone, and refuses to clean him up. He is the giant-killer and the adulterer, the man after God\u2019s own heart and the father who lost his son to a rebellion he half-caused.',
       beats:[
-        { t:'The basket', d:'Saved from a genocide by his mother, his sister, and Pharaoh\u2019s daughter.', book:'Exodus' },
-        { t:'The burning bush', d:'Five excuses, all answered. \u201cI will be with you.\u201d', book:'Exodus' },
-        { t:'The Red Sea', d:'A nation walks out of slavery on dry ground.', book:'Exodus' },
-        { t:'Sinai', d:'Forty days on a mountain; he comes down glowing.', book:'Exodus' },
-        { t:'The view from Nebo', d:'He sees the land and does not enter it.', book:'Deuteronomy' }
+        { t:'The one nobody called',
+          d:'Samuel arrives to anoint a king and Jesse lines up seven sons. Not one of them is it. David is not even invited in from the field \u2014 they have to send for him. The chapter\u2019s whole point is stated plainly: people look at appearances, God looks at the heart.' },
+        { t:'Goliath',
+          d:'An entire army is paralyzed for forty days. A teenager shows up delivering bread, hears the giant, and is genuinely confused that nobody has done anything. He refuses the king\u2019s armor because he has never worn it, and goes with what he actually knows: a sling, and a God who has already gotten him through a lion and a bear.' },
+        { t:'Hunted',
+          d:'His reward for saving the nation is a decade on the run from a king who throws spears at him. He hides in caves, fakes madness to survive, and twice has Saul completely at his mercy \u2014 and both times refuses to kill him. Many of the psalms come out of these years. He is not writing from a palace; he is writing from a cave.' },
+        { t:'Dancing before the ark',
+          d:'When he finally brings the ark into Jerusalem he dances so hard his wife despises him for it. His answer is that he will become even more undignified than this. Whatever else he was, he was not self-conscious about God.' },
+        { t:'Bathsheba',
+          d:'At the season when kings go to war, he stays home. He sees a woman bathing, sends for her, sleeps with her, and when she is pregnant he tries to cover it. When her husband \u2014 one of his most loyal soldiers \u2014 refuses to go home while his comrades are in the field, David has him killed. Every step is worse than the last, and none of it happens in a moment of passion. It is a series of deliberate decisions.' },
+        { t:'You are the man',
+          d:'Nathan tells him a story about a rich man stealing a poor man\u2019s only lamb. David is furious and demands justice \u2014 and then Nathan says: you are the man. The trap works because David\u2019s sense of right and wrong was still intact. He just had not turned it on himself.' },
+        { t:'Psalm 51',
+          d:'He does not defend himself or manage the story. He writes the rawest confession in Scripture \u2014 create in me a clean heart, do not take your Spirit from me \u2014 and then publishes it as a song for the whole nation to sing. He made his worst moment part of Israel\u2019s worship.' },
+        { t:'The cost',
+          d:'Forgiveness does not undo consequences. The child dies. His household fractures. His son Amnon assaults his daughter Tamar and David does nothing, and Absalom eventually kills Amnon for it and turns against his father.' },
+        { t:'Absalom',
+          d:'His own son drives him out of Jerusalem, and David leaves weeping and barefoot rather than fight him. When the news comes that Absalom is dead, his army has just won \u2014 and the king is inconsolable: O Absalom, my son, my son, would I had died instead of you.' },
+        { t:'The end',
+          d:'An old man, cold, arranging the temple he was told he could not build \u2014 gathering the gold and the plans for a son who would finish it. He never saw the thing he spent his last years preparing.' }
       ],
-      takeaway:'God\u2019s call rarely waits for you to feel qualified.' },
-    { id:'david', name:'David', icon:'\ud83d\udc51', tag:'Shepherd, king, poet',
-      summary:'The Bible spends more words on David than almost anyone. Giant-killer, worship writer, adulterer, grieving father \u2014 and still called a man after God\u2019s own heart.',
-      beats:[
-        { t:'Anointed young', d:'Samuel passes over seven older brothers for the one out with the sheep.', book:'1 Samuel' },
-        { t:'Goliath', d:'Five stones and a sling against a nine-foot soldier.', book:'1 Samuel' },
-        { t:'Hunted by Saul', d:'Years on the run, twice sparing the man trying to kill him.', book:'1 Samuel' },
-        { t:'Bathsheba', d:'The lowest chapter: adultery, then a murder to cover it.', book:'2 Samuel' },
-        { t:'Psalm 51', d:'Confronted by Nathan, he writes the Bible\u2019s rawest confession.', book:'Psalms' },
-        { t:'Absalom', d:'His own son rebels. \u201cO Absalom, my son, my son.\u201d', book:'2 Samuel' }
-      ],
-      takeaway:'A heart after God is not a clean record. It\u2019s where you run after you fail.' },
-    { id:'elijah', name:'Elijah', icon:'\ud83d\udd25', tag:'Fire and exhaustion',
-      summary:'Called down fire in front of a nation, then sat under a tree and asked to die. One of Scripture\u2019s most honest pictures of burnout.',
-      beats:[
-        { t:'The drought', d:'He announces three years without rain, then hides by a brook fed by ravens.', book:'1 Kings' },
-        { t:'Mount Carmel', d:'450 prophets of Baal, one soaked altar, fire from heaven.', book:'1 Kings' },
-        { t:'Under the broom tree', d:'One threat from Jezebel and the same man collapses.', book:'1 Kings' },
-        { t:'The whisper', d:'Not the wind, earthquake, or fire \u2014 a gentle whisper.', book:'1 Kings' },
-        { t:'The whirlwind', d:'He never dies; a chariot of fire takes him.', book:'2 Kings' }
-      ],
-      takeaway:'God met his exhaustion with food, sleep, and a whisper \u2014 not a rebuke.' },
+      takeaway:'A heart after God is not a clean record. It is where you run once you have wrecked one.' },
+
     { id:'peter', name:'Peter', icon:'\ud83e\udea8', tag:'The one who kept failing forward',
-      summary:'Loud, impulsive, and wrong constantly. He denied Jesus three times and preached the sermon that started the church seven weeks later.',
+      summary:'Loud, impulsive, frequently wrong, and always first to speak. He is the disciple most like the rest of us, which is probably why the Gospels keep his failures in.',
       beats:[
-        { t:'Drop your nets', d:'A fisherman leaves everything mid-shift.', book:'Matthew' },
-        { t:'Walking on water', d:'He actually does it \u2014 until he looks at the waves.', book:'Matthew' },
-        { t:'You are the Messiah', d:'The confession everything hinges on. Minutes later Jesus calls him Satan.', book:'Matthew' },
-        { t:'Three denials', d:'By a fire, to a servant girl, before the rooster.', book:'Luke' },
-        { t:'Breakfast on the beach', d:'Three questions: do you love me? Restoration, not a lecture.', book:'John' },
-        { t:'Pentecost', d:'The same man preaches, and three thousand believe.', book:'Acts' }
+        { t:'Leave the nets',
+          d:'Jesus borrows his boat, then tells a professional fisherman where to fish after a night of catching nothing. The nets nearly break. Peter\u2019s first reaction is not excitement \u2014 it is go away from me, I am a sinful man. Jesus\u2019 answer is to call him anyway.' },
+        { t:'Out of the boat',
+          d:'He is the only one who asks to walk on water, and the only one who does. He also sinks. Both halves are true, and both are him: more faith than anyone else in the boat, and not enough to finish the walk.' },
+        { t:'You are the Messiah',
+          d:'The high point. Jesus asks who they say He is, and Peter gets it exactly right \u2014 and is told this was revealed to him by the Father. Then Jesus explains He must die, Peter rebukes Him for it, and hears the harshest words Jesus ever said to a disciple. Minutes apart.' },
+        { t:'The sword',
+          d:'In the garden he does the bravest, stupidest thing available: draws a sword against an armed detachment and cuts off a man\u2019s ear. He was willing to die fighting. He was not prepared for a Messiah who would not let him.' },
+        { t:'Three denials',
+          d:'Hours after swearing he would die first, he is warming himself at a fire in the courtyard, telling a servant girl he does not know the man. Third time, the rooster crows \u2014 and Luke adds the detail that guts you: the Lord turned and looked straight at Peter.' },
+        { t:'Breakfast',
+          d:'After the resurrection Jesus finds him fishing again, back where he started. There is a charcoal fire on the beach \u2014 the same word used for the fire he denied Jesus beside. Three denials, three questions: do you love me. No lecture, no probation. Just: feed my sheep.' },
+        { t:'Pentecost',
+          d:'Fifty days later the same man stands in the same city and preaches to thousands, including people who called for the crucifixion. Three thousand believe. The distance between the courtyard and that sermon is the whole point of his story.' },
+        { t:'The rooftop',
+          d:'Even after all that, God has to show him a vision three times to convince him Gentiles are not unclean. Peter argues with God twice more in one book. Growth was never a straight line for him.' }
       ],
-      takeaway:'Failure wasn\u2019t the end of his story. It was the middle of it.' },
+      takeaway:'Failure was not the end of his story. It was the middle of it \u2014 and it made him useful.' },
+
     { id:'paul', name:'Paul', icon:'\u2709\ufe0f', tag:'From persecutor to apostle',
-      summary:'He hunted Christians house to house. Then a light on a road, and he spent the rest of his life planting the churches he once tried to destroy.',
+      summary:'He hunted Christians house to house with legal warrants. Then a light on a road, and the rest of his life spent building what he had tried to destroy \u2014 while never once acting like he had earned the right to.',
       beats:[
-        { t:'Holding the coats', d:'He approves of Stephen\u2019s stoning and hears him forgive his killers.', book:'Acts' },
-        { t:'Damascus road', d:'\u201cSaul, why do you persecute me?\u201d Blinded, led by the hand.', book:'Acts' },
-        { t:'Brother Saul', d:'An ordinary disciple named Ananias risks his life to welcome him in.', book:'Acts' },
-        { t:'The journeys', d:'Beaten, shipwrecked, jailed \u2014 and churches spring up behind him.', book:'Acts' },
-        { t:'The thorn', d:'He begs three times. \u201cMy grace is sufficient for you.\u201d', book:'2 Corinthians' },
-        { t:'Finishing', d:'From a cold cell: I have fought the good fight, I have finished the race.', book:'2 Timothy' }
+        { t:'Holding the coats',
+          d:'He first appears at Stephen\u2019s execution, minding the witnesses\u2019 cloaks and approving. Which means he stood there and heard a man he was helping kill pray that God would forgive them. He never mentions whether it stayed with him. It is hard to imagine it did not.' },
+        { t:'The road',
+          d:'A light, and a voice: Saul, why do you persecute me? Not why do you persecute my followers \u2014 me. That single word shaped everything he later wrote about the church being Christ\u2019s body. He gets up blind and has to be led by the hand into the city he came to raid.' },
+        { t:'Brother Saul',
+          d:'God sends an ordinary disciple named Ananias to him. Ananias argues \u2014 reasonably, this man arrests people like me \u2014 and then goes anyway, lays hands on him, and calls him brother. The most influential Christian in history was welcomed in by a man who appears in five verses.' },
+        { t:'The wilderness years',
+          d:'He does not immediately launch a ministry. He disappears into Arabia and then Tarsus for years, and the church he once terrorized has to learn to trust him. Barnabas is the one who eventually vouches for him.' },
+        { t:'The road again, and again',
+          d:'Three missionary journeys: stoned and left for dead at Lystra, beaten and jailed in Philippi, run out of city after city, shipwrecked three times. He plants churches and then writes them letters that become a third of the New Testament \u2014 mostly to fix problems, mostly from prison or on the move.' },
+        { t:'The thorn',
+          d:'He never says what it was. He begged God three times to remove it and got a no, plus a sentence: my grace is sufficient for you, my power is made perfect in weakness. He stopped asking and started boasting about it. The unanswered prayer became his clearest theology.' },
+        { t:'Confronting Peter',
+          d:'When Peter stopped eating with Gentile believers under pressure, Paul opposed him publicly. He was willing to face down the most senior apostle alive over a meal, because the meal was preaching something the gospel was not.' },
+        { t:'Chief of sinners',
+          d:'Decades in, writing to Timothy, he calls himself the worst of sinners \u2014 present tense. Not was. He believed his own story was placed in Scripture as proof that nobody is beyond reach.' },
+        { t:'The last letter',
+          d:'From a cold cell awaiting execution: I have fought the good fight, I have finished the race, I have kept the faith. In the same letter he asks Timothy to bring his coat and his books, and notes that everyone deserted him at his trial \u2014 but the Lord stood at my side.' }
       ],
-      takeaway:'Nobody is too far gone. His whole life was proof placed in Scripture on purpose.' },
-    { id:'mary', name:'Mary', icon:'\ud83c\udf1f', tag:'She said yes',
-      summary:'A teenager in a nowhere town, asked to carry God. She said let it be, and then watched her son die.',
+      takeaway:'He never got over being forgiven, and that is exactly what made him unstoppable.' },
+
+    { id:'moses', name:'Moses', icon:'\ud83d\udcdc', tag:'The reluctant deliverer',
+      summary:'A prince turned murderer turned shepherd turned liberator. He argued with God more than anyone in Scripture, and God kept the arguments in the text.',
       beats:[
-        { t:'The announcement', d:'\u201cHow can this be?\u201d Then: I am the Lord\u2019s servant.', book:'Luke' },
-        { t:'The Magnificat', d:'Her song is a revolution \u2014 rulers pulled down, the humble lifted.', book:'Luke' },
-        { t:'Bethlehem', d:'No room. She lays him in a feeding trough.', book:'Luke' },
-        { t:'Treasured in her heart', d:'Shepherds, magi, a boy left behind at the temple.', book:'Luke' },
-        { t:'Cana', d:'\u201cDo whatever he tells you\u201d \u2014 the last words we have from her.', book:'John' },
-        { t:'At the cross', d:'She stays to the end. Jesus gives her into John\u2019s care.', book:'John' }
+        { t:'Saved by women',
+          d:'His life is preserved by five women \u2014 two midwives who defy Pharaoh, his mother, his sister, and Pharaoh\u2019s own daughter. Before he does anything, he is carried by other people\u2019s courage.' },
+        { t:'The murder',
+          d:'Raised in the palace, he sees an Egyptian beating a Hebrew, looks both ways, and kills him. The next day two Hebrews mock him for it. He flees to the desert and stays forty years. His first attempt at deliverance was violence, in secret, and it failed completely.' },
+        { t:'The bush',
+          d:'Eighty years old, tending someone else\u2019s sheep, he gets the call. He offers five separate objections \u2014 who am I, what if they ask your name, they will not believe me, I am not a good speaker, please send someone else. God answers all five and gets angry at the last one, but still sends Aaron along.' },
+        { t:'Ten rounds with Pharaoh',
+          d:'The plagues are not random. Each one targets an Egyptian god \u2014 the Nile, the sun, livestock, the firstborn heir. It is a systematic dismantling of an empire\u2019s entire religion, and Pharaoh hardens against every one.' },
+        { t:'The sea',
+          d:'Trapped between water and an army, the people immediately turn on him: were there no graves in Egypt? He tells them to stand still and see \u2014 and then God tells him, oddly, to stop praying and move.' },
+        { t:'Face to face',
+          d:'On Sinai he spends forty days with God and comes down glowing so brightly he has to veil his face. Scripture says God spoke to him as a man speaks with his friend. He also asks to see God\u2019s glory and is told no one can see His face and live \u2014 so he is hidden in a rock and shown God\u2019s back.' },
+        { t:'Standing in the gap',
+          d:'When the people build the golden calf, God offers to destroy them and start over with Moses. He refuses. He argues God out of it, and then offers to be blotted out of the book himself if they can be spared. The man who did not want the job would not trade them away.' },
+        { t:'The rock',
+          d:'Forty years of complaints wear him down. Told to speak to a rock for water, he strikes it instead and shouts at the people: must we bring you water? For that, he is told he will not enter the land.' },
+        { t:'Nebo',
+          d:'He climbs a mountain, sees the whole country he spent forty years walking toward, and dies there. God buries him Himself, and no one knows where. He led people somewhere he was never allowed to go.' }
       ],
-      takeaway:'Obedience cost her everything, and she chose it anyway.' },
-    { id:'ruth', name:'Ruth', icon:'\ud83c\udf3e', tag:'Loyalty against the odds',
-      summary:'A foreign widow who refused to leave her mother-in-law, gleaned in fields to keep them alive, and ended up King David\u2019s great-grandmother.',
+      takeaway:'God\u2019s call almost never waits for you to feel qualified \u2014 and it does not require you to be calm about it.' },
+
+    { id:'abraham', name:'Abraham', icon:'\u2b50', tag:'Faith with a long wait in it',
+      summary:'The Bible\u2019s benchmark for faith, whose faith failed repeatedly. Twenty-five years passed between the promise and the son, and he did not wait well.',
       beats:[
-        { t:'Where you go, I will go', d:'She binds herself to Naomi and to Naomi\u2019s God.', book:'Ruth' },
-        { t:'The barley field', d:'She works behind harvesters, taking what\u2019s left.', book:'Ruth' },
-        { t:'Boaz notices', d:'A relative with the right to redeem, and the willingness to.', book:'Ruth' },
-        { t:'The line of David', d:'The genealogy of Jesus runs through a Moabite widow.', book:'Ruth' }
+        { t:'Go',
+          d:'Seventy-five years old, comfortable, and told to leave his country, his relatives, and his father\u2019s house for a land that is not named. He goes. Hebrews notes he set out without knowing where he was going.' },
+        { t:'The lie',
+          d:'Twice, afraid a king will kill him for his wife, he says Sarah is his sister and lets her be taken into a harem. The father of faith saved himself by endangering her. Scripture reports it without softening it.' },
+        { t:'Counting stars',
+          d:'Childless and old, he is taken outside and told to count the stars. He believed God, and it was credited to him as righteousness \u2014 the verse Paul later builds an entire theology on.' },
+        { t:'Hagar',
+          d:'Ten years in, they stop waiting. Sarah gives him her servant, and Ishmael is born. The consequences ripple through the rest of Genesis and past it. Trying to help God keep His promise created a wound that never fully closed.' },
+        { t:'Laughing',
+          d:'When told at ninety-nine that Sarah will have a son, he falls on his face laughing. She laughs too, then denies it. They name the boy Isaac \u2014 he laughs.' },
+        { t:'Arguing for Sodom',
+          d:'Told the city will be destroyed, he bargains God down from fifty righteous people to ten, careful and persistent, asking whether the Judge of all the earth will do right. He is not passive with God.' },
+        { t:'Moriah',
+          d:'The hardest chapter in Genesis. Take your son, your only son, whom you love, and offer him. He gets up early, walks three days, builds the altar, binds the boy, and raises the knife. The ram appears in the thicket. He names the place: the Lord will provide.' },
+        { t:'Buying a grave',
+          d:'At the end, the only land he ever owns in the country he was promised is a field with a cave, bought at full price to bury Sarah. The promise was real. He just did not get to hold it.' }
       ],
-      takeaway:'Ordinary faithfulness in a hard season is how God moved history.' }
+      takeaway:'Faith here is not certainty or patience. It is moving before you can see, and being kept even when you handle the waiting badly.' },
+
+    { id:'mary', name:'Mary', icon:'\ud83c\udf1f', tag:'She said yes to everything it would cost',
+      summary:'A teenager in an unimportant town said let it be, knowing the pregnancy could end her engagement and her standing. She was there at the beginning, and she was there at the cross.',
+      beats:[
+        { t:'The visit',
+          d:'An angel calls her highly favored, and Luke says she was greatly troubled by the greeting itself. She asks one honest question \u2014 how, since I am a virgin \u2014 and then gives an answer that costs her everything: I am the Lord\u2019s servant, let it be to me as you have said.' },
+        { t:'What it risked',
+          d:'In her world an unexplained pregnancy meant a broken engagement, public shame, and possibly worse. Joseph planned to divorce her quietly before his own dream changed his mind. She said yes before she knew he would stay.' },
+        { t:'The Magnificat',
+          d:'Her song is not gentle. Rulers pulled from thrones, the humble lifted, the hungry filled, the rich sent away empty. A young peasant woman sings a revolution about the child she is carrying.' },
+        { t:'A feeding trough',
+          d:'No room. She gives birth in the company of animals and lays God in the place the food goes. The first visitors are shepherds \u2014 men whose testimony would not have been accepted in court.' },
+        { t:'The warning',
+          d:'At the temple, Simeon blesses them and then turns to her specifically: a sword will pierce your own soul too. She carried that sentence for thirty years.' },
+        { t:'Treasuring things up',
+          d:'Luke says it twice \u2014 she treasured all these things and pondered them in her heart. Magi, prophecies, a twelve-year-old telling her he had to be in his Father\u2019s house. She kept what she did not yet understand.' },
+        { t:'Do whatever he tells you',
+          d:'At the wedding in Cana she brings the problem to Him and gets what sounds like a deflection. She turns to the servants anyway. Her last recorded words in Scripture are instructions to obey her son.' },
+        { t:'Thinking he was out of his mind',
+          d:'Mark records that his family came to take charge of him, saying he is out of his mind. Even she did not track it the whole way. Faith and confusion lived in her at the same time.' },
+        { t:'At the cross',
+          d:'Most of the disciples ran. She stayed, and watched. And in the middle of dying He arranged for her care \u2014 woman, here is your son; to John, here is your mother.' }
+      ],
+      takeaway:'She said yes at the start without being shown the end, and she was still standing there when it came.' },
+
+    { id:'elijah', name:'Elijah', icon:'\ud83d\udd25', tag:'Fire, then a broom tree',
+      summary:'He called down fire in front of a nation and then, one day later, asked God to kill him. Scripture\u2019s most honest portrait of collapse after a victory.',
+      beats:[
+        { t:'Out of nowhere',
+          d:'He appears with no introduction and announces a drought to the most wicked king in Israel\u2019s history. Then he disappears to a brook, fed by ravens, until the brook dries up too.' },
+        { t:'The widow\u2019s jar',
+          d:'He asks a starving widow for her last meal. She makes it, and the flour and oil do not run out. Later her son dies anyway, and she blames him \u2014 and he takes the boy upstairs and cries out to God about it.' },
+        { t:'Carmel',
+          d:'450 prophets against one. They shout at Baal for hours; Elijah mocks them, suggesting their god might be asleep or relieving himself. Then he soaks his altar with water three times, prays one short prayer, and fire falls. The whole nation faces down.' },
+        { t:'The broom tree',
+          d:'One threatening message from Jezebel, and the man who just faced 450 prophets runs for his life, sits under a tree in the desert, and asks to die. This is the day after his greatest victory.' },
+        { t:'How God responds',
+          d:'No rebuke. No speech about his lack of faith. An angel lets him sleep, wakes him, feeds him, and lets him sleep again. Then feeds him a second time, because the journey is too much for you. God treated exhaustion as exhaustion.' },
+        { t:'The whisper',
+          d:'At Horeb a great wind tears the mountain, then an earthquake, then fire \u2014 and God is in none of them. Then a low whisper. And the question, twice: what are you doing here, Elijah?' },
+        { t:'You are not alone',
+          d:'His complaint is I am the only one left. God corrects the arithmetic: seven thousand have not bowed to Baal. His despair had convinced him of something that was not true.' },
+        { t:'Elisha, and the whirlwind',
+          d:'He is given a successor \u2014 practical help, not just encouragement. And at the end he does not die: a chariot of fire, a whirlwind, and a cloak left behind for the man who watched.' }
+      ],
+      takeaway:'God met his burnout with food, rest, and a whisper before He gave him anything else to do.' },
+
+    { id:'ruth', name:'Ruth', icon:'\ud83c\udf3e', tag:'Loyalty with nothing to gain',
+      summary:'A foreign widow with no reason to stay chose a bitter mother-in-law and a God not her own, worked in fields for scraps, and ended up in the family line of David and Jesus.',
+      beats:[
+        { t:'Three funerals',
+          d:'A famine drives an Israelite family to Moab. The father dies. The two sons marry Moabite women, and then both sons die too. Three widows are left with no income and no protection.' },
+        { t:'Where you go',
+          d:'Naomi tells both daughters-in-law to go home; she has nothing to offer them. Orpah does, sensibly. Ruth refuses: where you go I will go, your people will be my people, your God my God. She chose poverty and a foreign country over a fresh start at home.' },
+        { t:'Bitter',
+          d:'Naomi arrives home and tells the whole town to stop calling her Naomi \u2014 call me Mara, bitter, because the Almighty has dealt bitterly with me. Ruth stays anyway, attached to a woman who could barely see her.' },
+        { t:'Gleaning',
+          d:'She works behind the harvesters picking up leftovers, which was the law\u2019s provision for the poor and a vulnerable place for a foreign woman to be. Boaz notices, tells his men to leave her alone, and quietly instructs them to drop extra grain on purpose.' },
+        { t:'The threshing floor',
+          d:'On Naomi\u2019s risky advice she approaches Boaz at night and asks him to spread his cloak over her \u2014 a request for marriage and protection under the law. He calls it kindness greater than the first, and handles it honorably.' },
+        { t:'The redeemer',
+          d:'A nearer relative has first claim and backs out when he learns it means taking Ruth as well. Boaz redeems the land and marries her in front of the town elders.' },
+        { t:'The last line',
+          d:'The women tell Naomi her daughter-in-law is worth more to her than seven sons. The book ends with a genealogy: Ruth\u2019s son, then his son, then David. Matthew names her again in the line of Jesus \u2014 one of only a few women listed, and a Moabite.' }
+      ],
+      takeaway:'She had no idea she was in a story that mattered. She just kept showing up for someone who could not repay her.' }
   ];
 
   const TOPICS = [
@@ -1654,17 +1789,6 @@
     const [wordleInput, setWordleInput] = React.useState('');
     const [wordleShake, setWordleShake] = React.useState(false);
     const [nowTick, setNowTick] = React.useState(Date.now());
-
-    React.useEffect(() => {
-      try {
-        const root = document.getElementById('dl-root');
-        if (root) root.setAttribute('data-theme', (state && state.theme === 'dark') ? 'dark' : 'light');
-      } catch (ex) {}
-    }, [state && state.theme]);
-
-    function toggleTheme(){
-      persist({ ...state, theme: (state.theme === 'dark' ? 'light' : 'dark') });
-    }
 
     React.useEffect(() => {
       const iv = setInterval(() => setNowTick(Date.now()), 1000);
@@ -3363,8 +3487,7 @@
                 e('span', {className:'dl-char-num', key:'n'}, bi + 1),
                 e('div', {style:{flex:1}, key:'c'}, [
                   e('div', {className:'dl-char-beat-t', key:'t'}, b.t),
-                  e('div', {className:'dl-char-beat-d', key:'d'}, b.d),
-                  e('button', {className:'dl-tl-book', onClick:()=>{ setExploreView('topics'); setSearchQuery(b.book); }, key:'b'}, b.book)
+                  e('div', {className:'dl-char-beat-d', key:'d'}, b.d)
                 ])
               ])),
               e('div', {className:'dl-char-takeaway', key:'tk'}, [
@@ -3879,13 +4002,6 @@
           e('span', {className:'dl-setname-cta', key:'c'}, 'Set')
         ]) : null,
 
-        e('div', {className:'dl-theme-row', key:'theme'}, [
-          e('span', {className:'dl-theme-icon', key:'i'}, String.fromCodePoint(state.theme === 'dark' ? 0x1F319 : 0x2600)),
-          e('span', {style:{flex:1}, key:'t'}, state.theme === 'dark' ? 'Dark mode' : 'Light mode'),
-          e('button', {className:'dl-theme-switch' + (state.theme === 'dark' ? ' on' : ''), onClick: toggleTheme, key:'s'},
-            e('span', {className:'dl-theme-knob'})
-          )
-        ]),
         e('div', {className:'dl-account-row', key:'account'},
           user
             ? [
