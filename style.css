@@ -825,3 +825,8 @@ to { opacity: 1; transform: translate(-50%, 0); }
   .dl-wg-wins { font-size: 12px; font-weight: 700; color: var(--gray); margin-top: 8px; }
   .dl-wg-again { display: flex; gap: 8px; margin-top: 14px; }
   .dl-wg-done { background: var(--card-2); color: var(--gray); border: none; border-radius: 12px; padding: 0 20px; font-weight: 800; font-size: 14px; cursor: pointer; }
+
+  .dl-tour-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 20px; }
+  .dl-tour-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-light); transition: all 0.2s; }
+  .dl-tour-dot.on { background: var(--purple); width: 20px; border-radius: 10px; }
+  .dl-tour-text { font-size: 14.5px; line-height: 1.65; color: var(--gray); max-width: 320px; margin: 8px auto 0; }

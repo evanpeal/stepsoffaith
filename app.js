@@ -6,7 +6,7 @@
   const SUPABASE_KEY = "sb_publishable_E8MMK1clBTPW313Cg0sthw_G9fDvhTn";
   const sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
-  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, wordleGame: null, recentWords: [], streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenWhatsNewCommunity: false, seenFriendIds: [], trackDone: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
+  const DEFAULT_STATE = { completed: [], completedCheckpoints: [], streak: 0, gems: 0, pearls: 0, ownedBadges: [], dailyStreak: 0, lastCheckIn: null, claimedQuests: [], profile: { name: 'Your name', avatar: '\ud83d\udcd6' }, testimony: '', reflections: [], testBest: {}, deepStudies: [], dailyWord: null, wordleGame: null, recentWords: [], streakFreezes: 0, streakFreezeUsedDate: null, highlights: [], favorites: [], completedLog: [], wordleWins: 0, seenTour: false, seenFriendIds: [], trackDone: [], activePlan: null, planStarted: null, planDays: null, planReflections: [] };
 
   const RIDGE_JAG_BACK = 'polygon(0% 100%, 0% 45%, 8% 55%, 18% 30%, 30% 50%, 42% 20%, 55% 48%, 66% 25%, 78% 52%, 88% 32%, 100% 50%, 100% 100%)';
   const RIDGE_JAG_FRONT = 'polygon(0% 100%, 0% 55%, 12% 35%, 24% 60%, 36% 40%, 48% 65%, 60% 38%, 72% 62%, 84% 42%, 100% 60%, 100% 100%)';
@@ -2449,10 +2449,6 @@
     const [contactBusy, setContactBusy] = React.useState(false);
     const [inviteCopied, setInviteCopied] = React.useState(false);
     const [newFriendMsg, setNewFriendMsg] = React.useState('');
-    const [browsingType, setBrowsingType] = React.useState(null);
-    const [roomSearch, setRoomSearch] = React.useState('');
-    const [typeRooms, setTypeRooms] = React.useState([]);
-    const [showWhatsNew, setShowWhatsNew] = React.useState(false);
     const [openCheckpoint, setOpenCheckpoint] = React.useState(null);
     const [step, setStep] = React.useState("passage");
     const [qIndex, setQIndex] = React.useState(0);
@@ -2481,6 +2477,8 @@
     const [wordleInput, setWordleInput] = React.useState('');
     const [wordleShake, setWordleShake] = React.useState(false);
     const [nowTick, setNowTick] = React.useState(Date.now());
+    const [tourStep, setTourStep] = React.useState(0);
+    const [showTour, setShowTour] = React.useState(false);
 
     React.useEffect(() => {
       const iv = setInterval(() => setNowTick(Date.now()), 1000);
@@ -2585,6 +2583,17 @@
     }, []);
 
     React.useEffect(() => {
+      if (!state) return;
+      if (!state.seenTour) setShowTour(true);
+    }, [state === null]);
+
+    function finishTour(){
+      setShowTour(false);
+      setTourStep(0);
+      if (state) persist({ ...state, seenTour: true });
+    }
+
+    React.useEffect(() => {
       if (!sb || !user || !state) return;
       syncPublicProfile(state);
       loadFriends();
@@ -2596,17 +2605,11 @@
         persist({ ...state, profile: { ...(state.profile || {}), name: pendingSignupName } });
         setPendingSignupName('');
       }
-      if (!state.seenWhatsNewCommunity) setShowWhatsNew(true);
     }, [user && user.id, state === null]);
 
     React.useEffect(() => {
       if (sb && user && friends !== null) loadSuggested();
     }, [friends.length, outgoingReqs.length, incomingReqs.length, myGroups.length]);
-
-    function dismissWhatsNew(){
-      setShowWhatsNew(false);
-      if (state) persist({ ...state, seenWhatsNewCommunity: true });
-    }
 
     React.useEffect(() => {
       if (openGroup) loadGroupDetail(openGroup);
@@ -2822,9 +2825,8 @@
           const full = (g.member_count || 0) >= (g.capacity || 75);
           const alreadyIn = myGroups.some(x => x.id === g.id);
           if (full && !alreadyIn) {
-            setSocialMsg('That room just filled up \u2014 joining another one.');
+            setSocialMsg('That room is full.');
             setTab('community');
-            joinRoomType(g.room_type || g.join_code);
           } else {
             await joinGroupDirect(g.id);
             setTab('community');
@@ -3022,131 +3024,16 @@
       } catch (ex) { setMyGroups([]); }
     }
 
-    const DEFAULT_ROOMS = [
-      { code:'PRAY01', name:'Prayer Requests', desc:'Share what you need prayer for, and pray for others.', icon:'\ud83d\ude4f' },
-      { code:'ASK001', name:'Faith Questions', desc:'Ask anything about faith, the Bible, or doubt.', icon:'\u2753' },
-      { code:'DAILY1', name:'Daily Encouragement', desc:'Share a verse or a word that carried you today.', icon:'\u2600\ufe0f' }
-    ];
+
 
     const ROOM_CAP = 75;
 
     async function loadPublicGroups(){
-      if (!sb || !user) return;
-      try {
-        const { data: gs, error } = await sb.from('groups').select('*').eq('is_public', true).order('room_number', { ascending: true });
-        if (error) throw error;
-        let rooms = gs || [];
-        // Make sure the first copy of each room type exists
-        const haveTypes = new Set(rooms.map(r => r.room_type || r.join_code));
-        const missing = DEFAULT_ROOMS.filter(r => !haveTypes.has(r.code));
-        if (missing.length) {
-          const toAdd = missing.map(r => ({
-            name: r.name, description: r.desc, join_code: r.code,
-            room_type: r.code, room_number: 1, capacity: ROOM_CAP,
-            is_public: true, owner_id: user.id
-          }));
-          const { data: created } = await sb.from('groups').insert(toAdd).select();
-          if (created && created.length) rooms = rooms.concat(created);
-        }
-        const keep = new Set(DEFAULT_ROOMS.map(r => r.code));
-        setPublicGroups(rooms.filter(r => keep.has(r.room_type || r.join_code)));
-      } catch (ex) {
-        setPublicGroups([]);
-        setSocialMsg('Could not load rooms: ' + (ex && ex.message ? ex.message : 'unknown'));
-      }
-    }
-
-    async function loadTypeRooms(type){
-      if (!sb || !user) return;
-      try {
-        const { data } = await sb.from('groups').select('*')
-          .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
-        setTypeRooms(data || []);
-      } catch (ex) { setTypeRooms([]); }
-    }
-
-    async function openRoomBrowser(type){
-      setBrowsingType(type);
-      setRoomSearch('');
-      await loadTypeRooms(type);
-    }
-
-    // One card per room type, with everyone across all its copies counted
-    function publicRoomTypes(){
-      const byType = {};
-      publicGroups.forEach(g => {
-        const t = g.room_type || g.join_code;
-        if (!byType[t]) byType[t] = { type: t, name: g.name, description: g.description, rooms: [], total: 0 };
-        byType[t].rooms.push(g);
-        byType[t].total += (g.member_count || 0);
-      });
-      // Keep them in the order we defined
-      return DEFAULT_ROOMS.map(d => byType[d.code]).filter(Boolean);
-    }
-
-    // Which copy am I already in, if any?
-    function myRoomForType(type){
-      return myGroups.find(g => (g.room_type || g.join_code) === type);
-    }
-
-    const ROOM_SEED_AT = 30;   // once a room reaches this, quietly open the next one
-
-    // Make sure there's always a room with plenty of space available
-    async function ensureFreshRoom(type){
-      if (!sb || !user) return null;
-      try {
-        const { data: all } = await sb.from('groups').select('*')
-          .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
-        const rooms = all || [];
-        const roomy = rooms.find(r => (r.member_count || 0) < ROOM_SEED_AT);
-        if (roomy) return null;   // there's still a quiet room, no need for another
-
-        const def = DEFAULT_ROOMS.find(d => d.code === type);
-        const nextNum = rooms.length ? Math.max(...rooms.map(r => r.room_number || 1)) + 1 : 1;
-        const { data: created } = await sb.from('groups').insert({
-          name: (def ? def.name : (rooms[0] ? rooms[0].name : 'Room')),
-          description: def ? def.desc : (rooms[0] ? rooms[0].description : ''),
-          join_code: type + '-' + nextNum,
-          room_type: type, room_number: nextNum, capacity: ROOM_CAP,
-          is_public: true, owner_id: user.id
-        }).select().maybeSingle();
-        return created || null;
-      } catch (ex) { return null; }
-    }
-
-    // Join a room type: slot into the fullest room that still has space
-    async function joinRoomType(type){
-      if (!sb || !user) return;
-      const mine = myRoomForType(type);
-      if (mine) { setOpenGroup(mine.id); return; }
-      try {
-        const { data: all } = await sb.from('groups').select('*')
-          .eq('room_type', type).eq('is_public', true).order('room_number', { ascending: true });
-        const rooms = all || [];
-        // Prefer rooms that already have people, so conversations stay lively
-        const withSpace = rooms.filter(r => (r.member_count || 0) < (r.capacity || ROOM_CAP))
-                               .sort((a, b) => (b.member_count || 0) - (a.member_count || 0));
-        let target = withSpace[0];
-
-        if (!target) {
-          const fresh = await ensureFreshRoom(type);
-          target = fresh;
-        }
-        if (!target) { setSocialMsg('Could not find a room \u2014 try again.'); return; }
-
-        await joinGroupDirect(target.id);
-        await ensureFreshRoom(type);   // keep a spare ready for the next person
-        loadPublicGroups();
-        if (browsingType === type) loadTypeRooms(type);
-      } catch (ex) {
-        setSocialMsg('Could not join: ' + (ex && ex.message ? ex.message : 'unknown'));
-      }
+      setPublicGroups([]);
     }
 
     function roomIcon(g){
-      const d = DEFAULT_ROOMS.find(r => r.code === g.join_code);
-      if (d) return d.icon;
-      return g.is_public ? '\ud83c\udf0d' : '\ud83d\udd12';
+      return '\ud83d\udd12';
     }
 
     async function joinGroupDirect(groupId){
@@ -4662,85 +4549,8 @@
                 ])
               ])),
 
-              browsingType ? (() => {
-                const def = DEFAULT_ROOMS.find(d => d.code === browsingType);
-                const q = roomSearch.trim().toLowerCase();
-                const list = typeRooms.filter(r => {
-                  if (!q) return true;
-                  return String(r.room_number).includes(q) || (r.join_code || '').toLowerCase().includes(q);
-                });
-                return e('div', {key:'browser'}, [
-                  e('button', {className:'dl-topic-back', onClick:()=>setBrowsingType(null), key:'back'}, String.fromCodePoint(0x2190) + ' All rooms'),
-                  e('div', {className:'dl-browse-head', key:'bh'}, [
-                    e('div', {className:'dl-browse-icon', key:'i'}, def ? def.icon : String.fromCodePoint(0x1F30D)),
-                    e('div', {style:{flex:1}, key:'t'}, [
-                      e('div', {className:'dl-browse-title', key:'n'}, def ? def.name : 'Rooms'),
-                      e('div', {className:'dl-browse-sub', key:'s'}, typeRooms.length + (typeRooms.length === 1 ? ' room open' : ' rooms open'))
-                    ])
-                  ]),
-                  e('button', {className:'dl-quickjoin', onClick:()=>joinRoomType(browsingType), key:'qj'}, [
-                    e('span', {key:'i'}, String.fromCodePoint(0x26A1)), ' Quick join \u2014 put me anywhere'
-                  ]),
-                  e('div', {className:'dl-search-wrap', style:{marginBottom:'12px'}, key:'search'}, [
-                    e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
-                    e('input', {className:'dl-people-search', value:roomSearch, placeholder:'Search by room number\u2026', onChange: ev=>setRoomSearch(ev.target.value), key:'in'})
-                  ]),
-                  list.length === 0
-                    ? e('div', {className:'dl-empty-note', key:'none'}, 'No rooms match that.')
-                    : e('div', {key:'rlist'}, list.map(r => {
-                        const count = r.member_count || 0;
-                        const cap = r.capacity || 75;
-                        const full = count >= cap;
-                        const inIt = myGroups.some(m => m.id === r.id);
-                        const pct = Math.min(100, Math.round((count / cap) * 100));
-                        return e('div', {className:'dl-roomcard' + (full ? ' full' : ''), key:r.id}, [
-                          e('div', {className:'dl-roomcard-top', key:'t'}, [
-                            e('div', {className:'dl-roomcard-id', key:'id'}, '#' + (r.room_number || 1)),
-                            e('div', {style:{flex:1}, key:'m'}, [
-                              e('div', {className:'dl-roomcard-count', key:'c'}, count + ' / ' + cap + ' people'),
-                              e('div', {className:'dl-roomcard-bar', key:'b'}, e('div', {className:'dl-roomcard-fill' + (pct > 85 ? ' hot' : ''), style:{width: pct + '%'}}))
-                            ]),
-                            inIt
-                              ? e('button', {className:'dl-roomcard-btn in', onClick:()=>setOpenGroup(r.id), key:'o'}, 'Open')
-                              : full
-                              ? e('span', {className:'dl-roomcard-full', key:'f'}, 'Full')
-                              : e('button', {className:'dl-roomcard-btn', onClick:()=>{ joinGroupDirect(r.id).then(()=>{ ensureFreshRoom(browsingType); loadTypeRooms(browsingType); }); }, key:'j'}, 'Join')
-                          ])
-                        ]);
-                      })),
-                  e('div', {className:'dl-browse-note', key:'note'}, 'New rooms open automatically as these fill up.')
-                ]);
-              })() : [
-
-              e('div', {className:'dl-gm-label', key:'publbl'}, 'Open to everyone'),
-              publicRoomTypes().length === 0
-                ? e('div', {className:'dl-empty-note', key:'nopub'}, 'Loading rooms\u2026')
-                : e('div', {key:'publist'}, publicRoomTypes().map(rt => {
-                    const mine = myRoomForType(rt.type);
-                    const def = DEFAULT_ROOMS.find(d => d.code === rt.type);
-                    return e('div', {className:'dl-bigroom', key:rt.type}, [
-                      e('button', {className:'dl-bigroom-tap', onClick:()=>openRoomBrowser(rt.type), key:'o'}, [
-                        e('div', {className:'dl-bigroom-icon', key:'i'}, def ? def.icon : String.fromCodePoint(0x1F30D)),
-                        e('div', {className:'dl-bigroom-name', key:'n'}, rt.name),
-                        e('div', {className:'dl-bigroom-desc', key:'d'}, rt.description),
-                        e('div', {className:'dl-bigroom-members', key:'m'}, [
-                          e('span', {className:'dl-bigroom-dot', key:'dt'}),
-                          rt.total + (rt.total === 1 ? ' person here' : ' people here'),
-                          rt.rooms.length > 1 ? e('span', {className:'dl-bigroom-rooms', key:'r'}, ' \u00b7 ' + rt.rooms.length + ' rooms') : null
-                        ])
-                      ]),
-                      e('div', {className:'dl-bigroom-actions', key:'a'}, [
-                        e('button', {className:'dl-bigroom-join' + (mine ? ' inroom' : ''), onClick:()=>joinRoomType(rt.type), key:'j'},
-                          mine ? 'Open chat' : 'Quick join'),
-                        e('button', {className:'dl-bigroom-browse', onClick:()=>openRoomBrowser(rt.type), key:'b'}, 'Browse rooms')
-                      ])
-                    ]);
-                  })),
-
-              ],
-
-              !browsingType ? e('div', {className:'dl-gm-label', key:'privlbl'}, 'Private rooms') : null,
-              !browsingType ? e('div', {className:'dl-gm-private', key:'privbox'}, [
+              e('div', {className:'dl-gm-label', key:'privlbl'}, 'Rooms'),
+              e('div', {className:'dl-gm-private', key:'privbox'}, [
                 e('div', {className:'dl-social-row', style:{marginBottom:'12px'}, key:'join'}, [
                   e('input', {className:'dl-social-input', value:groupCodeInput, placeholder:'Have a code? Enter it', maxLength:6, onChange: ev=>setGroupCodeInput(ev.target.value.toUpperCase()), key:'i'}),
                   e('button', {className:'dl-social-btn', onClick:()=>joinGroupByCode(groupCodeInput), key:'b'}, 'Join')
@@ -4754,8 +4564,8 @@
                         e('button', {className:'dl-gm-create', onClick:()=>createGroup(newGroupName, newGroupDesc, false), key:'cr'}, 'Create room')
                       ])
                     ])
-                  : e('button', {className:'dl-gm-newbtn', onClick:()=>setShowCreateRoom(true), key:'new'}, [String.fromCodePoint(0x2795), ' Create a private room'])
-              ]) : null
+                  : e('button', {className:'dl-gm-newbtn', onClick:()=>setShowCreateRoom(true), key:'new'}, [String.fromCodePoint(0x2795), ' Create a room'])
+              ])
             ]) : null
           ])
       ]) : null,
@@ -4906,32 +4716,37 @@
         e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),
 
-      e('div', {className:'dl-dc-modal-bg' + (showWhatsNew ? ' open' : ''), key:'whatsnew'},
-        showWhatsNew ? e('div', {className:'dl-dc-done-wrap'}, [
-          e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, String.fromCodePoint(0x1F465)),
-          e('div', {className:'dl-dc-done-title', key:'t'}, 'Community is here'),
-          e('div', {className:'dl-dc-done-sub', key:'s'}, 'Something new in Steps to Faith'),
-          e('div', {className:'dl-whatsnew-list', key:'list'}, [
-            e('div', {className:'dl-whatsnew-item', key:'1'}, [
-              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F64F)),
-              e('span', {key:'t'}, 'Public rooms for prayer requests, faith questions, testimonies and more \u2014 open to everyone.')
-            ]),
-            e('div', {className:'dl-whatsnew-item', key:'2'}, [
-              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F465)),
-              e('span', {key:'t'}, 'Add friends by searching their name, and see how they\u2019re walking through Scripture.')
-            ]),
-            e('div', {className:'dl-whatsnew-item', key:'3'}, [
-              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F512)),
-              e('span', {key:'t'}, 'Create private rooms with a code for your own small group.')
-            ]),
-            e('div', {className:'dl-whatsnew-item', key:'4'}, [
-              e('span', {className:'dl-whatsnew-icon', key:'i'}, String.fromCodePoint(0x1F6E1)),
-              e('span', {key:'t'}, 'Your testimony and reflections always stay private \u2014 never shared.')
-            ])
-          ]),
-          e('button', {className:'dl-continue', style:{maxWidth:'260px', marginTop:'6px'}, onClick:()=>{ dismissWhatsNew(); setTab('community'); }, key:'go'}, 'Take a look'),
-          e('button', {className:'dl-plan-leave', style:{marginTop:'10px'}, onClick: dismissWhatsNew, key:'later'}, 'Maybe later')
-        ]) : null
+      e('div', {className:'dl-dc-modal-bg' + (showTour ? ' open' : ''), key:'tour'},
+        showTour ? (() => {
+          const steps = [
+            { icon:'\ud83d\udc4b', title:'Welcome to Steps to Faith', text:'A guided walk through the whole Bible \u2014 Genesis to Revelation, one short lesson at a time. Here\u2019s a quick look around.', tab:null },
+            { icon:'\ud83d\udc63', title:'The Path', text:'Your main journey. Tap a lesson to read the passage, answer a few questions, and go deeper. Finish a book and you unlock a checkpoint review and a badge.', tab:'path' },
+            { icon:'\u2600\ufe0f', title:'Daily', text:'A new verse and devotional every day, a streak to keep going, Bible trivia tests, and a word game. Everything refreshes at midnight.', tab:'daily' },
+            { icon:'\ud83e\udded', title:'Explore', text:'Search by how you\u2019re feeling \u2014 anxious, grieving, thankful. Plus a full Bible timeline, character studies, and guided tracks for kids and adults.', tab:'search' },
+            { icon:'\ud83d\udcdc', title:'Plans', text:'Reading plans you can follow at your own pace, with a daily reflection. Set your own speed \u2014 slower is completely fine.', tab:'callings' },
+            { icon:'\ud83d\udc65', title:'Community', text:'Add friends, see how they\u2019re doing, and create private rooms to share prayer requests and encouragement with people you choose.', tab:'community' },
+            { icon:'\ud83d\udc64', title:'Profile', text:'Your streak, trophies, badges, favourites, and reflections all live here. That\u2019s the tour \u2014 start wherever you like.', tab:'profile' }
+          ];
+          const st = steps[Math.min(tourStep, steps.length - 1)];
+          const last = tourStep >= steps.length - 1;
+          return e('div', {className:'dl-dc-done-wrap'}, [
+            e('div', {className:'dl-tour-dots', key:'dots'}, steps.map((_, i) =>
+              e('span', {className:'dl-tour-dot' + (i === tourStep ? ' on' : ''), key:i})
+            )),
+            e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, st.icon),
+            e('div', {className:'dl-dc-done-title', key:'t'}, st.title),
+            e('div', {className:'dl-tour-text', key:'x'}, st.text),
+            e('button', {className:'dl-continue', style:{maxWidth:'260px', marginTop:'20px'}, onClick:()=>{
+              if (last) { finishTour(); }
+              else {
+                const next = tourStep + 1;
+                setTourStep(next);
+                if (steps[next] && steps[next].tab) setTab(steps[next].tab);
+              }
+            }, key:'n'}, last ? 'Start reading' : 'Next'),
+            !last ? e('button', {className:'dl-plan-leave', style:{marginTop:'10px'}, onClick: finishTour, key:'s'}, 'Skip tour') : null
+          ]);
+        })() : null
       ),
 
       e('div', {className:'dl-dc-modal-bg' + (openStudyBook ? ' open' : ''), key:'studymodal'},
