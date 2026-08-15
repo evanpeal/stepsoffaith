@@ -3460,6 +3460,7 @@
       setOpenLesson(lesson); setStep("passage"); setQIndex(0); setPicked(null); setCorrectCount(0);
     }
     function openCheckpointIfAvailable(book){
+      if (requireAccount('take checkpoint reviews')) return;
       if (checkpointStatus(book) === "locked") return;
       setOpenCheckpoint(book); setStep("overview"); setQIndex(0); setPicked(null); setCorrectCount(0);
     }
@@ -3761,7 +3762,7 @@
       const deepStudyRow = DEEP_STUDIES[book] ? e('div', {className:'dl-scene', style: atmosphere ? {} : {background:'transparent'}, key:'studyrow'}, [
         e('div', {className:'dl-scene-inner', style:{justifyContent:'center'}, key:'inner'}, [
           e('div', {className:'dl-node-wrap', key:'wrap'}, [
-            e('button', {className:'dl-node deepstudy' + (studyDone ? ' studied' : ''), onClick:()=>{ setOpenStudyBook(book); setStudyStep('prayer'); }, key:'node'},
+            e('button', {className:'dl-node deepstudy' + (studyDone ? ' studied' : ''), onClick:()=>{ if (requireAccount('open deep studies')) return; setOpenStudyBook(book); setStudyStep('prayer'); }, key:'node'},
               e('span', {className:'dl-node-icon', key:'icon'}, studyDone ? String.fromCodePoint(0x2713) : String.fromCodePoint(0x1F4DC))
             ),
             e('div', {className:'dl-node-label', key:'label'}, 'Deep study \u00b7 ' + DEEP_STUDIES[book].focus)
@@ -4103,7 +4104,7 @@
               ]),
               ...mod.lessons.map((l, li) => {
                 const d = (state.trackDone || []).includes(l.id);
-                return e('button', {className:'dl-modles' + (d ? ' done' : ''), onClick:()=>setOpenLessonTrack(l.id), key:l.id}, [
+                return e('button', {className:'dl-modles' + (d ? ' done' : ''), onClick:()=>{ if (requireAccount('read track lessons')) return; setOpenLessonTrack(l.id); }, key:l.id}, [
                   e('span', {className:'dl-modles-num', key:'n'}, d ? String.fromCodePoint(0x2713) : (li+1)),
                   e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
                     e('div', {className:'dl-modles-title', key:'a'}, l.title),
