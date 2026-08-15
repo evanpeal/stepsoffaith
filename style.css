@@ -830,3 +830,31 @@ to { opacity: 1; transform: translate(-50%, 0); }
   .dl-tour-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-light); transition: all 0.2s; }
   .dl-tour-dot.on { background: var(--purple); width: 20px; border-radius: 10px; }
   .dl-tour-text { font-size: 14.5px; line-height: 1.65; color: var(--gray); max-width: 320px; margin: 8px auto 0; }
+
+  /* Guided walkthrough */
+  .dl-tour-layer { position: fixed; inset: 0; z-index: 300; pointer-events: none; }
+  .dl-tour-dim { position: absolute; inset: 0; background: rgba(20,16,34,0.55); pointer-events: auto; }
+  .dl-tour-card { position: absolute; left: 12px; right: 12px; bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    background: #fff; border-radius: 20px; padding: 20px; pointer-events: auto;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35); animation: dl-tour-in 0.28s ease; max-width: 480px; margin: 0 auto; }
+  @keyframes dl-tour-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .dl-tour-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .dl-tour-icon { font-size: 30px; }
+  .dl-tour-step { font-size: 11.5px; font-weight: 800; color: var(--gray); text-transform: uppercase; letter-spacing: 0.6px; }
+  .dl-tour-title { font-size: 19px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .dl-tour-text { font-size: 14.5px; line-height: 1.6; color: var(--gray); }
+  .dl-tour-dots { display: flex; gap: 6px; margin: 16px 0 14px; }
+  .dl-tour-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-light); transition: all 0.2s; }
+  .dl-tour-dot.on { background: var(--purple); width: 20px; border-radius: 10px; }
+  .dl-tour-actions { display: flex; gap: 10px; align-items: center; }
+  .dl-tour-skip { background: none; border: none; color: var(--gray); font-weight: 800; font-size: 13.5px; cursor: pointer; padding: 12px 4px; }
+  .dl-tour-next { flex: 1; background: var(--purple); color: #fff; border: none; border-bottom: 4px solid var(--purple-dark);
+    border-radius: 14px; padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; }
+  .dl-tour-next:active { transform: translateY(2px); border-bottom-width: 2px; }
+
+  /* Lift the tab bar above the dim layer and spotlight the current tab */
+  .dl-tabs.tourlift { z-index: 310; }
+  .dl-tab.tourspot { position: relative; }
+  .dl-tab.tourspot::after { content: ''; position: absolute; inset: 2px 0 0; border-radius: 14px;
+    background: rgba(165,108,240,0.18); box-shadow: 0 0 0 3px rgba(165,108,240,0.55); animation: dl-spot 1.4s ease-in-out infinite; }
+  @keyframes dl-spot { 0%,100% { box-shadow: 0 0 0 3px rgba(165,108,240,0.55); } 50% { box-shadow: 0 0 0 7px rgba(165,108,240,0.18); } }

@@ -2587,6 +2587,11 @@
       if (!state.seenTour) setShowTour(true);
     }, [state === null]);
 
+    function tourSpot(){
+      const order = [null, 'path', 'daily', 'search', 'callings', 'community', 'profile'];
+      return order[Math.min(tourStep, order.length - 1)];
+    }
+
     function finishTour(){
       setShowTour(false);
       setTourStep(0);
@@ -4707,47 +4712,51 @@
         e('span', {key:'t'}, newFriendMsg)
       ]) : null,
 
-      e('div', {className:'dl-tabs', key:'tabs'}, [
-        e('button', {className:'dl-tab' + (tab==='path'?' active':''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4D6)), 'Path']),
-        e('button', {className:'dl-tab' + (tab==='daily'?' active':''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
-        e('button', {className:'dl-tab' + (tab==='search'?' active':''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F9ED)), 'Explore']),
-        e('button', {className:'dl-tab' + (tab==='callings'?' active':''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Plans']),
-        e('button', {className:'dl-tab' + (tab==='community'?' active':''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community', incomingReqs.length > 0 ? e('span', {className:'dl-tab-dot', key:'d'}, incomingReqs.length) : null]),
-        e('button', {className:'dl-tab' + (tab==='profile'?' active':''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
+      e('div', {className:'dl-tabs' + (showTour ? ' tourlift' : ''), key:'tabs'}, [
+        e('button', {className:'dl-tab' + (tab==='path'?' active':'') + (showTour && tourSpot()==='path' ? ' tourspot' : ''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4D6)), 'Path']),
+        e('button', {className:'dl-tab' + (tab==='daily'?' active':'') + (showTour && tourSpot()==='daily' ? ' tourspot' : ''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
+        e('button', {className:'dl-tab' + (tab==='search'?' active':'') + (showTour && tourSpot()==='search' ? ' tourspot' : ''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F9ED)), 'Explore']),
+        e('button', {className:'dl-tab' + (tab==='callings'?' active':'') + (showTour && tourSpot()==='callings' ? ' tourspot' : ''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Plans']),
+        e('button', {className:'dl-tab' + (tab==='community'?' active':'') + (showTour && tourSpot()==='community' ? ' tourspot' : ''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community', incomingReqs.length > 0 ? e('span', {className:'dl-tab-dot', key:'d'}, incomingReqs.length) : null]),
+        e('button', {className:'dl-tab' + (tab==='profile'?' active':'') + (showTour && tourSpot()==='profile' ? ' tourspot' : ''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
       ]),
 
-      e('div', {className:'dl-dc-modal-bg' + (showTour ? ' open' : ''), key:'tour'},
-        showTour ? (() => {
-          const steps = [
-            { icon:'\ud83d\udc4b', title:'Welcome to Steps to Faith', text:'A guided walk through the whole Bible \u2014 Genesis to Revelation, one short lesson at a time. Here\u2019s a quick look around.', tab:null },
-            { icon:'\ud83d\udc63', title:'The Path', text:'Your main journey. Tap a lesson to read the passage, answer a few questions, and go deeper. Finish a book and you unlock a checkpoint review and a badge.', tab:'path' },
-            { icon:'\u2600\ufe0f', title:'Daily', text:'A new verse and devotional every day, a streak to keep going, Bible trivia tests, and a word game. Everything refreshes at midnight.', tab:'daily' },
-            { icon:'\ud83e\udded', title:'Explore', text:'Search by how you\u2019re feeling \u2014 anxious, grieving, thankful. Plus a full Bible timeline, character studies, and guided tracks for kids and adults.', tab:'search' },
-            { icon:'\ud83d\udcdc', title:'Plans', text:'Reading plans you can follow at your own pace, with a daily reflection. Set your own speed \u2014 slower is completely fine.', tab:'callings' },
-            { icon:'\ud83d\udc65', title:'Community', text:'Add friends, see how they\u2019re doing, and create private rooms to share prayer requests and encouragement with people you choose.', tab:'community' },
-            { icon:'\ud83d\udc64', title:'Profile', text:'Your streak, trophies, badges, favourites, and reflections all live here. That\u2019s the tour \u2014 start wherever you like.', tab:'profile' }
-          ];
-          const st = steps[Math.min(tourStep, steps.length - 1)];
-          const last = tourStep >= steps.length - 1;
-          return e('div', {className:'dl-dc-done-wrap'}, [
+      showTour ? (() => {
+        const steps = [
+          { icon:'\ud83d\udc4b', title:'Welcome to Steps to Faith', text:'A guided walk through the whole Bible, one short lesson at a time. Let me show you around \u2014 it takes about thirty seconds.', tab:'path', spot:null },
+          { icon:'\ud83d\udc63', title:'This is your path', text:'Every lesson, Genesis to Revelation, in order. Tap one to read the passage and answer a few questions. Finish a book and you unlock a checkpoint and a badge.', tab:'path', spot:'path' },
+          { icon:'\u2600\ufe0f', title:'Check in daily', text:'A new verse and devotional each morning, a streak to keep you going, Bible trivia, and a word game. All of it refreshes at midnight.', tab:'daily', spot:'daily' },
+          { icon:'\ud83e\udded', title:'Explore', text:'Search by how you\u2019re feeling \u2014 anxious, grieving, thankful. There\u2019s also a full Bible timeline, character studies, and guided tracks for kids and adults.', tab:'search', spot:'search' },
+          { icon:'\ud83d\udcdc', title:'Reading plans', text:'Follow a plan at whatever pace suits you, with a short reflection at the end of each day. Slower is completely fine.', tab:'callings', spot:'callings' },
+          { icon:'\ud83d\udc65', title:'Community', text:'Add friends and see how they\u2019re getting on. Create a private room and share the code with people you choose \u2014 for prayer requests and encouragement.', tab:'community', spot:'community' },
+          { icon:'\ud83d\udc64', title:'Your profile', text:'Streak, trophies, badges, favourites and reflections all live here. That\u2019s everything \u2014 start wherever you like.', tab:'profile', spot:'profile' }
+        ];
+        const st = steps[Math.min(tourStep, steps.length - 1)];
+        const last = tourStep >= steps.length - 1;
+        return e('div', {className:'dl-tour-layer', key:'tour'}, [
+          e('div', {className:'dl-tour-dim', key:'dim'}),
+          e('div', {className:'dl-tour-card', key:'card'}, [
+            e('div', {className:'dl-tour-top', key:'top'}, [
+              e('span', {className:'dl-tour-icon', key:'i'}, st.icon),
+              e('span', {className:'dl-tour-step', key:'s'}, (tourStep + 1) + ' of ' + steps.length)
+            ]),
+            e('div', {className:'dl-tour-title', key:'t'}, st.title),
+            e('div', {className:'dl-tour-text', key:'x'}, st.text),
             e('div', {className:'dl-tour-dots', key:'dots'}, steps.map((_, i) =>
               e('span', {className:'dl-tour-dot' + (i === tourStep ? ' on' : ''), key:i})
             )),
-            e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, st.icon),
-            e('div', {className:'dl-dc-done-title', key:'t'}, st.title),
-            e('div', {className:'dl-tour-text', key:'x'}, st.text),
-            e('button', {className:'dl-continue', style:{maxWidth:'260px', marginTop:'20px'}, onClick:()=>{
-              if (last) { finishTour(); }
-              else {
+            e('div', {className:'dl-tour-actions', key:'a'}, [
+              !last ? e('button', {className:'dl-tour-skip', onClick: finishTour, key:'s'}, 'Skip') : null,
+              e('button', {className:'dl-tour-next', onClick:()=>{
+                if (last) { finishTour(); return; }
                 const next = tourStep + 1;
                 setTourStep(next);
                 if (steps[next] && steps[next].tab) setTab(steps[next].tab);
-              }
-            }, key:'n'}, last ? 'Start reading' : 'Next'),
-            !last ? e('button', {className:'dl-plan-leave', style:{marginTop:'10px'}, onClick: finishTour, key:'s'}, 'Skip tour') : null
-          ]);
-        })() : null
-      ),
+              }, key:'n'}, last ? 'Start reading' : 'Next')
+            ])
+          ])
+        ]);
+      })() : null,
 
       e('div', {className:'dl-dc-modal-bg' + (openStudyBook ? ' open' : ''), key:'studymodal'},
         openStudyBook && DEEP_STUDIES[openStudyBook] && (
