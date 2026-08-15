@@ -3255,6 +3255,7 @@
     }
 
     function saveTestimony(){
+      if (requireAccount('write a testimony')) return;
       persist({ ...state, testimony: testimonyDraft });
       setEditingTestimony(false);
     }
@@ -3430,6 +3431,7 @@
     }
 
     function openEditProfile(){
+      if (requireAccount('edit your profile')) return;
       setEditName(state.profile.name);
       setEditAvatar(state.profile.avatar);
       setEditVerse(state.profile.verse || DEFAULT_VERSE);
@@ -3666,6 +3668,7 @@
     }
 
     function saveReflection(){
+      if (requireAccount('save reflections')) return;
       const text = reflectionDraft.trim();
       if (text) {
         const book = openCheckpoint || openLesson.book;
@@ -4143,11 +4146,12 @@
           })()
           : [
             e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Guided studies built around real life, not book order. Pick the one that fits where you are.'),
-            ...TRACKS.map(tr => e('button', {className:'dl-trackcard', onClick:()=>setOpenTrack(tr.id), key:tr.id}, [
+            ...TRACKS.map(tr => e('button', {className:'dl-trackcard', onClick:()=>{ if (requireAccount('open guided tracks')) return; setOpenTrack(tr.id); }, key:tr.id}, [
               e('div', {className:'dl-trackcard-icon', key:'i'}, tr.icon),
               e('div', {className:'dl-trackcard-tag', key:'g'}, tr.tag),
               e('div', {className:'dl-trackcard-name', key:'n'}, tr.name),
-              e('div', {className:'dl-trackcard-blurb', key:'b'}, tr.blurb)
+              e('div', {className:'dl-trackcard-blurb', key:'b'}, tr.blurb),
+              !user ? e('div', {className:'dl-lockrow', key:'lk'}, [String.fromCodePoint(0x1F512), ' Sign up to open']) : null
             ]))
           ]
         ) : null,
@@ -4203,10 +4207,11 @@
           })() : [
             e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Follow one life all the way through, instead of book by book.'),
             e('div', {className:'dl-char-grid', key:'grid'}, CHARACTERS.map(ch =>
-              e('button', {className:'dl-char-card', onClick:()=>setOpenCharacter(ch.id), key:ch.id}, [
+              e('button', {className:'dl-char-card', onClick:()=>{ if (requireAccount('read character studies')) return; setOpenCharacter(ch.id); }, key:ch.id}, [
                 e('div', {className:'dl-char-card-icon', key:'i'}, ch.icon),
                 e('div', {className:'dl-char-card-name', key:'n'}, ch.name),
-                e('div', {className:'dl-char-card-tag', key:'t'}, ch.tag)
+                e('div', {className:'dl-char-card-tag', key:'t'}, ch.tag),
+                !user ? e('span', {className:'dl-lockdot', key:'lk'}, String.fromCodePoint(0x1F512)) : null
               ])
             ))
           ]
@@ -4242,7 +4247,7 @@
           return e('div', {key:'results'}, [
             nothing ? e('div', {className:'dl-empty-note', key:'none'}, 'Nothing found for that \u2014 try a feeling like \u201cafraid\u201d, or a book name.') : null,
             topicHits.length ? e('div', {className:'dl-section-title', key:'th'}, 'Topics') : null,
-            ...topicHits.map(t => e('button', {className:'dl-topic-chip', onClick:()=>{ setOpenTopic(t.id); }, key:'t'+t.id}, [
+            ...topicHits.map(t => e('button', {className:'dl-topic-chip', onClick:()=>{ if (requireAccount('open topic studies')) return; setOpenTopic(t.id); }, key:'t'+t.id}, [
               e('span', {className:'dl-topic-chip-icon', key:'i'}, t.icon),
               e('span', {key:'l'}, t.label)
             ])),
@@ -4261,9 +4266,10 @@
         })() : null,
 
         (exploreView === 'topics' && !openTopic && !searchQuery.trim()) ? e('div', {className:'dl-topic-grid', key:'grid'}, TOPICS.map(t =>
-          e('button', {className:'dl-topic-card', onClick:()=>setOpenTopic(t.id), key:t.id}, [
+          e('button', {className:'dl-topic-card', onClick:()=>{ if (requireAccount('open topic studies')) return; setOpenTopic(t.id); }, key:t.id}, [
             e('div', {className:'dl-topic-card-icon', key:'i'}, t.icon),
-            e('div', {className:'dl-topic-card-label', key:'l'}, t.label)
+            e('div', {className:'dl-topic-card-label', key:'l'}, t.label),
+            !user ? e('span', {className:'dl-lockdot', key:'lk'}, String.fromCodePoint(0x1F512)) : null
           ])
         )) : null
       ]) : null,
