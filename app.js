@@ -1155,7 +1155,7 @@
     ['ENTER','Z','X','C','V','B','N','M','BACK']
   ];
 
-  const AVATAR_OPTIONS = ['\ud83d\udcd6', '\u271d\ufe0f', '\ud83d\udd4a\ufe0f', '\ud83d\udc11', '\ud83d\udc1f', '\u26f0\ufe0f', '\ud83d\ude4f', '\ud83c\udf3f'];
+  const AVATAR_OPTIONS = ['\ud83d\udcd6', '\u271d\ufe0f', '\ud83d\udd4a\ufe0f', '\ud83d\udc11', '\ud83d\udc1f', '\u26f0\ufe0f', '\ud83d\ude4f', '\ud83c\udf3f', '\ud83d\udd2f', '\ud83d\udcff', '\ud83d\udd4c', '\u26ea\ufe0f', '\ud83c\udf87', '\u2728', '\ud83c\udf1f', '\ud83d\udcab', '\ud83c\udf1e', '\ud83c\udf19', '\u2600\ufe0f', '\ud83c\udf08', '\ud83c\udf33', '\ud83c\udf32', '\ud83c\udf35', '\ud83c\udf40', '\ud83c\udf3b', '\ud83c\udf37', '\ud83c\udf38', '\ud83c\udf3a', '\ud83c\udf3c', '\ud83c\udf44', '\ud83c\udf0a', '\ud83d\udd25', '\u2744\ufe0f', '\u26a1', '\ud83c\udf0d', '\ud83c\udf0b', '\ud83c\udfde\ufe0f', '\ud83c\udfd6\ufe0f', '\ud83c\udf04', '\ud83c\udf05', '\ud83e\udd81', '\ud83e\udd85', '\ud83d\udc0e', '\ud83d\udc2a', '\ud83e\udd98', '\ud83e\udd8c', '\ud83d\udc07', '\ud83d\udc36', '\ud83d\udc31', '\ud83e\udd8a', '\ud83d\udc3b', '\ud83d\udc2f', '\ud83d\udc38', '\ud83d\udc19', '\ud83d\udc20', '\ud83d\udc1d', '\ud83e\udd8b', '\ud83d\udc1e', '\ud83d\udc22', '\ud83d\ude42', '\ud83d\ude0a', '\ud83d\ude0c', '\ud83e\udd29', '\ud83e\udd13', '\ud83e\uddd1', '\ud83d\udc68', '\ud83d\udc69', '\ud83e\uddd2', '\ud83d\udc74', '\ud83d\udc75', '\ud83e\uddd4', '\ud83d\udc71', '\ud83e\udd34', '\ud83d\udc78', '\ud83e\uddb8', '\ud83e\uddd9', '\ud83e\uddda', '\ud83d\udc7c', '\ud83d\ude07', '\ud83c\udfb5', '\ud83c\udfb8', '\ud83c\udfba', '\ud83e\udd41', '\ud83c\udfa8', '\ud83d\udd8c\ufe0f', '\u270f\ufe0f', '\ud83d\udcdd', '\ud83d\udcda', '\ud83d\udcdc', '\ud83d\udddd\ufe0f', '\u2693\ufe0f', '\ud83c\udfc6', '\ud83c\udfc5', '\ud83c\udf96\ufe0f', '\ud83d\udc51', '\ud83d\udc8e', '\ud83d\udd2e', '\ud83e\udded', '\u23f3\ufe0f', '\ud83c\udf5e', '\ud83c\udf47', '\ud83c\udf3e', '\ud83c\udf6f', '\ud83c\udf75', '\u2615\ufe0f', '\ud83c\udf82', '\ud83c\udf4e', '\ud83c\udf4a', '\u2764\ufe0f', '\ud83e\udde1', '\ud83d\udc9b', '\ud83d\udc9a', '\ud83d\udc99', '\ud83d\udc9c', '\ud83d\udda4\ufe0f', '\ud83e\udd0d', '\ud83e\udd0e', '\ud83d\udc95', '\ud83d\udd4e', '\u2721\ufe0f', '\u262e\ufe0f', '\u26f5\ufe0f', '\ud83d\udee1\ufe0f', '\ud83d\uddfa\ufe0f', '\ud83c\udfaf', '\ud83d\udd11', '\ud83c\udfb2', '\ud83d\ude80'];
   const BADGES = [
     { id:'seeker', icon:'\ud83d\udd0d', title:'Seeker', cost:30 },
     { id:'sharp_mind', icon:'\ud83e\udde0', title:'Sharp Mind', cost:60 },
@@ -2478,6 +2478,7 @@
     const [wordleShake, setWordleShake] = React.useState(false);
     const [nowTick, setNowTick] = React.useState(Date.now());
     const [tourStep, setTourStep] = React.useState(0);
+    const [gatePrompt, setGatePrompt] = React.useState('');
     const [showTour, setShowTour] = React.useState(false);
 
     React.useEffect(() => {
@@ -3258,7 +3259,15 @@
       setEditingTestimony(false);
     }
 
+    // Guests can look around, but anything that saves progress needs an account.
+    function requireAccount(what){
+      if (user) return false;
+      setGatePrompt(what || 'save your progress');
+      return true;
+    }
+
     function startTest(test){
+      if (requireAccount('take tests and earn pearls')) return;
       if (state.gems < test.cost) return;
       persist({ ...state, gems: state.gems - test.cost });
       setActiveTest(test); setTIndex(0); setTPicked(null); setTFillInput(''); setTFillResult(null); setTScore(0); setTFinished(false); setTEarned(0); setTShowIntro(true);
@@ -3278,6 +3287,7 @@
     }
 
     function buyBadge(badge){
+      if (requireAccount('collect badges')) return;
       const owned = state.ownedBadges || [];
       if (owned.includes(badge.id)) return;
       if ((state.pearls||0) < badge.cost) return;
@@ -3310,6 +3320,7 @@
     }
 
     function checkInToday(){
+      if (requireAccount('build a streak')) return;
       const today = todayStr();
       if (state.lastCheckIn === today) return;
       if (!state.lastCheckIn) { persist({ ...state, dailyStreak: 1, lastCheckIn: today }); return; }
@@ -3339,6 +3350,7 @@
     }
 
     function startWordle(){
+      if (requireAccount('play the word game')) return;
       if (!state) return;
       if ((state.gems || 0) < WORDLE_COST) return;
       // Pick a word we haven't used recently so it feels fresh every time
@@ -3443,6 +3455,7 @@
     }
 
     function openIfAvailable(lesson){
+      if (requireAccount('save your lesson progress')) return;
       if (nodeStatus(lesson) === "locked") return;
       setOpenLesson(lesson); setStep("passage"); setQIndex(0); setPicked(null); setCorrectCount(0);
     }
@@ -3452,6 +3465,7 @@
     }
 
     function completeDeepStudy(book){
+      if (requireAccount('save your progress')) return;
       stopSpeaking();
       const done = state.deepStudies || [];
       if (!done.includes(book)) {
@@ -3509,6 +3523,7 @@
       return all.slice(start, start + perDay);
     }
     function startPlan(planId){
+      if (requireAccount('follow a reading plan')) return;
       const plan = READING_PLANS.find(p => p.id === planId);
       persist({ ...state, activePlan: planId, planStarted: todayStr(), planDays: plan ? plan.length : null });
     }
@@ -3534,6 +3549,7 @@
     }
 
     function toggleFavorite(lessonId){
+      if (requireAccount('save favourites')) return;
       const favs = state.favorites || [];
       const already = favs.includes(lessonId);
       persist({ ...state, favorites: already ? favs.filter(id => id !== lessonId) : [...favs, lessonId] });
@@ -3780,6 +3796,11 @@
       ]),
 
       tab === 'path' ? e('div', {key:'path'}, [
+        !user ? e('button', {className:'dl-guest-banner', onClick:()=>{ setAuthMode('signup'); setAuthError(''); setAuthOpen(true); }, key:'guest'}, [
+          e('span', {key:'i'}, String.fromCodePoint(0x1F440)),
+          e('span', {style:{flex:1, textAlign:'left'}, key:'t'}, 'You\u2019re just looking around \u2014 create a free account to save your progress.'),
+          e('span', {className:'dl-guest-cta', key:'c'}, 'Sign up')
+        ]) : null,
         e('div', {className:'dl-book-picker', key:'picker'}, booksForward.reduce((out, book, i) => {
           const total = bookLessons(book).length;
           const done = bookLessons(book).filter(l => state.completed.includes(l.id)).length;
@@ -4757,6 +4778,26 @@
           ])
         ]);
       })() : null,
+
+      e('div', {className:'dl-dc-modal-bg' + (gatePrompt ? ' open' : ''), key:'gate'},
+        gatePrompt ? e('div', {className:'dl-dc-done-wrap'}, [
+          e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, String.fromCodePoint(0x1F512)),
+          e('div', {className:'dl-dc-done-title', key:'t'}, 'Create a free account'),
+          e('div', {className:'dl-tour-text', style:{textAlign:'center'}, key:'x'}, 'You\u2019ll need an account to ' + gatePrompt + '. It takes a few seconds, and everything you do is saved across your devices.'),
+          e('div', {className:'dl-gate-perks', key:'p'}, [
+            e('div', {className:'dl-gate-perk', key:'1'}, [String.fromCodePoint(0x1F4D6), ' Save your place in every book']),
+            e('div', {className:'dl-gate-perk', key:'2'}, [String.fromCodePoint(0x1F525), ' Build a daily streak']),
+            e('div', {className:'dl-gate-perk', key:'3'}, [String.fromCodePoint(0x1F465), ' Add friends and join rooms'])
+          ]),
+          e('button', {className:'dl-continue', style:{maxWidth:'280px', marginTop:'6px'}, onClick:()=>{
+            setGatePrompt(''); setAuthMode('signup'); setAuthError(''); setAuthOpen(true);
+          }, key:'s'}, 'Create free account'),
+          e('button', {className:'dl-plan-leave', style:{marginTop:'12px'}, onClick:()=>{
+            setGatePrompt(''); setAuthMode('login'); setAuthError(''); setAuthOpen(true);
+          }, key:'l'}, 'I already have one'),
+          e('button', {className:'dl-plan-leave', style:{marginTop:'4px', textDecoration:'none'}, onClick:()=>setGatePrompt(''), key:'c'}, 'Keep looking around')
+        ]) : null
+      ),
 
       e('div', {className:'dl-dc-modal-bg' + (openStudyBook ? ' open' : ''), key:'studymodal'},
         openStudyBook && DEEP_STUDIES[openStudyBook] && (

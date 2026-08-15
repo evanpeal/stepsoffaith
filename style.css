@@ -356,7 +356,7 @@
 .dl-shop-buy:disabled { opacity: 0.45; }
 .dl-shop-owned { font-size: 12px; font-weight: 800; color: #4a2380; }
 .dl-about-link { display: block; width: 100%; text-align: center; background: none; border: none; color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 700; margin-top: 8px; cursor: pointer; text-decoration: underline; }
-.dl-avatar-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.dl-avatar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 8px; margin: 10px 0 4px; max-height: 210px; overflow-y: auto; padding: 4px; background: var(--card-2); border-radius: 12px; }
 .dl-avatar-opt { width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--gray-light); background: #f7f7f7; font-size: 22px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; }
 .dl-avatar-opt.sel { border-color: var(--purple); background: #f1e7ff; }
 .dl-section-title { font-weight: 800; font-size: 15px; margin: 18px 0 10px; display: flex; align-items: center; gap: 8px; }
@@ -858,3 +858,10 @@ to { opacity: 1; transform: translate(-50%, 0); }
   .dl-tab.tourspot::after { content: ''; position: absolute; inset: 2px 0 0; border-radius: 14px;
     background: rgba(165,108,240,0.18); box-shadow: 0 0 0 3px rgba(165,108,240,0.55); animation: dl-spot 1.4s ease-in-out infinite; }
   @keyframes dl-spot { 0%,100% { box-shadow: 0 0 0 3px rgba(165,108,240,0.55); } 50% { box-shadow: 0 0 0 7px rgba(165,108,240,0.18); } }
+
+  .dl-gate-perks { text-align: left; margin: 18px auto; max-width: 280px; }
+  .dl-gate-perk { display: flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .dl-guest-pill { display: inline-flex; align-items: center; gap: 6px; background: #fff4e0; color: #b5750a; font-size: 11.5px; font-weight: 800; padding: 6px 12px; border-radius: 20px; margin-bottom: 12px; }
+
+  .dl-guest-banner { display: flex; align-items: center; gap: 10px; width: calc(100% - 24px); margin: 12px 12px 0; background: #fff4e0; border: 2px solid #ffe4a8; border-radius: 14px; padding: 12px 14px; font-size: 12.5px; font-weight: 700; color: #7a5a1c; line-height: 1.4; cursor: pointer; }
+  .dl-guest-cta { background: var(--gold); color: #4a3200; font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 20px; flex-shrink: 0; }
