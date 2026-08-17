@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.stepstofaith.twa",
+        "sha256_cert_fingerprints": ["3A:9B:F4:AD:CC:E2:A9:B3:A7:71:C3:35:B7:3B:57:75:8D:95:86:8C:74:AA:A8:49:08:07:80:02:7E:95:C6:96"]
+      }
+    }]
