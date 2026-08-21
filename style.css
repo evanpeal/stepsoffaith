@@ -22,19 +22,21 @@
     --ink: #2f3037;
     --gray: #8e8fa3;
     --gray-light: #e8e6f0;
-    --bg: #fdfbff;
+    --bg: #eee9f9;
     --card: #ffffff;
-    --card-2: #f4f1fb;
-    --surface: #f7f4fd;
+    --card-2: #f1edfa;
+    --surface: #f3effc;
     --shadow: rgba(90,70,140,0.10);
     --locked: #d8d8d8;
     --locked-dark: #bcbcbc;
     font-family: 'Nunito', -apple-system, sans-serif;
     background: var(--bg);
     background-image:
-      radial-gradient(circle at 12% 4%, rgba(255,200,0,0.10), transparent 42%),
-      radial-gradient(circle at 88% 10%, rgba(165,108,240,0.12), transparent 46%),
-      radial-gradient(circle at 50% 96%, rgba(20,201,166,0.10), transparent 44%);
+      radial-gradient(circle at 8% 0%, rgba(255,200,0,0.34), transparent 40%),
+      radial-gradient(circle at 96% 6%, rgba(165,108,240,0.40), transparent 44%),
+      radial-gradient(circle at 20% 52%, rgba(91,200,255,0.26), transparent 38%),
+      radial-gradient(circle at 88% 74%, rgba(20,201,166,0.30), transparent 42%),
+      radial-gradient(circle at 40% 100%, rgba(255,138,61,0.24), transparent 40%);
     background-attachment: fixed;
     color: var(--ink);
     min-height: 100vh;
@@ -952,3 +954,32 @@ to { opacity: 1; transform: translate(-50%, 0); }
   /* Gentle entrance for page content */
   .dl-daily-wrap > *, .dl-path > * { animation: dl-fade-up 0.35s ease both; }
   @keyframes dl-fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Now that the page is tinted, make white cards pop properly */
+  .dl-passage-card, .dl-wordle-card, .dl-plan-card, .dl-test-card, .dl-community,
+  .dl-topic-verse, .dl-char-beat, .dl-modcard, .dl-modles, .dl-trackcard,
+  .dl-roomcard, .dl-bigroom, .dl-person-row, .dl-gm-row, .dl-gm-private,
+  .dl-topic-card, .dl-char-card, .dl-voice-card, .dl-reflection-card,
+  .dl-chat-header, .dl-chat-composer, .dl-shop-item, .dl-search-lesson,
+  .dl-plan-lesson, .dl-fav-chip, .dl-signin-prompt, .dl-guest-banner {
+    background: #fff;
+    border-color: rgba(120,90,190,0.14);
+    box-shadow: 0 3px 0 rgba(90,70,140,0.09), 0 10px 24px rgba(90,70,140,0.09);
+  }
+
+  /* Inputs on white so they read clearly */
+  .dl-search-input, .dl-social-input, .dl-people-search, .dl-testimony-input,
+  .dl-chat-input, .dl-wordle-input { background: #fff; }
+  .dl-search-wrap { background: #fff; box-shadow: 0 2px 0 rgba(90,70,140,0.08); }
+
+  /* Chat area sits slightly deeper than the page */
+  .dl-chat-scroll { background: rgba(255,255,255,0.72); }
+
+  /* Tab bar solid so it separates from the colour */
+  .dl-tabs { background: rgba(255,255,255,0.97); }
+
+  /* Top bar chips read against the tint */
+  .dl-top { background: transparent; }
+
+  /* Modal backdrop a touch richer */
+  .dl-dc-modal-bg { background: rgba(46,32,80,0.55); }
