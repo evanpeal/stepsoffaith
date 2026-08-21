@@ -4532,58 +4532,84 @@
 
       tab === 'community' ? e('div', {className:'dl-forest', key:'community'}, [
         e('div', {className:'dl-forest-scene', key:'scene', dangerouslySetInnerHTML:{__html:
-          '<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">' +
+          '<svg viewBox="0 0 400 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">' +
             '<defs>' +
-              '<linearGradient id="fsky" x1="0" y1="0" x2="0" y2="1">' +
-                '<stop offset="0%" stop-color="#0a1f18"/><stop offset="28%" stop-color="#123a2b"/>' +
-                '<stop offset="58%" stop-color="#1a5540"/><stop offset="82%" stop-color="#0f3527"/>' +
-                '<stop offset="100%" stop-color="#071a13"/>' +
+              '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">' +
+                '<stop offset="0%" stop-color="#8fdcf7"/><stop offset="45%" stop-color="#bdeeff"/>' +
+                '<stop offset="75%" stop-color="#e7f9df"/><stop offset="100%" stop-color="#d3f0bb"/>' +
               '</linearGradient>' +
-              '<radialGradient id="fglow" cx="50%" cy="18%" r="60%">' +
-                '<stop offset="0%" stop-color="#cdf5c0" stop-opacity="0.30"/>' +
-                '<stop offset="100%" stop-color="#cdf5c0" stop-opacity="0"/>' +
+              '<radialGradient id="sunglow" cx="50%" cy="50%" r="50%">' +
+                '<stop offset="0%" stop-color="#fff6c2" stop-opacity="0.95"/>' +
+                '<stop offset="100%" stop-color="#fff6c2" stop-opacity="0"/>' +
               '</radialGradient>' +
-              '<linearGradient id="fbeam" x1="0" y1="0" x2="0" y2="1">' +
-                '<stop offset="0%" stop-color="#e6ffd9" stop-opacity="0.22"/>' +
-                '<stop offset="100%" stop-color="#e6ffd9" stop-opacity="0"/>' +
-              '</linearGradient>' +
-              '<linearGradient id="ffloor" x1="0" y1="0" x2="0" y2="1">' +
-                '<stop offset="0%" stop-color="#0d2a1f" stop-opacity="0"/>' +
-                '<stop offset="100%" stop-color="#061510" stop-opacity="0.95"/>' +
+              '<linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">' +
+                '<stop offset="0%" stop-color="#fff8cc" stop-opacity="0.55"/>' +
+                '<stop offset="100%" stop-color="#fff8cc" stop-opacity="0"/>' +
               '</linearGradient>' +
             '</defs>' +
-            '<rect width="400" height="800" fill="url(#fsky)"/>' +
-            '<rect width="400" height="800" fill="url(#fglow)"/>' +
-            '<g opacity="0.16">' +
-              '<polygon points="40,760 40,470 20,470 55,300 90,470 70,470 70,760" fill="#8ad3a4"/>' +
-              '<polygon points="150,760 150,430 128,430 168,240 208,430 186,430 186,760" fill="#8ad3a4"/>' +
-              '<polygon points="270,760 270,490 252,490 285,330 318,490 300,490 300,760" fill="#8ad3a4"/>' +
-              '<polygon points="360,760 360,450 340,450 378,280 400,410 400,760" fill="#8ad3a4"/>' +
+            '<rect width="400" height="700" fill="url(#sky)"/>' +
+            '<circle cx="320" cy="70" r="90" fill="url(#sunglow)"/>' +
+            '<circle cx="320" cy="70" r="30" fill="#ffe680"/>' +
+            '<g class="frays" transform="translate(320,70)">' +
+              '<polygon points="-8,0 8,0 26,300 -26,300" fill="url(#ray)"/>' +
+              '<polygon points="-6,0 6,0 -60,300 -96,300" fill="url(#ray)"/>' +
+              '<polygon points="-6,0 6,0 96,300 60,300" fill="url(#ray)"/>' +
             '</g>' +
-            '<g opacity="0.30">' +
-              '<polygon points="10,780 10,520 -14,520 26,330 66,520 42,520 42,780" fill="#2f7d55"/>' +
-              '<polygon points="105,780 105,560 84,560 120,395 156,560 135,560 135,780" fill="#2f7d55"/>' +
-              '<polygon points="215,780 215,540 192,540 232,360 272,540 249,540 249,780" fill="#2f7d55"/>' +
-              '<polygon points="330,780 330,570 310,570 345,410 380,570 360,570 360,780" fill="#2f7d55"/>' +
+            '<g class="fclouds">' +
+              '<g fill="#ffffff" opacity="0.9">' +
+                '<ellipse cx="70" cy="60" rx="30" ry="16"/><ellipse cx="95" cy="55" rx="22" ry="18"/><ellipse cx="48" cy="64" rx="20" ry="12"/>' +
+              '</g>' +
+              '<g fill="#ffffff" opacity="0.7">' +
+                '<ellipse cx="220" cy="110" rx="26" ry="13"/><ellipse cx="240" cy="106" rx="18" ry="14"/>' +
+              '</g>' +
             '</g>' +
-            '<g opacity="0.62">' +
-              '<polygon points="-20,800 -20,600 -48,600 -6,410 36,600 8,600 8,800" fill="#123a29"/>' +
-              '<polygon points="72,800 72,640 48,640 88,470 128,640 104,640 104,800" fill="#123a29"/>' +
-              '<polygon points="196,800 196,610 168,610 212,430 256,610 228,610 228,800" fill="#123a29"/>' +
-              '<polygon points="316,800 316,650 292,650 332,485 372,650 348,650 348,800" fill="#123a29"/>' +
-              '<polygon points="410,800 410,600 384,600 424,420 464,600 438,600 438,800" fill="#123a29"/>' +
+            '<g opacity="0.35" fill="#9fd98a">' +
+              '<ellipse cx="30" cy="330" rx="52" ry="46"/><ellipse cx="80" cy="315" rx="46" ry="42"/>' +
+              '<ellipse cx="150" cy="335" rx="55" ry="46"/><ellipse cx="230" cy="318" rx="48" ry="44"/>' +
+              '<ellipse cx="310" cy="332" rx="54" ry="46"/><ellipse cx="380" cy="322" rx="48" ry="42"/>' +
             '</g>' +
-            '<g class="fbeams">' +
-              '<polygon points="120,-40 175,-40 95,820 20,820" fill="url(#fbeam)"/>' +
-              '<polygon points="255,-40 292,-40 232,820 178,820" fill="url(#fbeam)"/>' +
+            '<g class="ftree ft1">' +
+              '<rect x="42" y="400" width="17" height="130" rx="7" fill="#a8703f"/>' +
+              '<ellipse cx="50" cy="388" rx="60" ry="50" fill="#6cc04a"/>' +
+              '<ellipse cx="24" cy="404" rx="40" ry="34" fill="#5cae3d"/>' +
+              '<ellipse cx="74" cy="404" rx="42" ry="35" fill="#7ccc57"/>' +
             '</g>' +
-            '<rect y="560" width="400" height="240" fill="url(#ffloor)"/>' +
+            '<g class="ftree ft2">' +
+              '<rect x="188" y="386" width="20" height="150" rx="8" fill="#96612f"/>' +
+              '<ellipse cx="198" cy="370" rx="70" ry="58" fill="#5cae3d"/>' +
+              '<ellipse cx="164" cy="392" rx="46" ry="40" fill="#4f9c33"/>' +
+              '<ellipse cx="232" cy="392" rx="48" ry="40" fill="#6cc04a"/>' +
+            '</g>' +
+            '<g class="ftree ft3">' +
+              '<rect x="332" y="404" width="16" height="126" rx="7" fill="#a8703f"/>' +
+              '<ellipse cx="340" cy="392" rx="56" ry="48" fill="#7ccc57"/>' +
+              '<ellipse cx="312" cy="408" rx="38" ry="32" fill="#5cae3d"/>' +
+            '</g>' +
+            '<path d="M0,520 Q60,496 130,514 T280,506 T400,518 L400,700 L0,700 Z" fill="#8ed46a"/>' +
+            '<path d="M0,560 Q90,540 180,558 T400,552 L400,700 L0,700 Z" fill="#6fbf4c"/>' +
+            '<path d="M0,614 Q110,592 220,610 T400,602 L400,700 L0,700 Z" fill="#57a83a"/>' +
+            '<g class="fbush">' +
+              '<ellipse cx="34" cy="600" rx="34" ry="24" fill="#4f9c33"/>' +
+              '<ellipse cx="58" cy="606" rx="26" ry="19" fill="#5cae3d"/>' +
+              '<ellipse cx="300" cy="592" rx="38" ry="26" fill="#4f9c33"/>' +
+              '<ellipse cx="330" cy="600" rx="28" ry="20" fill="#5cae3d"/>' +
+              '<ellipse cx="176" cy="640" rx="30" ry="20" fill="#4a9130"/>' +
+            '</g>' +
+            '<g class="fflowers">' +
+              '<circle cx="96" cy="626" r="4" fill="#ff9ecb"/><circle cx="110" cy="634" r="3.5" fill="#fff08a"/>' +
+              '<circle cx="248" cy="630" r="4" fill="#fff08a"/><circle cx="262" cy="640" r="3.5" fill="#ff9ecb"/>' +
+              '<circle cx="366" cy="636" r="3.5" fill="#c9a8ff"/>' +
+            '</g>' +
           '</svg>'
         }}),
-        e('div', {className:'dl-fireflies', key:'ff'},
-          [12,28,44,60,76,88,20,52,68,36].map((L, i) =>
-            e('span', {className:'dl-firefly', style:{left: L + '%', animationDelay: (i * 1.7) + 's', animationDuration: (11 + (i % 5) * 2.5) + 's'}, key:i})
-          )
+        e('div', {className:'dl-forest-life', key:'life'},
+          [16,34,52,70,86,26,62].map((L,i) =>
+            e('span', {className:'dl-petal', style:{left:L+'%', animationDelay:(i*2.3)+'s', animationDuration:(13+(i%4)*3)+'s'}, key:'p'+i})
+          ).concat([
+            e('span', {className:'dl-bird b1', key:'b1'}),
+            e('span', {className:'dl-bird b2', key:'b2'}),
+            e('span', {className:'dl-bird b3', key:'b3'})
+          ])
         ),
         e('div', {className:'dl-forest-inner', key:'inner'}, [
         e('div', {className:'dl-forest-head', key:'ptitle'}, [
