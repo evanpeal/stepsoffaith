@@ -1322,3 +1322,8 @@ to { opacity: 1; transform: none; }
   .dl-forest .dl-newroom-code { color: #8a4f15; }
   .dl-forest .dl-gm-name, .dl-forest .dl-msg-bubble { color: #3f2a16; }
   .dl-forest .dl-gm-sub { color: #8a6136; }
+.dl-seo{max-width:640px;margin:0 auto;padding:40px 22px;font-family:'Nunito',system-ui,sans-serif;color:#2f3037}
+.dl-seo h1{font-family:'Baloo 2',sans-serif;font-size:26px;line-height:1.2}
+.dl-seo h2{font-family:'Baloo 2',sans-serif;font-size:19px;margin-top:22px}
+.dl-seo p,.dl-seo li{line-height:1.6;font-size:15px;color:#55566a}
+.dl-seo-load{color:#a56cf0;font-weight:700;margin-top:20px}
