@@ -1238,3 +1238,117 @@ to { opacity: 1; transform: translate(-50%, 0); }
   .dl-tab { font-size: 11px; }
   .dl-tab-icon { font-size: 25px; }
   @media (min-width: 480px) { .dl-tab { font-size: 12.5px; } .dl-tab-icon { font-size: 27px; } }
+
+  /* ============ THE UPPER ROOM — forest theme ============ */
+  .dl-forest { position: relative; min-height: 100vh; overflow: hidden;
+    background: linear-gradient(180deg, #0d1f18 0%, #123026 22%, #17402f 48%, #102c22 76%, #0a1a14 100%); }
+  .dl-forest-sky { position: absolute; inset: 0 0 auto; height: 45%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(180,230,150,0.20), transparent 62%); pointer-events: none; }
+  .dl-forest-canopy { position: absolute; top: 0; left: 0; right: 0; height: 180px; pointer-events: none;
+    background:
+      radial-gradient(60px 44px at 8% 6%, rgba(30,80,52,0.85), transparent 70%),
+      radial-gradient(80px 54px at 26% 0%, rgba(24,68,44,0.9), transparent 70%),
+      radial-gradient(70px 48px at 48% 8%, rgba(32,86,56,0.8), transparent 70%),
+      radial-gradient(90px 58px at 72% 0%, rgba(24,68,44,0.9), transparent 70%),
+      radial-gradient(65px 46px at 92% 7%, rgba(30,80,52,0.85), transparent 70%); }
+  .dl-forest-mist { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(200,240,215,0.07) 55%, rgba(200,240,215,0.12)); }
+  .dl-forest-trees { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .dl-tree { position: absolute; opacity: 0.13; filter: blur(0.4px); }
+  .dl-tree.t1 { left: -2%; bottom: 4%; font-size: 120px; }
+  .dl-tree.t2 { right: -3%; bottom: 10%; font-size: 150px; }
+  .dl-tree.t3 { left: 18%; bottom: -3%; font-size: 90px; }
+  .dl-tree.t4 { right: 22%; bottom: -4%; font-size: 105px; }
+  .dl-tree.t5 { left: 46%; bottom: 2%; font-size: 76px; opacity: 0.09; }
+
+  .dl-forest-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 24px 5vw 20px; }
+  @media (min-width: 820px) { .dl-forest-inner { max-width: 760px; } }
+
+  .dl-forest-head { text-align: center; margin-bottom: 22px; }
+  .dl-forest-title { font-family: 'Baloo 2', sans-serif; font-size: 27px; font-weight: 800; color: #eaf7ec;
+    letter-spacing: 0.3px; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+  .dl-forest-sub { font-size: 13px; font-weight: 600; color: rgba(220,245,225,0.6); margin-top: 4px; }
+
+  /* Everything inside the forest reads on dark */
+  .dl-forest .dl-empty-note { color: rgba(220,245,225,0.55); }
+  .dl-forest .dl-gm-label,
+  .dl-forest .dl-manage-sub { color: rgba(220,245,225,0.6); }
+  .dl-forest .dl-section-title { color: #eaf7ec; }
+  .dl-forest .dl-section-title::before { background: linear-gradient(180deg, #7fd68f, #3f9e6a); }
+
+  /* Cards become mossy wood panels */
+  .dl-forest .dl-gm-row,
+  .dl-forest .dl-gm-private,
+  .dl-forest .dl-bigroom,
+  .dl-forest .dl-roomcard,
+  .dl-forest .dl-chat-header,
+  .dl-forest .dl-chat-composer,
+  .dl-forest .dl-people-pane,
+  .dl-forest .dl-assign-box,
+  .dl-forest .dl-signin-prompt,
+  .dl-forest .dl-chat-joinbar {
+    background: rgba(22,54,40,0.82);
+    border: 1px solid rgba(140,200,160,0.18);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    color: #eaf7ec;
+  }
+  .dl-forest .dl-gm-name,
+  .dl-forest .dl-chat-title,
+  .dl-forest .dl-friend-name,
+  .dl-forest .dl-manage-name,
+  .dl-forest .dl-signin-title { color: #eaf7ec; }
+  .dl-forest .dl-gm-preview,
+  .dl-forest .dl-chat-sub,
+  .dl-forest .dl-friend-stats,
+  .dl-forest .dl-lb-stats,
+  .dl-forest .dl-signin-sub { color: rgba(220,245,225,0.55); }
+  .dl-forest .dl-gm-avatar,
+  .dl-forest .dl-chat-head-icon { background: linear-gradient(135deg, #3f9e6a, #2a6b48); }
+  .dl-forest .dl-gm-count { background: rgba(140,200,160,0.18); color: #b8e6c4; }
+  .dl-forest .dl-gm-arrow { color: rgba(220,245,225,0.35); }
+
+  /* Inputs */
+  .dl-forest input, .dl-forest textarea, .dl-forest .dl-chat-input {
+    background: rgba(10,28,20,0.6); color: #eaf7ec; border-color: rgba(140,200,160,0.22); }
+  .dl-forest input::placeholder, .dl-forest textarea::placeholder { color: rgba(220,245,225,0.35); }
+  .dl-forest .dl-search-wrap { background: rgba(10,28,20,0.6); box-shadow: none; }
+
+  /* Buttons take on forest colours */
+  .dl-forest .dl-social-btn, .dl-forest .dl-gm-create,
+  .dl-forest .dl-continue { background: #3f9e6a; border-bottom-color: #2a6b48; color: #fff; }
+  .dl-forest .dl-gm-newbtn { background: rgba(140,200,160,0.16); color: #b8e6c4; }
+  .dl-forest .dl-gm-cancel { background: rgba(255,255,255,0.08); color: rgba(220,245,225,0.6); }
+  .dl-forest .dl-tool { background: rgba(22,54,40,0.9); border-color: rgba(140,200,160,0.22); color: #eaf7ec; }
+  .dl-forest .dl-roomtab { background: rgba(255,255,255,0.07); color: rgba(220,245,225,0.55); }
+  .dl-forest .dl-roomtab.on { background: #3f9e6a; color: #fff; }
+  .dl-forest .dl-room-invite { background: rgba(140,200,160,0.16); }
+
+  /* Chat inside the forest */
+  .dl-forest .dl-chat-scroll { background: rgba(8,24,17,0.5); }
+  .dl-forest .dl-msg-bubble { background: rgba(30,66,48,0.92); color: #eaf7ec; box-shadow: none; }
+  .dl-forest .dl-msg-bubble.mine { background: #3f9e6a; color: #fff; }
+  .dl-forest .dl-msg-author { color: #8fd9a6; }
+  .dl-forest .dl-msg-time { color: rgba(220,245,225,0.4); }
+  .dl-forest .dl-msg-avatar { background: rgba(140,200,160,0.2); }
+  .dl-forest .dl-chat-day span { background: rgba(140,200,160,0.15); color: rgba(220,245,225,0.6); }
+  .dl-forest .dl-chat-empty { color: rgba(220,245,225,0.5); }
+  .dl-forest .dl-rx { background: rgba(255,255,255,0.08); border-color: rgba(140,200,160,0.2); color: rgba(220,245,225,0.7); }
+  .dl-forest .dl-rx.on { background: rgba(127,214,143,0.22); border-color: #7fd68f; color: #b8e6c4; }
+  .dl-forest .dl-lb-row, .dl-forest .dl-manage-row { border-bottom-color: rgba(140,200,160,0.14); }
+  .dl-forest .dl-lb-rank { color: rgba(220,245,225,0.45); }
+  .dl-forest .dl-manage-av, .dl-forest .dl-person-avatar { background: rgba(140,200,160,0.2); }
+
+  /* The settings overlay stays light for readability */
+  .dl-forest .dl-manage-overlay .dl-manage { background: #163628; color: #eaf7ec;
+    border: 1px solid rgba(140,200,160,0.2); }
+  .dl-forest .dl-manage-h { color: #8fd9a6; }
+  .dl-forest .dl-manage-btn { background: rgba(255,255,255,0.08); color: #eaf7ec; }
+  .dl-forest .dl-manage-close { background: rgba(255,255,255,0.08); color: rgba(220,245,225,0.6); }
+
+  /* Friends feed keeps its own scroll so Profile stays tidy */
+  .dl-feed-scroll { max-height: 460px; overflow-y: auto; padding-right: 2px; }
+
+  /* Library hub headings */
+  .dl-hub-heading { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase;
+    letter-spacing: 0.9px; margin: 4px 0 10px; }

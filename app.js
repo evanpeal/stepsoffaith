@@ -2656,6 +2656,10 @@
       if (openGroup) loadGroupDetail(openGroup);
     }, [openGroup]);
 
+    React.useEffect(() => {
+      if (tab === 'profile' && sb && user) loadFeed();
+    }, [tab, user && user.id, friends.length]);
+
     // Keep the newest message in view
     React.useEffect(() => {
       const el = chatScrollRef.current;
@@ -4342,18 +4346,20 @@
 
       tab === 'library' ? e('div', {className:'dl-daily-wrap', key:'libhub'}, [
         e('div', {className:'dl-page-title', key:'pt'}, 'Library'),
+        e('div', {className:'dl-hub-heading', key:'hh'}, [String.fromCodePoint(0x2600), ' Start here']),
         e('button', {className:'dl-today-card', onClick:()=>setTab('daily'), key:'today'}, [
           e('div', {className:'dl-today-top', key:'t'}, [
-            e('span', {className:'dl-today-label', key:'l'}, 'Today'),
-            e('span', {className:'dl-today-streak', key:'s'}, [String.fromCodePoint(0x1F525), ' ', state.dailyStreak])
+            e('span', {className:'dl-today-label', key:'l'}, 'Today\u2019s verse & devotional'),
+            e('span', {className:'dl-today-streak', key:'s'}, [String.fromCodePoint(0x1F525), ' ', state.dailyStreak, ' day streak'])
           ]),
           e('div', {className:'dl-today-ref', key:'r'}, todaysDevotional().ref),
           e('div', {className:'dl-today-verse', key:'v'}, '\u201c' + todaysDevotional().verse + '\u201d'),
           e('div', {className:'dl-today-cta', key:'c'}, [
-            state.lastCheckIn === todayStr() ? (String.fromCodePoint(0x2705) + ' Checked in') : 'Read today\u2019s verse',
+            state.lastCheckIn === todayStr() ? (String.fromCodePoint(0x2705) + ' Checked in \u00b7 open Daily') : 'Tap to read & check in',
             e('span', {className:'dl-today-arrow', key:'a'}, String.fromCodePoint(0x203A))
           ])
         ]),
+        e('div', {className:'dl-hub-heading', key:'hh2'}, [String.fromCodePoint(0x1F4DA), ' Explore']),
         e('div', {className:'dl-hub-grid', key:'grid'}, [
           e('button', {className:'dl-hub-card', onClick:()=>{setTab('search'); setExploreView('topics');}, key:'t'}, [
             e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
@@ -4390,120 +4396,6 @@
 
       tab === 'search' ? e('div', {className:'dl-daily-wrap', key:'search'}, [
         e('button', {className:'dl-topic-back', onClick:()=>setTab('library'), key:'bk'}, String.fromCodePoint(0x2190) + ' Library'),
-        e('div', {className:'dl-explore-nav', key:'nav'}, [
-          e('button', {className:'dl-explore-btn' + (exploreView==='topics'?' active':''), onClick:()=>setExploreView('topics'), key:'t'}, [
-            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F50D)), 'Topics'
-          ]),
-          e('button', {className:'dl-explore-btn' + (exploreView==='timeline'?' active':''), onClick:()=>{setExploreView('timeline'); setOpenTopic(null);}, key:'l'}, [
-            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F4C5)), 'Timeline'
-          ]),
-          e('button', {className:'dl-explore-btn' + (exploreView==='people'?' active':''), onClick:()=>{setExploreView('people'); setOpenTopic(null);}, key:'p'}, [
-            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F464)), 'People'
-          ]),
-          e('button', {className:'dl-explore-btn' + (exploreView==='tracks'?' active':''), onClick:()=>{setExploreView('tracks'); setOpenTopic(null);}, key:'tr'}, [
-            e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F6E4)), 'Tracks'
-          ])
-        ]),
-
-        exploreView === 'tracks' ? e('div', {key:'tracks'},
-          openLessonTrack ? (() => {
-            const tr = TRACKS.find(t => t.id === openTrack);
-            const mod = tr && tr.modules.find(m => m.id === openModule);
-            const les = mod && mod.lessons.find(l => l.id === openLessonTrack);
-            if (!les) return null;
-            const idx = mod.lessons.findIndex(l => l.id === openLessonTrack);
-            const done = (state.trackDone || []).includes(les.id);
-            return e('div', {key:'tl'}, [
-              e('button', {className:'dl-topic-back', onClick:()=>setOpenLessonTrack(null), key:'b'}, String.fromCodePoint(0x2190) + ' ' + mod.title),
-              e('div', {className:'dl-tl-step', key:'st'}, 'Lesson ' + (idx+1) + ' of ' + mod.lessons.length),
-              e('div', {className:'dl-tl-h', key:'h'}, les.title),
-              e('div', {className:'dl-tl-scripture', key:'sc'}, [
-                e('div', {className:'dl-tl-ref', key:'r'}, les.scripture.ref),
-                e('div', {className:'dl-tl-verse', key:'v'}, les.scripture.text)
-              ]),
-              e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(les.scripture.text + '. ' + les.body), key:'ls'},
-                [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen']),
-              ...les.body.split('\n\n').map((para, pi) => e('p', {className:'dl-tl-body', key:'p'+pi}, para)),
-              e('div', {className:'dl-tl-reflect', key:'rf'}, [
-                e('div', {className:'dl-tl-reflect-h', key:'h'}, [String.fromCodePoint(0x1F4AD), ' Sit with this']),
-                e('div', {key:'t'}, les.reflect)
-              ]),
-              e('div', {className:'dl-tl-prayer', key:'pr'}, [
-                e('div', {className:'dl-tl-prayer-h', key:'h'}, [String.fromCodePoint(0x1F64F), ' A prayer']),
-                e('div', {key:'t'}, les.prayer)
-              ]),
-              e('button', {className:'dl-continue', style:{marginTop:'16px'}, onClick:()=>{
-                if (!done) {
-                  const list = state.trackDone || [];
-                  persist({ ...state, trackDone: [...list, les.id] });
-                }
-                const next = mod.lessons[idx+1];
-                if (next) setOpenLessonTrack(next.id); else setOpenLessonTrack(null);
-              }, key:'c'}, mod.lessons[idx+1] ? (done ? 'Next lesson' : 'Mark done \u00b7 Next') : (done ? 'Finish' : 'Mark done \u00b7 Finish'))
-            ]);
-          })()
-          : openModule ? (() => {
-            const tr = TRACKS.find(t => t.id === openTrack);
-            const mod = tr && tr.modules.find(m => m.id === openModule);
-            if (!mod) return null;
-            return e('div', {key:'mod'}, [
-              e('button', {className:'dl-topic-back', onClick:()=>setOpenModule(null), key:'b'}, String.fromCodePoint(0x2190) + ' ' + tr.name),
-              e('div', {className:'dl-mod-head', key:'h'}, [
-                e('div', {className:'dl-mod-icon', key:'i'}, mod.icon),
-                e('div', {className:'dl-mod-title', key:'t'}, mod.title),
-                e('div', {className:'dl-mod-sum', key:'s'}, mod.summary)
-              ]),
-              ...mod.lessons.map((l, li) => {
-                const d = (state.trackDone || []).includes(l.id);
-                return e('button', {className:'dl-modles' + (d ? ' done' : ''), onClick:()=>{ if (requireAccount('read track lessons')) return; setOpenLessonTrack(l.id); }, key:l.id}, [
-                  e('span', {className:'dl-modles-num', key:'n'}, d ? String.fromCodePoint(0x2713) : (li+1)),
-                  e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
-                    e('div', {className:'dl-modles-title', key:'a'}, l.title),
-                    e('div', {className:'dl-modles-ref', key:'b'}, l.scripture.ref)
-                  ]),
-                  e('span', {className:'dl-group-arrow', key:'x'}, String.fromCodePoint(0x203A))
-                ]);
-              })
-            ]);
-          })()
-          : openTrack ? (() => {
-            const tr = TRACKS.find(t => t.id === openTrack);
-            if (!tr) return null;
-            return e('div', {key:'tk'}, [
-              e('button', {className:'dl-topic-back', onClick:()=>setOpenTrack(null), key:'b'}, String.fromCodePoint(0x2190) + ' All tracks'),
-              e('div', {className:'dl-track-head', key:'h'}, [
-                e('div', {className:'dl-track-icon', key:'i'}, tr.icon),
-                e('div', {className:'dl-track-name', key:'n'}, tr.name),
-                e('div', {className:'dl-track-blurb', key:'bl'}, tr.blurb),
-                tr.note ? e('div', {className:'dl-track-note', key:'nt'}, tr.note) : null
-              ]),
-              ...tr.modules.map(m => {
-                const total = m.lessons.length;
-                const doneN = m.lessons.filter(l => (state.trackDone || []).includes(l.id)).length;
-                return e('button', {className:'dl-modcard', onClick:()=>setOpenModule(m.id), key:m.id}, [
-                  e('span', {className:'dl-modcard-icon', key:'i'}, m.icon),
-                  e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
-                    e('div', {className:'dl-modcard-title', key:'a'}, m.title),
-                    e('div', {className:'dl-modcard-sum', key:'b'}, m.summary),
-                    e('div', {className:'dl-modcard-prog', key:'c'}, doneN + ' of ' + total + ' done')
-                  ]),
-                  e('span', {className:'dl-group-arrow', key:'x'}, String.fromCodePoint(0x203A))
-                ]);
-              })
-            ]);
-          })()
-          : [
-            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Real life, not book order. Pick whichever one fits where you actually are right now.'),
-            ...TRACKS.map(tr => e('button', {className:'dl-trackcard', onClick:()=>{ if (requireAccount('open guided tracks')) return; setOpenTrack(tr.id); }, key:tr.id}, [
-              e('div', {className:'dl-trackcard-icon', key:'i'}, tr.icon),
-              e('div', {className:'dl-trackcard-tag', key:'g'}, tr.tag),
-              e('div', {className:'dl-trackcard-name', key:'n'}, tr.name),
-              e('div', {className:'dl-trackcard-blurb', key:'b'}, tr.blurb),
-              !user ? e('div', {className:'dl-lockrow', key:'lk'}, [String.fromCodePoint(0x1F512), ' Sign up to open']) : null
-            ]))
-          ]
-        ) : null,
-
         exploreView === 'timeline' ? e('div', {key:'timeline'}, [
           e('div', {className:'dl-empty-note', style:{marginBottom:'16px'}, key:'n'}, 'The whole story in order, from creation to the church. Dates are approximate.'),
           ...TIMELINE.map((era, ei) => e('div', {className:'dl-era', key:'era'+ei}, [
@@ -4622,8 +4514,22 @@
         )) : null
       ]) : null,
 
-      tab === 'community' ? e('div', {className:'dl-daily-wrap', key:'community'}, [
-        e('div', {className:'dl-page-title', key:'ptitle'}, 'Upper Room'),
+      tab === 'community' ? e('div', {className:'dl-forest', key:'community'}, [
+        e('div', {className:'dl-forest-sky', key:'sky'}),
+        e('div', {className:'dl-forest-canopy', key:'canopy'}),
+        e('div', {className:'dl-forest-mist', key:'mist'}),
+        e('div', {className:'dl-forest-trees', key:'trees'}, [
+          e('span', {className:'dl-tree t1', key:'1'}, String.fromCodePoint(0x1F332)),
+          e('span', {className:'dl-tree t2', key:'2'}, String.fromCodePoint(0x1F333)),
+          e('span', {className:'dl-tree t3', key:'3'}, String.fromCodePoint(0x1F332)),
+          e('span', {className:'dl-tree t4', key:'4'}, String.fromCodePoint(0x1F333)),
+          e('span', {className:'dl-tree t5', key:'5'}, String.fromCodePoint(0x1F332))
+        ]),
+        e('div', {className:'dl-forest-inner', key:'inner'}, [
+        e('div', {className:'dl-forest-head', key:'ptitle'}, [
+          e('div', {className:'dl-forest-title', key:'t'}, 'The Upper Room'),
+          e('div', {className:'dl-forest-sub', key:'s'}, 'Where a group gathers to learn together')
+        ]),
 
         !user
           ? e('div', {className:'dl-signin-prompt', key:'signin'}, [
@@ -5166,6 +5072,7 @@
               ])
             ]) : null
           ])
+        ])
       ]) : null,
 
       tab === 'profile' ? e('div', {className:'dl-profile-outer', key:'profileouter'}, [
@@ -5262,7 +5169,7 @@
                 ]),
                 feed.length === 0
                   ? e('div', {className:'dl-empty-note', key:'none'}, friends.length ? 'Nothing yet. Be the first to share something.' : 'Add a friend and their prayer requests will show up here.')
-                  : e('div', {key:'list'}, feed.map(p => {
+                  : e('div', {className:'dl-feed-scroll', key:'list'}, feed.map(p => {
                       const who = p.user_id === user.id ? { display_name:'You', avatar:(state.profile&&state.profile.avatar) } : friends.find(f => f.id === p.user_id);
                       const prayCount = feedPrayers.filter(x => x.post_id === p.id).length;
                       const iPrayed = feedPrayers.some(x => x.post_id === p.id && x.user_id === user.id);
