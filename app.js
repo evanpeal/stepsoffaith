@@ -2442,6 +2442,13 @@
     const [chatMessages, setChatMessages] = React.useState([]);
     const [chatAuthors, setChatAuthors] = React.useState({});
     const [chatDraft, setChatDraft] = React.useState('');
+    const chatScrollRef = React.useRef(null);
+    const chatAtBottomRef = React.useRef(true);
+    const [manageOpen, setManageOpen] = React.useState(false);
+    const [editingRoom, setEditingRoom] = React.useState(false);
+    const [roomNameDraft, setRoomNameDraft] = React.useState('');
+    const [roomDescDraft, setRoomDescDraft] = React.useState('');
+    const [confirmDelete, setConfirmDelete] = React.useState(false);
     const [chatKind, setChatKind] = React.useState('message');
     const [newRoomCode, setNewRoomCode] = React.useState('');
     const [showCreateRoom, setShowCreateRoom] = React.useState(false);
@@ -2627,6 +2634,26 @@
 
     React.useEffect(() => {
       if (openGroup) loadGroupDetail(openGroup);
+    }, [openGroup]);
+
+    // Keep the newest message in view
+    React.useEffect(() => {
+      const el = chatScrollRef.current;
+      if (!el) return;
+      if (chatAtBottomRef.current) {
+        el.scrollTop = el.scrollHeight;
+      }
+    }, [chatMessages.length, openGroup]);
+
+    // Jump to the bottom when a room first opens
+    React.useEffect(() => {
+      if (!openGroup) return;
+      chatAtBottomRef.current = true;
+      const t = setTimeout(() => {
+        const el = chatScrollRef.current;
+        if (el) el.scrollTop = el.scrollHeight;
+      }, 120);
+      return () => clearTimeout(t);
     }, [openGroup]);
 
     // Live chat: new messages appear without refreshing
@@ -3176,6 +3203,42 @@
         });
       } catch (ex) { if (!quiet) { setGroupMembers([]); setChatMessages([]); } }
       if (!quiet) setSocialLoading(false);
+    }
+
+    async function removeMember(groupId, memberId){
+      if (!sb || !user) return;
+      try {
+        const { error } = await sb.from('group_members').delete()
+          .eq('group_id', groupId).eq('user_id', memberId);
+        if (error) throw error;
+        loadGroupDetail(groupId);
+        setSocialMsg('Removed from the room.');
+        setTimeout(()=>setSocialMsg(''), 2500);
+      } catch (ex) { setSocialMsg('Could not remove: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    async function renameRoom(groupId, name, desc){
+      if (!sb || !user || !name.trim()) return;
+      try {
+        const { error } = await sb.from('groups')
+          .update({ name: name.trim(), description: desc.trim() }).eq('id', groupId);
+        if (error) throw error;
+        setEditingRoom(false);
+        loadGroups();
+        setSocialMsg('Room updated.');
+        setTimeout(()=>setSocialMsg(''), 2500);
+      } catch (ex) { setSocialMsg('Could not update: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    async function deleteRoom(groupId){
+      if (!sb || !user) return;
+      try {
+        const { error } = await sb.from('groups').delete().eq('id', groupId);
+        if (error) throw error;
+        setOpenGroup(null);
+        setConfirmDelete(false);
+        loadGroups();
+      } catch (ex) { setSocialMsg('Could not delete: ' + (ex && ex.message ? ex.message : 'unknown')); }
     }
 
     async function sendMessage(groupId, body, kind){
@@ -4436,6 +4499,10 @@
                     return count + ' of ' + cap + (left > 0 ? ' \u00b7 ' + left + ' spots left' : ' \u00b7 full');
                   })())
                 ]),
+                (isMember && g.owner_id === user.id) ? e('button', {className:'dl-room-invite', title:'Manage room', onClick:()=>{
+                  setManageOpen(!manageOpen); setEditingRoom(false); setConfirmDelete(false);
+                  setRoomNameDraft(g.name); setRoomDescDraft(g.description || '');
+                }, key:'mng'}, String.fromCodePoint(0x2699)) : null,
                 (isMember && (g.member_count || 0) < (g.capacity || 75)) ? e('button', {className:'dl-room-invite', title:'Invite friends', onClick:()=>{
                   const link = 'https://stepstofaith.com/?room=' + g.join_code;
                   try {
@@ -4446,7 +4513,49 @@
               ]),
               socialMsg ? e('div', {className:'dl-social-msg', key:'rmsg'}, socialMsg) : null,
 
-              e('div', {className:'dl-chat-scroll', key:'scroll'},
+              (manageOpen && g.owner_id === user.id) ? e('div', {className:'dl-manage', key:'manage'}, [
+                e('div', {className:'dl-manage-h', key:'h'}, [String.fromCodePoint(0x2699), ' Room settings']),
+
+                editingRoom
+                  ? e('div', {key:'edit'}, [
+                      e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'8px'}, value:roomNameDraft, placeholder:'Room name', onChange: ev=>setRoomNameDraft(ev.target.value), key:'n'}),
+                      e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'10px'}, value:roomDescDraft, placeholder:'Description', onChange: ev=>setRoomDescDraft(ev.target.value), key:'d'}),
+                      e('div', {style:{display:'flex', gap:'8px'}, key:'b'}, [
+                        e('button', {className:'dl-gm-cancel', onClick:()=>setEditingRoom(false), key:'c'}, 'Cancel'),
+                        e('button', {className:'dl-gm-create', onClick:()=>renameRoom(g.id, roomNameDraft, roomDescDraft), key:'s'}, 'Save')
+                      ])
+                    ])
+                  : e('button', {className:'dl-manage-btn', onClick:()=>setEditingRoom(true), key:'ren'}, [String.fromCodePoint(0x270F), ' Rename room']),
+
+                e('div', {className:'dl-manage-sub', key:'ms'}, 'Members (' + groupMembers.length + ')'),
+                ...groupMembers.map(m => e('div', {className:'dl-manage-row', key:m.id}, [
+                  e('button', {className:'dl-manage-who', onClick:()=>viewProfile(m.id), key:'w'}, [
+                    e('span', {className:'dl-manage-av', key:'a'}, m.avatar || String.fromCodePoint(0x1F4D6)),
+                    e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                      e('div', {className:'dl-manage-name', key:'nm'}, m.display_name),
+                      m.id === g.owner_id ? e('div', {className:'dl-manage-tag', key:'t'}, 'Owner') : null
+                    ])
+                  ]),
+                  m.id !== g.owner_id
+                    ? e('button', {className:'dl-manage-kick', onClick:()=>removeMember(g.id, m.id), key:'k'}, 'Remove')
+                    : null
+                ])),
+
+                confirmDelete
+                  ? e('div', {className:'dl-manage-danger', key:'cd'}, [
+                      e('div', {key:'t'}, 'Delete this room for everyone? All messages go with it.'),
+                      e('div', {style:{display:'flex', gap:'8px', marginTop:'10px'}, key:'b'}, [
+                        e('button', {className:'dl-gm-cancel', onClick:()=>setConfirmDelete(false), key:'c'}, 'Keep it'),
+                        e('button', {className:'dl-manage-delete', onClick:()=>deleteRoom(g.id), key:'d'}, 'Delete room')
+                      ])
+                    ])
+                  : e('button', {className:'dl-manage-btn danger', onClick:()=>setConfirmDelete(true), key:'del'}, [String.fromCodePoint(0x1F5D1), ' Delete room'])
+              ]) : null,
+
+              e('div', {className:'dl-chat-scroll', key:'scroll', ref: chatScrollRef, onScroll: (ev) => {
+                  const el = ev.target;
+                  chatAtBottomRef.current = (el.scrollHeight - el.scrollTop - el.clientHeight) < 80;
+                }},
                 chatMessages.length === 0
                   ? [ e('div', {className:'dl-chat-empty', key:'empty'}, [
                       e('div', {className:'dl-chat-empty-icon', key:'i'}, String.fromCodePoint(0x1F4AC)),
