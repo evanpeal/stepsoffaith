@@ -4136,16 +4136,16 @@
 
       tab === 'daily' ? e('div', {className:'dl-daily-wrap', key:'daily'}, [
         e('button', {className:'dl-topic-back', onClick:()=>setTab('library'), key:'bk'}, String.fromCodePoint(0x2190) + ' Library'),
-        dailyView === 'verse' ? e('div', {className:'dl-passage-card', key:'verse'}, [
+        false ? e('div', {className:'dl-passage-card', key:'verse'}, [
           e('div', {className:'dl-passage-ref'}, 'Today\u2019s reading \u00b7 ' + todaysDevotional().ref),
           e('div', {className:'dl-passage-text'}, '\u201c' + todaysDevotional().verse + '\u201d')
         ]) : null,
-        dailyView === 'verse' ? e('div', {className:'dl-devotional-card', key:'devotional'}, [
+        false ? e('div', {className:'dl-devotional-card', key:'devotional'}, [
           e('div', {className:'dl-devotional-label', key:'lbl'}, [String.fromCodePoint(0x2600), ' Today\u2019s devotional']),
           e('div', {className:'dl-devotional-title', key:'t'}, todaysDevotional().title),
           e('div', {className:'dl-devotional-text', key:'txt'}, todaysDevotional().text)
         ]) : null,
-        dailyView === 'verse' ? e('div', {className:'dl-streak-card', key:'streak'}, [
+        false ? e('div', {className:'dl-streak-card', key:'streak'}, [
           e('div', {className:'dl-streak-num', key:'n'}, state.dailyStreak),
           e('div', {className:'dl-streak-label', key:'l'}, state.dailyStreak === 1 ? 'day streak' : 'day streak'),
           e('div', {className:'dl-streak-week', key:'week'}, last7Days().map(d => e('span', {className:'dl-streak-dot', style:{background: streakDateSet(state).has(d) ? 'var(--gold)' : 'var(--gray-light)'}, key:d}))),
@@ -4161,8 +4161,8 @@
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
         ]) : null,
 
-        dailyView === 'challenges' ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word Game']) : null,
-        dailyView === 'challenges' ? (() => {
+        e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word Game']),
+        (() => {
           const g = wordleGame();
           if (!g) {
             const canPlay = (state.gems || 0) >= WORDLE_COST;
@@ -4217,12 +4217,12 @@
                   })
                 )))
           ]);
-        })() : null,
+        })(),
 
-        dailyView === 'challenges' ? e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Challenges']) : null,
-        dailyView === 'challenges' ? e('div', {className:'dl-empty-note', key:'note'}, 'Spend a few gems, earn a pearl for every right answer, and turn those pearls into badges. Six fresh ones every day.') : null,
-        dailyView === 'challenges' ? e('div', {className:'dl-refresh-pill', key:'refresh'}, [String.fromCodePoint(0x1F504), ' New tests in ' + formatCountdown(msUntilMidnight())]) : null,
-        ...(dailyView === 'challenges' ? dailyTests() : []).map(test => {
+        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Challenges']),
+        e('div', {className:'dl-empty-note', key:'note'}, 'Spend a few gems, earn a pearl for every right answer, and turn those pearls into badges. Six fresh ones every day.'),
+        e('div', {className:'dl-refresh-pill', key:'refresh'}, [String.fromCodePoint(0x1F504), ' New tests in ' + formatCountdown(msUntilMidnight())]),
+        ...dailyTests().map(test => {
           const best = state.testBest[test.id];
           const canAfford = state.gems >= test.cost;
           return e('div', {className:'dl-test-card', key:test.id}, [
@@ -4356,19 +4356,25 @@
 
       tab === 'library' ? e('div', {className:'dl-daily-wrap', key:'libhub'}, [
         e('div', {className:'dl-page-title', key:'pt'}, 'Library'),
-        e('div', {className:'dl-hub-heading', key:'hh'}, [String.fromCodePoint(0x2600), ' Start here']),
-        e('button', {className:'dl-today-card', onClick:()=>{setDailyView('verse'); setTab('daily');}, key:'today'}, [
-          e('div', {className:'dl-today-top', key:'t'}, [
-            e('span', {className:'dl-today-label', key:'l'}, 'Today\u2019s verse & devotional'),
-            e('span', {className:'dl-today-streak', key:'s'}, [String.fromCodePoint(0x1F525), ' ', state.dailyStreak, ' day streak'])
-          ]),
-          e('div', {className:'dl-today-ref', key:'r'}, todaysDevotional().ref),
-          e('div', {className:'dl-today-verse', key:'v'}, '\u201c' + todaysDevotional().verse + '\u201d'),
-          e('div', {className:'dl-today-cta', key:'c'}, [
-            state.lastCheckIn === todayStr() ? (String.fromCodePoint(0x2705) + ' Checked in \u00b7 open Daily') : 'Tap to read & check in',
-            e('span', {className:'dl-today-arrow', key:'a'}, String.fromCodePoint(0x203A))
-          ])
+        e('div', {className:'dl-hub-heading', key:'hh'}, [String.fromCodePoint(0x2600), ' Today']),
+        e('div', {className:'dl-passage-card', key:'verse'}, [
+          e('div', {className:'dl-passage-ref'}, todaysDevotional().ref),
+          e('div', {className:'dl-passage-text'}, '\u201c' + todaysDevotional().verse + '\u201d')
         ]),
+        e('div', {className:'dl-devotional-card', key:'devotional'}, [
+          e('div', {className:'dl-devotional-title', key:'t'}, todaysDevotional().title),
+          e('div', {className:'dl-devotional-text', key:'txt'}, todaysDevotional().text)
+        ]),
+        e('div', {className:'dl-streak-card', key:'streak'}, [
+          e('div', {className:'dl-streak-num', key:'n'}, state.dailyStreak),
+          e('div', {className:'dl-streak-label', key:'l'}, 'day streak'),
+          e('div', {className:'dl-streak-week', key:'week'}, last7Days().map(d =>
+            e('span', {className:'dl-streak-dot', style:{background: streakDateSet(state).has(d) ? 'var(--gold)' : 'var(--gray-light)'}, key:d}))),
+          state.lastCheckIn === todayStr()
+            ? e('div', {className:'dl-checked-in', key:'done'}, [String.fromCodePoint(0x2705), ' You\u2019re checked in for today'])
+            : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
+        ]),
+
         e('div', {className:'dl-hub-heading', key:'hh2'}, [String.fromCodePoint(0x1F4DA), ' Explore']),
         e('div', {className:'dl-hub-grid', key:'grid'}, [
           e('button', {className:'dl-hub-card', onClick:()=>{setTab('search'); setExploreView('topics');}, key:'t'}, [
@@ -4525,22 +4531,60 @@
       ]) : null,
 
       tab === 'community' ? e('div', {className:'dl-forest', key:'community'}, [
-        e('div', {className:'dl-forest-sky', key:'sky'}),
-        e('div', {className:'dl-forest-canopy', key:'canopy'}),
-        e('div', {className:'dl-forest-mist', key:'mist'}),
-        e('div', {className:'dl-forest-trees', key:'trees'}, [
-          e('span', {className:'dl-tree t1', key:'1'}, String.fromCodePoint(0x1F332)),
-          e('span', {className:'dl-tree t2', key:'2'}, String.fromCodePoint(0x1F333)),
-          e('span', {className:'dl-tree t3', key:'3'}, String.fromCodePoint(0x1F332)),
-          e('span', {className:'dl-tree t4', key:'4'}, String.fromCodePoint(0x1F333)),
-          e('span', {className:'dl-tree t5', key:'5'}, String.fromCodePoint(0x1F332)),
-          e('span', {className:'dl-tree t6', key:'6'}, String.fromCodePoint(0x1F333)),
-          e('span', {className:'dl-tree t7', key:'7'}, String.fromCodePoint(0x1F332)),
-          e('span', {className:'dl-leaf l1', key:'l1'}, String.fromCodePoint(0x1F343)),
-          e('span', {className:'dl-leaf l2', key:'l2'}, String.fromCodePoint(0x1F342)),
-          e('span', {className:'dl-leaf l3', key:'l3'}, String.fromCodePoint(0x1F343))
-        ]),
-        e('div', {className:'dl-forest-beam', key:'beam'}),
+        e('div', {className:'dl-forest-scene', key:'scene', dangerouslySetInnerHTML:{__html:
+          '<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">' +
+            '<defs>' +
+              '<linearGradient id="fsky" x1="0" y1="0" x2="0" y2="1">' +
+                '<stop offset="0%" stop-color="#0a1f18"/><stop offset="28%" stop-color="#123a2b"/>' +
+                '<stop offset="58%" stop-color="#1a5540"/><stop offset="82%" stop-color="#0f3527"/>' +
+                '<stop offset="100%" stop-color="#071a13"/>' +
+              '</linearGradient>' +
+              '<radialGradient id="fglow" cx="50%" cy="18%" r="60%">' +
+                '<stop offset="0%" stop-color="#cdf5c0" stop-opacity="0.30"/>' +
+                '<stop offset="100%" stop-color="#cdf5c0" stop-opacity="0"/>' +
+              '</radialGradient>' +
+              '<linearGradient id="fbeam" x1="0" y1="0" x2="0" y2="1">' +
+                '<stop offset="0%" stop-color="#e6ffd9" stop-opacity="0.22"/>' +
+                '<stop offset="100%" stop-color="#e6ffd9" stop-opacity="0"/>' +
+              '</linearGradient>' +
+              '<linearGradient id="ffloor" x1="0" y1="0" x2="0" y2="1">' +
+                '<stop offset="0%" stop-color="#0d2a1f" stop-opacity="0"/>' +
+                '<stop offset="100%" stop-color="#061510" stop-opacity="0.95"/>' +
+              '</linearGradient>' +
+            '</defs>' +
+            '<rect width="400" height="800" fill="url(#fsky)"/>' +
+            '<rect width="400" height="800" fill="url(#fglow)"/>' +
+            '<g opacity="0.16">' +
+              '<polygon points="40,760 40,470 20,470 55,300 90,470 70,470 70,760" fill="#8ad3a4"/>' +
+              '<polygon points="150,760 150,430 128,430 168,240 208,430 186,430 186,760" fill="#8ad3a4"/>' +
+              '<polygon points="270,760 270,490 252,490 285,330 318,490 300,490 300,760" fill="#8ad3a4"/>' +
+              '<polygon points="360,760 360,450 340,450 378,280 400,410 400,760" fill="#8ad3a4"/>' +
+            '</g>' +
+            '<g opacity="0.30">' +
+              '<polygon points="10,780 10,520 -14,520 26,330 66,520 42,520 42,780" fill="#2f7d55"/>' +
+              '<polygon points="105,780 105,560 84,560 120,395 156,560 135,560 135,780" fill="#2f7d55"/>' +
+              '<polygon points="215,780 215,540 192,540 232,360 272,540 249,540 249,780" fill="#2f7d55"/>' +
+              '<polygon points="330,780 330,570 310,570 345,410 380,570 360,570 360,780" fill="#2f7d55"/>' +
+            '</g>' +
+            '<g opacity="0.62">' +
+              '<polygon points="-20,800 -20,600 -48,600 -6,410 36,600 8,600 8,800" fill="#123a29"/>' +
+              '<polygon points="72,800 72,640 48,640 88,470 128,640 104,640 104,800" fill="#123a29"/>' +
+              '<polygon points="196,800 196,610 168,610 212,430 256,610 228,610 228,800" fill="#123a29"/>' +
+              '<polygon points="316,800 316,650 292,650 332,485 372,650 348,650 348,800" fill="#123a29"/>' +
+              '<polygon points="410,800 410,600 384,600 424,420 464,600 438,600 438,800" fill="#123a29"/>' +
+            '</g>' +
+            '<g class="fbeams">' +
+              '<polygon points="120,-40 175,-40 95,820 20,820" fill="url(#fbeam)"/>' +
+              '<polygon points="255,-40 292,-40 232,820 178,820" fill="url(#fbeam)"/>' +
+            '</g>' +
+            '<rect y="560" width="400" height="240" fill="url(#ffloor)"/>' +
+          '</svg>'
+        }}),
+        e('div', {className:'dl-fireflies', key:'ff'},
+          [12,28,44,60,76,88,20,52,68,36].map((L, i) =>
+            e('span', {className:'dl-firefly', style:{left: L + '%', animationDelay: (i * 1.7) + 's', animationDuration: (11 + (i % 5) * 2.5) + 's'}, key:i})
+          )
+        ),
         e('div', {className:'dl-forest-inner', key:'inner'}, [
         e('div', {className:'dl-forest-head', key:'ptitle'}, [
           e('div', {className:'dl-forest-title', key:'t'}, 'The Upper Room'),
