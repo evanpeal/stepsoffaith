@@ -13,14 +13,14 @@
     --pink: #ff5ca8;
     --pink-dark: #e0388a;
     --teal: #14c9a6;
-    --teal-dark: #0da487;
+    --teal-dark: #0a8a71;
     --orange: #ff8a3d;
     --orange-dark: #e86f22;
     --coral: #ff6b6b;
     --sky: #5bc8ff;
     --lime: #9fe870;
     --ink: #2f3037;
-    --gray: #8e8fa3;
+    --gray: #6f7085;
     --gray-light: #e8e6f0;
     --bg: #eee9f9;
     --card: #ffffff;
@@ -981,7 +981,26 @@ to { opacity: 1; transform: translate(-50%, 0); }
   /* Top bar chips read against the tint */
   .dl-top { background: transparent; }
 
-  /* Modal backdrop a touch richer */
-  .dl-dc-modal-bg { background: rgba(46,32,80,0.55); }
 
   .dl-msg-bubble.pending { opacity: 0.6; }
+
+
+  /* Buttons keep the bright teal fill even though the text colour darkened */
+  .dl-social-btn, .dl-person-add, .dl-req-accept, .dl-chat-send, .dl-gm-join,
+  .dl-gm-create, .dl-bigroom-join, .dl-quickjoin, .dl-roomcard-btn,
+  .dl-newroom-close, .dl-social-tab.active, .dl-msg-bubble.mine,
+  .dl-wordle-tile.green, .dl-wordle-key.green { background: #0fa585; }
+  .dl-bigroom-join, .dl-quickjoin { border-bottom-color: #0a8a71; }
+
+  /* Wordle tiles: darker fills so white letters read clearly */
+  .dl-wordle-tile.yellow, .dl-wordle-key.yellow { background: #bd8006; border-color: #9c6a04; }
+  .dl-wordle-tile.gray, .dl-wordle-key.gray { background: #8a8a97; border-color: #74747f; }
+
+  /* Streak pill */
+  .dl-pill.fire { color: #c85d05; }
+
+  /* Primary green buttons: darker so white text reads cleanly */
+  .dl-continue, .dl-quest-claim, .dl-book-chip.active, .dl-add-row button { background: #45a302; }
+  .dl-continue { border-bottom-color: #3a8a02; }
+  .dl-book-chip.active { background: linear-gradient(135deg, #45a302, #3a8f02); }
+  .dl-dc-done-badge { background: #1596d4; }

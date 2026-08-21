@@ -2568,7 +2568,12 @@
     React.useEffect(() => {
       if (!sb) { load(null); setAuthChecked(true); return; }
       sb.auth.getSession().then(({ data }) => {
-        const sessionUser = data && data.session ? data.session.user : null;
+        const session = data && data.session;
+        const sessionUser = session ? session.user : null;
+        // Realtime respects RLS, so the socket needs the token too
+        if (session && sb.realtime && sb.realtime.setAuth) {
+          try { sb.realtime.setAuth(session.access_token); } catch (ex) {}
+        }
         setUser(sessionUser);
         setAuthChecked(true);
         load(sessionUser);
@@ -2576,6 +2581,9 @@
       });
       const { data: listener } = sb.auth.onAuthStateChange((event, session) => {
         const sessionUser = session ? session.user : null;
+        if (session && sb.realtime && sb.realtime.setAuth) {
+          try { sb.realtime.setAuth(session.access_token); } catch (ex) {}
+        }
         setUser(sessionUser);
         load(sessionUser);
         if (sessionUser) setShowWelcome(false);
@@ -2627,10 +2635,10 @@
       const ch = sb.channel('room-' + openGroup)
         .on('postgres_changes',
           { event: '*', schema: 'public', table: 'group_messages', filter: 'group_id=eq.' + openGroup },
-          () => { loadGroupDetail(openGroup); })
+          () => { loadGroupDetail(openGroup, true); })
         .subscribe();
       // Safety net in case the socket drops
-      const poll = setInterval(() => { loadGroupDetail(openGroup); }, 12000);
+      const poll = setInterval(() => { loadGroupDetail(openGroup, true); }, 3000);
       return () => { try { sb.removeChannel(ch); } catch (ex) {} clearInterval(poll); };
     }, [openGroup, user && user.id]);
 
@@ -2649,7 +2657,7 @@
           if (openGroup) loadGroupDetail(openGroup);
         })
         .subscribe();
-      const poll = setInterval(() => { loadRequests(); loadFriends(); }, 20000);
+      const poll = setInterval(() => { loadRequests(); loadFriends(); }, 8000);
       return () => { try { sb.removeChannel(ch); } catch (ex) {} clearInterval(poll); };
     }, [user && user.id]);
 
@@ -3141,9 +3149,9 @@
       } catch (ex) {}
     }
 
-    async function loadGroupDetail(groupId){
+    async function loadGroupDetail(groupId, quiet){
       if (!sb || !user) return;
-      setSocialLoading(true);
+      if (!quiet) setSocialLoading(true);
       try {
         const { data: mem } = await sb.from('group_members').select('user_id').eq('group_id', groupId);
         const ids = (mem || []).map(m => m.user_id);
@@ -3166,8 +3174,8 @@
           const stillPending = pending.filter(p => !server.some(s => s.body === p.body && s.user_id === p.user_id));
           return [...server, ...stillPending];
         });
-      } catch (ex) { setGroupMembers([]); setChatMessages([]); }
-      setSocialLoading(false);
+      } catch (ex) { if (!quiet) { setGroupMembers([]); setChatMessages([]); } }
+      if (!quiet) setSocialLoading(false);
     }
 
     async function sendMessage(groupId, body, kind){
