@@ -1,4 +1,4 @@
-#dl-root {
+  #dl-root {
     --green: #58cc02;
     --green-dark: #46a302;
     --green-bg: #d7ffb8;
@@ -1210,7 +1210,7 @@ to { opacity: 1; transform: none; }
 85%  { transform: translate(20px, -78vh) scale(0.7); opacity: 0.25; }
 100% { transform: translate(0, -95vh) scale(0.5); opacity: 0; }
 }
-  /* ============ THE UPPER ROOM — candlelit room (CSS only) ============ */
+  /* ============ THE UPPER ROOM â€” candlelit room (CSS only) ============ */
   .dl-forest { position: relative; min-height: 100vh; background: #3d2410; }
   .dl-forest-scene { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     height: 100dvh; z-index: 0; pointer-events: none;
@@ -1308,6 +1308,9 @@ to { opacity: 1; transform: none; }
 
   .dl-forest .dl-invite-wide { background: linear-gradient(135deg, #fdeccd, #f6dcb4); }
   .dl-forest .dl-section-title::before { background: #d9913f; }
+  /* Assign button hidden (owner view only; Ask stays for members) */
+  .dl-forest .dl-tools:has(> .dl-tool:nth-child(3)) > .dl-tool:nth-child(1) { display: none; }
+
 
   /* ---- Upper Room: rooms & chat ---- */
   .dl-forest .dl-gm-create, .dl-forest .dl-chat-send { background: #b06f2b; color: #fff; }
