@@ -2425,7 +2425,7 @@
     const [groupMembers, setGroupMembers] = React.useState([]);
     const [prayedRows, setPrayedRows] = React.useState([]);
     const [openGroup, setOpenGroup] = React.useState(null);
-    const [socialTab, setSocialTab] = React.useState('groups');
+    const [socialTab, setSocialTab] = React.useState('groups');   // Upper Room shows rooms only
     const [socialLoading, setSocialLoading] = React.useState(false);
     const [socialMsg, setSocialMsg] = React.useState('');
     const [groupCodeInput, setGroupCodeInput] = React.useState('');
@@ -2456,6 +2456,19 @@
     const [assignOpen, setAssignOpen] = React.useState(false);
     const [assignSearch, setAssignSearch] = React.useState('');
     const [shareVerseData, setShareVerseData] = React.useState(null);
+    const [answers, setAnswers] = React.useState([]);
+    const [answerDrafts, setAnswerDrafts] = React.useState({});
+    const [composerMode, setComposerMode] = React.useState(null);
+    const [assignBook, setAssignBook] = React.useState(null);
+    const [assignDue, setAssignDue] = React.useState('');
+    const [promptDraft, setPromptDraft] = React.useState('');
+    const [askAnon, setAskAnon] = React.useState(true);
+    const [whoDoneFor, setWhoDoneFor] = React.useState(null);
+    const [feed, setFeed] = React.useState([]);
+    const [feedPrayers, setFeedPrayers] = React.useState([]);
+    const [postDraft, setPostDraft] = React.useState('');
+    const [postKind, setPostKind] = React.useState('prayer');
+    const [friendsView, setFriendsView] = React.useState('feed');
     const [chatKind, setChatKind] = React.useState('message');
     const [newRoomCode, setNewRoomCode] = React.useState('');
     const [showCreateRoom, setShowCreateRoom] = React.useState(false);
@@ -2611,7 +2624,7 @@
     }, [state === null]);
 
     function tourSpot(){
-      const order = [null, 'path', 'daily', 'search', 'callings', 'community', 'profile'];
+      const order = [null, 'path', 'library', 'library', 'community', 'profile'];
       return order[Math.min(tourStep, order.length - 1)];
     }
 
@@ -2636,7 +2649,7 @@
     }, [user && user.id, state === null]);
 
     React.useEffect(() => {
-      if (sb && user && friends !== null) loadSuggested();
+      if (sb && user && friends !== null) { loadSuggested(); loadFeed(); }
     }, [friends.length, outgoingReqs.length, incomingReqs.length, myGroups.length]);
 
     React.useEffect(() => {
@@ -2941,6 +2954,58 @@
       })();
     }, [user && user.id, myProfile && myProfile.friend_code]);
 
+    async function loadFeed(){
+      if (!sb || !user) return;
+      try {
+        const ids = [user.id, ...friends.map(f => f.id)];
+        const { data } = await sb.from('friend_posts').select('*')
+          .in('user_id', ids).order('created_at', { ascending: false }).limit(60);
+        setFeed(data || []);
+        const postIds = (data || []).map(p => p.id);
+        if (postIds.length) {
+          const { data: pr } = await sb.from('post_prayers').select('*').in('post_id', postIds);
+          setFeedPrayers(pr || []);
+        } else { setFeedPrayers([]); }
+      } catch (ex) { setFeed([]); }
+    }
+
+    async function createPost(){
+      if (!sb || !user || !postDraft.trim()) return;
+      try {
+        await sb.from('friend_posts').insert({ user_id: user.id, kind: postKind, body: postDraft.trim() });
+        setPostDraft('');
+        loadFeed();
+      } catch (ex) { setSocialMsg('Could not post: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    async function togglePostPrayer(postId){
+      if (!sb || !user) return;
+      const mine = feedPrayers.some(p => p.post_id === postId && p.user_id === user.id);
+      setFeedPrayers(prev => mine
+        ? prev.filter(p => !(p.post_id === postId && p.user_id === user.id))
+        : [...prev, { id:'t'+Date.now(), post_id: postId, user_id: user.id }]);
+      try {
+        if (mine) await sb.from('post_prayers').delete().eq('post_id', postId).eq('user_id', user.id);
+        else await sb.from('post_prayers').insert({ post_id: postId, user_id: user.id });
+      } catch (ex) { loadFeed(); }
+    }
+
+    async function markPostAnswered(postId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friend_posts').update({ answered: true }).eq('id', postId).eq('user_id', user.id);
+        loadFeed();
+      } catch (ex) {}
+    }
+
+    async function deletePost(postId){
+      if (!sb || !user) return;
+      try {
+        await sb.from('friend_posts').delete().eq('id', postId).eq('user_id', user.id);
+        loadFeed();
+      } catch (ex) {}
+    }
+
     async function loadSuggested(){
       if (!sb || !user) return;
       try {
@@ -3209,8 +3274,10 @@
             setReactions(rx || []);
             const { data: ad } = await sb.from('assignment_done').select('*').in('message_id', msgIds);
             setAssignDone(ad || []);
+            const { data: ans } = await sb.from('message_answers').select('*').in('message_id', msgIds);
+            setAnswers(ans || []);
           } catch (ex) {}
-        } else { setReactions([]); setAssignDone([]); }
+        } else { setReactions([]); setAssignDone([]); setAnswers([]); }
         setChatMessages(prev => {
           const pending = prev.filter(m => m.pending);
           const server = msgs || [];
@@ -3289,6 +3356,42 @@
       } catch (ex) { loadGroupDetail(groupId, true); }
     }
 
+    async function postPrompt(groupId, text, kind, anon){
+      if (!sb || !user || !text.trim()) return;
+      try {
+        await sb.from('group_messages').insert({
+          group_id: groupId, user_id: user.id, body: text.trim(),
+          kind: kind, is_anonymous: !!anon
+        });
+        setPromptDraft(''); setComposerMode(null);
+        loadGroupDetail(groupId, true);
+      } catch (ex) { setSocialMsg('Could not post: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    async function submitAnswer(msgId, groupId){
+      if (!sb || !user) return;
+      const text = (answerDrafts[msgId] || '').trim();
+      if (!text) return;
+      try {
+        await sb.from('message_answers').upsert(
+          { message_id: msgId, user_id: user.id, body: text },
+          { onConflict: 'message_id,user_id' }
+        );
+        setAnswerDrafts(d => ({ ...d, [msgId]: '' }));
+        loadGroupDetail(groupId, true);
+      } catch (ex) { setSocialMsg('Could not save: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    async function togglePin(groupId, msgId){
+      if (!sb || !user) return;
+      const g = myGroups.find(x => x.id === groupId);
+      const next = (g && g.pinned_message_id === msgId) ? null : msgId;
+      try {
+        await sb.from('groups').update({ pinned_message_id: next }).eq('id', groupId);
+        loadGroups();
+      } catch (ex) {}
+    }
+
     async function shareVerse(groupId, ref, text){
       if (!sb || !user) return;
       try {
@@ -3307,9 +3410,9 @@
           group_id: groupId, user_id: user.id,
           body: lesson.book + ' \u00b7 ' + lesson.title,
           kind: 'assignment',
-          meta: { lessonId: lesson.id, book: lesson.book, title: lesson.title }
+          meta: { lessonId: lesson.id, book: lesson.book, title: lesson.title, due: assignDue || null }
         });
-        setAssignOpen(false); setAssignSearch('');
+        setAssignOpen(false); setAssignSearch(''); setAssignBook(null); setAssignDue(''); setComposerMode(null);
         loadGroupDetail(groupId, true);
       } catch (ex) { setSocialMsg('Could not assign: ' + (ex && ex.message ? ex.message : 'unknown')); }
     }
@@ -4018,6 +4121,7 @@
       ]) : null,
 
       tab === 'daily' ? e('div', {className:'dl-daily-wrap', key:'daily'}, [
+        e('button', {className:'dl-topic-back', onClick:()=>setTab('library'), key:'bk'}, String.fromCodePoint(0x2190) + ' Library'),
         e('div', {className:'dl-passage-card', key:'verse'}, [
           e('div', {className:'dl-passage-ref'}, 'Today\u2019s reading \u00b7 ' + todaysDevotional().ref),
           e('div', {className:'dl-passage-text'}, '\u201c' + todaysDevotional().verse + '\u201d')
@@ -4127,7 +4231,8 @@
       ]) : null,
 
       tab === 'callings' ? e('div', {className:'dl-daily-wrap', key:'callings'}, [
-        e('div', {className:'dl-page-title', key:'ptitle'}, 'Reading Plans & Callings'),
+        e('button', {className:'dl-topic-back', onClick:()=>setTab('library'), key:'bk'}, String.fromCodePoint(0x2190) + ' Library'),
+        e('div', {className:'dl-page-title', key:'ptitle'}, 'Reading Plans'),
         e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'plabel'}, [String.fromCodePoint(0x1F5D3), ' Reading plans']),
         state.activePlan ? (() => {
           const plan = READING_PLANS.find(p => p.id === state.activePlan);
@@ -4235,8 +4340,56 @@
         })
       ]) : null,
 
+      tab === 'library' ? e('div', {className:'dl-daily-wrap', key:'libhub'}, [
+        e('div', {className:'dl-page-title', key:'pt'}, 'Library'),
+        e('button', {className:'dl-today-card', onClick:()=>setTab('daily'), key:'today'}, [
+          e('div', {className:'dl-today-top', key:'t'}, [
+            e('span', {className:'dl-today-label', key:'l'}, 'Today'),
+            e('span', {className:'dl-today-streak', key:'s'}, [String.fromCodePoint(0x1F525), ' ', state.dailyStreak])
+          ]),
+          e('div', {className:'dl-today-ref', key:'r'}, todaysDevotional().ref),
+          e('div', {className:'dl-today-verse', key:'v'}, '\u201c' + todaysDevotional().verse + '\u201d'),
+          e('div', {className:'dl-today-cta', key:'c'}, [
+            state.lastCheckIn === todayStr() ? (String.fromCodePoint(0x2705) + ' Checked in') : 'Read today\u2019s verse',
+            e('span', {className:'dl-today-arrow', key:'a'}, String.fromCodePoint(0x203A))
+          ])
+        ]),
+        e('div', {className:'dl-hub-grid', key:'grid'}, [
+          e('button', {className:'dl-hub-card', onClick:()=>{setTab('search'); setExploreView('topics');}, key:'t'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'Topics'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'Verses for how you feel')
+          ]),
+          e('button', {className:'dl-hub-card', onClick:()=>setTab('callings'), key:'p'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F5D3)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'Plans'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'Read at your own pace')
+          ]),
+          e('button', {className:'dl-hub-card', onClick:()=>{setTab('search'); setExploreView('tracks');}, key:'k'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F6E4)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'Tracks'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'Studies for real life')
+          ]),
+          e('button', {className:'dl-hub-card', onClick:()=>{setTab('search'); setExploreView('timeline');}, key:'l'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F4C5)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'Timeline'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'The whole story in order')
+          ]),
+          e('button', {className:'dl-hub-card', onClick:()=>{setTab('search'); setExploreView('people');}, key:'c'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F464)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'People'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'Follow one life through')
+          ]),
+          e('button', {className:'dl-hub-card', onClick:()=>setTab('daily'), key:'g'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F3C6)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'Challenges'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'Tests and the word game')
+          ])
+        ])
+      ]) : null,
+
       tab === 'search' ? e('div', {className:'dl-daily-wrap', key:'search'}, [
-        e('div', {className:'dl-page-title', key:'pt'}, 'Explore'),
+        e('button', {className:'dl-topic-back', onClick:()=>setTab('library'), key:'bk'}, String.fromCodePoint(0x2190) + ' Library'),
         e('div', {className:'dl-explore-nav', key:'nav'}, [
           e('button', {className:'dl-explore-btn' + (exploreView==='topics'?' active':''), onClick:()=>setExploreView('topics'), key:'t'}, [
             e('span', {className:'dl-explore-ico', key:'i'}, String.fromCodePoint(0x1F50D)), 'Topics'
@@ -4470,7 +4623,7 @@
       ]) : null,
 
       tab === 'community' ? e('div', {className:'dl-daily-wrap', key:'community'}, [
-        e('div', {className:'dl-page-title', key:'ptitle'}, 'Community'),
+        e('div', {className:'dl-page-title', key:'ptitle'}, 'Upper Room'),
 
         !user
           ? e('div', {className:'dl-signin-prompt', key:'signin'}, [
@@ -4699,7 +4852,7 @@
                             : e('button', {className:'dl-msg-avatar', onClick:()=>viewProfile(m.user_id), key:'av'}, (author && author.avatar) || String.fromCodePoint(0x1F4D6))
                           ) : null,
                           e('div', {className:'dl-msg-col', key:'col'}, [
-                            (!mine && !grouped) ? e('button', {className:'dl-msg-author', onClick:()=>viewProfile(m.user_id), key:'a'}, (author && author.display_name) || 'Someone') : null,
+                            (!mine && !grouped) ? e('button', {className:'dl-msg-author', onClick:()=>{ if (!m.is_anonymous) viewProfile(m.user_id); }, key:'a'}, m.is_anonymous ? 'Anonymous' : ((author && author.display_name) || 'Someone')) : null,
                             (m.kind === 'verse')
                             ? e('div', {className:'dl-card-verse', key:'b'}, [
                                 e('div', {className:'dl-card-tag', key:'t'}, [String.fromCodePoint(0x1F4D6), ' Shared a verse']),
@@ -4709,19 +4862,62 @@
                           : (m.kind === 'assignment')
                             ? (() => {
                                 const total = groupMembers.length || 1;
-                                const doneN = assignDone.filter(a => a.message_id === m.id).length;
-                                const iDid = assignDone.some(a => a.message_id === m.id && a.user_id === user.id);
+                                const doneList = assignDone.filter(a => a.message_id === m.id);
+                                const doneN = doneList.length;
+                                const iDid = doneList.some(a => a.user_id === user.id);
                                 const les = m.meta ? LESSONS.find(l => l.id === m.meta.lessonId) : null;
+                                const due = m.meta && m.meta.due ? m.meta.due : null;
+                                const overdue = due && new Date(due) < new Date(todayStr());
+                                const showing = whoDoneFor === m.id;
                                 return e('div', {className:'dl-card-assign', key:'b'}, [
                                   e('div', {className:'dl-card-tag assign', key:'t'}, [String.fromCodePoint(0x1F4DD), ' Assignment']),
                                   e('div', {className:'dl-card-title', key:'n'}, m.body),
+                                  due ? e('div', {className:'dl-card-due' + (overdue?' late':''), key:'d'},
+                                    (overdue ? 'Was due ' : 'Due ') + new Date(due + 'T00:00:00').toLocaleDateString([], {month:'short', day:'numeric'})) : null,
                                   e('div', {className:'dl-card-bar', key:'bar'}, e('div', {className:'dl-card-fill', style:{width: Math.round((doneN/total)*100) + '%'}})),
-                                  e('div', {className:'dl-card-count', key:'c'}, doneN + ' of ' + total + ' finished'),
+                                  e('button', {className:'dl-card-count link', onClick:()=>setWhoDoneFor(showing ? null : m.id), key:'c'},
+                                    doneN + ' of ' + total + ' finished \u00b7 ' + (showing ? 'hide' : 'see who')),
+                                  showing ? e('div', {className:'dl-whodone', key:'wd'}, groupMembers.map(mem => {
+                                    const did = doneList.some(a => a.user_id === mem.id);
+                                    return e('div', {className:'dl-whodone-row' + (did?' did':''), key:mem.id}, [
+                                      e('span', {key:'i'}, did ? String.fromCodePoint(0x2705) : String.fromCodePoint(0x2B1C)),
+                                      e('span', {key:'n'}, mem.display_name)
+                                    ]);
+                                  })) : null,
                                   e('div', {className:'dl-card-actions', key:'a'}, [
                                     les ? e('button', {className:'dl-card-btn', onClick:()=>openIfAvailable(les), key:'o'}, 'Read it') : null,
                                     e('button', {className:'dl-card-btn' + (iDid ? ' done' : ''), onClick:()=>toggleAssignmentDone(m.id, g.id), key:'d'},
                                       iDid ? (String.fromCodePoint(0x2713) + ' Done') : 'Mark done')
                                   ])
+                                ]);
+                              })()
+                          : (m.kind === 'prompt' || m.kind === 'question')
+                            ? (() => {
+                                const isPrompt = m.kind === 'prompt';
+                                const all = answers.filter(a => a.message_id === m.id);
+                                const mine = all.find(a => a.user_id === user.id);
+                                const locked = isPrompt && !mine;
+                                const draft = answerDrafts[m.id] || '';
+                                return e('div', {className:'dl-card-prompt' + (isPrompt?'':' question'), key:'b'}, [
+                                  e('div', {className:'dl-card-tag' + (isPrompt?'':' q'), key:'t'},
+                                    isPrompt ? [String.fromCodePoint(0x1F4AC), ' Discussion'] : [String.fromCodePoint(0x2753), ' Question']),
+                                  e('div', {className:'dl-card-title', key:'n'}, m.body),
+                                  e('div', {className:'dl-card-count', key:'c'}, all.length + (all.length === 1 ? ' answer' : ' answers')),
+                                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'60px', marginTop:'8px'},
+                                    value: draft || (mine ? mine.body : ''),
+                                    placeholder: isPrompt ? 'Write your answer to unlock the others\u2026' : 'Answer this\u2026',
+                                    onChange: ev => setAnswerDrafts(d => ({ ...d, [m.id]: ev.target.value })), key:'ta'}),
+                                  e('button', {className:'dl-card-btn', style:{marginTop:'8px'}, onClick:()=>submitAnswer(m.id, g.id), key:'s'},
+                                    mine ? 'Update my answer' : 'Post my answer'),
+                                  locked
+                                    ? e('div', {className:'dl-locked-answers', key:'lk'}, [String.fromCodePoint(0x1F512), ' ' + all.length + ' hidden until you answer'])
+                                    : e('div', {className:'dl-answers', key:'ans'}, all.map(a => {
+                                        const who = chatAuthors[a.user_id] || groupMembers.find(x => x.id === a.user_id);
+                                        return e('div', {className:'dl-answer', key:a.id}, [
+                                          e('div', {className:'dl-answer-who', key:'w'}, (who && who.display_name) || 'Someone'),
+                                          e('div', {key:'b'}, a.body)
+                                        ]);
+                                      }))
                                 ]);
                               })()
                           : e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : '') + (grouped ? ' grouped' : '') + (m.pending ? ' pending' : ''), key:'b'}, [
@@ -4752,20 +4948,74 @@
                     })()
               ),
 
-              (roomView === 'chat' && isMember && g.owner_id === user.id) ? e('div', {className:'dl-assignwrap', key:'assignwrap'}, [
-                assignOpen ? e('div', {className:'dl-assign-box', key:'ab'}, [
-                  e('div', {className:'dl-manage-sub', style:{marginTop:0}, key:'l'}, 'Assign a lesson'),
-                  e('input', {className:'dl-social-input', style:{width:'100%'}, value:assignSearch, placeholder:'Search lessons\u2026', onChange: ev=>setAssignSearch(ev.target.value), key:'s'}),
-                  e('div', {className:'dl-assign-list', key:'li'},
-                    (assignSearch.trim().length >= 2 ? searchLessons(assignSearch) : LESSONS.slice(0, 8)).map(l =>
-                      e('button', {className:'dl-assign-item', onClick:()=>assignLesson(g.id, l), key:l.id}, [
-                        e('span', {className:'dl-fav-book', key:'b'}, l.book),
-                        e('span', {className:'dl-fav-title', key:'t'}, l.title)
+              (roomView === 'chat' && isMember) ? e('div', {className:'dl-assignwrap', key:'assignwrap'}, [
+                !composerMode
+                  ? e('div', {className:'dl-tools', key:'tools'}, [
+                      g.owner_id === user.id ? e('button', {className:'dl-tool', onClick:()=>{setComposerMode('assign'); setAssignBook(null); setAssignSearch('');}, key:'a'},
+                        [String.fromCodePoint(0x1F4DD), ' Assign']) : null,
+                      g.owner_id === user.id ? e('button', {className:'dl-tool', onClick:()=>{setComposerMode('prompt'); setPromptDraft('');}, key:'p'},
+                        [String.fromCodePoint(0x1F4AC), ' Discuss']) : null,
+                      e('button', {className:'dl-tool', onClick:()=>{setComposerMode('ask'); setPromptDraft(''); setAskAnon(true);}, key:'q'},
+                        [String.fromCodePoint(0x2753), ' Ask'])
+                    ])
+                  : null,
+
+                composerMode === 'assign' ? e('div', {className:'dl-assign-box', key:'ab'}, [
+                  e('div', {className:'dl-manage-sub', style:{marginTop:0}, key:'l'}, assignBook ? assignBook : 'Pick a book'),
+                  !assignBook
+                    ? e('div', {key:'books'}, [
+                        e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'8px'}, value:assignSearch, placeholder:'Search books or lessons\u2026', onChange: ev=>setAssignSearch(ev.target.value), key:'s'}),
+                        e('div', {className:'dl-assign-list', key:'bl'},
+                          assignSearch.trim().length >= 2
+                            ? searchLessons(assignSearch).map(l => e('button', {className:'dl-assign-item', onClick:()=>assignLesson(g.id, l), key:l.id}, [
+                                e('span', {className:'dl-fav-book', key:'b'}, l.book),
+                                e('span', {className:'dl-fav-title', key:'t'}, l.title)
+                              ]))
+                            : [...new Set(LESSONS.map(l => l.book))].map(bk =>
+                                e('button', {className:'dl-assign-item', onClick:()=>setAssignBook(bk), key:bk}, [
+                                  e('span', {className:'dl-fav-title', key:'t'}, bk),
+                                  e('span', {className:'dl-fav-book', key:'c'}, LESSONS.filter(l=>l.book===bk).length + ' lessons')
+                                ])
+                              )
+                        )
                       ])
-                    )
-                  ),
-                  e('button', {className:'dl-gm-cancel', style:{width:'100%', marginTop:'8px'}, onClick:()=>setAssignOpen(false), key:'c'}, 'Cancel')
-                ]) : e('button', {className:'dl-assign-open', onClick:()=>setAssignOpen(true), key:'ao'}, [String.fromCodePoint(0x1F4DD), ' Assign a lesson to the room'])
+                    : e('div', {key:'lessons'}, [
+                        e('button', {className:'dl-topic-back', onClick:()=>setAssignBook(null), key:'bk'}, String.fromCodePoint(0x2190) + ' All books'),
+                        e('div', {className:'dl-assign-list', key:'ll'},
+                          LESSONS.filter(l => l.book === assignBook).map(l =>
+                            e('button', {className:'dl-assign-item', onClick:()=>assignLesson(g.id, l), key:l.id}, [
+                              e('span', {className:'dl-fav-title', key:'t'}, l.title)
+                            ])
+                          )
+                        )
+                      ]),
+                  e('div', {className:'dl-due-row', key:'due'}, [
+                    e('span', {className:'dl-due-label', key:'l'}, 'Due (optional)'),
+                    e('input', {type:'date', className:'dl-due-input', value:assignDue, onChange: ev=>setAssignDue(ev.target.value), key:'i'})
+                  ]),
+                  e('button', {className:'dl-gm-cancel', style:{width:'100%'}, onClick:()=>{setComposerMode(null); setAssignBook(null);}, key:'c'}, 'Cancel')
+                ]) : null,
+
+                (composerMode === 'prompt' || composerMode === 'ask') ? e('div', {className:'dl-assign-box', key:'pb'}, [
+                  e('div', {className:'dl-manage-sub', style:{marginTop:0}, key:'l'},
+                    composerMode === 'prompt' ? 'Discussion question' : 'Ask the room'),
+                  e('div', {className:'dl-tool-hint', key:'h'},
+                    composerMode === 'prompt'
+                      ? 'Everyone answers privately first \u2014 they only see other answers once they\u2019ve written their own.'
+                      : 'Ask anything. You can post without your name attached.'),
+                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'70px'}, value:promptDraft,
+                    placeholder: composerMode === 'prompt' ? 'e.g. Where have you seen God provide this week?' : 'Your question\u2026',
+                    onChange: ev=>setPromptDraft(ev.target.value), key:'t'}),
+                  composerMode === 'ask' ? e('label', {className:'dl-anon-label', style:{marginTop:'10px'}, key:'an'}, [
+                    e('input', {type:'checkbox', checked:askAnon, onChange: ev=>setAskAnon(ev.target.checked), key:'cb'}),
+                    ' Post anonymously'
+                  ]) : null,
+                  e('div', {style:{display:'flex', gap:'8px', marginTop:'10px'}, key:'b'}, [
+                    e('button', {className:'dl-gm-cancel', onClick:()=>setComposerMode(null), key:'c'}, 'Cancel'),
+                    e('button', {className:'dl-gm-create', onClick:()=>postPrompt(g.id, promptDraft, composerMode === 'prompt' ? 'prompt' : 'question', composerMode === 'ask' && askAnon), key:'s'},
+                      composerMode === 'prompt' ? 'Post question' : 'Ask')
+                  ])
+                ]) : null
               ]) : null,
 
               roomView === 'chat' && isMember
@@ -4800,17 +5050,12 @@
               e('button', {className:'dl-newroom-close', onClick:()=>setNewRoomCode(''), key:'x'}, 'Got it')
             ]) : null,
 
-            e('div', {className:'dl-social-tabs', key:'stabs'}, [
-              e('button', {className:'dl-social-tab' + (socialTab==='groups'?' active':''), onClick:()=>{setSocialTab('groups'); setSocialMsg('');}, key:'g'}, 'Rooms'),
-              e('button', {className:'dl-social-tab' + (socialTab==='friends'?' active':''), onClick:()=>{setSocialTab('friends'); setSocialMsg('');}, key:'f'}, [
-                'Friends',
-                incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
-              ])
-            ]),
+            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'intro'},
+              'Create a room for your class, small group, or study. Share the code with whoever you want in it.'),
 
             socialMsg ? e('div', {className:'dl-social-msg', key:'msg'}, socialMsg) : null,
 
-            socialTab === 'friends' ? e('div', {key:'friendspane'}, [
+            false ? e('div', {key:'friendspane'}, [
               e('div', {className:'dl-search-wrap', key:'search'}, [
                 e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
                 e('input', {className:'dl-people-search', value:peopleQuery, placeholder:'Search people by name\u2026', onChange: ev=>{ setPeopleQuery(ev.target.value); searchPeople(ev.target.value); }, key:'in'}),
@@ -4885,7 +5130,7 @@
             ]) : null,
 
 
-            socialTab === 'groups' ? e('div', {key:'groupspane'}, [
+            true ? e('div', {key:'groupspane'}, [
               myGroups.length > 0 ? e('div', {className:'dl-gm-label', key:'mylbl'}, 'Your chats') : null,
               ...myGroups.map(g => e('button', {className:'dl-gm-row', onClick:()=>setOpenGroup(g.id), key:g.id}, [
                 e('span', {className:'dl-gm-avatar', key:'i'}, roomIcon(g)),
@@ -4990,6 +5235,122 @@
           e('div', {className:'dl-stat', key:'reflections'}, [e('div',{className:'dl-stat-badge b4', key:'ic'}, String.fromCodePoint(0x1F4DD)), e('div',{className:'dl-stat-num', key:'n'}, state.reflections.length), e('div',{className:'dl-stat-label', key:'l'}, 'Reflections')])
         ]),
 
+        e('div', {className:'dl-section-title', key:'frlabel'}, [
+          String.fromCodePoint(0x1F465), ' Friends',
+          incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
+        ]),
+        !user
+          ? e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'fsignin'}, 'Sign in to add friends and share prayer requests.')
+          : e('div', {className:'dl-friends-box', key:'fbox'}, [
+              e('div', {className:'dl-social-tabs', key:'ftabs'}, [
+                e('button', {className:'dl-social-tab' + (friendsView==='feed'?' active':''), onClick:()=>setFriendsView('feed'), key:'f'}, 'Prayer feed'),
+                e('button', {className:'dl-social-tab' + (friendsView==='people'?' active':''), onClick:()=>setFriendsView('people'), key:'p'}, [
+                  'People', incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
+                ])
+              ]),
+
+              friendsView === 'feed' ? e('div', {key:'feedpane'}, [
+                e('div', {className:'dl-post-box', key:'pb'}, [
+                  e('div', {className:'dl-post-kinds', key:'k'}, [
+                    e('button', {className:'dl-kind-btn' + (postKind==='prayer'?' active':''), onClick:()=>setPostKind('prayer'), key:'p'}, [String.fromCodePoint(0x1F64F), ' Prayer']),
+                    e('button', {className:'dl-kind-btn' + (postKind==='praise'?' active':''), onClick:()=>setPostKind('praise'), key:'r'}, [String.fromCodePoint(0x1F389), ' Praise'])
+                  ]),
+                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'62px'}, value:postDraft,
+                    placeholder: postKind==='prayer' ? 'What do you need prayer for?' : 'What is God doing?',
+                    onChange: ev=>setPostDraft(ev.target.value), key:'t'}),
+                  e('button', {className:'dl-social-btn', style:{width:'100%', marginTop:'10px', padding:'11px'}, onClick: createPost, key:'s'}, 'Share with friends')
+                ]),
+                feed.length === 0
+                  ? e('div', {className:'dl-empty-note', key:'none'}, friends.length ? 'Nothing yet. Be the first to share something.' : 'Add a friend and their prayer requests will show up here.')
+                  : e('div', {key:'list'}, feed.map(p => {
+                      const who = p.user_id === user.id ? { display_name:'You', avatar:(state.profile&&state.profile.avatar) } : friends.find(f => f.id === p.user_id);
+                      const prayCount = feedPrayers.filter(x => x.post_id === p.id).length;
+                      const iPrayed = feedPrayers.some(x => x.post_id === p.id && x.user_id === user.id);
+                      const mine = p.user_id === user.id;
+                      return e('div', {className:'dl-post' + (p.answered?' answered':''), key:p.id}, [
+                        e('div', {className:'dl-post-top', key:'t'}, [
+                          e('span', {className:'dl-post-av', key:'a'}, (who && who.avatar) || String.fromCodePoint(0x1F4D6)),
+                          e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                            e('div', {className:'dl-post-who', key:'w'}, (who && who.display_name) || 'A friend'),
+                            e('div', {className:'dl-post-kind', key:'k'}, p.answered ? 'Answered prayer' : (p.kind === 'praise' ? 'Praise' : 'Prayer request'))
+                          ])
+                        ]),
+                        e('div', {className:'dl-post-body', key:'b'}, p.body),
+                        e('div', {className:'dl-post-foot', key:'f'}, [
+                          e('button', {className:'dl-pray-btn' + (iPrayed?' active':''), onClick:()=>togglePostPrayer(p.id), key:'p'},
+                            [String.fromCodePoint(0x1F64F), ' ', iPrayed ? 'Praying' : 'Pray']),
+                          prayCount > 0 ? e('span', {className:'dl-pray-count', key:'c'}, prayCount + ' praying') : null,
+                          (mine && !p.answered && p.kind === 'prayer') ? e('button', {className:'dl-prayer-mini', onClick:()=>markPostAnswered(p.id), key:'a'}, 'Mark answered') : null,
+                          mine ? e('button', {className:'dl-prayer-mini', onClick:()=>deletePost(p.id), key:'d'}, 'Delete') : null
+                        ])
+                      ]);
+                    }))
+              ]) : null,
+
+              friendsView === 'people' ? e('div', {key:'peoplepane'}, [
+                e('div', {className:'dl-search-wrap', key:'search'}, [
+                  e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
+                  e('input', {className:'dl-people-search', value:peopleQuery, placeholder:'Search people by name\u2026', onChange: ev=>{ setPeopleQuery(ev.target.value); searchPeople(ev.target.value); }, key:'in'}),
+                  peopleQuery ? e('button', {className:'dl-search-clear', onClick:()=>{setPeopleQuery(''); setPeopleResults([]);}, key:'c'}, String.fromCodePoint(0x2715)) : null
+                ]),
+                peopleQuery.trim().length >= 2
+                  ? e('div', {key:'res'}, peopleResults.length === 0
+                      ? e('div', {className:'dl-empty-note', key:'nr'}, 'No one found with that name.')
+                      : peopleResults.map(p => personRow(p, 'res')))
+                  : e('div', {key:'main'}, [
+                      incomingReqs.length > 0 ? e('div', {key:'reqs'}, [
+                        e('div', {className:'dl-manage-sub', key:'l'}, 'Requests'),
+                        ...incomingReqs.map(r => e('div', {className:'dl-person-row', key:r.id}, [
+                          e('button', {className:'dl-person-main', onClick:()=>viewProfile(r.profile.id), key:'m'}, [
+                            e('span', {className:'dl-person-avatar', key:'a'}, r.profile.avatar || String.fromCodePoint(0x1F4D6)),
+                            e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                              e('div', {className:'dl-person-name', key:'nm'}, r.profile.display_name),
+                              e('div', {className:'dl-person-sub', key:'s'}, 'wants to be friends')
+                            ])
+                          ]),
+                          e('div', {className:'dl-req-actions', key:'act'}, [
+                            e('button', {className:'dl-req-accept', onClick:()=>acceptRequest(r), key:'a'}, 'Accept'),
+                            e('button', {className:'dl-req-decline', onClick:()=>declineRequest(r), key:'d'}, String.fromCodePoint(0x2715))
+                          ])
+                        ]))
+                      ]) : null,
+                      e('div', {className:'dl-manage-sub', key:'fl'}, 'Your friends'),
+                      friends.length === 0
+                        ? e('div', {className:'dl-empty-note', key:'nf'}, 'No friends yet \u2014 search a name above.')
+                        : e('div', {key:'list'}, friends.slice().sort((a,b)=>(b.lessons_done||0)-(a.lessons_done||0)).map((f,i) =>
+                            e('div', {className:'dl-person-row', key:f.id}, [
+                              e('span', {className:'dl-friend-rank', key:'r'}, '#' + (i+1)),
+                              e('button', {className:'dl-person-main', onClick:()=>viewProfile(f.id), key:'m'}, [
+                                e('span', {className:'dl-person-avatar', key:'a'}, f.avatar || String.fromCodePoint(0x1F4D6)),
+                                e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                                  e('div', {className:'dl-person-name', key:'nm'}, f.display_name),
+                                  e('div', {className:'dl-person-sub', key:'st'}, (f.lessons_done||0) + ' lessons \u00b7 ' + (f.daily_streak||0) + ' day streak')
+                                ])
+                              ]),
+                              e('button', {className:'dl-friend-remove', onClick:()=>removeFriend(f.id), key:'x'}, String.fromCodePoint(0x2715))
+                            ])
+                          )),
+                      suggested.length > 0 ? e('div', {key:'sg'}, [
+                        e('div', {className:'dl-manage-sub', key:'l'}, 'People you might know'),
+                        ...suggested.map(p => personRow(p, 'sg'))
+                      ]) : null,
+                      myProfile ? e('button', {className:'dl-invite-wide', style:{marginTop:'12px'}, onClick:()=>{
+                        const link = 'https://stepstofaith.com/?invite=' + (myProfile.friend_code || '');
+                        try {
+                          if (navigator.share) navigator.share({ title:'Steps to Faith', text:'Walk through the Bible with me', url: link });
+                          else { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false), 2500); }
+                        } catch (ex) {}
+                      }, key:'inv'}, [
+                        e('span', {className:'dl-invite-icon', key:'i'}, String.fromCodePoint(0x1F4E4)),
+                        e('span', {style:{flex:1, textAlign:'left'}, key:'t'}, [
+                          e('div', {className:'dl-invite-title', key:'a'}, inviteCopied ? 'Link copied!' : 'Invite a friend'),
+                          e('div', {className:'dl-invite-sub', key:'b'}, 'They get added to you automatically')
+                        ])
+                      ]) : null
+                    ])
+              ]) : null
+            ]),
+
         e('div', {className:'dl-section-title', key:'trophylabel'}, [String.fromCodePoint(0x1F3C6), ' Trophy Case']),
         e('div', {className:'dl-trophy-scroll', key:'trophygrid'}, TROPHIES.map(t => {
           const earned = t.check(state);
@@ -5061,12 +5422,13 @@
       ]) : null,
 
       e('div', {className:'dl-tabs' + (showTour ? ' tourlift' : ''), key:'tabs'}, [
-        e('button', {className:'dl-tab' + (tab==='path'?' active':'') + (showTour && tourSpot()==='path' ? ' tourspot' : ''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4D6)), 'Path']),
-        e('button', {className:'dl-tab' + (tab==='daily'?' active':'') + (showTour && tourSpot()==='daily' ? ' tourspot' : ''), onClick:()=>setTab('daily'), key:'d'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x2600)), 'Daily']),
-        e('button', {className:'dl-tab' + (tab==='search'?' active':'') + (showTour && tourSpot()==='search' ? ' tourspot' : ''), onClick:()=>setTab('search'), key:'s'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F9ED)), 'Explore']),
-        e('button', {className:'dl-tab' + (tab==='callings'?' active':'') + (showTour && tourSpot()==='callings' ? ' tourspot' : ''), onClick:()=>setTab('callings'), key:'c'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DC)), 'Plans']),
-        e('button', {className:'dl-tab' + (tab==='community'?' active':'') + (showTour && tourSpot()==='community' ? ' tourspot' : ''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'cm'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F465)), 'Community', incomingReqs.length > 0 ? e('span', {className:'dl-tab-dot', key:'d'}, incomingReqs.length) : null]),
-        e('button', {className:'dl-tab' + (tab==='profile'?' active':'') + (showTour && tourSpot()==='profile' ? ' tourspot' : ''), onClick:()=>setTab('profile'), key:'pr'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile'])
+        e('button', {className:'dl-tab' + (tab==='path'?' active':'') + (showTour && tourSpot()==='path' ? ' tourspot' : ''), onClick:()=>setTab('path'), key:'p'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F463)), 'Path']),
+        e('button', {className:'dl-tab' + ((tab==='library'||tab==='daily'||tab==='search'||tab==='callings')?' active':'') + (showTour && tourSpot()==='library' ? ' tourspot' : ''), onClick:()=>setTab('library'), key:'l'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F4DA)), 'Library']),
+        e('button', {className:'dl-tab' + (tab==='community'?' active':'') + (showTour && tourSpot()==='community' ? ' tourspot' : ''), onClick:()=>{setTab('community'); setViewingProfile(null);}, key:'u'}, [e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F54A)), 'Upper Room']),
+        e('button', {className:'dl-tab' + (tab==='profile'?' active':'') + (showTour && tourSpot()==='profile' ? ' tourspot' : ''), onClick:()=>setTab('profile'), key:'pr'}, [
+          e('span',{className:'dl-tab-icon', key:'i'}, String.fromCodePoint(0x1F464)), 'Profile',
+          incomingReqs.length > 0 ? e('span', {className:'dl-tab-dot', key:'d'}, incomingReqs.length) : null
+        ])
       ]),
 
       showTour ? (() => {
