@@ -14,18 +14,28 @@
     --pink-dark: #e0388a;
     --teal: #14c9a6;
     --teal-dark: #0da487;
-    --ink: #3c3c3c;
-    --gray: #afafaf;
-    --gray-light: #e5e5e5;
-    --bg: #ffffff;
+    --orange: #ff8a3d;
+    --orange-dark: #e86f22;
+    --coral: #ff6b6b;
+    --sky: #5bc8ff;
+    --lime: #9fe870;
+    --ink: #2f3037;
+    --gray: #8e8fa3;
+    --gray-light: #e8e6f0;
+    --bg: #fdfbff;
     --card: #ffffff;
-    --card-2: #f5f5f7;
-    --surface: #f7f6fa;
-    --shadow: rgba(0,0,0,0.07);
+    --card-2: #f4f1fb;
+    --surface: #f7f4fd;
+    --shadow: rgba(90,70,140,0.10);
     --locked: #d8d8d8;
     --locked-dark: #bcbcbc;
     font-family: 'Nunito', -apple-system, sans-serif;
     background: var(--bg);
+    background-image:
+      radial-gradient(circle at 12% 4%, rgba(255,200,0,0.10), transparent 42%),
+      radial-gradient(circle at 88% 10%, rgba(165,108,240,0.12), transparent 46%),
+      radial-gradient(circle at 50% 96%, rgba(20,201,166,0.10), transparent 44%);
+    background-attachment: fixed;
     color: var(--ink);
     min-height: 100vh;
     box-sizing: border-box;
@@ -869,3 +879,76 @@ to { opacity: 1; transform: translate(-50%, 0); }
   .dl-lockdot { position: absolute; top: 8px; right: 8px; font-size: 12px; opacity: 0.55; }
   .dl-char-card, .dl-topic-card { position: relative; }
   .dl-lockrow { display: inline-flex; align-items: center; gap: 5px; background: var(--card-2); color: var(--gray); font-size: 11.5px; font-weight: 800; padding: 6px 12px; border-radius: 20px; margin-top: 10px; }
+
+  /* ============ Friendlier, more colourful pass ============ */
+
+  /* Section titles get a colour accent instead of plain grey */
+  .dl-section-title { color: var(--ink); font-size: 16px; }
+  .dl-section-title::before { content: ''; display: inline-block; width: 4px; height: 17px;
+    border-radius: 4px; background: linear-gradient(180deg, var(--purple), var(--teal)); margin-right: 2px; }
+
+  /* Cards lift off the page a little more */
+  .dl-passage-card, .dl-wordle-card, .dl-plan-card, .dl-test-card, .dl-community,
+  .dl-topic-verse, .dl-char-beat, .dl-modcard, .dl-modles, .dl-trackcard,
+  .dl-roomcard, .dl-bigroom, .dl-person-row, .dl-gm-row {
+    box-shadow: 0 3px 0 var(--shadow), 0 8px 20px rgba(90,70,140,0.06);
+  }
+
+  /* Buttons get a satisfying press */
+  .dl-continue, .dl-tour-next, .dl-quickjoin, .dl-bigroom-join, .dl-gm-create, .dl-auth-submit {
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .dl-continue:active, .dl-tour-next:active, .dl-quickjoin:active,
+  .dl-bigroom-join:active, .dl-gm-create:active, .dl-auth-submit:active { transform: translateY(3px); }
+
+  /* Top stat pills become bright little chips */
+  .dl-pill { background: var(--card); padding: 7px 13px; border-radius: 20px;
+    box-shadow: 0 2px 0 var(--shadow); font-size: 14px; }
+  .dl-pill.fire { background: #fff2e0; color: #e8720c; }
+  .dl-pill.gem { background: #e4f4ff; color: #1189cc; }
+  .dl-pill.pearl { background: #f0e8ff; color: #6a3fc9; }
+  .dl-top { border-bottom: none; background: transparent; }
+
+  /* Book chips: more colourful, less grey */
+  .dl-book-chip { background: var(--card); color: #6f6a86; box-shadow: 0 2px 0 var(--shadow); }
+  .dl-book-chip.active { background: linear-gradient(135deg, var(--green), #46b800); box-shadow: 0 3px 0 var(--green-dark); }
+  .dl-book-chip.nt.active { background: linear-gradient(135deg, var(--blue), #0f8fd4); box-shadow: 0 3px 0 var(--blue-dark); }
+
+  /* Tab bar: soft, rounded, floating */
+  .dl-tabs { background: rgba(255,255,255,0.94); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--gray-light); box-shadow: 0 -4px 22px rgba(90,70,140,0.10); }
+  .dl-tab.active { color: var(--purple-dark); }
+  .dl-tab.active .dl-tab-icon { transform: translateY(-2px) scale(1.12); }
+  .dl-tab-icon { transition: transform 0.18s ease; }
+
+  /* Empty states feel warmer */
+  .dl-empty-note { color: var(--gray); }
+
+  /* Streak card gets some warmth */
+  .dl-streak-card { background: linear-gradient(150deg, #fff6e6 0%, #ffeede 55%, #ffe9f2 100%);
+    border: none; box-shadow: 0 3px 0 rgba(230,167,0,0.18), 0 10px 26px rgba(255,150,0,0.10); }
+  .dl-streak-num { color: #e8720c; }
+
+  /* Devotional card: soft purple wash */
+  .dl-devotional-card { background: linear-gradient(150deg, #f5edff 0%, #eef3ff 100%); border: none;
+    box-shadow: 0 3px 0 rgba(126,63,242,0.12); }
+
+  /* Explore nav pills */
+  .dl-explore-btn.active { background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+    box-shadow: 0 3px 0 rgba(90,40,160,0.35); }
+
+  /* Social tabs */
+  .dl-social-tab.active { background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    box-shadow: 0 3px 0 rgba(10,130,105,0.35); }
+
+  /* Trophy shine when earned */
+  .dl-trophy.earned { background: linear-gradient(150deg, #fff6df, #ffeec4);
+    box-shadow: 0 3px 0 #f0d191; }
+
+  /* Lesson node bounce on press */
+  .dl-node { transition: transform 0.1s ease; }
+  .dl-node:active { transform: translateY(3px) scale(0.97); }
+
+  /* Gentle entrance for page content */
+  .dl-daily-wrap > *, .dl-path > * { animation: dl-fade-up 0.35s ease both; }
+  @keyframes dl-fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }

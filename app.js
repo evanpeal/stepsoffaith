@@ -3906,8 +3906,8 @@
           ]);
         })(),
 
-        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Tests']),
-        e('div', {className:'dl-empty-note', key:'note'}, 'Spend gems to play \u2014 earn pearls for every question you get right, and spend pearls on badges in your Profile.'),
+        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Challenges']),
+        e('div', {className:'dl-empty-note', key:'note'}, 'Spend a few gems, earn a pearl for every right answer, and turn those pearls into badges. Six fresh ones every day.'),
         e('div', {className:'dl-refresh-pill', key:'refresh'}, [String.fromCodePoint(0x1F504), ' New tests in ' + formatCountdown(msUntilMidnight())]),
         ...dailyTests().map(test => {
           const best = state.testBest[test.id];
@@ -3993,7 +3993,7 @@
             e('button', {className:'dl-plan-leave', onClick: stopPlan, key:'leave'}, 'Leave this plan')
           ]);
         })() : [
-          e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Pick a plan to follow alongside your main path \u2014 it just guides which lessons to read each day.'),
+          e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Something to follow alongside your main path. It just tells you what to read each day \u2014 no pressure.'),
           ...READING_PLANS.map(plan => {
             const prog = planProgress(plan, state);
             return e('div', {className:'dl-plan-card', key:plan.id}, [
@@ -4145,7 +4145,7 @@
             ]);
           })()
           : [
-            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Guided studies built around real life, not book order. Pick the one that fits where you are.'),
+            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'n'}, 'Real life, not book order. Pick whichever one fits where you actually are right now.'),
             ...TRACKS.map(tr => e('button', {className:'dl-trackcard', onClick:()=>{ if (requireAccount('open guided tracks')) return; setOpenTrack(tr.id); }, key:tr.id}, [
               e('div', {className:'dl-trackcard-icon', key:'i'}, tr.icon),
               e('div', {className:'dl-trackcard-tag', key:'g'}, tr.tag),
@@ -4217,8 +4217,8 @@
           ]
         ) : null,
 
-        exploreView === 'topics' ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'lbl'}, [String.fromCodePoint(0x1F50D), ' Find what you need']) : null,
-        exploreView === 'topics' ? e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Search how you\u2019re feeling, or what you\u2019re walking through \u2014 or tap a topic below.') : null,
+        exploreView === 'topics' ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'lbl'}, [String.fromCodePoint(0x1F50D), ' How are you doing today?']) : null,
+        exploreView === 'topics' ? e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Tell me what you\u2019re carrying and I\u2019ll find something for it \u2014 or just tap one below.') : null,
         exploreView === 'topics' ? e('input', {className:'dl-search-input', value:searchQuery, placeholder:'Try \u201canxious\u201d, \u201cgrief\u201d, \u201chope\u201d\u2026', onChange: ev => setSearchQuery(ev.target.value), key:'input'}) : null,
 
         (exploreView === 'topics' && openTopic) ? (() => {
@@ -4691,7 +4691,7 @@
 
         e('div', {className:'dl-section-title', key:'badgeslbl'}, [String.fromCodePoint(0x1F539), ' Badges']),
         state.completedCheckpoints.length === 0
-          ? e('div', {className:'dl-empty-note', key:'empty'}, 'Finish a book to earn your first badge.')
+          ? e('div', {className:'dl-empty-note', key:'empty'}, 'Finish your first book and a badge shows up right here.')
           : e('div', {className:'dl-badge-row', key:'badges'}, state.completedCheckpoints.map(b => e('div', {className:'dl-badge', key:b}, [String.fromCodePoint(0x1F3C6), ' ' + b]))),
         e('div', {className:'dl-empty-note', style:{margin:'10px 0'}, key:'shopnote'}, 'Spend pearls earned from tests to unlock more badges.'),
         e('div', {className:'dl-shop-grid', key:'shopgrid'}, BADGES.map(badge => {
@@ -4709,7 +4709,7 @@
 
         e('div', {className:'dl-section-title', style:{marginTop:'22px'}, key:'rlabel'}, [String.fromCodePoint(0x1F4DD), ' Your reflections']),
         state.reflections.length === 0
-          ? e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'rnote'}, 'Reflections you save after lessons will show up here.')
+          ? e('div', {className:'dl-empty-note', style:{marginBottom:'10px'}, key:'rnote'}, 'Anything you write after a lesson lands here. A little journal that builds itself.')
           : e('div', {key:'rlist'}, state.reflections.map(r => e('div', {className:'dl-reflection-card', key:r.id}, [
               e('div', {className:'dl-reflection-meta', key:'m'}, r.book + ' \u00b7 ' + r.title + ' \u00b7 ' + r.date),
               e('div', {className:'dl-reflection-prompt-text', key:'p'}, r.prompt),
