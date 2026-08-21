@@ -6,43 +6,76 @@
   <title>Steps to Faith</title>
   <meta name="description" content="Walk through the Bible one lesson at a time — a guided, story-by-story path through Scripture with daily reading, tests, and reflection.">
   <meta name="theme-color" content="#a56cf0">
-
   <!-- PWA / Add to Home Screen -->
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Steps to Faith">
-  <link rel="canonical" href="https://stepstofaith.com/">
-
+  <link rel="canonical" href="https://www.stepstofaith.com/">
   <!-- Social sharing preview -->
   <meta property="og:title" content="Steps to Faith — A guided walk through the Bible">
   <meta property="og:description" content="Walk through the Bible one lesson at a time — a guided, story-by-story path through Scripture with daily reading, tests, and reflection.">
-  <meta property="og:url" content="https://stepstofaith.com/">
+  <meta property="og:url" content="https://www.stepstofaith.com/">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:site_name" content="Steps to Faith">
+  <meta property="og:image" content="https://www.stepstofaith.com/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.stepstofaith.com/icon-512.png">
   <meta name="twitter:title" content="Steps to Faith — A guided walk through the Bible">
   <meta name="twitter:description" content="Walk through the Bible one lesson at a time — a guided, story-by-story path through Scripture with daily reading, tests, and reflection.">
-
   <!-- App icon (shepherd logo) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22><defs><radialGradient%20id=%22bg%22%20cx=%2250%25%22%20cy=%2232%25%22%20r=%2275%25%22><stop%20offset=%220%25%22%20stop-color=%22%23a56cf0%22/><stop%20offset=%22100%25%22%20stop-color=%22%234a2f7a%22/></radialGradient></defs><circle%20cx=%2250%22%20cy=%2250%22%20r=%2250%22%20fill=%22url(%23bg)%22/><g%20fill=%22%23fdfaf3%22><circle%20cx=%2247%22%20cy=%2230%22%20r=%227.5%22/><path%20d=%22M32%2076%20Q30%2048%2047%2041%20Q64%2048%2062%2076%20Z%22/></g><path%20d=%22M68%2024%20Q60%2022%2061%2032%20L61%2078%22%20fill=%22none%22%20stroke=%22%23fdfaf3%22%20stroke-width=%223%22%20stroke-linecap=%22round%22/></svg>">
-
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
+  <!-- Styles for the text Google reads (hidden the moment the app loads) -->
+  <style>
+    .dl-seo{max-width:640px;margin:0 auto;padding:40px 22px;font-family:'Nunito',system-ui,sans-serif;color:#2f3037}
+    .dl-seo h1{font-family:'Baloo 2',sans-serif;font-size:26px;line-height:1.25;margin:0 0 14px}
+    .dl-seo h2{font-family:'Baloo 2',sans-serif;font-size:19px;margin:22px 0 8px}
+    .dl-seo p,.dl-seo li{line-height:1.6;font-size:15px;color:#55566a}
+    .dl-seo ul{padding-left:20px}.dl-seo li{margin-bottom:6px}
+    .dl-seo-load{color:#a56cf0;font-weight:700;margin-top:22px}
+  </style>
+
+  <!-- Tells Google what this site is -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Steps to Faith",
+   "url":"https://www.stepstofaith.com/","applicationCategory":"EducationalApplication",
+   "operatingSystem":"Any","browserRequirements":"Requires JavaScript",
+   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+   "description":"A free guided walk through the Bible, one short lesson at a time - daily readings, quizzes, streaks, reflections and deep studies from Genesis to Revelation."}
+  </script>
 </head>
 <body>
-  <div id="dl-root"></div>
-
+  <div id="dl-root">
+    <!-- Text for Google to read. The app replaces all of this the moment it loads. -->
+    <main class="dl-seo">
+      <h1>Steps to Faith — a guided walk through the Bible</h1>
+      <p>Steps to Faith is a free Bible app that walks you through Scripture one short lesson at a
+      time, starting in Genesis and running all the way to Revelation. Every lesson gives you a
+      passage to read, a few questions to check what you understood, and a deeper look at what it means.</p>
+      <h2>What you can do</h2>
+      <ul>
+        <li><strong>Follow the path</strong> — short lessons through every book of the Bible, in order or jump to any book you want.</li>
+        <li><strong>Read daily</strong> — a verse and devotional every morning, with a streak to keep you coming back.</li>
+        <li><strong>Test what you know</strong> — Bible quizzes, a daily word game, gems, pearls and badges to earn.</li>
+        <li><strong>Search by how you feel</strong> — verses for anxiety, grief, doubt, guilt, loneliness or thankfulness.</li>
+        <li><strong>Go deeper</strong> — deep studies on each book, character studies, a full Bible timeline and reading plans.</li>
+        <li><strong>Walk with others</strong> — join the Upper Room with friends or a study group and share prayer requests.</li>
+      </ul>
+      <p>Free to use, works on your phone or computer, and your progress saves across every device
+      once you make an account.</p>
+      <p class="dl-seo-load">Loading Steps to Faith…</p>
+    </main>
+  </div>
   <!-- React -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
   <!-- Supabase (accounts + saved progress) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-
   <!-- App -->
   <script src="data.js"></script>
   <script src="data1b.js"></script>
