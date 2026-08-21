@@ -1210,7 +1210,7 @@ to { opacity: 1; transform: none; }
 85%  { transform: translate(20px, -78vh) scale(0.7); opacity: 0.25; }
 100% { transform: translate(0, -95vh) scale(0.5); opacity: 0; }
 }
-  /* ============ THE UPPER ROOM â€” candlelit room (CSS only) ============ */
+  /* ============ THE UPPER ROOM — candlelit room (CSS only) ============ */
   .dl-forest { position: relative; min-height: 100vh; background: #3d2410; }
   .dl-forest-scene { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     height: 100dvh; z-index: 0; pointer-events: none;

@@ -4473,6 +4473,108 @@
           ]
         ) : null,
 
+        exploreView === 'tracks' ? e('div', {key:'tracks'},
+          openLessonTrack ? (() => {
+            const tr = TRACKS.find(t => t.id === openTrack);
+            const mod = tr ? tr.modules.find(m => m.id === openModule) : null;
+            const les = mod ? mod.lessons.find(l => l.id === openLessonTrack) : null;
+            if (!les) return null;
+            const idx = mod.lessons.findIndex(l => l.id === les.id);
+            const done = (state.trackDone || []).includes(les.id);
+            const next = mod.lessons[idx + 1];
+            return e('div', {key:'lesson'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>{ stopSpeaking(); setOpenLessonTrack(null); }, key:'back'}, String.fromCodePoint(0x2190) + ' ' + mod.title),
+              e('div', {className:'dl-tl-step', key:'st'}, 'Lesson ' + (idx + 1) + ' of ' + mod.lessons.length),
+              e('div', {className:'dl-tl-h', key:'h'}, les.title),
+              e('button', {className:'dl-listen-inline' + (isSpeaking ? ' active' : ''), onClick:()=>toggleSpeak(
+                les.title + '. ' + (les.scripture ? les.scripture.ref + '. ' + les.scripture.text + ' ' : '') + les.body
+              ), key:'listen'}, [String.fromCodePoint(isSpeaking ? 0x23F9 : 0x1F50A), ' ', isSpeaking ? 'Stop' : 'Listen']),
+              les.scripture ? e('div', {className:'dl-tl-scripture', key:'sc'}, [
+                e('div', {className:'dl-tl-ref', key:'r'}, les.scripture.ref),
+                e('div', {className:'dl-tl-verse', key:'v'}, les.scripture.text)
+              ]) : null,
+              ...String(les.body || '').split('\n\n').map((para, pi) =>
+                e('p', {className:'dl-tl-body', key:'p' + pi}, para)
+              ),
+              les.reflect ? e('div', {className:'dl-tl-reflect', key:'rf'}, [
+                e('div', {className:'dl-tl-reflect-h', key:'h'}, 'Sit with this'),
+                e('div', {key:'t'}, les.reflect)
+              ]) : null,
+              les.prayer ? e('div', {className:'dl-tl-prayer', key:'pr'}, [
+                e('div', {className:'dl-tl-prayer-h', key:'h'}, 'A prayer'),
+                e('div', {key:'t'}, les.prayer)
+              ]) : null,
+              e('button', {className:'dl-continue', style:{marginTop:'18px'}, onClick:()=>{
+                stopSpeaking();
+                const list = state.trackDone || [];
+                if (!list.includes(les.id)) persist({ ...state, trackDone: [...list, les.id] });
+                if (next) setOpenLessonTrack(next.id); else setOpenLessonTrack(null);
+              }, key:'done'}, next ? (done ? 'Next lesson' : 'Mark done \u00b7 Next lesson') : (done ? 'Back to lessons' : 'Mark done'))
+            ]);
+          })()
+
+          : openModule ? (() => {
+            const tr = TRACKS.find(t => t.id === openTrack);
+            const mod = tr ? tr.modules.find(m => m.id === openModule) : null;
+            if (!mod) return null;
+            return e('div', {key:'module'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenModule(null), key:'back'}, String.fromCodePoint(0x2190) + ' ' + tr.name),
+              e('div', {className:'dl-mod-head', key:'head'}, [
+                e('div', {className:'dl-mod-icon', key:'i'}, mod.icon),
+                e('div', {className:'dl-mod-title', key:'t'}, mod.title),
+                e('div', {className:'dl-mod-sum', key:'s'}, mod.summary)
+              ]),
+              ...mod.lessons.map((l, li) => {
+                const isDone = (state.trackDone || []).includes(l.id);
+                return e('button', {className:'dl-modles' + (isDone ? ' done' : ''), onClick:()=>setOpenLessonTrack(l.id), key:l.id}, [
+                  e('span', {className:'dl-modles-num', key:'n'}, isDone ? String.fromCodePoint(0x2713) : (li + 1)),
+                  e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
+                    e('div', {className:'dl-modles-title', key:'a'}, l.title),
+                    l.scripture ? e('div', {className:'dl-modles-ref', key:'b'}, l.scripture.ref) : null
+                  ])
+                ]);
+              })
+            ]);
+          })()
+
+          : openTrack ? (() => {
+            const tr = TRACKS.find(t => t.id === openTrack);
+            if (!tr) return null;
+            return e('div', {key:'track'}, [
+              e('button', {className:'dl-topic-back', onClick:()=>setOpenTrack(null), key:'back'}, String.fromCodePoint(0x2190) + ' All tracks'),
+              e('div', {className:'dl-track-head', key:'head'}, [
+                e('div', {className:'dl-track-icon', key:'i'}, tr.icon),
+                e('div', {className:'dl-track-name', key:'n'}, tr.name),
+                e('div', {className:'dl-track-blurb', key:'b'}, tr.blurb),
+                tr.note ? e('div', {className:'dl-track-note', key:'note'}, tr.note) : null
+              ]),
+              ...tr.modules.map(m => {
+                const total = m.lessons.length;
+                const doneN = m.lessons.filter(l => (state.trackDone || []).includes(l.id)).length;
+                return e('button', {className:'dl-modcard', onClick:()=>setOpenModule(m.id), key:m.id}, [
+                  e('span', {className:'dl-modcard-icon', key:'i'}, m.icon),
+                  e('span', {style:{flex:1, minWidth:0}, key:'t'}, [
+                    e('div', {className:'dl-modcard-title', key:'a'}, m.title),
+                    e('div', {className:'dl-modcard-sum', key:'b'}, m.summary),
+                    e('div', {className:'dl-modcard-prog', key:'c'}, doneN + ' of ' + total + ' done')
+                  ])
+                ]);
+              })
+            ]);
+          })()
+
+          : [
+              e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Guided studies for what people actually wrestle with. Pick the one that fits where you are.'),
+              ...TRACKS.map(tr => e('button', {className:'dl-trackcard', onClick:()=>{ if (requireAccount('open track studies')) return; setOpenTrack(tr.id); setOpenModule(null); setOpenLessonTrack(null); }, key:tr.id}, [
+                e('div', {className:'dl-trackcard-icon', key:'i'}, tr.icon),
+                e('div', {className:'dl-trackcard-tag', key:'g'}, tr.tag),
+                e('div', {className:'dl-trackcard-name', key:'n'}, tr.name),
+                e('div', {className:'dl-trackcard-blurb', key:'b'}, tr.blurb),
+                !user ? e('span', {className:'dl-lockdot', key:'lk'}, String.fromCodePoint(0x1F512)) : null
+              ]))
+            ]
+        ) : null,
+
         exploreView === 'topics' ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'lbl'}, [String.fromCodePoint(0x1F50D), ' How are you doing today?']) : null,
         exploreView === 'topics' ? e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'note'}, 'Tell me what you\u2019re carrying and I\u2019ll find something for it \u2014 or just tap one below.') : null,
         exploreView === 'topics' ? e('input', {className:'dl-search-input', value:searchQuery, placeholder:'Try \u201canxious\u201d, \u201cgrief\u201d, \u201chope\u201d\u2026', onChange: ev => setSearchQuery(ev.target.value), key:'input'}) : null,
@@ -4943,8 +5045,6 @@
               (roomView === 'chat' && isMember) ? e('div', {className:'dl-assignwrap', key:'assignwrap'}, [
                 !composerMode
                   ? e('div', {className:'dl-tools', key:'tools'}, [
-                      g.owner_id === user.id ? e('button', {className:'dl-tool', onClick:()=>{setComposerMode('assign'); setAssignBook(null); setAssignSearch('');}, key:'a'},
-                        [String.fromCodePoint(0x1F4DD), ' Assign']) : null,
                       g.owner_id === user.id ? e('button', {className:'dl-tool', onClick:()=>{setComposerMode('prompt'); setPromptDraft('');}, key:'p'},
                         [String.fromCodePoint(0x1F4AC), ' Discuss']) : null,
                       e('button', {className:'dl-tool', onClick:()=>{setComposerMode('ask'); setPromptDraft(''); setAskAnon(true);}, key:'q'},
