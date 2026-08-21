@@ -1088,15 +1088,70 @@ to { opacity: 1; transform: translate(-50%, 0); }
   .dl-keyverse { position: relative; }
 
   /* Roomier on tablets and laptops */
+  /* ===== Desktop / laptop layout ===== */
   @media (min-width: 820px) {
-    .dl-chat-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 16px; align-items: start; }
+    /* Give the whole app more room, not just the chat */
+    .dl-daily-wrap, .dl-path, .dl-top, .dl-book-picker { max-width: 760px; }
+
+    /* Tab bar becomes a centred floating bar instead of edge-to-edge */
+    .dl-tabs { left: 50%; right: auto; transform: translateX(-50%); width: 100%; max-width: 760px;
+      border-radius: 20px 20px 0 0; border-left: 1px solid var(--gray-light);
+      border-right: 1px solid var(--gray-light); }
+    .dl-tab { font-size: 12px; padding: 12px 4px 10px; }
+    .dl-tab-icon { font-size: 26px; }
+
+    /* Two-column room: chat left, people right */
+    .dl-chat-wrap { display: grid; grid-template-columns: minmax(0,1fr) 260px;
+      gap: 16px; align-items: start; }
     .dl-chat-header { grid-column: 1 / -1; }
     .dl-roomtabs { display: none; }
-    .dl-people-pane { grid-column: 2; margin-bottom: 0; position: sticky; top: 12px; }
-    .dl-chat-scroll { max-height: 62vh; }
+    .dl-people-pane { grid-column: 2; grid-row: 2 / span 4; margin-bottom: 0;
+      position: sticky; top: 12px; }
+    .dl-chat-scroll { grid-column: 1; max-height: 58vh; }
+    .dl-chat-composer, .dl-chat-joinbar { grid-column: 1; }
+
+    /* Grids get an extra column where it helps */
+    .dl-topic-grid { grid-template-columns: repeat(3, 1fr); }
+    .dl-char-grid { grid-template-columns: repeat(3, 1fr); }
+    .dl-profile-grid { grid-template-columns: repeat(4, 1fr); }
+    .dl-shop-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* Modals sit as centred cards rather than full-bleed */
+    .dl-tour-card { max-width: 460px; }
+  }
+
+  @media (min-width: 1100px) {
+    .dl-daily-wrap, .dl-path, .dl-top, .dl-book-picker, .dl-tabs { max-width: 860px; }
+    .dl-chat-wrap { grid-template-columns: minmax(0,1fr) 300px; }
   }
 
   /* On phones only one room pane shows at a time */
   @media (max-width: 819px) {
     .dl-people-pane.mobile-hide, .dl-chat-scroll.mobile-hide { display: none; }
+  }
+
+  /* Desktop: keep long-form reading comfortable, not stretched */
+  @media (min-width: 820px) {
+    /* Profile background stays full-bleed, content stays centred */
+    .dl-profile-page { max-width: 760px; margin: 0 auto; }
+    .dl-profile-header { max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* Lesson + study reading columns stay narrow for readability */
+    .dl-lesson-body, .dl-dc-body { max-width: 560px; }
+    .dl-footer { max-width: 560px; }
+
+    /* Full-screen modals become a centred sheet */
+    .dl-dc-modal-bg.open { align-items: stretch; }
+    .dl-lesson-top { max-width: 760px; margin: 0 auto; width: 100%; }
+
+    /* Timeline and tracks breathe */
+    .dl-era-line { padding-left: 24px; }
+
+    /* Section titles slightly larger */
+    .dl-section-title { font-size: 17px; }
+  }
+
+  @media (min-width: 1100px) {
+    .dl-profile-page { max-width: 860px; }
+    .dl-lesson-top { max-width: 860px; }
   }
