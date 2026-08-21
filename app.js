@@ -2469,6 +2469,7 @@
     const [postDraft, setPostDraft] = React.useState('');
     const [postKind, setPostKind] = React.useState('prayer');
     const [friendsView, setFriendsView] = React.useState('feed');
+    const [dailyView, setDailyView] = React.useState('verse');
     const [chatKind, setChatKind] = React.useState('message');
     const [newRoomCode, setNewRoomCode] = React.useState('');
     const [showCreateRoom, setShowCreateRoom] = React.useState(false);
@@ -2508,8 +2509,17 @@
     const [gatePrompt, setGatePrompt] = React.useState('');
     const [showTour, setShowTour] = React.useState(false);
 
+    // Only run the per-second clock where a countdown is visible.
+    // Ticking globally re-rendered the whole app every second.
     React.useEffect(() => {
+      if (tab !== 'daily') return;
       const iv = setInterval(() => setNowTick(Date.now()), 1000);
+      return () => clearInterval(iv);
+    }, [tab]);
+
+    // Cheap minute-level tick so the day still rolls over elsewhere
+    React.useEffect(() => {
+      const iv = setInterval(() => setNowTick(Date.now()), 60000);
       return () => clearInterval(iv);
     }, []);
 
@@ -2657,7 +2667,7 @@
     }, [openGroup]);
 
     React.useEffect(() => {
-      if (tab === 'profile' && sb && user) loadFeed();
+      if ((tab === 'community' || tab === 'profile') && sb && user) loadFeed();
     }, [tab, user && user.id, friends.length]);
 
     // Keep the newest message in view
@@ -2689,7 +2699,7 @@
           () => { loadGroupDetail(openGroup, true); })
         .subscribe();
       // Safety net in case the socket drops
-      const poll = setInterval(() => { loadGroupDetail(openGroup, true); }, 3000);
+      const poll = setInterval(() => { loadGroupDetail(openGroup, true); }, 6000);
       return () => { try { sb.removeChannel(ch); } catch (ex) {} clearInterval(poll); };
     }, [openGroup, user && user.id]);
 
@@ -2708,7 +2718,7 @@
           if (openGroup) loadGroupDetail(openGroup);
         })
         .subscribe();
-      const poll = setInterval(() => { loadRequests(); loadFriends(); }, 8000);
+      const poll = setInterval(() => { if (tab === 'community') { loadRequests(); loadFriends(); } }, 15000);
       return () => { try { sb.removeChannel(ch); } catch (ex) {} clearInterval(poll); };
     }, [user && user.id]);
 
@@ -4126,16 +4136,16 @@
 
       tab === 'daily' ? e('div', {className:'dl-daily-wrap', key:'daily'}, [
         e('button', {className:'dl-topic-back', onClick:()=>setTab('library'), key:'bk'}, String.fromCodePoint(0x2190) + ' Library'),
-        e('div', {className:'dl-passage-card', key:'verse'}, [
+        dailyView === 'verse' ? e('div', {className:'dl-passage-card', key:'verse'}, [
           e('div', {className:'dl-passage-ref'}, 'Today\u2019s reading \u00b7 ' + todaysDevotional().ref),
           e('div', {className:'dl-passage-text'}, '\u201c' + todaysDevotional().verse + '\u201d')
-        ]),
-        e('div', {className:'dl-devotional-card', key:'devotional'}, [
+        ]) : null,
+        dailyView === 'verse' ? e('div', {className:'dl-devotional-card', key:'devotional'}, [
           e('div', {className:'dl-devotional-label', key:'lbl'}, [String.fromCodePoint(0x2600), ' Today\u2019s devotional']),
           e('div', {className:'dl-devotional-title', key:'t'}, todaysDevotional().title),
           e('div', {className:'dl-devotional-text', key:'txt'}, todaysDevotional().text)
-        ]),
-        e('div', {className:'dl-streak-card', key:'streak'}, [
+        ]) : null,
+        dailyView === 'verse' ? e('div', {className:'dl-streak-card', key:'streak'}, [
           e('div', {className:'dl-streak-num', key:'n'}, state.dailyStreak),
           e('div', {className:'dl-streak-label', key:'l'}, state.dailyStreak === 1 ? 'day streak' : 'day streak'),
           e('div', {className:'dl-streak-week', key:'week'}, last7Days().map(d => e('span', {className:'dl-streak-dot', style:{background: streakDateSet(state).has(d) ? 'var(--gold)' : 'var(--gray-light)'}, key:d}))),
@@ -4149,10 +4159,10 @@
           state.lastCheckIn === todayStr()
             ? e('div', {className:'dl-checked-in', key:'done'}, [String.fromCodePoint(0x2705), ' You\u2019re checked in for today']) 
             : e('button', {className:'dl-continue', onClick: checkInToday, key:'btn'}, 'I read today\u2019s verse')
-        ]),
+        ]) : null,
 
-        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word Game']),
-        (() => {
+        dailyView === 'challenges' ? e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'wlabel'}, [String.fromCodePoint(0x1F4AC), ' Word Game']) : null,
+        dailyView === 'challenges' ? (() => {
           const g = wordleGame();
           if (!g) {
             const canPlay = (state.gems || 0) >= WORDLE_COST;
@@ -4207,12 +4217,12 @@
                   })
                 )))
           ]);
-        })(),
+        })() : null,
 
-        e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Challenges']),
-        e('div', {className:'dl-empty-note', key:'note'}, 'Spend a few gems, earn a pearl for every right answer, and turn those pearls into badges. Six fresh ones every day.'),
-        e('div', {className:'dl-refresh-pill', key:'refresh'}, [String.fromCodePoint(0x1F504), ' New tests in ' + formatCountdown(msUntilMidnight())]),
-        ...dailyTests().map(test => {
+        dailyView === 'challenges' ? e('div', {className:'dl-section-title', style:{marginTop:'26px'}, key:'label'}, [String.fromCodePoint(0x1F3C6), ' Today\u2019s Challenges']) : null,
+        dailyView === 'challenges' ? e('div', {className:'dl-empty-note', key:'note'}, 'Spend a few gems, earn a pearl for every right answer, and turn those pearls into badges. Six fresh ones every day.') : null,
+        dailyView === 'challenges' ? e('div', {className:'dl-refresh-pill', key:'refresh'}, [String.fromCodePoint(0x1F504), ' New tests in ' + formatCountdown(msUntilMidnight())]) : null,
+        ...(dailyView === 'challenges' ? dailyTests() : []).map(test => {
           const best = state.testBest[test.id];
           const canAfford = state.gems >= test.cost;
           return e('div', {className:'dl-test-card', key:test.id}, [
@@ -4347,7 +4357,7 @@
       tab === 'library' ? e('div', {className:'dl-daily-wrap', key:'libhub'}, [
         e('div', {className:'dl-page-title', key:'pt'}, 'Library'),
         e('div', {className:'dl-hub-heading', key:'hh'}, [String.fromCodePoint(0x2600), ' Start here']),
-        e('button', {className:'dl-today-card', onClick:()=>setTab('daily'), key:'today'}, [
+        e('button', {className:'dl-today-card', onClick:()=>{setDailyView('verse'); setTab('daily');}, key:'today'}, [
           e('div', {className:'dl-today-top', key:'t'}, [
             e('span', {className:'dl-today-label', key:'l'}, 'Today\u2019s verse & devotional'),
             e('span', {className:'dl-today-streak', key:'s'}, [String.fromCodePoint(0x1F525), ' ', state.dailyStreak, ' day streak'])
@@ -4386,10 +4396,10 @@
             e('span', {className:'dl-hub-name', key:'n'}, 'People'),
             e('span', {className:'dl-hub-sub', key:'s'}, 'Follow one life through')
           ]),
-          e('button', {className:'dl-hub-card', onClick:()=>setTab('daily'), key:'g'}, [
-            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F3C6)),
-            e('span', {className:'dl-hub-name', key:'n'}, 'Challenges'),
-            e('span', {className:'dl-hub-sub', key:'s'}, 'Tests and the word game')
+          e('button', {className:'dl-hub-card', onClick:()=>{setDailyView('challenges'); setTab('daily');}, key:'g'}, [
+            e('span', {className:'dl-hub-icon', key:'i'}, String.fromCodePoint(0x1F3AE)),
+            e('span', {className:'dl-hub-name', key:'n'}, 'Games'),
+            e('span', {className:'dl-hub-sub', key:'s'}, 'Word game and daily tests')
           ])
         ])
       ]) : null,
@@ -4523,8 +4533,14 @@
           e('span', {className:'dl-tree t2', key:'2'}, String.fromCodePoint(0x1F333)),
           e('span', {className:'dl-tree t3', key:'3'}, String.fromCodePoint(0x1F332)),
           e('span', {className:'dl-tree t4', key:'4'}, String.fromCodePoint(0x1F333)),
-          e('span', {className:'dl-tree t5', key:'5'}, String.fromCodePoint(0x1F332))
+          e('span', {className:'dl-tree t5', key:'5'}, String.fromCodePoint(0x1F332)),
+          e('span', {className:'dl-tree t6', key:'6'}, String.fromCodePoint(0x1F333)),
+          e('span', {className:'dl-tree t7', key:'7'}, String.fromCodePoint(0x1F332)),
+          e('span', {className:'dl-leaf l1', key:'l1'}, String.fromCodePoint(0x1F343)),
+          e('span', {className:'dl-leaf l2', key:'l2'}, String.fromCodePoint(0x1F342)),
+          e('span', {className:'dl-leaf l3', key:'l3'}, String.fromCodePoint(0x1F343))
         ]),
+        e('div', {className:'dl-forest-beam', key:'beam'}),
         e('div', {className:'dl-forest-inner', key:'inner'}, [
         e('div', {className:'dl-forest-head', key:'ptitle'}, [
           e('div', {className:'dl-forest-title', key:'t'}, 'The Upper Room'),
@@ -4956,25 +4972,73 @@
               e('button', {className:'dl-newroom-close', onClick:()=>setNewRoomCode(''), key:'x'}, 'Got it')
             ]) : null,
 
-            e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'intro'},
-              'Create a room for your class, small group, or study. Share the code with whoever you want in it.'),
+            e('div', {className:'dl-social-tabs', key:'stabs'}, [
+              e('button', {className:'dl-social-tab' + (socialTab==='groups'?' active':''), onClick:()=>{setSocialTab('groups'); setSocialMsg('');}, key:'g'}, 'Rooms'),
+              e('button', {className:'dl-social-tab' + (socialTab==='friends'?' active':''), onClick:()=>{setSocialTab('friends'); setSocialMsg('');}, key:'f'}, [
+                'Friends',
+                incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
+              ])
+            ]),
 
             socialMsg ? e('div', {className:'dl-social-msg', key:'msg'}, socialMsg) : null,
 
-            false ? e('div', {key:'friendspane'}, [
-              e('div', {className:'dl-search-wrap', key:'search'}, [
+            socialTab === 'friends' ? e('div', {key:'friendspane'}, [
+              e('div', {className:'dl-social-tabs', style:{marginBottom:'12px'}, key:'fv'}, [
+                e('button', {className:'dl-social-tab' + (friendsView==='feed'?' active':''), onClick:()=>setFriendsView('feed'), key:'f'}, 'Prayer feed'),
+                e('button', {className:'dl-social-tab' + (friendsView==='people'?' active':''), onClick:()=>setFriendsView('people'), key:'p'}, 'People')
+              ]),
+
+              friendsView === 'feed' ? e('div', {key:'feedpane'}, [
+                e('div', {className:'dl-post-box', key:'pb'}, [
+                  e('div', {className:'dl-post-kinds', key:'k'}, [
+                    e('button', {className:'dl-kind-btn' + (postKind==='prayer'?' active':''), onClick:()=>setPostKind('prayer'), key:'p'}, [String.fromCodePoint(0x1F64F), ' Prayer']),
+                    e('button', {className:'dl-kind-btn' + (postKind==='praise'?' active':''), onClick:()=>setPostKind('praise'), key:'r'}, [String.fromCodePoint(0x1F389), ' Praise'])
+                  ]),
+                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'62px'}, value:postDraft,
+                    placeholder: postKind==='prayer' ? 'What do you need prayer for?' : 'What is God doing?',
+                    onChange: ev=>setPostDraft(ev.target.value), key:'t'}),
+                  e('button', {className:'dl-social-btn', style:{width:'100%', marginTop:'10px', padding:'11px'}, onClick: createPost, key:'s'}, 'Share with friends')
+                ]),
+                feed.length === 0
+                  ? e('div', {className:'dl-empty-note', key:'none'}, friends.length ? 'Nothing yet. Be the first to share something.' : 'Add a friend and their prayer requests show up here.')
+                  : e('div', {className:'dl-feed-scroll', key:'list'}, feed.map(p => {
+                      const who = p.user_id === user.id ? { display_name:'You', avatar:(state.profile&&state.profile.avatar) } : friends.find(f => f.id === p.user_id);
+                      const prayCount = feedPrayers.filter(x => x.post_id === p.id).length;
+                      const iPrayed = feedPrayers.some(x => x.post_id === p.id && x.user_id === user.id);
+                      const mine = p.user_id === user.id;
+                      return e('div', {className:'dl-post' + (p.answered?' answered':''), key:p.id}, [
+                        e('div', {className:'dl-post-top', key:'t'}, [
+                          e('span', {className:'dl-post-av', key:'a'}, (who && who.avatar) || String.fromCodePoint(0x1F4D6)),
+                          e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                            e('div', {className:'dl-post-who', key:'w'}, (who && who.display_name) || 'A friend'),
+                            e('div', {className:'dl-post-kind', key:'k'}, p.answered ? 'Answered prayer' : (p.kind === 'praise' ? 'Praise' : 'Prayer request'))
+                          ])
+                        ]),
+                        e('div', {className:'dl-post-body', key:'b'}, p.body),
+                        e('div', {className:'dl-post-foot', key:'f'}, [
+                          e('button', {className:'dl-pray-btn' + (iPrayed?' active':''), onClick:()=>togglePostPrayer(p.id), key:'p'},
+                            [String.fromCodePoint(0x1F64F), ' ', iPrayed ? 'Praying' : 'Pray']),
+                          prayCount > 0 ? e('span', {className:'dl-pray-count', key:'c'}, prayCount + ' praying') : null,
+                          (mine && !p.answered && p.kind === 'prayer') ? e('button', {className:'dl-prayer-mini', onClick:()=>markPostAnswered(p.id), key:'a'}, 'Mark answered') : null,
+                          mine ? e('button', {className:'dl-prayer-mini', onClick:()=>deletePost(p.id), key:'d'}, 'Delete') : null
+                        ])
+                      ]);
+                    }))
+              ]) : null,
+
+              friendsView === 'people' ? e('div', {className:'dl-search-wrap', key:'search'}, [
                 e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
                 e('input', {className:'dl-people-search', value:peopleQuery, placeholder:'Search people by name\u2026', onChange: ev=>{ setPeopleQuery(ev.target.value); searchPeople(ev.target.value); }, key:'in'}),
                 peopleQuery ? e('button', {className:'dl-search-clear', onClick:()=>{setPeopleQuery(''); setPeopleResults([]);}, key:'c'}, String.fromCodePoint(0x2715)) : null
-              ]),
+              ]) : null,
 
-              peopleQuery.trim().length >= 2 ? e('div', {key:'results'},
+              (friendsView === 'people' && peopleQuery.trim().length >= 2) ? e('div', {key:'results'},
                 peopleResults.length === 0
                   ? e('div', {className:'dl-empty-note', key:'nr'}, 'No one found with that name.')
                   : peopleResults.map(p => personRow(p, 'res'))
               ) : null,
 
-              (!peopleQuery.trim() && incomingReqs.length > 0) ? e('div', {key:'reqs'}, [
+              (friendsView === 'people' && !peopleQuery.trim() && incomingReqs.length > 0) ? e('div', {key:'reqs'}, [
                 e('div', {className:'dl-section-title', style:{marginTop:'4px'}, key:'l'}, [String.fromCodePoint(0x1F4E9), ' Friend requests']),
                 ...incomingReqs.map(r => e('div', {className:'dl-person-row', key:r.id}, [
                   e('button', {className:'dl-person-main', onClick:()=>viewProfile(r.profile.id), key:'m'}, [
@@ -4991,7 +5055,7 @@
                 ]))
               ]) : null,
 
-              (!peopleQuery.trim()) ? e('div', {key:'friendlist'}, [
+              (friendsView === 'people' && !peopleQuery.trim()) ? e('div', {key:'friendlist'}, [
                 e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x1F465), ' Your friends']),
                 friends.length === 0
                   ? e('div', {className:'dl-empty-note', key:'none'}, 'No friends yet \u2014 search a name above or add someone suggested below.')
@@ -5012,7 +5076,7 @@
                     )
               ]) : null,
 
-              (!peopleQuery.trim()) ? e('div', {key:'grow'}, [
+              (friendsView === 'people' && !peopleQuery.trim()) ? e('div', {key:'grow'}, [
                 e('div', {className:'dl-section-title', key:'gl'}, [String.fromCodePoint(0x1F517), ' Invite someone']),
                 e('button', {className:'dl-invite-wide', onClick:()=>{
                   const link = 'https://stepstofaith.com/?invite=' + ((myProfile && myProfile.friend_code) || '');
@@ -5029,14 +5093,14 @@
                 ])
               ]) : null,
 
-              (!peopleQuery.trim() && suggested.length > 0) ? e('div', {key:'sugg'}, [
+              (friendsView === 'people' && !peopleQuery.trim() && suggested.length > 0) ? e('div', {key:'sugg'}, [
                 e('div', {className:'dl-section-title', key:'l'}, [String.fromCodePoint(0x2728), ' People you might know']),
                 ...suggested.map(p => personRow(p, 'sg'))
               ]) : null
             ]) : null,
 
 
-            true ? e('div', {key:'groupspane'}, [
+            socialTab === 'groups' ? e('div', {key:'groupspane'}, [
               myGroups.length > 0 ? e('div', {className:'dl-gm-label', key:'mylbl'}, 'Your chats') : null,
               ...myGroups.map(g => e('button', {className:'dl-gm-row', onClick:()=>setOpenGroup(g.id), key:g.id}, [
                 e('span', {className:'dl-gm-avatar', key:'i'}, roomIcon(g)),
@@ -5141,122 +5205,6 @@
           e('div', {className:'dl-stat', key:'daily'}, [e('div',{className:'dl-stat-badge b3', key:'ic'}, String.fromCodePoint(0x1F3C6)), e('div',{className:'dl-stat-num', key:'n'}, state.completedCheckpoints.length), e('div',{className:'dl-stat-label', key:'l'}, 'Checkpoints')]),
           e('div', {className:'dl-stat', key:'reflections'}, [e('div',{className:'dl-stat-badge b4', key:'ic'}, String.fromCodePoint(0x1F4DD)), e('div',{className:'dl-stat-num', key:'n'}, state.reflections.length), e('div',{className:'dl-stat-label', key:'l'}, 'Reflections')])
         ]),
-
-        e('div', {className:'dl-section-title', key:'frlabel'}, [
-          String.fromCodePoint(0x1F465), ' Friends',
-          incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
-        ]),
-        !user
-          ? e('div', {className:'dl-empty-note', style:{marginBottom:'14px'}, key:'fsignin'}, 'Sign in to add friends and share prayer requests.')
-          : e('div', {className:'dl-friends-box', key:'fbox'}, [
-              e('div', {className:'dl-social-tabs', key:'ftabs'}, [
-                e('button', {className:'dl-social-tab' + (friendsView==='feed'?' active':''), onClick:()=>setFriendsView('feed'), key:'f'}, 'Prayer feed'),
-                e('button', {className:'dl-social-tab' + (friendsView==='people'?' active':''), onClick:()=>setFriendsView('people'), key:'p'}, [
-                  'People', incomingReqs.length > 0 ? e('span', {className:'dl-tab-badge', key:'b'}, incomingReqs.length) : null
-                ])
-              ]),
-
-              friendsView === 'feed' ? e('div', {key:'feedpane'}, [
-                e('div', {className:'dl-post-box', key:'pb'}, [
-                  e('div', {className:'dl-post-kinds', key:'k'}, [
-                    e('button', {className:'dl-kind-btn' + (postKind==='prayer'?' active':''), onClick:()=>setPostKind('prayer'), key:'p'}, [String.fromCodePoint(0x1F64F), ' Prayer']),
-                    e('button', {className:'dl-kind-btn' + (postKind==='praise'?' active':''), onClick:()=>setPostKind('praise'), key:'r'}, [String.fromCodePoint(0x1F389), ' Praise'])
-                  ]),
-                  e('textarea', {className:'dl-testimony-input', style:{minHeight:'62px'}, value:postDraft,
-                    placeholder: postKind==='prayer' ? 'What do you need prayer for?' : 'What is God doing?',
-                    onChange: ev=>setPostDraft(ev.target.value), key:'t'}),
-                  e('button', {className:'dl-social-btn', style:{width:'100%', marginTop:'10px', padding:'11px'}, onClick: createPost, key:'s'}, 'Share with friends')
-                ]),
-                feed.length === 0
-                  ? e('div', {className:'dl-empty-note', key:'none'}, friends.length ? 'Nothing yet. Be the first to share something.' : 'Add a friend and their prayer requests will show up here.')
-                  : e('div', {className:'dl-feed-scroll', key:'list'}, feed.map(p => {
-                      const who = p.user_id === user.id ? { display_name:'You', avatar:(state.profile&&state.profile.avatar) } : friends.find(f => f.id === p.user_id);
-                      const prayCount = feedPrayers.filter(x => x.post_id === p.id).length;
-                      const iPrayed = feedPrayers.some(x => x.post_id === p.id && x.user_id === user.id);
-                      const mine = p.user_id === user.id;
-                      return e('div', {className:'dl-post' + (p.answered?' answered':''), key:p.id}, [
-                        e('div', {className:'dl-post-top', key:'t'}, [
-                          e('span', {className:'dl-post-av', key:'a'}, (who && who.avatar) || String.fromCodePoint(0x1F4D6)),
-                          e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
-                            e('div', {className:'dl-post-who', key:'w'}, (who && who.display_name) || 'A friend'),
-                            e('div', {className:'dl-post-kind', key:'k'}, p.answered ? 'Answered prayer' : (p.kind === 'praise' ? 'Praise' : 'Prayer request'))
-                          ])
-                        ]),
-                        e('div', {className:'dl-post-body', key:'b'}, p.body),
-                        e('div', {className:'dl-post-foot', key:'f'}, [
-                          e('button', {className:'dl-pray-btn' + (iPrayed?' active':''), onClick:()=>togglePostPrayer(p.id), key:'p'},
-                            [String.fromCodePoint(0x1F64F), ' ', iPrayed ? 'Praying' : 'Pray']),
-                          prayCount > 0 ? e('span', {className:'dl-pray-count', key:'c'}, prayCount + ' praying') : null,
-                          (mine && !p.answered && p.kind === 'prayer') ? e('button', {className:'dl-prayer-mini', onClick:()=>markPostAnswered(p.id), key:'a'}, 'Mark answered') : null,
-                          mine ? e('button', {className:'dl-prayer-mini', onClick:()=>deletePost(p.id), key:'d'}, 'Delete') : null
-                        ])
-                      ]);
-                    }))
-              ]) : null,
-
-              friendsView === 'people' ? e('div', {key:'peoplepane'}, [
-                e('div', {className:'dl-search-wrap', key:'search'}, [
-                  e('span', {className:'dl-search-icon', key:'i'}, String.fromCodePoint(0x1F50D)),
-                  e('input', {className:'dl-people-search', value:peopleQuery, placeholder:'Search people by name\u2026', onChange: ev=>{ setPeopleQuery(ev.target.value); searchPeople(ev.target.value); }, key:'in'}),
-                  peopleQuery ? e('button', {className:'dl-search-clear', onClick:()=>{setPeopleQuery(''); setPeopleResults([]);}, key:'c'}, String.fromCodePoint(0x2715)) : null
-                ]),
-                peopleQuery.trim().length >= 2
-                  ? e('div', {key:'res'}, peopleResults.length === 0
-                      ? e('div', {className:'dl-empty-note', key:'nr'}, 'No one found with that name.')
-                      : peopleResults.map(p => personRow(p, 'res')))
-                  : e('div', {key:'main'}, [
-                      incomingReqs.length > 0 ? e('div', {key:'reqs'}, [
-                        e('div', {className:'dl-manage-sub', key:'l'}, 'Requests'),
-                        ...incomingReqs.map(r => e('div', {className:'dl-person-row', key:r.id}, [
-                          e('button', {className:'dl-person-main', onClick:()=>viewProfile(r.profile.id), key:'m'}, [
-                            e('span', {className:'dl-person-avatar', key:'a'}, r.profile.avatar || String.fromCodePoint(0x1F4D6)),
-                            e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
-                              e('div', {className:'dl-person-name', key:'nm'}, r.profile.display_name),
-                              e('div', {className:'dl-person-sub', key:'s'}, 'wants to be friends')
-                            ])
-                          ]),
-                          e('div', {className:'dl-req-actions', key:'act'}, [
-                            e('button', {className:'dl-req-accept', onClick:()=>acceptRequest(r), key:'a'}, 'Accept'),
-                            e('button', {className:'dl-req-decline', onClick:()=>declineRequest(r), key:'d'}, String.fromCodePoint(0x2715))
-                          ])
-                        ]))
-                      ]) : null,
-                      e('div', {className:'dl-manage-sub', key:'fl'}, 'Your friends'),
-                      friends.length === 0
-                        ? e('div', {className:'dl-empty-note', key:'nf'}, 'No friends yet \u2014 search a name above.')
-                        : e('div', {key:'list'}, friends.slice().sort((a,b)=>(b.lessons_done||0)-(a.lessons_done||0)).map((f,i) =>
-                            e('div', {className:'dl-person-row', key:f.id}, [
-                              e('span', {className:'dl-friend-rank', key:'r'}, '#' + (i+1)),
-                              e('button', {className:'dl-person-main', onClick:()=>viewProfile(f.id), key:'m'}, [
-                                e('span', {className:'dl-person-avatar', key:'a'}, f.avatar || String.fromCodePoint(0x1F4D6)),
-                                e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
-                                  e('div', {className:'dl-person-name', key:'nm'}, f.display_name),
-                                  e('div', {className:'dl-person-sub', key:'st'}, (f.lessons_done||0) + ' lessons \u00b7 ' + (f.daily_streak||0) + ' day streak')
-                                ])
-                              ]),
-                              e('button', {className:'dl-friend-remove', onClick:()=>removeFriend(f.id), key:'x'}, String.fromCodePoint(0x2715))
-                            ])
-                          )),
-                      suggested.length > 0 ? e('div', {key:'sg'}, [
-                        e('div', {className:'dl-manage-sub', key:'l'}, 'People you might know'),
-                        ...suggested.map(p => personRow(p, 'sg'))
-                      ]) : null,
-                      myProfile ? e('button', {className:'dl-invite-wide', style:{marginTop:'12px'}, onClick:()=>{
-                        const link = 'https://stepstofaith.com/?invite=' + (myProfile.friend_code || '');
-                        try {
-                          if (navigator.share) navigator.share({ title:'Steps to Faith', text:'Walk through the Bible with me', url: link });
-                          else { navigator.clipboard.writeText(link); setInviteCopied(true); setTimeout(()=>setInviteCopied(false), 2500); }
-                        } catch (ex) {}
-                      }, key:'inv'}, [
-                        e('span', {className:'dl-invite-icon', key:'i'}, String.fromCodePoint(0x1F4E4)),
-                        e('span', {style:{flex:1, textAlign:'left'}, key:'t'}, [
-                          e('div', {className:'dl-invite-title', key:'a'}, inviteCopied ? 'Link copied!' : 'Invite a friend'),
-                          e('div', {className:'dl-invite-sub', key:'b'}, 'They get added to you automatically')
-                        ])
-                      ]) : null
-                    ])
-              ]) : null
-            ]),
 
         e('div', {className:'dl-section-title', key:'trophylabel'}, [String.fromCodePoint(0x1F3C6), ' Trophy Case']),
         e('div', {className:'dl-trophy-scroll', key:'trophygrid'}, TROPHIES.map(t => {

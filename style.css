@@ -1352,3 +1352,42 @@ to { opacity: 1; transform: translate(-50%, 0); }
   /* Library hub headings */
   .dl-hub-heading { font-size: 12px; font-weight: 800; color: var(--gray); text-transform: uppercase;
     letter-spacing: 0.9px; margin: 4px 0 10px; }
+
+  /* Deeper forest: more trees, drifting leaves, a shaft of light */
+  .dl-tree.t6 { left: 34%; bottom: -6%; font-size: 130px; opacity: 0.10; }
+  .dl-tree.t7 { right: 8%; bottom: -2%; font-size: 88px; opacity: 0.11; }
+  .dl-forest-beam { position: absolute; top: -10%; left: 52%; width: 190px; height: 120%;
+    background: linear-gradient(180deg, rgba(220,255,205,0.16), rgba(220,255,205,0.03) 55%, transparent);
+    transform: rotate(11deg); filter: blur(14px); pointer-events: none; }
+  .dl-leaf { position: absolute; opacity: 0.22; animation: dl-drift 14s ease-in-out infinite; }
+  .dl-leaf.l1 { left: 14%; top: 18%; font-size: 20px; animation-delay: 0s; }
+  .dl-leaf.l2 { right: 18%; top: 34%; font-size: 17px; animation-delay: 4.5s; }
+  .dl-leaf.l3 { left: 62%; top: 52%; font-size: 15px; animation-delay: 8s; }
+  @keyframes dl-drift {
+    0%   { transform: translate(0,0) rotate(0deg); }
+    50%  { transform: translate(14px, 26px) rotate(18deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+  }
+
+  /* Classroom touch: rooms look like notice-board cards on a wooden wall */
+  .dl-forest .dl-gm-row, .dl-forest .dl-bigroom {
+    border-left: 4px solid rgba(140,200,160,0.45); }
+  .dl-forest .dl-forest-head { padding-top: 6px; }
+  .dl-forest .dl-social-tab { background: rgba(255,255,255,0.07); color: rgba(220,245,225,0.6); }
+  .dl-forest .dl-social-tab.active { background: #3f9e6a; color: #fff; }
+  .dl-forest .dl-post, .dl-forest .dl-post-box { background: rgba(22,54,40,0.75);
+    border: 1px solid rgba(140,200,160,0.16); }
+  .dl-forest .dl-post-who, .dl-forest .dl-post-body { color: #eaf7ec; }
+  .dl-forest .dl-post-kind, .dl-forest .dl-pray-count { color: rgba(220,245,225,0.5); }
+  .dl-forest .dl-post-av { background: rgba(140,200,160,0.2); }
+  .dl-forest .dl-pray-btn { background: rgba(140,200,160,0.16); color: #b8e6c4; }
+  .dl-forest .dl-pray-btn.active { background: #3f9e6a; color: #fff; }
+  .dl-forest .dl-prayer-mini { color: rgba(220,245,225,0.5); }
+  .dl-forest .dl-person-row, .dl-forest .dl-invite-wide {
+    background: rgba(22,54,40,0.8); border-color: rgba(140,200,160,0.18); }
+  .dl-forest .dl-person-name, .dl-forest .dl-invite-title { color: #eaf7ec; }
+  .dl-forest .dl-person-sub, .dl-forest .dl-invite-sub { color: rgba(220,245,225,0.5); }
+  .dl-forest .dl-person-add, .dl-forest .dl-req-accept { background: #3f9e6a; }
+  .dl-forest .dl-person-pending, .dl-forest .dl-req-decline {
+    background: rgba(255,255,255,0.08); color: rgba(220,245,225,0.6); }
+  .dl-forest .dl-person-tag { background: rgba(140,200,160,0.18); color: #b8e6c4; }
