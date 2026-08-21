@@ -2621,6 +2621,38 @@
       if (openGroup) loadGroupDetail(openGroup);
     }, [openGroup]);
 
+    // Live chat: new messages appear without refreshing
+    React.useEffect(() => {
+      if (!sb || !user || !openGroup) return;
+      const ch = sb.channel('room-' + openGroup)
+        .on('postgres_changes',
+          { event: '*', schema: 'public', table: 'group_messages', filter: 'group_id=eq.' + openGroup },
+          () => { loadGroupDetail(openGroup); })
+        .subscribe();
+      // Safety net in case the socket drops
+      const poll = setInterval(() => { loadGroupDetail(openGroup); }, 12000);
+      return () => { try { sb.removeChannel(ch); } catch (ex) {} clearInterval(poll); };
+    }, [openGroup, user && user.id]);
+
+    // Live friends: requests and acceptances land straight away
+    React.useEffect(() => {
+      if (!sb || !user) return;
+      const ch = sb.channel('social-' + user.id)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'friend_requests' }, () => {
+          loadRequests();
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'friendships' }, () => {
+          loadFriends();
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'group_members' }, () => {
+          loadGroups();
+          if (openGroup) loadGroupDetail(openGroup);
+        })
+        .subscribe();
+      const poll = setInterval(() => { loadRequests(); loadFriends(); }, 20000);
+      return () => { try { sb.removeChannel(ch); } catch (ex) {} clearInterval(poll); };
+    }, [user && user.id]);
+
     async function load(currentUser){
       if (sb && currentUser) {
         try {
@@ -3128,7 +3160,12 @@
           (extra || []).forEach(p => { authorMap[p.id] = p; });
         }
         setChatAuthors(authorMap);
-        setChatMessages(msgs || []);
+        setChatMessages(prev => {
+          const pending = prev.filter(m => m.pending);
+          const server = msgs || [];
+          const stillPending = pending.filter(p => !server.some(s => s.body === p.body && s.user_id === p.user_id));
+          return [...server, ...stillPending];
+        });
       } catch (ex) { setGroupMembers([]); setChatMessages([]); }
       setSocialLoading(false);
     }
@@ -3137,12 +3174,22 @@
       if (!sb || !user || !body.trim()) return;
       const text = body.trim();
       setChatDraft('');
+      // Show it immediately, then let the server confirm
+      const tempId = 'temp-' + Date.now();
+      setChatMessages(prev => [...prev, {
+        id: tempId, group_id: groupId, user_id: user.id,
+        body: text, kind: kind || 'message', created_at: new Date().toISOString(), pending: true
+      }]);
       try {
-        await sb.from('group_messages').insert({
+        const { error } = await sb.from('group_messages').insert({
           group_id: groupId, user_id: user.id, body: text, kind: kind || 'message'
         });
+        if (error) throw error;
         loadGroupDetail(groupId);
-      } catch (ex) { setSocialMsg('Could not send \u2014 make sure you\u2019ve joined this room.'); }
+      } catch (ex) {
+        setChatMessages(prev => prev.filter(m => m.id !== tempId));
+        setSocialMsg('Could not send \u2014 make sure you\u2019ve joined this room.');
+      }
     }
 
     async function deleteMessage(msgId, groupId){
@@ -4433,7 +4480,7 @@
                           ) : null,
                           e('div', {className:'dl-msg-col', key:'col'}, [
                             (!mine && !grouped) ? e('button', {className:'dl-msg-author', onClick:()=>viewProfile(m.user_id), key:'a'}, (author && author.display_name) || 'Someone') : null,
-                            e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : '') + (grouped ? ' grouped' : ''), key:'b'}, [
+                            e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : '') + (grouped ? ' grouped' : '') + (m.pending ? ' pending' : ''), key:'b'}, [
                               (isPrayer && !grouped) ? e('div', {className:'dl-msg-prayer-tag', key:'pt'}, [String.fromCodePoint(0x1F64F), ' Prayer request']) : null,
                               e('div', {key:'txt'}, m.body)
                             ]),

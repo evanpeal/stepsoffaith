@@ -983,3 +983,5 @@ to { opacity: 1; transform: translate(-50%, 0); }
 
   /* Modal backdrop a touch richer */
   .dl-dc-modal-bg { background: rgba(46,32,80,0.55); }
+
+  .dl-msg-bubble.pending { opacity: 0.6; }
