@@ -2449,6 +2449,13 @@
     const [roomNameDraft, setRoomNameDraft] = React.useState('');
     const [roomDescDraft, setRoomDescDraft] = React.useState('');
     const [confirmDelete, setConfirmDelete] = React.useState(false);
+    const [roomIconDraft, setRoomIconDraft] = React.useState('');
+    const [reactions, setReactions] = React.useState([]);
+    const [assignDone, setAssignDone] = React.useState([]);
+    const [roomView, setRoomView] = React.useState('chat');
+    const [assignOpen, setAssignOpen] = React.useState(false);
+    const [assignSearch, setAssignSearch] = React.useState('');
+    const [shareVerseData, setShareVerseData] = React.useState(null);
     const [chatKind, setChatKind] = React.useState('message');
     const [newRoomCode, setNewRoomCode] = React.useState('');
     const [showCreateRoom, setShowCreateRoom] = React.useState(false);
@@ -3106,7 +3113,7 @@
     }
 
     function roomIcon(g){
-      return '\ud83d\udd12';
+      return (g && g.icon) ? g.icon : '\ud83d\udd12';
     }
 
     async function joinGroupDirect(groupId){
@@ -3195,6 +3202,15 @@
           (extra || []).forEach(p => { authorMap[p.id] = p; });
         }
         setChatAuthors(authorMap);
+        const msgIds = (msgs || []).map(m => m.id);
+        if (msgIds.length) {
+          try {
+            const { data: rx } = await sb.from('message_reactions').select('*').in('message_id', msgIds);
+            setReactions(rx || []);
+            const { data: ad } = await sb.from('assignment_done').select('*').in('message_id', msgIds);
+            setAssignDone(ad || []);
+          } catch (ex) {}
+        } else { setReactions([]); setAssignDone([]); }
         setChatMessages(prev => {
           const pending = prev.filter(m => m.pending);
           const server = msgs || [];
@@ -3217,11 +3233,11 @@
       } catch (ex) { setSocialMsg('Could not remove: ' + (ex && ex.message ? ex.message : 'unknown')); }
     }
 
-    async function renameRoom(groupId, name, desc){
+    async function renameRoom(groupId, name, desc, icon){
       if (!sb || !user || !name.trim()) return;
       try {
         const { error } = await sb.from('groups')
-          .update({ name: name.trim(), description: desc.trim() }).eq('id', groupId);
+          .update({ name: name.trim(), description: desc.trim(), icon: icon || '' }).eq('id', groupId);
         if (error) throw error;
         setEditingRoom(false);
         loadGroups();
@@ -3239,6 +3255,67 @@
         setConfirmDelete(false);
         loadGroups();
       } catch (ex) { setSocialMsg('Could not delete: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    async function toggleReaction(msgId, emoji, groupId){
+      if (!sb || !user) return;
+      const mine = reactions.some(r => r.message_id === msgId && r.user_id === user.id && r.emoji === emoji);
+      // update on screen straight away
+      setReactions(prev => mine
+        ? prev.filter(r => !(r.message_id === msgId && r.user_id === user.id && r.emoji === emoji))
+        : [...prev, { id: 'tmp'+Date.now(), message_id: msgId, user_id: user.id, emoji: emoji }]);
+      try {
+        if (mine) {
+          await sb.from('message_reactions').delete()
+            .eq('message_id', msgId).eq('user_id', user.id).eq('emoji', emoji);
+        } else {
+          await sb.from('message_reactions').insert({ message_id: msgId, user_id: user.id, emoji: emoji });
+        }
+      } catch (ex) { loadGroupDetail(groupId, true); }
+    }
+
+    async function toggleAssignmentDone(msgId, groupId){
+      if (!sb || !user) return;
+      const done = assignDone.some(a => a.message_id === msgId && a.user_id === user.id);
+      setAssignDone(prev => done
+        ? prev.filter(a => !(a.message_id === msgId && a.user_id === user.id))
+        : [...prev, { id: 'tmp'+Date.now(), message_id: msgId, user_id: user.id }]);
+      try {
+        if (done) {
+          await sb.from('assignment_done').delete().eq('message_id', msgId).eq('user_id', user.id);
+        } else {
+          await sb.from('assignment_done').insert({ message_id: msgId, user_id: user.id });
+        }
+      } catch (ex) { loadGroupDetail(groupId, true); }
+    }
+
+    async function shareVerse(groupId, ref, text){
+      if (!sb || !user) return;
+      try {
+        await sb.from('group_messages').insert({
+          group_id: groupId, user_id: user.id, body: text,
+          kind: 'verse', meta: { ref: ref }
+        });
+        loadGroupDetail(groupId, true);
+      } catch (ex) {}
+    }
+
+    async function assignLesson(groupId, lesson){
+      if (!sb || !user) return;
+      try {
+        await sb.from('group_messages').insert({
+          group_id: groupId, user_id: user.id,
+          body: lesson.book + ' \u00b7 ' + lesson.title,
+          kind: 'assignment',
+          meta: { lessonId: lesson.id, book: lesson.book, title: lesson.title }
+        });
+        setAssignOpen(false); setAssignSearch('');
+        loadGroupDetail(groupId, true);
+      } catch (ex) { setSocialMsg('Could not assign: ' + (ex && ex.message ? ex.message : 'unknown')); }
+    }
+
+    function roomLeaderboard(){
+      return groupMembers.slice().sort((a,b) => (b.lessons_done||0) - (a.lessons_done||0));
     }
 
     async function sendMessage(groupId, body, kind){
@@ -4485,7 +4562,7 @@
             return e('div', {className:'dl-chat-wrap', key:'groupdetail'}, [
               e('div', {className:'dl-chat-header', key:'head'}, [
                 e('button', {className:'dl-chat-back', onClick:()=>setOpenGroup(null), key:'back'}, String.fromCodePoint(0x2039)),
-                e('div', {className:'dl-chat-head-icon', key:'ic'}, g.is_public ? String.fromCodePoint(0x1F30D) : String.fromCodePoint(0x1F512)),
+                e('div', {className:'dl-chat-head-icon', key:'ic'}, roomIcon(g)),
                 e('div', {style:{flex:1, minWidth:0}, key:'t'}, [
                   e('div', {className:'dl-chat-title', key:'n'}, [
                     g.name,
@@ -4501,7 +4578,7 @@
                 ]),
                 (isMember && g.owner_id === user.id) ? e('button', {className:'dl-room-invite', title:'Manage room', onClick:()=>{
                   setManageOpen(!manageOpen); setEditingRoom(false); setConfirmDelete(false);
-                  setRoomNameDraft(g.name); setRoomDescDraft(g.description || '');
+                  setRoomNameDraft(g.name); setRoomDescDraft(g.description || ''); setRoomIconDraft(g.icon || '\ud83d\udd12');
                 }, key:'mng'}, String.fromCodePoint(0x2699)) : null,
                 (isMember && (g.member_count || 0) < (g.capacity || 75)) ? e('button', {className:'dl-room-invite', title:'Invite friends', onClick:()=>{
                   const link = 'https://stepstofaith.com/?room=' + g.join_code;
@@ -4510,6 +4587,10 @@
                     else { navigator.clipboard.writeText(link); setSocialMsg('Room link copied!'); setTimeout(()=>setSocialMsg(''), 2500); }
                   } catch (ex) { try { navigator.clipboard.writeText(link); setSocialMsg('Room link copied!'); setTimeout(()=>setSocialMsg(''),2500); } catch (e2) {} }
                 }, key:'inv'}, String.fromCodePoint(0x1F465)) : null
+              ]),
+              e('div', {className:'dl-roomtabs', key:'rtabs'}, [
+                e('button', {className:'dl-roomtab' + (roomView==='chat'?' on':''), onClick:()=>setRoomView('chat'), key:'c'}, 'Chat'),
+                e('button', {className:'dl-roomtab' + (roomView==='people'?' on':''), onClick:()=>setRoomView('people'), key:'p'}, 'People \u00b7 ' + groupMembers.length)
               ]),
               socialMsg ? e('div', {className:'dl-social-msg', key:'rmsg'}, socialMsg) : null,
 
@@ -4520,9 +4601,13 @@
                   ? e('div', {key:'edit'}, [
                       e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'8px'}, value:roomNameDraft, placeholder:'Room name', onChange: ev=>setRoomNameDraft(ev.target.value), key:'n'}),
                       e('input', {className:'dl-social-input', style:{width:'100%', marginBottom:'10px'}, value:roomDescDraft, placeholder:'Description', onChange: ev=>setRoomDescDraft(ev.target.value), key:'d'}),
-                      e('div', {style:{display:'flex', gap:'8px'}, key:'b'}, [
+                      e('div', {className:'dl-manage-sub', style:{marginTop:0}, key:'il'}, 'Room icon'),
+                      e('div', {className:'dl-avatar-grid', key:'ig'}, AVATAR_OPTIONS.map(a =>
+                        e('button', {className:'dl-avatar-opt' + (a===roomIconDraft?' sel':''), onClick:()=>setRoomIconDraft(a), key:a}, a)
+                      )),
+                      e('div', {style:{display:'flex', gap:'8px', marginTop:'10px'}, key:'b'}, [
                         e('button', {className:'dl-gm-cancel', onClick:()=>setEditingRoom(false), key:'c'}, 'Cancel'),
-                        e('button', {className:'dl-gm-create', onClick:()=>renameRoom(g.id, roomNameDraft, roomDescDraft), key:'s'}, 'Save')
+                        e('button', {className:'dl-gm-create', onClick:()=>renameRoom(g.id, roomNameDraft, roomDescDraft, roomIconDraft), key:'s'}, 'Save')
                       ])
                     ])
                   : e('button', {className:'dl-manage-btn', onClick:()=>setEditingRoom(true), key:'ren'}, [String.fromCodePoint(0x270F), ' Rename room']),
@@ -4552,7 +4637,21 @@
                   : e('button', {className:'dl-manage-btn danger', onClick:()=>setConfirmDelete(true), key:'del'}, [String.fromCodePoint(0x1F5D1), ' Delete room'])
               ]) : null,
 
-              e('div', {className:'dl-chat-scroll', key:'scroll', ref: chatScrollRef, onScroll: (ev) => {
+              e('div', {className:'dl-people-pane' + (roomView === 'people' ? '' : ' mobile-hide'), key:'ppane'},
+                roomLeaderboard().map((m, i) => e('div', {className:'dl-lb-row', key:m.id}, [
+                  e('span', {className:'dl-lb-rank' + (i<3?' top':''), key:'r'}, '#' + (i+1)),
+                  e('button', {className:'dl-manage-who', onClick:()=>viewProfile(m.id), key:'w'}, [
+                    e('span', {className:'dl-manage-av', key:'a'}, m.avatar || String.fromCodePoint(0x1F4D6)),
+                    e('span', {style:{flex:1, minWidth:0}, key:'n'}, [
+                      e('div', {className:'dl-manage-name', key:'nm'}, m.display_name),
+                      e('div', {className:'dl-lb-stats', key:'s'}, (m.lessons_done||0) + ' lessons \u00b7 ' + (m.daily_streak||0) + ' day streak')
+                    ])
+                  ]),
+                  m.id === g.owner_id ? e('span', {className:'dl-manage-tag', key:'o'}, 'Owner') : null
+                ]))
+              ),
+
+              e('div', {className:'dl-chat-scroll' + (roomView === 'chat' ? '' : ' mobile-hide'), key:'scroll', ref: chatScrollRef, onScroll: (ev) => {
                   const el = ev.target;
                   chatAtBottomRef.current = (el.scrollHeight - el.scrollTop - el.clientHeight) < 80;
                 }},
@@ -4597,10 +4696,47 @@
                           ) : null,
                           e('div', {className:'dl-msg-col', key:'col'}, [
                             (!mine && !grouped) ? e('button', {className:'dl-msg-author', onClick:()=>viewProfile(m.user_id), key:'a'}, (author && author.display_name) || 'Someone') : null,
-                            e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : '') + (grouped ? ' grouped' : '') + (m.pending ? ' pending' : ''), key:'b'}, [
+                            (m.kind === 'verse')
+                            ? e('div', {className:'dl-card-verse', key:'b'}, [
+                                e('div', {className:'dl-card-tag', key:'t'}, [String.fromCodePoint(0x1F4D6), ' Shared a verse']),
+                                (m.meta && m.meta.ref) ? e('div', {className:'dl-card-ref', key:'r'}, m.meta.ref) : null,
+                                e('div', {className:'dl-card-verse-text', key:'x'}, m.body)
+                              ])
+                          : (m.kind === 'assignment')
+                            ? (() => {
+                                const total = groupMembers.length || 1;
+                                const doneN = assignDone.filter(a => a.message_id === m.id).length;
+                                const iDid = assignDone.some(a => a.message_id === m.id && a.user_id === user.id);
+                                const les = m.meta ? LESSONS.find(l => l.id === m.meta.lessonId) : null;
+                                return e('div', {className:'dl-card-assign', key:'b'}, [
+                                  e('div', {className:'dl-card-tag assign', key:'t'}, [String.fromCodePoint(0x1F4DD), ' Assignment']),
+                                  e('div', {className:'dl-card-title', key:'n'}, m.body),
+                                  e('div', {className:'dl-card-bar', key:'bar'}, e('div', {className:'dl-card-fill', style:{width: Math.round((doneN/total)*100) + '%'}})),
+                                  e('div', {className:'dl-card-count', key:'c'}, doneN + ' of ' + total + ' finished'),
+                                  e('div', {className:'dl-card-actions', key:'a'}, [
+                                    les ? e('button', {className:'dl-card-btn', onClick:()=>openIfAvailable(les), key:'o'}, 'Read it') : null,
+                                    e('button', {className:'dl-card-btn' + (iDid ? ' done' : ''), onClick:()=>toggleAssignmentDone(m.id, g.id), key:'d'},
+                                      iDid ? (String.fromCodePoint(0x2713) + ' Done') : 'Mark done')
+                                  ])
+                                ]);
+                              })()
+                          : e('div', {className:'dl-msg-bubble' + (mine ? ' mine' : '') + (isPrayer ? ' prayer' : '') + (grouped ? ' grouped' : '') + (m.pending ? ' pending' : ''), key:'b'}, [
                               (isPrayer && !grouped) ? e('div', {className:'dl-msg-prayer-tag', key:'pt'}, [String.fromCodePoint(0x1F64F), ' Prayer request']) : null,
                               e('div', {key:'txt'}, m.body)
                             ]),
+                          (() => {
+                            const rx = reactions.filter(r => r.message_id === m.id);
+                            const counts = {};
+                            rx.forEach(r => { counts[r.emoji] = (counts[r.emoji] || 0) + 1; });
+                            const emojis = Object.keys(counts);
+                            return e('div', {className:'dl-rx-row' + (mine ? ' mine' : ''), key:'rx'}, [
+                              ...emojis.map(em => {
+                                const isMine = rx.some(r => r.emoji === em && r.user_id === user.id);
+                                return e('button', {className:'dl-rx' + (isMine ? ' on' : ''), onClick:()=>toggleReaction(m.id, em, g.id), key:em}, [em, ' ', counts[em]]);
+                              }),
+                              !m.pending ? e('button', {className:'dl-rx add', onClick:()=>toggleReaction(m.id, String.fromCodePoint(0x1F64F), g.id), key:'add'}, String.fromCodePoint(0x1F64F)) : null
+                            ]);
+                          })(),
                             e('div', {className:'dl-msg-time', key:'t'}, [
                               formatMsgTime(m.created_at),
                               mine ? e('button', {className:'dl-msg-del', onClick:()=>deleteMessage(m.id, g.id), key:'d'}, 'Delete') : null
@@ -4612,7 +4748,23 @@
                     })()
               ),
 
-              isMember
+              (roomView === 'chat' && isMember && g.owner_id === user.id) ? e('div', {key:'assignwrap'}, [
+                assignOpen ? e('div', {className:'dl-assign-box', key:'ab'}, [
+                  e('div', {className:'dl-manage-sub', style:{marginTop:0}, key:'l'}, 'Assign a lesson'),
+                  e('input', {className:'dl-social-input', style:{width:'100%'}, value:assignSearch, placeholder:'Search lessons\u2026', onChange: ev=>setAssignSearch(ev.target.value), key:'s'}),
+                  e('div', {className:'dl-assign-list', key:'li'},
+                    (assignSearch.trim().length >= 2 ? searchLessons(assignSearch) : LESSONS.slice(0, 8)).map(l =>
+                      e('button', {className:'dl-assign-item', onClick:()=>assignLesson(g.id, l), key:l.id}, [
+                        e('span', {className:'dl-fav-book', key:'b'}, l.book),
+                        e('span', {className:'dl-fav-title', key:'t'}, l.title)
+                      ])
+                    )
+                  ),
+                  e('button', {className:'dl-gm-cancel', style:{width:'100%', marginTop:'8px'}, onClick:()=>setAssignOpen(false), key:'c'}, 'Cancel')
+                ]) : e('button', {className:'dl-assign-open', onClick:()=>setAssignOpen(true), key:'ao'}, [String.fromCodePoint(0x1F4DD), ' Assign a lesson to the room'])
+              ]) : null,
+
+              roomView === 'chat' && isMember
                 ? e('div', {className:'dl-chat-composer', key:'composer'}, [
                     e('div', {className:'dl-chat-kind', key:'kind'}, [
                       e('button', {className:'dl-kind-btn' + (chatKind==='message'?' active':''), onClick:()=>setChatKind('message'), key:'m'}, 'Message'),
@@ -4627,10 +4779,10 @@
                       e('button', {className:'dl-chat-send', disabled: !chatDraft.trim(), onClick:()=>sendMessage(g.id, chatDraft, chatKind), key:'s'}, String.fromCodePoint(0x27A4))
                     ])
                   ])
-                : e('div', {className:'dl-chat-joinbar', key:'joinbar'}, [
+                : roomView === 'chat' ? e('div', {className:'dl-chat-joinbar', key:'joinbar'}, [
                     e('span', {key:'t'}, 'Join to join the conversation'),
                     e('button', {className:'dl-social-btn', onClick:()=>joinGroupDirect(g.id), key:'j'}, 'Join room')
-                  ]),
+                  ]) : null,
 
               isMember ? e('button', {className:'dl-plan-leave', style:{margin:'10px auto 0', display:'block'}, onClick:()=>leaveGroup(g.id), key:'leave'}, 'Leave this room') : null
             ]);
@@ -4970,6 +5122,21 @@
         ]) : null
       ),
 
+      e('div', {className:'dl-dc-modal-bg' + (shareVerseData ? ' open' : ''), key:'sharemodal'},
+        shareVerseData ? e('div', {className:'dl-dc-done-wrap'}, [
+          e('div', {className:'dl-dc-done-badge', style:{background:'var(--purple)', boxShadow:'0 6px 0 var(--purple-dark)'}, key:'b'}, String.fromCodePoint(0x1F4E4)),
+          e('div', {className:'dl-dc-done-title', key:'t'}, 'Share this verse'),
+          e('div', {className:'dl-card-ref', style:{marginTop:'10px'}, key:'r'}, shareVerseData.ref),
+          e('div', {className:'dl-tour-text', style:{fontStyle:'italic'}, key:'v'}, shareVerseData.text),
+          e('div', {className:'dl-manage-sub', key:'l'}, 'Send to'),
+          ...myGroups.map(g => e('button', {className:'dl-assign-item', onClick:()=>{ shareVerse(g.id, shareVerseData.ref, shareVerseData.text); setShareVerseData(null); setSocialMsg('Verse shared to ' + g.name); setTimeout(()=>setSocialMsg(''), 2500); }, key:g.id}, [
+            e('span', {key:'i'}, roomIcon(g)), ' ',
+            e('span', {className:'dl-fav-title', key:'n'}, g.name)
+          ])),
+          e('button', {className:'dl-plan-leave', style:{marginTop:'12px'}, onClick:()=>setShareVerseData(null), key:'c'}, 'Cancel')
+        ]) : null
+      ),
+
       e('div', {className:'dl-dc-modal-bg' + (openStudyBook ? ' open' : ''), key:'studymodal'},
         openStudyBook && DEEP_STUDIES[openStudyBook] && (
           studyStep === 'prayer'
@@ -5202,6 +5369,7 @@
                           e('div', {className:'dl-passage-text', key:'t'}, openLesson.passage),
                           ...(openLesson.keyVerses || []).map((kv, i) => e('div', {className:'dl-keyverse', key:'kv'+i}, [
                             e('div', {className:'dl-keyverse-mark', key:'m'}, String.fromCodePoint(0x275D)),
+                            (user && myGroups.length) ? e('button', {className:'dl-verse-share', title:'Share to a room', onClick:()=>{ setShareVerseData({ ref: kv.ref, text: kv.text }); }, key:'sh'}, String.fromCodePoint(0x1F4E4)) : null,
                             e('div', {className:'dl-keyverse-text', key:'t'}, kv.text),
                             e('div', {className:'dl-keyverse-ref', key:'r'}, kv.ref)
                           ]))

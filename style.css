@@ -1033,3 +1033,70 @@ to { opacity: 1; transform: translate(-50%, 0); }
 
   /* Chat scrolls smoothly to new messages */
   .dl-chat-scroll { scroll-behavior: smooth; }
+
+  /* ===== Rich room features ===== */
+  .dl-roomtabs { display: flex; gap: 6px; margin-bottom: 12px; }
+  .dl-roomtab { flex: 1; background: var(--card-2); border: none; border-radius: 10px; padding: 9px;
+    font-size: 13px; font-weight: 800; color: var(--gray); cursor: pointer; }
+  .dl-roomtab.on { background: var(--purple); color: #fff; }
+
+  .dl-card-verse { background: linear-gradient(150deg, #f5edff, #eef4ff); border-left: 4px solid var(--purple);
+    border-radius: 14px; padding: 14px 16px; max-width: 100%; }
+  .dl-card-tag { font-size: 10.5px; font-weight: 800; color: var(--purple-dark); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 6px; }
+  .dl-card-tag.assign { color: #0a8a71; }
+  .dl-card-ref { font-size: 12px; font-weight: 800; color: var(--purple-dark); margin-bottom: 5px; }
+  .dl-card-verse-text { font-size: 15px; line-height: 1.6; color: var(--ink); font-style: italic; }
+
+  .dl-card-assign { background: #e9fbf5; border-left: 4px solid #0fa585; border-radius: 14px; padding: 14px 16px; }
+  .dl-card-title { font-size: 15px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+  .dl-card-bar { height: 8px; background: rgba(0,0,0,0.08); border-radius: 10px; overflow: hidden; margin-bottom: 6px; }
+  .dl-card-fill { height: 100%; background: #0fa585; border-radius: 10px; transition: width 0.3s; }
+  .dl-card-count { font-size: 11.5px; font-weight: 800; color: #0a8a71; margin-bottom: 10px; }
+  .dl-card-actions { display: flex; gap: 8px; }
+  .dl-card-btn { background: #fff; border: 2px solid rgba(0,0,0,0.08); border-radius: 20px; padding: 7px 14px;
+    font-size: 12.5px; font-weight: 800; color: var(--ink); cursor: pointer; }
+  .dl-card-btn.done { background: #0fa585; color: #fff; border-color: #0a8a71; }
+
+  .dl-rx-row { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
+  .dl-rx-row.mine { justify-content: flex-end; }
+  .dl-rx { background: #fff; border: 1.5px solid var(--gray-light); border-radius: 20px; padding: 3px 9px;
+    font-size: 12px; font-weight: 800; color: var(--gray); cursor: pointer; line-height: 1.5; }
+  .dl-rx.on { background: #f1e7ff; border-color: var(--purple); color: var(--purple-dark); }
+  .dl-rx.add { opacity: 0.45; }
+  .dl-rx.add:hover { opacity: 1; }
+
+  .dl-assign-open { width: 100%; background: #e9fbf5; color: #0a8a71; border: none; border-radius: 12px;
+    padding: 12px; font-weight: 800; font-size: 13px; cursor: pointer; margin-bottom: 10px; }
+  .dl-assign-box { background: #fff; border-radius: 14px; padding: 14px; margin-bottom: 10px;
+    box-shadow: 0 3px 0 rgba(90,70,140,0.09); }
+  .dl-assign-list { max-height: 190px; overflow-y: auto; margin-top: 8px; }
+  .dl-assign-item { display: flex; align-items: baseline; gap: 8px; width: 100%; background: var(--card-2);
+    border: none; border-radius: 10px; padding: 10px 12px; margin-bottom: 6px; text-align: left; cursor: pointer; }
+
+  .dl-people-pane { background: #fff; border-radius: 16px; padding: 8px 14px; margin-bottom: 12px;
+    box-shadow: 0 3px 0 rgba(90,70,140,0.09); }
+  .dl-lb-row { display: flex; align-items: center; gap: 10px; padding: 10px 0;
+    border-bottom: 1px solid var(--gray-light); }
+  .dl-lb-row:last-child { border-bottom: none; }
+  .dl-lb-rank { font-family: 'Baloo 2', sans-serif; font-size: 15px; font-weight: 800; color: var(--gray); min-width: 30px; }
+  .dl-lb-rank.top { color: var(--gold-dark); }
+  .dl-lb-stats { font-size: 11.5px; font-weight: 700; color: var(--gray); }
+
+  .dl-verse-share { position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); border: none;
+    border-radius: 50%; width: 30px; height: 30px; font-size: 14px; cursor: pointer; }
+  .dl-keyverse { position: relative; }
+
+  /* Roomier on tablets and laptops */
+  @media (min-width: 820px) {
+    .dl-chat-wrap { display: grid; grid-template-columns: 1fr 300px; gap: 16px; align-items: start; }
+    .dl-chat-header { grid-column: 1 / -1; }
+    .dl-roomtabs { display: none; }
+    .dl-people-pane { grid-column: 2; margin-bottom: 0; position: sticky; top: 12px; }
+    .dl-chat-scroll { max-height: 62vh; }
+  }
+
+  /* On phones only one room pane shows at a time */
+  @media (max-width: 819px) {
+    .dl-people-pane.mobile-hide, .dl-chat-scroll.mobile-hide { display: none; }
+  }
