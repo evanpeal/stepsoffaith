@@ -4594,7 +4594,9 @@
               ]),
               socialMsg ? e('div', {className:'dl-social-msg', key:'rmsg'}, socialMsg) : null,
 
-              (manageOpen && g.owner_id === user.id) ? e('div', {className:'dl-manage', key:'manage'}, [
+              (manageOpen && g.owner_id === user.id) ? e('div', {className:'dl-manage-overlay', key:'manageov'}, [
+                e('div', {className:'dl-manage-scrim', onClick:()=>setManageOpen(false), key:'sc'}),
+                e('div', {className:'dl-manage', key:'manage'}, [
                 e('div', {className:'dl-manage-h', key:'h'}, [String.fromCodePoint(0x2699), ' Room settings']),
 
                 editingRoom
@@ -4634,7 +4636,9 @@
                         e('button', {className:'dl-manage-delete', onClick:()=>deleteRoom(g.id), key:'d'}, 'Delete room')
                       ])
                     ])
-                  : e('button', {className:'dl-manage-btn danger', onClick:()=>setConfirmDelete(true), key:'del'}, [String.fromCodePoint(0x1F5D1), ' Delete room'])
+                  : e('button', {className:'dl-manage-btn danger', onClick:()=>setConfirmDelete(true), key:'del'}, [String.fromCodePoint(0x1F5D1), ' Delete room']),
+                e('button', {className:'dl-manage-close', onClick:()=>setManageOpen(false), key:'cl'}, 'Close')
+                ])
               ]) : null,
 
               e('div', {className:'dl-people-pane' + (roomView === 'people' ? '' : ' mobile-hide'), key:'ppane'},
@@ -4748,7 +4752,7 @@
                     })()
               ),
 
-              (roomView === 'chat' && isMember && g.owner_id === user.id) ? e('div', {key:'assignwrap'}, [
+              (roomView === 'chat' && isMember && g.owner_id === user.id) ? e('div', {className:'dl-assignwrap', key:'assignwrap'}, [
                 assignOpen ? e('div', {className:'dl-assign-box', key:'ab'}, [
                   e('div', {className:'dl-manage-sub', style:{marginTop:0}, key:'l'}, 'Assign a lesson'),
                   e('input', {className:'dl-social-input', style:{width:'100%'}, value:assignSearch, placeholder:'Search lessons\u2026', onChange: ev=>setAssignSearch(ev.target.value), key:'s'}),

@@ -1105,10 +1105,12 @@ to { opacity: 1; transform: translate(-50%, 0); }
       gap: 16px; align-items: start; }
     .dl-chat-header { grid-column: 1 / -1; }
     .dl-roomtabs { display: none; }
-    .dl-people-pane { grid-column: 2; grid-row: 2 / span 4; margin-bottom: 0;
-      position: sticky; top: 12px; }
-    .dl-chat-scroll { grid-column: 1; max-height: 58vh; }
-    .dl-chat-composer, .dl-chat-joinbar { grid-column: 1; }
+    .dl-people-pane { grid-column: 2; grid-row: 2 / span 8; margin-bottom: 0;
+      position: sticky; top: 12px; align-self: start; }
+    .dl-chat-scroll { grid-column: 1; max-height: 56vh; }
+    .dl-chat-composer, .dl-chat-joinbar, .dl-social-msg { grid-column: 1; }
+    /* the leave-room link shouldn't stretch across both columns */
+    .dl-chat-wrap > .dl-plan-leave { grid-column: 1; justify-self: start; }
 
     /* Grids get an extra column where it helps */
     .dl-topic-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1155,3 +1157,16 @@ to { opacity: 1; transform: translate(-50%, 0); }
     .dl-profile-page { max-width: 860px; }
     .dl-lesson-top { max-width: 860px; }
   }
+
+  /* Room settings as a proper overlay on every screen size */
+  .dl-manage-overlay { position: fixed; inset: 0; z-index: 60; display: flex;
+    align-items: center; justify-content: center; padding: 20px; }
+  .dl-manage-scrim { position: absolute; inset: 0; background: rgba(35,25,60,0.55); }
+  .dl-manage-overlay .dl-manage { position: relative; z-index: 1; width: 100%; max-width: 440px;
+    max-height: 82vh; overflow-y: auto; margin: 0;
+    box-shadow: 0 20px 50px rgba(30,20,60,0.35); animation: dl-tour-in 0.22s ease; }
+  .dl-manage-close { width: 100%; background: var(--card-2); color: var(--gray); border: none;
+    border-radius: 12px; padding: 12px; font-weight: 800; font-size: 13.5px; cursor: pointer; margin-top: 14px; }
+
+  /* Assign box sits in the chat column, never the sidebar */
+  .dl-assignwrap { grid-column: 1; }
